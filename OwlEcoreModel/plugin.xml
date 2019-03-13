@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated owl2 -->
+      <package
+            uri="http:///owl.ecore"
+            class="owl.OwlPackage"
+            genModel="model/owl2.genmodel"/>
+   </extension>
+
+</plugin>
