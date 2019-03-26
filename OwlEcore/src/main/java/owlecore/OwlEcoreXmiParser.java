@@ -151,16 +151,16 @@ import owl.SymmetricObjectProperty;
 import owl.TransitiveObjectProperty;
 import owl.util.OwlSwitch;
 
-public class OwlEcoreParser extends OwlSwitch<OWLObject> {
+public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 	private OWLOntologyManager ontologyManager;
 	private OWLOntology ontology;
 	private Resource ecoreOntologyInstance;
 	
-	public OwlEcoreParser(String uri) {
+	public OwlEcoreXmiParser(String uri) {
 		this(uri, OWLManager.createOWLOntologyManager());
 	}
 	
-	public OwlEcoreParser(String uri, OWLOntologyManager ontologyManager) {
+	public OwlEcoreXmiParser(String uri, OWLOntologyManager ontologyManager) {
 ;		this.ontologyManager = ontologyManager;
 		
 		// Load the ecore owl model instance
@@ -182,7 +182,7 @@ public class OwlEcoreParser extends OwlSwitch<OWLObject> {
 	 * Iterates over the EObjects in the XMI and populates the ontology using the OWL API.
 	 * @return this
 	 */
-	public OwlEcoreParser parse() {
+	public OwlEcoreXmiParser parse() {
 		for (EObject object : ecoreOntologyInstance.getContents()) {
 			this.doSwitch(object);
 		}

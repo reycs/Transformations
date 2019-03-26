@@ -11,10 +11,10 @@ public class Example {
 	 */
 	public static void main(String[] args) {
 		// Parsing document
-		OwlEcoreParser parser = new OwlEcoreParser("input/Quintessential-SC1-Eclipse.xmi");
+		OwlEcoreXmiParser parser = new OwlEcoreXmiParser("input/Quintessential-SC1-Eclipse.xmi");
 		//OwlEcoreParser parser = new OwlEcoreParser("output/Writertest.xmi");
 		//parser.parse("output/Parsertest.owl", new OWLXMLDocumentFormat());
-		parser.parse("output/Parsertest.owl", new RDFXMLDocumentFormat());
+		parser.parse().save("output/Parsertest.owl", new RDFXMLDocumentFormat());
 		System.out.println("[Parser] finished parsing.");
 
 		// Writing document
@@ -22,6 +22,7 @@ public class Example {
 		//OwlEcoreWriter writer = new OwlEcoreWriter("input/pizza.owl");
 		//writer.write("output/Writertest.xmi");
 		//System.out.println("[Writer] finished writing.");
+		
 	}
 
 }
