@@ -178,12 +178,16 @@ public class OwlEcoreParser extends OwlSwitch<OWLObject> {
 		}
 	}
 	
-	public OWLOntology parse() {
+	/**
+	 * Iterates over the EObjects in the XMI and populates the ontology using the OWL API.
+	 * @return this
+	 */
+	public OwlEcoreParser parse() {
 		for (EObject object : ecoreOntologyInstance.getContents()) {
 			this.doSwitch(object);
 		}
 		
-		return ontology;
+		return this;
 	}
 	
 	public OWLOntologyManager getOntologyManager() {
@@ -194,10 +198,12 @@ public class OwlEcoreParser extends OwlSwitch<OWLObject> {
 		return ontologyManager.getOWLDataFactory();
 	}
 	
-	public void parse(String fileName, OWLDocumentFormat ontologyFormat) {
-		
-		parse();
-		
+	/**
+	 * Saves the ontology in the given location and the given format.
+	 * @param fileName filename and location
+	 * @param ontologyFormat format to save the ontology in
+	 */
+	public void save(String fileName, OWLDocumentFormat ontologyFormat) {		
 		ontologyManager.setOntologyFormat(ontology, ontologyFormat);
 		File file = new File(fileName);
 		try {
