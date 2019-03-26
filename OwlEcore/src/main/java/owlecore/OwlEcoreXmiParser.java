@@ -151,6 +151,9 @@ import owl.SymmetricObjectProperty;
 import owl.TransitiveObjectProperty;
 import owl.util.OwlSwitch;
 
+/**
+ * Parser class that allows parsing XMI models conform W3C OWL2 Ecore to the OWL API.
+ */
 public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 	private OWLOntologyManager ontologyManager;
 	private OWLOntology ontology;
