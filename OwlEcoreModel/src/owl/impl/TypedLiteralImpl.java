@@ -8,27 +8,26 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import owl.Constant;
 import owl.Datatype;
 import owl.OwlPackage;
+import owl.TypedLiteral;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Constant</b></em>'.
+ * An implementation of the model object '<em><b>Typed Literal</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link owl.impl.ConstantImpl#getLexicalValue <em>Lexical Value</em>}</li>
- *   <li>{@link owl.impl.ConstantImpl#getDatatype <em>Datatype</em>}</li>
+ *   <li>{@link owl.impl.TypedLiteralImpl#getLexicalValue <em>Lexical Value</em>}</li>
+ *   <li>{@link owl.impl.TypedLiteralImpl#getDatatype <em>Datatype</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ConstantImpl extends MinimalEObjectImpl.Container implements Constant {
+public class TypedLiteralImpl extends LiteralImpl implements TypedLiteral {
 	/**
 	 * The default value of the '{@link #getLexicalValue() <em>Lexical Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -64,7 +63,7 @@ public class ConstantImpl extends MinimalEObjectImpl.Container implements Consta
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ConstantImpl() {
+	protected TypedLiteralImpl() {
 		super();
 	}
 
@@ -75,7 +74,7 @@ public class ConstantImpl extends MinimalEObjectImpl.Container implements Consta
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OwlPackage.Literals.CONSTANT;
+		return OwlPackage.Literals.TYPED_LITERAL;
 	}
 
 	/**
@@ -96,7 +95,7 @@ public class ConstantImpl extends MinimalEObjectImpl.Container implements Consta
 		String oldLexicalValue = lexicalValue;
 		lexicalValue = newLexicalValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.CONSTANT__LEXICAL_VALUE, oldLexicalValue, lexicalValue));
+			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.TYPED_LITERAL__LEXICAL_VALUE, oldLexicalValue, lexicalValue));
 	}
 
 	/**
@@ -110,7 +109,7 @@ public class ConstantImpl extends MinimalEObjectImpl.Container implements Consta
 			datatype = (Datatype)eResolveProxy(oldDatatype);
 			if (datatype != oldDatatype) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.CONSTANT__DATATYPE, oldDatatype, datatype));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.TYPED_LITERAL__DATATYPE, oldDatatype, datatype));
 			}
 		}
 		return datatype;
@@ -134,7 +133,7 @@ public class ConstantImpl extends MinimalEObjectImpl.Container implements Consta
 		Datatype oldDatatype = datatype;
 		datatype = newDatatype;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.CONSTANT__DATATYPE, oldDatatype, datatype));
+			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.TYPED_LITERAL__DATATYPE, oldDatatype, datatype));
 	}
 
 	/**
@@ -145,9 +144,9 @@ public class ConstantImpl extends MinimalEObjectImpl.Container implements Consta
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OwlPackage.CONSTANT__LEXICAL_VALUE:
+			case OwlPackage.TYPED_LITERAL__LEXICAL_VALUE:
 				return getLexicalValue();
-			case OwlPackage.CONSTANT__DATATYPE:
+			case OwlPackage.TYPED_LITERAL__DATATYPE:
 				if (resolve) return getDatatype();
 				return basicGetDatatype();
 		}
@@ -162,10 +161,10 @@ public class ConstantImpl extends MinimalEObjectImpl.Container implements Consta
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OwlPackage.CONSTANT__LEXICAL_VALUE:
+			case OwlPackage.TYPED_LITERAL__LEXICAL_VALUE:
 				setLexicalValue((String)newValue);
 				return;
-			case OwlPackage.CONSTANT__DATATYPE:
+			case OwlPackage.TYPED_LITERAL__DATATYPE:
 				setDatatype((Datatype)newValue);
 				return;
 		}
@@ -180,10 +179,10 @@ public class ConstantImpl extends MinimalEObjectImpl.Container implements Consta
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OwlPackage.CONSTANT__LEXICAL_VALUE:
+			case OwlPackage.TYPED_LITERAL__LEXICAL_VALUE:
 				setLexicalValue(LEXICAL_VALUE_EDEFAULT);
 				return;
-			case OwlPackage.CONSTANT__DATATYPE:
+			case OwlPackage.TYPED_LITERAL__DATATYPE:
 				setDatatype((Datatype)null);
 				return;
 		}
@@ -198,9 +197,9 @@ public class ConstantImpl extends MinimalEObjectImpl.Container implements Consta
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OwlPackage.CONSTANT__LEXICAL_VALUE:
+			case OwlPackage.TYPED_LITERAL__LEXICAL_VALUE:
 				return LEXICAL_VALUE_EDEFAULT == null ? lexicalValue != null : !LEXICAL_VALUE_EDEFAULT.equals(lexicalValue);
-			case OwlPackage.CONSTANT__DATATYPE:
+			case OwlPackage.TYPED_LITERAL__DATATYPE:
 				return datatype != null;
 		}
 		return super.eIsSet(featureID);
@@ -222,4 +221,4 @@ public class ConstantImpl extends MinimalEObjectImpl.Container implements Consta
 		return result.toString();
 	}
 
-} //ConstantImpl
+} //TypedLiteralImpl

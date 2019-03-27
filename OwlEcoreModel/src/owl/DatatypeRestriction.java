@@ -50,7 +50,7 @@ public interface DatatypeRestriction extends DataRange {
 
 	/**
 	 * Returns the value of the '<em><b>Restrictions</b></em>' reference list.
-	 * The list contents are of type {@link owl.FacetConstantPair}.
+	 * The list contents are of type {@link owl.FacetLiteralPair}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Restrictions</em>' reference list isn't clear,
@@ -62,6 +62,6 @@ public interface DatatypeRestriction extends DataRange {
 	 * @model ordered="false"
 	 * @generated
 	 */
-	EList<FacetConstantPair> getRestrictions();
+	EList<FacetLiteralPair> getRestrictions();
 
 } // DatatypeRestriction

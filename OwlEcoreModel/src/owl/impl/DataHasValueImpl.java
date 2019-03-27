@@ -9,9 +9,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import owl.Constant;
 import owl.DataHasValue;
 import owl.DataPropertyExpression;
+import owl.Literal;
 import owl.OwlPackage;
 
 /**
@@ -22,7 +22,7 @@ import owl.OwlPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link owl.impl.DataHasValueImpl#getConstant <em>Constant</em>}</li>
+ *   <li>{@link owl.impl.DataHasValueImpl#getLiteral <em>Literal</em>}</li>
  *   <li>{@link owl.impl.DataHasValueImpl#getDataPropertyExpression <em>Data Property Expression</em>}</li>
  * </ul>
  *
@@ -30,14 +30,14 @@ import owl.OwlPackage;
  */
 public class DataHasValueImpl extends ClassExpressionImpl implements DataHasValue {
 	/**
-	 * The cached value of the '{@link #getConstant() <em>Constant</em>}' reference.
+	 * The cached value of the '{@link #getLiteral() <em>Literal</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getConstant()
+	 * @see #getLiteral()
 	 * @generated
 	 * @ordered
 	 */
-	protected Constant constant;
+	protected Literal literal;
 
 	/**
 	 * The cached value of the '{@link #getDataPropertyExpression() <em>Data Property Expression</em>}' reference.
@@ -73,16 +73,16 @@ public class DataHasValueImpl extends ClassExpressionImpl implements DataHasValu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constant getConstant() {
-		if (constant != null && constant.eIsProxy()) {
-			InternalEObject oldConstant = (InternalEObject)constant;
-			constant = (Constant)eResolveProxy(oldConstant);
-			if (constant != oldConstant) {
+	public Literal getLiteral() {
+		if (literal != null && literal.eIsProxy()) {
+			InternalEObject oldLiteral = (InternalEObject)literal;
+			literal = (Literal)eResolveProxy(oldLiteral);
+			if (literal != oldLiteral) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.DATA_HAS_VALUE__CONSTANT, oldConstant, constant));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.DATA_HAS_VALUE__LITERAL, oldLiteral, literal));
 			}
 		}
-		return constant;
+		return literal;
 	}
 
 	/**
@@ -90,8 +90,8 @@ public class DataHasValueImpl extends ClassExpressionImpl implements DataHasValu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constant basicGetConstant() {
-		return constant;
+	public Literal basicGetLiteral() {
+		return literal;
 	}
 
 	/**
@@ -99,11 +99,11 @@ public class DataHasValueImpl extends ClassExpressionImpl implements DataHasValu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setConstant(Constant newConstant) {
-		Constant oldConstant = constant;
-		constant = newConstant;
+	public void setLiteral(Literal newLiteral) {
+		Literal oldLiteral = literal;
+		literal = newLiteral;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.DATA_HAS_VALUE__CONSTANT, oldConstant, constant));
+			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.DATA_HAS_VALUE__LITERAL, oldLiteral, literal));
 	}
 
 	/**
@@ -152,9 +152,9 @@ public class DataHasValueImpl extends ClassExpressionImpl implements DataHasValu
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OwlPackage.DATA_HAS_VALUE__CONSTANT:
-				if (resolve) return getConstant();
-				return basicGetConstant();
+			case OwlPackage.DATA_HAS_VALUE__LITERAL:
+				if (resolve) return getLiteral();
+				return basicGetLiteral();
 			case OwlPackage.DATA_HAS_VALUE__DATA_PROPERTY_EXPRESSION:
 				if (resolve) return getDataPropertyExpression();
 				return basicGetDataPropertyExpression();
@@ -170,8 +170,8 @@ public class DataHasValueImpl extends ClassExpressionImpl implements DataHasValu
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OwlPackage.DATA_HAS_VALUE__CONSTANT:
-				setConstant((Constant)newValue);
+			case OwlPackage.DATA_HAS_VALUE__LITERAL:
+				setLiteral((Literal)newValue);
 				return;
 			case OwlPackage.DATA_HAS_VALUE__DATA_PROPERTY_EXPRESSION:
 				setDataPropertyExpression((DataPropertyExpression)newValue);
@@ -188,8 +188,8 @@ public class DataHasValueImpl extends ClassExpressionImpl implements DataHasValu
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OwlPackage.DATA_HAS_VALUE__CONSTANT:
-				setConstant((Constant)null);
+			case OwlPackage.DATA_HAS_VALUE__LITERAL:
+				setLiteral((Literal)null);
 				return;
 			case OwlPackage.DATA_HAS_VALUE__DATA_PROPERTY_EXPRESSION:
 				setDataPropertyExpression((DataPropertyExpression)null);
@@ -206,8 +206,8 @@ public class DataHasValueImpl extends ClassExpressionImpl implements DataHasValu
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OwlPackage.DATA_HAS_VALUE__CONSTANT:
-				return constant != null;
+			case OwlPackage.DATA_HAS_VALUE__LITERAL:
+				return literal != null;
 			case OwlPackage.DATA_HAS_VALUE__DATA_PROPERTY_EXPRESSION:
 				return dataPropertyExpression != null;
 		}

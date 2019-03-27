@@ -4,25 +4,23 @@ package owl.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
+import owl.Literal;
 import owl.OwlPackage;
-import owl.SubObjectProperty;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Sub Object Property</b></em>'.
+ * An implementation of the model object '<em><b>Literal</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class SubObjectPropertyImpl extends MinimalEObjectImpl.Container implements SubObjectProperty {
+public abstract class LiteralImpl extends AnnotationValueImpl implements Literal {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SubObjectPropertyImpl() {
+	protected LiteralImpl() {
 		super();
 	}
 
@@ -33,7 +31,7 @@ public class SubObjectPropertyImpl extends MinimalEObjectImpl.Container implemen
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OwlPackage.Literals.SUB_OBJECT_PROPERTY;
+		return OwlPackage.Literals.LITERAL;
 	}
 
-} //SubObjectPropertyImpl
+} //LiteralImpl

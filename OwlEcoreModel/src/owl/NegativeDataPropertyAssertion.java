@@ -57,12 +57,12 @@ public interface NegativeDataPropertyAssertion extends Assertion {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target Value</em>' reference.
-	 * @see #setTargetValue(Constant)
+	 * @see #setTargetValue(Literal)
 	 * @see owl.OwlPackage#getNegativeDataPropertyAssertion_TargetValue()
 	 * @model required="true" ordered="false"
 	 * @generated
 	 */
-	Constant getTargetValue();
+	Literal getTargetValue();
 
 	/**
 	 * Sets the value of the '{@link owl.NegativeDataPropertyAssertion#getTargetValue <em>Target Value</em>}' reference.
@@ -72,7 +72,7 @@ public interface NegativeDataPropertyAssertion extends Assertion {
 	 * @see #getTargetValue()
 	 * @generated
 	 */
-	void setTargetValue(Constant value);
+	void setTargetValue(Literal value);
 
 	/**
 	 * Returns the value of the '<em><b>Source Individual</b></em>' reference.

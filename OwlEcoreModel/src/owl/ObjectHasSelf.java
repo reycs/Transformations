@@ -5,21 +5,21 @@ package owl;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Object Exists Self</b></em>'.
+ * A representation of the model object '<em><b>Object Has Self</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link owl.ObjectExistsSelf#getObjectPropertyExpression <em>Object Property Expression</em>}</li>
+ *   <li>{@link owl.ObjectHasSelf#getObjectPropertyExpression <em>Object Property Expression</em>}</li>
  * </ul>
  *
- * @see owl.OwlPackage#getObjectExistsSelf()
+ * @see owl.OwlPackage#getObjectHasSelf()
  * @model
  * @generated
  */
-public interface ObjectExistsSelf extends ClassExpression {
+public interface ObjectHasSelf extends ClassExpression {
 	/**
 	 * Returns the value of the '<em><b>Object Property Expression</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -30,14 +30,14 @@ public interface ObjectExistsSelf extends ClassExpression {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Object Property Expression</em>' reference.
 	 * @see #setObjectPropertyExpression(ObjectPropertyExpression)
-	 * @see owl.OwlPackage#getObjectExistsSelf_ObjectPropertyExpression()
+	 * @see owl.OwlPackage#getObjectHasSelf_ObjectPropertyExpression()
 	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	ObjectPropertyExpression getObjectPropertyExpression();
 
 	/**
-	 * Sets the value of the '{@link owl.ObjectExistsSelf#getObjectPropertyExpression <em>Object Property Expression</em>}' reference.
+	 * Sets the value of the '{@link owl.ObjectHasSelf#getObjectPropertyExpression <em>Object Property Expression</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Object Property Expression</em>' reference.
@@ -46,4 +46,4 @@ public interface ObjectExistsSelf extends ClassExpression {
 	 */
 	void setObjectPropertyExpression(ObjectPropertyExpression value);
 
-} // ObjectExistsSelf
+} // ObjectHasSelf

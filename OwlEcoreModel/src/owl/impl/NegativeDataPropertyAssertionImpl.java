@@ -9,9 +9,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import owl.Constant;
 import owl.DataPropertyExpression;
 import owl.Individual;
+import owl.Literal;
 import owl.NegativeDataPropertyAssertion;
 import owl.OwlPackage;
 
@@ -49,7 +49,7 @@ public class NegativeDataPropertyAssertionImpl extends AssertionImpl implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected Constant targetValue;
+	protected Literal targetValue;
 
 	/**
 	 * The cached value of the '{@link #getSourceIndividual() <em>Source Individual</em>}' reference.
@@ -123,10 +123,10 @@ public class NegativeDataPropertyAssertionImpl extends AssertionImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constant getTargetValue() {
+	public Literal getTargetValue() {
 		if (targetValue != null && targetValue.eIsProxy()) {
 			InternalEObject oldTargetValue = (InternalEObject)targetValue;
-			targetValue = (Constant)eResolveProxy(oldTargetValue);
+			targetValue = (Literal)eResolveProxy(oldTargetValue);
 			if (targetValue != oldTargetValue) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.NEGATIVE_DATA_PROPERTY_ASSERTION__TARGET_VALUE, oldTargetValue, targetValue));
@@ -140,7 +140,7 @@ public class NegativeDataPropertyAssertionImpl extends AssertionImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constant basicGetTargetValue() {
+	public Literal basicGetTargetValue() {
 		return targetValue;
 	}
 
@@ -149,8 +149,8 @@ public class NegativeDataPropertyAssertionImpl extends AssertionImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTargetValue(Constant newTargetValue) {
-		Constant oldTargetValue = targetValue;
+	public void setTargetValue(Literal newTargetValue) {
+		Literal oldTargetValue = targetValue;
 		targetValue = newTargetValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.NEGATIVE_DATA_PROPERTY_ASSERTION__TARGET_VALUE, oldTargetValue, targetValue));
@@ -227,7 +227,7 @@ public class NegativeDataPropertyAssertionImpl extends AssertionImpl implements 
 				setDataPropertyExpression((DataPropertyExpression)newValue);
 				return;
 			case OwlPackage.NEGATIVE_DATA_PROPERTY_ASSERTION__TARGET_VALUE:
-				setTargetValue((Constant)newValue);
+				setTargetValue((Literal)newValue);
 				return;
 			case OwlPackage.NEGATIVE_DATA_PROPERTY_ASSERTION__SOURCE_INDIVIDUAL:
 				setSourceIndividual((Individual)newValue);
@@ -248,7 +248,7 @@ public class NegativeDataPropertyAssertionImpl extends AssertionImpl implements 
 				setDataPropertyExpression((DataPropertyExpression)null);
 				return;
 			case OwlPackage.NEGATIVE_DATA_PROPERTY_ASSERTION__TARGET_VALUE:
-				setTargetValue((Constant)null);
+				setTargetValue((Literal)null);
 				return;
 			case OwlPackage.NEGATIVE_DATA_PROPERTY_ASSERTION__SOURCE_INDIVIDUAL:
 				setSourceIndividual((Individual)null);

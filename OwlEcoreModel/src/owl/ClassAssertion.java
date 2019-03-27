@@ -12,8 +12,8 @@ package owl;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link owl.ClassAssertion#getIndividual <em>Individual</em>}</li>
  *   <li>{@link owl.ClassAssertion#getClassExpression <em>Class Expression</em>}</li>
+ *   <li>{@link owl.ClassAssertion#getIndividual <em>Individual</em>}</li>
  * </ul>
  *
  * @see owl.OwlPackage#getClassAssertion()
@@ -21,32 +21,6 @@ package owl;
  * @generated
  */
 public interface ClassAssertion extends Assertion {
-	/**
-	 * Returns the value of the '<em><b>Individual</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Individual</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Individual</em>' reference.
-	 * @see #setIndividual(NamedIndividual)
-	 * @see owl.OwlPackage#getClassAssertion_Individual()
-	 * @model required="true" ordered="false"
-	 * @generated
-	 */
-	NamedIndividual getIndividual();
-
-	/**
-	 * Sets the value of the '{@link owl.ClassAssertion#getIndividual <em>Individual</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Individual</em>' reference.
-	 * @see #getIndividual()
-	 * @generated
-	 */
-	void setIndividual(NamedIndividual value);
-
 	/**
 	 * Returns the value of the '<em><b>Class Expression</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -72,5 +46,31 @@ public interface ClassAssertion extends Assertion {
 	 * @generated
 	 */
 	void setClassExpression(ClassExpression value);
+
+	/**
+	 * Returns the value of the '<em><b>Individual</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Individual</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Individual</em>' reference.
+	 * @see #setIndividual(Individual)
+	 * @see owl.OwlPackage#getClassAssertion_Individual()
+	 * @model required="true"
+	 * @generated
+	 */
+	Individual getIndividual();
+
+	/**
+	 * Sets the value of the '{@link owl.ClassAssertion#getIndividual <em>Individual</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Individual</em>' reference.
+	 * @see #getIndividual()
+	 * @generated
+	 */
+	void setIndividual(Individual value);
 
 } // ClassAssertion

@@ -9,10 +9,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import owl.Constant;
 import owl.DataPropertyAssertion;
 import owl.DataPropertyExpression;
 import owl.Individual;
+import owl.Literal;
 import owl.OwlPackage;
 
 /**
@@ -49,7 +49,7 @@ public class DataPropertyAssertionImpl extends AssertionImpl implements DataProp
 	 * @generated
 	 * @ordered
 	 */
-	protected Constant targetValue;
+	protected Literal targetValue;
 
 	/**
 	 * The cached value of the '{@link #getSourceIndividual() <em>Source Individual</em>}' reference.
@@ -123,10 +123,10 @@ public class DataPropertyAssertionImpl extends AssertionImpl implements DataProp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constant getTargetValue() {
+	public Literal getTargetValue() {
 		if (targetValue != null && targetValue.eIsProxy()) {
 			InternalEObject oldTargetValue = (InternalEObject)targetValue;
-			targetValue = (Constant)eResolveProxy(oldTargetValue);
+			targetValue = (Literal)eResolveProxy(oldTargetValue);
 			if (targetValue != oldTargetValue) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.DATA_PROPERTY_ASSERTION__TARGET_VALUE, oldTargetValue, targetValue));
@@ -140,7 +140,7 @@ public class DataPropertyAssertionImpl extends AssertionImpl implements DataProp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constant basicGetTargetValue() {
+	public Literal basicGetTargetValue() {
 		return targetValue;
 	}
 
@@ -149,8 +149,8 @@ public class DataPropertyAssertionImpl extends AssertionImpl implements DataProp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTargetValue(Constant newTargetValue) {
-		Constant oldTargetValue = targetValue;
+	public void setTargetValue(Literal newTargetValue) {
+		Literal oldTargetValue = targetValue;
 		targetValue = newTargetValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.DATA_PROPERTY_ASSERTION__TARGET_VALUE, oldTargetValue, targetValue));
@@ -227,7 +227,7 @@ public class DataPropertyAssertionImpl extends AssertionImpl implements DataProp
 				setDataPropertyExpression((DataPropertyExpression)newValue);
 				return;
 			case OwlPackage.DATA_PROPERTY_ASSERTION__TARGET_VALUE:
-				setTargetValue((Constant)newValue);
+				setTargetValue((Literal)newValue);
 				return;
 			case OwlPackage.DATA_PROPERTY_ASSERTION__SOURCE_INDIVIDUAL:
 				setSourceIndividual((Individual)newValue);
@@ -248,7 +248,7 @@ public class DataPropertyAssertionImpl extends AssertionImpl implements DataProp
 				setDataPropertyExpression((DataPropertyExpression)null);
 				return;
 			case OwlPackage.DATA_PROPERTY_ASSERTION__TARGET_VALUE:
-				setTargetValue((Constant)null);
+				setTargetValue((Literal)null);
 				return;
 			case OwlPackage.DATA_PROPERTY_ASSERTION__SOURCE_INDIVIDUAL:
 				setSourceIndividual((Individual)null);

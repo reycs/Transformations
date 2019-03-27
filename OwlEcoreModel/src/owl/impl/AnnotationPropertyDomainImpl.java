@@ -8,28 +8,27 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import owl.Annotation;
 import owl.AnnotationProperty;
-import owl.AnnotationValue;
+import owl.AnnotationPropertyDomain;
 import owl.OwlPackage;
+import owl.URI;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Annotation</b></em>'.
+ * An implementation of the model object '<em><b>Annotation Property Domain</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link owl.impl.AnnotationImpl#getAnnotationProperty <em>Annotation Property</em>}</li>
- *   <li>{@link owl.impl.AnnotationImpl#getAnnotationValue <em>Annotation Value</em>}</li>
+ *   <li>{@link owl.impl.AnnotationPropertyDomainImpl#getAnnotationProperty <em>Annotation Property</em>}</li>
+ *   <li>{@link owl.impl.AnnotationPropertyDomainImpl#getDomain <em>Domain</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class AnnotationImpl extends MinimalEObjectImpl.Container implements Annotation {
+public class AnnotationPropertyDomainImpl extends AnnotationAxiomImpl implements AnnotationPropertyDomain {
 	/**
 	 * The cached value of the '{@link #getAnnotationProperty() <em>Annotation Property</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -41,21 +40,21 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	protected AnnotationProperty annotationProperty;
 
 	/**
-	 * The cached value of the '{@link #getAnnotationValue() <em>Annotation Value</em>}' reference.
+	 * The cached value of the '{@link #getDomain() <em>Domain</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAnnotationValue()
+	 * @see #getDomain()
 	 * @generated
 	 * @ordered
 	 */
-	protected AnnotationValue annotationValue;
+	protected URI domain;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AnnotationImpl() {
+	protected AnnotationPropertyDomainImpl() {
 		super();
 	}
 
@@ -66,7 +65,7 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OwlPackage.Literals.ANNOTATION;
+		return OwlPackage.Literals.ANNOTATION_PROPERTY_DOMAIN;
 	}
 
 	/**
@@ -80,7 +79,7 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 			annotationProperty = (AnnotationProperty)eResolveProxy(oldAnnotationProperty);
 			if (annotationProperty != oldAnnotationProperty) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.ANNOTATION__ANNOTATION_PROPERTY, oldAnnotationProperty, annotationProperty));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.ANNOTATION_PROPERTY_DOMAIN__ANNOTATION_PROPERTY, oldAnnotationProperty, annotationProperty));
 			}
 		}
 		return annotationProperty;
@@ -104,7 +103,7 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 		AnnotationProperty oldAnnotationProperty = annotationProperty;
 		annotationProperty = newAnnotationProperty;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.ANNOTATION__ANNOTATION_PROPERTY, oldAnnotationProperty, annotationProperty));
+			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.ANNOTATION_PROPERTY_DOMAIN__ANNOTATION_PROPERTY, oldAnnotationProperty, annotationProperty));
 	}
 
 	/**
@@ -112,16 +111,16 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AnnotationValue getAnnotationValue() {
-		if (annotationValue != null && annotationValue.eIsProxy()) {
-			InternalEObject oldAnnotationValue = (InternalEObject)annotationValue;
-			annotationValue = (AnnotationValue)eResolveProxy(oldAnnotationValue);
-			if (annotationValue != oldAnnotationValue) {
+	public URI getDomain() {
+		if (domain != null && domain.eIsProxy()) {
+			InternalEObject oldDomain = (InternalEObject)domain;
+			domain = (URI)eResolveProxy(oldDomain);
+			if (domain != oldDomain) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.ANNOTATION__ANNOTATION_VALUE, oldAnnotationValue, annotationValue));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.ANNOTATION_PROPERTY_DOMAIN__DOMAIN, oldDomain, domain));
 			}
 		}
-		return annotationValue;
+		return domain;
 	}
 
 	/**
@@ -129,8 +128,8 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AnnotationValue basicGetAnnotationValue() {
-		return annotationValue;
+	public URI basicGetDomain() {
+		return domain;
 	}
 
 	/**
@@ -138,11 +137,11 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAnnotationValue(AnnotationValue newAnnotationValue) {
-		AnnotationValue oldAnnotationValue = annotationValue;
-		annotationValue = newAnnotationValue;
+	public void setDomain(URI newDomain) {
+		URI oldDomain = domain;
+		domain = newDomain;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.ANNOTATION__ANNOTATION_VALUE, oldAnnotationValue, annotationValue));
+			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.ANNOTATION_PROPERTY_DOMAIN__DOMAIN, oldDomain, domain));
 	}
 
 	/**
@@ -153,12 +152,12 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OwlPackage.ANNOTATION__ANNOTATION_PROPERTY:
+			case OwlPackage.ANNOTATION_PROPERTY_DOMAIN__ANNOTATION_PROPERTY:
 				if (resolve) return getAnnotationProperty();
 				return basicGetAnnotationProperty();
-			case OwlPackage.ANNOTATION__ANNOTATION_VALUE:
-				if (resolve) return getAnnotationValue();
-				return basicGetAnnotationValue();
+			case OwlPackage.ANNOTATION_PROPERTY_DOMAIN__DOMAIN:
+				if (resolve) return getDomain();
+				return basicGetDomain();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -171,11 +170,11 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OwlPackage.ANNOTATION__ANNOTATION_PROPERTY:
+			case OwlPackage.ANNOTATION_PROPERTY_DOMAIN__ANNOTATION_PROPERTY:
 				setAnnotationProperty((AnnotationProperty)newValue);
 				return;
-			case OwlPackage.ANNOTATION__ANNOTATION_VALUE:
-				setAnnotationValue((AnnotationValue)newValue);
+			case OwlPackage.ANNOTATION_PROPERTY_DOMAIN__DOMAIN:
+				setDomain((URI)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -189,11 +188,11 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OwlPackage.ANNOTATION__ANNOTATION_PROPERTY:
+			case OwlPackage.ANNOTATION_PROPERTY_DOMAIN__ANNOTATION_PROPERTY:
 				setAnnotationProperty((AnnotationProperty)null);
 				return;
-			case OwlPackage.ANNOTATION__ANNOTATION_VALUE:
-				setAnnotationValue((AnnotationValue)null);
+			case OwlPackage.ANNOTATION_PROPERTY_DOMAIN__DOMAIN:
+				setDomain((URI)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -207,12 +206,12 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OwlPackage.ANNOTATION__ANNOTATION_PROPERTY:
+			case OwlPackage.ANNOTATION_PROPERTY_DOMAIN__ANNOTATION_PROPERTY:
 				return annotationProperty != null;
-			case OwlPackage.ANNOTATION__ANNOTATION_VALUE:
-				return annotationValue != null;
+			case OwlPackage.ANNOTATION_PROPERTY_DOMAIN__DOMAIN:
+				return domain != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //AnnotationImpl
+} //AnnotationPropertyDomainImpl

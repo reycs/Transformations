@@ -6,23 +6,23 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Key For</b></em>'.
+ * A representation of the model object '<em><b>Has Key</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link owl.KeyFor#getClassExpression <em>Class Expression</em>}</li>
- *   <li>{@link owl.KeyFor#getDataPropertyExpressions <em>Data Property Expressions</em>}</li>
- *   <li>{@link owl.KeyFor#getObjectPropertyExpressions <em>Object Property Expressions</em>}</li>
+ *   <li>{@link owl.HasKey#getClassExpression <em>Class Expression</em>}</li>
+ *   <li>{@link owl.HasKey#getDataPropertyExpressions <em>Data Property Expressions</em>}</li>
+ *   <li>{@link owl.HasKey#getObjectPropertyExpressions <em>Object Property Expressions</em>}</li>
  * </ul>
  *
- * @see owl.OwlPackage#getKeyFor()
+ * @see owl.OwlPackage#getHasKey()
  * @model
  * @generated
  */
-public interface KeyFor extends ObjectAndDataPropertyAxiom {
+public interface HasKey extends ObjectAndDataPropertyAxiom {
 	/**
 	 * Returns the value of the '<em><b>Class Expression</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -33,14 +33,14 @@ public interface KeyFor extends ObjectAndDataPropertyAxiom {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Class Expression</em>' reference.
 	 * @see #setClassExpression(ClassExpression)
-	 * @see owl.OwlPackage#getKeyFor_ClassExpression()
+	 * @see owl.OwlPackage#getHasKey_ClassExpression()
 	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	ClassExpression getClassExpression();
 
 	/**
-	 * Sets the value of the '{@link owl.KeyFor#getClassExpression <em>Class Expression</em>}' reference.
+	 * Sets the value of the '{@link owl.HasKey#getClassExpression <em>Class Expression</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Class Expression</em>' reference.
@@ -59,7 +59,7 @@ public interface KeyFor extends ObjectAndDataPropertyAxiom {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Data Property Expressions</em>' reference list.
-	 * @see owl.OwlPackage#getKeyFor_DataPropertyExpressions()
+	 * @see owl.OwlPackage#getHasKey_DataPropertyExpressions()
 	 * @model ordered="false"
 	 * @generated
 	 */
@@ -75,10 +75,10 @@ public interface KeyFor extends ObjectAndDataPropertyAxiom {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Object Property Expressions</em>' reference list.
-	 * @see owl.OwlPackage#getKeyFor_ObjectPropertyExpressions()
+	 * @see owl.OwlPackage#getHasKey_ObjectPropertyExpressions()
 	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<ObjectPropertyExpression> getObjectPropertyExpressions();
 
-} // KeyFor
+} // HasKey

@@ -10,40 +10,40 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
-import owl.DataOneOf;
-import owl.Literal;
+import owl.DataIntersectionOf;
+import owl.DataRange;
 import owl.OwlPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Data One Of</b></em>'.
+ * An implementation of the model object '<em><b>Data Intersection Of</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link owl.impl.DataOneOfImpl#getLiterals <em>Literals</em>}</li>
+ *   <li>{@link owl.impl.DataIntersectionOfImpl#getDataRanges <em>Data Ranges</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class DataOneOfImpl extends DataRangeImpl implements DataOneOf {
+public class DataIntersectionOfImpl extends DataRangeImpl implements DataIntersectionOf {
 	/**
-	 * The cached value of the '{@link #getLiterals() <em>Literals</em>}' reference list.
+	 * The cached value of the '{@link #getDataRanges() <em>Data Ranges</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLiterals()
+	 * @see #getDataRanges()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Literal> literals;
+	protected EList<DataRange> dataRanges;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DataOneOfImpl() {
+	protected DataIntersectionOfImpl() {
 		super();
 	}
 
@@ -54,7 +54,7 @@ public class DataOneOfImpl extends DataRangeImpl implements DataOneOf {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OwlPackage.Literals.DATA_ONE_OF;
+		return OwlPackage.Literals.DATA_INTERSECTION_OF;
 	}
 
 	/**
@@ -62,11 +62,11 @@ public class DataOneOfImpl extends DataRangeImpl implements DataOneOf {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Literal> getLiterals() {
-		if (literals == null) {
-			literals = new EObjectResolvingEList<Literal>(Literal.class, this, OwlPackage.DATA_ONE_OF__LITERALS);
+	public EList<DataRange> getDataRanges() {
+		if (dataRanges == null) {
+			dataRanges = new EObjectResolvingEList<DataRange>(DataRange.class, this, OwlPackage.DATA_INTERSECTION_OF__DATA_RANGES);
 		}
-		return literals;
+		return dataRanges;
 	}
 
 	/**
@@ -77,8 +77,8 @@ public class DataOneOfImpl extends DataRangeImpl implements DataOneOf {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OwlPackage.DATA_ONE_OF__LITERALS:
-				return getLiterals();
+			case OwlPackage.DATA_INTERSECTION_OF__DATA_RANGES:
+				return getDataRanges();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -92,9 +92,9 @@ public class DataOneOfImpl extends DataRangeImpl implements DataOneOf {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OwlPackage.DATA_ONE_OF__LITERALS:
-				getLiterals().clear();
-				getLiterals().addAll((Collection<? extends Literal>)newValue);
+			case OwlPackage.DATA_INTERSECTION_OF__DATA_RANGES:
+				getDataRanges().clear();
+				getDataRanges().addAll((Collection<? extends DataRange>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -108,8 +108,8 @@ public class DataOneOfImpl extends DataRangeImpl implements DataOneOf {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OwlPackage.DATA_ONE_OF__LITERALS:
-				getLiterals().clear();
+			case OwlPackage.DATA_INTERSECTION_OF__DATA_RANGES:
+				getDataRanges().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -123,10 +123,10 @@ public class DataOneOfImpl extends DataRangeImpl implements DataOneOf {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OwlPackage.DATA_ONE_OF__LITERALS:
-				return literals != null && !literals.isEmpty();
+			case OwlPackage.DATA_INTERSECTION_OF__DATA_RANGES:
+				return dataRanges != null && !dataRanges.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //DataOneOfImpl
+} //DataIntersectionOfImpl

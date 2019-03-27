@@ -7,25 +7,26 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import owl.AbbreviatedURI;
 import owl.Annotation;
-import owl.AnnotationByAnonymousIndividual;
-import owl.AnnotationByConstant;
-import owl.AnnotationByEntity;
+import owl.AnnotationAssertion;
+import owl.AnnotationAxiom;
 import owl.AnnotationProperty;
+import owl.AnnotationPropertyDomain;
+import owl.AnnotationPropertyRange;
+import owl.AnnotationSubject;
+import owl.AnnotationValue;
 import owl.AnonymousIndividual;
-import owl.AnonymousIndividualAnnotation;
 import owl.Assertion;
 import owl.AsymmetricObjectProperty;
 import owl.Axiom;
 import owl.ClassAssertion;
 import owl.ClassAxiom;
 import owl.ClassExpression;
-import owl.Constant;
 import owl.DataAllValuesFrom;
 import owl.DataComplementOf;
 import owl.DataExactCardinality;
 import owl.DataHasValue;
+import owl.DataIntersectionOf;
 import owl.DataMaxCardinality;
 import owl.DataMinCardinality;
 import owl.DataOneOf;
@@ -37,6 +38,8 @@ import owl.DataPropertyExpression;
 import owl.DataPropertyRange;
 import owl.DataRange;
 import owl.DataSomeValuesFrom;
+import owl.DataTypeDefinition;
+import owl.DataUnionOf;
 import owl.Datatype;
 import owl.DatatypeRestriction;
 import owl.Declaration;
@@ -46,20 +49,19 @@ import owl.DisjointDataProperties;
 import owl.DisjointObjectProperties;
 import owl.DisjointUnion;
 import owl.Entity;
-import owl.EntityAnnotation;
 import owl.EquivalentClasses;
 import owl.EquivalentDataProperties;
 import owl.EquivalentObjectProperties;
-import owl.FacetConstantPair;
-import owl.FullURI;
+import owl.FacetLiteralPair;
 import owl.FunctionalDataProperty;
 import owl.FunctionalObjectProperty;
+import owl.HasKey;
 import owl.Individual;
 import owl.InverseFunctionalObjectProperty;
 import owl.InverseObjectProperties;
 import owl.InverseObjectProperty;
 import owl.IrreflexiveObjectProperty;
-import owl.KeyFor;
+import owl.Literal;
 import owl.NamedIndividual;
 import owl.NegativeDataPropertyAssertion;
 import owl.NegativeObjectPropertyAssertion;
@@ -67,7 +69,7 @@ import owl.ObjectAllValuesFrom;
 import owl.ObjectAndDataPropertyAxiom;
 import owl.ObjectComplementOf;
 import owl.ObjectExactCardinality;
-import owl.ObjectExistsSelf;
+import owl.ObjectHasSelf;
 import owl.ObjectHasValue;
 import owl.ObjectIntersectionOf;
 import owl.ObjectMaxCardinality;
@@ -85,12 +87,14 @@ import owl.Ontology;
 import owl.OwlPackage;
 import owl.ReflexiveObjectProperty;
 import owl.SameIndividual;
+import owl.StringLiteral;
+import owl.SubAnnotationPropertyOf;
 import owl.SubClassOf;
 import owl.SubDataPropertyOf;
-import owl.SubObjectProperty;
 import owl.SubObjectPropertyOf;
 import owl.SymmetricObjectProperty;
 import owl.TransitiveObjectProperty;
+import owl.TypedLiteral;
 import owl.URI;
 
 /**
@@ -185,12 +189,15 @@ public class OwlSwitch<T> extends Switch<T> {
 			case OwlPackage.URI: {
 				URI uri = (URI)theEObject;
 				T result = caseURI(uri);
+				if (result == null) result = caseAnnotationSubject(uri);
+				if (result == null) result = caseAnnotationValue(uri);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case OwlPackage.CONSTANT: {
-				Constant constant = (Constant)theEObject;
-				T result = caseConstant(constant);
+			case OwlPackage.LITERAL: {
+				Literal literal = (Literal)theEObject;
+				T result = caseLiteral(literal);
+				if (result == null) result = caseAnnotationValue(literal);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -327,10 +334,10 @@ public class OwlSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case OwlPackage.OBJECT_EXISTS_SELF: {
-				ObjectExistsSelf objectExistsSelf = (ObjectExistsSelf)theEObject;
-				T result = caseObjectExistsSelf(objectExistsSelf);
-				if (result == null) result = caseClassExpression(objectExistsSelf);
+			case OwlPackage.OBJECT_HAS_SELF: {
+				ObjectHasSelf objectHasSelf = (ObjectHasSelf)theEObject;
+				T result = caseObjectHasSelf(objectHasSelf);
+				if (result == null) result = caseClassExpression(objectHasSelf);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -384,9 +391,9 @@ public class OwlSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case OwlPackage.FACET_CONSTANT_PAIR: {
-				FacetConstantPair facetConstantPair = (FacetConstantPair)theEObject;
-				T result = caseFacetConstantPair(facetConstantPair);
+			case OwlPackage.FACET_LITERAL_PAIR: {
+				FacetLiteralPair facetLiteralPair = (FacetLiteralPair)theEObject;
+				T result = caseFacetLiteralPair(facetLiteralPair);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -668,36 +675,11 @@ public class OwlSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case OwlPackage.SUB_OBJECT_PROPERTY: {
-				SubObjectProperty subObjectProperty = (SubObjectProperty)theEObject;
-				T result = caseSubObjectProperty(subObjectProperty);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case OwlPackage.TRANSITIVE_OBJECT_PROPERTY: {
 				TransitiveObjectProperty transitiveObjectProperty = (TransitiveObjectProperty)theEObject;
 				T result = caseTransitiveObjectProperty(transitiveObjectProperty);
 				if (result == null) result = caseObjectPropertyAxiom(transitiveObjectProperty);
 				if (result == null) result = caseAxiom(transitiveObjectProperty);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case OwlPackage.ENTITY_ANNOTATION: {
-				EntityAnnotation entityAnnotation = (EntityAnnotation)theEObject;
-				T result = caseEntityAnnotation(entityAnnotation);
-				if (result == null) result = caseAxiom(entityAnnotation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case OwlPackage.FULL_URI: {
-				FullURI fullURI = (FullURI)theEObject;
-				T result = caseFullURI(fullURI);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case OwlPackage.ABBREVIATED_URI: {
-				AbbreviatedURI abbreviatedURI = (AbbreviatedURI)theEObject;
-				T result = caseAbbreviatedURI(abbreviatedURI);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -709,31 +691,12 @@ public class OwlSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case OwlPackage.ANNOTATION_BY_CONSTANT: {
-				AnnotationByConstant annotationByConstant = (AnnotationByConstant)theEObject;
-				T result = caseAnnotationByConstant(annotationByConstant);
-				if (result == null) result = caseAnnotation(annotationByConstant);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case OwlPackage.ANNOTATION_BY_ENTITY: {
-				AnnotationByEntity annotationByEntity = (AnnotationByEntity)theEObject;
-				T result = caseAnnotationByEntity(annotationByEntity);
-				if (result == null) result = caseAnnotation(annotationByEntity);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case OwlPackage.ANNOTATION_BY_ANONYMOUS_INDIVIDUAL: {
-				AnnotationByAnonymousIndividual annotationByAnonymousIndividual = (AnnotationByAnonymousIndividual)theEObject;
-				T result = caseAnnotationByAnonymousIndividual(annotationByAnonymousIndividual);
-				if (result == null) result = caseAnnotation(annotationByAnonymousIndividual);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case OwlPackage.ANONYMOUS_INDIVIDUAL: {
 				AnonymousIndividual anonymousIndividual = (AnonymousIndividual)theEObject;
 				T result = caseAnonymousIndividual(anonymousIndividual);
 				if (result == null) result = caseIndividual(anonymousIndividual);
+				if (result == null) result = caseAnnotationSubject(anonymousIndividual);
+				if (result == null) result = caseAnnotationValue(anonymousIndividual);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -751,18 +714,98 @@ public class OwlSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case OwlPackage.KEY_FOR: {
-				KeyFor keyFor = (KeyFor)theEObject;
-				T result = caseKeyFor(keyFor);
-				if (result == null) result = caseObjectAndDataPropertyAxiom(keyFor);
-				if (result == null) result = caseAxiom(keyFor);
+			case OwlPackage.HAS_KEY: {
+				HasKey hasKey = (HasKey)theEObject;
+				T result = caseHasKey(hasKey);
+				if (result == null) result = caseObjectAndDataPropertyAxiom(hasKey);
+				if (result == null) result = caseAxiom(hasKey);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case OwlPackage.ANONYMOUS_INDIVIDUAL_ANNOTATION: {
-				AnonymousIndividualAnnotation anonymousIndividualAnnotation = (AnonymousIndividualAnnotation)theEObject;
-				T result = caseAnonymousIndividualAnnotation(anonymousIndividualAnnotation);
-				if (result == null) result = caseAxiom(anonymousIndividualAnnotation);
+			case OwlPackage.TYPED_LITERAL: {
+				TypedLiteral typedLiteral = (TypedLiteral)theEObject;
+				T result = caseTypedLiteral(typedLiteral);
+				if (result == null) result = caseLiteral(typedLiteral);
+				if (result == null) result = caseAnnotationValue(typedLiteral);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OwlPackage.STRING_LITERAL: {
+				StringLiteral stringLiteral = (StringLiteral)theEObject;
+				T result = caseStringLiteral(stringLiteral);
+				if (result == null) result = caseLiteral(stringLiteral);
+				if (result == null) result = caseAnnotationValue(stringLiteral);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OwlPackage.DATA_INTERSECTION_OF: {
+				DataIntersectionOf dataIntersectionOf = (DataIntersectionOf)theEObject;
+				T result = caseDataIntersectionOf(dataIntersectionOf);
+				if (result == null) result = caseDataRange(dataIntersectionOf);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OwlPackage.DATA_UNION_OF: {
+				DataUnionOf dataUnionOf = (DataUnionOf)theEObject;
+				T result = caseDataUnionOf(dataUnionOf);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OwlPackage.DATA_TYPE_DEFINITION: {
+				DataTypeDefinition dataTypeDefinition = (DataTypeDefinition)theEObject;
+				T result = caseDataTypeDefinition(dataTypeDefinition);
+				if (result == null) result = caseAxiom(dataTypeDefinition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OwlPackage.ANNOTATION_AXIOM: {
+				AnnotationAxiom annotationAxiom = (AnnotationAxiom)theEObject;
+				T result = caseAnnotationAxiom(annotationAxiom);
+				if (result == null) result = caseAxiom(annotationAxiom);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OwlPackage.SUB_ANNOTATION_PROPERTY_OF: {
+				SubAnnotationPropertyOf subAnnotationPropertyOf = (SubAnnotationPropertyOf)theEObject;
+				T result = caseSubAnnotationPropertyOf(subAnnotationPropertyOf);
+				if (result == null) result = caseAnnotationAxiom(subAnnotationPropertyOf);
+				if (result == null) result = caseAxiom(subAnnotationPropertyOf);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OwlPackage.ANNOTATION_PROPERTY_DOMAIN: {
+				AnnotationPropertyDomain annotationPropertyDomain = (AnnotationPropertyDomain)theEObject;
+				T result = caseAnnotationPropertyDomain(annotationPropertyDomain);
+				if (result == null) result = caseAnnotationAxiom(annotationPropertyDomain);
+				if (result == null) result = caseAxiom(annotationPropertyDomain);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OwlPackage.ANNOTATION_PROPERTY_RANGE: {
+				AnnotationPropertyRange annotationPropertyRange = (AnnotationPropertyRange)theEObject;
+				T result = caseAnnotationPropertyRange(annotationPropertyRange);
+				if (result == null) result = caseAnnotationAxiom(annotationPropertyRange);
+				if (result == null) result = caseAxiom(annotationPropertyRange);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OwlPackage.ANNOTATION_ASSERTION: {
+				AnnotationAssertion annotationAssertion = (AnnotationAssertion)theEObject;
+				T result = caseAnnotationAssertion(annotationAssertion);
+				if (result == null) result = caseAnnotationAxiom(annotationAssertion);
+				if (result == null) result = caseAxiom(annotationAssertion);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OwlPackage.ANNOTATION_SUBJECT: {
+				AnnotationSubject annotationSubject = (AnnotationSubject)theEObject;
+				T result = caseAnnotationSubject(annotationSubject);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OwlPackage.ANNOTATION_VALUE: {
+				AnnotationValue annotationValue = (AnnotationValue)theEObject;
+				T result = caseAnnotationValue(annotationValue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -861,17 +904,17 @@ public class OwlSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Constant</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Constant</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Literal</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseConstant(Constant object) {
+	public T caseLiteral(Literal object) {
 		return null;
 	}
 
@@ -1161,17 +1204,17 @@ public class OwlSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Object Exists Self</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Object Has Self</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Object Exists Self</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Object Has Self</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseObjectExistsSelf(ObjectExistsSelf object) {
+	public T caseObjectHasSelf(ObjectHasSelf object) {
 		return null;
 	}
 
@@ -1281,17 +1324,17 @@ public class OwlSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Facet Constant Pair</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Facet Literal Pair</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Facet Constant Pair</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Facet Literal Pair</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseFacetConstantPair(FacetConstantPair object) {
+	public T caseFacetLiteralPair(FacetLiteralPair object) {
 		return null;
 	}
 
@@ -1836,21 +1879,6 @@ public class OwlSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Sub Object Property</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Sub Object Property</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSubObjectProperty(SubObjectProperty object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Transitive Object Property</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1866,51 +1894,6 @@ public class OwlSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Entity Annotation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Entity Annotation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEntityAnnotation(EntityAnnotation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Full URI</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Full URI</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFullURI(FullURI object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abbreviated URI</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abbreviated URI</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAbbreviatedURI(AbbreviatedURI object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Inverse Object Properties</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1922,51 +1905,6 @@ public class OwlSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInverseObjectProperties(InverseObjectProperties object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Annotation By Constant</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Annotation By Constant</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAnnotationByConstant(AnnotationByConstant object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Annotation By Entity</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Annotation By Entity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAnnotationByEntity(AnnotationByEntity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Annotation By Anonymous Individual</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Annotation By Anonymous Individual</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAnnotationByAnonymousIndividual(AnnotationByAnonymousIndividual object) {
 		return null;
 	}
 
@@ -2016,32 +1954,197 @@ public class OwlSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Key For</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Has Key</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Key For</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Has Key</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseKeyFor(KeyFor object) {
+	public T caseHasKey(HasKey object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Anonymous Individual Annotation</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Typed Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Anonymous Individual Annotation</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Typed Literal</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAnonymousIndividualAnnotation(AnonymousIndividualAnnotation object) {
+	public T caseTypedLiteral(TypedLiteral object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>String Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>String Literal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStringLiteral(StringLiteral object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Intersection Of</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Intersection Of</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataIntersectionOf(DataIntersectionOf object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Union Of</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Union Of</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataUnionOf(DataUnionOf object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Type Definition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Type Definition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataTypeDefinition(DataTypeDefinition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Annotation Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Annotation Axiom</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAnnotationAxiom(AnnotationAxiom object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sub Annotation Property Of</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sub Annotation Property Of</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSubAnnotationPropertyOf(SubAnnotationPropertyOf object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Annotation Property Domain</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Annotation Property Domain</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAnnotationPropertyDomain(AnnotationPropertyDomain object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Annotation Property Range</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Annotation Property Range</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAnnotationPropertyRange(AnnotationPropertyRange object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Annotation Assertion</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Annotation Assertion</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAnnotationAssertion(AnnotationAssertion object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Annotation Subject</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Annotation Subject</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAnnotationSubject(AnnotationSubject object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Annotation Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Annotation Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAnnotationValue(AnnotationValue object) {
 		return null;
 	}
 

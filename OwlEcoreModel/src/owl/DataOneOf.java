@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link owl.DataOneOf#getConstants <em>Constants</em>}</li>
+ *   <li>{@link owl.DataOneOf#getLiterals <em>Literals</em>}</li>
  * </ul>
  *
  * @see owl.OwlPackage#getDataOneOf()
@@ -22,19 +22,19 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface DataOneOf extends DataRange {
 	/**
-	 * Returns the value of the '<em><b>Constants</b></em>' reference list.
-	 * The list contents are of type {@link owl.Constant}.
+	 * Returns the value of the '<em><b>Literals</b></em>' reference list.
+	 * The list contents are of type {@link owl.Literal}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Constants</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Literals</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Constants</em>' reference list.
-	 * @see owl.OwlPackage#getDataOneOf_Constants()
+	 * @return the value of the '<em>Literals</em>' reference list.
+	 * @see owl.OwlPackage#getDataOneOf_Literals()
 	 * @model required="true" ordered="false"
 	 * @generated
 	 */
-	EList<Constant> getConstants();
+	EList<Literal> getLiterals();
 
 } // DataOneOf

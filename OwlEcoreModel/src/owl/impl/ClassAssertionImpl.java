@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import owl.ClassAssertion;
 import owl.ClassExpression;
-import owl.NamedIndividual;
+import owl.Individual;
 import owl.OwlPackage;
 
 /**
@@ -22,23 +22,13 @@ import owl.OwlPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link owl.impl.ClassAssertionImpl#getIndividual <em>Individual</em>}</li>
  *   <li>{@link owl.impl.ClassAssertionImpl#getClassExpression <em>Class Expression</em>}</li>
+ *   <li>{@link owl.impl.ClassAssertionImpl#getIndividual <em>Individual</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ClassAssertionImpl extends AssertionImpl implements ClassAssertion {
-	/**
-	 * The cached value of the '{@link #getIndividual() <em>Individual</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getIndividual()
-	 * @generated
-	 * @ordered
-	 */
-	protected NamedIndividual individual;
-
 	/**
 	 * The cached value of the '{@link #getClassExpression() <em>Class Expression</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -48,6 +38,16 @@ public class ClassAssertionImpl extends AssertionImpl implements ClassAssertion 
 	 * @ordered
 	 */
 	protected ClassExpression classExpression;
+
+	/**
+	 * The cached value of the '{@link #getIndividual() <em>Individual</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIndividual()
+	 * @generated
+	 * @ordered
+	 */
+	protected Individual individual;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -66,44 +66,6 @@ public class ClassAssertionImpl extends AssertionImpl implements ClassAssertion 
 	@Override
 	protected EClass eStaticClass() {
 		return OwlPackage.Literals.CLASS_ASSERTION;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NamedIndividual getIndividual() {
-		if (individual != null && individual.eIsProxy()) {
-			InternalEObject oldIndividual = (InternalEObject)individual;
-			individual = (NamedIndividual)eResolveProxy(oldIndividual);
-			if (individual != oldIndividual) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.CLASS_ASSERTION__INDIVIDUAL, oldIndividual, individual));
-			}
-		}
-		return individual;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NamedIndividual basicGetIndividual() {
-		return individual;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setIndividual(NamedIndividual newIndividual) {
-		NamedIndividual oldIndividual = individual;
-		individual = newIndividual;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.CLASS_ASSERTION__INDIVIDUAL, oldIndividual, individual));
 	}
 
 	/**
@@ -149,15 +111,53 @@ public class ClassAssertionImpl extends AssertionImpl implements ClassAssertion 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Individual getIndividual() {
+		if (individual != null && individual.eIsProxy()) {
+			InternalEObject oldIndividual = (InternalEObject)individual;
+			individual = (Individual)eResolveProxy(oldIndividual);
+			if (individual != oldIndividual) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.CLASS_ASSERTION__INDIVIDUAL, oldIndividual, individual));
+			}
+		}
+		return individual;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Individual basicGetIndividual() {
+		return individual;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIndividual(Individual newIndividual) {
+		Individual oldIndividual = individual;
+		individual = newIndividual;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.CLASS_ASSERTION__INDIVIDUAL, oldIndividual, individual));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OwlPackage.CLASS_ASSERTION__INDIVIDUAL:
-				if (resolve) return getIndividual();
-				return basicGetIndividual();
 			case OwlPackage.CLASS_ASSERTION__CLASS_EXPRESSION:
 				if (resolve) return getClassExpression();
 				return basicGetClassExpression();
+			case OwlPackage.CLASS_ASSERTION__INDIVIDUAL:
+				if (resolve) return getIndividual();
+				return basicGetIndividual();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -170,11 +170,11 @@ public class ClassAssertionImpl extends AssertionImpl implements ClassAssertion 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OwlPackage.CLASS_ASSERTION__INDIVIDUAL:
-				setIndividual((NamedIndividual)newValue);
-				return;
 			case OwlPackage.CLASS_ASSERTION__CLASS_EXPRESSION:
 				setClassExpression((ClassExpression)newValue);
+				return;
+			case OwlPackage.CLASS_ASSERTION__INDIVIDUAL:
+				setIndividual((Individual)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -188,11 +188,11 @@ public class ClassAssertionImpl extends AssertionImpl implements ClassAssertion 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OwlPackage.CLASS_ASSERTION__INDIVIDUAL:
-				setIndividual((NamedIndividual)null);
-				return;
 			case OwlPackage.CLASS_ASSERTION__CLASS_EXPRESSION:
 				setClassExpression((ClassExpression)null);
+				return;
+			case OwlPackage.CLASS_ASSERTION__INDIVIDUAL:
+				setIndividual((Individual)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -206,10 +206,10 @@ public class ClassAssertionImpl extends AssertionImpl implements ClassAssertion 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OwlPackage.CLASS_ASSERTION__INDIVIDUAL:
-				return individual != null;
 			case OwlPackage.CLASS_ASSERTION__CLASS_EXPRESSION:
 				return classExpression != null;
+			case OwlPackage.CLASS_ASSERTION__INDIVIDUAL:
+				return individual != null;
 		}
 		return super.eIsSet(featureID);
 	}

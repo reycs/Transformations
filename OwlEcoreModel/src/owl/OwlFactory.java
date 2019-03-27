@@ -49,15 +49,6 @@ public interface OwlFactory extends EFactory {
 	URI createURI();
 
 	/**
-	 * Returns a new object of class '<em>Constant</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Constant</em>'.
-	 * @generated
-	 */
-	Constant createConstant();
-
-	/**
 	 * Returns a new object of class '<em>Datatype</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -157,13 +148,13 @@ public interface OwlFactory extends EFactory {
 	ObjectAllValuesFrom createObjectAllValuesFrom();
 
 	/**
-	 * Returns a new object of class '<em>Object Exists Self</em>'.
+	 * Returns a new object of class '<em>Object Has Self</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Object Exists Self</em>'.
+	 * @return a new object of class '<em>Object Has Self</em>'.
 	 * @generated
 	 */
-	ObjectExistsSelf createObjectExistsSelf();
+	ObjectHasSelf createObjectHasSelf();
 
 	/**
 	 * Returns a new object of class '<em>Object Has Value</em>'.
@@ -229,13 +220,13 @@ public interface OwlFactory extends EFactory {
 	DatatypeRestriction createDatatypeRestriction();
 
 	/**
-	 * Returns a new object of class '<em>Facet Constant Pair</em>'.
+	 * Returns a new object of class '<em>Facet Literal Pair</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Facet Constant Pair</em>'.
+	 * @return a new object of class '<em>Facet Literal Pair</em>'.
 	 * @generated
 	 */
-	FacetConstantPair createFacetConstantPair();
+	FacetLiteralPair createFacetLiteralPair();
 
 	/**
 	 * Returns a new object of class '<em>Data All Values From</em>'.
@@ -562,15 +553,6 @@ public interface OwlFactory extends EFactory {
 	SubClassOf createSubClassOf();
 
 	/**
-	 * Returns a new object of class '<em>Sub Object Property</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Sub Object Property</em>'.
-	 * @generated
-	 */
-	SubObjectProperty createSubObjectProperty();
-
-	/**
 	 * Returns a new object of class '<em>Transitive Object Property</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -580,33 +562,6 @@ public interface OwlFactory extends EFactory {
 	TransitiveObjectProperty createTransitiveObjectProperty();
 
 	/**
-	 * Returns a new object of class '<em>Entity Annotation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Entity Annotation</em>'.
-	 * @generated
-	 */
-	EntityAnnotation createEntityAnnotation();
-
-	/**
-	 * Returns a new object of class '<em>Full URI</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Full URI</em>'.
-	 * @generated
-	 */
-	FullURI createFullURI();
-
-	/**
-	 * Returns a new object of class '<em>Abbreviated URI</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Abbreviated URI</em>'.
-	 * @generated
-	 */
-	AbbreviatedURI createAbbreviatedURI();
-
-	/**
 	 * Returns a new object of class '<em>Inverse Object Properties</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -614,33 +569,6 @@ public interface OwlFactory extends EFactory {
 	 * @generated
 	 */
 	InverseObjectProperties createInverseObjectProperties();
-
-	/**
-	 * Returns a new object of class '<em>Annotation By Constant</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Annotation By Constant</em>'.
-	 * @generated
-	 */
-	AnnotationByConstant createAnnotationByConstant();
-
-	/**
-	 * Returns a new object of class '<em>Annotation By Entity</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Annotation By Entity</em>'.
-	 * @generated
-	 */
-	AnnotationByEntity createAnnotationByEntity();
-
-	/**
-	 * Returns a new object of class '<em>Annotation By Anonymous Individual</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Annotation By Anonymous Individual</em>'.
-	 * @generated
-	 */
-	AnnotationByAnonymousIndividual createAnnotationByAnonymousIndividual();
 
 	/**
 	 * Returns a new object of class '<em>Anonymous Individual</em>'.
@@ -661,22 +589,94 @@ public interface OwlFactory extends EFactory {
 	Declaration createDeclaration();
 
 	/**
-	 * Returns a new object of class '<em>Key For</em>'.
+	 * Returns a new object of class '<em>Has Key</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Key For</em>'.
+	 * @return a new object of class '<em>Has Key</em>'.
 	 * @generated
 	 */
-	KeyFor createKeyFor();
+	HasKey createHasKey();
 
 	/**
-	 * Returns a new object of class '<em>Anonymous Individual Annotation</em>'.
+	 * Returns a new object of class '<em>Typed Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Anonymous Individual Annotation</em>'.
+	 * @return a new object of class '<em>Typed Literal</em>'.
 	 * @generated
 	 */
-	AnonymousIndividualAnnotation createAnonymousIndividualAnnotation();
+	TypedLiteral createTypedLiteral();
+
+	/**
+	 * Returns a new object of class '<em>String Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>String Literal</em>'.
+	 * @generated
+	 */
+	StringLiteral createStringLiteral();
+
+	/**
+	 * Returns a new object of class '<em>Data Intersection Of</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Intersection Of</em>'.
+	 * @generated
+	 */
+	DataIntersectionOf createDataIntersectionOf();
+
+	/**
+	 * Returns a new object of class '<em>Data Union Of</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Union Of</em>'.
+	 * @generated
+	 */
+	DataUnionOf createDataUnionOf();
+
+	/**
+	 * Returns a new object of class '<em>Data Type Definition</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Type Definition</em>'.
+	 * @generated
+	 */
+	DataTypeDefinition createDataTypeDefinition();
+
+	/**
+	 * Returns a new object of class '<em>Sub Annotation Property Of</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sub Annotation Property Of</em>'.
+	 * @generated
+	 */
+	SubAnnotationPropertyOf createSubAnnotationPropertyOf();
+
+	/**
+	 * Returns a new object of class '<em>Annotation Property Domain</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Annotation Property Domain</em>'.
+	 * @generated
+	 */
+	AnnotationPropertyDomain createAnnotationPropertyDomain();
+
+	/**
+	 * Returns a new object of class '<em>Annotation Property Range</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Annotation Property Range</em>'.
+	 * @generated
+	 */
+	AnnotationPropertyRange createAnnotationPropertyRange();
+
+	/**
+	 * Returns a new object of class '<em>Annotation Assertion</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Annotation Assertion</em>'.
+	 * @generated
+	 */
+	AnnotationAssertion createAnnotationAssertion();
 
 	/**
 	 * Returns the package supported by this factory.

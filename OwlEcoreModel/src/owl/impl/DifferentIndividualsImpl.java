@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import owl.DifferentIndividuals;
-import owl.NamedIndividual;
+import owl.Individual;
 import owl.OwlPackage;
 
 /**
@@ -22,21 +22,21 @@ import owl.OwlPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link owl.impl.DifferentIndividualsImpl#getDifferentIndividuals <em>Different Individuals</em>}</li>
+ *   <li>{@link owl.impl.DifferentIndividualsImpl#getIndividuals <em>Individuals</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DifferentIndividualsImpl extends AssertionImpl implements DifferentIndividuals {
 	/**
-	 * The cached value of the '{@link #getDifferentIndividuals() <em>Different Individuals</em>}' reference list.
+	 * The cached value of the '{@link #getIndividuals() <em>Individuals</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDifferentIndividuals()
+	 * @see #getIndividuals()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<NamedIndividual> differentIndividuals;
+	protected EList<Individual> individuals;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -62,11 +62,11 @@ public class DifferentIndividualsImpl extends AssertionImpl implements Different
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<NamedIndividual> getDifferentIndividuals() {
-		if (differentIndividuals == null) {
-			differentIndividuals = new EObjectResolvingEList<NamedIndividual>(NamedIndividual.class, this, OwlPackage.DIFFERENT_INDIVIDUALS__DIFFERENT_INDIVIDUALS);
+	public EList<Individual> getIndividuals() {
+		if (individuals == null) {
+			individuals = new EObjectResolvingEList<Individual>(Individual.class, this, OwlPackage.DIFFERENT_INDIVIDUALS__INDIVIDUALS);
 		}
-		return differentIndividuals;
+		return individuals;
 	}
 
 	/**
@@ -77,8 +77,8 @@ public class DifferentIndividualsImpl extends AssertionImpl implements Different
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OwlPackage.DIFFERENT_INDIVIDUALS__DIFFERENT_INDIVIDUALS:
-				return getDifferentIndividuals();
+			case OwlPackage.DIFFERENT_INDIVIDUALS__INDIVIDUALS:
+				return getIndividuals();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -92,9 +92,9 @@ public class DifferentIndividualsImpl extends AssertionImpl implements Different
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OwlPackage.DIFFERENT_INDIVIDUALS__DIFFERENT_INDIVIDUALS:
-				getDifferentIndividuals().clear();
-				getDifferentIndividuals().addAll((Collection<? extends NamedIndividual>)newValue);
+			case OwlPackage.DIFFERENT_INDIVIDUALS__INDIVIDUALS:
+				getIndividuals().clear();
+				getIndividuals().addAll((Collection<? extends Individual>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -108,8 +108,8 @@ public class DifferentIndividualsImpl extends AssertionImpl implements Different
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OwlPackage.DIFFERENT_INDIVIDUALS__DIFFERENT_INDIVIDUALS:
-				getDifferentIndividuals().clear();
+			case OwlPackage.DIFFERENT_INDIVIDUALS__INDIVIDUALS:
+				getIndividuals().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -123,8 +123,8 @@ public class DifferentIndividualsImpl extends AssertionImpl implements Different
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OwlPackage.DIFFERENT_INDIVIDUALS__DIFFERENT_INDIVIDUALS:
-				return differentIndividuals != null && !differentIndividuals.isEmpty();
+			case OwlPackage.DIFFERENT_INDIVIDUALS__INDIVIDUALS:
+				return individuals != null && !individuals.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

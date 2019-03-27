@@ -10,21 +10,19 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import owl.AbbreviatedURI;
 import owl.Annotation;
-import owl.AnnotationByAnonymousIndividual;
-import owl.AnnotationByConstant;
-import owl.AnnotationByEntity;
+import owl.AnnotationAssertion;
 import owl.AnnotationProperty;
+import owl.AnnotationPropertyDomain;
+import owl.AnnotationPropertyRange;
 import owl.AnonymousIndividual;
-import owl.AnonymousIndividualAnnotation;
 import owl.AsymmetricObjectProperty;
 import owl.ClassAssertion;
-import owl.Constant;
 import owl.DataAllValuesFrom;
 import owl.DataComplementOf;
 import owl.DataExactCardinality;
 import owl.DataHasValue;
+import owl.DataIntersectionOf;
 import owl.DataMaxCardinality;
 import owl.DataMinCardinality;
 import owl.DataOneOf;
@@ -33,6 +31,8 @@ import owl.DataPropertyAssertion;
 import owl.DataPropertyDomain;
 import owl.DataPropertyRange;
 import owl.DataSomeValuesFrom;
+import owl.DataTypeDefinition;
+import owl.DataUnionOf;
 import owl.Datatype;
 import owl.DatatypeRestriction;
 import owl.Declaration;
@@ -41,26 +41,24 @@ import owl.DisjointClasses;
 import owl.DisjointDataProperties;
 import owl.DisjointObjectProperties;
 import owl.DisjointUnion;
-import owl.EntityAnnotation;
 import owl.EquivalentClasses;
 import owl.EquivalentDataProperties;
 import owl.EquivalentObjectProperties;
-import owl.FacetConstantPair;
-import owl.FullURI;
+import owl.FacetLiteralPair;
 import owl.FunctionalDataProperty;
 import owl.FunctionalObjectProperty;
+import owl.HasKey;
 import owl.InverseFunctionalObjectProperty;
 import owl.InverseObjectProperties;
 import owl.InverseObjectProperty;
 import owl.IrreflexiveObjectProperty;
-import owl.KeyFor;
 import owl.NamedIndividual;
 import owl.NegativeDataPropertyAssertion;
 import owl.NegativeObjectPropertyAssertion;
 import owl.ObjectAllValuesFrom;
 import owl.ObjectComplementOf;
 import owl.ObjectExactCardinality;
-import owl.ObjectExistsSelf;
+import owl.ObjectHasSelf;
 import owl.ObjectHasValue;
 import owl.ObjectIntersectionOf;
 import owl.ObjectMaxCardinality;
@@ -77,12 +75,14 @@ import owl.OwlFactory;
 import owl.OwlPackage;
 import owl.ReflexiveObjectProperty;
 import owl.SameIndividual;
+import owl.StringLiteral;
+import owl.SubAnnotationPropertyOf;
 import owl.SubClassOf;
 import owl.SubDataPropertyOf;
-import owl.SubObjectProperty;
 import owl.SubObjectPropertyOf;
 import owl.SymmetricObjectProperty;
 import owl.TransitiveObjectProperty;
+import owl.TypedLiteral;
 import owl.URI;
 
 /**
@@ -132,7 +132,6 @@ public class OwlFactoryImpl extends EFactoryImpl implements OwlFactory {
 			case OwlPackage.ANNOTATION: return createAnnotation();
 			case OwlPackage.ANNOTATION_PROPERTY: return createAnnotationProperty();
 			case OwlPackage.URI: return createURI();
-			case OwlPackage.CONSTANT: return createConstant();
 			case OwlPackage.DATATYPE: return createDatatype();
 			case OwlPackage.ASYMMETRIC_OBJECT_PROPERTY: return createAsymmetricObjectProperty();
 			case OwlPackage.OBJECT_PROPERTY: return createObjectProperty();
@@ -144,7 +143,7 @@ public class OwlFactoryImpl extends EFactoryImpl implements OwlFactory {
 			case OwlPackage.NAMED_INDIVIDUAL: return createNamedIndividual();
 			case OwlPackage.OBJECT_SOME_VALUES_FROM: return createObjectSomeValuesFrom();
 			case OwlPackage.OBJECT_ALL_VALUES_FROM: return createObjectAllValuesFrom();
-			case OwlPackage.OBJECT_EXISTS_SELF: return createObjectExistsSelf();
+			case OwlPackage.OBJECT_HAS_SELF: return createObjectHasSelf();
 			case OwlPackage.OBJECT_HAS_VALUE: return createObjectHasValue();
 			case OwlPackage.OBJECT_MIN_CARDINALITY: return createObjectMinCardinality();
 			case OwlPackage.OBJECT_MAX_CARDINALITY: return createObjectMaxCardinality();
@@ -152,7 +151,7 @@ public class OwlFactoryImpl extends EFactoryImpl implements OwlFactory {
 			case OwlPackage.DATA_PROPERTY: return createDataProperty();
 			case OwlPackage.DATA_ONE_OF: return createDataOneOf();
 			case OwlPackage.DATATYPE_RESTRICTION: return createDatatypeRestriction();
-			case OwlPackage.FACET_CONSTANT_PAIR: return createFacetConstantPair();
+			case OwlPackage.FACET_LITERAL_PAIR: return createFacetLiteralPair();
 			case OwlPackage.DATA_ALL_VALUES_FROM: return createDataAllValuesFrom();
 			case OwlPackage.DATA_HAS_VALUE: return createDataHasValue();
 			case OwlPackage.DATA_MIN_CARDINALITY: return createDataMinCardinality();
@@ -189,19 +188,20 @@ public class OwlFactoryImpl extends EFactoryImpl implements OwlFactory {
 			case OwlPackage.OBJECT_EXACT_CARDINALITY: return createObjectExactCardinality();
 			case OwlPackage.DATA_COMPLEMENT_OF: return createDataComplementOf();
 			case OwlPackage.SUB_CLASS_OF: return createSubClassOf();
-			case OwlPackage.SUB_OBJECT_PROPERTY: return createSubObjectProperty();
 			case OwlPackage.TRANSITIVE_OBJECT_PROPERTY: return createTransitiveObjectProperty();
-			case OwlPackage.ENTITY_ANNOTATION: return createEntityAnnotation();
-			case OwlPackage.FULL_URI: return createFullURI();
-			case OwlPackage.ABBREVIATED_URI: return createAbbreviatedURI();
 			case OwlPackage.INVERSE_OBJECT_PROPERTIES: return createInverseObjectProperties();
-			case OwlPackage.ANNOTATION_BY_CONSTANT: return createAnnotationByConstant();
-			case OwlPackage.ANNOTATION_BY_ENTITY: return createAnnotationByEntity();
-			case OwlPackage.ANNOTATION_BY_ANONYMOUS_INDIVIDUAL: return createAnnotationByAnonymousIndividual();
 			case OwlPackage.ANONYMOUS_INDIVIDUAL: return createAnonymousIndividual();
 			case OwlPackage.DECLARATION: return createDeclaration();
-			case OwlPackage.KEY_FOR: return createKeyFor();
-			case OwlPackage.ANONYMOUS_INDIVIDUAL_ANNOTATION: return createAnonymousIndividualAnnotation();
+			case OwlPackage.HAS_KEY: return createHasKey();
+			case OwlPackage.TYPED_LITERAL: return createTypedLiteral();
+			case OwlPackage.STRING_LITERAL: return createStringLiteral();
+			case OwlPackage.DATA_INTERSECTION_OF: return createDataIntersectionOf();
+			case OwlPackage.DATA_UNION_OF: return createDataUnionOf();
+			case OwlPackage.DATA_TYPE_DEFINITION: return createDataTypeDefinition();
+			case OwlPackage.SUB_ANNOTATION_PROPERTY_OF: return createSubAnnotationPropertyOf();
+			case OwlPackage.ANNOTATION_PROPERTY_DOMAIN: return createAnnotationPropertyDomain();
+			case OwlPackage.ANNOTATION_PROPERTY_RANGE: return createAnnotationPropertyRange();
+			case OwlPackage.ANNOTATION_ASSERTION: return createAnnotationAssertion();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -235,16 +235,6 @@ public class OwlFactoryImpl extends EFactoryImpl implements OwlFactory {
 	public URI createURI() {
 		URIImpl uri = new URIImpl();
 		return uri;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Constant createConstant() {
-		ConstantImpl constant = new ConstantImpl();
-		return constant;
 	}
 
 	/**
@@ -362,9 +352,9 @@ public class OwlFactoryImpl extends EFactoryImpl implements OwlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ObjectExistsSelf createObjectExistsSelf() {
-		ObjectExistsSelfImpl objectExistsSelf = new ObjectExistsSelfImpl();
-		return objectExistsSelf;
+	public ObjectHasSelf createObjectHasSelf() {
+		ObjectHasSelfImpl objectHasSelf = new ObjectHasSelfImpl();
+		return objectHasSelf;
 	}
 
 	/**
@@ -442,9 +432,9 @@ public class OwlFactoryImpl extends EFactoryImpl implements OwlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FacetConstantPair createFacetConstantPair() {
-		FacetConstantPairImpl facetConstantPair = new FacetConstantPairImpl();
-		return facetConstantPair;
+	public FacetLiteralPair createFacetLiteralPair() {
+		FacetLiteralPairImpl facetLiteralPair = new FacetLiteralPairImpl();
+		return facetLiteralPair;
 	}
 
 	/**
@@ -812,16 +802,6 @@ public class OwlFactoryImpl extends EFactoryImpl implements OwlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SubObjectProperty createSubObjectProperty() {
-		SubObjectPropertyImpl subObjectProperty = new SubObjectPropertyImpl();
-		return subObjectProperty;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public TransitiveObjectProperty createTransitiveObjectProperty() {
 		TransitiveObjectPropertyImpl transitiveObjectProperty = new TransitiveObjectPropertyImpl();
 		return transitiveObjectProperty;
@@ -832,69 +812,9 @@ public class OwlFactoryImpl extends EFactoryImpl implements OwlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EntityAnnotation createEntityAnnotation() {
-		EntityAnnotationImpl entityAnnotation = new EntityAnnotationImpl();
-		return entityAnnotation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public FullURI createFullURI() {
-		FullURIImpl fullURI = new FullURIImpl();
-		return fullURI;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AbbreviatedURI createAbbreviatedURI() {
-		AbbreviatedURIImpl abbreviatedURI = new AbbreviatedURIImpl();
-		return abbreviatedURI;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public InverseObjectProperties createInverseObjectProperties() {
 		InverseObjectPropertiesImpl inverseObjectProperties = new InverseObjectPropertiesImpl();
 		return inverseObjectProperties;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AnnotationByConstant createAnnotationByConstant() {
-		AnnotationByConstantImpl annotationByConstant = new AnnotationByConstantImpl();
-		return annotationByConstant;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AnnotationByEntity createAnnotationByEntity() {
-		AnnotationByEntityImpl annotationByEntity = new AnnotationByEntityImpl();
-		return annotationByEntity;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AnnotationByAnonymousIndividual createAnnotationByAnonymousIndividual() {
-		AnnotationByAnonymousIndividualImpl annotationByAnonymousIndividual = new AnnotationByAnonymousIndividualImpl();
-		return annotationByAnonymousIndividual;
 	}
 
 	/**
@@ -922,9 +842,9 @@ public class OwlFactoryImpl extends EFactoryImpl implements OwlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public KeyFor createKeyFor() {
-		KeyForImpl keyFor = new KeyForImpl();
-		return keyFor;
+	public HasKey createHasKey() {
+		HasKeyImpl hasKey = new HasKeyImpl();
+		return hasKey;
 	}
 
 	/**
@@ -932,9 +852,89 @@ public class OwlFactoryImpl extends EFactoryImpl implements OwlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AnonymousIndividualAnnotation createAnonymousIndividualAnnotation() {
-		AnonymousIndividualAnnotationImpl anonymousIndividualAnnotation = new AnonymousIndividualAnnotationImpl();
-		return anonymousIndividualAnnotation;
+	public TypedLiteral createTypedLiteral() {
+		TypedLiteralImpl typedLiteral = new TypedLiteralImpl();
+		return typedLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StringLiteral createStringLiteral() {
+		StringLiteralImpl stringLiteral = new StringLiteralImpl();
+		return stringLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataIntersectionOf createDataIntersectionOf() {
+		DataIntersectionOfImpl dataIntersectionOf = new DataIntersectionOfImpl();
+		return dataIntersectionOf;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataUnionOf createDataUnionOf() {
+		DataUnionOfImpl dataUnionOf = new DataUnionOfImpl();
+		return dataUnionOf;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataTypeDefinition createDataTypeDefinition() {
+		DataTypeDefinitionImpl dataTypeDefinition = new DataTypeDefinitionImpl();
+		return dataTypeDefinition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SubAnnotationPropertyOf createSubAnnotationPropertyOf() {
+		SubAnnotationPropertyOfImpl subAnnotationPropertyOf = new SubAnnotationPropertyOfImpl();
+		return subAnnotationPropertyOf;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AnnotationPropertyDomain createAnnotationPropertyDomain() {
+		AnnotationPropertyDomainImpl annotationPropertyDomain = new AnnotationPropertyDomainImpl();
+		return annotationPropertyDomain;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AnnotationPropertyRange createAnnotationPropertyRange() {
+		AnnotationPropertyRangeImpl annotationPropertyRange = new AnnotationPropertyRangeImpl();
+		return annotationPropertyRange;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AnnotationAssertion createAnnotationAssertion() {
+		AnnotationAssertionImpl annotationAssertion = new AnnotationAssertionImpl();
+		return annotationAssertion;
 	}
 
 	/**

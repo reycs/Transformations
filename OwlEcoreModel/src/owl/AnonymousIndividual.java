@@ -19,7 +19,7 @@ package owl;
  * @model
  * @generated
  */
-public interface AnonymousIndividual extends Individual {
+public interface AnonymousIndividual extends Individual, AnnotationSubject, AnnotationValue {
 	/**
 	 * Returns the value of the '<em><b>Node ID</b></em>' attribute.
 	 * <!-- begin-user-doc -->

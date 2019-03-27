@@ -9,25 +9,26 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import owl.AbbreviatedURI;
 import owl.Annotation;
-import owl.AnnotationByAnonymousIndividual;
-import owl.AnnotationByConstant;
-import owl.AnnotationByEntity;
+import owl.AnnotationAssertion;
+import owl.AnnotationAxiom;
 import owl.AnnotationProperty;
+import owl.AnnotationPropertyDomain;
+import owl.AnnotationPropertyRange;
+import owl.AnnotationSubject;
+import owl.AnnotationValue;
 import owl.AnonymousIndividual;
-import owl.AnonymousIndividualAnnotation;
 import owl.Assertion;
 import owl.AsymmetricObjectProperty;
 import owl.Axiom;
 import owl.ClassAssertion;
 import owl.ClassAxiom;
 import owl.ClassExpression;
-import owl.Constant;
 import owl.DataAllValuesFrom;
 import owl.DataComplementOf;
 import owl.DataExactCardinality;
 import owl.DataHasValue;
+import owl.DataIntersectionOf;
 import owl.DataMaxCardinality;
 import owl.DataMinCardinality;
 import owl.DataOneOf;
@@ -39,6 +40,8 @@ import owl.DataPropertyExpression;
 import owl.DataPropertyRange;
 import owl.DataRange;
 import owl.DataSomeValuesFrom;
+import owl.DataTypeDefinition;
+import owl.DataUnionOf;
 import owl.Datatype;
 import owl.DatatypeRestriction;
 import owl.Declaration;
@@ -48,20 +51,19 @@ import owl.DisjointDataProperties;
 import owl.DisjointObjectProperties;
 import owl.DisjointUnion;
 import owl.Entity;
-import owl.EntityAnnotation;
 import owl.EquivalentClasses;
 import owl.EquivalentDataProperties;
 import owl.EquivalentObjectProperties;
-import owl.FacetConstantPair;
-import owl.FullURI;
+import owl.FacetLiteralPair;
 import owl.FunctionalDataProperty;
 import owl.FunctionalObjectProperty;
+import owl.HasKey;
 import owl.Individual;
 import owl.InverseFunctionalObjectProperty;
 import owl.InverseObjectProperties;
 import owl.InverseObjectProperty;
 import owl.IrreflexiveObjectProperty;
-import owl.KeyFor;
+import owl.Literal;
 import owl.NamedIndividual;
 import owl.NegativeDataPropertyAssertion;
 import owl.NegativeObjectPropertyAssertion;
@@ -69,7 +71,7 @@ import owl.ObjectAllValuesFrom;
 import owl.ObjectAndDataPropertyAxiom;
 import owl.ObjectComplementOf;
 import owl.ObjectExactCardinality;
-import owl.ObjectExistsSelf;
+import owl.ObjectHasSelf;
 import owl.ObjectHasValue;
 import owl.ObjectIntersectionOf;
 import owl.ObjectMaxCardinality;
@@ -87,12 +89,14 @@ import owl.Ontology;
 import owl.OwlPackage;
 import owl.ReflexiveObjectProperty;
 import owl.SameIndividual;
+import owl.StringLiteral;
+import owl.SubAnnotationPropertyOf;
 import owl.SubClassOf;
 import owl.SubDataPropertyOf;
-import owl.SubObjectProperty;
 import owl.SubObjectPropertyOf;
 import owl.SymmetricObjectProperty;
 import owl.TransitiveObjectProperty;
+import owl.TypedLiteral;
 import owl.URI;
 
 /**
@@ -176,8 +180,8 @@ public class OwlAdapterFactory extends AdapterFactoryImpl {
 				return createURIAdapter();
 			}
 			@Override
-			public Adapter caseConstant(Constant object) {
-				return createConstantAdapter();
+			public Adapter caseLiteral(Literal object) {
+				return createLiteralAdapter();
 			}
 			@Override
 			public Adapter caseDatatype(Datatype object) {
@@ -256,8 +260,8 @@ public class OwlAdapterFactory extends AdapterFactoryImpl {
 				return createObjectAllValuesFromAdapter();
 			}
 			@Override
-			public Adapter caseObjectExistsSelf(ObjectExistsSelf object) {
-				return createObjectExistsSelfAdapter();
+			public Adapter caseObjectHasSelf(ObjectHasSelf object) {
+				return createObjectHasSelfAdapter();
 			}
 			@Override
 			public Adapter caseObjectHasValue(ObjectHasValue object) {
@@ -288,8 +292,8 @@ public class OwlAdapterFactory extends AdapterFactoryImpl {
 				return createDatatypeRestrictionAdapter();
 			}
 			@Override
-			public Adapter caseFacetConstantPair(FacetConstantPair object) {
-				return createFacetConstantPairAdapter();
+			public Adapter caseFacetLiteralPair(FacetLiteralPair object) {
+				return createFacetLiteralPairAdapter();
 			}
 			@Override
 			public Adapter caseDataAllValuesFrom(DataAllValuesFrom object) {
@@ -436,40 +440,12 @@ public class OwlAdapterFactory extends AdapterFactoryImpl {
 				return createSubClassOfAdapter();
 			}
 			@Override
-			public Adapter caseSubObjectProperty(SubObjectProperty object) {
-				return createSubObjectPropertyAdapter();
-			}
-			@Override
 			public Adapter caseTransitiveObjectProperty(TransitiveObjectProperty object) {
 				return createTransitiveObjectPropertyAdapter();
 			}
 			@Override
-			public Adapter caseEntityAnnotation(EntityAnnotation object) {
-				return createEntityAnnotationAdapter();
-			}
-			@Override
-			public Adapter caseFullURI(FullURI object) {
-				return createFullURIAdapter();
-			}
-			@Override
-			public Adapter caseAbbreviatedURI(AbbreviatedURI object) {
-				return createAbbreviatedURIAdapter();
-			}
-			@Override
 			public Adapter caseInverseObjectProperties(InverseObjectProperties object) {
 				return createInverseObjectPropertiesAdapter();
-			}
-			@Override
-			public Adapter caseAnnotationByConstant(AnnotationByConstant object) {
-				return createAnnotationByConstantAdapter();
-			}
-			@Override
-			public Adapter caseAnnotationByEntity(AnnotationByEntity object) {
-				return createAnnotationByEntityAdapter();
-			}
-			@Override
-			public Adapter caseAnnotationByAnonymousIndividual(AnnotationByAnonymousIndividual object) {
-				return createAnnotationByAnonymousIndividualAdapter();
 			}
 			@Override
 			public Adapter caseAnonymousIndividual(AnonymousIndividual object) {
@@ -484,12 +460,56 @@ public class OwlAdapterFactory extends AdapterFactoryImpl {
 				return createObjectAndDataPropertyAxiomAdapter();
 			}
 			@Override
-			public Adapter caseKeyFor(KeyFor object) {
-				return createKeyForAdapter();
+			public Adapter caseHasKey(HasKey object) {
+				return createHasKeyAdapter();
 			}
 			@Override
-			public Adapter caseAnonymousIndividualAnnotation(AnonymousIndividualAnnotation object) {
-				return createAnonymousIndividualAnnotationAdapter();
+			public Adapter caseTypedLiteral(TypedLiteral object) {
+				return createTypedLiteralAdapter();
+			}
+			@Override
+			public Adapter caseStringLiteral(StringLiteral object) {
+				return createStringLiteralAdapter();
+			}
+			@Override
+			public Adapter caseDataIntersectionOf(DataIntersectionOf object) {
+				return createDataIntersectionOfAdapter();
+			}
+			@Override
+			public Adapter caseDataUnionOf(DataUnionOf object) {
+				return createDataUnionOfAdapter();
+			}
+			@Override
+			public Adapter caseDataTypeDefinition(DataTypeDefinition object) {
+				return createDataTypeDefinitionAdapter();
+			}
+			@Override
+			public Adapter caseAnnotationAxiom(AnnotationAxiom object) {
+				return createAnnotationAxiomAdapter();
+			}
+			@Override
+			public Adapter caseSubAnnotationPropertyOf(SubAnnotationPropertyOf object) {
+				return createSubAnnotationPropertyOfAdapter();
+			}
+			@Override
+			public Adapter caseAnnotationPropertyDomain(AnnotationPropertyDomain object) {
+				return createAnnotationPropertyDomainAdapter();
+			}
+			@Override
+			public Adapter caseAnnotationPropertyRange(AnnotationPropertyRange object) {
+				return createAnnotationPropertyRangeAdapter();
+			}
+			@Override
+			public Adapter caseAnnotationAssertion(AnnotationAssertion object) {
+				return createAnnotationAssertionAdapter();
+			}
+			@Override
+			public Adapter caseAnnotationSubject(AnnotationSubject object) {
+				return createAnnotationSubjectAdapter();
+			}
+			@Override
+			public Adapter caseAnnotationValue(AnnotationValue object) {
+				return createAnnotationValueAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -596,16 +616,16 @@ public class OwlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link owl.Constant <em>Constant</em>}'.
+	 * Creates a new adapter for an object of class '{@link owl.Literal <em>Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see owl.Constant
+	 * @see owl.Literal
 	 * @generated
 	 */
-	public Adapter createConstantAdapter() {
+	public Adapter createLiteralAdapter() {
 		return null;
 	}
 
@@ -876,16 +896,16 @@ public class OwlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link owl.ObjectExistsSelf <em>Object Exists Self</em>}'.
+	 * Creates a new adapter for an object of class '{@link owl.ObjectHasSelf <em>Object Has Self</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see owl.ObjectExistsSelf
+	 * @see owl.ObjectHasSelf
 	 * @generated
 	 */
-	public Adapter createObjectExistsSelfAdapter() {
+	public Adapter createObjectHasSelfAdapter() {
 		return null;
 	}
 
@@ -988,16 +1008,16 @@ public class OwlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link owl.FacetConstantPair <em>Facet Constant Pair</em>}'.
+	 * Creates a new adapter for an object of class '{@link owl.FacetLiteralPair <em>Facet Literal Pair</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see owl.FacetConstantPair
+	 * @see owl.FacetLiteralPair
 	 * @generated
 	 */
-	public Adapter createFacetConstantPairAdapter() {
+	public Adapter createFacetLiteralPairAdapter() {
 		return null;
 	}
 
@@ -1506,20 +1526,6 @@ public class OwlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link owl.SubObjectProperty <em>Sub Object Property</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see owl.SubObjectProperty
-	 * @generated
-	 */
-	public Adapter createSubObjectPropertyAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link owl.TransitiveObjectProperty <em>Transitive Object Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1534,48 +1540,6 @@ public class OwlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link owl.EntityAnnotation <em>Entity Annotation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see owl.EntityAnnotation
-	 * @generated
-	 */
-	public Adapter createEntityAnnotationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link owl.FullURI <em>Full URI</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see owl.FullURI
-	 * @generated
-	 */
-	public Adapter createFullURIAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link owl.AbbreviatedURI <em>Abbreviated URI</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see owl.AbbreviatedURI
-	 * @generated
-	 */
-	public Adapter createAbbreviatedURIAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link owl.InverseObjectProperties <em>Inverse Object Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1586,48 +1550,6 @@ public class OwlAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createInverseObjectPropertiesAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link owl.AnnotationByConstant <em>Annotation By Constant</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see owl.AnnotationByConstant
-	 * @generated
-	 */
-	public Adapter createAnnotationByConstantAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link owl.AnnotationByEntity <em>Annotation By Entity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see owl.AnnotationByEntity
-	 * @generated
-	 */
-	public Adapter createAnnotationByEntityAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link owl.AnnotationByAnonymousIndividual <em>Annotation By Anonymous Individual</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see owl.AnnotationByAnonymousIndividual
-	 * @generated
-	 */
-	public Adapter createAnnotationByAnonymousIndividualAdapter() {
 		return null;
 	}
 
@@ -1674,30 +1596,184 @@ public class OwlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link owl.KeyFor <em>Key For</em>}'.
+	 * Creates a new adapter for an object of class '{@link owl.HasKey <em>Has Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see owl.KeyFor
+	 * @see owl.HasKey
 	 * @generated
 	 */
-	public Adapter createKeyForAdapter() {
+	public Adapter createHasKeyAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link owl.AnonymousIndividualAnnotation <em>Anonymous Individual Annotation</em>}'.
+	 * Creates a new adapter for an object of class '{@link owl.TypedLiteral <em>Typed Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see owl.AnonymousIndividualAnnotation
+	 * @see owl.TypedLiteral
 	 * @generated
 	 */
-	public Adapter createAnonymousIndividualAnnotationAdapter() {
+	public Adapter createTypedLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link owl.StringLiteral <em>String Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see owl.StringLiteral
+	 * @generated
+	 */
+	public Adapter createStringLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link owl.DataIntersectionOf <em>Data Intersection Of</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see owl.DataIntersectionOf
+	 * @generated
+	 */
+	public Adapter createDataIntersectionOfAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link owl.DataUnionOf <em>Data Union Of</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see owl.DataUnionOf
+	 * @generated
+	 */
+	public Adapter createDataUnionOfAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link owl.DataTypeDefinition <em>Data Type Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see owl.DataTypeDefinition
+	 * @generated
+	 */
+	public Adapter createDataTypeDefinitionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link owl.AnnotationAxiom <em>Annotation Axiom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see owl.AnnotationAxiom
+	 * @generated
+	 */
+	public Adapter createAnnotationAxiomAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link owl.SubAnnotationPropertyOf <em>Sub Annotation Property Of</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see owl.SubAnnotationPropertyOf
+	 * @generated
+	 */
+	public Adapter createSubAnnotationPropertyOfAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link owl.AnnotationPropertyDomain <em>Annotation Property Domain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see owl.AnnotationPropertyDomain
+	 * @generated
+	 */
+	public Adapter createAnnotationPropertyDomainAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link owl.AnnotationPropertyRange <em>Annotation Property Range</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see owl.AnnotationPropertyRange
+	 * @generated
+	 */
+	public Adapter createAnnotationPropertyRangeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link owl.AnnotationAssertion <em>Annotation Assertion</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see owl.AnnotationAssertion
+	 * @generated
+	 */
+	public Adapter createAnnotationAssertionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link owl.AnnotationSubject <em>Annotation Subject</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see owl.AnnotationSubject
+	 * @generated
+	 */
+	public Adapter createAnnotationSubjectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link owl.AnnotationValue <em>Annotation Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see owl.AnnotationValue
+	 * @generated
+	 */
+	public Adapter createAnnotationValueAdapter() {
 		return null;
 	}
 

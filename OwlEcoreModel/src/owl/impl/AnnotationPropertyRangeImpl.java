@@ -8,28 +8,27 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import owl.Annotation;
 import owl.AnnotationProperty;
-import owl.AnnotationValue;
+import owl.AnnotationPropertyRange;
 import owl.OwlPackage;
+import owl.URI;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Annotation</b></em>'.
+ * An implementation of the model object '<em><b>Annotation Property Range</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link owl.impl.AnnotationImpl#getAnnotationProperty <em>Annotation Property</em>}</li>
- *   <li>{@link owl.impl.AnnotationImpl#getAnnotationValue <em>Annotation Value</em>}</li>
+ *   <li>{@link owl.impl.AnnotationPropertyRangeImpl#getAnnotationProperty <em>Annotation Property</em>}</li>
+ *   <li>{@link owl.impl.AnnotationPropertyRangeImpl#getRange <em>Range</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class AnnotationImpl extends MinimalEObjectImpl.Container implements Annotation {
+public class AnnotationPropertyRangeImpl extends AnnotationAxiomImpl implements AnnotationPropertyRange {
 	/**
 	 * The cached value of the '{@link #getAnnotationProperty() <em>Annotation Property</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -41,21 +40,21 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	protected AnnotationProperty annotationProperty;
 
 	/**
-	 * The cached value of the '{@link #getAnnotationValue() <em>Annotation Value</em>}' reference.
+	 * The cached value of the '{@link #getRange() <em>Range</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAnnotationValue()
+	 * @see #getRange()
 	 * @generated
 	 * @ordered
 	 */
-	protected AnnotationValue annotationValue;
+	protected URI range;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AnnotationImpl() {
+	protected AnnotationPropertyRangeImpl() {
 		super();
 	}
 
@@ -66,7 +65,7 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OwlPackage.Literals.ANNOTATION;
+		return OwlPackage.Literals.ANNOTATION_PROPERTY_RANGE;
 	}
 
 	/**
@@ -80,7 +79,7 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 			annotationProperty = (AnnotationProperty)eResolveProxy(oldAnnotationProperty);
 			if (annotationProperty != oldAnnotationProperty) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.ANNOTATION__ANNOTATION_PROPERTY, oldAnnotationProperty, annotationProperty));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.ANNOTATION_PROPERTY_RANGE__ANNOTATION_PROPERTY, oldAnnotationProperty, annotationProperty));
 			}
 		}
 		return annotationProperty;
@@ -104,7 +103,7 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 		AnnotationProperty oldAnnotationProperty = annotationProperty;
 		annotationProperty = newAnnotationProperty;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.ANNOTATION__ANNOTATION_PROPERTY, oldAnnotationProperty, annotationProperty));
+			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.ANNOTATION_PROPERTY_RANGE__ANNOTATION_PROPERTY, oldAnnotationProperty, annotationProperty));
 	}
 
 	/**
@@ -112,16 +111,16 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AnnotationValue getAnnotationValue() {
-		if (annotationValue != null && annotationValue.eIsProxy()) {
-			InternalEObject oldAnnotationValue = (InternalEObject)annotationValue;
-			annotationValue = (AnnotationValue)eResolveProxy(oldAnnotationValue);
-			if (annotationValue != oldAnnotationValue) {
+	public URI getRange() {
+		if (range != null && range.eIsProxy()) {
+			InternalEObject oldRange = (InternalEObject)range;
+			range = (URI)eResolveProxy(oldRange);
+			if (range != oldRange) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.ANNOTATION__ANNOTATION_VALUE, oldAnnotationValue, annotationValue));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.ANNOTATION_PROPERTY_RANGE__RANGE, oldRange, range));
 			}
 		}
-		return annotationValue;
+		return range;
 	}
 
 	/**
@@ -129,8 +128,8 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AnnotationValue basicGetAnnotationValue() {
-		return annotationValue;
+	public URI basicGetRange() {
+		return range;
 	}
 
 	/**
@@ -138,11 +137,11 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAnnotationValue(AnnotationValue newAnnotationValue) {
-		AnnotationValue oldAnnotationValue = annotationValue;
-		annotationValue = newAnnotationValue;
+	public void setRange(URI newRange) {
+		URI oldRange = range;
+		range = newRange;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.ANNOTATION__ANNOTATION_VALUE, oldAnnotationValue, annotationValue));
+			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.ANNOTATION_PROPERTY_RANGE__RANGE, oldRange, range));
 	}
 
 	/**
@@ -153,12 +152,12 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OwlPackage.ANNOTATION__ANNOTATION_PROPERTY:
+			case OwlPackage.ANNOTATION_PROPERTY_RANGE__ANNOTATION_PROPERTY:
 				if (resolve) return getAnnotationProperty();
 				return basicGetAnnotationProperty();
-			case OwlPackage.ANNOTATION__ANNOTATION_VALUE:
-				if (resolve) return getAnnotationValue();
-				return basicGetAnnotationValue();
+			case OwlPackage.ANNOTATION_PROPERTY_RANGE__RANGE:
+				if (resolve) return getRange();
+				return basicGetRange();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -171,11 +170,11 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OwlPackage.ANNOTATION__ANNOTATION_PROPERTY:
+			case OwlPackage.ANNOTATION_PROPERTY_RANGE__ANNOTATION_PROPERTY:
 				setAnnotationProperty((AnnotationProperty)newValue);
 				return;
-			case OwlPackage.ANNOTATION__ANNOTATION_VALUE:
-				setAnnotationValue((AnnotationValue)newValue);
+			case OwlPackage.ANNOTATION_PROPERTY_RANGE__RANGE:
+				setRange((URI)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -189,11 +188,11 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OwlPackage.ANNOTATION__ANNOTATION_PROPERTY:
+			case OwlPackage.ANNOTATION_PROPERTY_RANGE__ANNOTATION_PROPERTY:
 				setAnnotationProperty((AnnotationProperty)null);
 				return;
-			case OwlPackage.ANNOTATION__ANNOTATION_VALUE:
-				setAnnotationValue((AnnotationValue)null);
+			case OwlPackage.ANNOTATION_PROPERTY_RANGE__RANGE:
+				setRange((URI)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -207,12 +206,12 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OwlPackage.ANNOTATION__ANNOTATION_PROPERTY:
+			case OwlPackage.ANNOTATION_PROPERTY_RANGE__ANNOTATION_PROPERTY:
 				return annotationProperty != null;
-			case OwlPackage.ANNOTATION__ANNOTATION_VALUE:
-				return annotationValue != null;
+			case OwlPackage.ANNOTATION_PROPERTY_RANGE__RANGE:
+				return range != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //AnnotationImpl
+} //AnnotationPropertyRangeImpl

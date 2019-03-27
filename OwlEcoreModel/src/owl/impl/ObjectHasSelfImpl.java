@@ -9,24 +9,24 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import owl.ObjectExistsSelf;
+import owl.ObjectHasSelf;
 import owl.ObjectPropertyExpression;
 import owl.OwlPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Object Exists Self</b></em>'.
+ * An implementation of the model object '<em><b>Object Has Self</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link owl.impl.ObjectExistsSelfImpl#getObjectPropertyExpression <em>Object Property Expression</em>}</li>
+ *   <li>{@link owl.impl.ObjectHasSelfImpl#getObjectPropertyExpression <em>Object Property Expression</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ObjectExistsSelfImpl extends ClassExpressionImpl implements ObjectExistsSelf {
+public class ObjectHasSelfImpl extends ClassExpressionImpl implements ObjectHasSelf {
 	/**
 	 * The cached value of the '{@link #getObjectPropertyExpression() <em>Object Property Expression</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -42,7 +42,7 @@ public class ObjectExistsSelfImpl extends ClassExpressionImpl implements ObjectE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ObjectExistsSelfImpl() {
+	protected ObjectHasSelfImpl() {
 		super();
 	}
 
@@ -53,7 +53,7 @@ public class ObjectExistsSelfImpl extends ClassExpressionImpl implements ObjectE
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OwlPackage.Literals.OBJECT_EXISTS_SELF;
+		return OwlPackage.Literals.OBJECT_HAS_SELF;
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class ObjectExistsSelfImpl extends ClassExpressionImpl implements ObjectE
 			objectPropertyExpression = (ObjectPropertyExpression)eResolveProxy(oldObjectPropertyExpression);
 			if (objectPropertyExpression != oldObjectPropertyExpression) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.OBJECT_EXISTS_SELF__OBJECT_PROPERTY_EXPRESSION, oldObjectPropertyExpression, objectPropertyExpression));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.OBJECT_HAS_SELF__OBJECT_PROPERTY_EXPRESSION, oldObjectPropertyExpression, objectPropertyExpression));
 			}
 		}
 		return objectPropertyExpression;
@@ -91,7 +91,7 @@ public class ObjectExistsSelfImpl extends ClassExpressionImpl implements ObjectE
 		ObjectPropertyExpression oldObjectPropertyExpression = objectPropertyExpression;
 		objectPropertyExpression = newObjectPropertyExpression;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.OBJECT_EXISTS_SELF__OBJECT_PROPERTY_EXPRESSION, oldObjectPropertyExpression, objectPropertyExpression));
+			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.OBJECT_HAS_SELF__OBJECT_PROPERTY_EXPRESSION, oldObjectPropertyExpression, objectPropertyExpression));
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class ObjectExistsSelfImpl extends ClassExpressionImpl implements ObjectE
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OwlPackage.OBJECT_EXISTS_SELF__OBJECT_PROPERTY_EXPRESSION:
+			case OwlPackage.OBJECT_HAS_SELF__OBJECT_PROPERTY_EXPRESSION:
 				if (resolve) return getObjectPropertyExpression();
 				return basicGetObjectPropertyExpression();
 		}
@@ -117,7 +117,7 @@ public class ObjectExistsSelfImpl extends ClassExpressionImpl implements ObjectE
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OwlPackage.OBJECT_EXISTS_SELF__OBJECT_PROPERTY_EXPRESSION:
+			case OwlPackage.OBJECT_HAS_SELF__OBJECT_PROPERTY_EXPRESSION:
 				setObjectPropertyExpression((ObjectPropertyExpression)newValue);
 				return;
 		}
@@ -132,7 +132,7 @@ public class ObjectExistsSelfImpl extends ClassExpressionImpl implements ObjectE
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OwlPackage.OBJECT_EXISTS_SELF__OBJECT_PROPERTY_EXPRESSION:
+			case OwlPackage.OBJECT_HAS_SELF__OBJECT_PROPERTY_EXPRESSION:
 				setObjectPropertyExpression((ObjectPropertyExpression)null);
 				return;
 		}
@@ -147,10 +147,10 @@ public class ObjectExistsSelfImpl extends ClassExpressionImpl implements ObjectE
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OwlPackage.OBJECT_EXISTS_SELF__OBJECT_PROPERTY_EXPRESSION:
+			case OwlPackage.OBJECT_HAS_SELF__OBJECT_PROPERTY_EXPRESSION:
 				return objectPropertyExpression != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ObjectExistsSelfImpl
+} //ObjectHasSelfImpl

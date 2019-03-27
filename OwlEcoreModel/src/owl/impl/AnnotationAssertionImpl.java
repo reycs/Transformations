@@ -8,28 +8,39 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import owl.Annotation;
+import owl.AnnotationAssertion;
 import owl.AnnotationProperty;
+import owl.AnnotationSubject;
 import owl.AnnotationValue;
 import owl.OwlPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Annotation</b></em>'.
+ * An implementation of the model object '<em><b>Annotation Assertion</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link owl.impl.AnnotationImpl#getAnnotationProperty <em>Annotation Property</em>}</li>
- *   <li>{@link owl.impl.AnnotationImpl#getAnnotationValue <em>Annotation Value</em>}</li>
+ *   <li>{@link owl.impl.AnnotationAssertionImpl#getAnnotationSubject <em>Annotation Subject</em>}</li>
+ *   <li>{@link owl.impl.AnnotationAssertionImpl#getAnnotationProperty <em>Annotation Property</em>}</li>
+ *   <li>{@link owl.impl.AnnotationAssertionImpl#getAnnotationValue <em>Annotation Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class AnnotationImpl extends MinimalEObjectImpl.Container implements Annotation {
+public class AnnotationAssertionImpl extends AnnotationAxiomImpl implements AnnotationAssertion {
+	/**
+	 * The cached value of the '{@link #getAnnotationSubject() <em>Annotation Subject</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAnnotationSubject()
+	 * @generated
+	 * @ordered
+	 */
+	protected AnnotationSubject annotationSubject;
+
 	/**
 	 * The cached value of the '{@link #getAnnotationProperty() <em>Annotation Property</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -55,7 +66,7 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AnnotationImpl() {
+	protected AnnotationAssertionImpl() {
 		super();
 	}
 
@@ -66,7 +77,45 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OwlPackage.Literals.ANNOTATION;
+		return OwlPackage.Literals.ANNOTATION_ASSERTION;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AnnotationSubject getAnnotationSubject() {
+		if (annotationSubject != null && annotationSubject.eIsProxy()) {
+			InternalEObject oldAnnotationSubject = (InternalEObject)annotationSubject;
+			annotationSubject = (AnnotationSubject)eResolveProxy(oldAnnotationSubject);
+			if (annotationSubject != oldAnnotationSubject) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.ANNOTATION_ASSERTION__ANNOTATION_SUBJECT, oldAnnotationSubject, annotationSubject));
+			}
+		}
+		return annotationSubject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AnnotationSubject basicGetAnnotationSubject() {
+		return annotationSubject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAnnotationSubject(AnnotationSubject newAnnotationSubject) {
+		AnnotationSubject oldAnnotationSubject = annotationSubject;
+		annotationSubject = newAnnotationSubject;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.ANNOTATION_ASSERTION__ANNOTATION_SUBJECT, oldAnnotationSubject, annotationSubject));
 	}
 
 	/**
@@ -80,7 +129,7 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 			annotationProperty = (AnnotationProperty)eResolveProxy(oldAnnotationProperty);
 			if (annotationProperty != oldAnnotationProperty) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.ANNOTATION__ANNOTATION_PROPERTY, oldAnnotationProperty, annotationProperty));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.ANNOTATION_ASSERTION__ANNOTATION_PROPERTY, oldAnnotationProperty, annotationProperty));
 			}
 		}
 		return annotationProperty;
@@ -104,7 +153,7 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 		AnnotationProperty oldAnnotationProperty = annotationProperty;
 		annotationProperty = newAnnotationProperty;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.ANNOTATION__ANNOTATION_PROPERTY, oldAnnotationProperty, annotationProperty));
+			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.ANNOTATION_ASSERTION__ANNOTATION_PROPERTY, oldAnnotationProperty, annotationProperty));
 	}
 
 	/**
@@ -118,7 +167,7 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 			annotationValue = (AnnotationValue)eResolveProxy(oldAnnotationValue);
 			if (annotationValue != oldAnnotationValue) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.ANNOTATION__ANNOTATION_VALUE, oldAnnotationValue, annotationValue));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.ANNOTATION_ASSERTION__ANNOTATION_VALUE, oldAnnotationValue, annotationValue));
 			}
 		}
 		return annotationValue;
@@ -142,7 +191,7 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 		AnnotationValue oldAnnotationValue = annotationValue;
 		annotationValue = newAnnotationValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.ANNOTATION__ANNOTATION_VALUE, oldAnnotationValue, annotationValue));
+			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.ANNOTATION_ASSERTION__ANNOTATION_VALUE, oldAnnotationValue, annotationValue));
 	}
 
 	/**
@@ -153,10 +202,13 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OwlPackage.ANNOTATION__ANNOTATION_PROPERTY:
+			case OwlPackage.ANNOTATION_ASSERTION__ANNOTATION_SUBJECT:
+				if (resolve) return getAnnotationSubject();
+				return basicGetAnnotationSubject();
+			case OwlPackage.ANNOTATION_ASSERTION__ANNOTATION_PROPERTY:
 				if (resolve) return getAnnotationProperty();
 				return basicGetAnnotationProperty();
-			case OwlPackage.ANNOTATION__ANNOTATION_VALUE:
+			case OwlPackage.ANNOTATION_ASSERTION__ANNOTATION_VALUE:
 				if (resolve) return getAnnotationValue();
 				return basicGetAnnotationValue();
 		}
@@ -171,10 +223,13 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OwlPackage.ANNOTATION__ANNOTATION_PROPERTY:
+			case OwlPackage.ANNOTATION_ASSERTION__ANNOTATION_SUBJECT:
+				setAnnotationSubject((AnnotationSubject)newValue);
+				return;
+			case OwlPackage.ANNOTATION_ASSERTION__ANNOTATION_PROPERTY:
 				setAnnotationProperty((AnnotationProperty)newValue);
 				return;
-			case OwlPackage.ANNOTATION__ANNOTATION_VALUE:
+			case OwlPackage.ANNOTATION_ASSERTION__ANNOTATION_VALUE:
 				setAnnotationValue((AnnotationValue)newValue);
 				return;
 		}
@@ -189,10 +244,13 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OwlPackage.ANNOTATION__ANNOTATION_PROPERTY:
+			case OwlPackage.ANNOTATION_ASSERTION__ANNOTATION_SUBJECT:
+				setAnnotationSubject((AnnotationSubject)null);
+				return;
+			case OwlPackage.ANNOTATION_ASSERTION__ANNOTATION_PROPERTY:
 				setAnnotationProperty((AnnotationProperty)null);
 				return;
-			case OwlPackage.ANNOTATION__ANNOTATION_VALUE:
+			case OwlPackage.ANNOTATION_ASSERTION__ANNOTATION_VALUE:
 				setAnnotationValue((AnnotationValue)null);
 				return;
 		}
@@ -207,12 +265,14 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OwlPackage.ANNOTATION__ANNOTATION_PROPERTY:
+			case OwlPackage.ANNOTATION_ASSERTION__ANNOTATION_SUBJECT:
+				return annotationSubject != null;
+			case OwlPackage.ANNOTATION_ASSERTION__ANNOTATION_PROPERTY:
 				return annotationProperty != null;
-			case OwlPackage.ANNOTATION__ANNOTATION_VALUE:
+			case OwlPackage.ANNOTATION_ASSERTION__ANNOTATION_VALUE:
 				return annotationValue != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //AnnotationImpl
+} //AnnotationAssertionImpl

@@ -11,9 +11,12 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLAnnotationAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLAnnotationProperty;
+import org.semanticweb.owlapi.model.OWLAnnotationPropertyDomainAxiom;
+import org.semanticweb.owlapi.model.OWLAnnotationPropertyRangeAxiom;
 import org.semanticweb.owlapi.model.OWLAnonymousIndividual;
 import org.semanticweb.owlapi.model.OWLAsymmetricObjectPropertyAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
@@ -76,6 +79,7 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLReflexiveObjectPropertyAxiom;
 import org.semanticweb.owlapi.model.OWLSameIndividualAxiom;
+import org.semanticweb.owlapi.model.OWLSubAnnotationPropertyOfAxiom;
 import org.semanticweb.owlapi.model.OWLSubClassOfAxiom;
 import org.semanticweb.owlapi.model.OWLSubDataPropertyOfAxiom;
 import org.semanticweb.owlapi.model.OWLSubObjectPropertyOfAxiom;
@@ -83,16 +87,21 @@ import org.semanticweb.owlapi.model.OWLSymmetricObjectPropertyAxiom;
 import org.semanticweb.owlapi.model.OWLTransitiveObjectPropertyAxiom;
 
 import owl.Annotation;
+import owl.AnnotationAssertion;
 import owl.AnnotationProperty;
+import owl.AnnotationPropertyDomain;
+import owl.AnnotationPropertyRange;
+import owl.AnnotationSubject;
+import owl.AnnotationValue;
 import owl.AnonymousIndividual;
 import owl.AsymmetricObjectProperty;
 import owl.ClassAssertion;
 import owl.ClassExpression;
-import owl.Constant;
 import owl.DataAllValuesFrom;
 import owl.DataComplementOf;
 import owl.DataExactCardinality;
 import owl.DataHasValue;
+import owl.DataIntersectionOf;
 import owl.DataMaxCardinality;
 import owl.DataMinCardinality;
 import owl.DataOneOf;
@@ -103,6 +112,8 @@ import owl.DataPropertyExpression;
 import owl.DataPropertyRange;
 import owl.DataRange;
 import owl.DataSomeValuesFrom;
+import owl.DataTypeDefinition;
+import owl.DataUnionOf;
 import owl.Datatype;
 import owl.DatatypeRestriction;
 import owl.DifferentIndividuals;
@@ -113,21 +124,22 @@ import owl.DisjointUnion;
 import owl.EquivalentClasses;
 import owl.EquivalentDataProperties;
 import owl.EquivalentObjectProperties;
-import owl.FacetConstantPair;
+import owl.FacetLiteralPair;
 import owl.FunctionalDataProperty;
 import owl.FunctionalObjectProperty;
+import owl.HasKey;
 import owl.Individual;
 import owl.InverseFunctionalObjectProperty;
 import owl.InverseObjectProperties;
 import owl.IrreflexiveObjectProperty;
-import owl.KeyFor;
+import owl.Literal;
 import owl.NamedIndividual;
 import owl.NegativeDataPropertyAssertion;
 import owl.NegativeObjectPropertyAssertion;
 import owl.ObjectAllValuesFrom;
 import owl.ObjectComplementOf;
 import owl.ObjectExactCardinality;
-import owl.ObjectExistsSelf;
+import owl.ObjectHasSelf;
 import owl.ObjectHasValue;
 import owl.ObjectIntersectionOf;
 import owl.ObjectMaxCardinality;
@@ -144,11 +156,14 @@ import owl.OwlFactory;
 import owl.OwlPackage;
 import owl.ReflexiveObjectProperty;
 import owl.SameIndividual;
+import owl.StringLiteral;
+import owl.SubAnnotationPropertyOf;
 import owl.SubClassOf;
 import owl.SubDataPropertyOf;
 import owl.SubObjectPropertyOf;
 import owl.SymmetricObjectProperty;
 import owl.TransitiveObjectProperty;
+import owl.TypedLiteral;
 
 public class OwlEcoreWriter implements OWLObjectVisitor {	
     private OWLOntologyManager ontologyManager;
@@ -163,6 +178,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
 	private HashMap<String, DataProperty> dataPropertyEntities;
 	private HashMap<String, Datatype> datatypeEntities;
 	private HashMap<String, AnnotationProperty> annotationPropertyEntities;
+	private HashMap<String, owl.URI> URIs;
 	private EObject lastVisitedObject;
 	
 	/**
@@ -185,6 +201,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     	dataPropertyEntities = new HashMap<String, DataProperty>();
     	datatypeEntities = new HashMap<String, Datatype>();
     	annotationPropertyEntities = new HashMap<String, AnnotationProperty>();
+    	URIs = new HashMap<String, owl.URI>();
     	
     	File ontologyFile = new File(document);
     	try {
@@ -208,16 +225,17 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
 		}
     }
     
-    /**
-     * Helper function that creates and stores a URI declaration 
-     * @param uri
-     * @return
-     */
-    protected owl.URI createURIHelper(String uri) {
-    	owl.URI newUri = ecoreOntologyFactory.createURI();
-    	newUri.setValue(uri);
-    	ecoreOntologyInstance.getContents().add(newUri);
-    	return newUri;
+    @Override
+    public void visit(IRI iri) {
+    	if (URIs.containsKey(iri.getIRIString())) {
+    		lastVisitedObject = URIs.get(iri.getIRIString());
+    	} else {
+    		owl.URI newUri = ecoreOntologyFactory.createURI();
+    		newUri.setValue(iri.getIRIString());
+    		ecoreOntologyInstance.getContents().add(newUri);
+    		URIs.put(iri.getIRIString(), newUri);
+    		lastVisitedObject = newUri;
+    	}
     }
     
     @Override
@@ -244,7 +262,8 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     		lastVisitedObject = classEntities.get(entity.getIRI().getIRIString());
     	} else {
 	        owl.Class newClass = ecoreOntologyFactory.createClass();
-	        newClass.setEntityURI(createURIHelper(entity.getIRI().getIRIString()));
+	        entity.getIRI().accept(this);
+	        newClass.setEntityURI((owl.URI) lastVisitedObject);
 	        ecoreOntologyInstance.getContents().add(newClass);
 	        classEntities.put(entity.getIRI().getIRIString(), newClass);
 	        lastVisitedObject = newClass;
@@ -257,7 +276,8 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     		lastVisitedObject = datatypeEntities.get(entity.getIRI().getIRIString());
     	} else {
     		Datatype newDatatype = ecoreOntologyFactory.createDatatype();
-    		newDatatype.setEntityURI(createURIHelper(entity.getIRI().getIRIString()));
+    		entity.getIRI().accept(this);
+    		newDatatype.setEntityURI((owl.URI) lastVisitedObject);
     		ecoreOntologyInstance.getContents().add(newDatatype);
     		datatypeEntities.put(entity.getIRI().getIRIString(), newDatatype);
     		lastVisitedObject = newDatatype;
@@ -270,7 +290,8 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     		lastVisitedObject = objectPropertyEntities.get(entity.getIRI().getIRIString());
     	} else {
     		ObjectProperty newObjectProperty = ecoreOntologyFactory.createObjectProperty();
-    		newObjectProperty.setEntityURI(createURIHelper(entity.getIRI().getIRIString()));
+    		entity.getIRI().accept(this);
+    		newObjectProperty.setEntityURI((owl.URI) lastVisitedObject);
     		ecoreOntologyInstance.getContents().add(newObjectProperty);
     		objectPropertyEntities.put(entity.getIRI().getIRIString(), newObjectProperty);
     		lastVisitedObject = newObjectProperty;
@@ -283,7 +304,8 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     		lastVisitedObject = dataPropertyEntities.get(entity.getIRI().getIRIString());
     	} else {
     		DataProperty newDataProperty = ecoreOntologyFactory.createDataProperty();
-    		newDataProperty.setEntityURI(createURIHelper(entity.getIRI().getIRIString()));
+    		entity.getIRI().accept(this);
+    		newDataProperty.setEntityURI((owl.URI) lastVisitedObject);
     		ecoreOntologyInstance.getContents().add(newDataProperty);
     		dataPropertyEntities.put(entity.getIRI().getIRIString(), newDataProperty);
     		lastVisitedObject = newDataProperty;
@@ -297,7 +319,8 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
         	lastVisitedObject = annotationPropertyEntities.get(entity.getIRI().getIRIString());
         } else {
         	AnnotationProperty newAnnotationProperty = ecoreOntologyFactory.createAnnotationProperty();
-        	newAnnotationProperty.setEntityURI(createURIHelper(entity.getIRI().getIRIString()));
+        	entity.getIRI().accept(this);
+        	newAnnotationProperty.setEntityURI((owl.URI) lastVisitedObject);
         	ecoreOntologyInstance.getContents().add(newAnnotationProperty);
         	annotationPropertyEntities.put(entity.getIRI().getIRIString(), newAnnotationProperty);
         	lastVisitedObject = newAnnotationProperty;
@@ -310,7 +333,8 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
          	lastVisitedObject = namedIndividualEntities.get(entity.getIRI().getIRIString());
          } else {
         	NamedIndividual newNamedIndividual = ecoreOntologyFactory.createNamedIndividual();
-        	newNamedIndividual.setEntityURI(createURIHelper(entity.getIRI().getIRIString()));
+        	entity.getIRI().accept(this);
+        	newNamedIndividual.setEntityURI((owl.URI) lastVisitedObject);
          	ecoreOntologyInstance.getContents().add(newNamedIndividual);
          	namedIndividualEntities.put(entity.getIRI().getIRIString(), newNamedIndividual);
          	lastVisitedObject = newNamedIndividual;
@@ -578,7 +602,11 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     
     @Override
     public void visit(OWLDatatypeDefinitionAxiom axiom) {
-    	System.out.println("[Writer] Not available in metamodel (data type definition)");
+    	DataTypeDefinition newDataTypeDefinition = ecoreOntologyFactory.createDataTypeDefinition();
+    	axiom.getDatatype().accept(this);
+    	newDataTypeDefinition.setDataType((Datatype) lastVisitedObject);
+    	axiom.getDataRange().accept(this);
+    	newDataTypeDefinition.setDataRange((DataRange) lastVisitedObject);
     }
     
     /*
@@ -588,18 +616,18 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     
     @Override
     public void visit(OWLHasKeyAxiom axiom) {
-    	KeyFor newKeyFor = ecoreOntologyFactory.createKeyFor();
+    	HasKey newHasKey = ecoreOntologyFactory.createHasKey();
     	axiom.getClassExpression().accept(this);
-    	newKeyFor.setClassExpression((ClassExpression) lastVisitedObject);
+    	newHasKey.setClassExpression((ClassExpression) lastVisitedObject);
     	axiom.objectPropertyExpressions().forEach(ax -> {
     		ax.accept(this);
-    		newKeyFor.getObjectPropertyExpressions().add((ObjectPropertyExpression) lastVisitedObject);
+    		newHasKey.getObjectPropertyExpressions().add((ObjectPropertyExpression) lastVisitedObject);
     	});
     	axiom.dataPropertyExpressions().forEach(ax -> {
     		ax.accept(this);
-    		newKeyFor.getDataPropertyExpressions().add((DataPropertyExpression) lastVisitedObject);
+    		newHasKey.getDataPropertyExpressions().add((DataPropertyExpression) lastVisitedObject);
     	});
-    	ecoreOntologyInstance.getContents().add(newKeyFor);
+    	ecoreOntologyInstance.getContents().add(newHasKey);
     }
     
     /*
@@ -614,7 +642,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     	SameIndividual newSameIndividual = ecoreOntologyFactory.createSameIndividual();
     	axiom.individuals().forEach(ax -> {
     		ax.accept(this);
-    		newSameIndividual.getSameIndividuals().add((NamedIndividual) lastVisitedObject);
+    		newSameIndividual.getIndividuals().add((Individual) lastVisitedObject);
     	});
     	ecoreOntologyInstance.getContents().add(newSameIndividual);
     }
@@ -624,7 +652,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     	DifferentIndividuals newDifferentIndividuals = ecoreOntologyFactory.createDifferentIndividuals();
     	axiom.individuals().forEach(ax -> {
     		ax.accept(this);
-    		newDifferentIndividuals.getDifferentIndividuals().add((NamedIndividual) lastVisitedObject);
+    		newDifferentIndividuals.getIndividuals().add((Individual) lastVisitedObject);
     	});
     	ecoreOntologyInstance.getContents().add(newDifferentIndividuals);
     }
@@ -671,7 +699,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     	axiom.getSubject().accept(this);
     	newDataPropertyAssertion.setSourceIndividual((Individual) lastVisitedObject);
     	axiom.getObject().accept(this);
-    	newDataPropertyAssertion.setTargetValue((Constant) lastVisitedObject);
+    	newDataPropertyAssertion.setTargetValue((Literal) lastVisitedObject);
     	ecoreOntologyInstance.getContents().add(newDataPropertyAssertion);
     }
     
@@ -683,7 +711,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     	axiom.getSubject().accept(this);
     	newNegativeDataPropertyAssertion.setSourceIndividual((Individual) lastVisitedObject);
     	axiom.getObject().accept(this);
-    	newNegativeDataPropertyAssertion.setTargetValue((Constant) lastVisitedObject);
+    	newNegativeDataPropertyAssertion.setTargetValue((Literal) lastVisitedObject);
     	ecoreOntologyInstance.getContents().add(newNegativeDataPropertyAssertion);
     }
     
@@ -697,8 +725,8 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     	Annotation newAnnotation = ecoreOntologyFactory.createAnnotation();
     	an.getProperty().accept(this);
     	newAnnotation.setAnnotationProperty((AnnotationProperty) lastVisitedObject);
-    	//an.getValue().accept(this);
-    	System.out.println("[Writer] not available in metamodel (annotation value)");
+    	an.getValue().accept(this);
+    	newAnnotation.setAnnotationValue((AnnotationValue) lastVisitedObject);
     	ecoreOntologyInstance.getContents().add(newAnnotation);
     	lastVisitedObject = newAnnotation;
     }
@@ -706,11 +734,48 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     /*
      * ANNOTATION AXIOMS [W3OWL:SECTION10.2]
      * https://www.w3.org/TR/owl2-syntax/#Annotations
+     * AnnotationAxiom := AnnotationAssertion | SubAnnotationPropertyOf | AnnotationPropertyDomain | AnnotationPropertyRange
      */
     
     @Override
     public void visit(OWLAnnotationAssertionAxiom axiom) {
-    	System.out.println("[Writer] not available in metamodel (annotation assertion)");
+    	AnnotationAssertion newAnnotationAssertion = ecoreOntologyFactory.createAnnotationAssertion();
+    	axiom.getProperty().accept(this);
+    	newAnnotationAssertion.setAnnotationProperty((AnnotationProperty) lastVisitedObject);
+    	axiom.getSubject().accept(this);
+    	newAnnotationAssertion.setAnnotationSubject((AnnotationSubject) lastVisitedObject);
+    	axiom.getValue().accept(this);
+    	newAnnotationAssertion.setAnnotationValue((AnnotationValue) lastVisitedObject);
+    	ecoreOntologyInstance.getContents().add(newAnnotationAssertion);
+    }
+    
+    @Override
+    public void visit(OWLSubAnnotationPropertyOfAxiom axiom) {
+    	SubAnnotationPropertyOf newSubAnnotationPropertyOf = ecoreOntologyFactory.createSubAnnotationPropertyOf();
+    	axiom.getSubProperty().accept(this);
+    	newSubAnnotationPropertyOf.setSubAnnotationProperty((AnnotationProperty) lastVisitedObject);
+    	axiom.getSuperProperty().accept(this);
+    	newSubAnnotationPropertyOf.setSuperAnnotationProperty((AnnotationProperty) lastVisitedObject);
+    	ecoreOntologyInstance.getContents().add(newSubAnnotationPropertyOf);
+    }
+    
+    @Override
+    public void visit(OWLAnnotationPropertyDomainAxiom axiom) {
+    	AnnotationPropertyDomain newAnnotationPropertyDomain = ecoreOntologyFactory.createAnnotationPropertyDomain();
+    	axiom.getDomain().accept(this);
+    	newAnnotationPropertyDomain.setDomain((owl.URI) lastVisitedObject);
+    	axiom.getProperty().accept(this);
+    	newAnnotationPropertyDomain.setAnnotationProperty((AnnotationProperty) lastVisitedObject);
+    	ecoreOntologyInstance.getContents().add(newAnnotationPropertyDomain);
+    }
+    
+    @Override
+    public void visit(OWLAnnotationPropertyRangeAxiom axiom) {
+    	AnnotationPropertyRange newAnnotationPropertyRange = ecoreOntologyFactory.createAnnotationPropertyRange();
+    	axiom.getRange().accept(this);
+    	newAnnotationPropertyRange.setRange((owl.URI) lastVisitedObject);
+    	axiom.getProperty().accept(this);
+    	ecoreOntologyInstance.getContents().add(newAnnotationPropertyRange);
     }
     
 	/*
@@ -801,7 +866,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
 	
 	@Override 
 	public void visit(OWLObjectHasSelf ce) {
-		ObjectExistsSelf newObjectHasSelf = ecoreOntologyFactory.createObjectExistsSelf();
+		ObjectHasSelf newObjectHasSelf = ecoreOntologyFactory.createObjectHasSelf();
 		ce.getProperty().accept(this);
 		newObjectHasSelf.setObjectPropertyExpression((ObjectPropertyExpression) lastVisitedObject);
 		ecoreOntologyInstance.getContents().add(newObjectHasSelf);
@@ -878,7 +943,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
 		ce.getProperty().accept(this);
 		newDataHasvalue.setDataPropertyExpression((DataPropertyExpression) lastVisitedObject);
 		ce.getFiller().accept(this);
-		newDataHasvalue.setConstant((Constant) lastVisitedObject);
+		newDataHasvalue.setLiteral((Literal) lastVisitedObject);
 		ecoreOntologyInstance.getContents().add(newDataHasvalue);
 		lastVisitedObject = newDataHasvalue;
 	}
@@ -934,12 +999,24 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
 	
 	@Override
 	public void visit(OWLDataIntersectionOf dr) {
-		System.out.println("[Writer] Not available in metamodel (data intersection of)");
+		DataIntersectionOf newDataIntersectionOf = ecoreOntologyFactory.createDataIntersectionOf();
+		dr.operands().forEach(dataRange -> {
+			dataRange.accept(this);
+			newDataIntersectionOf.getDataRanges().add((DataRange) lastVisitedObject);
+		});
+		ecoreOntologyInstance.getContents().add(newDataIntersectionOf);
+		lastVisitedObject = newDataIntersectionOf;
 	}
 	
 	@Override 
 	public void visit(OWLDataUnionOf dr) {
-		System.out.println("[Writer] Not available in metamodel (data union of)");
+		DataUnionOf newDataUnionOf = ecoreOntologyFactory.createDataUnionOf();
+		dr.operands().forEach(dataRange -> {
+			dataRange.accept(this);
+			newDataUnionOf.getDataRanges().add((DataRange) lastVisitedObject);
+		});
+		ecoreOntologyInstance.getContents().add(newDataUnionOf);
+		lastVisitedObject = newDataUnionOf;
 	}
 	
 	@Override 
@@ -956,7 +1033,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
 		DataOneOf newDataOneOf = ecoreOntologyFactory.createDataOneOf();
 		dr.values().forEach(ax -> {
 			ax.accept(this);
-			newDataOneOf.getConstants().add((Constant) lastVisitedObject);
+			newDataOneOf.getLiterals().add((Literal) lastVisitedObject);
 		});
 		ecoreOntologyInstance.getContents().add(newDataOneOf);
 		lastVisitedObject = newDataOneOf;
@@ -969,7 +1046,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
 		newDatatypeRestriction.setDatatype((Datatype) lastVisitedObject);
 		dr.facetRestrictions().forEach(ax -> {
 			ax.accept(this);
-			newDatatypeRestriction.getRestrictions().add((FacetConstantPair) lastVisitedObject);
+			newDatatypeRestriction.getRestrictions().add((FacetLiteralPair) lastVisitedObject);
 		});
 		ecoreOntologyInstance.getContents().add(newDatatypeRestriction);
 		lastVisitedObject = newDatatypeRestriction;
@@ -978,13 +1055,13 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
 	// Data Type restrictions are implemented slightly different in the OWL API from the structural specification, need to visit the restriction as a pair of [Restriction, Literal]
 	@Override
 	public void visit(OWLFacetRestriction fr) {
-		FacetConstantPair newFacetConstantPair = ecoreOntologyFactory.createFacetConstantPair();
-		// FACET sets a facet using a string instead of IRI
-		newFacetConstantPair.setFacet(fr.getFacet().getIRI().getIRIString());
+		FacetLiteralPair newFacetLiteralPair = ecoreOntologyFactory.createFacetLiteralPair();
+		fr.getFacet().getIRI().accept(this);
+		newFacetLiteralPair.setConstrainingFacet((owl.URI) lastVisitedObject);
 		fr.getFacetValue().accept(this);
-		newFacetConstantPair.setConstant((Constant) lastVisitedObject);
-		ecoreOntologyInstance.getContents().add(newFacetConstantPair);
-		lastVisitedObject = newFacetConstantPair;
+		newFacetLiteralPair.setRestrictionValue((Literal) lastVisitedObject);
+		ecoreOntologyInstance.getContents().add(newFacetLiteralPair);
+		lastVisitedObject = newFacetLiteralPair;
 	}
 	
     /*
@@ -996,11 +1073,20 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
 	
 	@Override 
 	public void visit(OWLLiteral lit) {
-		Constant newConstant = ecoreOntologyFactory.createConstant();
-		lit.getDatatype().accept(this);
-		newConstant.setDatatype((Datatype) lastVisitedObject);
-		newConstant.setLexicalValue(lit.getLiteral());
-		ecoreOntologyInstance.getContents().add(newConstant);
-		lastVisitedObject = newConstant;
+		Literal newLiteral;
+		if (lit.hasLang()) {
+			StringLiteral newStringLiteral = ecoreOntologyFactory.createStringLiteral();
+			newStringLiteral.setQuotedString(lit.getLiteral());
+			newStringLiteral.setLanguageTag(lit.getLang());
+			newLiteral = newStringLiteral;
+		} else {
+			TypedLiteral newTypedLiteral = ecoreOntologyFactory.createTypedLiteral();
+			newTypedLiteral.setLexicalValue(lit.getLiteral());
+			lit.getDatatype().accept(this);
+			newTypedLiteral.setDatatype((Datatype) lastVisitedObject);
+			newLiteral = newTypedLiteral;
+		}
+		ecoreOntologyInstance.getContents().add(newLiteral);
+		lastVisitedObject = newLiteral;
 	}
 }

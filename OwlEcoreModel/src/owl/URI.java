@@ -2,7 +2,6 @@
  */
 package owl;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface URI extends EObject {
+public interface URI extends AnnotationSubject, AnnotationValue {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -32,7 +31,7 @@ public interface URI extends EObject {
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(String)
 	 * @see owl.OwlPackage#getURI_Value()
-	 * @model required="true" ordered="false"
+	 * @model
 	 * @generated
 	 */
 	String getValue();

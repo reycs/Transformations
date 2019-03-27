@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import owl.Datatype;
 import owl.DatatypeRestriction;
-import owl.FacetConstantPair;
+import owl.FacetLiteralPair;
 import owl.OwlPackage;
 
 /**
@@ -53,7 +53,7 @@ public class DatatypeRestrictionImpl extends DataRangeImpl implements DatatypeRe
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<FacetConstantPair> restrictions;
+	protected EList<FacetLiteralPair> restrictions;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -117,9 +117,9 @@ public class DatatypeRestrictionImpl extends DataRangeImpl implements DatatypeRe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<FacetConstantPair> getRestrictions() {
+	public EList<FacetLiteralPair> getRestrictions() {
 		if (restrictions == null) {
-			restrictions = new EObjectResolvingEList<FacetConstantPair>(FacetConstantPair.class, this, OwlPackage.DATATYPE_RESTRICTION__RESTRICTIONS);
+			restrictions = new EObjectResolvingEList<FacetLiteralPair>(FacetLiteralPair.class, this, OwlPackage.DATATYPE_RESTRICTION__RESTRICTIONS);
 		}
 		return restrictions;
 	}
@@ -155,7 +155,7 @@ public class DatatypeRestrictionImpl extends DataRangeImpl implements DatatypeRe
 				return;
 			case OwlPackage.DATATYPE_RESTRICTION__RESTRICTIONS:
 				getRestrictions().clear();
-				getRestrictions().addAll((Collection<? extends FacetConstantPair>)newValue);
+				getRestrictions().addAll((Collection<? extends FacetLiteralPair>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

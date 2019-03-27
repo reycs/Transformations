@@ -11,25 +11,26 @@ import org.eclipse.emf.ecore.EValidator;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import owl.AbbreviatedURI;
 import owl.Annotation;
-import owl.AnnotationByAnonymousIndividual;
-import owl.AnnotationByConstant;
-import owl.AnnotationByEntity;
+import owl.AnnotationAssertion;
+import owl.AnnotationAxiom;
 import owl.AnnotationProperty;
+import owl.AnnotationPropertyDomain;
+import owl.AnnotationPropertyRange;
+import owl.AnnotationSubject;
+import owl.AnnotationValue;
 import owl.AnonymousIndividual;
-import owl.AnonymousIndividualAnnotation;
 import owl.Assertion;
 import owl.AsymmetricObjectProperty;
 import owl.Axiom;
 import owl.ClassAssertion;
 import owl.ClassAxiom;
 import owl.ClassExpression;
-import owl.Constant;
 import owl.DataAllValuesFrom;
 import owl.DataComplementOf;
 import owl.DataExactCardinality;
 import owl.DataHasValue;
+import owl.DataIntersectionOf;
 import owl.DataMaxCardinality;
 import owl.DataMinCardinality;
 import owl.DataOneOf;
@@ -41,6 +42,8 @@ import owl.DataPropertyExpression;
 import owl.DataPropertyRange;
 import owl.DataRange;
 import owl.DataSomeValuesFrom;
+import owl.DataTypeDefinition;
+import owl.DataUnionOf;
 import owl.Datatype;
 import owl.DatatypeRestriction;
 import owl.Declaration;
@@ -50,20 +53,19 @@ import owl.DisjointDataProperties;
 import owl.DisjointObjectProperties;
 import owl.DisjointUnion;
 import owl.Entity;
-import owl.EntityAnnotation;
 import owl.EquivalentClasses;
 import owl.EquivalentDataProperties;
 import owl.EquivalentObjectProperties;
-import owl.FacetConstantPair;
-import owl.FullURI;
+import owl.FacetLiteralPair;
 import owl.FunctionalDataProperty;
 import owl.FunctionalObjectProperty;
+import owl.HasKey;
 import owl.Individual;
 import owl.InverseFunctionalObjectProperty;
 import owl.InverseObjectProperties;
 import owl.InverseObjectProperty;
 import owl.IrreflexiveObjectProperty;
-import owl.KeyFor;
+import owl.Literal;
 import owl.NamedIndividual;
 import owl.NegativeDataPropertyAssertion;
 import owl.NegativeObjectPropertyAssertion;
@@ -71,7 +73,7 @@ import owl.ObjectAllValuesFrom;
 import owl.ObjectAndDataPropertyAxiom;
 import owl.ObjectComplementOf;
 import owl.ObjectExactCardinality;
-import owl.ObjectExistsSelf;
+import owl.ObjectHasSelf;
 import owl.ObjectHasValue;
 import owl.ObjectIntersectionOf;
 import owl.ObjectMaxCardinality;
@@ -90,12 +92,14 @@ import owl.OwlFactory;
 import owl.OwlPackage;
 import owl.ReflexiveObjectProperty;
 import owl.SameIndividual;
+import owl.StringLiteral;
+import owl.SubAnnotationPropertyOf;
 import owl.SubClassOf;
 import owl.SubDataPropertyOf;
-import owl.SubObjectProperty;
 import owl.SubObjectPropertyOf;
 import owl.SymmetricObjectProperty;
 import owl.TransitiveObjectProperty;
+import owl.TypedLiteral;
 
 import owl.util.OwlValidator;
 
@@ -153,7 +157,7 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass constantEClass = null;
+	private EClass literalEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -293,7 +297,7 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass objectExistsSelfEClass = null;
+	private EClass objectHasSelfEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -349,7 +353,7 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass facetConstantPairEClass = null;
+	private EClass facetLiteralPairEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -608,13 +612,6 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass subObjectPropertyEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass transitiveObjectPropertyEClass = null;
 
 	/**
@@ -622,49 +619,7 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass entityAnnotationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass fullURIEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass abbreviatedURIEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass inverseObjectPropertiesEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass annotationByConstantEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass annotationByEntityEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass annotationByAnonymousIndividualEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -692,14 +647,91 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass keyForEClass = null;
+	private EClass hasKeyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass anonymousIndividualAnnotationEClass = null;
+	private EClass typedLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stringLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dataIntersectionOfEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dataUnionOfEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dataTypeDefinitionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass annotationAxiomEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass subAnnotationPropertyOfEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass annotationPropertyDomainEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass annotationPropertyRangeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass annotationAssertionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass annotationSubjectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass annotationValueEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -821,6 +853,15 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getAnnotation_AnnotationValue() {
+		return (EReference)annotationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAnnotationProperty() {
 		return annotationPropertyEClass;
 	}
@@ -866,26 +907,8 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getConstant() {
-		return constantEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getConstant_LexicalValue() {
-		return (EAttribute)constantEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getConstant_Datatype() {
-		return (EReference)constantEClass.getEStructuralFeatures().get(1);
+	public EClass getLiteral() {
+		return literalEClass;
 	}
 
 	/**
@@ -1154,8 +1177,8 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getObjectExistsSelf() {
-		return objectExistsSelfEClass;
+	public EClass getObjectHasSelf() {
+		return objectHasSelfEClass;
 	}
 
 	/**
@@ -1163,8 +1186,8 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getObjectExistsSelf_ObjectPropertyExpression() {
-		return (EReference)objectExistsSelfEClass.getEStructuralFeatures().get(0);
+	public EReference getObjectHasSelf_ObjectPropertyExpression() {
+		return (EReference)objectHasSelfEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1334,7 +1357,7 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataOneOf_Constants() {
+	public EReference getDataOneOf_Literals() {
 		return (EReference)dataOneOfEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1370,8 +1393,8 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getFacetConstantPair() {
-		return facetConstantPairEClass;
+	public EClass getFacetLiteralPair() {
+		return facetLiteralPairEClass;
 	}
 
 	/**
@@ -1379,8 +1402,8 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFacetConstantPair_Constant() {
-		return (EReference)facetConstantPairEClass.getEStructuralFeatures().get(0);
+	public EReference getFacetLiteralPair_RestrictionValue() {
+		return (EReference)facetLiteralPairEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1388,8 +1411,8 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getFacetConstantPair_Facet() {
-		return (EAttribute)facetConstantPairEClass.getEStructuralFeatures().get(1);
+	public EReference getFacetLiteralPair_ConstrainingFacet() {
+		return (EReference)facetLiteralPairEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1433,7 +1456,7 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataHasValue_Constant() {
+	public EReference getDataHasValue_Literal() {
 		return (EReference)dataHasValueEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1694,7 +1717,7 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDifferentIndividuals_DifferentIndividuals() {
+	public EReference getDifferentIndividuals_Individuals() {
 		return (EReference)differentIndividualsEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -2063,7 +2086,7 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSameIndividual_SameIndividuals() {
+	public EReference getSameIndividual_Individuals() {
 		return (EReference)sameIndividualEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -2252,7 +2275,7 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getClassAssertion_Individual() {
+	public EReference getClassAssertion_ClassExpression() {
 		return (EReference)classAssertionEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -2261,7 +2284,7 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getClassAssertion_ClassExpression() {
+	public EReference getClassAssertion_Individual() {
 		return (EReference)classAssertionEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -2378,15 +2401,6 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSubObjectProperty() {
-		return subObjectPropertyEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getTransitiveObjectProperty() {
 		return transitiveObjectPropertyEClass;
 	}
@@ -2405,69 +2419,6 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getEntityAnnotation() {
-		return entityAnnotationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getEntityAnnotation_Entity() {
-		return (EReference)entityAnnotationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getEntityAnnotation_EntityAnnotations() {
-		return (EReference)entityAnnotationEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getFullURI() {
-		return fullURIEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getFullURI_Iri() {
-		return (EAttribute)fullURIEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAbbreviatedURI() {
-		return abbreviatedURIEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAbbreviatedURI_LocalName() {
-		return (EAttribute)abbreviatedURIEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getInverseObjectProperties() {
 		return inverseObjectPropertiesEClass;
 	}
@@ -2479,60 +2430,6 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 */
 	public EReference getInverseObjectProperties_InverseObjectProperties() {
 		return (EReference)inverseObjectPropertiesEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAnnotationByConstant() {
-		return annotationByConstantEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotationByConstant_AnnotationValue() {
-		return (EReference)annotationByConstantEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAnnotationByEntity() {
-		return annotationByEntityEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotationByEntity_AnnotationValue() {
-		return (EReference)annotationByEntityEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAnnotationByAnonymousIndividual() {
-		return annotationByAnonymousIndividualEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotationByAnonymousIndividual_AnnotationValue() {
-		return (EReference)annotationByAnonymousIndividualEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2585,8 +2482,8 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getKeyFor() {
-		return keyForEClass;
+	public EClass getHasKey() {
+		return hasKeyEClass;
 	}
 
 	/**
@@ -2594,8 +2491,8 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getKeyFor_ClassExpression() {
-		return (EReference)keyForEClass.getEStructuralFeatures().get(0);
+	public EReference getHasKey_ClassExpression() {
+		return (EReference)hasKeyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2603,8 +2500,8 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getKeyFor_DataPropertyExpressions() {
-		return (EReference)keyForEClass.getEStructuralFeatures().get(1);
+	public EReference getHasKey_DataPropertyExpressions() {
+		return (EReference)hasKeyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2612,8 +2509,8 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getKeyFor_ObjectPropertyExpressions() {
-		return (EReference)keyForEClass.getEStructuralFeatures().get(2);
+	public EReference getHasKey_ObjectPropertyExpressions() {
+		return (EReference)hasKeyEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2621,8 +2518,8 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getAnonymousIndividualAnnotation() {
-		return anonymousIndividualAnnotationEClass;
+	public EClass getTypedLiteral() {
+		return typedLiteralEClass;
 	}
 
 	/**
@@ -2630,8 +2527,8 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAnonymousIndividualAnnotation_AnonymousIndividual() {
-		return (EReference)anonymousIndividualAnnotationEClass.getEStructuralFeatures().get(0);
+	public EAttribute getTypedLiteral_LexicalValue() {
+		return (EAttribute)typedLiteralEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2639,8 +2536,242 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAnonymousIndividualAnnotation_AnonymousIndiviudalAnnotations() {
-		return (EReference)anonymousIndividualAnnotationEClass.getEStructuralFeatures().get(1);
+	public EReference getTypedLiteral_Datatype() {
+		return (EReference)typedLiteralEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStringLiteral() {
+		return stringLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getStringLiteral_QuotedString() {
+		return (EAttribute)stringLiteralEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getStringLiteral_LanguageTag() {
+		return (EAttribute)stringLiteralEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDataIntersectionOf() {
+		return dataIntersectionOfEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataIntersectionOf_DataRanges() {
+		return (EReference)dataIntersectionOfEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDataUnionOf() {
+		return dataUnionOfEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataUnionOf_DataRanges() {
+		return (EReference)dataUnionOfEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDataTypeDefinition() {
+		return dataTypeDefinitionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataTypeDefinition_DataRange() {
+		return (EReference)dataTypeDefinitionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataTypeDefinition_DataType() {
+		return (EReference)dataTypeDefinitionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAnnotationAxiom() {
+		return annotationAxiomEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSubAnnotationPropertyOf() {
+		return subAnnotationPropertyOfEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSubAnnotationPropertyOf_SubAnnotationProperty() {
+		return (EReference)subAnnotationPropertyOfEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSubAnnotationPropertyOf_SuperAnnotationProperty() {
+		return (EReference)subAnnotationPropertyOfEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAnnotationPropertyDomain() {
+		return annotationPropertyDomainEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAnnotationPropertyDomain_AnnotationProperty() {
+		return (EReference)annotationPropertyDomainEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAnnotationPropertyDomain_Domain() {
+		return (EReference)annotationPropertyDomainEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAnnotationPropertyRange() {
+		return annotationPropertyRangeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAnnotationPropertyRange_AnnotationProperty() {
+		return (EReference)annotationPropertyRangeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAnnotationPropertyRange_Range() {
+		return (EReference)annotationPropertyRangeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAnnotationAssertion() {
+		return annotationAssertionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAnnotationAssertion_AnnotationSubject() {
+		return (EReference)annotationAssertionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAnnotationAssertion_AnnotationProperty() {
+		return (EReference)annotationAssertionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAnnotationAssertion_AnnotationValue() {
+		return (EReference)annotationAssertionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAnnotationSubject() {
+		return annotationSubjectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAnnotationValue() {
+		return annotationValueEClass;
 	}
 
 	/**
@@ -2678,6 +2809,7 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 
 		annotationEClass = createEClass(ANNOTATION);
 		createEReference(annotationEClass, ANNOTATION__ANNOTATION_PROPERTY);
+		createEReference(annotationEClass, ANNOTATION__ANNOTATION_VALUE);
 
 		annotationPropertyEClass = createEClass(ANNOTATION_PROPERTY);
 
@@ -2687,9 +2819,7 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 		uriEClass = createEClass(URI);
 		createEAttribute(uriEClass, URI__VALUE);
 
-		constantEClass = createEClass(CONSTANT);
-		createEAttribute(constantEClass, CONSTANT__LEXICAL_VALUE);
-		createEReference(constantEClass, CONSTANT__DATATYPE);
+		literalEClass = createEClass(LITERAL);
 
 		datatypeEClass = createEClass(DATATYPE);
 
@@ -2739,8 +2869,8 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 		createEReference(objectAllValuesFromEClass, OBJECT_ALL_VALUES_FROM__CLASS_EXPRESSION);
 		createEReference(objectAllValuesFromEClass, OBJECT_ALL_VALUES_FROM__OBJECT_PROPERTY_EXPRESSION);
 
-		objectExistsSelfEClass = createEClass(OBJECT_EXISTS_SELF);
-		createEReference(objectExistsSelfEClass, OBJECT_EXISTS_SELF__OBJECT_PROPERTY_EXPRESSION);
+		objectHasSelfEClass = createEClass(OBJECT_HAS_SELF);
+		createEReference(objectHasSelfEClass, OBJECT_HAS_SELF__OBJECT_PROPERTY_EXPRESSION);
 
 		objectHasValueEClass = createEClass(OBJECT_HAS_VALUE);
 		createEReference(objectHasValueEClass, OBJECT_HAS_VALUE__OBJECT_PROPERTY_EXPRESSION);
@@ -2765,22 +2895,22 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 		dataPropertyEClass = createEClass(DATA_PROPERTY);
 
 		dataOneOfEClass = createEClass(DATA_ONE_OF);
-		createEReference(dataOneOfEClass, DATA_ONE_OF__CONSTANTS);
+		createEReference(dataOneOfEClass, DATA_ONE_OF__LITERALS);
 
 		datatypeRestrictionEClass = createEClass(DATATYPE_RESTRICTION);
 		createEReference(datatypeRestrictionEClass, DATATYPE_RESTRICTION__DATATYPE);
 		createEReference(datatypeRestrictionEClass, DATATYPE_RESTRICTION__RESTRICTIONS);
 
-		facetConstantPairEClass = createEClass(FACET_CONSTANT_PAIR);
-		createEReference(facetConstantPairEClass, FACET_CONSTANT_PAIR__CONSTANT);
-		createEAttribute(facetConstantPairEClass, FACET_CONSTANT_PAIR__FACET);
+		facetLiteralPairEClass = createEClass(FACET_LITERAL_PAIR);
+		createEReference(facetLiteralPairEClass, FACET_LITERAL_PAIR__RESTRICTION_VALUE);
+		createEReference(facetLiteralPairEClass, FACET_LITERAL_PAIR__CONSTRAINING_FACET);
 
 		dataAllValuesFromEClass = createEClass(DATA_ALL_VALUES_FROM);
 		createEReference(dataAllValuesFromEClass, DATA_ALL_VALUES_FROM__DATA_RANGE);
 		createEReference(dataAllValuesFromEClass, DATA_ALL_VALUES_FROM__DATA_PROPERTY_EXPRESSIONS);
 
 		dataHasValueEClass = createEClass(DATA_HAS_VALUE);
-		createEReference(dataHasValueEClass, DATA_HAS_VALUE__CONSTANT);
+		createEReference(dataHasValueEClass, DATA_HAS_VALUE__LITERAL);
 		createEReference(dataHasValueEClass, DATA_HAS_VALUE__DATA_PROPERTY_EXPRESSION);
 
 		dataMinCardinalityEClass = createEClass(DATA_MIN_CARDINALITY);
@@ -2816,7 +2946,7 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 		createEOperation(dataPropertyRangeEClass, DATA_PROPERTY_RANGE___THEDATARANGEMUSTBEOFARITYONE__DIAGNOSTICCHAIN_MAP);
 
 		differentIndividualsEClass = createEClass(DIFFERENT_INDIVIDUALS);
-		createEReference(differentIndividualsEClass, DIFFERENT_INDIVIDUALS__DIFFERENT_INDIVIDUALS);
+		createEReference(differentIndividualsEClass, DIFFERENT_INDIVIDUALS__INDIVIDUALS);
 
 		disjointClassesEClass = createEClass(DISJOINT_CLASSES);
 		createEReference(disjointClassesEClass, DISJOINT_CLASSES__DISJOINT_CLASS_EXPRESSIONS);
@@ -2874,7 +3004,7 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 		createEReference(subDataPropertyOfEClass, SUB_DATA_PROPERTY_OF__SUB_DATA_PROPERTY_EXPRESSION);
 
 		sameIndividualEClass = createEClass(SAME_INDIVIDUAL);
-		createEReference(sameIndividualEClass, SAME_INDIVIDUAL__SAME_INDIVIDUALS);
+		createEReference(sameIndividualEClass, SAME_INDIVIDUAL__INDIVIDUALS);
 
 		subObjectPropertyOfEClass = createEClass(SUB_OBJECT_PROPERTY_OF);
 		createEReference(subObjectPropertyOfEClass, SUB_OBJECT_PROPERTY_OF__SUPER_OBJECT_PROPERTY_EXPRESSION);
@@ -2901,8 +3031,8 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 		createEReference(dataPropertyAssertionEClass, DATA_PROPERTY_ASSERTION__SOURCE_INDIVIDUAL);
 
 		classAssertionEClass = createEClass(CLASS_ASSERTION);
-		createEReference(classAssertionEClass, CLASS_ASSERTION__INDIVIDUAL);
 		createEReference(classAssertionEClass, CLASS_ASSERTION__CLASS_EXPRESSION);
+		createEReference(classAssertionEClass, CLASS_ASSERTION__INDIVIDUAL);
 
 		irreflexiveObjectPropertyEClass = createEClass(IRREFLEXIVE_OBJECT_PROPERTY);
 		createEReference(irreflexiveObjectPropertyEClass, IRREFLEXIVE_OBJECT_PROPERTY__OBJECT_PROPERTY_EXPRESSION);
@@ -2920,32 +3050,11 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 		createEReference(subClassOfEClass, SUB_CLASS_OF__SUB_CLASS_EXPRESSION);
 		createEReference(subClassOfEClass, SUB_CLASS_OF__SUPER_CLASS_EXPRESSION);
 
-		subObjectPropertyEClass = createEClass(SUB_OBJECT_PROPERTY);
-
 		transitiveObjectPropertyEClass = createEClass(TRANSITIVE_OBJECT_PROPERTY);
 		createEReference(transitiveObjectPropertyEClass, TRANSITIVE_OBJECT_PROPERTY__OBJECT_PROPERTY_EXPRESSION);
 
-		entityAnnotationEClass = createEClass(ENTITY_ANNOTATION);
-		createEReference(entityAnnotationEClass, ENTITY_ANNOTATION__ENTITY);
-		createEReference(entityAnnotationEClass, ENTITY_ANNOTATION__ENTITY_ANNOTATIONS);
-
-		fullURIEClass = createEClass(FULL_URI);
-		createEAttribute(fullURIEClass, FULL_URI__IRI);
-
-		abbreviatedURIEClass = createEClass(ABBREVIATED_URI);
-		createEAttribute(abbreviatedURIEClass, ABBREVIATED_URI__LOCAL_NAME);
-
 		inverseObjectPropertiesEClass = createEClass(INVERSE_OBJECT_PROPERTIES);
 		createEReference(inverseObjectPropertiesEClass, INVERSE_OBJECT_PROPERTIES__INVERSE_OBJECT_PROPERTIES);
-
-		annotationByConstantEClass = createEClass(ANNOTATION_BY_CONSTANT);
-		createEReference(annotationByConstantEClass, ANNOTATION_BY_CONSTANT__ANNOTATION_VALUE);
-
-		annotationByEntityEClass = createEClass(ANNOTATION_BY_ENTITY);
-		createEReference(annotationByEntityEClass, ANNOTATION_BY_ENTITY__ANNOTATION_VALUE);
-
-		annotationByAnonymousIndividualEClass = createEClass(ANNOTATION_BY_ANONYMOUS_INDIVIDUAL);
-		createEReference(annotationByAnonymousIndividualEClass, ANNOTATION_BY_ANONYMOUS_INDIVIDUAL__ANNOTATION_VALUE);
 
 		anonymousIndividualEClass = createEClass(ANONYMOUS_INDIVIDUAL);
 		createEAttribute(anonymousIndividualEClass, ANONYMOUS_INDIVIDUAL__NODE_ID);
@@ -2955,14 +3064,51 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 
 		objectAndDataPropertyAxiomEClass = createEClass(OBJECT_AND_DATA_PROPERTY_AXIOM);
 
-		keyForEClass = createEClass(KEY_FOR);
-		createEReference(keyForEClass, KEY_FOR__CLASS_EXPRESSION);
-		createEReference(keyForEClass, KEY_FOR__DATA_PROPERTY_EXPRESSIONS);
-		createEReference(keyForEClass, KEY_FOR__OBJECT_PROPERTY_EXPRESSIONS);
+		hasKeyEClass = createEClass(HAS_KEY);
+		createEReference(hasKeyEClass, HAS_KEY__CLASS_EXPRESSION);
+		createEReference(hasKeyEClass, HAS_KEY__DATA_PROPERTY_EXPRESSIONS);
+		createEReference(hasKeyEClass, HAS_KEY__OBJECT_PROPERTY_EXPRESSIONS);
 
-		anonymousIndividualAnnotationEClass = createEClass(ANONYMOUS_INDIVIDUAL_ANNOTATION);
-		createEReference(anonymousIndividualAnnotationEClass, ANONYMOUS_INDIVIDUAL_ANNOTATION__ANONYMOUS_INDIVIDUAL);
-		createEReference(anonymousIndividualAnnotationEClass, ANONYMOUS_INDIVIDUAL_ANNOTATION__ANONYMOUS_INDIVIUDAL_ANNOTATIONS);
+		typedLiteralEClass = createEClass(TYPED_LITERAL);
+		createEAttribute(typedLiteralEClass, TYPED_LITERAL__LEXICAL_VALUE);
+		createEReference(typedLiteralEClass, TYPED_LITERAL__DATATYPE);
+
+		stringLiteralEClass = createEClass(STRING_LITERAL);
+		createEAttribute(stringLiteralEClass, STRING_LITERAL__QUOTED_STRING);
+		createEAttribute(stringLiteralEClass, STRING_LITERAL__LANGUAGE_TAG);
+
+		dataIntersectionOfEClass = createEClass(DATA_INTERSECTION_OF);
+		createEReference(dataIntersectionOfEClass, DATA_INTERSECTION_OF__DATA_RANGES);
+
+		dataUnionOfEClass = createEClass(DATA_UNION_OF);
+		createEReference(dataUnionOfEClass, DATA_UNION_OF__DATA_RANGES);
+
+		dataTypeDefinitionEClass = createEClass(DATA_TYPE_DEFINITION);
+		createEReference(dataTypeDefinitionEClass, DATA_TYPE_DEFINITION__DATA_RANGE);
+		createEReference(dataTypeDefinitionEClass, DATA_TYPE_DEFINITION__DATA_TYPE);
+
+		annotationAxiomEClass = createEClass(ANNOTATION_AXIOM);
+
+		subAnnotationPropertyOfEClass = createEClass(SUB_ANNOTATION_PROPERTY_OF);
+		createEReference(subAnnotationPropertyOfEClass, SUB_ANNOTATION_PROPERTY_OF__SUB_ANNOTATION_PROPERTY);
+		createEReference(subAnnotationPropertyOfEClass, SUB_ANNOTATION_PROPERTY_OF__SUPER_ANNOTATION_PROPERTY);
+
+		annotationPropertyDomainEClass = createEClass(ANNOTATION_PROPERTY_DOMAIN);
+		createEReference(annotationPropertyDomainEClass, ANNOTATION_PROPERTY_DOMAIN__ANNOTATION_PROPERTY);
+		createEReference(annotationPropertyDomainEClass, ANNOTATION_PROPERTY_DOMAIN__DOMAIN);
+
+		annotationPropertyRangeEClass = createEClass(ANNOTATION_PROPERTY_RANGE);
+		createEReference(annotationPropertyRangeEClass, ANNOTATION_PROPERTY_RANGE__ANNOTATION_PROPERTY);
+		createEReference(annotationPropertyRangeEClass, ANNOTATION_PROPERTY_RANGE__RANGE);
+
+		annotationAssertionEClass = createEClass(ANNOTATION_ASSERTION);
+		createEReference(annotationAssertionEClass, ANNOTATION_ASSERTION__ANNOTATION_SUBJECT);
+		createEReference(annotationAssertionEClass, ANNOTATION_ASSERTION__ANNOTATION_PROPERTY);
+		createEReference(annotationAssertionEClass, ANNOTATION_ASSERTION__ANNOTATION_VALUE);
+
+		annotationSubjectEClass = createEClass(ANNOTATION_SUBJECT);
+
+		annotationValueEClass = createEClass(ANNOTATION_VALUE);
 	}
 
 	/**
@@ -2995,6 +3141,9 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 		// Add supertypes to classes
 		assertionEClass.getESuperTypes().add(this.getAxiom());
 		annotationPropertyEClass.getESuperTypes().add(this.getEntity());
+		uriEClass.getESuperTypes().add(this.getAnnotationSubject());
+		uriEClass.getESuperTypes().add(this.getAnnotationValue());
+		literalEClass.getESuperTypes().add(this.getAnnotationValue());
 		datatypeEClass.getESuperTypes().add(this.getDataRange());
 		datatypeEClass.getESuperTypes().add(this.getEntity());
 		dataPropertyAxiomEClass.getESuperTypes().add(this.getAxiom());
@@ -3013,7 +3162,7 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 		namedIndividualEClass.getESuperTypes().add(this.getIndividual());
 		objectSomeValuesFromEClass.getESuperTypes().add(this.getClassExpression());
 		objectAllValuesFromEClass.getESuperTypes().add(this.getClassExpression());
-		objectExistsSelfEClass.getESuperTypes().add(this.getClassExpression());
+		objectHasSelfEClass.getESuperTypes().add(this.getClassExpression());
 		objectHasValueEClass.getESuperTypes().add(this.getClassExpression());
 		objectMinCardinalityEClass.getESuperTypes().add(this.getClassExpression());
 		objectMaxCardinalityEClass.getESuperTypes().add(this.getClassExpression());
@@ -3058,16 +3207,22 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 		dataComplementOfEClass.getESuperTypes().add(this.getDataRange());
 		subClassOfEClass.getESuperTypes().add(this.getClassAxiom());
 		transitiveObjectPropertyEClass.getESuperTypes().add(this.getObjectPropertyAxiom());
-		entityAnnotationEClass.getESuperTypes().add(this.getAxiom());
 		inverseObjectPropertiesEClass.getESuperTypes().add(this.getObjectPropertyAxiom());
-		annotationByConstantEClass.getESuperTypes().add(this.getAnnotation());
-		annotationByEntityEClass.getESuperTypes().add(this.getAnnotation());
-		annotationByAnonymousIndividualEClass.getESuperTypes().add(this.getAnnotation());
 		anonymousIndividualEClass.getESuperTypes().add(this.getIndividual());
+		anonymousIndividualEClass.getESuperTypes().add(this.getAnnotationSubject());
+		anonymousIndividualEClass.getESuperTypes().add(this.getAnnotationValue());
 		declarationEClass.getESuperTypes().add(this.getAxiom());
 		objectAndDataPropertyAxiomEClass.getESuperTypes().add(this.getAxiom());
-		keyForEClass.getESuperTypes().add(this.getObjectAndDataPropertyAxiom());
-		anonymousIndividualAnnotationEClass.getESuperTypes().add(this.getAxiom());
+		hasKeyEClass.getESuperTypes().add(this.getObjectAndDataPropertyAxiom());
+		typedLiteralEClass.getESuperTypes().add(this.getLiteral());
+		stringLiteralEClass.getESuperTypes().add(this.getLiteral());
+		dataIntersectionOfEClass.getESuperTypes().add(this.getDataRange());
+		dataTypeDefinitionEClass.getESuperTypes().add(this.getAxiom());
+		annotationAxiomEClass.getESuperTypes().add(this.getAxiom());
+		subAnnotationPropertyOfEClass.getESuperTypes().add(this.getAnnotationAxiom());
+		annotationPropertyDomainEClass.getESuperTypes().add(this.getAnnotationAxiom());
+		annotationPropertyRangeEClass.getESuperTypes().add(this.getAnnotationAxiom());
+		annotationAssertionEClass.getESuperTypes().add(this.getAnnotationAxiom());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(assertionEClass, Assertion.class, "Assertion", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3077,6 +3232,7 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 
 		initEClass(annotationEClass, Annotation.class, "Annotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAnnotation_AnnotationProperty(), this.getAnnotationProperty(), null, "annotationProperty", null, 1, 1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getAnnotation_AnnotationValue(), this.getAnnotationValue(), null, "annotationValue", null, 1, 1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(annotationPropertyEClass, AnnotationProperty.class, "AnnotationProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -3084,11 +3240,9 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 		initEReference(getEntity_EntityURI(), this.getURI(), null, "entityURI", null, 1, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(uriEClass, owl.URI.class, "URI", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getURI_Value(), ecorePackage.getEString(), "value", null, 1, 1, owl.URI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getURI_Value(), ecorePackage.getEString(), "value", null, 0, 1, owl.URI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(constantEClass, Constant.class, "Constant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getConstant_LexicalValue(), ecorePackage.getEString(), "lexicalValue", null, 1, 1, Constant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getConstant_Datatype(), this.getDatatype(), null, "datatype", null, 1, 1, Constant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEClass(literalEClass, Literal.class, "Literal", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(datatypeEClass, Datatype.class, "Datatype", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -3138,8 +3292,8 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 		initEReference(getObjectAllValuesFrom_ClassExpression(), this.getClassExpression(), null, "classExpression", null, 1, 1, ObjectAllValuesFrom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getObjectAllValuesFrom_ObjectPropertyExpression(), this.getObjectPropertyExpression(), null, "objectPropertyExpression", null, 1, 1, ObjectAllValuesFrom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(objectExistsSelfEClass, ObjectExistsSelf.class, "ObjectExistsSelf", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getObjectExistsSelf_ObjectPropertyExpression(), this.getObjectPropertyExpression(), null, "objectPropertyExpression", null, 1, 1, ObjectExistsSelf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEClass(objectHasSelfEClass, ObjectHasSelf.class, "ObjectHasSelf", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getObjectHasSelf_ObjectPropertyExpression(), this.getObjectPropertyExpression(), null, "objectPropertyExpression", null, 1, 1, ObjectHasSelf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(objectHasValueEClass, ObjectHasValue.class, "ObjectHasValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getObjectHasValue_ObjectPropertyExpression(), this.getObjectPropertyExpression(), null, "objectPropertyExpression", null, 1, 1, ObjectHasValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
@@ -3170,22 +3324,22 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 		initEClass(dataPropertyEClass, DataProperty.class, "DataProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(dataOneOfEClass, DataOneOf.class, "DataOneOf", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDataOneOf_Constants(), this.getConstant(), null, "constants", null, 1, -1, DataOneOf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getDataOneOf_Literals(), this.getLiteral(), null, "literals", null, 1, -1, DataOneOf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(datatypeRestrictionEClass, DatatypeRestriction.class, "DatatypeRestriction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDatatypeRestriction_Datatype(), this.getDatatype(), null, "datatype", null, 1, 1, DatatypeRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getDatatypeRestriction_Restrictions(), this.getFacetConstantPair(), null, "restrictions", null, 0, -1, DatatypeRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getDatatypeRestriction_Restrictions(), this.getFacetLiteralPair(), null, "restrictions", null, 0, -1, DatatypeRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(facetConstantPairEClass, FacetConstantPair.class, "FacetConstantPair", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getFacetConstantPair_Constant(), this.getConstant(), null, "constant", null, 1, 1, FacetConstantPair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getFacetConstantPair_Facet(), ecorePackage.getEString(), "facet", null, 1, 1, FacetConstantPair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEClass(facetLiteralPairEClass, FacetLiteralPair.class, "FacetLiteralPair", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFacetLiteralPair_RestrictionValue(), this.getLiteral(), null, "restrictionValue", null, 1, 1, FacetLiteralPair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getFacetLiteralPair_ConstrainingFacet(), this.getURI(), null, "constrainingFacet", null, 1, 1, FacetLiteralPair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataAllValuesFromEClass, DataAllValuesFrom.class, "DataAllValuesFrom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataAllValuesFrom_DataRange(), this.getDataRange(), null, "dataRange", null, 1, 1, DataAllValuesFrom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getDataAllValuesFrom_DataPropertyExpressions(), this.getDataPropertyExpression(), null, "dataPropertyExpressions", null, 1, 1, DataAllValuesFrom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataHasValueEClass, DataHasValue.class, "DataHasValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDataHasValue_Constant(), this.getConstant(), null, "constant", null, 1, 1, DataHasValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getDataHasValue_Literal(), this.getLiteral(), null, "literal", null, 1, 1, DataHasValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getDataHasValue_DataPropertyExpression(), this.getDataPropertyExpression(), null, "dataPropertyExpression", null, 1, 1, DataHasValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(dataMinCardinalityEClass, DataMinCardinality.class, "DataMinCardinality", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3217,7 +3371,7 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 
 		initEClass(negativeDataPropertyAssertionEClass, NegativeDataPropertyAssertion.class, "NegativeDataPropertyAssertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNegativeDataPropertyAssertion_DataPropertyExpression(), this.getDataPropertyExpression(), null, "dataPropertyExpression", null, 1, 1, NegativeDataPropertyAssertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getNegativeDataPropertyAssertion_TargetValue(), this.getConstant(), null, "targetValue", null, 1, 1, NegativeDataPropertyAssertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getNegativeDataPropertyAssertion_TargetValue(), this.getLiteral(), null, "targetValue", null, 1, 1, NegativeDataPropertyAssertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getNegativeDataPropertyAssertion_SourceIndividual(), this.getIndividual(), null, "sourceIndividual", null, 1, 1, NegativeDataPropertyAssertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(dataPropertyDomainEClass, DataPropertyDomain.class, "DataPropertyDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3233,7 +3387,7 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(differentIndividualsEClass, DifferentIndividuals.class, "DifferentIndividuals", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDifferentIndividuals_DifferentIndividuals(), this.getNamedIndividual(), null, "differentIndividuals", null, 2, -1, DifferentIndividuals.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getDifferentIndividuals_Individuals(), this.getIndividual(), null, "individuals", null, 2, -1, DifferentIndividuals.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(disjointClassesEClass, DisjointClasses.class, "DisjointClasses", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDisjointClasses_DisjointClassExpressions(), this.getClassExpression(), null, "disjointClassExpressions", null, 2, -1, DisjointClasses.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
@@ -3291,7 +3445,7 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 		initEReference(getSubDataPropertyOf_SubDataPropertyExpression(), this.getDataPropertyExpression(), null, "subDataPropertyExpression", null, 1, 1, SubDataPropertyOf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(sameIndividualEClass, SameIndividual.class, "SameIndividual", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSameIndividual_SameIndividuals(), this.getNamedIndividual(), null, "sameIndividuals", null, 2, -1, SameIndividual.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getSameIndividual_Individuals(), this.getIndividual(), null, "individuals", null, 2, -1, SameIndividual.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(subObjectPropertyOfEClass, SubObjectPropertyOf.class, "SubObjectPropertyOf", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSubObjectPropertyOf_SuperObjectPropertyExpression(), this.getObjectPropertyExpression(), null, "superObjectPropertyExpression", null, 1, 1, SubObjectPropertyOf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
@@ -3317,12 +3471,12 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 
 		initEClass(dataPropertyAssertionEClass, DataPropertyAssertion.class, "DataPropertyAssertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataPropertyAssertion_DataPropertyExpression(), this.getDataPropertyExpression(), null, "dataPropertyExpression", null, 1, 1, DataPropertyAssertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getDataPropertyAssertion_TargetValue(), this.getConstant(), null, "targetValue", null, 1, 1, DataPropertyAssertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getDataPropertyAssertion_TargetValue(), this.getLiteral(), null, "targetValue", null, 1, 1, DataPropertyAssertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getDataPropertyAssertion_SourceIndividual(), this.getIndividual(), null, "sourceIndividual", null, 1, 1, DataPropertyAssertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(classAssertionEClass, ClassAssertion.class, "ClassAssertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getClassAssertion_Individual(), this.getNamedIndividual(), null, "individual", null, 1, 1, ClassAssertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getClassAssertion_ClassExpression(), this.getClassExpression(), null, "classExpression", null, 1, 1, ClassAssertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getClassAssertion_Individual(), this.getIndividual(), null, "individual", null, 1, 1, ClassAssertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(irreflexiveObjectPropertyEClass, IrreflexiveObjectProperty.class, "IrreflexiveObjectProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getIrreflexiveObjectProperty_ObjectPropertyExpression(), this.getObjectPropertyExpression(), null, "objectPropertyExpression", null, 1, 1, IrreflexiveObjectProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
@@ -3343,32 +3497,11 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 		initEReference(getSubClassOf_SubClassExpression(), this.getClassExpression(), null, "subClassExpression", null, 1, 1, SubClassOf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getSubClassOf_SuperClassExpression(), this.getClassExpression(), null, "superClassExpression", null, 1, 1, SubClassOf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(subObjectPropertyEClass, SubObjectProperty.class, "SubObjectProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(transitiveObjectPropertyEClass, TransitiveObjectProperty.class, "TransitiveObjectProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTransitiveObjectProperty_ObjectPropertyExpression(), this.getObjectPropertyExpression(), null, "objectPropertyExpression", null, 1, 1, TransitiveObjectProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(entityAnnotationEClass, EntityAnnotation.class, "EntityAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEntityAnnotation_Entity(), this.getEntity(), null, "entity", null, 1, 1, EntityAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getEntityAnnotation_EntityAnnotations(), this.getAnnotation(), null, "entityAnnotations", null, 1, -1, EntityAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-
-		initEClass(fullURIEClass, FullURI.class, "FullURI", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFullURI_Iri(), ecorePackage.getEString(), "iri", null, 1, 1, FullURI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-
-		initEClass(abbreviatedURIEClass, AbbreviatedURI.class, "AbbreviatedURI", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAbbreviatedURI_LocalName(), ecorePackage.getEString(), "localName", null, 1, 1, AbbreviatedURI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-
 		initEClass(inverseObjectPropertiesEClass, InverseObjectProperties.class, "InverseObjectProperties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInverseObjectProperties_InverseObjectProperties(), this.getObjectPropertyExpression(), null, "inverseObjectProperties", null, 2, 2, InverseObjectProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-
-		initEClass(annotationByConstantEClass, AnnotationByConstant.class, "AnnotationByConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAnnotationByConstant_AnnotationValue(), this.getConstant(), null, "annotationValue", null, 1, 1, AnnotationByConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-
-		initEClass(annotationByEntityEClass, AnnotationByEntity.class, "AnnotationByEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAnnotationByEntity_AnnotationValue(), this.getEntity(), null, "annotationValue", null, 1, 1, AnnotationByEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-
-		initEClass(annotationByAnonymousIndividualEClass, AnnotationByAnonymousIndividual.class, "AnnotationByAnonymousIndividual", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAnnotationByAnonymousIndividual_AnnotationValue(), this.getAnonymousIndividual(), null, "annotationValue", null, 1, 1, AnnotationByAnonymousIndividual.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(anonymousIndividualEClass, AnonymousIndividual.class, "AnonymousIndividual", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAnonymousIndividual_NodeID(), ecorePackage.getEString(), "nodeID", null, 1, 1, AnonymousIndividual.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
@@ -3378,14 +3511,51 @@ public class OwlPackageImpl extends EPackageImpl implements OwlPackage {
 
 		initEClass(objectAndDataPropertyAxiomEClass, ObjectAndDataPropertyAxiom.class, "ObjectAndDataPropertyAxiom", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(keyForEClass, KeyFor.class, "KeyFor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getKeyFor_ClassExpression(), this.getClassExpression(), null, "classExpression", null, 1, 1, KeyFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getKeyFor_DataPropertyExpressions(), this.getDataPropertyExpression(), null, "dataPropertyExpressions", null, 0, -1, KeyFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getKeyFor_ObjectPropertyExpressions(), this.getObjectPropertyExpression(), null, "objectPropertyExpressions", null, 0, -1, KeyFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEClass(hasKeyEClass, HasKey.class, "HasKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHasKey_ClassExpression(), this.getClassExpression(), null, "classExpression", null, 1, 1, HasKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getHasKey_DataPropertyExpressions(), this.getDataPropertyExpression(), null, "dataPropertyExpressions", null, 0, -1, HasKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getHasKey_ObjectPropertyExpressions(), this.getObjectPropertyExpression(), null, "objectPropertyExpressions", null, 0, -1, HasKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(anonymousIndividualAnnotationEClass, AnonymousIndividualAnnotation.class, "AnonymousIndividualAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAnonymousIndividualAnnotation_AnonymousIndividual(), this.getAnonymousIndividual(), null, "anonymousIndividual", null, 1, 1, AnonymousIndividualAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getAnonymousIndividualAnnotation_AnonymousIndiviudalAnnotations(), this.getAnnotation(), null, "anonymousIndiviudalAnnotations", null, 1, -1, AnonymousIndividualAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEClass(typedLiteralEClass, TypedLiteral.class, "TypedLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTypedLiteral_LexicalValue(), ecorePackage.getEString(), "lexicalValue", null, 1, 1, TypedLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getTypedLiteral_Datatype(), this.getDatatype(), null, "datatype", null, 1, 1, TypedLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+
+		initEClass(stringLiteralEClass, StringLiteral.class, "StringLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStringLiteral_QuotedString(), ecorePackage.getEString(), "quotedString", null, 1, 1, StringLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getStringLiteral_LanguageTag(), ecorePackage.getEString(), "languageTag", null, 1, 1, StringLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+
+		initEClass(dataIntersectionOfEClass, DataIntersectionOf.class, "DataIntersectionOf", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDataIntersectionOf_DataRanges(), this.getDataRange(), null, "dataRanges", null, 2, -1, DataIntersectionOf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(dataUnionOfEClass, DataUnionOf.class, "DataUnionOf", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDataUnionOf_DataRanges(), this.getDataRange(), null, "dataRanges", null, 2, -1, DataUnionOf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(dataTypeDefinitionEClass, DataTypeDefinition.class, "DataTypeDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDataTypeDefinition_DataRange(), this.getDataRange(), null, "dataRange", null, 1, 1, DataTypeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataTypeDefinition_DataType(), this.getDatatype(), null, "dataType", null, 1, 1, DataTypeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(annotationAxiomEClass, AnnotationAxiom.class, "AnnotationAxiom", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(subAnnotationPropertyOfEClass, SubAnnotationPropertyOf.class, "SubAnnotationPropertyOf", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSubAnnotationPropertyOf_SubAnnotationProperty(), this.getAnnotationProperty(), null, "subAnnotationProperty", null, 1, 1, SubAnnotationPropertyOf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSubAnnotationPropertyOf_SuperAnnotationProperty(), this.getAnnotationProperty(), null, "superAnnotationProperty", null, 1, 1, SubAnnotationPropertyOf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(annotationPropertyDomainEClass, AnnotationPropertyDomain.class, "AnnotationPropertyDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAnnotationPropertyDomain_AnnotationProperty(), this.getAnnotationProperty(), null, "annotationProperty", null, 1, 1, AnnotationPropertyDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAnnotationPropertyDomain_Domain(), this.getURI(), null, "domain", null, 1, 1, AnnotationPropertyDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(annotationPropertyRangeEClass, AnnotationPropertyRange.class, "AnnotationPropertyRange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAnnotationPropertyRange_AnnotationProperty(), this.getAnnotationProperty(), null, "annotationProperty", null, 1, 1, AnnotationPropertyRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAnnotationPropertyRange_Range(), this.getURI(), null, "range", null, 1, 1, AnnotationPropertyRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(annotationAssertionEClass, AnnotationAssertion.class, "AnnotationAssertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAnnotationAssertion_AnnotationSubject(), this.getAnnotationSubject(), null, "annotationSubject", null, 1, 1, AnnotationAssertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAnnotationAssertion_AnnotationProperty(), this.getAnnotationProperty(), null, "annotationProperty", null, 1, 1, AnnotationAssertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAnnotationAssertion_AnnotationValue(), this.getAnnotationValue(), null, "annotationValue", null, 1, 1, AnnotationAssertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(annotationSubjectEClass, AnnotationSubject.class, "AnnotationSubject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(annotationValueEClass, AnnotationValue.class, "AnnotationValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

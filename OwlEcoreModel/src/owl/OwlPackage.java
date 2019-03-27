@@ -151,13 +151,22 @@ public interface OwlPackage extends EPackage {
 	int ANNOTATION__ANNOTATION_PROPERTY = 0;
 
 	/**
+	 * The feature id for the '<em><b>Annotation Value</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION__ANNOTATION_VALUE = 1;
+
+	/**
 	 * The number of structural features of the '<em>Annotation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANNOTATION_FEATURE_COUNT = 1;
+	int ANNOTATION_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Annotation</em>' class.
@@ -243,6 +252,34 @@ public interface OwlPackage extends EPackage {
 	int ANNOTATION_PROPERTY_OPERATION_COUNT = ENTITY_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link owl.impl.AnnotationSubjectImpl <em>Annotation Subject</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see owl.impl.AnnotationSubjectImpl
+	 * @see owl.impl.OwlPackageImpl#getAnnotationSubject()
+	 * @generated
+	 */
+	int ANNOTATION_SUBJECT = 87;
+
+	/**
+	 * The number of structural features of the '<em>Annotation Subject</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_SUBJECT_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>Annotation Subject</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_SUBJECT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link owl.impl.URIImpl <em>URI</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -259,7 +296,7 @@ public interface OwlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int URI__VALUE = 0;
+	int URI__VALUE = ANNOTATION_SUBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>URI</em>' class.
@@ -268,7 +305,7 @@ public interface OwlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int URI_FEATURE_COUNT = 1;
+	int URI_FEATURE_COUNT = ANNOTATION_SUBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>URI</em>' class.
@@ -277,53 +314,63 @@ public interface OwlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int URI_OPERATION_COUNT = 0;
+	int URI_OPERATION_COUNT = ANNOTATION_SUBJECT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link owl.impl.ConstantImpl <em>Constant</em>}' class.
+	 * The meta object id for the '{@link owl.impl.AnnotationValueImpl <em>Annotation Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see owl.impl.ConstantImpl
-	 * @see owl.impl.OwlPackageImpl#getConstant()
+	 * @see owl.impl.AnnotationValueImpl
+	 * @see owl.impl.OwlPackageImpl#getAnnotationValue()
 	 * @generated
 	 */
-	int CONSTANT = 6;
+	int ANNOTATION_VALUE = 88;
 
 	/**
-	 * The feature id for the '<em><b>Lexical Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTANT__LEXICAL_VALUE = 0;
-
-	/**
-	 * The feature id for the '<em><b>Datatype</b></em>' reference.
+	 * The number of structural features of the '<em>Annotation Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTANT__DATATYPE = 1;
+	int ANNOTATION_VALUE_FEATURE_COUNT = 0;
 
 	/**
-	 * The number of structural features of the '<em>Constant</em>' class.
+	 * The number of operations of the '<em>Annotation Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTANT_FEATURE_COUNT = 2;
+	int ANNOTATION_VALUE_OPERATION_COUNT = 0;
 
 	/**
-	 * The number of operations of the '<em>Constant</em>' class.
+	 * The meta object id for the '{@link owl.impl.LiteralImpl <em>Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see owl.impl.LiteralImpl
+	 * @see owl.impl.OwlPackageImpl#getLiteral()
+	 * @generated
+	 */
+	int LITERAL = 6;
+
+	/**
+	 * The number of structural features of the '<em>Literal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTANT_OPERATION_COUNT = 0;
+	int LITERAL_FEATURE_COUNT = ANNOTATION_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_OPERATION_COUNT = ANNOTATION_VALUE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link owl.impl.DataRangeImpl <em>Data Range</em>}' class.
@@ -1029,14 +1076,14 @@ public interface OwlPackage extends EPackage {
 	int OBJECT_ALL_VALUES_FROM_OPERATION_COUNT = CLASS_EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link owl.impl.ObjectExistsSelfImpl <em>Object Exists Self</em>}' class.
+	 * The meta object id for the '{@link owl.impl.ObjectHasSelfImpl <em>Object Has Self</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see owl.impl.ObjectExistsSelfImpl
-	 * @see owl.impl.OwlPackageImpl#getObjectExistsSelf()
+	 * @see owl.impl.ObjectHasSelfImpl
+	 * @see owl.impl.OwlPackageImpl#getObjectHasSelf()
 	 * @generated
 	 */
-	int OBJECT_EXISTS_SELF = 26;
+	int OBJECT_HAS_SELF = 26;
 
 	/**
 	 * The feature id for the '<em><b>Object Property Expression</b></em>' reference.
@@ -1045,25 +1092,25 @@ public interface OwlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_EXISTS_SELF__OBJECT_PROPERTY_EXPRESSION = CLASS_EXPRESSION_FEATURE_COUNT + 0;
+	int OBJECT_HAS_SELF__OBJECT_PROPERTY_EXPRESSION = CLASS_EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Object Exists Self</em>' class.
+	 * The number of structural features of the '<em>Object Has Self</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_EXISTS_SELF_FEATURE_COUNT = CLASS_EXPRESSION_FEATURE_COUNT + 1;
+	int OBJECT_HAS_SELF_FEATURE_COUNT = CLASS_EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Object Exists Self</em>' class.
+	 * The number of operations of the '<em>Object Has Self</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_EXISTS_SELF_OPERATION_COUNT = CLASS_EXPRESSION_OPERATION_COUNT + 0;
+	int OBJECT_HAS_SELF_OPERATION_COUNT = CLASS_EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link owl.impl.ObjectHasValueImpl <em>Object Has Value</em>}' class.
@@ -1342,13 +1389,13 @@ public interface OwlPackage extends EPackage {
 	int DATA_ONE_OF__ARITY = DATA_RANGE__ARITY;
 
 	/**
-	 * The feature id for the '<em><b>Constants</b></em>' reference list.
+	 * The feature id for the '<em><b>Literals</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_ONE_OF__CONSTANTS = DATA_RANGE_FEATURE_COUNT + 0;
+	int DATA_ONE_OF__LITERALS = DATA_RANGE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Data One Of</em>' class.
@@ -1424,50 +1471,50 @@ public interface OwlPackage extends EPackage {
 	int DATATYPE_RESTRICTION_OPERATION_COUNT = DATA_RANGE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link owl.impl.FacetConstantPairImpl <em>Facet Constant Pair</em>}' class.
+	 * The meta object id for the '{@link owl.impl.FacetLiteralPairImpl <em>Facet Literal Pair</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see owl.impl.FacetConstantPairImpl
-	 * @see owl.impl.OwlPackageImpl#getFacetConstantPair()
+	 * @see owl.impl.FacetLiteralPairImpl
+	 * @see owl.impl.OwlPackageImpl#getFacetLiteralPair()
 	 * @generated
 	 */
-	int FACET_CONSTANT_PAIR = 34;
+	int FACET_LITERAL_PAIR = 34;
 
 	/**
-	 * The feature id for the '<em><b>Constant</b></em>' reference.
+	 * The feature id for the '<em><b>Restriction Value</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FACET_CONSTANT_PAIR__CONSTANT = 0;
+	int FACET_LITERAL_PAIR__RESTRICTION_VALUE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Facet</b></em>' attribute.
+	 * The feature id for the '<em><b>Constraining Facet</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FACET_CONSTANT_PAIR__FACET = 1;
+	int FACET_LITERAL_PAIR__CONSTRAINING_FACET = 1;
 
 	/**
-	 * The number of structural features of the '<em>Facet Constant Pair</em>' class.
+	 * The number of structural features of the '<em>Facet Literal Pair</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FACET_CONSTANT_PAIR_FEATURE_COUNT = 2;
+	int FACET_LITERAL_PAIR_FEATURE_COUNT = 2;
 
 	/**
-	 * The number of operations of the '<em>Facet Constant Pair</em>' class.
+	 * The number of operations of the '<em>Facet Literal Pair</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FACET_CONSTANT_PAIR_OPERATION_COUNT = 0;
+	int FACET_LITERAL_PAIR_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link owl.impl.DataAllValuesFromImpl <em>Data All Values From</em>}' class.
@@ -1526,13 +1573,13 @@ public interface OwlPackage extends EPackage {
 	int DATA_HAS_VALUE = 36;
 
 	/**
-	 * The feature id for the '<em><b>Constant</b></em>' reference.
+	 * The feature id for the '<em><b>Literal</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_HAS_VALUE__CONSTANT = CLASS_EXPRESSION_FEATURE_COUNT + 0;
+	int DATA_HAS_VALUE__LITERAL = CLASS_EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Data Property Expression</b></em>' reference.
@@ -1956,13 +2003,13 @@ public interface OwlPackage extends EPackage {
 	int DIFFERENT_INDIVIDUALS__AXIOM_ANNOTATIONS = ASSERTION__AXIOM_ANNOTATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Different Individuals</b></em>' reference list.
+	 * The feature id for the '<em><b>Individuals</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIFFERENT_INDIVIDUALS__DIFFERENT_INDIVIDUALS = ASSERTION_FEATURE_COUNT + 0;
+	int DIFFERENT_INDIVIDUALS__INDIVIDUALS = ASSERTION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Different Individuals</em>' class.
@@ -2801,13 +2848,13 @@ public interface OwlPackage extends EPackage {
 	int SAME_INDIVIDUAL__AXIOM_ANNOTATIONS = ASSERTION__AXIOM_ANNOTATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Same Individuals</b></em>' reference list.
+	 * The feature id for the '<em><b>Individuals</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SAME_INDIVIDUAL__SAME_INDIVIDUALS = ASSERTION_FEATURE_COUNT + 0;
+	int SAME_INDIVIDUAL__INDIVIDUALS = ASSERTION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Same Individual</em>' class.
@@ -3140,22 +3187,22 @@ public interface OwlPackage extends EPackage {
 	int CLASS_ASSERTION__AXIOM_ANNOTATIONS = ASSERTION__AXIOM_ANNOTATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Individual</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS_ASSERTION__INDIVIDUAL = ASSERTION_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Class Expression</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_ASSERTION__CLASS_EXPRESSION = ASSERTION_FEATURE_COUNT + 1;
+	int CLASS_ASSERTION__CLASS_EXPRESSION = ASSERTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Individual</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_ASSERTION__INDIVIDUAL = ASSERTION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Class Assertion</em>' class.
@@ -3387,34 +3434,6 @@ public interface OwlPackage extends EPackage {
 	int SUB_CLASS_OF_OPERATION_COUNT = CLASS_AXIOM_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link owl.impl.SubObjectPropertyImpl <em>Sub Object Property</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see owl.impl.SubObjectPropertyImpl
-	 * @see owl.impl.OwlPackageImpl#getSubObjectProperty()
-	 * @generated
-	 */
-	int SUB_OBJECT_PROPERTY = 71;
-
-	/**
-	 * The number of structural features of the '<em>Sub Object Property</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUB_OBJECT_PROPERTY_FEATURE_COUNT = 0;
-
-	/**
-	 * The number of operations of the '<em>Sub Object Property</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUB_OBJECT_PROPERTY_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link owl.impl.TransitiveObjectPropertyImpl <em>Transitive Object Property</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3422,7 +3441,7 @@ public interface OwlPackage extends EPackage {
 	 * @see owl.impl.OwlPackageImpl#getTransitiveObjectProperty()
 	 * @generated
 	 */
-	int TRANSITIVE_OBJECT_PROPERTY = 72;
+	int TRANSITIVE_OBJECT_PROPERTY = 71;
 
 	/**
 	 * The feature id for the '<em><b>Axiom Annotations</b></em>' reference list.
@@ -3461,135 +3480,6 @@ public interface OwlPackage extends EPackage {
 	int TRANSITIVE_OBJECT_PROPERTY_OPERATION_COUNT = OBJECT_PROPERTY_AXIOM_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link owl.impl.EntityAnnotationImpl <em>Entity Annotation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see owl.impl.EntityAnnotationImpl
-	 * @see owl.impl.OwlPackageImpl#getEntityAnnotation()
-	 * @generated
-	 */
-	int ENTITY_ANNOTATION = 73;
-
-	/**
-	 * The feature id for the '<em><b>Axiom Annotations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_ANNOTATION__AXIOM_ANNOTATIONS = AXIOM__AXIOM_ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Entity</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_ANNOTATION__ENTITY = AXIOM_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Entity Annotations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_ANNOTATION__ENTITY_ANNOTATIONS = AXIOM_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Entity Annotation</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_ANNOTATION_FEATURE_COUNT = AXIOM_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Entity Annotation</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_ANNOTATION_OPERATION_COUNT = AXIOM_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link owl.impl.FullURIImpl <em>Full URI</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see owl.impl.FullURIImpl
-	 * @see owl.impl.OwlPackageImpl#getFullURI()
-	 * @generated
-	 */
-	int FULL_URI = 74;
-
-	/**
-	 * The feature id for the '<em><b>Iri</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FULL_URI__IRI = 0;
-
-	/**
-	 * The number of structural features of the '<em>Full URI</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FULL_URI_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Full URI</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FULL_URI_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link owl.impl.AbbreviatedURIImpl <em>Abbreviated URI</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see owl.impl.AbbreviatedURIImpl
-	 * @see owl.impl.OwlPackageImpl#getAbbreviatedURI()
-	 * @generated
-	 */
-	int ABBREVIATED_URI = 75;
-
-	/**
-	 * The feature id for the '<em><b>Local Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABBREVIATED_URI__LOCAL_NAME = 0;
-
-	/**
-	 * The number of structural features of the '<em>Abbreviated URI</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABBREVIATED_URI_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Abbreviated URI</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABBREVIATED_URI_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link owl.impl.InverseObjectPropertiesImpl <em>Inverse Object Properties</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3597,7 +3487,7 @@ public interface OwlPackage extends EPackage {
 	 * @see owl.impl.OwlPackageImpl#getInverseObjectProperties()
 	 * @generated
 	 */
-	int INVERSE_OBJECT_PROPERTIES = 76;
+	int INVERSE_OBJECT_PROPERTIES = 72;
 
 	/**
 	 * The feature id for the '<em><b>Axiom Annotations</b></em>' reference list.
@@ -3636,144 +3526,6 @@ public interface OwlPackage extends EPackage {
 	int INVERSE_OBJECT_PROPERTIES_OPERATION_COUNT = OBJECT_PROPERTY_AXIOM_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link owl.impl.AnnotationByConstantImpl <em>Annotation By Constant</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see owl.impl.AnnotationByConstantImpl
-	 * @see owl.impl.OwlPackageImpl#getAnnotationByConstant()
-	 * @generated
-	 */
-	int ANNOTATION_BY_CONSTANT = 77;
-
-	/**
-	 * The feature id for the '<em><b>Annotation Property</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_BY_CONSTANT__ANNOTATION_PROPERTY = ANNOTATION__ANNOTATION_PROPERTY;
-
-	/**
-	 * The feature id for the '<em><b>Annotation Value</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_BY_CONSTANT__ANNOTATION_VALUE = ANNOTATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Annotation By Constant</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_BY_CONSTANT_FEATURE_COUNT = ANNOTATION_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Annotation By Constant</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_BY_CONSTANT_OPERATION_COUNT = ANNOTATION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link owl.impl.AnnotationByEntityImpl <em>Annotation By Entity</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see owl.impl.AnnotationByEntityImpl
-	 * @see owl.impl.OwlPackageImpl#getAnnotationByEntity()
-	 * @generated
-	 */
-	int ANNOTATION_BY_ENTITY = 78;
-
-	/**
-	 * The feature id for the '<em><b>Annotation Property</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_BY_ENTITY__ANNOTATION_PROPERTY = ANNOTATION__ANNOTATION_PROPERTY;
-
-	/**
-	 * The feature id for the '<em><b>Annotation Value</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_BY_ENTITY__ANNOTATION_VALUE = ANNOTATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Annotation By Entity</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_BY_ENTITY_FEATURE_COUNT = ANNOTATION_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Annotation By Entity</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_BY_ENTITY_OPERATION_COUNT = ANNOTATION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link owl.impl.AnnotationByAnonymousIndividualImpl <em>Annotation By Anonymous Individual</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see owl.impl.AnnotationByAnonymousIndividualImpl
-	 * @see owl.impl.OwlPackageImpl#getAnnotationByAnonymousIndividual()
-	 * @generated
-	 */
-	int ANNOTATION_BY_ANONYMOUS_INDIVIDUAL = 79;
-
-	/**
-	 * The feature id for the '<em><b>Annotation Property</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_BY_ANONYMOUS_INDIVIDUAL__ANNOTATION_PROPERTY = ANNOTATION__ANNOTATION_PROPERTY;
-
-	/**
-	 * The feature id for the '<em><b>Annotation Value</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_BY_ANONYMOUS_INDIVIDUAL__ANNOTATION_VALUE = ANNOTATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Annotation By Anonymous Individual</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_BY_ANONYMOUS_INDIVIDUAL_FEATURE_COUNT = ANNOTATION_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Annotation By Anonymous Individual</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_BY_ANONYMOUS_INDIVIDUAL_OPERATION_COUNT = ANNOTATION_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link owl.impl.AnonymousIndividualImpl <em>Anonymous Individual</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3781,7 +3533,7 @@ public interface OwlPackage extends EPackage {
 	 * @see owl.impl.OwlPackageImpl#getAnonymousIndividual()
 	 * @generated
 	 */
-	int ANONYMOUS_INDIVIDUAL = 80;
+	int ANONYMOUS_INDIVIDUAL = 73;
 
 	/**
 	 * The feature id for the '<em><b>Node ID</b></em>' attribute.
@@ -3818,7 +3570,7 @@ public interface OwlPackage extends EPackage {
 	 * @see owl.impl.OwlPackageImpl#getDeclaration()
 	 * @generated
 	 */
-	int DECLARATION = 81;
+	int DECLARATION = 74;
 
 	/**
 	 * The feature id for the '<em><b>Axiom Annotations</b></em>' reference list.
@@ -3864,7 +3616,7 @@ public interface OwlPackage extends EPackage {
 	 * @see owl.impl.OwlPackageImpl#getObjectAndDataPropertyAxiom()
 	 * @generated
 	 */
-	int OBJECT_AND_DATA_PROPERTY_AXIOM = 82;
+	int OBJECT_AND_DATA_PROPERTY_AXIOM = 75;
 
 	/**
 	 * The feature id for the '<em><b>Axiom Annotations</b></em>' reference list.
@@ -3894,14 +3646,14 @@ public interface OwlPackage extends EPackage {
 	int OBJECT_AND_DATA_PROPERTY_AXIOM_OPERATION_COUNT = AXIOM_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link owl.impl.KeyForImpl <em>Key For</em>}' class.
+	 * The meta object id for the '{@link owl.impl.HasKeyImpl <em>Has Key</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see owl.impl.KeyForImpl
-	 * @see owl.impl.OwlPackageImpl#getKeyFor()
+	 * @see owl.impl.HasKeyImpl
+	 * @see owl.impl.OwlPackageImpl#getHasKey()
 	 * @generated
 	 */
-	int KEY_FOR = 83;
+	int HAS_KEY = 76;
 
 	/**
 	 * The feature id for the '<em><b>Axiom Annotations</b></em>' reference list.
@@ -3910,7 +3662,7 @@ public interface OwlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_FOR__AXIOM_ANNOTATIONS = OBJECT_AND_DATA_PROPERTY_AXIOM__AXIOM_ANNOTATIONS;
+	int HAS_KEY__AXIOM_ANNOTATIONS = OBJECT_AND_DATA_PROPERTY_AXIOM__AXIOM_ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Class Expression</b></em>' reference.
@@ -3919,7 +3671,7 @@ public interface OwlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_FOR__CLASS_EXPRESSION = OBJECT_AND_DATA_PROPERTY_AXIOM_FEATURE_COUNT + 0;
+	int HAS_KEY__CLASS_EXPRESSION = OBJECT_AND_DATA_PROPERTY_AXIOM_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Data Property Expressions</b></em>' reference list.
@@ -3928,7 +3680,7 @@ public interface OwlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_FOR__DATA_PROPERTY_EXPRESSIONS = OBJECT_AND_DATA_PROPERTY_AXIOM_FEATURE_COUNT + 1;
+	int HAS_KEY__DATA_PROPERTY_EXPRESSIONS = OBJECT_AND_DATA_PROPERTY_AXIOM_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Object Property Expressions</b></em>' reference list.
@@ -3937,35 +3689,210 @@ public interface OwlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_FOR__OBJECT_PROPERTY_EXPRESSIONS = OBJECT_AND_DATA_PROPERTY_AXIOM_FEATURE_COUNT + 2;
+	int HAS_KEY__OBJECT_PROPERTY_EXPRESSIONS = OBJECT_AND_DATA_PROPERTY_AXIOM_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Key For</em>' class.
+	 * The number of structural features of the '<em>Has Key</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_FOR_FEATURE_COUNT = OBJECT_AND_DATA_PROPERTY_AXIOM_FEATURE_COUNT + 3;
+	int HAS_KEY_FEATURE_COUNT = OBJECT_AND_DATA_PROPERTY_AXIOM_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of operations of the '<em>Key For</em>' class.
+	 * The number of operations of the '<em>Has Key</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_FOR_OPERATION_COUNT = OBJECT_AND_DATA_PROPERTY_AXIOM_OPERATION_COUNT + 0;
+	int HAS_KEY_OPERATION_COUNT = OBJECT_AND_DATA_PROPERTY_AXIOM_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link owl.impl.AnonymousIndividualAnnotationImpl <em>Anonymous Individual Annotation</em>}' class.
+	 * The meta object id for the '{@link owl.impl.TypedLiteralImpl <em>Typed Literal</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see owl.impl.AnonymousIndividualAnnotationImpl
-	 * @see owl.impl.OwlPackageImpl#getAnonymousIndividualAnnotation()
+	 * @see owl.impl.TypedLiteralImpl
+	 * @see owl.impl.OwlPackageImpl#getTypedLiteral()
 	 * @generated
 	 */
-	int ANONYMOUS_INDIVIDUAL_ANNOTATION = 84;
+	int TYPED_LITERAL = 77;
+
+	/**
+	 * The feature id for the '<em><b>Lexical Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_LITERAL__LEXICAL_VALUE = LITERAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Datatype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_LITERAL__DATATYPE = LITERAL_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Typed Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Typed Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_LITERAL_OPERATION_COUNT = LITERAL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link owl.impl.StringLiteralImpl <em>String Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see owl.impl.StringLiteralImpl
+	 * @see owl.impl.OwlPackageImpl#getStringLiteral()
+	 * @generated
+	 */
+	int STRING_LITERAL = 78;
+
+	/**
+	 * The feature id for the '<em><b>Quoted String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_LITERAL__QUOTED_STRING = LITERAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Language Tag</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_LITERAL__LANGUAGE_TAG = LITERAL_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>String Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>String Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_LITERAL_OPERATION_COUNT = LITERAL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link owl.impl.DataIntersectionOfImpl <em>Data Intersection Of</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see owl.impl.DataIntersectionOfImpl
+	 * @see owl.impl.OwlPackageImpl#getDataIntersectionOf()
+	 * @generated
+	 */
+	int DATA_INTERSECTION_OF = 79;
+
+	/**
+	 * The feature id for the '<em><b>Arity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_INTERSECTION_OF__ARITY = DATA_RANGE__ARITY;
+
+	/**
+	 * The feature id for the '<em><b>Data Ranges</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_INTERSECTION_OF__DATA_RANGES = DATA_RANGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Data Intersection Of</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_INTERSECTION_OF_FEATURE_COUNT = DATA_RANGE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Data Intersection Of</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_INTERSECTION_OF_OPERATION_COUNT = DATA_RANGE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link owl.impl.DataUnionOfImpl <em>Data Union Of</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see owl.impl.DataUnionOfImpl
+	 * @see owl.impl.OwlPackageImpl#getDataUnionOf()
+	 * @generated
+	 */
+	int DATA_UNION_OF = 80;
+
+	/**
+	 * The feature id for the '<em><b>Data Ranges</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_UNION_OF__DATA_RANGES = 0;
+
+	/**
+	 * The number of structural features of the '<em>Data Union Of</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_UNION_OF_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Data Union Of</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_UNION_OF_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link owl.impl.DataTypeDefinitionImpl <em>Data Type Definition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see owl.impl.DataTypeDefinitionImpl
+	 * @see owl.impl.OwlPackageImpl#getDataTypeDefinition()
+	 * @generated
+	 */
+	int DATA_TYPE_DEFINITION = 81;
 
 	/**
 	 * The feature id for the '<em><b>Axiom Annotations</b></em>' reference list.
@@ -3974,43 +3901,309 @@ public interface OwlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANONYMOUS_INDIVIDUAL_ANNOTATION__AXIOM_ANNOTATIONS = AXIOM__AXIOM_ANNOTATIONS;
+	int DATA_TYPE_DEFINITION__AXIOM_ANNOTATIONS = AXIOM__AXIOM_ANNOTATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Anonymous Individual</b></em>' reference.
+	 * The feature id for the '<em><b>Data Range</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANONYMOUS_INDIVIDUAL_ANNOTATION__ANONYMOUS_INDIVIDUAL = AXIOM_FEATURE_COUNT + 0;
+	int DATA_TYPE_DEFINITION__DATA_RANGE = AXIOM_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Anonymous Indiviudal Annotations</b></em>' reference list.
+	 * The feature id for the '<em><b>Data Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANONYMOUS_INDIVIDUAL_ANNOTATION__ANONYMOUS_INDIVIUDAL_ANNOTATIONS = AXIOM_FEATURE_COUNT + 1;
+	int DATA_TYPE_DEFINITION__DATA_TYPE = AXIOM_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Anonymous Individual Annotation</em>' class.
+	 * The number of structural features of the '<em>Data Type Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANONYMOUS_INDIVIDUAL_ANNOTATION_FEATURE_COUNT = AXIOM_FEATURE_COUNT + 2;
+	int DATA_TYPE_DEFINITION_FEATURE_COUNT = AXIOM_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Anonymous Individual Annotation</em>' class.
+	 * The number of operations of the '<em>Data Type Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANONYMOUS_INDIVIDUAL_ANNOTATION_OPERATION_COUNT = AXIOM_OPERATION_COUNT + 0;
+	int DATA_TYPE_DEFINITION_OPERATION_COUNT = AXIOM_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link owl.impl.AnnotationAxiomImpl <em>Annotation Axiom</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see owl.impl.AnnotationAxiomImpl
+	 * @see owl.impl.OwlPackageImpl#getAnnotationAxiom()
+	 * @generated
+	 */
+	int ANNOTATION_AXIOM = 82;
+
+	/**
+	 * The feature id for the '<em><b>Axiom Annotations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_AXIOM__AXIOM_ANNOTATIONS = AXIOM__AXIOM_ANNOTATIONS;
+
+	/**
+	 * The number of structural features of the '<em>Annotation Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_AXIOM_FEATURE_COUNT = AXIOM_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Annotation Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_AXIOM_OPERATION_COUNT = AXIOM_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link owl.impl.SubAnnotationPropertyOfImpl <em>Sub Annotation Property Of</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see owl.impl.SubAnnotationPropertyOfImpl
+	 * @see owl.impl.OwlPackageImpl#getSubAnnotationPropertyOf()
+	 * @generated
+	 */
+	int SUB_ANNOTATION_PROPERTY_OF = 83;
+
+	/**
+	 * The feature id for the '<em><b>Axiom Annotations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_ANNOTATION_PROPERTY_OF__AXIOM_ANNOTATIONS = ANNOTATION_AXIOM__AXIOM_ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Sub Annotation Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_ANNOTATION_PROPERTY_OF__SUB_ANNOTATION_PROPERTY = ANNOTATION_AXIOM_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Super Annotation Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_ANNOTATION_PROPERTY_OF__SUPER_ANNOTATION_PROPERTY = ANNOTATION_AXIOM_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Sub Annotation Property Of</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_ANNOTATION_PROPERTY_OF_FEATURE_COUNT = ANNOTATION_AXIOM_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Sub Annotation Property Of</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_ANNOTATION_PROPERTY_OF_OPERATION_COUNT = ANNOTATION_AXIOM_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link owl.impl.AnnotationPropertyDomainImpl <em>Annotation Property Domain</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see owl.impl.AnnotationPropertyDomainImpl
+	 * @see owl.impl.OwlPackageImpl#getAnnotationPropertyDomain()
+	 * @generated
+	 */
+	int ANNOTATION_PROPERTY_DOMAIN = 84;
+
+	/**
+	 * The feature id for the '<em><b>Axiom Annotations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_DOMAIN__AXIOM_ANNOTATIONS = ANNOTATION_AXIOM__AXIOM_ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_DOMAIN__ANNOTATION_PROPERTY = ANNOTATION_AXIOM_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Domain</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_DOMAIN__DOMAIN = ANNOTATION_AXIOM_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Annotation Property Domain</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_DOMAIN_FEATURE_COUNT = ANNOTATION_AXIOM_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Annotation Property Domain</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_DOMAIN_OPERATION_COUNT = ANNOTATION_AXIOM_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link owl.impl.AnnotationPropertyRangeImpl <em>Annotation Property Range</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see owl.impl.AnnotationPropertyRangeImpl
+	 * @see owl.impl.OwlPackageImpl#getAnnotationPropertyRange()
+	 * @generated
+	 */
+	int ANNOTATION_PROPERTY_RANGE = 85;
+
+	/**
+	 * The feature id for the '<em><b>Axiom Annotations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_RANGE__AXIOM_ANNOTATIONS = ANNOTATION_AXIOM__AXIOM_ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_RANGE__ANNOTATION_PROPERTY = ANNOTATION_AXIOM_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Range</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_RANGE__RANGE = ANNOTATION_AXIOM_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Annotation Property Range</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_RANGE_FEATURE_COUNT = ANNOTATION_AXIOM_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Annotation Property Range</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_RANGE_OPERATION_COUNT = ANNOTATION_AXIOM_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link owl.impl.AnnotationAssertionImpl <em>Annotation Assertion</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see owl.impl.AnnotationAssertionImpl
+	 * @see owl.impl.OwlPackageImpl#getAnnotationAssertion()
+	 * @generated
+	 */
+	int ANNOTATION_ASSERTION = 86;
+
+	/**
+	 * The feature id for the '<em><b>Axiom Annotations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_ASSERTION__AXIOM_ANNOTATIONS = ANNOTATION_AXIOM__AXIOM_ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Subject</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_ASSERTION__ANNOTATION_SUBJECT = ANNOTATION_AXIOM_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_ASSERTION__ANNOTATION_PROPERTY = ANNOTATION_AXIOM_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Value</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_ASSERTION__ANNOTATION_VALUE = ANNOTATION_AXIOM_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Annotation Assertion</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_ASSERTION_FEATURE_COUNT = ANNOTATION_AXIOM_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Annotation Assertion</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_ASSERTION_OPERATION_COUNT = ANNOTATION_AXIOM_OPERATION_COUNT + 0;
 
 
 	/**
@@ -4066,6 +4259,17 @@ public interface OwlPackage extends EPackage {
 	EReference getAnnotation_AnnotationProperty();
 
 	/**
+	 * Returns the meta object for the reference '{@link owl.Annotation#getAnnotationValue <em>Annotation Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Annotation Value</em>'.
+	 * @see owl.Annotation#getAnnotationValue()
+	 * @see #getAnnotation()
+	 * @generated
+	 */
+	EReference getAnnotation_AnnotationValue();
+
+	/**
 	 * Returns the meta object for class '{@link owl.AnnotationProperty <em>Annotation Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4118,36 +4322,14 @@ public interface OwlPackage extends EPackage {
 	EAttribute getURI_Value();
 
 	/**
-	 * Returns the meta object for class '{@link owl.Constant <em>Constant</em>}'.
+	 * Returns the meta object for class '{@link owl.Literal <em>Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Constant</em>'.
-	 * @see owl.Constant
+	 * @return the meta object for class '<em>Literal</em>'.
+	 * @see owl.Literal
 	 * @generated
 	 */
-	EClass getConstant();
-
-	/**
-	 * Returns the meta object for the attribute '{@link owl.Constant#getLexicalValue <em>Lexical Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Lexical Value</em>'.
-	 * @see owl.Constant#getLexicalValue()
-	 * @see #getConstant()
-	 * @generated
-	 */
-	EAttribute getConstant_LexicalValue();
-
-	/**
-	 * Returns the meta object for the reference '{@link owl.Constant#getDatatype <em>Datatype</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Datatype</em>'.
-	 * @see owl.Constant#getDatatype()
-	 * @see #getConstant()
-	 * @generated
-	 */
-	EReference getConstant_Datatype();
+	EClass getLiteral();
 
 	/**
 	 * Returns the meta object for class '{@link owl.Datatype <em>Datatype</em>}'.
@@ -4450,25 +4632,25 @@ public interface OwlPackage extends EPackage {
 	EReference getObjectAllValuesFrom_ObjectPropertyExpression();
 
 	/**
-	 * Returns the meta object for class '{@link owl.ObjectExistsSelf <em>Object Exists Self</em>}'.
+	 * Returns the meta object for class '{@link owl.ObjectHasSelf <em>Object Has Self</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Object Exists Self</em>'.
-	 * @see owl.ObjectExistsSelf
+	 * @return the meta object for class '<em>Object Has Self</em>'.
+	 * @see owl.ObjectHasSelf
 	 * @generated
 	 */
-	EClass getObjectExistsSelf();
+	EClass getObjectHasSelf();
 
 	/**
-	 * Returns the meta object for the reference '{@link owl.ObjectExistsSelf#getObjectPropertyExpression <em>Object Property Expression</em>}'.
+	 * Returns the meta object for the reference '{@link owl.ObjectHasSelf#getObjectPropertyExpression <em>Object Property Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Object Property Expression</em>'.
-	 * @see owl.ObjectExistsSelf#getObjectPropertyExpression()
-	 * @see #getObjectExistsSelf()
+	 * @see owl.ObjectHasSelf#getObjectPropertyExpression()
+	 * @see #getObjectHasSelf()
 	 * @generated
 	 */
-	EReference getObjectExistsSelf_ObjectPropertyExpression();
+	EReference getObjectHasSelf_ObjectPropertyExpression();
 
 	/**
 	 * Returns the meta object for class '{@link owl.ObjectHasValue <em>Object Has Value</em>}'.
@@ -4661,15 +4843,15 @@ public interface OwlPackage extends EPackage {
 	EClass getDataOneOf();
 
 	/**
-	 * Returns the meta object for the reference list '{@link owl.DataOneOf#getConstants <em>Constants</em>}'.
+	 * Returns the meta object for the reference list '{@link owl.DataOneOf#getLiterals <em>Literals</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Constants</em>'.
-	 * @see owl.DataOneOf#getConstants()
+	 * @return the meta object for the reference list '<em>Literals</em>'.
+	 * @see owl.DataOneOf#getLiterals()
 	 * @see #getDataOneOf()
 	 * @generated
 	 */
-	EReference getDataOneOf_Constants();
+	EReference getDataOneOf_Literals();
 
 	/**
 	 * Returns the meta object for class '{@link owl.DatatypeRestriction <em>Datatype Restriction</em>}'.
@@ -4704,36 +4886,36 @@ public interface OwlPackage extends EPackage {
 	EReference getDatatypeRestriction_Restrictions();
 
 	/**
-	 * Returns the meta object for class '{@link owl.FacetConstantPair <em>Facet Constant Pair</em>}'.
+	 * Returns the meta object for class '{@link owl.FacetLiteralPair <em>Facet Literal Pair</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Facet Constant Pair</em>'.
-	 * @see owl.FacetConstantPair
+	 * @return the meta object for class '<em>Facet Literal Pair</em>'.
+	 * @see owl.FacetLiteralPair
 	 * @generated
 	 */
-	EClass getFacetConstantPair();
+	EClass getFacetLiteralPair();
 
 	/**
-	 * Returns the meta object for the reference '{@link owl.FacetConstantPair#getConstant <em>Constant</em>}'.
+	 * Returns the meta object for the reference '{@link owl.FacetLiteralPair#getRestrictionValue <em>Restriction Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Constant</em>'.
-	 * @see owl.FacetConstantPair#getConstant()
-	 * @see #getFacetConstantPair()
+	 * @return the meta object for the reference '<em>Restriction Value</em>'.
+	 * @see owl.FacetLiteralPair#getRestrictionValue()
+	 * @see #getFacetLiteralPair()
 	 * @generated
 	 */
-	EReference getFacetConstantPair_Constant();
+	EReference getFacetLiteralPair_RestrictionValue();
 
 	/**
-	 * Returns the meta object for the attribute '{@link owl.FacetConstantPair#getFacet <em>Facet</em>}'.
+	 * Returns the meta object for the reference '{@link owl.FacetLiteralPair#getConstrainingFacet <em>Constraining Facet</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Facet</em>'.
-	 * @see owl.FacetConstantPair#getFacet()
-	 * @see #getFacetConstantPair()
+	 * @return the meta object for the reference '<em>Constraining Facet</em>'.
+	 * @see owl.FacetLiteralPair#getConstrainingFacet()
+	 * @see #getFacetLiteralPair()
 	 * @generated
 	 */
-	EAttribute getFacetConstantPair_Facet();
+	EReference getFacetLiteralPair_ConstrainingFacet();
 
 	/**
 	 * Returns the meta object for class '{@link owl.DataAllValuesFrom <em>Data All Values From</em>}'.
@@ -4778,15 +4960,15 @@ public interface OwlPackage extends EPackage {
 	EClass getDataHasValue();
 
 	/**
-	 * Returns the meta object for the reference '{@link owl.DataHasValue#getConstant <em>Constant</em>}'.
+	 * Returns the meta object for the reference '{@link owl.DataHasValue#getLiteral <em>Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Constant</em>'.
-	 * @see owl.DataHasValue#getConstant()
+	 * @return the meta object for the reference '<em>Literal</em>'.
+	 * @see owl.DataHasValue#getLiteral()
 	 * @see #getDataHasValue()
 	 * @generated
 	 */
-	EReference getDataHasValue_Constant();
+	EReference getDataHasValue_Literal();
 
 	/**
 	 * Returns the meta object for the reference '{@link owl.DataHasValue#getDataPropertyExpression <em>Data Property Expression</em>}'.
@@ -5086,15 +5268,15 @@ public interface OwlPackage extends EPackage {
 	EClass getDifferentIndividuals();
 
 	/**
-	 * Returns the meta object for the reference list '{@link owl.DifferentIndividuals#getDifferentIndividuals <em>Different Individuals</em>}'.
+	 * Returns the meta object for the reference list '{@link owl.DifferentIndividuals#getIndividuals <em>Individuals</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Different Individuals</em>'.
-	 * @see owl.DifferentIndividuals#getDifferentIndividuals()
+	 * @return the meta object for the reference list '<em>Individuals</em>'.
+	 * @see owl.DifferentIndividuals#getIndividuals()
 	 * @see #getDifferentIndividuals()
 	 * @generated
 	 */
-	EReference getDifferentIndividuals_DifferentIndividuals();
+	EReference getDifferentIndividuals_Individuals();
 
 	/**
 	 * Returns the meta object for class '{@link owl.DisjointClasses <em>Disjoint Classes</em>}'.
@@ -5520,15 +5702,15 @@ public interface OwlPackage extends EPackage {
 	EClass getSameIndividual();
 
 	/**
-	 * Returns the meta object for the reference list '{@link owl.SameIndividual#getSameIndividuals <em>Same Individuals</em>}'.
+	 * Returns the meta object for the reference list '{@link owl.SameIndividual#getIndividuals <em>Individuals</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Same Individuals</em>'.
-	 * @see owl.SameIndividual#getSameIndividuals()
+	 * @return the meta object for the reference list '<em>Individuals</em>'.
+	 * @see owl.SameIndividual#getIndividuals()
 	 * @see #getSameIndividual()
 	 * @generated
 	 */
-	EReference getSameIndividual_SameIndividuals();
+	EReference getSameIndividual_Individuals();
 
 	/**
 	 * Returns the meta object for class '{@link owl.SubObjectPropertyOf <em>Sub Object Property Of</em>}'.
@@ -5744,17 +5926,6 @@ public interface OwlPackage extends EPackage {
 	EClass getClassAssertion();
 
 	/**
-	 * Returns the meta object for the reference '{@link owl.ClassAssertion#getIndividual <em>Individual</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Individual</em>'.
-	 * @see owl.ClassAssertion#getIndividual()
-	 * @see #getClassAssertion()
-	 * @generated
-	 */
-	EReference getClassAssertion_Individual();
-
-	/**
 	 * Returns the meta object for the reference '{@link owl.ClassAssertion#getClassExpression <em>Class Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5764,6 +5935,17 @@ public interface OwlPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getClassAssertion_ClassExpression();
+
+	/**
+	 * Returns the meta object for the reference '{@link owl.ClassAssertion#getIndividual <em>Individual</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Individual</em>'.
+	 * @see owl.ClassAssertion#getIndividual()
+	 * @see #getClassAssertion()
+	 * @generated
+	 */
+	EReference getClassAssertion_Individual();
 
 	/**
 	 * Returns the meta object for class '{@link owl.IrreflexiveObjectProperty <em>Irreflexive Object Property</em>}'.
@@ -5893,16 +6075,6 @@ public interface OwlPackage extends EPackage {
 	EReference getSubClassOf_SuperClassExpression();
 
 	/**
-	 * Returns the meta object for class '{@link owl.SubObjectProperty <em>Sub Object Property</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Sub Object Property</em>'.
-	 * @see owl.SubObjectProperty
-	 * @generated
-	 */
-	EClass getSubObjectProperty();
-
-	/**
 	 * Returns the meta object for class '{@link owl.TransitiveObjectProperty <em>Transitive Object Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5924,80 +6096,6 @@ public interface OwlPackage extends EPackage {
 	EReference getTransitiveObjectProperty_ObjectPropertyExpression();
 
 	/**
-	 * Returns the meta object for class '{@link owl.EntityAnnotation <em>Entity Annotation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Entity Annotation</em>'.
-	 * @see owl.EntityAnnotation
-	 * @generated
-	 */
-	EClass getEntityAnnotation();
-
-	/**
-	 * Returns the meta object for the reference '{@link owl.EntityAnnotation#getEntity <em>Entity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Entity</em>'.
-	 * @see owl.EntityAnnotation#getEntity()
-	 * @see #getEntityAnnotation()
-	 * @generated
-	 */
-	EReference getEntityAnnotation_Entity();
-
-	/**
-	 * Returns the meta object for the reference list '{@link owl.EntityAnnotation#getEntityAnnotations <em>Entity Annotations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Entity Annotations</em>'.
-	 * @see owl.EntityAnnotation#getEntityAnnotations()
-	 * @see #getEntityAnnotation()
-	 * @generated
-	 */
-	EReference getEntityAnnotation_EntityAnnotations();
-
-	/**
-	 * Returns the meta object for class '{@link owl.FullURI <em>Full URI</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Full URI</em>'.
-	 * @see owl.FullURI
-	 * @generated
-	 */
-	EClass getFullURI();
-
-	/**
-	 * Returns the meta object for the attribute '{@link owl.FullURI#getIri <em>Iri</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Iri</em>'.
-	 * @see owl.FullURI#getIri()
-	 * @see #getFullURI()
-	 * @generated
-	 */
-	EAttribute getFullURI_Iri();
-
-	/**
-	 * Returns the meta object for class '{@link owl.AbbreviatedURI <em>Abbreviated URI</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Abbreviated URI</em>'.
-	 * @see owl.AbbreviatedURI
-	 * @generated
-	 */
-	EClass getAbbreviatedURI();
-
-	/**
-	 * Returns the meta object for the attribute '{@link owl.AbbreviatedURI#getLocalName <em>Local Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Local Name</em>'.
-	 * @see owl.AbbreviatedURI#getLocalName()
-	 * @see #getAbbreviatedURI()
-	 * @generated
-	 */
-	EAttribute getAbbreviatedURI_LocalName();
-
-	/**
 	 * Returns the meta object for class '{@link owl.InverseObjectProperties <em>Inverse Object Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6017,69 +6115,6 @@ public interface OwlPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getInverseObjectProperties_InverseObjectProperties();
-
-	/**
-	 * Returns the meta object for class '{@link owl.AnnotationByConstant <em>Annotation By Constant</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Annotation By Constant</em>'.
-	 * @see owl.AnnotationByConstant
-	 * @generated
-	 */
-	EClass getAnnotationByConstant();
-
-	/**
-	 * Returns the meta object for the reference '{@link owl.AnnotationByConstant#getAnnotationValue <em>Annotation Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Annotation Value</em>'.
-	 * @see owl.AnnotationByConstant#getAnnotationValue()
-	 * @see #getAnnotationByConstant()
-	 * @generated
-	 */
-	EReference getAnnotationByConstant_AnnotationValue();
-
-	/**
-	 * Returns the meta object for class '{@link owl.AnnotationByEntity <em>Annotation By Entity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Annotation By Entity</em>'.
-	 * @see owl.AnnotationByEntity
-	 * @generated
-	 */
-	EClass getAnnotationByEntity();
-
-	/**
-	 * Returns the meta object for the reference '{@link owl.AnnotationByEntity#getAnnotationValue <em>Annotation Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Annotation Value</em>'.
-	 * @see owl.AnnotationByEntity#getAnnotationValue()
-	 * @see #getAnnotationByEntity()
-	 * @generated
-	 */
-	EReference getAnnotationByEntity_AnnotationValue();
-
-	/**
-	 * Returns the meta object for class '{@link owl.AnnotationByAnonymousIndividual <em>Annotation By Anonymous Individual</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Annotation By Anonymous Individual</em>'.
-	 * @see owl.AnnotationByAnonymousIndividual
-	 * @generated
-	 */
-	EClass getAnnotationByAnonymousIndividual();
-
-	/**
-	 * Returns the meta object for the reference '{@link owl.AnnotationByAnonymousIndividual#getAnnotationValue <em>Annotation Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Annotation Value</em>'.
-	 * @see owl.AnnotationByAnonymousIndividual#getAnnotationValue()
-	 * @see #getAnnotationByAnonymousIndividual()
-	 * @generated
-	 */
-	EReference getAnnotationByAnonymousIndividual_AnnotationValue();
 
 	/**
 	 * Returns the meta object for class '{@link owl.AnonymousIndividual <em>Anonymous Individual</em>}'.
@@ -6134,79 +6169,354 @@ public interface OwlPackage extends EPackage {
 	EClass getObjectAndDataPropertyAxiom();
 
 	/**
-	 * Returns the meta object for class '{@link owl.KeyFor <em>Key For</em>}'.
+	 * Returns the meta object for class '{@link owl.HasKey <em>Has Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Key For</em>'.
-	 * @see owl.KeyFor
+	 * @return the meta object for class '<em>Has Key</em>'.
+	 * @see owl.HasKey
 	 * @generated
 	 */
-	EClass getKeyFor();
+	EClass getHasKey();
 
 	/**
-	 * Returns the meta object for the reference '{@link owl.KeyFor#getClassExpression <em>Class Expression</em>}'.
+	 * Returns the meta object for the reference '{@link owl.HasKey#getClassExpression <em>Class Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Class Expression</em>'.
-	 * @see owl.KeyFor#getClassExpression()
-	 * @see #getKeyFor()
+	 * @see owl.HasKey#getClassExpression()
+	 * @see #getHasKey()
 	 * @generated
 	 */
-	EReference getKeyFor_ClassExpression();
+	EReference getHasKey_ClassExpression();
 
 	/**
-	 * Returns the meta object for the reference list '{@link owl.KeyFor#getDataPropertyExpressions <em>Data Property Expressions</em>}'.
+	 * Returns the meta object for the reference list '{@link owl.HasKey#getDataPropertyExpressions <em>Data Property Expressions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Data Property Expressions</em>'.
-	 * @see owl.KeyFor#getDataPropertyExpressions()
-	 * @see #getKeyFor()
+	 * @see owl.HasKey#getDataPropertyExpressions()
+	 * @see #getHasKey()
 	 * @generated
 	 */
-	EReference getKeyFor_DataPropertyExpressions();
+	EReference getHasKey_DataPropertyExpressions();
 
 	/**
-	 * Returns the meta object for the reference list '{@link owl.KeyFor#getObjectPropertyExpressions <em>Object Property Expressions</em>}'.
+	 * Returns the meta object for the reference list '{@link owl.HasKey#getObjectPropertyExpressions <em>Object Property Expressions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Object Property Expressions</em>'.
-	 * @see owl.KeyFor#getObjectPropertyExpressions()
-	 * @see #getKeyFor()
+	 * @see owl.HasKey#getObjectPropertyExpressions()
+	 * @see #getHasKey()
 	 * @generated
 	 */
-	EReference getKeyFor_ObjectPropertyExpressions();
+	EReference getHasKey_ObjectPropertyExpressions();
 
 	/**
-	 * Returns the meta object for class '{@link owl.AnonymousIndividualAnnotation <em>Anonymous Individual Annotation</em>}'.
+	 * Returns the meta object for class '{@link owl.TypedLiteral <em>Typed Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Anonymous Individual Annotation</em>'.
-	 * @see owl.AnonymousIndividualAnnotation
+	 * @return the meta object for class '<em>Typed Literal</em>'.
+	 * @see owl.TypedLiteral
 	 * @generated
 	 */
-	EClass getAnonymousIndividualAnnotation();
+	EClass getTypedLiteral();
 
 	/**
-	 * Returns the meta object for the reference '{@link owl.AnonymousIndividualAnnotation#getAnonymousIndividual <em>Anonymous Individual</em>}'.
+	 * Returns the meta object for the attribute '{@link owl.TypedLiteral#getLexicalValue <em>Lexical Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Anonymous Individual</em>'.
-	 * @see owl.AnonymousIndividualAnnotation#getAnonymousIndividual()
-	 * @see #getAnonymousIndividualAnnotation()
+	 * @return the meta object for the attribute '<em>Lexical Value</em>'.
+	 * @see owl.TypedLiteral#getLexicalValue()
+	 * @see #getTypedLiteral()
 	 * @generated
 	 */
-	EReference getAnonymousIndividualAnnotation_AnonymousIndividual();
+	EAttribute getTypedLiteral_LexicalValue();
 
 	/**
-	 * Returns the meta object for the reference list '{@link owl.AnonymousIndividualAnnotation#getAnonymousIndiviudalAnnotations <em>Anonymous Indiviudal Annotations</em>}'.
+	 * Returns the meta object for the reference '{@link owl.TypedLiteral#getDatatype <em>Datatype</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Anonymous Indiviudal Annotations</em>'.
-	 * @see owl.AnonymousIndividualAnnotation#getAnonymousIndiviudalAnnotations()
-	 * @see #getAnonymousIndividualAnnotation()
+	 * @return the meta object for the reference '<em>Datatype</em>'.
+	 * @see owl.TypedLiteral#getDatatype()
+	 * @see #getTypedLiteral()
 	 * @generated
 	 */
-	EReference getAnonymousIndividualAnnotation_AnonymousIndiviudalAnnotations();
+	EReference getTypedLiteral_Datatype();
+
+	/**
+	 * Returns the meta object for class '{@link owl.StringLiteral <em>String Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>String Literal</em>'.
+	 * @see owl.StringLiteral
+	 * @generated
+	 */
+	EClass getStringLiteral();
+
+	/**
+	 * Returns the meta object for the attribute '{@link owl.StringLiteral#getQuotedString <em>Quoted String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Quoted String</em>'.
+	 * @see owl.StringLiteral#getQuotedString()
+	 * @see #getStringLiteral()
+	 * @generated
+	 */
+	EAttribute getStringLiteral_QuotedString();
+
+	/**
+	 * Returns the meta object for the attribute '{@link owl.StringLiteral#getLanguageTag <em>Language Tag</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Language Tag</em>'.
+	 * @see owl.StringLiteral#getLanguageTag()
+	 * @see #getStringLiteral()
+	 * @generated
+	 */
+	EAttribute getStringLiteral_LanguageTag();
+
+	/**
+	 * Returns the meta object for class '{@link owl.DataIntersectionOf <em>Data Intersection Of</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Data Intersection Of</em>'.
+	 * @see owl.DataIntersectionOf
+	 * @generated
+	 */
+	EClass getDataIntersectionOf();
+
+	/**
+	 * Returns the meta object for the reference list '{@link owl.DataIntersectionOf#getDataRanges <em>Data Ranges</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Data Ranges</em>'.
+	 * @see owl.DataIntersectionOf#getDataRanges()
+	 * @see #getDataIntersectionOf()
+	 * @generated
+	 */
+	EReference getDataIntersectionOf_DataRanges();
+
+	/**
+	 * Returns the meta object for class '{@link owl.DataUnionOf <em>Data Union Of</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Data Union Of</em>'.
+	 * @see owl.DataUnionOf
+	 * @generated
+	 */
+	EClass getDataUnionOf();
+
+	/**
+	 * Returns the meta object for the reference list '{@link owl.DataUnionOf#getDataRanges <em>Data Ranges</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Data Ranges</em>'.
+	 * @see owl.DataUnionOf#getDataRanges()
+	 * @see #getDataUnionOf()
+	 * @generated
+	 */
+	EReference getDataUnionOf_DataRanges();
+
+	/**
+	 * Returns the meta object for class '{@link owl.DataTypeDefinition <em>Data Type Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Data Type Definition</em>'.
+	 * @see owl.DataTypeDefinition
+	 * @generated
+	 */
+	EClass getDataTypeDefinition();
+
+	/**
+	 * Returns the meta object for the reference '{@link owl.DataTypeDefinition#getDataRange <em>Data Range</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Data Range</em>'.
+	 * @see owl.DataTypeDefinition#getDataRange()
+	 * @see #getDataTypeDefinition()
+	 * @generated
+	 */
+	EReference getDataTypeDefinition_DataRange();
+
+	/**
+	 * Returns the meta object for the reference '{@link owl.DataTypeDefinition#getDataType <em>Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Data Type</em>'.
+	 * @see owl.DataTypeDefinition#getDataType()
+	 * @see #getDataTypeDefinition()
+	 * @generated
+	 */
+	EReference getDataTypeDefinition_DataType();
+
+	/**
+	 * Returns the meta object for class '{@link owl.AnnotationAxiom <em>Annotation Axiom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Annotation Axiom</em>'.
+	 * @see owl.AnnotationAxiom
+	 * @generated
+	 */
+	EClass getAnnotationAxiom();
+
+	/**
+	 * Returns the meta object for class '{@link owl.SubAnnotationPropertyOf <em>Sub Annotation Property Of</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Sub Annotation Property Of</em>'.
+	 * @see owl.SubAnnotationPropertyOf
+	 * @generated
+	 */
+	EClass getSubAnnotationPropertyOf();
+
+	/**
+	 * Returns the meta object for the reference '{@link owl.SubAnnotationPropertyOf#getSubAnnotationProperty <em>Sub Annotation Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Sub Annotation Property</em>'.
+	 * @see owl.SubAnnotationPropertyOf#getSubAnnotationProperty()
+	 * @see #getSubAnnotationPropertyOf()
+	 * @generated
+	 */
+	EReference getSubAnnotationPropertyOf_SubAnnotationProperty();
+
+	/**
+	 * Returns the meta object for the reference '{@link owl.SubAnnotationPropertyOf#getSuperAnnotationProperty <em>Super Annotation Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Super Annotation Property</em>'.
+	 * @see owl.SubAnnotationPropertyOf#getSuperAnnotationProperty()
+	 * @see #getSubAnnotationPropertyOf()
+	 * @generated
+	 */
+	EReference getSubAnnotationPropertyOf_SuperAnnotationProperty();
+
+	/**
+	 * Returns the meta object for class '{@link owl.AnnotationPropertyDomain <em>Annotation Property Domain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Annotation Property Domain</em>'.
+	 * @see owl.AnnotationPropertyDomain
+	 * @generated
+	 */
+	EClass getAnnotationPropertyDomain();
+
+	/**
+	 * Returns the meta object for the reference '{@link owl.AnnotationPropertyDomain#getAnnotationProperty <em>Annotation Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Annotation Property</em>'.
+	 * @see owl.AnnotationPropertyDomain#getAnnotationProperty()
+	 * @see #getAnnotationPropertyDomain()
+	 * @generated
+	 */
+	EReference getAnnotationPropertyDomain_AnnotationProperty();
+
+	/**
+	 * Returns the meta object for the reference '{@link owl.AnnotationPropertyDomain#getDomain <em>Domain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Domain</em>'.
+	 * @see owl.AnnotationPropertyDomain#getDomain()
+	 * @see #getAnnotationPropertyDomain()
+	 * @generated
+	 */
+	EReference getAnnotationPropertyDomain_Domain();
+
+	/**
+	 * Returns the meta object for class '{@link owl.AnnotationPropertyRange <em>Annotation Property Range</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Annotation Property Range</em>'.
+	 * @see owl.AnnotationPropertyRange
+	 * @generated
+	 */
+	EClass getAnnotationPropertyRange();
+
+	/**
+	 * Returns the meta object for the reference '{@link owl.AnnotationPropertyRange#getAnnotationProperty <em>Annotation Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Annotation Property</em>'.
+	 * @see owl.AnnotationPropertyRange#getAnnotationProperty()
+	 * @see #getAnnotationPropertyRange()
+	 * @generated
+	 */
+	EReference getAnnotationPropertyRange_AnnotationProperty();
+
+	/**
+	 * Returns the meta object for the reference '{@link owl.AnnotationPropertyRange#getRange <em>Range</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Range</em>'.
+	 * @see owl.AnnotationPropertyRange#getRange()
+	 * @see #getAnnotationPropertyRange()
+	 * @generated
+	 */
+	EReference getAnnotationPropertyRange_Range();
+
+	/**
+	 * Returns the meta object for class '{@link owl.AnnotationAssertion <em>Annotation Assertion</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Annotation Assertion</em>'.
+	 * @see owl.AnnotationAssertion
+	 * @generated
+	 */
+	EClass getAnnotationAssertion();
+
+	/**
+	 * Returns the meta object for the reference '{@link owl.AnnotationAssertion#getAnnotationSubject <em>Annotation Subject</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Annotation Subject</em>'.
+	 * @see owl.AnnotationAssertion#getAnnotationSubject()
+	 * @see #getAnnotationAssertion()
+	 * @generated
+	 */
+	EReference getAnnotationAssertion_AnnotationSubject();
+
+	/**
+	 * Returns the meta object for the reference '{@link owl.AnnotationAssertion#getAnnotationProperty <em>Annotation Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Annotation Property</em>'.
+	 * @see owl.AnnotationAssertion#getAnnotationProperty()
+	 * @see #getAnnotationAssertion()
+	 * @generated
+	 */
+	EReference getAnnotationAssertion_AnnotationProperty();
+
+	/**
+	 * Returns the meta object for the reference '{@link owl.AnnotationAssertion#getAnnotationValue <em>Annotation Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Annotation Value</em>'.
+	 * @see owl.AnnotationAssertion#getAnnotationValue()
+	 * @see #getAnnotationAssertion()
+	 * @generated
+	 */
+	EReference getAnnotationAssertion_AnnotationValue();
+
+	/**
+	 * Returns the meta object for class '{@link owl.AnnotationSubject <em>Annotation Subject</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Annotation Subject</em>'.
+	 * @see owl.AnnotationSubject
+	 * @generated
+	 */
+	EClass getAnnotationSubject();
+
+	/**
+	 * Returns the meta object for class '{@link owl.AnnotationValue <em>Annotation Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Annotation Value</em>'.
+	 * @see owl.AnnotationValue
+	 * @generated
+	 */
+	EClass getAnnotationValue();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -6278,6 +6588,14 @@ public interface OwlPackage extends EPackage {
 		EReference ANNOTATION__ANNOTATION_PROPERTY = eINSTANCE.getAnnotation_AnnotationProperty();
 
 		/**
+		 * The meta object literal for the '<em><b>Annotation Value</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANNOTATION__ANNOTATION_VALUE = eINSTANCE.getAnnotation_AnnotationValue();
+
+		/**
 		 * The meta object literal for the '{@link owl.impl.AnnotationPropertyImpl <em>Annotation Property</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6324,30 +6642,14 @@ public interface OwlPackage extends EPackage {
 		EAttribute URI__VALUE = eINSTANCE.getURI_Value();
 
 		/**
-		 * The meta object literal for the '{@link owl.impl.ConstantImpl <em>Constant</em>}' class.
+		 * The meta object literal for the '{@link owl.impl.LiteralImpl <em>Literal</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see owl.impl.ConstantImpl
-		 * @see owl.impl.OwlPackageImpl#getConstant()
+		 * @see owl.impl.LiteralImpl
+		 * @see owl.impl.OwlPackageImpl#getLiteral()
 		 * @generated
 		 */
-		EClass CONSTANT = eINSTANCE.getConstant();
-
-		/**
-		 * The meta object literal for the '<em><b>Lexical Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONSTANT__LEXICAL_VALUE = eINSTANCE.getConstant_LexicalValue();
-
-		/**
-		 * The meta object literal for the '<em><b>Datatype</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CONSTANT__DATATYPE = eINSTANCE.getConstant_Datatype();
+		EClass LITERAL = eINSTANCE.getLiteral();
 
 		/**
 		 * The meta object literal for the '{@link owl.impl.DatatypeImpl <em>Datatype</em>}' class.
@@ -6620,14 +6922,14 @@ public interface OwlPackage extends EPackage {
 		EReference OBJECT_ALL_VALUES_FROM__OBJECT_PROPERTY_EXPRESSION = eINSTANCE.getObjectAllValuesFrom_ObjectPropertyExpression();
 
 		/**
-		 * The meta object literal for the '{@link owl.impl.ObjectExistsSelfImpl <em>Object Exists Self</em>}' class.
+		 * The meta object literal for the '{@link owl.impl.ObjectHasSelfImpl <em>Object Has Self</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see owl.impl.ObjectExistsSelfImpl
-		 * @see owl.impl.OwlPackageImpl#getObjectExistsSelf()
+		 * @see owl.impl.ObjectHasSelfImpl
+		 * @see owl.impl.OwlPackageImpl#getObjectHasSelf()
 		 * @generated
 		 */
-		EClass OBJECT_EXISTS_SELF = eINSTANCE.getObjectExistsSelf();
+		EClass OBJECT_HAS_SELF = eINSTANCE.getObjectHasSelf();
 
 		/**
 		 * The meta object literal for the '<em><b>Object Property Expression</b></em>' reference feature.
@@ -6635,7 +6937,7 @@ public interface OwlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference OBJECT_EXISTS_SELF__OBJECT_PROPERTY_EXPRESSION = eINSTANCE.getObjectExistsSelf_ObjectPropertyExpression();
+		EReference OBJECT_HAS_SELF__OBJECT_PROPERTY_EXPRESSION = eINSTANCE.getObjectHasSelf_ObjectPropertyExpression();
 
 		/**
 		 * The meta object literal for the '{@link owl.impl.ObjectHasValueImpl <em>Object Has Value</em>}' class.
@@ -6794,12 +7096,12 @@ public interface OwlPackage extends EPackage {
 		EClass DATA_ONE_OF = eINSTANCE.getDataOneOf();
 
 		/**
-		 * The meta object literal for the '<em><b>Constants</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Literals</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DATA_ONE_OF__CONSTANTS = eINSTANCE.getDataOneOf_Constants();
+		EReference DATA_ONE_OF__LITERALS = eINSTANCE.getDataOneOf_Literals();
 
 		/**
 		 * The meta object literal for the '{@link owl.impl.DatatypeRestrictionImpl <em>Datatype Restriction</em>}' class.
@@ -6828,30 +7130,30 @@ public interface OwlPackage extends EPackage {
 		EReference DATATYPE_RESTRICTION__RESTRICTIONS = eINSTANCE.getDatatypeRestriction_Restrictions();
 
 		/**
-		 * The meta object literal for the '{@link owl.impl.FacetConstantPairImpl <em>Facet Constant Pair</em>}' class.
+		 * The meta object literal for the '{@link owl.impl.FacetLiteralPairImpl <em>Facet Literal Pair</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see owl.impl.FacetConstantPairImpl
-		 * @see owl.impl.OwlPackageImpl#getFacetConstantPair()
+		 * @see owl.impl.FacetLiteralPairImpl
+		 * @see owl.impl.OwlPackageImpl#getFacetLiteralPair()
 		 * @generated
 		 */
-		EClass FACET_CONSTANT_PAIR = eINSTANCE.getFacetConstantPair();
+		EClass FACET_LITERAL_PAIR = eINSTANCE.getFacetLiteralPair();
 
 		/**
-		 * The meta object literal for the '<em><b>Constant</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Restriction Value</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference FACET_CONSTANT_PAIR__CONSTANT = eINSTANCE.getFacetConstantPair_Constant();
+		EReference FACET_LITERAL_PAIR__RESTRICTION_VALUE = eINSTANCE.getFacetLiteralPair_RestrictionValue();
 
 		/**
-		 * The meta object literal for the '<em><b>Facet</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Constraining Facet</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute FACET_CONSTANT_PAIR__FACET = eINSTANCE.getFacetConstantPair_Facet();
+		EReference FACET_LITERAL_PAIR__CONSTRAINING_FACET = eINSTANCE.getFacetLiteralPair_ConstrainingFacet();
 
 		/**
 		 * The meta object literal for the '{@link owl.impl.DataAllValuesFromImpl <em>Data All Values From</em>}' class.
@@ -6890,12 +7192,12 @@ public interface OwlPackage extends EPackage {
 		EClass DATA_HAS_VALUE = eINSTANCE.getDataHasValue();
 
 		/**
-		 * The meta object literal for the '<em><b>Constant</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Literal</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DATA_HAS_VALUE__CONSTANT = eINSTANCE.getDataHasValue_Constant();
+		EReference DATA_HAS_VALUE__LITERAL = eINSTANCE.getDataHasValue_Literal();
 
 		/**
 		 * The meta object literal for the '<em><b>Data Property Expression</b></em>' reference feature.
@@ -7136,12 +7438,12 @@ public interface OwlPackage extends EPackage {
 		EClass DIFFERENT_INDIVIDUALS = eINSTANCE.getDifferentIndividuals();
 
 		/**
-		 * The meta object literal for the '<em><b>Different Individuals</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Individuals</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DIFFERENT_INDIVIDUALS__DIFFERENT_INDIVIDUALS = eINSTANCE.getDifferentIndividuals_DifferentIndividuals();
+		EReference DIFFERENT_INDIVIDUALS__INDIVIDUALS = eINSTANCE.getDifferentIndividuals_Individuals();
 
 		/**
 		 * The meta object literal for the '{@link owl.impl.DisjointClassesImpl <em>Disjoint Classes</em>}' class.
@@ -7498,12 +7800,12 @@ public interface OwlPackage extends EPackage {
 		EClass SAME_INDIVIDUAL = eINSTANCE.getSameIndividual();
 
 		/**
-		 * The meta object literal for the '<em><b>Same Individuals</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Individuals</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SAME_INDIVIDUAL__SAME_INDIVIDUALS = eINSTANCE.getSameIndividual_SameIndividuals();
+		EReference SAME_INDIVIDUAL__INDIVIDUALS = eINSTANCE.getSameIndividual_Individuals();
 
 		/**
 		 * The meta object literal for the '{@link owl.impl.SubObjectPropertyOfImpl <em>Sub Object Property Of</em>}' class.
@@ -7678,20 +7980,20 @@ public interface OwlPackage extends EPackage {
 		EClass CLASS_ASSERTION = eINSTANCE.getClassAssertion();
 
 		/**
-		 * The meta object literal for the '<em><b>Individual</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CLASS_ASSERTION__INDIVIDUAL = eINSTANCE.getClassAssertion_Individual();
-
-		/**
 		 * The meta object literal for the '<em><b>Class Expression</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference CLASS_ASSERTION__CLASS_EXPRESSION = eINSTANCE.getClassAssertion_ClassExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Individual</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASS_ASSERTION__INDIVIDUAL = eINSTANCE.getClassAssertion_Individual();
 
 		/**
 		 * The meta object literal for the '{@link owl.impl.IrreflexiveObjectPropertyImpl <em>Irreflexive Object Property</em>}' class.
@@ -7798,16 +8100,6 @@ public interface OwlPackage extends EPackage {
 		EReference SUB_CLASS_OF__SUPER_CLASS_EXPRESSION = eINSTANCE.getSubClassOf_SuperClassExpression();
 
 		/**
-		 * The meta object literal for the '{@link owl.impl.SubObjectPropertyImpl <em>Sub Object Property</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see owl.impl.SubObjectPropertyImpl
-		 * @see owl.impl.OwlPackageImpl#getSubObjectProperty()
-		 * @generated
-		 */
-		EClass SUB_OBJECT_PROPERTY = eINSTANCE.getSubObjectProperty();
-
-		/**
 		 * The meta object literal for the '{@link owl.impl.TransitiveObjectPropertyImpl <em>Transitive Object Property</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -7826,68 +8118,6 @@ public interface OwlPackage extends EPackage {
 		EReference TRANSITIVE_OBJECT_PROPERTY__OBJECT_PROPERTY_EXPRESSION = eINSTANCE.getTransitiveObjectProperty_ObjectPropertyExpression();
 
 		/**
-		 * The meta object literal for the '{@link owl.impl.EntityAnnotationImpl <em>Entity Annotation</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see owl.impl.EntityAnnotationImpl
-		 * @see owl.impl.OwlPackageImpl#getEntityAnnotation()
-		 * @generated
-		 */
-		EClass ENTITY_ANNOTATION = eINSTANCE.getEntityAnnotation();
-
-		/**
-		 * The meta object literal for the '<em><b>Entity</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ENTITY_ANNOTATION__ENTITY = eINSTANCE.getEntityAnnotation_Entity();
-
-		/**
-		 * The meta object literal for the '<em><b>Entity Annotations</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ENTITY_ANNOTATION__ENTITY_ANNOTATIONS = eINSTANCE.getEntityAnnotation_EntityAnnotations();
-
-		/**
-		 * The meta object literal for the '{@link owl.impl.FullURIImpl <em>Full URI</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see owl.impl.FullURIImpl
-		 * @see owl.impl.OwlPackageImpl#getFullURI()
-		 * @generated
-		 */
-		EClass FULL_URI = eINSTANCE.getFullURI();
-
-		/**
-		 * The meta object literal for the '<em><b>Iri</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute FULL_URI__IRI = eINSTANCE.getFullURI_Iri();
-
-		/**
-		 * The meta object literal for the '{@link owl.impl.AbbreviatedURIImpl <em>Abbreviated URI</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see owl.impl.AbbreviatedURIImpl
-		 * @see owl.impl.OwlPackageImpl#getAbbreviatedURI()
-		 * @generated
-		 */
-		EClass ABBREVIATED_URI = eINSTANCE.getAbbreviatedURI();
-
-		/**
-		 * The meta object literal for the '<em><b>Local Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ABBREVIATED_URI__LOCAL_NAME = eINSTANCE.getAbbreviatedURI_LocalName();
-
-		/**
 		 * The meta object literal for the '{@link owl.impl.InverseObjectPropertiesImpl <em>Inverse Object Properties</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -7904,60 +8134,6 @@ public interface OwlPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INVERSE_OBJECT_PROPERTIES__INVERSE_OBJECT_PROPERTIES = eINSTANCE.getInverseObjectProperties_InverseObjectProperties();
-
-		/**
-		 * The meta object literal for the '{@link owl.impl.AnnotationByConstantImpl <em>Annotation By Constant</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see owl.impl.AnnotationByConstantImpl
-		 * @see owl.impl.OwlPackageImpl#getAnnotationByConstant()
-		 * @generated
-		 */
-		EClass ANNOTATION_BY_CONSTANT = eINSTANCE.getAnnotationByConstant();
-
-		/**
-		 * The meta object literal for the '<em><b>Annotation Value</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANNOTATION_BY_CONSTANT__ANNOTATION_VALUE = eINSTANCE.getAnnotationByConstant_AnnotationValue();
-
-		/**
-		 * The meta object literal for the '{@link owl.impl.AnnotationByEntityImpl <em>Annotation By Entity</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see owl.impl.AnnotationByEntityImpl
-		 * @see owl.impl.OwlPackageImpl#getAnnotationByEntity()
-		 * @generated
-		 */
-		EClass ANNOTATION_BY_ENTITY = eINSTANCE.getAnnotationByEntity();
-
-		/**
-		 * The meta object literal for the '<em><b>Annotation Value</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANNOTATION_BY_ENTITY__ANNOTATION_VALUE = eINSTANCE.getAnnotationByEntity_AnnotationValue();
-
-		/**
-		 * The meta object literal for the '{@link owl.impl.AnnotationByAnonymousIndividualImpl <em>Annotation By Anonymous Individual</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see owl.impl.AnnotationByAnonymousIndividualImpl
-		 * @see owl.impl.OwlPackageImpl#getAnnotationByAnonymousIndividual()
-		 * @generated
-		 */
-		EClass ANNOTATION_BY_ANONYMOUS_INDIVIDUAL = eINSTANCE.getAnnotationByAnonymousIndividual();
-
-		/**
-		 * The meta object literal for the '<em><b>Annotation Value</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANNOTATION_BY_ANONYMOUS_INDIVIDUAL__ANNOTATION_VALUE = eINSTANCE.getAnnotationByAnonymousIndividual_AnnotationValue();
 
 		/**
 		 * The meta object literal for the '{@link owl.impl.AnonymousIndividualImpl <em>Anonymous Individual</em>}' class.
@@ -8006,14 +8182,14 @@ public interface OwlPackage extends EPackage {
 		EClass OBJECT_AND_DATA_PROPERTY_AXIOM = eINSTANCE.getObjectAndDataPropertyAxiom();
 
 		/**
-		 * The meta object literal for the '{@link owl.impl.KeyForImpl <em>Key For</em>}' class.
+		 * The meta object literal for the '{@link owl.impl.HasKeyImpl <em>Has Key</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see owl.impl.KeyForImpl
-		 * @see owl.impl.OwlPackageImpl#getKeyFor()
+		 * @see owl.impl.HasKeyImpl
+		 * @see owl.impl.OwlPackageImpl#getHasKey()
 		 * @generated
 		 */
-		EClass KEY_FOR = eINSTANCE.getKeyFor();
+		EClass HAS_KEY = eINSTANCE.getHasKey();
 
 		/**
 		 * The meta object literal for the '<em><b>Class Expression</b></em>' reference feature.
@@ -8021,7 +8197,7 @@ public interface OwlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference KEY_FOR__CLASS_EXPRESSION = eINSTANCE.getKeyFor_ClassExpression();
+		EReference HAS_KEY__CLASS_EXPRESSION = eINSTANCE.getHasKey_ClassExpression();
 
 		/**
 		 * The meta object literal for the '<em><b>Data Property Expressions</b></em>' reference list feature.
@@ -8029,7 +8205,7 @@ public interface OwlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference KEY_FOR__DATA_PROPERTY_EXPRESSIONS = eINSTANCE.getKeyFor_DataPropertyExpressions();
+		EReference HAS_KEY__DATA_PROPERTY_EXPRESSIONS = eINSTANCE.getHasKey_DataPropertyExpressions();
 
 		/**
 		 * The meta object literal for the '<em><b>Object Property Expressions</b></em>' reference list feature.
@@ -8037,33 +8213,263 @@ public interface OwlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference KEY_FOR__OBJECT_PROPERTY_EXPRESSIONS = eINSTANCE.getKeyFor_ObjectPropertyExpressions();
+		EReference HAS_KEY__OBJECT_PROPERTY_EXPRESSIONS = eINSTANCE.getHasKey_ObjectPropertyExpressions();
 
 		/**
-		 * The meta object literal for the '{@link owl.impl.AnonymousIndividualAnnotationImpl <em>Anonymous Individual Annotation</em>}' class.
+		 * The meta object literal for the '{@link owl.impl.TypedLiteralImpl <em>Typed Literal</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see owl.impl.AnonymousIndividualAnnotationImpl
-		 * @see owl.impl.OwlPackageImpl#getAnonymousIndividualAnnotation()
+		 * @see owl.impl.TypedLiteralImpl
+		 * @see owl.impl.OwlPackageImpl#getTypedLiteral()
 		 * @generated
 		 */
-		EClass ANONYMOUS_INDIVIDUAL_ANNOTATION = eINSTANCE.getAnonymousIndividualAnnotation();
+		EClass TYPED_LITERAL = eINSTANCE.getTypedLiteral();
 
 		/**
-		 * The meta object literal for the '<em><b>Anonymous Individual</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANONYMOUS_INDIVIDUAL_ANNOTATION__ANONYMOUS_INDIVIDUAL = eINSTANCE.getAnonymousIndividualAnnotation_AnonymousIndividual();
-
-		/**
-		 * The meta object literal for the '<em><b>Anonymous Indiviudal Annotations</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Lexical Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ANONYMOUS_INDIVIDUAL_ANNOTATION__ANONYMOUS_INDIVIUDAL_ANNOTATIONS = eINSTANCE.getAnonymousIndividualAnnotation_AnonymousIndiviudalAnnotations();
+		EAttribute TYPED_LITERAL__LEXICAL_VALUE = eINSTANCE.getTypedLiteral_LexicalValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Datatype</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TYPED_LITERAL__DATATYPE = eINSTANCE.getTypedLiteral_Datatype();
+
+		/**
+		 * The meta object literal for the '{@link owl.impl.StringLiteralImpl <em>String Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see owl.impl.StringLiteralImpl
+		 * @see owl.impl.OwlPackageImpl#getStringLiteral()
+		 * @generated
+		 */
+		EClass STRING_LITERAL = eINSTANCE.getStringLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Quoted String</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STRING_LITERAL__QUOTED_STRING = eINSTANCE.getStringLiteral_QuotedString();
+
+		/**
+		 * The meta object literal for the '<em><b>Language Tag</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STRING_LITERAL__LANGUAGE_TAG = eINSTANCE.getStringLiteral_LanguageTag();
+
+		/**
+		 * The meta object literal for the '{@link owl.impl.DataIntersectionOfImpl <em>Data Intersection Of</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see owl.impl.DataIntersectionOfImpl
+		 * @see owl.impl.OwlPackageImpl#getDataIntersectionOf()
+		 * @generated
+		 */
+		EClass DATA_INTERSECTION_OF = eINSTANCE.getDataIntersectionOf();
+
+		/**
+		 * The meta object literal for the '<em><b>Data Ranges</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_INTERSECTION_OF__DATA_RANGES = eINSTANCE.getDataIntersectionOf_DataRanges();
+
+		/**
+		 * The meta object literal for the '{@link owl.impl.DataUnionOfImpl <em>Data Union Of</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see owl.impl.DataUnionOfImpl
+		 * @see owl.impl.OwlPackageImpl#getDataUnionOf()
+		 * @generated
+		 */
+		EClass DATA_UNION_OF = eINSTANCE.getDataUnionOf();
+
+		/**
+		 * The meta object literal for the '<em><b>Data Ranges</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_UNION_OF__DATA_RANGES = eINSTANCE.getDataUnionOf_DataRanges();
+
+		/**
+		 * The meta object literal for the '{@link owl.impl.DataTypeDefinitionImpl <em>Data Type Definition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see owl.impl.DataTypeDefinitionImpl
+		 * @see owl.impl.OwlPackageImpl#getDataTypeDefinition()
+		 * @generated
+		 */
+		EClass DATA_TYPE_DEFINITION = eINSTANCE.getDataTypeDefinition();
+
+		/**
+		 * The meta object literal for the '<em><b>Data Range</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_TYPE_DEFINITION__DATA_RANGE = eINSTANCE.getDataTypeDefinition_DataRange();
+
+		/**
+		 * The meta object literal for the '<em><b>Data Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_TYPE_DEFINITION__DATA_TYPE = eINSTANCE.getDataTypeDefinition_DataType();
+
+		/**
+		 * The meta object literal for the '{@link owl.impl.AnnotationAxiomImpl <em>Annotation Axiom</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see owl.impl.AnnotationAxiomImpl
+		 * @see owl.impl.OwlPackageImpl#getAnnotationAxiom()
+		 * @generated
+		 */
+		EClass ANNOTATION_AXIOM = eINSTANCE.getAnnotationAxiom();
+
+		/**
+		 * The meta object literal for the '{@link owl.impl.SubAnnotationPropertyOfImpl <em>Sub Annotation Property Of</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see owl.impl.SubAnnotationPropertyOfImpl
+		 * @see owl.impl.OwlPackageImpl#getSubAnnotationPropertyOf()
+		 * @generated
+		 */
+		EClass SUB_ANNOTATION_PROPERTY_OF = eINSTANCE.getSubAnnotationPropertyOf();
+
+		/**
+		 * The meta object literal for the '<em><b>Sub Annotation Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SUB_ANNOTATION_PROPERTY_OF__SUB_ANNOTATION_PROPERTY = eINSTANCE.getSubAnnotationPropertyOf_SubAnnotationProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Super Annotation Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SUB_ANNOTATION_PROPERTY_OF__SUPER_ANNOTATION_PROPERTY = eINSTANCE.getSubAnnotationPropertyOf_SuperAnnotationProperty();
+
+		/**
+		 * The meta object literal for the '{@link owl.impl.AnnotationPropertyDomainImpl <em>Annotation Property Domain</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see owl.impl.AnnotationPropertyDomainImpl
+		 * @see owl.impl.OwlPackageImpl#getAnnotationPropertyDomain()
+		 * @generated
+		 */
+		EClass ANNOTATION_PROPERTY_DOMAIN = eINSTANCE.getAnnotationPropertyDomain();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotation Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANNOTATION_PROPERTY_DOMAIN__ANNOTATION_PROPERTY = eINSTANCE.getAnnotationPropertyDomain_AnnotationProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Domain</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANNOTATION_PROPERTY_DOMAIN__DOMAIN = eINSTANCE.getAnnotationPropertyDomain_Domain();
+
+		/**
+		 * The meta object literal for the '{@link owl.impl.AnnotationPropertyRangeImpl <em>Annotation Property Range</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see owl.impl.AnnotationPropertyRangeImpl
+		 * @see owl.impl.OwlPackageImpl#getAnnotationPropertyRange()
+		 * @generated
+		 */
+		EClass ANNOTATION_PROPERTY_RANGE = eINSTANCE.getAnnotationPropertyRange();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotation Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANNOTATION_PROPERTY_RANGE__ANNOTATION_PROPERTY = eINSTANCE.getAnnotationPropertyRange_AnnotationProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Range</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANNOTATION_PROPERTY_RANGE__RANGE = eINSTANCE.getAnnotationPropertyRange_Range();
+
+		/**
+		 * The meta object literal for the '{@link owl.impl.AnnotationAssertionImpl <em>Annotation Assertion</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see owl.impl.AnnotationAssertionImpl
+		 * @see owl.impl.OwlPackageImpl#getAnnotationAssertion()
+		 * @generated
+		 */
+		EClass ANNOTATION_ASSERTION = eINSTANCE.getAnnotationAssertion();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotation Subject</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANNOTATION_ASSERTION__ANNOTATION_SUBJECT = eINSTANCE.getAnnotationAssertion_AnnotationSubject();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotation Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANNOTATION_ASSERTION__ANNOTATION_PROPERTY = eINSTANCE.getAnnotationAssertion_AnnotationProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotation Value</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANNOTATION_ASSERTION__ANNOTATION_VALUE = eINSTANCE.getAnnotationAssertion_AnnotationValue();
+
+		/**
+		 * The meta object literal for the '{@link owl.impl.AnnotationSubjectImpl <em>Annotation Subject</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see owl.impl.AnnotationSubjectImpl
+		 * @see owl.impl.OwlPackageImpl#getAnnotationSubject()
+		 * @generated
+		 */
+		EClass ANNOTATION_SUBJECT = eINSTANCE.getAnnotationSubject();
+
+		/**
+		 * The meta object literal for the '{@link owl.impl.AnnotationValueImpl <em>Annotation Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see owl.impl.AnnotationValueImpl
+		 * @see owl.impl.OwlPackageImpl#getAnnotationValue()
+		 * @generated
+		 */
+		EClass ANNOTATION_VALUE = eINSTANCE.getAnnotationValue();
 
 	}
 

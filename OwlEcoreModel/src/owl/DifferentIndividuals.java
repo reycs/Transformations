@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link owl.DifferentIndividuals#getDifferentIndividuals <em>Different Individuals</em>}</li>
+ *   <li>{@link owl.DifferentIndividuals#getIndividuals <em>Individuals</em>}</li>
  * </ul>
  *
  * @see owl.OwlPackage#getDifferentIndividuals()
@@ -22,19 +22,19 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface DifferentIndividuals extends Assertion {
 	/**
-	 * Returns the value of the '<em><b>Different Individuals</b></em>' reference list.
-	 * The list contents are of type {@link owl.NamedIndividual}.
+	 * Returns the value of the '<em><b>Individuals</b></em>' reference list.
+	 * The list contents are of type {@link owl.Individual}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Different Individuals</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Individuals</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Different Individuals</em>' reference list.
-	 * @see owl.OwlPackage#getDifferentIndividuals_DifferentIndividuals()
-	 * @model lower="2" ordered="false"
+	 * @return the value of the '<em>Individuals</em>' reference list.
+	 * @see owl.OwlPackage#getDifferentIndividuals_Individuals()
+	 * @model lower="2"
 	 * @generated
 	 */
-	EList<NamedIndividual> getDifferentIndividuals();
+	EList<Individual> getIndividuals();
 
 } // DifferentIndividuals

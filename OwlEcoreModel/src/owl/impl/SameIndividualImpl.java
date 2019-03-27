@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
-import owl.NamedIndividual;
+import owl.Individual;
 import owl.OwlPackage;
 import owl.SameIndividual;
 
@@ -22,21 +22,21 @@ import owl.SameIndividual;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link owl.impl.SameIndividualImpl#getSameIndividuals <em>Same Individuals</em>}</li>
+ *   <li>{@link owl.impl.SameIndividualImpl#getIndividuals <em>Individuals</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class SameIndividualImpl extends AssertionImpl implements SameIndividual {
 	/**
-	 * The cached value of the '{@link #getSameIndividuals() <em>Same Individuals</em>}' reference list.
+	 * The cached value of the '{@link #getIndividuals() <em>Individuals</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSameIndividuals()
+	 * @see #getIndividuals()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<NamedIndividual> sameIndividuals;
+	protected EList<Individual> individuals;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -62,11 +62,11 @@ public class SameIndividualImpl extends AssertionImpl implements SameIndividual 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<NamedIndividual> getSameIndividuals() {
-		if (sameIndividuals == null) {
-			sameIndividuals = new EObjectResolvingEList<NamedIndividual>(NamedIndividual.class, this, OwlPackage.SAME_INDIVIDUAL__SAME_INDIVIDUALS);
+	public EList<Individual> getIndividuals() {
+		if (individuals == null) {
+			individuals = new EObjectResolvingEList<Individual>(Individual.class, this, OwlPackage.SAME_INDIVIDUAL__INDIVIDUALS);
 		}
-		return sameIndividuals;
+		return individuals;
 	}
 
 	/**
@@ -77,8 +77,8 @@ public class SameIndividualImpl extends AssertionImpl implements SameIndividual 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OwlPackage.SAME_INDIVIDUAL__SAME_INDIVIDUALS:
-				return getSameIndividuals();
+			case OwlPackage.SAME_INDIVIDUAL__INDIVIDUALS:
+				return getIndividuals();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -92,9 +92,9 @@ public class SameIndividualImpl extends AssertionImpl implements SameIndividual 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OwlPackage.SAME_INDIVIDUAL__SAME_INDIVIDUALS:
-				getSameIndividuals().clear();
-				getSameIndividuals().addAll((Collection<? extends NamedIndividual>)newValue);
+			case OwlPackage.SAME_INDIVIDUAL__INDIVIDUALS:
+				getIndividuals().clear();
+				getIndividuals().addAll((Collection<? extends Individual>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -108,8 +108,8 @@ public class SameIndividualImpl extends AssertionImpl implements SameIndividual 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OwlPackage.SAME_INDIVIDUAL__SAME_INDIVIDUALS:
-				getSameIndividuals().clear();
+			case OwlPackage.SAME_INDIVIDUAL__INDIVIDUALS:
+				getIndividuals().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -123,8 +123,8 @@ public class SameIndividualImpl extends AssertionImpl implements SameIndividual 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OwlPackage.SAME_INDIVIDUAL__SAME_INDIVIDUALS:
-				return sameIndividuals != null && !sameIndividuals.isEmpty();
+			case OwlPackage.SAME_INDIVIDUAL__INDIVIDUALS:
+				return individuals != null && !individuals.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

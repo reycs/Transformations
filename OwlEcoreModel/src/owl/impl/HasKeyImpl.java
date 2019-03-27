@@ -17,26 +17,26 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import owl.ClassExpression;
 import owl.DataPropertyExpression;
-import owl.KeyFor;
+import owl.HasKey;
 import owl.ObjectPropertyExpression;
 import owl.OwlPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Key For</b></em>'.
+ * An implementation of the model object '<em><b>Has Key</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link owl.impl.KeyForImpl#getClassExpression <em>Class Expression</em>}</li>
- *   <li>{@link owl.impl.KeyForImpl#getDataPropertyExpressions <em>Data Property Expressions</em>}</li>
- *   <li>{@link owl.impl.KeyForImpl#getObjectPropertyExpressions <em>Object Property Expressions</em>}</li>
+ *   <li>{@link owl.impl.HasKeyImpl#getClassExpression <em>Class Expression</em>}</li>
+ *   <li>{@link owl.impl.HasKeyImpl#getDataPropertyExpressions <em>Data Property Expressions</em>}</li>
+ *   <li>{@link owl.impl.HasKeyImpl#getObjectPropertyExpressions <em>Object Property Expressions</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class KeyForImpl extends ObjectAndDataPropertyAxiomImpl implements KeyFor {
+public class HasKeyImpl extends ObjectAndDataPropertyAxiomImpl implements HasKey {
 	/**
 	 * The cached value of the '{@link #getClassExpression() <em>Class Expression</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -72,7 +72,7 @@ public class KeyForImpl extends ObjectAndDataPropertyAxiomImpl implements KeyFor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected KeyForImpl() {
+	protected HasKeyImpl() {
 		super();
 	}
 
@@ -83,7 +83,7 @@ public class KeyForImpl extends ObjectAndDataPropertyAxiomImpl implements KeyFor
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OwlPackage.Literals.KEY_FOR;
+		return OwlPackage.Literals.HAS_KEY;
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class KeyForImpl extends ObjectAndDataPropertyAxiomImpl implements KeyFor
 			classExpression = (ClassExpression)eResolveProxy(oldClassExpression);
 			if (classExpression != oldClassExpression) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.KEY_FOR__CLASS_EXPRESSION, oldClassExpression, classExpression));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.HAS_KEY__CLASS_EXPRESSION, oldClassExpression, classExpression));
 			}
 		}
 		return classExpression;
@@ -121,7 +121,7 @@ public class KeyForImpl extends ObjectAndDataPropertyAxiomImpl implements KeyFor
 		ClassExpression oldClassExpression = classExpression;
 		classExpression = newClassExpression;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.KEY_FOR__CLASS_EXPRESSION, oldClassExpression, classExpression));
+			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.HAS_KEY__CLASS_EXPRESSION, oldClassExpression, classExpression));
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class KeyForImpl extends ObjectAndDataPropertyAxiomImpl implements KeyFor
 	 */
 	public EList<DataPropertyExpression> getDataPropertyExpressions() {
 		if (dataPropertyExpressions == null) {
-			dataPropertyExpressions = new EObjectResolvingEList<DataPropertyExpression>(DataPropertyExpression.class, this, OwlPackage.KEY_FOR__DATA_PROPERTY_EXPRESSIONS);
+			dataPropertyExpressions = new EObjectResolvingEList<DataPropertyExpression>(DataPropertyExpression.class, this, OwlPackage.HAS_KEY__DATA_PROPERTY_EXPRESSIONS);
 		}
 		return dataPropertyExpressions;
 	}
@@ -143,7 +143,7 @@ public class KeyForImpl extends ObjectAndDataPropertyAxiomImpl implements KeyFor
 	 */
 	public EList<ObjectPropertyExpression> getObjectPropertyExpressions() {
 		if (objectPropertyExpressions == null) {
-			objectPropertyExpressions = new EObjectResolvingEList<ObjectPropertyExpression>(ObjectPropertyExpression.class, this, OwlPackage.KEY_FOR__OBJECT_PROPERTY_EXPRESSIONS);
+			objectPropertyExpressions = new EObjectResolvingEList<ObjectPropertyExpression>(ObjectPropertyExpression.class, this, OwlPackage.HAS_KEY__OBJECT_PROPERTY_EXPRESSIONS);
 		}
 		return objectPropertyExpressions;
 	}
@@ -156,12 +156,12 @@ public class KeyForImpl extends ObjectAndDataPropertyAxiomImpl implements KeyFor
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OwlPackage.KEY_FOR__CLASS_EXPRESSION:
+			case OwlPackage.HAS_KEY__CLASS_EXPRESSION:
 				if (resolve) return getClassExpression();
 				return basicGetClassExpression();
-			case OwlPackage.KEY_FOR__DATA_PROPERTY_EXPRESSIONS:
+			case OwlPackage.HAS_KEY__DATA_PROPERTY_EXPRESSIONS:
 				return getDataPropertyExpressions();
-			case OwlPackage.KEY_FOR__OBJECT_PROPERTY_EXPRESSIONS:
+			case OwlPackage.HAS_KEY__OBJECT_PROPERTY_EXPRESSIONS:
 				return getObjectPropertyExpressions();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -176,14 +176,14 @@ public class KeyForImpl extends ObjectAndDataPropertyAxiomImpl implements KeyFor
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OwlPackage.KEY_FOR__CLASS_EXPRESSION:
+			case OwlPackage.HAS_KEY__CLASS_EXPRESSION:
 				setClassExpression((ClassExpression)newValue);
 				return;
-			case OwlPackage.KEY_FOR__DATA_PROPERTY_EXPRESSIONS:
+			case OwlPackage.HAS_KEY__DATA_PROPERTY_EXPRESSIONS:
 				getDataPropertyExpressions().clear();
 				getDataPropertyExpressions().addAll((Collection<? extends DataPropertyExpression>)newValue);
 				return;
-			case OwlPackage.KEY_FOR__OBJECT_PROPERTY_EXPRESSIONS:
+			case OwlPackage.HAS_KEY__OBJECT_PROPERTY_EXPRESSIONS:
 				getObjectPropertyExpressions().clear();
 				getObjectPropertyExpressions().addAll((Collection<? extends ObjectPropertyExpression>)newValue);
 				return;
@@ -199,13 +199,13 @@ public class KeyForImpl extends ObjectAndDataPropertyAxiomImpl implements KeyFor
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OwlPackage.KEY_FOR__CLASS_EXPRESSION:
+			case OwlPackage.HAS_KEY__CLASS_EXPRESSION:
 				setClassExpression((ClassExpression)null);
 				return;
-			case OwlPackage.KEY_FOR__DATA_PROPERTY_EXPRESSIONS:
+			case OwlPackage.HAS_KEY__DATA_PROPERTY_EXPRESSIONS:
 				getDataPropertyExpressions().clear();
 				return;
-			case OwlPackage.KEY_FOR__OBJECT_PROPERTY_EXPRESSIONS:
+			case OwlPackage.HAS_KEY__OBJECT_PROPERTY_EXPRESSIONS:
 				getObjectPropertyExpressions().clear();
 				return;
 		}
@@ -220,14 +220,14 @@ public class KeyForImpl extends ObjectAndDataPropertyAxiomImpl implements KeyFor
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OwlPackage.KEY_FOR__CLASS_EXPRESSION:
+			case OwlPackage.HAS_KEY__CLASS_EXPRESSION:
 				return classExpression != null;
-			case OwlPackage.KEY_FOR__DATA_PROPERTY_EXPRESSIONS:
+			case OwlPackage.HAS_KEY__DATA_PROPERTY_EXPRESSIONS:
 				return dataPropertyExpressions != null && !dataPropertyExpressions.isEmpty();
-			case OwlPackage.KEY_FOR__OBJECT_PROPERTY_EXPRESSIONS:
+			case OwlPackage.HAS_KEY__OBJECT_PROPERTY_EXPRESSIONS:
 				return objectPropertyExpressions != null && !objectPropertyExpressions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //KeyForImpl
+} //HasKeyImpl

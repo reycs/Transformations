@@ -11,25 +11,26 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.EObjectValidator;
 
-import owl.AbbreviatedURI;
 import owl.Annotation;
-import owl.AnnotationByAnonymousIndividual;
-import owl.AnnotationByConstant;
-import owl.AnnotationByEntity;
+import owl.AnnotationAssertion;
+import owl.AnnotationAxiom;
 import owl.AnnotationProperty;
+import owl.AnnotationPropertyDomain;
+import owl.AnnotationPropertyRange;
+import owl.AnnotationSubject;
+import owl.AnnotationValue;
 import owl.AnonymousIndividual;
-import owl.AnonymousIndividualAnnotation;
 import owl.Assertion;
 import owl.AsymmetricObjectProperty;
 import owl.Axiom;
 import owl.ClassAssertion;
 import owl.ClassAxiom;
 import owl.ClassExpression;
-import owl.Constant;
 import owl.DataAllValuesFrom;
 import owl.DataComplementOf;
 import owl.DataExactCardinality;
 import owl.DataHasValue;
+import owl.DataIntersectionOf;
 import owl.DataMaxCardinality;
 import owl.DataMinCardinality;
 import owl.DataOneOf;
@@ -41,6 +42,8 @@ import owl.DataPropertyExpression;
 import owl.DataPropertyRange;
 import owl.DataRange;
 import owl.DataSomeValuesFrom;
+import owl.DataTypeDefinition;
+import owl.DataUnionOf;
 import owl.Datatype;
 import owl.DatatypeRestriction;
 import owl.Declaration;
@@ -50,20 +53,19 @@ import owl.DisjointDataProperties;
 import owl.DisjointObjectProperties;
 import owl.DisjointUnion;
 import owl.Entity;
-import owl.EntityAnnotation;
 import owl.EquivalentClasses;
 import owl.EquivalentDataProperties;
 import owl.EquivalentObjectProperties;
-import owl.FacetConstantPair;
-import owl.FullURI;
+import owl.FacetLiteralPair;
 import owl.FunctionalDataProperty;
 import owl.FunctionalObjectProperty;
+import owl.HasKey;
 import owl.Individual;
 import owl.InverseFunctionalObjectProperty;
 import owl.InverseObjectProperties;
 import owl.InverseObjectProperty;
 import owl.IrreflexiveObjectProperty;
-import owl.KeyFor;
+import owl.Literal;
 import owl.NamedIndividual;
 import owl.NegativeDataPropertyAssertion;
 import owl.NegativeObjectPropertyAssertion;
@@ -71,7 +73,7 @@ import owl.ObjectAllValuesFrom;
 import owl.ObjectAndDataPropertyAxiom;
 import owl.ObjectComplementOf;
 import owl.ObjectExactCardinality;
-import owl.ObjectExistsSelf;
+import owl.ObjectHasSelf;
 import owl.ObjectHasValue;
 import owl.ObjectIntersectionOf;
 import owl.ObjectMaxCardinality;
@@ -89,12 +91,14 @@ import owl.Ontology;
 import owl.OwlPackage;
 import owl.ReflexiveObjectProperty;
 import owl.SameIndividual;
+import owl.StringLiteral;
+import owl.SubAnnotationPropertyOf;
 import owl.SubClassOf;
 import owl.SubDataPropertyOf;
-import owl.SubObjectProperty;
 import owl.SubObjectPropertyOf;
 import owl.SymmetricObjectProperty;
 import owl.TransitiveObjectProperty;
+import owl.TypedLiteral;
 import owl.URI;
 
 /**
@@ -245,8 +249,8 @@ public class OwlValidator extends EObjectValidator {
 				return validateEntity((Entity)value, diagnostics, context);
 			case OwlPackage.URI:
 				return validateURI((URI)value, diagnostics, context);
-			case OwlPackage.CONSTANT:
-				return validateConstant((Constant)value, diagnostics, context);
+			case OwlPackage.LITERAL:
+				return validateLiteral((Literal)value, diagnostics, context);
 			case OwlPackage.DATATYPE:
 				return validateDatatype((Datatype)value, diagnostics, context);
 			case OwlPackage.DATA_RANGE:
@@ -285,8 +289,8 @@ public class OwlValidator extends EObjectValidator {
 				return validateObjectSomeValuesFrom((ObjectSomeValuesFrom)value, diagnostics, context);
 			case OwlPackage.OBJECT_ALL_VALUES_FROM:
 				return validateObjectAllValuesFrom((ObjectAllValuesFrom)value, diagnostics, context);
-			case OwlPackage.OBJECT_EXISTS_SELF:
-				return validateObjectExistsSelf((ObjectExistsSelf)value, diagnostics, context);
+			case OwlPackage.OBJECT_HAS_SELF:
+				return validateObjectHasSelf((ObjectHasSelf)value, diagnostics, context);
 			case OwlPackage.OBJECT_HAS_VALUE:
 				return validateObjectHasValue((ObjectHasValue)value, diagnostics, context);
 			case OwlPackage.OBJECT_MIN_CARDINALITY:
@@ -301,8 +305,8 @@ public class OwlValidator extends EObjectValidator {
 				return validateDataOneOf((DataOneOf)value, diagnostics, context);
 			case OwlPackage.DATATYPE_RESTRICTION:
 				return validateDatatypeRestriction((DatatypeRestriction)value, diagnostics, context);
-			case OwlPackage.FACET_CONSTANT_PAIR:
-				return validateFacetConstantPair((FacetConstantPair)value, diagnostics, context);
+			case OwlPackage.FACET_LITERAL_PAIR:
+				return validateFacetLiteralPair((FacetLiteralPair)value, diagnostics, context);
 			case OwlPackage.DATA_ALL_VALUES_FROM:
 				return validateDataAllValuesFrom((DataAllValuesFrom)value, diagnostics, context);
 			case OwlPackage.DATA_HAS_VALUE:
@@ -375,34 +379,42 @@ public class OwlValidator extends EObjectValidator {
 				return validateDataComplementOf((DataComplementOf)value, diagnostics, context);
 			case OwlPackage.SUB_CLASS_OF:
 				return validateSubClassOf((SubClassOf)value, diagnostics, context);
-			case OwlPackage.SUB_OBJECT_PROPERTY:
-				return validateSubObjectProperty((SubObjectProperty)value, diagnostics, context);
 			case OwlPackage.TRANSITIVE_OBJECT_PROPERTY:
 				return validateTransitiveObjectProperty((TransitiveObjectProperty)value, diagnostics, context);
-			case OwlPackage.ENTITY_ANNOTATION:
-				return validateEntityAnnotation((EntityAnnotation)value, diagnostics, context);
-			case OwlPackage.FULL_URI:
-				return validateFullURI((FullURI)value, diagnostics, context);
-			case OwlPackage.ABBREVIATED_URI:
-				return validateAbbreviatedURI((AbbreviatedURI)value, diagnostics, context);
 			case OwlPackage.INVERSE_OBJECT_PROPERTIES:
 				return validateInverseObjectProperties((InverseObjectProperties)value, diagnostics, context);
-			case OwlPackage.ANNOTATION_BY_CONSTANT:
-				return validateAnnotationByConstant((AnnotationByConstant)value, diagnostics, context);
-			case OwlPackage.ANNOTATION_BY_ENTITY:
-				return validateAnnotationByEntity((AnnotationByEntity)value, diagnostics, context);
-			case OwlPackage.ANNOTATION_BY_ANONYMOUS_INDIVIDUAL:
-				return validateAnnotationByAnonymousIndividual((AnnotationByAnonymousIndividual)value, diagnostics, context);
 			case OwlPackage.ANONYMOUS_INDIVIDUAL:
 				return validateAnonymousIndividual((AnonymousIndividual)value, diagnostics, context);
 			case OwlPackage.DECLARATION:
 				return validateDeclaration((Declaration)value, diagnostics, context);
 			case OwlPackage.OBJECT_AND_DATA_PROPERTY_AXIOM:
 				return validateObjectAndDataPropertyAxiom((ObjectAndDataPropertyAxiom)value, diagnostics, context);
-			case OwlPackage.KEY_FOR:
-				return validateKeyFor((KeyFor)value, diagnostics, context);
-			case OwlPackage.ANONYMOUS_INDIVIDUAL_ANNOTATION:
-				return validateAnonymousIndividualAnnotation((AnonymousIndividualAnnotation)value, diagnostics, context);
+			case OwlPackage.HAS_KEY:
+				return validateHasKey((HasKey)value, diagnostics, context);
+			case OwlPackage.TYPED_LITERAL:
+				return validateTypedLiteral((TypedLiteral)value, diagnostics, context);
+			case OwlPackage.STRING_LITERAL:
+				return validateStringLiteral((StringLiteral)value, diagnostics, context);
+			case OwlPackage.DATA_INTERSECTION_OF:
+				return validateDataIntersectionOf((DataIntersectionOf)value, diagnostics, context);
+			case OwlPackage.DATA_UNION_OF:
+				return validateDataUnionOf((DataUnionOf)value, diagnostics, context);
+			case OwlPackage.DATA_TYPE_DEFINITION:
+				return validateDataTypeDefinition((DataTypeDefinition)value, diagnostics, context);
+			case OwlPackage.ANNOTATION_AXIOM:
+				return validateAnnotationAxiom((AnnotationAxiom)value, diagnostics, context);
+			case OwlPackage.SUB_ANNOTATION_PROPERTY_OF:
+				return validateSubAnnotationPropertyOf((SubAnnotationPropertyOf)value, diagnostics, context);
+			case OwlPackage.ANNOTATION_PROPERTY_DOMAIN:
+				return validateAnnotationPropertyDomain((AnnotationPropertyDomain)value, diagnostics, context);
+			case OwlPackage.ANNOTATION_PROPERTY_RANGE:
+				return validateAnnotationPropertyRange((AnnotationPropertyRange)value, diagnostics, context);
+			case OwlPackage.ANNOTATION_ASSERTION:
+				return validateAnnotationAssertion((AnnotationAssertion)value, diagnostics, context);
+			case OwlPackage.ANNOTATION_SUBJECT:
+				return validateAnnotationSubject((AnnotationSubject)value, diagnostics, context);
+			case OwlPackage.ANNOTATION_VALUE:
+				return validateAnnotationValue((AnnotationValue)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -467,8 +479,8 @@ public class OwlValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateConstant(Constant constant, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(constant, diagnostics, context);
+	public boolean validateLiteral(Literal literal, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(literal, diagnostics, context);
 	}
 
 	/**
@@ -647,8 +659,8 @@ public class OwlValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateObjectExistsSelf(ObjectExistsSelf objectExistsSelf, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(objectExistsSelf, diagnostics, context);
+	public boolean validateObjectHasSelf(ObjectHasSelf objectHasSelf, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(objectHasSelf, diagnostics, context);
 	}
 
 	/**
@@ -759,8 +771,8 @@ public class OwlValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateFacetConstantPair(FacetConstantPair facetConstantPair, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(facetConstantPair, diagnostics, context);
+	public boolean validateFacetLiteralPair(FacetLiteralPair facetLiteralPair, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(facetLiteralPair, diagnostics, context);
 	}
 
 	/**
@@ -1212,15 +1224,6 @@ public class OwlValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSubObjectProperty(SubObjectProperty subObjectProperty, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(subObjectProperty, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateTransitiveObjectProperty(TransitiveObjectProperty transitiveObjectProperty, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(transitiveObjectProperty, diagnostics, context);
 	}
@@ -1230,62 +1233,8 @@ public class OwlValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateEntityAnnotation(EntityAnnotation entityAnnotation, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(entityAnnotation, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateFullURI(FullURI fullURI, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(fullURI, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateAbbreviatedURI(AbbreviatedURI abbreviatedURI, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(abbreviatedURI, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateInverseObjectProperties(InverseObjectProperties inverseObjectProperties, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(inverseObjectProperties, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateAnnotationByConstant(AnnotationByConstant annotationByConstant, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(annotationByConstant, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateAnnotationByEntity(AnnotationByEntity annotationByEntity, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(annotationByEntity, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateAnnotationByAnonymousIndividual(AnnotationByAnonymousIndividual annotationByAnonymousIndividual, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(annotationByAnonymousIndividual, diagnostics, context);
 	}
 
 	/**
@@ -1320,8 +1269,8 @@ public class OwlValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateKeyFor(KeyFor keyFor, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(keyFor, diagnostics, context);
+	public boolean validateHasKey(HasKey hasKey, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(hasKey, diagnostics, context);
 	}
 
 	/**
@@ -1329,8 +1278,107 @@ public class OwlValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateAnonymousIndividualAnnotation(AnonymousIndividualAnnotation anonymousIndividualAnnotation, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(anonymousIndividualAnnotation, diagnostics, context);
+	public boolean validateTypedLiteral(TypedLiteral typedLiteral, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(typedLiteral, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateStringLiteral(StringLiteral stringLiteral, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(stringLiteral, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDataIntersectionOf(DataIntersectionOf dataIntersectionOf, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(dataIntersectionOf, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDataUnionOf(DataUnionOf dataUnionOf, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(dataUnionOf, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDataTypeDefinition(DataTypeDefinition dataTypeDefinition, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(dataTypeDefinition, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAnnotationAxiom(AnnotationAxiom annotationAxiom, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(annotationAxiom, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSubAnnotationPropertyOf(SubAnnotationPropertyOf subAnnotationPropertyOf, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(subAnnotationPropertyOf, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAnnotationPropertyDomain(AnnotationPropertyDomain annotationPropertyDomain, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(annotationPropertyDomain, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAnnotationPropertyRange(AnnotationPropertyRange annotationPropertyRange, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(annotationPropertyRange, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAnnotationAssertion(AnnotationAssertion annotationAssertion, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(annotationAssertion, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAnnotationSubject(AnnotationSubject annotationSubject, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(annotationSubject, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAnnotationValue(AnnotationValue annotationValue, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(annotationValue, diagnostics, context);
 	}
 
 	/**

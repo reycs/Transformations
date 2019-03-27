@@ -13,7 +13,12 @@ import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.OWLAnnotationAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLAnnotationProperty;
+import org.semanticweb.owlapi.model.OWLAnnotationPropertyDomainAxiom;
+import org.semanticweb.owlapi.model.OWLAnnotationPropertyRangeAxiom;
+import org.semanticweb.owlapi.model.OWLAnnotationSubject;
+import org.semanticweb.owlapi.model.OWLAnnotationValue;
 import org.semanticweb.owlapi.model.OWLAnonymousIndividual;
 import org.semanticweb.owlapi.model.OWLAsymmetricObjectPropertyAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
@@ -24,6 +29,7 @@ import org.semanticweb.owlapi.model.OWLDataComplementOf;
 import org.semanticweb.owlapi.model.OWLDataExactCardinality;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLDataHasValue;
+import org.semanticweb.owlapi.model.OWLDataIntersectionOf;
 import org.semanticweb.owlapi.model.OWLDataMaxCardinality;
 import org.semanticweb.owlapi.model.OWLDataMinCardinality;
 import org.semanticweb.owlapi.model.OWLDataOneOf;
@@ -34,7 +40,9 @@ import org.semanticweb.owlapi.model.OWLDataPropertyExpression;
 import org.semanticweb.owlapi.model.OWLDataPropertyRangeAxiom;
 import org.semanticweb.owlapi.model.OWLDataRange;
 import org.semanticweb.owlapi.model.OWLDataSomeValuesFrom;
+import org.semanticweb.owlapi.model.OWLDataUnionOf;
 import org.semanticweb.owlapi.model.OWLDatatype;
+import org.semanticweb.owlapi.model.OWLDatatypeDefinitionAxiom;
 import org.semanticweb.owlapi.model.OWLDatatypeRestriction;
 import org.semanticweb.owlapi.model.OWLDeclarationAxiom;
 import org.semanticweb.owlapi.model.OWLDifferentIndividualsAxiom;
@@ -82,6 +90,7 @@ import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.model.OWLPropertyExpression;
 import org.semanticweb.owlapi.model.OWLReflexiveObjectPropertyAxiom;
 import org.semanticweb.owlapi.model.OWLSameIndividualAxiom;
+import org.semanticweb.owlapi.model.OWLSubAnnotationPropertyOfAxiom;
 import org.semanticweb.owlapi.model.OWLSubClassOfAxiom;
 import org.semanticweb.owlapi.model.OWLSubDataPropertyOfAxiom;
 import org.semanticweb.owlapi.model.OWLSubObjectPropertyOfAxiom;
@@ -89,15 +98,18 @@ import org.semanticweb.owlapi.model.OWLSymmetricObjectPropertyAxiom;
 import org.semanticweb.owlapi.model.OWLTransitiveObjectPropertyAxiom;
 import org.semanticweb.owlapi.vocab.OWLFacet;
 
+import owl.AnnotationAssertion;
 import owl.AnnotationProperty;
+import owl.AnnotationPropertyDomain;
+import owl.AnnotationPropertyRange;
 import owl.AnonymousIndividual;
 import owl.AsymmetricObjectProperty;
 import owl.ClassAssertion;
-import owl.Constant;
 import owl.DataAllValuesFrom;
 import owl.DataComplementOf;
 import owl.DataExactCardinality;
 import owl.DataHasValue;
+import owl.DataIntersectionOf;
 import owl.DataMaxCardinality;
 import owl.DataMinCardinality;
 import owl.DataOneOf;
@@ -106,6 +118,8 @@ import owl.DataPropertyAssertion;
 import owl.DataPropertyDomain;
 import owl.DataPropertyRange;
 import owl.DataSomeValuesFrom;
+import owl.DataTypeDefinition;
+import owl.DataUnionOf;
 import owl.Datatype;
 import owl.DatatypeRestriction;
 import owl.DifferentIndividuals;
@@ -116,20 +130,20 @@ import owl.DisjointUnion;
 import owl.EquivalentClasses;
 import owl.EquivalentDataProperties;
 import owl.EquivalentObjectProperties;
-import owl.FacetConstantPair;
+import owl.FacetLiteralPair;
 import owl.FunctionalDataProperty;
 import owl.FunctionalObjectProperty;
+import owl.HasKey;
 import owl.InverseFunctionalObjectProperty;
 import owl.InverseObjectProperties;
 import owl.IrreflexiveObjectProperty;
-import owl.KeyFor;
 import owl.NamedIndividual;
 import owl.NegativeDataPropertyAssertion;
 import owl.NegativeObjectPropertyAssertion;
 import owl.ObjectAllValuesFrom;
 import owl.ObjectComplementOf;
 import owl.ObjectExactCardinality;
-import owl.ObjectExistsSelf;
+import owl.ObjectHasSelf;
 import owl.ObjectHasValue;
 import owl.ObjectIntersectionOf;
 import owl.ObjectMaxCardinality;
@@ -144,11 +158,14 @@ import owl.ObjectUnionOf;
 import owl.OwlPackage;
 import owl.ReflexiveObjectProperty;
 import owl.SameIndividual;
+import owl.StringLiteral;
+import owl.SubAnnotationPropertyOf;
 import owl.SubClassOf;
 import owl.SubDataPropertyOf;
 import owl.SubObjectPropertyOf;
 import owl.SymmetricObjectProperty;
 import owl.TransitiveObjectProperty;
+import owl.TypedLiteral;
 import owl.util.OwlSwitch;
 
 /**
@@ -215,6 +232,11 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 		} catch (OWLOntologyStorageException e) {
 			e.printStackTrace();
 		} 
+	}
+	
+	@Override
+	public IRI caseURI(owl.URI uri) {
+		return IRI.create(uri.getValue());
 	}
 	
 	/*
@@ -544,7 +566,14 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
      * https://www.w3.org/TR/owl2-syntax/#Datatype_Definitions
      */
 	
-	// CURRENTLY NOT AVAILABLE IN METAMODEL
+	@Override 
+	public OWLDatatypeDefinitionAxiom caseDataTypeDefinition(DataTypeDefinition object) {
+		OWLDatatype datatype = (OWLDatatype) this.doSwitch(object.getDataType());
+		OWLDataRange dataRange = (OWLDataRange) this.doSwitch(object.getDataRange());
+		OWLDatatypeDefinitionAxiom newDatatypeDefinitionAxiom = getOWLDataFactory().getOWLDatatypeDefinitionAxiom(datatype, dataRange);
+		ontology.add(newDatatypeDefinitionAxiom);
+		return newDatatypeDefinitionAxiom;
+	}
 	
     /*
      * KEYS [W3OWL:SECTION9.5]
@@ -552,7 +581,7 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
      */
 	
 	@Override
-	public OWLHasKeyAxiom caseKeyFor(KeyFor object) {
+	public OWLHasKeyAxiom caseHasKey(HasKey object) {
 		OWLClassExpression classExpression = (OWLClassExpression) this.doSwitch(object.getClassExpression());
 		List<OWLPropertyExpression> propertyExpressions = new ArrayList<OWLPropertyExpression>();
 		object.getObjectPropertyExpressions().forEach(pe -> {
@@ -576,7 +605,7 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 	@Override
 	public OWLSameIndividualAxiom caseSameIndividual(SameIndividual object) {
 		List<OWLIndividual> individuals = new ArrayList<OWLIndividual>();
-		object.getSameIndividuals().forEach(individual -> {
+		object.getIndividuals().forEach(individual -> {
 			individuals.add((OWLIndividual) this.doSwitch(individual));
 		});
 		OWLSameIndividualAxiom newSameIndividualAxiom = getOWLDataFactory().getOWLSameIndividualAxiom(individuals);
@@ -587,7 +616,7 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 	@Override
 	public OWLDifferentIndividualsAxiom caseDifferentIndividuals(DifferentIndividuals object) {
 		List<OWLIndividual> individuals = new ArrayList<OWLIndividual>();
-		object.getDifferentIndividuals().forEach(individual -> {
+		object.getIndividuals().forEach(individual -> {
 			individuals.add((OWLIndividual) this.doSwitch(individual));
 		});
 		OWLDifferentIndividualsAxiom newDifferentIndividualsAxiom = getOWLDataFactory().getOWLDifferentIndividualsAxiom(individuals);
@@ -647,9 +676,43 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 	  /*
      * ANNOTATION OF ONTOLOGIES AXIOMS AND OTHER ANNOTATIONS [W3OWL:SECTION10.1]
      * https://www.w3.org/TR/owl2-syntax/#Annotations
+     * AnnotationAxiom := AnnotationAssertion | SubAnnotationPropertyOf | AnnotationPropertyDomain | AnnotationPropertyRange
      */
 	
-	// ANNOTATION NOT PROPERLY MODELLED IN THE METAMODEL
+	@Override
+	public OWLAnnotationAssertionAxiom caseAnnotationAssertion(AnnotationAssertion object) {
+		OWLAnnotationProperty annotationProperty = (OWLAnnotationProperty) this.doSwitch(object.getAnnotationProperty());
+		OWLAnnotationSubject annotationSubject = (OWLAnnotationSubject) this.doSwitch(object.getAnnotationSubject());
+		OWLAnnotationValue annotationValue = (OWLAnnotationValue) this.doSwitch(object.getAnnotationValue());
+		OWLAnnotationAssertionAxiom newAnnotationAssertionAxiom = getOWLDataFactory().getOWLAnnotationAssertionAxiom(annotationProperty, annotationSubject, annotationValue);
+		ontology.add(newAnnotationAssertionAxiom);
+		return newAnnotationAssertionAxiom;
+	}
+	
+	@Override
+	public OWLSubAnnotationPropertyOfAxiom caseSubAnnotationPropertyOf(SubAnnotationPropertyOf object) {
+		OWLAnnotationProperty subAnnotationProperty = (OWLAnnotationProperty) this.doSwitch(object.getSubAnnotationProperty());
+		OWLAnnotationProperty superAnnotationProperty = (OWLAnnotationProperty) this.doSwitch(object.getSuperAnnotationProperty());
+		OWLSubAnnotationPropertyOfAxiom newSubAnnotationPropertyOfAxiom = getOWLDataFactory().getOWLSubAnnotationPropertyOfAxiom(subAnnotationProperty, superAnnotationProperty);
+		ontology.add(newSubAnnotationPropertyOfAxiom);
+		return newSubAnnotationPropertyOfAxiom;
+	}
+	
+	@Override
+	public OWLAnnotationPropertyDomainAxiom caseAnnotationPropertyDomain(AnnotationPropertyDomain object) {
+		OWLAnnotationProperty annotationProperty = (OWLAnnotationProperty) this.doSwitch(object.getAnnotationProperty());
+		OWLAnnotationPropertyDomainAxiom newAnnotationPropertyDomainAxiom = getOWLDataFactory().getOWLAnnotationPropertyDomainAxiom(annotationProperty, (IRI) this.doSwitch(object.getDomain()));
+		ontology.add(newAnnotationPropertyDomainAxiom);
+		return newAnnotationPropertyDomainAxiom;
+	}
+	
+	@Override
+	public OWLAnnotationPropertyRangeAxiom caseAnnotationPropertyRange(AnnotationPropertyRange object) {
+		OWLAnnotationProperty annotationProperty = (OWLAnnotationProperty) this.doSwitch(object.getAnnotationProperty());
+		OWLAnnotationPropertyRangeAxiom newAnnotationPropertyRangeAxiom = getOWLDataFactory().getOWLAnnotationPropertyRangeAxiom(annotationProperty, (IRI) this.doSwitch(object.getRange()));
+		ontology.add(newAnnotationPropertyRangeAxiom);
+		return newAnnotationPropertyRangeAxiom;
+	}
 	
 	/*
 	 * CLASS EXPRESSIONS [W3OWL:SECTION8]
@@ -716,7 +779,7 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 	}
 	
 	@Override
-	public OWLObjectHasSelf caseObjectExistsSelf(ObjectExistsSelf ce) {
+	public OWLObjectHasSelf caseObjectHasSelf(ObjectHasSelf ce) {
 		return getOWLDataFactory().getOWLObjectHasSelf((OWLObjectPropertyExpression) this.doSwitch(ce.getObjectPropertyExpression()));
 	}
 	
@@ -770,7 +833,7 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 	@Override
 	public OWLDataHasValue caseDataHasValue(DataHasValue ce) {
 		OWLDataPropertyExpression dataProperty = (OWLDataPropertyExpression) this.doSwitch(ce.getDataPropertyExpression());
-		OWLLiteral literal = (OWLLiteral) this.doSwitch(ce.getConstant());
+		OWLLiteral literal = (OWLLiteral) this.doSwitch(ce.getLiteral());
 		return getOWLDataFactory().getOWLDataHasValue(dataProperty, literal);
 	}
 	
@@ -814,7 +877,23 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 	 * Datatype is defined in the declaration axiom functions
 	 */
 	
-	// DATA INTERSECTION OF AND DATA UNION OF MISSING
+	@Override
+	public OWLDataIntersectionOf caseDataIntersectionOf(DataIntersectionOf ce) {
+		List<OWLDataRange> dataRanges = new ArrayList<OWLDataRange>();
+		ce.getDataRanges().forEach(dataRange -> {
+			dataRanges.add((OWLDataRange) this.doSwitch(dataRange));
+		});
+		return getOWLDataFactory().getOWLDataIntersectionOf(dataRanges);
+	}
+	
+	@Override
+	public OWLDataUnionOf caseDataUnionOf(DataUnionOf ce) {
+		List<OWLDataRange> dataRanges = new ArrayList<OWLDataRange>();
+		ce.getDataRanges().forEach(dataRange -> {
+			dataRanges.add((OWLDataRange) this.doSwitch(dataRange));
+		});
+		return getOWLDataFactory().getOWLDataUnionOf(dataRanges);
+	}
 	
 	@Override
 	public OWLDataComplementOf caseDataComplementOf(DataComplementOf ce) {
@@ -824,8 +903,8 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 	@Override
 	public OWLDataOneOf caseDataOneOf(DataOneOf ce) {
 		List<OWLLiteral> literals = new ArrayList<OWLLiteral>();
-		ce.getConstants().forEach(constant -> {
-			literals.add((OWLLiteral) this.doSwitch(constant));
+		ce.getLiterals().forEach(literal -> {
+			literals.add((OWLLiteral) this.doSwitch(literal));
 		});
 		return getOWLDataFactory().getOWLDataOneOf(literals);
 	}
@@ -842,8 +921,8 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 	
 	// Data Type restrictions are implemented slightly different in the OWL API from the structural specification, need to visit the restriction as a pair of [Restriction, Literal]
 	@Override
-	public OWLFacetRestriction caseFacetConstantPair(FacetConstantPair pair) {
-		return getOWLDataFactory().getOWLFacetRestriction(OWLFacet.getFacet(IRI.create(pair.getFacet())), (OWLLiteral) this.doSwitch(pair.getConstant()));
+	public OWLFacetRestriction caseFacetLiteralPair(FacetLiteralPair pair) {
+		return getOWLDataFactory().getOWLFacetRestriction(OWLFacet.getFacet(IRI.create(pair.getConstrainingFacet().getValue())), (OWLLiteral) this.doSwitch(pair.getRestrictionValue()));
 	}
 	
 	 /*
@@ -854,8 +933,13 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
      */
 	
 	@Override 
-	public OWLLiteral caseConstant(Constant co) {
-		OWLDatatype datatype = (OWLDatatype) this.doSwitch(co.getDatatype());
-		return getOWLDataFactory().getOWLLiteral(co.getLexicalValue(), datatype);
+	public OWLLiteral caseTypedLiteral(TypedLiteral literal) {
+		OWLDatatype datatype = (OWLDatatype) this.doSwitch(literal.getDatatype());
+		return getOWLDataFactory().getOWLLiteral(literal.getLexicalValue(), datatype);
+	}
+	
+	@Override
+	public OWLLiteral caseStringLiteral(StringLiteral literal) {
+		return getOWLDataFactory().getOWLLiteral(literal.getQuotedString(), literal.getLanguageTag());
 	}
 }

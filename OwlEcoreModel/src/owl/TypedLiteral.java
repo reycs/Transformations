@@ -2,26 +2,25 @@
  */
 package owl;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Constant</b></em>'.
+ * A representation of the model object '<em><b>Typed Literal</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link owl.Constant#getLexicalValue <em>Lexical Value</em>}</li>
- *   <li>{@link owl.Constant#getDatatype <em>Datatype</em>}</li>
+ *   <li>{@link owl.TypedLiteral#getLexicalValue <em>Lexical Value</em>}</li>
+ *   <li>{@link owl.TypedLiteral#getDatatype <em>Datatype</em>}</li>
  * </ul>
  *
- * @see owl.OwlPackage#getConstant()
+ * @see owl.OwlPackage#getTypedLiteral()
  * @model
  * @generated
  */
-public interface Constant extends EObject {
+public interface TypedLiteral extends Literal {
 	/**
 	 * Returns the value of the '<em><b>Lexical Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -32,14 +31,14 @@ public interface Constant extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Lexical Value</em>' attribute.
 	 * @see #setLexicalValue(String)
-	 * @see owl.OwlPackage#getConstant_LexicalValue()
+	 * @see owl.OwlPackage#getTypedLiteral_LexicalValue()
 	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	String getLexicalValue();
 
 	/**
-	 * Sets the value of the '{@link owl.Constant#getLexicalValue <em>Lexical Value</em>}' attribute.
+	 * Sets the value of the '{@link owl.TypedLiteral#getLexicalValue <em>Lexical Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Lexical Value</em>' attribute.
@@ -58,14 +57,14 @@ public interface Constant extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Datatype</em>' reference.
 	 * @see #setDatatype(Datatype)
-	 * @see owl.OwlPackage#getConstant_Datatype()
+	 * @see owl.OwlPackage#getTypedLiteral_Datatype()
 	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	Datatype getDatatype();
 
 	/**
-	 * Sets the value of the '{@link owl.Constant#getDatatype <em>Datatype</em>}' reference.
+	 * Sets the value of the '{@link owl.TypedLiteral#getDatatype <em>Datatype</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Datatype</em>' reference.
@@ -74,4 +73,4 @@ public interface Constant extends EObject {
 	 */
 	void setDatatype(Datatype value);
 
-} // Constant
+} // TypedLiteral
