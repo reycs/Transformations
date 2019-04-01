@@ -152,6 +152,7 @@ import owl.ObjectPropertyExpression;
 import owl.ObjectPropertyRange;
 import owl.ObjectSomeValuesFrom;
 import owl.ObjectUnionOf;
+import owl.Ontology;
 import owl.OwlFactory;
 import owl.OwlPackage;
 import owl.ReflexiveObjectProperty;
@@ -240,9 +241,23 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     
     @Override
     public void visit(OWLOntology ontology) {
+    	Ontology newOntology = ecoreOntologyFactory.createOntology();
+    	if (ontology.getOntologyID().getOntologyIRI().isPresent()) {
+        	ontology.getOntologyID().getOntologyIRI().get().accept(this);
+        	newOntology.setOntologyURI((owl.URI) lastVisitedObject);
+    	}
+    	if (ontology.getOntologyID().getVersionIRI().isPresent()) {
+    		ontology.getOntologyID().getVersionIRI().get().accept(this);
+    		newOntology.setVersionURI((owl.URI) lastVisitedObject);
+    	}
         ontology.axioms().sorted().forEach(ax -> {
             ax.accept(this);
         });
+        ontology.annotations().forEach(annotation -> {
+        	annotation.accept(this);
+        	newOntology.getOntologyAnnotations().add((Annotation) lastVisitedObject);
+        });
+    	ecoreOntologyInstance.getContents().add(newOntology);
     }
     
     /*
@@ -1074,10 +1089,13 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
 	@Override 
 	public void visit(OWLLiteral lit) {
 		Literal newLiteral;
-		if (lit.hasLang()) {
+		// String literals with datatype seem to give XSD#string as default datatype instead of RDFPlainLiteral
+		if (lit.isRDFPlainLiteral() || lit.hasLang()) {
 			StringLiteral newStringLiteral = ecoreOntologyFactory.createStringLiteral();
 			newStringLiteral.setQuotedString(lit.getLiteral());
-			newStringLiteral.setLanguageTag(lit.getLang());
+			if (lit.hasLang()) {
+				newStringLiteral.setLanguageTag(lit.getLang());
+			}
 			newLiteral = newStringLiteral;
 		} else {
 			TypedLiteral newTypedLiteral = ecoreOntologyFactory.createTypedLiteral();

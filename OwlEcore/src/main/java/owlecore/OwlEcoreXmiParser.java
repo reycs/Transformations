@@ -12,7 +12,9 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.model.AddOntologyAnnotation;
 import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLAnnotationAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLAnnotationProperty;
 import org.semanticweb.owlapi.model.OWLAnnotationPropertyDomainAxiom;
@@ -85,6 +87,7 @@ import org.semanticweb.owlapi.model.OWLObjectSomeValuesFrom;
 import org.semanticweb.owlapi.model.OWLObjectUnionOf;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.OWLOntologyID;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.model.OWLPropertyExpression;
@@ -96,8 +99,10 @@ import org.semanticweb.owlapi.model.OWLSubDataPropertyOfAxiom;
 import org.semanticweb.owlapi.model.OWLSubObjectPropertyOfAxiom;
 import org.semanticweb.owlapi.model.OWLSymmetricObjectPropertyAxiom;
 import org.semanticweb.owlapi.model.OWLTransitiveObjectPropertyAxiom;
+import org.semanticweb.owlapi.model.SetOntologyID;
 import org.semanticweb.owlapi.vocab.OWLFacet;
 
+import owl.Annotation;
 import owl.AnnotationAssertion;
 import owl.AnnotationProperty;
 import owl.AnnotationPropertyDomain;
@@ -155,6 +160,7 @@ import owl.ObjectPropertyDomain;
 import owl.ObjectPropertyRange;
 import owl.ObjectSomeValuesFrom;
 import owl.ObjectUnionOf;
+import owl.Ontology;
 import owl.OwlPackage;
 import owl.ReflexiveObjectProperty;
 import owl.SameIndividual;
@@ -237,6 +243,22 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 	@Override
 	public IRI caseURI(owl.URI uri) {
 		return IRI.create(uri.getValue());
+	}
+	
+	@Override
+	public OWLObject caseOntology(Ontology ont) {
+		IRI ontologyIRI = null; 
+		IRI versionIRI = null;
+		if (ont.getOntologyURI() != null)
+			ontologyIRI = (IRI) this.doSwitch(ont.getOntologyURI());
+		if (ont.getVersionURI() != null) 
+			versionIRI = (IRI) this.doSwitch(ont.getVersionURI());
+		SetOntologyID change = new SetOntologyID(ontology, new OWLOntologyID(ontologyIRI, versionIRI));
+		ontology.getOWLOntologyManager().applyChange(change);
+		ont.getOntologyAnnotations().forEach(annotation -> {
+			ontology.getOWLOntologyManager().applyChange(new AddOntologyAnnotation(ontology, (OWLAnnotation) this.doSwitch(annotation)));
+		});
+		return null;
 	}
 	
 	/*
@@ -673,8 +695,20 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 		return newNegativeDataPropertyAssertionAxiom;
 	}
 	
-	  /*
+    /*
      * ANNOTATION OF ONTOLOGIES AXIOMS AND OTHER ANNOTATIONS [W3OWL:SECTION10.1]
+     * https://www.w3.org/TR/owl2-syntax/#Annotations
+     */
+	
+	@Override
+	public OWLAnnotation caseAnnotation(Annotation annotation) {
+		OWLAnnotationProperty annotationProperty = (OWLAnnotationProperty) this.doSwitch(annotation.getAnnotationProperty());
+		OWLAnnotationValue annotationValue = (OWLAnnotationValue) this.doSwitch(annotation.getAnnotationValue());
+		return getOWLDataFactory().getOWLAnnotation(annotationProperty, annotationValue);
+	}
+	
+    /*
+     * ANNOTATION AXIOMS [W3OWL:SECTION10.2]
      * https://www.w3.org/TR/owl2-syntax/#Annotations
      * AnnotationAxiom := AnnotationAssertion | SubAnnotationPropertyOf | AnnotationPropertyDomain | AnnotationPropertyRange
      */
