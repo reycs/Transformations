@@ -273,6 +273,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     
     @Override
     public void visit(OWLClass entity) {
+    	owl.Class newClass = ecoreOntologyFactory.createClass();
     	if (classEntities.containsKey(entity.getIRI().getIRIString())) {
     		lastVisitedObject = classEntities.get(entity.getIRI().getIRIString());
     	} else {
