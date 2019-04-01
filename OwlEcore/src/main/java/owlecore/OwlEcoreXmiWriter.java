@@ -3,6 +3,7 @@ package owlecore;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -19,6 +20,7 @@ import org.semanticweb.owlapi.model.OWLAnnotationPropertyDomainAxiom;
 import org.semanticweb.owlapi.model.OWLAnnotationPropertyRangeAxiom;
 import org.semanticweb.owlapi.model.OWLAnonymousIndividual;
 import org.semanticweb.owlapi.model.OWLAsymmetricObjectPropertyAxiom;
+import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLDataAllValuesFrom;
@@ -95,6 +97,7 @@ import owl.AnnotationSubject;
 import owl.AnnotationValue;
 import owl.AnonymousIndividual;
 import owl.AsymmetricObjectProperty;
+import owl.Axiom;
 import owl.ClassAssertion;
 import owl.ClassExpression;
 import owl.DataAllValuesFrom;
@@ -166,7 +169,7 @@ import owl.SymmetricObjectProperty;
 import owl.TransitiveObjectProperty;
 import owl.TypedLiteral;
 
-public class OwlEcoreWriter implements OWLObjectVisitor {	
+public class OwlEcoreXmiWriter implements OWLObjectVisitor {	
     private OWLOntologyManager ontologyManager;
 	private OWLOntology ontology;
 	private ResourceSet resourceSet;
@@ -186,7 +189,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
 	 * Class to render the owl documents to xmi conform w3c owl2 ecore
 	 * @param document OWL Api document to write
 	 */
-    public OwlEcoreWriter(String document) {
+    public OwlEcoreXmiWriter(String document) {
     	resourceSet = new ResourceSetImpl();
     	resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl());
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
@@ -224,6 +227,13 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+    }
+    
+    public void setAxiomAnnotations(OWLAxiom inputAxiom, Axiom newAxiom) {
+    	inputAxiom.annotations().forEach(annotation -> {
+    		annotation.accept(this);
+    		newAxiom.getAxiomAnnotations().add((Annotation) lastVisitedObject);
+    	});
     }
     
     @Override
@@ -273,7 +283,6 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     
     @Override
     public void visit(OWLClass entity) {
-    	owl.Class newClass = ecoreOntologyFactory.createClass();
     	if (classEntities.containsKey(entity.getIRI().getIRIString())) {
     		lastVisitedObject = classEntities.get(entity.getIRI().getIRIString());
     	} else {
@@ -382,6 +391,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLSubClassOfAxiom axiom) {
     	SubClassOf newSubClassOf = ecoreOntologyFactory.createSubClassOf();
+    	setAxiomAnnotations(axiom, newSubClassOf);
     	axiom.getSubClass().accept(this);
     	newSubClassOf.setSubClassExpression((ClassExpression) lastVisitedObject);
     	axiom.getSuperClass().accept(this);
@@ -392,6 +402,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLEquivalentClassesAxiom axiom) {
     	EquivalentClasses newEquivalentClasses = ecoreOntologyFactory.createEquivalentClasses();
+    	setAxiomAnnotations(axiom, newEquivalentClasses);
         axiom.classExpressions().forEach(ax -> {
             ax.accept(this);
             newEquivalentClasses.getEquivalentClassExpressions().add((ClassExpression) lastVisitedObject);
@@ -402,6 +413,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLDisjointClassesAxiom axiom) {
     	DisjointClasses newDisjointClasses = ecoreOntologyFactory.createDisjointClasses();
+    	setAxiomAnnotations(axiom, newDisjointClasses);
         axiom.classExpressions().forEach(ax -> {
         	ax.accept(this);
         	newDisjointClasses.getDisjointClassExpressions().add((ClassExpression) lastVisitedObject);
@@ -413,6 +425,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLDisjointUnionAxiom axiom) {
         DisjointUnion newDisjointUnion = ecoreOntologyFactory.createDisjointUnion();
+        setAxiomAnnotations(axiom, newDisjointUnion);
         axiom.getOWLClass().accept(this);
         newDisjointUnion.setUnionClass((owl.Class) lastVisitedObject);
         axiom.classExpressions().forEach(ax -> {
@@ -434,6 +447,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLSubObjectPropertyOfAxiom axiom) {
     	SubObjectPropertyOf newSubObjectPropertyOf = ecoreOntologyFactory.createSubObjectPropertyOf();
+    	setAxiomAnnotations(axiom, newSubObjectPropertyOf);
     	axiom.getSubProperty().accept(this);
     	newSubObjectPropertyOf.setSubObjectPropertyExpressions((ObjectPropertyExpression) lastVisitedObject);
     	axiom.getSuperProperty().accept(this);
@@ -444,6 +458,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLEquivalentObjectPropertiesAxiom axiom) {
     	EquivalentObjectProperties newEquivalentObjectProperties = ecoreOntologyFactory.createEquivalentObjectProperties();
+    	setAxiomAnnotations(axiom, newEquivalentObjectProperties);
     	axiom.properties().forEach(ax -> {
     		ax.accept(this);
     		newEquivalentObjectProperties.getObjectPropertyExpressions().add((ObjectPropertyExpression) lastVisitedObject);
@@ -454,6 +469,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLDisjointObjectPropertiesAxiom axiom) {
     	DisjointObjectProperties newDisjointObjectProperties = ecoreOntologyFactory.createDisjointObjectProperties();
+    	setAxiomAnnotations(axiom, newDisjointObjectProperties);
     	axiom.properties().forEach(ax -> {
     		ax.accept(this);
     		newDisjointObjectProperties.getObjectPropertyExpressions().add((ObjectPropertyExpression) lastVisitedObject);
@@ -464,6 +480,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLInverseObjectPropertiesAxiom axiom) {
     	InverseObjectProperties newInverseObjectProperties = ecoreOntologyFactory.createInverseObjectProperties();
+    	setAxiomAnnotations(axiom, newInverseObjectProperties);
     	axiom.getFirstProperty().accept(this);
     	newInverseObjectProperties.getInverseObjectProperties().add((ObjectPropertyExpression) lastVisitedObject);
     	axiom.getSecondProperty().accept(this);
@@ -474,6 +491,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLObjectPropertyDomainAxiom axiom) {
     	ObjectPropertyDomain newObjectPropertyDomain = ecoreOntologyFactory.createObjectPropertyDomain();
+    	setAxiomAnnotations(axiom, newObjectPropertyDomain);
     	axiom.getProperty().accept(this);
     	newObjectPropertyDomain.setObjectPropertyExpression((ObjectPropertyExpression) lastVisitedObject);
     	axiom.getDomain().accept(this);
@@ -484,6 +502,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLObjectPropertyRangeAxiom axiom) {
     	ObjectPropertyRange newObjectPropertyRange = ecoreOntologyFactory.createObjectPropertyRange();
+    	setAxiomAnnotations(axiom, newObjectPropertyRange);
     	axiom.getProperty().accept(this);
     	newObjectPropertyRange.setObjectPropertyExpression((ObjectPropertyExpression) lastVisitedObject);
     	axiom.getRange().accept(this);
@@ -494,6 +513,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLFunctionalObjectPropertyAxiom axiom) {
     	FunctionalObjectProperty newFunctionalObjectProperty = ecoreOntologyFactory.createFunctionalObjectProperty();
+    	setAxiomAnnotations(axiom, newFunctionalObjectProperty);
     	axiom.getProperty().accept(this);
     	newFunctionalObjectProperty.setObjectPropertyExpression((ObjectPropertyExpression) lastVisitedObject);
     	ecoreOntologyInstance.getContents().add(newFunctionalObjectProperty);
@@ -502,6 +522,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLInverseFunctionalObjectPropertyAxiom axiom) {
     	InverseFunctionalObjectProperty newInverseFunctionalObjectProperty = ecoreOntologyFactory.createInverseFunctionalObjectProperty();
+    	setAxiomAnnotations(axiom, newInverseFunctionalObjectProperty);
     	axiom.getProperty().accept(this);
     	newInverseFunctionalObjectProperty.setObjectPropertyExpression((ObjectPropertyExpression) lastVisitedObject);
     	ecoreOntologyInstance.getContents().add(newInverseFunctionalObjectProperty);
@@ -510,6 +531,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLReflexiveObjectPropertyAxiom axiom) {
     	ReflexiveObjectProperty newReflexiveObjectProperty = ecoreOntologyFactory.createReflexiveObjectProperty();
+    	setAxiomAnnotations(axiom, newReflexiveObjectProperty);
     	axiom.getProperty().accept(this);
     	newReflexiveObjectProperty.setObjectPropertyExpression((ObjectPropertyExpression) lastVisitedObject);
     	ecoreOntologyInstance.getContents().add(newReflexiveObjectProperty);
@@ -518,6 +540,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLIrreflexiveObjectPropertyAxiom axiom) {
     	IrreflexiveObjectProperty newIrreflexiveObjectProperty = ecoreOntologyFactory.createIrreflexiveObjectProperty();
+    	setAxiomAnnotations(axiom, newIrreflexiveObjectProperty);
     	axiom.getProperty().accept(this);
     	newIrreflexiveObjectProperty.setObjectPropertyExpression((ObjectPropertyExpression) lastVisitedObject);
     	ecoreOntologyInstance.getContents().add(newIrreflexiveObjectProperty);
@@ -526,6 +549,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLSymmetricObjectPropertyAxiom axiom) {
     	SymmetricObjectProperty newSymmetricObjectProperty = ecoreOntologyFactory.createSymmetricObjectProperty();
+    	setAxiomAnnotations(axiom, newSymmetricObjectProperty);
     	axiom.getProperty().accept(this);
     	newSymmetricObjectProperty.setObjectPropertyExpression((ObjectPropertyExpression) lastVisitedObject);
     	ecoreOntologyInstance.getContents().add(newSymmetricObjectProperty);
@@ -534,6 +558,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLAsymmetricObjectPropertyAxiom axiom) {
     	AsymmetricObjectProperty newAsymmetricObjectProperty = ecoreOntologyFactory.createAsymmetricObjectProperty();
+    	setAxiomAnnotations(axiom, newAsymmetricObjectProperty);
     	axiom.getProperty().accept(this);
     	newAsymmetricObjectProperty.setObjectPropertyExpression((ObjectPropertyExpression) lastVisitedObject);
     	ecoreOntologyInstance.getContents().add(newAsymmetricObjectProperty);
@@ -542,6 +567,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLTransitiveObjectPropertyAxiom axiom) {
     	TransitiveObjectProperty newTransitiveObjectProperty = ecoreOntologyFactory.createTransitiveObjectProperty();
+    	setAxiomAnnotations(axiom, newTransitiveObjectProperty);
     	axiom.getProperty().accept(this);
     	newTransitiveObjectProperty.setObjectPropertyExpression((ObjectPropertyExpression) lastVisitedObject);
     	ecoreOntologyInstance.getContents().add(newTransitiveObjectProperty);
@@ -556,6 +582,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLSubDataPropertyOfAxiom axiom) {
     	SubDataPropertyOf newSubDataPropertyOf = ecoreOntologyFactory.createSubDataPropertyOf();
+    	setAxiomAnnotations(axiom, newSubDataPropertyOf);
     	axiom.getSubProperty().accept(this);
     	newSubDataPropertyOf.setSubDataPropertyExpression((DataPropertyExpression) lastVisitedObject);
     	axiom.getSuperProperty().accept(this);
@@ -566,6 +593,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override 
     public void visit(OWLEquivalentDataPropertiesAxiom axiom) {
     	EquivalentDataProperties newEquivalentDataProperties = ecoreOntologyFactory.createEquivalentDataProperties();
+    	setAxiomAnnotations(axiom, newEquivalentDataProperties);
     	axiom.properties().forEach(ax -> {
     		ax.accept(this);
     		newEquivalentDataProperties.getDataPropertyExpressions().add((DataPropertyExpression) lastVisitedObject);
@@ -576,6 +604,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLDisjointDataPropertiesAxiom axiom) {
     	DisjointDataProperties newDisjointDataProperties = ecoreOntologyFactory.createDisjointDataProperties();
+    	setAxiomAnnotations(axiom, newDisjointDataProperties);
     	axiom.properties().forEach(ax -> {
     		ax.accept(this);
     		newDisjointDataProperties.getDataPropertyExpressions().add((DataPropertyExpression) lastVisitedObject);
@@ -586,6 +615,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLDataPropertyDomainAxiom axiom) {
     	DataPropertyDomain newDataPropertyDomain = ecoreOntologyFactory.createDataPropertyDomain();
+    	setAxiomAnnotations(axiom, newDataPropertyDomain);
     	axiom.getProperty().accept(this);
     	newDataPropertyDomain.setDataPropertyExpression((DataPropertyExpression) lastVisitedObject);
     	axiom.getDomain().accept(this);
@@ -596,6 +626,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLDataPropertyRangeAxiom axiom) {
     	DataPropertyRange newDataPropertyRange = ecoreOntologyFactory.createDataPropertyRange();
+    	setAxiomAnnotations(axiom, newDataPropertyRange);
     	axiom.getProperty().accept(this);
     	newDataPropertyRange.setDataPropertyExpression((DataPropertyExpression) lastVisitedObject);
     	axiom.getRange().accept(this);
@@ -606,6 +637,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLFunctionalDataPropertyAxiom axiom) {
     	FunctionalDataProperty newFunctionalDataProperty = ecoreOntologyFactory.createFunctionalDataProperty();
+    	setAxiomAnnotations(axiom, newFunctionalDataProperty);
     	axiom.getProperty().accept(this);
     	newFunctionalDataProperty.setDataPropertyExpression((DataPropertyExpression) lastVisitedObject);
     	ecoreOntologyInstance.getContents().add(newFunctionalDataProperty);
@@ -619,6 +651,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLDatatypeDefinitionAxiom axiom) {
     	DataTypeDefinition newDataTypeDefinition = ecoreOntologyFactory.createDataTypeDefinition();
+    	setAxiomAnnotations(axiom, newDataTypeDefinition);
     	axiom.getDatatype().accept(this);
     	newDataTypeDefinition.setDataType((Datatype) lastVisitedObject);
     	axiom.getDataRange().accept(this);
@@ -633,6 +666,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLHasKeyAxiom axiom) {
     	HasKey newHasKey = ecoreOntologyFactory.createHasKey();
+    	setAxiomAnnotations(axiom, newHasKey);
     	axiom.getClassExpression().accept(this);
     	newHasKey.setClassExpression((ClassExpression) lastVisitedObject);
     	axiom.objectPropertyExpressions().forEach(ax -> {
@@ -656,6 +690,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLSameIndividualAxiom axiom) {
     	SameIndividual newSameIndividual = ecoreOntologyFactory.createSameIndividual();
+    	setAxiomAnnotations(axiom, newSameIndividual);
     	axiom.individuals().forEach(ax -> {
     		ax.accept(this);
     		newSameIndividual.getIndividuals().add((Individual) lastVisitedObject);
@@ -666,6 +701,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLDifferentIndividualsAxiom axiom) {
     	DifferentIndividuals newDifferentIndividuals = ecoreOntologyFactory.createDifferentIndividuals();
+    	setAxiomAnnotations(axiom, newDifferentIndividuals);
     	axiom.individuals().forEach(ax -> {
     		ax.accept(this);
     		newDifferentIndividuals.getIndividuals().add((Individual) lastVisitedObject);
@@ -676,6 +712,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLClassAssertionAxiom axiom) {
     	ClassAssertion newClassAssertion = ecoreOntologyFactory.createClassAssertion();
+    	setAxiomAnnotations(axiom, newClassAssertion);
     	axiom.getClassExpression().accept(this);
     	newClassAssertion.setClassExpression((ClassExpression) lastVisitedObject);
     	axiom.getIndividual().accept(this);
@@ -686,6 +723,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLObjectPropertyAssertionAxiom axiom) {
     	ObjectPropertyAssertion newObjectPropertyAssertion = ecoreOntologyFactory.createObjectPropertyAssertion();
+    	setAxiomAnnotations(axiom, newObjectPropertyAssertion);
     	axiom.getProperty().accept(this);
     	newObjectPropertyAssertion.setObjectPropertyExpression((ObjectPropertyExpression) lastVisitedObject);
     	axiom.getSubject().accept(this);
@@ -698,6 +736,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLNegativeObjectPropertyAssertionAxiom axiom) {
     	NegativeObjectPropertyAssertion newNegativeObjectPropertyAssertion = ecoreOntologyFactory.createNegativeObjectPropertyAssertion();
+    	setAxiomAnnotations(axiom, newNegativeObjectPropertyAssertion);
     	axiom.getProperty().accept(this);
     	newNegativeObjectPropertyAssertion.setObjectPropertyExpression((ObjectPropertyExpression) lastVisitedObject);
     	axiom.getSubject().accept(this);
@@ -710,6 +749,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override 
     public void visit(OWLDataPropertyAssertionAxiom axiom) {
     	DataPropertyAssertion newDataPropertyAssertion = ecoreOntologyFactory.createDataPropertyAssertion();
+    	setAxiomAnnotations(axiom, newDataPropertyAssertion);
     	axiom.getProperty().accept(this);
     	newDataPropertyAssertion.setDataPropertyExpression((DataPropertyExpression) lastVisitedObject);
     	axiom.getSubject().accept(this);
@@ -722,6 +762,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLNegativeDataPropertyAssertionAxiom axiom) {
     	NegativeDataPropertyAssertion newNegativeDataPropertyAssertion = ecoreOntologyFactory.createNegativeDataPropertyAssertion();
+    	setAxiomAnnotations(axiom, newNegativeDataPropertyAssertion);
     	axiom.getProperty().accept(this);
     	newNegativeDataPropertyAssertion.setDataPropertyExpression((DataPropertyExpression) lastVisitedObject);
     	axiom.getSubject().accept(this);
@@ -756,6 +797,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLAnnotationAssertionAxiom axiom) {
     	AnnotationAssertion newAnnotationAssertion = ecoreOntologyFactory.createAnnotationAssertion();
+    	setAxiomAnnotations(axiom, newAnnotationAssertion);
     	axiom.getProperty().accept(this);
     	newAnnotationAssertion.setAnnotationProperty((AnnotationProperty) lastVisitedObject);
     	axiom.getSubject().accept(this);
@@ -768,6 +810,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLSubAnnotationPropertyOfAxiom axiom) {
     	SubAnnotationPropertyOf newSubAnnotationPropertyOf = ecoreOntologyFactory.createSubAnnotationPropertyOf();
+    	setAxiomAnnotations(axiom, newSubAnnotationPropertyOf);
     	axiom.getSubProperty().accept(this);
     	newSubAnnotationPropertyOf.setSubAnnotationProperty((AnnotationProperty) lastVisitedObject);
     	axiom.getSuperProperty().accept(this);
@@ -778,6 +821,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLAnnotationPropertyDomainAxiom axiom) {
     	AnnotationPropertyDomain newAnnotationPropertyDomain = ecoreOntologyFactory.createAnnotationPropertyDomain();
+    	setAxiomAnnotations(axiom, newAnnotationPropertyDomain);
     	axiom.getDomain().accept(this);
     	newAnnotationPropertyDomain.setDomain((owl.URI) lastVisitedObject);
     	axiom.getProperty().accept(this);
@@ -788,6 +832,7 @@ public class OwlEcoreWriter implements OWLObjectVisitor {
     @Override
     public void visit(OWLAnnotationPropertyRangeAxiom axiom) {
     	AnnotationPropertyRange newAnnotationPropertyRange = ecoreOntologyFactory.createAnnotationPropertyRange();
+    	setAxiomAnnotations(axiom, newAnnotationPropertyRange);
     	axiom.getRange().accept(this);
     	newAnnotationPropertyRange.setRange((owl.URI) lastVisitedObject);
     	axiom.getProperty().accept(this);

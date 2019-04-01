@@ -13,7 +13,7 @@ public class Example {
 	public static void main(String[] args) {
 		// Writing document
 		//OwlEcoreWriter writer = new OwlEcoreWriter("input/Quintessential-SC1-Eclipse-RDF.owl");
-		OwlEcoreWriter writer = new OwlEcoreWriter("input/pizza.owl");
+		OwlEcoreXmiWriter writer = new OwlEcoreXmiWriter("input/pizza.owl");
 		writer.write("output/Writertest.xmi");
 		System.out.println("[Writer] finished writing.");
 		

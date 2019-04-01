@@ -23,6 +23,7 @@ import org.semanticweb.owlapi.model.OWLAnnotationSubject;
 import org.semanticweb.owlapi.model.OWLAnnotationValue;
 import org.semanticweb.owlapi.model.OWLAnonymousIndividual;
 import org.semanticweb.owlapi.model.OWLAsymmetricObjectPropertyAxiom;
+import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLClassExpression;
@@ -109,6 +110,7 @@ import owl.AnnotationPropertyDomain;
 import owl.AnnotationPropertyRange;
 import owl.AnonymousIndividual;
 import owl.AsymmetricObjectProperty;
+import owl.Axiom;
 import owl.ClassAssertion;
 import owl.DataAllValuesFrom;
 import owl.DataComplementOf;
@@ -240,6 +242,12 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 		} 
 	}
 	
+	public void setAxiomAnnotations(Axiom inputAxiom, OWLAxiom newAxiom) {
+		inputAxiom.getAxiomAnnotations().forEach(annotation -> {
+			newAxiom.annotationsAsList().add((OWLAnnotation) this.doSwitch(annotation));
+		});
+	}
+	
 	@Override
 	public IRI caseURI(owl.URI uri) {
 		return IRI.create(uri.getValue());
@@ -351,44 +359,48 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
      */
 	
 	@Override
-	public OWLSubClassOfAxiom caseSubClassOf(SubClassOf object) {
-		OWLClassExpression subClass = (OWLClassExpression) this.doSwitch(object.getSubClassExpression());
-		OWLClassExpression superClass = (OWLClassExpression) this.doSwitch(object.getSuperClassExpression());
+	public OWLSubClassOfAxiom caseSubClassOf(SubClassOf axiom) {
+		OWLClassExpression subClass = (OWLClassExpression) this.doSwitch(axiom.getSubClassExpression());
+		OWLClassExpression superClass = (OWLClassExpression) this.doSwitch(axiom.getSuperClassExpression());
 		OWLSubClassOfAxiom newSubClassOfAxiom = getOWLDataFactory().getOWLSubClassOfAxiom(subClass, superClass);
+		setAxiomAnnotations(axiom, newSubClassOfAxiom);
 		ontology.add(newSubClassOfAxiom);
 		return newSubClassOfAxiom;
 	}
 	
 	@Override
-	public OWLEquivalentClassesAxiom caseEquivalentClasses(EquivalentClasses object) {
+	public OWLEquivalentClassesAxiom caseEquivalentClasses(EquivalentClasses axiom) {
 		List<OWLClassExpression> classExpressions = new ArrayList<OWLClassExpression>();
-		object.getEquivalentClassExpressions().forEach(ce -> {
+		axiom.getEquivalentClassExpressions().forEach(ce -> {
 			classExpressions.add((OWLClassExpression) this.doSwitch(ce));
 		});
 		OWLEquivalentClassesAxiom newEquivalentClassesAxiom = getOWLDataFactory().getOWLEquivalentClassesAxiom(classExpressions);
+		setAxiomAnnotations(axiom, newEquivalentClassesAxiom);
 		ontology.add(newEquivalentClassesAxiom);
 		return newEquivalentClassesAxiom;
 	}
 	
 	@Override
-	public OWLDisjointClassesAxiom caseDisjointClasses(DisjointClasses object) {
+	public OWLDisjointClassesAxiom caseDisjointClasses(DisjointClasses axiom) {
 		List<OWLClassExpression> classExpressions = new ArrayList<OWLClassExpression>();
-		object.getDisjointClassExpressions().forEach(ce -> {
+		axiom.getDisjointClassExpressions().forEach(ce -> {
 			classExpressions.add((OWLClassExpression) this.doSwitch(ce));
 		});
 		OWLDisjointClassesAxiom newDisjointClassesAxiom = getOWLDataFactory().getOWLDisjointClassesAxiom(classExpressions);
+		setAxiomAnnotations(axiom, newDisjointClassesAxiom);
 		ontology.add(newDisjointClassesAxiom);
 		return newDisjointClassesAxiom;
 	}
 	
 	@Override
-	public OWLDisjointUnionAxiom caseDisjointUnion(DisjointUnion object) {
-		OWLClass unionClass = (OWLClass) this.doSwitch(object.getUnionClass());
+	public OWLDisjointUnionAxiom caseDisjointUnion(DisjointUnion axiom) {
+		OWLClass unionClass = (OWLClass) this.doSwitch(axiom.getUnionClass());
 		List<OWLClassExpression> classExpressions = new ArrayList<OWLClassExpression>();
-		object.getDisjointClassExpressions().forEach(ce -> {
+		axiom.getDisjointClassExpressions().forEach(ce -> {
 			classExpressions.add((OWLClassExpression) this.doSwitch(ce));
 		});
 		OWLDisjointUnionAxiom newDisjointUnionAxiom = getOWLDataFactory().getOWLDisjointUnionAxiom(unionClass, classExpressions);
+		setAxiomAnnotations(axiom, newDisjointUnionAxiom);
 		ontology.add(newDisjointUnionAxiom);
 		return newDisjointUnionAxiom;
 	}
@@ -403,43 +415,46 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
      */
 	
 	@Override
-	public OWLSubObjectPropertyOfAxiom caseSubObjectPropertyOf(SubObjectPropertyOf object) {
-		OWLObjectPropertyExpression subPropertyExpression = (OWLObjectPropertyExpression) this.doSwitch(object.getSubObjectPropertyExpressions());
-		OWLObjectPropertyExpression superPropertyExpression = (OWLObjectPropertyExpression) this.doSwitch(object.getSuperObjectPropertyExpression());
+	public OWLSubObjectPropertyOfAxiom caseSubObjectPropertyOf(SubObjectPropertyOf axiom) {
+		OWLObjectPropertyExpression subPropertyExpression = (OWLObjectPropertyExpression) this.doSwitch(axiom.getSubObjectPropertyExpressions());
+		OWLObjectPropertyExpression superPropertyExpression = (OWLObjectPropertyExpression) this.doSwitch(axiom.getSuperObjectPropertyExpression());
 		OWLSubObjectPropertyOfAxiom newSubObjectPropertyOfAxiom = getOWLDataFactory().getOWLSubObjectPropertyOfAxiom(subPropertyExpression, superPropertyExpression);
+		setAxiomAnnotations(axiom, newSubObjectPropertyOfAxiom);
 		ontology.add(newSubObjectPropertyOfAxiom);
 		return newSubObjectPropertyOfAxiom;
 	}
 	
 	@Override
-	public OWLEquivalentObjectPropertiesAxiom caseEquivalentObjectProperties(EquivalentObjectProperties object) {
+	public OWLEquivalentObjectPropertiesAxiom caseEquivalentObjectProperties(EquivalentObjectProperties axiom) {
 		List<OWLObjectPropertyExpression> objectProperties = new ArrayList<OWLObjectPropertyExpression>();
-		object.getObjectPropertyExpressions().forEach(pe -> {
+		axiom.getObjectPropertyExpressions().forEach(pe -> {
 			objectProperties.add((OWLObjectPropertyExpression) this.doSwitch(pe));
 		});
 		OWLEquivalentObjectPropertiesAxiom newEquivalentObjectPropertiesAxiom = getOWLDataFactory().getOWLEquivalentObjectPropertiesAxiom(objectProperties);
+		setAxiomAnnotations(axiom, newEquivalentObjectPropertiesAxiom);
 		ontology.add(newEquivalentObjectPropertiesAxiom);
 		return newEquivalentObjectPropertiesAxiom;
 	}
 	
 	@Override
-	public OWLDisjointObjectPropertiesAxiom caseDisjointObjectProperties(DisjointObjectProperties object) {
+	public OWLDisjointObjectPropertiesAxiom caseDisjointObjectProperties(DisjointObjectProperties axiom) {
 		List<OWLObjectPropertyExpression> objectProperties = new ArrayList<OWLObjectPropertyExpression>();
-		object.getObjectPropertyExpressions().forEach(pe -> {
+		axiom.getObjectPropertyExpressions().forEach(pe -> {
 			objectProperties.add((OWLObjectPropertyExpression) this.doSwitch(pe));
 		});
 		OWLDisjointObjectPropertiesAxiom newDisjointObjectPropertiesAxiom = getOWLDataFactory().getOWLDisjointObjectPropertiesAxiom(objectProperties);
+		setAxiomAnnotations(axiom, newDisjointObjectPropertiesAxiom);
 		ontology.add(newDisjointObjectPropertiesAxiom);
 		return newDisjointObjectPropertiesAxiom;
 	}
 	
 	@Override
-	public OWLInverseObjectPropertiesAxiom caseInverseObjectProperties(InverseObjectProperties object) {
-		// this object should have two items in the list of propertyexpressions otherwise its invalid
-		if (object.getInverseObjectProperties().size() == 2) {
-			OWLObjectPropertyExpression firstProperty = (OWLObjectPropertyExpression) this.doSwitch(object.getInverseObjectProperties().get(0));
-			OWLObjectPropertyExpression secondProperty = (OWLObjectPropertyExpression) this.doSwitch(object.getInverseObjectProperties().get(1));
+	public OWLInverseObjectPropertiesAxiom caseInverseObjectProperties(InverseObjectProperties axiom) {
+		if (axiom.getInverseObjectProperties().size() == 2) {
+			OWLObjectPropertyExpression firstProperty = (OWLObjectPropertyExpression) this.doSwitch(axiom.getInverseObjectProperties().get(0));
+			OWLObjectPropertyExpression secondProperty = (OWLObjectPropertyExpression) this.doSwitch(axiom.getInverseObjectProperties().get(1));
 			OWLInverseObjectPropertiesAxiom newInverseObjectProperties = getOWLDataFactory().getOWLInverseObjectPropertiesAxiom(firstProperty, secondProperty);
+			setAxiomAnnotations(axiom, newInverseObjectProperties);
 			ontology.add(newInverseObjectProperties);
 			return newInverseObjectProperties;
 		}
@@ -447,75 +462,84 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 	}
 	
 	@Override
-	public OWLObjectPropertyDomainAxiom caseObjectPropertyDomain(ObjectPropertyDomain object) {
-		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(object.getObjectPropertyExpression());
-		OWLClassExpression domain = (OWLClassExpression) this.doSwitch(object.getDomain());
+	public OWLObjectPropertyDomainAxiom caseObjectPropertyDomain(ObjectPropertyDomain axiom) {
+		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(axiom.getObjectPropertyExpression());
+		OWLClassExpression domain = (OWLClassExpression) this.doSwitch(axiom.getDomain());
 		OWLObjectPropertyDomainAxiom newObjectPropertyDomainAxiom = getOWLDataFactory().getOWLObjectPropertyDomainAxiom(objectProperty, domain);
+		setAxiomAnnotations(axiom, newObjectPropertyDomainAxiom);
 		ontology.add(newObjectPropertyDomainAxiom);
 		return newObjectPropertyDomainAxiom;
 	}
 	
 	@Override
-	public OWLObjectPropertyRangeAxiom caseObjectPropertyRange(ObjectPropertyRange object) {
-		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(object.getObjectPropertyExpression());
-		OWLClassExpression range = (OWLClassExpression) this.doSwitch(object.getRange());
+	public OWLObjectPropertyRangeAxiom caseObjectPropertyRange(ObjectPropertyRange axiom) {
+		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(axiom.getObjectPropertyExpression());
+		OWLClassExpression range = (OWLClassExpression) this.doSwitch(axiom.getRange());
 		OWLObjectPropertyRangeAxiom newObjectPropertyRangeAxiom = getOWLDataFactory().getOWLObjectPropertyRangeAxiom(objectProperty, range);
+		setAxiomAnnotations(axiom, newObjectPropertyRangeAxiom);
 		ontology.add(newObjectPropertyRangeAxiom);
 		return newObjectPropertyRangeAxiom;
 	}
 	
 	@Override
-	public OWLFunctionalObjectPropertyAxiom caseFunctionalObjectProperty(FunctionalObjectProperty object) {
-		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(object.getObjectPropertyExpression());
+	public OWLFunctionalObjectPropertyAxiom caseFunctionalObjectProperty(FunctionalObjectProperty axiom) {
+		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(axiom.getObjectPropertyExpression());
 		OWLFunctionalObjectPropertyAxiom newFunctionObjectPropertyAxiom = getOWLDataFactory().getOWLFunctionalObjectPropertyAxiom(objectProperty);
+		setAxiomAnnotations(axiom, newFunctionObjectPropertyAxiom);
 		ontology.add(newFunctionObjectPropertyAxiom);
 		return newFunctionObjectPropertyAxiom;
 	}
 	
 	@Override
-	public OWLInverseFunctionalObjectPropertyAxiom caseInverseFunctionalObjectProperty(InverseFunctionalObjectProperty object) {
-		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(object.getObjectPropertyExpression());
+	public OWLInverseFunctionalObjectPropertyAxiom caseInverseFunctionalObjectProperty(InverseFunctionalObjectProperty axiom) {
+		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(axiom.getObjectPropertyExpression());
 		OWLInverseFunctionalObjectPropertyAxiom newInverseFunctionalPropertyAxiom = getOWLDataFactory().getOWLInverseFunctionalObjectPropertyAxiom(objectProperty);
+		setAxiomAnnotations(axiom, newInverseFunctionalPropertyAxiom);
 		ontology.add(newInverseFunctionalPropertyAxiom);
 		return newInverseFunctionalPropertyAxiom;
 	}
 	
 	@Override
-	public OWLReflexiveObjectPropertyAxiom caseReflexiveObjectProperty(ReflexiveObjectProperty object) {
-		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(object.getObjectPropertyExpression());
+	public OWLReflexiveObjectPropertyAxiom caseReflexiveObjectProperty(ReflexiveObjectProperty axiom) {
+		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(axiom.getObjectPropertyExpression());
 		OWLReflexiveObjectPropertyAxiom newReflexiveObjectPropertyAxiom = getOWLDataFactory().getOWLReflexiveObjectPropertyAxiom(objectProperty);
+		setAxiomAnnotations(axiom, newReflexiveObjectPropertyAxiom);
 		ontology.add(newReflexiveObjectPropertyAxiom);
 		return newReflexiveObjectPropertyAxiom;
 	}
 	
 	@Override
-	public OWLIrreflexiveObjectPropertyAxiom caseIrreflexiveObjectProperty(IrreflexiveObjectProperty object) {
-		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(object.getObjectPropertyExpression());
+	public OWLIrreflexiveObjectPropertyAxiom caseIrreflexiveObjectProperty(IrreflexiveObjectProperty axiom) {
+		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(axiom.getObjectPropertyExpression());
 		OWLIrreflexiveObjectPropertyAxiom newIrreflexiveObjectPropertyAxiom = getOWLDataFactory().getOWLIrreflexiveObjectPropertyAxiom(objectProperty);
+		setAxiomAnnotations(axiom, newIrreflexiveObjectPropertyAxiom);
 		ontology.add(newIrreflexiveObjectPropertyAxiom);
 		return newIrreflexiveObjectPropertyAxiom;
 	}
 	
 	@Override
-	public OWLSymmetricObjectPropertyAxiom caseSymmetricObjectProperty(SymmetricObjectProperty object) {
-		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(object.getObjectPropertyExpression());
+	public OWLSymmetricObjectPropertyAxiom caseSymmetricObjectProperty(SymmetricObjectProperty axiom) {
+		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(axiom.getObjectPropertyExpression());
 		OWLSymmetricObjectPropertyAxiom newSymmetricObjectPropertyAxiom = getOWLDataFactory().getOWLSymmetricObjectPropertyAxiom(objectProperty);
+		setAxiomAnnotations(axiom, newSymmetricObjectPropertyAxiom);
 		ontology.add(newSymmetricObjectPropertyAxiom);
 		return newSymmetricObjectPropertyAxiom;
 	}
 	
 	@Override
-	public OWLAsymmetricObjectPropertyAxiom caseAsymmetricObjectProperty(AsymmetricObjectProperty object) {
-		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(object.getObjectPropertyExpression());
+	public OWLAsymmetricObjectPropertyAxiom caseAsymmetricObjectProperty(AsymmetricObjectProperty axiom) {
+		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(axiom.getObjectPropertyExpression());
 		OWLAsymmetricObjectPropertyAxiom newAsymmetricObjectPropertyAxiom = getOWLDataFactory().getOWLAsymmetricObjectPropertyAxiom(objectProperty);
+		setAxiomAnnotations(axiom, newAsymmetricObjectPropertyAxiom);
 		ontology.add(newAsymmetricObjectPropertyAxiom);
 		return newAsymmetricObjectPropertyAxiom;
 	}
 	
 	@Override
-	public OWLTransitiveObjectPropertyAxiom caseTransitiveObjectProperty(TransitiveObjectProperty object) {
-		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(object.getObjectPropertyExpression());
+	public OWLTransitiveObjectPropertyAxiom caseTransitiveObjectProperty(TransitiveObjectProperty axiom) {
+		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(axiom.getObjectPropertyExpression());
 		OWLTransitiveObjectPropertyAxiom newTransitiveObjectPropertyAxiom = getOWLDataFactory().getOWLTransitiveObjectPropertyAxiom(objectProperty);
+		setAxiomAnnotations(axiom, newTransitiveObjectPropertyAxiom);
 		ontology.add(newTransitiveObjectPropertyAxiom);
 		return newTransitiveObjectPropertyAxiom;
 	}
@@ -527,58 +551,64 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
      */
 	
 	@Override
-	public OWLSubDataPropertyOfAxiom caseSubDataPropertyOf(SubDataPropertyOf object) {
-		OWLDataPropertyExpression subDataPropertyExpression = (OWLDataPropertyExpression) this.doSwitch(object.getSubDataPropertyExpression());
-		OWLDataPropertyExpression superDataPropertyExpression = (OWLDataPropertyExpression) this.doSwitch(object.getSuperDataPropertyExpression());
+	public OWLSubDataPropertyOfAxiom caseSubDataPropertyOf(SubDataPropertyOf axiom) {
+		OWLDataPropertyExpression subDataPropertyExpression = (OWLDataPropertyExpression) this.doSwitch(axiom.getSubDataPropertyExpression());
+		OWLDataPropertyExpression superDataPropertyExpression = (OWLDataPropertyExpression) this.doSwitch(axiom.getSuperDataPropertyExpression());
 		OWLSubDataPropertyOfAxiom newSubDataPropertyOfAxiom = getOWLDataFactory().getOWLSubDataPropertyOfAxiom(subDataPropertyExpression, superDataPropertyExpression);
+		setAxiomAnnotations(axiom, newSubDataPropertyOfAxiom);
 		ontology.add(newSubDataPropertyOfAxiom);
 		return newSubDataPropertyOfAxiom;
 	}
 	
 	@Override
-	public OWLEquivalentDataPropertiesAxiom caseEquivalentDataProperties(EquivalentDataProperties object) {
+	public OWLEquivalentDataPropertiesAxiom caseEquivalentDataProperties(EquivalentDataProperties axiom) {
 		List<OWLDataPropertyExpression> dataProperties = new ArrayList<OWLDataPropertyExpression>();
-		object.getDataPropertyExpressions().forEach(pe -> {
+		axiom.getDataPropertyExpressions().forEach(pe -> {
 			dataProperties.add((OWLDataPropertyExpression) this.doSwitch(pe));
 		});
 		OWLEquivalentDataPropertiesAxiom newOwlEquivalentDataPropertiesAxiom = getOWLDataFactory().getOWLEquivalentDataPropertiesAxiom(dataProperties);
+		setAxiomAnnotations(axiom, newOwlEquivalentDataPropertiesAxiom);
 		ontology.add(newOwlEquivalentDataPropertiesAxiom);
 		return newOwlEquivalentDataPropertiesAxiom;
 	}
 	
 	@Override
-	public OWLDisjointDataPropertiesAxiom caseDisjointDataProperties(DisjointDataProperties object) {
+	public OWLDisjointDataPropertiesAxiom caseDisjointDataProperties(DisjointDataProperties axiom) {
 		List<OWLDataPropertyExpression> dataPropeties = new ArrayList<OWLDataPropertyExpression>();
-		object.getDataPropertyExpressions().forEach(pe -> {
+		axiom.getDataPropertyExpressions().forEach(pe -> {
 			dataPropeties.add((OWLDataPropertyExpression) this.doSwitch(pe));
 		});
 		OWLDisjointDataPropertiesAxiom newDisjointDataPropertiesAxiom = getOWLDataFactory().getOWLDisjointDataPropertiesAxiom(dataPropeties);
+		setAxiomAnnotations(axiom, newDisjointDataPropertiesAxiom);
 		ontology.add(newDisjointDataPropertiesAxiom);
 		return newDisjointDataPropertiesAxiom;
 	}
 	
 	@Override
-	public OWLDataPropertyDomainAxiom caseDataPropertyDomain(DataPropertyDomain object) {
-		OWLDataPropertyExpression dataProperty = (OWLDataPropertyExpression) this.doSwitch(object.getDataPropertyExpression());
-		OWLClassExpression domain = (OWLClassExpression) this.doSwitch(object.getDomain());
+	public OWLDataPropertyDomainAxiom caseDataPropertyDomain(DataPropertyDomain axiom) {
+		OWLDataPropertyExpression dataProperty = (OWLDataPropertyExpression) this.doSwitch(axiom.getDataPropertyExpression());
+		OWLClassExpression domain = (OWLClassExpression) this.doSwitch(axiom.getDomain());
 		OWLDataPropertyDomainAxiom newDataPropertyDomainAxiom = getOWLDataFactory().getOWLDataPropertyDomainAxiom(dataProperty, domain);
+		setAxiomAnnotations(axiom, newDataPropertyDomainAxiom);
 		ontology.add(newDataPropertyDomainAxiom);
 		return newDataPropertyDomainAxiom;
 	}
 	
 	@Override
-	public OWLDataPropertyRangeAxiom caseDataPropertyRange(DataPropertyRange object) {
-		OWLDataPropertyExpression dataProperty = (OWLDataPropertyExpression) this.doSwitch(object.getDataPropertyExpression());
-		OWLDataRange range = (OWLDataRange) this.doSwitch(object.getRange());
+	public OWLDataPropertyRangeAxiom caseDataPropertyRange(DataPropertyRange axiom) {
+		OWLDataPropertyExpression dataProperty = (OWLDataPropertyExpression) this.doSwitch(axiom.getDataPropertyExpression());
+		OWLDataRange range = (OWLDataRange) this.doSwitch(axiom.getRange());
 		OWLDataPropertyRangeAxiom newDataPropertyRangeAxiom = getOWLDataFactory().getOWLDataPropertyRangeAxiom(dataProperty, range);
+		setAxiomAnnotations(axiom, newDataPropertyRangeAxiom);
 		ontology.add(newDataPropertyRangeAxiom);
 		return newDataPropertyRangeAxiom;
 	}
 	
 	@Override
-	public OWLFunctionalDataPropertyAxiom caseFunctionalDataProperty(FunctionalDataProperty object) {
-		OWLDataPropertyExpression dataProperty = (OWLDataPropertyExpression) this.doSwitch(object.getDataPropertyExpression());
+	public OWLFunctionalDataPropertyAxiom caseFunctionalDataProperty(FunctionalDataProperty axiom) {
+		OWLDataPropertyExpression dataProperty = (OWLDataPropertyExpression) this.doSwitch(axiom.getDataPropertyExpression());
 		OWLFunctionalDataPropertyAxiom newFunctionalDataPropertyAxiom = getOWLDataFactory().getOWLFunctionalDataPropertyAxiom(dataProperty);
+		setAxiomAnnotations(axiom, newFunctionalDataPropertyAxiom);
 		ontology.add(newFunctionalDataPropertyAxiom);
 		return newFunctionalDataPropertyAxiom;
 	}
@@ -589,10 +619,11 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
      */
 	
 	@Override 
-	public OWLDatatypeDefinitionAxiom caseDataTypeDefinition(DataTypeDefinition object) {
-		OWLDatatype datatype = (OWLDatatype) this.doSwitch(object.getDataType());
-		OWLDataRange dataRange = (OWLDataRange) this.doSwitch(object.getDataRange());
+	public OWLDatatypeDefinitionAxiom caseDataTypeDefinition(DataTypeDefinition axiom) {
+		OWLDatatype datatype = (OWLDatatype) this.doSwitch(axiom.getDataType());
+		OWLDataRange dataRange = (OWLDataRange) this.doSwitch(axiom.getDataRange());
 		OWLDatatypeDefinitionAxiom newDatatypeDefinitionAxiom = getOWLDataFactory().getOWLDatatypeDefinitionAxiom(datatype, dataRange);
+		setAxiomAnnotations(axiom, newDatatypeDefinitionAxiom);
 		ontology.add(newDatatypeDefinitionAxiom);
 		return newDatatypeDefinitionAxiom;
 	}
@@ -603,16 +634,17 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
      */
 	
 	@Override
-	public OWLHasKeyAxiom caseHasKey(HasKey object) {
-		OWLClassExpression classExpression = (OWLClassExpression) this.doSwitch(object.getClassExpression());
+	public OWLHasKeyAxiom caseHasKey(HasKey axiom) {
+		OWLClassExpression classExpression = (OWLClassExpression) this.doSwitch(axiom.getClassExpression());
 		List<OWLPropertyExpression> propertyExpressions = new ArrayList<OWLPropertyExpression>();
-		object.getObjectPropertyExpressions().forEach(pe -> {
+		axiom.getObjectPropertyExpressions().forEach(pe -> {
 			propertyExpressions.add((OWLObjectPropertyExpression) this.doSwitch(pe));
 		});
-		object.getDataPropertyExpressions().forEach(pe -> {
+		axiom.getDataPropertyExpressions().forEach(pe -> {
 			propertyExpressions.add((OWLDataPropertyExpression) this.doSwitch(pe));
 		});
 		OWLHasKeyAxiom newHasKeyAxiom = getOWLDataFactory().getOWLHasKeyAxiom(classExpression, propertyExpressions);
+		setAxiomAnnotations(axiom, newHasKeyAxiom);
 		ontology.add(newHasKeyAxiom);
 		return newHasKeyAxiom;
 	}
@@ -625,72 +657,79 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
      */
 	
 	@Override
-	public OWLSameIndividualAxiom caseSameIndividual(SameIndividual object) {
+	public OWLSameIndividualAxiom caseSameIndividual(SameIndividual axiom) {
 		List<OWLIndividual> individuals = new ArrayList<OWLIndividual>();
-		object.getIndividuals().forEach(individual -> {
+		axiom.getIndividuals().forEach(individual -> {
 			individuals.add((OWLIndividual) this.doSwitch(individual));
 		});
 		OWLSameIndividualAxiom newSameIndividualAxiom = getOWLDataFactory().getOWLSameIndividualAxiom(individuals);
+		setAxiomAnnotations(axiom, newSameIndividualAxiom);
 		ontology.add(newSameIndividualAxiom);
 		return newSameIndividualAxiom;
 	}
 	
 	@Override
-	public OWLDifferentIndividualsAxiom caseDifferentIndividuals(DifferentIndividuals object) {
+	public OWLDifferentIndividualsAxiom caseDifferentIndividuals(DifferentIndividuals axiom) {
 		List<OWLIndividual> individuals = new ArrayList<OWLIndividual>();
-		object.getIndividuals().forEach(individual -> {
+		axiom.getIndividuals().forEach(individual -> {
 			individuals.add((OWLIndividual) this.doSwitch(individual));
 		});
 		OWLDifferentIndividualsAxiom newDifferentIndividualsAxiom = getOWLDataFactory().getOWLDifferentIndividualsAxiom(individuals);
+		setAxiomAnnotations(axiom, newDifferentIndividualsAxiom);
 		ontology.add(newDifferentIndividualsAxiom);
 		return newDifferentIndividualsAxiom;
 	}
 	
 	@Override
-	public OWLClassAssertionAxiom caseClassAssertion(ClassAssertion object) {
-		OWLClassExpression classExpression = (OWLClassExpression) this.doSwitch(object.getClassExpression());
-		OWLIndividual individual = (OWLIndividual) this.doSwitch(object.getIndividual());
+	public OWLClassAssertionAxiom caseClassAssertion(ClassAssertion axiom) {
+		OWLClassExpression classExpression = (OWLClassExpression) this.doSwitch(axiom.getClassExpression());
+		OWLIndividual individual = (OWLIndividual) this.doSwitch(axiom.getIndividual());
 		OWLClassAssertionAxiom newClassAssertionAxiom = getOWLDataFactory().getOWLClassAssertionAxiom(classExpression, individual);
+		setAxiomAnnotations(axiom, newClassAssertionAxiom);
 		ontology.add(newClassAssertionAxiom);
 		return newClassAssertionAxiom;
 	}
 	
 	@Override
-	public OWLObjectPropertyAssertionAxiom caseObjectPropertyAssertion(ObjectPropertyAssertion object) {
-		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(object.getObjectPropertyExpression());
-		OWLIndividual sourceIndividual = (OWLIndividual) this.doSwitch(object.getSourceIndividual());
-		OWLIndividual targetIndividual = (OWLIndividual) this.doSwitch(object.getTargetIndividual());
+	public OWLObjectPropertyAssertionAxiom caseObjectPropertyAssertion(ObjectPropertyAssertion axiom) {
+		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(axiom.getObjectPropertyExpression());
+		OWLIndividual sourceIndividual = (OWLIndividual) this.doSwitch(axiom.getSourceIndividual());
+		OWLIndividual targetIndividual = (OWLIndividual) this.doSwitch(axiom.getTargetIndividual());
 		OWLObjectPropertyAssertionAxiom newObjectPropertyAssertionAxiom = getOWLDataFactory().getOWLObjectPropertyAssertionAxiom(objectProperty, sourceIndividual, targetIndividual);
+		setAxiomAnnotations(axiom, newObjectPropertyAssertionAxiom);
 		ontology.add(newObjectPropertyAssertionAxiom);
 		return newObjectPropertyAssertionAxiom;
 	}
 	
 	@Override
-	public OWLNegativeObjectPropertyAssertionAxiom caseNegativeObjectPropertyAssertion(NegativeObjectPropertyAssertion object) {
-		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(object.getObjectPropertyExpression());
-		OWLIndividual sourceIndividual = (OWLIndividual) this.doSwitch(object.getSourceIndividual());
-		OWLIndividual targetIndividual = (OWLIndividual) this.doSwitch(object.getTargetIndividual());
+	public OWLNegativeObjectPropertyAssertionAxiom caseNegativeObjectPropertyAssertion(NegativeObjectPropertyAssertion axiom) {
+		OWLObjectPropertyExpression objectProperty = (OWLObjectPropertyExpression) this.doSwitch(axiom.getObjectPropertyExpression());
+		OWLIndividual sourceIndividual = (OWLIndividual) this.doSwitch(axiom.getSourceIndividual());
+		OWLIndividual targetIndividual = (OWLIndividual) this.doSwitch(axiom.getTargetIndividual());
 		OWLNegativeObjectPropertyAssertionAxiom newNegativeObjectPropertyAssertionAxiom = getOWLDataFactory().getOWLNegativeObjectPropertyAssertionAxiom(objectProperty, sourceIndividual, targetIndividual);
+		setAxiomAnnotations(axiom, newNegativeObjectPropertyAssertionAxiom);
 		ontology.add(newNegativeObjectPropertyAssertionAxiom);
 		return newNegativeObjectPropertyAssertionAxiom;
 	}
 	
 	@Override
-	public OWLDataPropertyAssertionAxiom caseDataPropertyAssertion(DataPropertyAssertion object) {
-		OWLDataPropertyExpression dataProperty = (OWLDataPropertyExpression) this.doSwitch(object.getDataPropertyExpression());
-		OWLIndividual sourceIndividual = (OWLIndividual) this.doSwitch(object.getSourceIndividual());
-		OWLLiteral targetValue = (OWLLiteral) this.doSwitch(object.getTargetValue());
+	public OWLDataPropertyAssertionAxiom caseDataPropertyAssertion(DataPropertyAssertion axiom) {
+		OWLDataPropertyExpression dataProperty = (OWLDataPropertyExpression) this.doSwitch(axiom.getDataPropertyExpression());
+		OWLIndividual sourceIndividual = (OWLIndividual) this.doSwitch(axiom.getSourceIndividual());
+		OWLLiteral targetValue = (OWLLiteral) this.doSwitch(axiom.getTargetValue());
 		OWLDataPropertyAssertionAxiom newDataPropertyAssertionAxiom = getOWLDataFactory().getOWLDataPropertyAssertionAxiom(dataProperty, sourceIndividual, targetValue);
+		setAxiomAnnotations(axiom, newDataPropertyAssertionAxiom);
 		ontology.add(newDataPropertyAssertionAxiom);
 		return newDataPropertyAssertionAxiom;
 	}
 	
 	@Override
-	public OWLNegativeDataPropertyAssertionAxiom caseNegativeDataPropertyAssertion(NegativeDataPropertyAssertion object) {
-		OWLDataPropertyExpression dataProperty = (OWLDataPropertyExpression) this.doSwitch(object.getDataPropertyExpression());
-		OWLIndividual sourceIndividual = (OWLIndividual) this.doSwitch(object.getSourceIndividual());
-		OWLLiteral targetValue = (OWLLiteral) this.doSwitch(object.getTargetValue());
+	public OWLNegativeDataPropertyAssertionAxiom caseNegativeDataPropertyAssertion(NegativeDataPropertyAssertion axiom) {
+		OWLDataPropertyExpression dataProperty = (OWLDataPropertyExpression) this.doSwitch(axiom.getDataPropertyExpression());
+		OWLIndividual sourceIndividual = (OWLIndividual) this.doSwitch(axiom.getSourceIndividual());
+		OWLLiteral targetValue = (OWLLiteral) this.doSwitch(axiom.getTargetValue());
 		OWLNegativeDataPropertyAssertionAxiom newNegativeDataPropertyAssertionAxiom = getOWLDataFactory().getOWLNegativeDataPropertyAssertionAxiom(dataProperty, sourceIndividual, targetValue);
+		setAxiomAnnotations(axiom, newNegativeDataPropertyAssertionAxiom);
 		ontology.add(newNegativeDataPropertyAssertionAxiom);
 		return newNegativeDataPropertyAssertionAxiom;
 	}
@@ -714,36 +753,40 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
      */
 	
 	@Override
-	public OWLAnnotationAssertionAxiom caseAnnotationAssertion(AnnotationAssertion object) {
-		OWLAnnotationProperty annotationProperty = (OWLAnnotationProperty) this.doSwitch(object.getAnnotationProperty());
-		OWLAnnotationSubject annotationSubject = (OWLAnnotationSubject) this.doSwitch(object.getAnnotationSubject());
-		OWLAnnotationValue annotationValue = (OWLAnnotationValue) this.doSwitch(object.getAnnotationValue());
+	public OWLAnnotationAssertionAxiom caseAnnotationAssertion(AnnotationAssertion axiom) {
+		OWLAnnotationProperty annotationProperty = (OWLAnnotationProperty) this.doSwitch(axiom.getAnnotationProperty());
+		OWLAnnotationSubject annotationSubject = (OWLAnnotationSubject) this.doSwitch(axiom.getAnnotationSubject());
+		OWLAnnotationValue annotationValue = (OWLAnnotationValue) this.doSwitch(axiom.getAnnotationValue());
 		OWLAnnotationAssertionAxiom newAnnotationAssertionAxiom = getOWLDataFactory().getOWLAnnotationAssertionAxiom(annotationProperty, annotationSubject, annotationValue);
+		setAxiomAnnotations(axiom, newAnnotationAssertionAxiom);
 		ontology.add(newAnnotationAssertionAxiom);
 		return newAnnotationAssertionAxiom;
 	}
 	
 	@Override
-	public OWLSubAnnotationPropertyOfAxiom caseSubAnnotationPropertyOf(SubAnnotationPropertyOf object) {
-		OWLAnnotationProperty subAnnotationProperty = (OWLAnnotationProperty) this.doSwitch(object.getSubAnnotationProperty());
-		OWLAnnotationProperty superAnnotationProperty = (OWLAnnotationProperty) this.doSwitch(object.getSuperAnnotationProperty());
+	public OWLSubAnnotationPropertyOfAxiom caseSubAnnotationPropertyOf(SubAnnotationPropertyOf axiom) {
+		OWLAnnotationProperty subAnnotationProperty = (OWLAnnotationProperty) this.doSwitch(axiom.getSubAnnotationProperty());
+		OWLAnnotationProperty superAnnotationProperty = (OWLAnnotationProperty) this.doSwitch(axiom.getSuperAnnotationProperty());
 		OWLSubAnnotationPropertyOfAxiom newSubAnnotationPropertyOfAxiom = getOWLDataFactory().getOWLSubAnnotationPropertyOfAxiom(subAnnotationProperty, superAnnotationProperty);
+		setAxiomAnnotations(axiom, newSubAnnotationPropertyOfAxiom);
 		ontology.add(newSubAnnotationPropertyOfAxiom);
 		return newSubAnnotationPropertyOfAxiom;
 	}
 	
 	@Override
-	public OWLAnnotationPropertyDomainAxiom caseAnnotationPropertyDomain(AnnotationPropertyDomain object) {
-		OWLAnnotationProperty annotationProperty = (OWLAnnotationProperty) this.doSwitch(object.getAnnotationProperty());
-		OWLAnnotationPropertyDomainAxiom newAnnotationPropertyDomainAxiom = getOWLDataFactory().getOWLAnnotationPropertyDomainAxiom(annotationProperty, (IRI) this.doSwitch(object.getDomain()));
+	public OWLAnnotationPropertyDomainAxiom caseAnnotationPropertyDomain(AnnotationPropertyDomain axiom) {
+		OWLAnnotationProperty annotationProperty = (OWLAnnotationProperty) this.doSwitch(axiom.getAnnotationProperty());
+		OWLAnnotationPropertyDomainAxiom newAnnotationPropertyDomainAxiom = getOWLDataFactory().getOWLAnnotationPropertyDomainAxiom(annotationProperty, (IRI) this.doSwitch(axiom.getDomain()));
+		setAxiomAnnotations(axiom, newAnnotationPropertyDomainAxiom);
 		ontology.add(newAnnotationPropertyDomainAxiom);
 		return newAnnotationPropertyDomainAxiom;
 	}
 	
 	@Override
-	public OWLAnnotationPropertyRangeAxiom caseAnnotationPropertyRange(AnnotationPropertyRange object) {
-		OWLAnnotationProperty annotationProperty = (OWLAnnotationProperty) this.doSwitch(object.getAnnotationProperty());
-		OWLAnnotationPropertyRangeAxiom newAnnotationPropertyRangeAxiom = getOWLDataFactory().getOWLAnnotationPropertyRangeAxiom(annotationProperty, (IRI) this.doSwitch(object.getRange()));
+	public OWLAnnotationPropertyRangeAxiom caseAnnotationPropertyRange(AnnotationPropertyRange axiom) {
+		OWLAnnotationProperty annotationProperty = (OWLAnnotationProperty) this.doSwitch(axiom.getAnnotationProperty());
+		OWLAnnotationPropertyRangeAxiom newAnnotationPropertyRangeAxiom = getOWLDataFactory().getOWLAnnotationPropertyRangeAxiom(annotationProperty, (IRI) this.doSwitch(axiom.getRange()));
+		setAxiomAnnotations(axiom, newAnnotationPropertyRangeAxiom);
 		ontology.add(newAnnotationPropertyRangeAxiom);
 		return newAnnotationPropertyRangeAxiom;
 	}
