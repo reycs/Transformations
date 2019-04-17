@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:p1="http://www.w3.org/ns/ma-ont#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://mawg_example_1#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+	<owl:Ontology>
+		<owl:imports rdf:resource="http://www.w3.org/ns/ma-ont"/>
+	</owl:Ontology>
+	<p1:MediaFragment rdf:about="http://example.org/20041116_110000_CCTV4_NEWS3_CHN.mpg#shot1_2_AV">
+		<p1:fragmentName>Shot 2</p1:fragmentName>
+		<p1:title xml:lang="en">Shot 2</p1:title>
+		<owl:sameAs rdf:resource="http://example.org/20041116_110000_CCTV4_NEWS3_CHN.mpg#t=116.116,504.504"/>
+	</p1:MediaFragment>
+	<p1:MediaFragment rdf:about="http://example.org/20041116_110000_CCTV4_NEWS3_CHN.mpg#shot1_1_AV">
+		<p1:fragmentName>Shot 1</p1:fragmentName>
+		<p1:title xml:lang="en">Shot 1</p1:title>
+		<owl:sameAs rdf:resource="http://example.org/20041116_110000_CCTV4_NEWS3_CHN.mpg#t=0,116.116"/>
+	</p1:MediaFragment>
+	<p1:MediaResource rdf:about="http://example.org/20041116_110000_CCTV4_NEWS3_CHN.mpg">
+	  <p1:title xml:lang="en">Sample Programme</p1:title>
+	  <p1:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://example.org/20041116_110000_CCTV4_NEWS3_CHN.mpg</p1:locator>
+		<p1:hasRelatedResource>
+			<p1:MediaResource rdf:about="http://somewhere.com/othermaterial.mov"></p1:MediaResource>
+		</p1:hasRelatedResource>
+		<p1:frameHeight rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">576</p1:frameHeight>
+		<p1:averageBitRate rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5000000.0</p1:averageBitRate>
+		<p1:hasTargetAudience>
+			<p1:TargetAudience>
+				<p1:hasClassification rdf:parseType="Resource">
+					<rdfs:label>min=16</rdfs:label>
+				</p1:hasClassification>
+				<p1:hasClassificationSystem rdf:parseType="Resource">
+					<rdfs:label>Age Classification</rdfs:label>
+				</p1:hasClassificationSystem>
+			</p1:TargetAudience>
+		</p1:hasTargetAudience>
+		<p1:hasTargetAudience>
+			<p1:TargetAudience>
+				<p1:hasClassification rdf:parseType="Resource">
+					<rdfs:label>AT</rdfs:label>
+				</p1:hasClassification>
+				<p1:hasClassificationSystem rdf:parseType="Resource">
+					<rdfs:label>Region Classification</rdfs:label>
+				</p1:hasClassificationSystem>
+			</p1:TargetAudience>
+		</p1:hasTargetAudience>
+		<p1:isMemberOf>
+			<p1:Collection>
+				<p1:collectionName>The 99 Example Series</p1:collectionName>
+			</p1:Collection>
+		</p1:isMemberOf>
+		<p1:hasPolicy rdf:parseType="Resource">
+			<rdfs:label>1998/4D3748</rdfs:label>
+		</p1:hasPolicy>
+		<p1:frameRate rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">25.0</p1:frameRate>
+		<p1:frameSizeUnit>pixel</p1:frameSizeUnit>
+		<p1:hasGenre>
+			<rdf:Description rdf:about="http://www.ebu.ch/metadata/cs/ebu_ContentGenreCS.xml#3.1.1.10.3">
+				<rdfs:label>Film</rdfs:label>
+			</rdf:Description>
+		</p1:hasGenre>
+		<p1:hasFragment>
+			<p1:MediaFragment rdf:about="http://example.org/20041116_110000_CCTV4_NEWS3_CHN.mpg#t=116.116,504.504"/>
+		</p1:hasFragment>
+		<p1:samplingRate rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">22000.0</p1:samplingRate>
+		<p1:frameWidth rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">720</p1:frameWidth>
+		<p1:hasRating>
+			<p1:Rating>
+				<p1:hasRatingSystem rdf:parseType="Resource">
+					<rdfs:label>higherBetter</rdfs:label>
+				</p1:hasRatingSystem>
+				<p1:IsRatingOf rdf:resource="http://example.org/20041116_110000_CCTV4_NEWS3_CHN.mpg"/>
+				<p1:ratingValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.0</p1:ratingValue>
+				<p1:ratingScaleMin rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</p1:ratingScaleMin>
+				<p1:ratingScaleMax rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</p1:ratingScaleMax>
+			</p1:Rating>
+		</p1:hasRating>
+		<p1:hasPublisher>
+			<p1:Organisation>
+				<rdfs:label>W3 Pictures Inc.</rdfs:label>
+			</p1:Organisation>
+		</p1:hasPublisher>
+		<p1:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1994</p1:creationDate>
+		<p1:hasCompression rdf:resource="http://www.ebu.ch/metadata/cs/ebu_VideoCompressionCodeCS.xml#2"/>
+		<p1:description>This is the synopsis of the story.</p1:description>
+		<p1:createdIn>
+			<p1:Location>
+				<p1:locationLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">23.456</p1:locationLongitude>
+				<p1:locationLatitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.8765</p1:locationLatitude>
+				<p1:locationName>Here</p1:locationName>
+			</p1:Location>
+		</p1:createdIn>
+		<p1:hasFormat rdf:resource="http://www.ebu.ch/metadata/cs/ebu_FileFormatCS.xml#7.2.2.1"/>
+		<p1:copyright>All rights reserved.</p1:copyright>
+		<p1:features>
+			<p1:Person>
+				<rdfs:label>John Doe</rdfs:label>
+			</p1:Person>
+		</p1:features>
+		<p1:hasFragment>
+			<p1:MediaFragment rdf:about="http://example.org/20041116_110000_CCTV4_NEWS3_CHN.mpg#t=0,116.116"/>
+		</p1:hasFragment>
+		<p1:hasCreator>
+			<p1:Person>
+				<rdfs:label>Max Muster</rdfs:label>
+			</p1:Person>
+		</p1:hasCreator>
+		<p1:duration rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1038.037</p1:duration>
+		<p1:hasKeyword rdf:parseType="Resource">
+			<rdfs:label>Video</rdfs:label>
+		</p1:hasKeyword>
+		<p1:hasLanguage rdf:parseType="Resource">
+			<rdfs:label>en-us</rdfs:label>
+		</p1:hasLanguage>
+		<p1:numberOfTracks rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</p1:numberOfTracks>
+		<p1:hasNamedFragment>
+			<p1:MediaFragment rdf:about="http://example.org/20041116_110000_CCTV4_NEWS3_CHN.mpg#shot1_2_AV"/>
+		</p1:hasNamedFragment>
+		<p1:hasNamedFragment>
+			<p1:MediaFragment rdf:about="http://example.org/20041116_110000_CCTV4_NEWS3_CHN.mpg#shot1_1_AV"/>
+		</p1:hasNamedFragment>
+	</p1:MediaResource>
+</rdf:RDF>

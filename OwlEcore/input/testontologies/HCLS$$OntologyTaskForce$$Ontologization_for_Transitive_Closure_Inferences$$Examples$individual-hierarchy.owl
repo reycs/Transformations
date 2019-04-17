@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY example "http://example.com/#">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+  <!ENTITY owl0 "http://www.geneontology.org/owl/#">
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="&example;"
+         xmlns:owl="&owl;"
+         xmlns:owl0="&owl0;"
+         xmlns:rdf="&rdf;">
+
+<!-- Ontology Information -->
+  <owl:Ontology rdf:about="#"/>
+
+<!-- Classes -->
+  <owl:Class rdf:about="&owl0;term"/>
+
+<!-- Object Properties -->
+  <owl:ObjectProperty rdf:about="&owl0;go_isa">
+    <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+  </owl:ObjectProperty>
+
+<!-- Instances -->
+  <owl:Thing rdf:about="&owl0;GO_0000060"/>
+  <owl0:term rdf:about="&owl0;GO_0000189">
+    <owl0:go_isa rdf:resource="&owl0;GO_0000060"/>
+  </owl0:term>
+
+  <owl0:term rdf:about="&owl0;GO_0000201">
+    <owl0:go_isa rdf:resource="&owl0;GO_0000189"/>
+  </owl0:term>
+
+  <owl0:term rdf:about="&owl0;GO_0000208">
+    <owl0:go_isa rdf:resource="&owl0;GO_0000189"/>
+  </owl0:term>
+
+  <owl0:term rdf:about="&owl0;GO_0006993">
+    <owl0:go_isa rdf:resource="&owl0;GO_0035105"/>
+  </owl0:term>
+
+  <owl0:term rdf:about="&owl0;GO_0007184">
+    <owl0:go_isa rdf:resource="&owl0;GO_0000060"/>
+  </owl0:term>
+
+  <owl0:term rdf:about="&owl0;GO_0007262">
+    <owl0:go_isa rdf:resource="&owl0;GO_0000060"/>
+  </owl0:term>
+
+  <owl0:term rdf:about="&owl0;GO_0035105">
+    <owl0:go_isa rdf:resource="&owl0;GO_0000060"/>
+  </owl0:term>
+</rdf:RDF>

@@ -1,0 +1,1076 @@
+@prefix : <http://snomed.info/id/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sctf: <http://snomed.info/field/> .
+@prefix sctp: <http://snomed.info/field/Description.term.> .
+@base <http://snomed.info/sct/900000000000207008> .
+
+<http://snomed.info/sct/900000000000207008> rdf:type owl:Ontology ;
+                                            
+                                            owl:versionIRI <http://snomed.info/sct/900000000000207008/version/20140731> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://snomed.info/field/Description.term.en-us.preferred
+
+sctf:Description.term.en-us.preferred rdf:type owl:AnnotationProperty .
+
+
+
+###  http://snomed.info/field/Description.term.en-us.synonym
+
+sctf:Description.term.en-us.synonym rdf:type owl:AnnotationProperty .
+
+
+
+###  http://snomed.info/field/TextDefinition.term
+
+sctf:TextDefinition.term rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://snomed.info/id/116686009
+
+<http://snomed.info/id/116686009> rdf:type owl:ObjectProperty ;
+                                  
+                                  rdfs:label "Has specimen (attribute)" ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Has specimen" .
+
+
+
+###  http://snomed.info/id/246093002
+
+<http://snomed.info/id/246093002> rdf:type owl:ObjectProperty ;
+                                  
+                                  rdfs:label "Component (attribute)" ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Component" .
+
+
+
+###  http://snomed.info/id/260686004
+
+<http://snomed.info/id/260686004> rdf:type owl:ObjectProperty ;
+                                  
+                                  rdfs:label "Method (attribute)" ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Method" .
+
+
+
+###  http://snomed.info/id/363713009
+
+<http://snomed.info/id/363713009> rdf:type owl:ObjectProperty ;
+                                  
+                                  rdfs:label "Has interpretation (attribute)" ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Has interpretation" .
+
+
+
+###  http://snomed.info/id/363714003
+
+<http://snomed.info/id/363714003> rdf:type owl:ObjectProperty ;
+                                  
+                                  rdfs:label "Interprets (attribute)" ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Interprets" .
+
+
+
+###  http://snomed.info/id/370133003
+
+<http://snomed.info/id/370133003> rdf:type owl:ObjectProperty ;
+                                  
+                                  rdfs:label "Specimen substance (attribute)" ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Specimen substance" .
+
+
+
+###  http://snomed.info/id/609096000
+
+<http://snomed.info/id/609096000> rdf:type owl:ObjectProperty ;
+                                  
+                                  rdfs:label "Role group (attribute)" ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Role group" .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://snomed.info/id/105590001
+
+<http://snomed.info/id/105590001> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Substance (substance)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/138875005> ;
+                                  
+                                  sctf:Description.term.en-us.synonym "Substances" ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Substance" .
+
+
+
+###  http://snomed.info/id/11311000
+
+<http://snomed.info/id/11311000> rdf:type owl:Class ;
+                                 
+                                 rdfs:label "Pus (substance)" ;
+                                 
+                                 rdfs:subClassOf <http://snomed.info/id/32457005> ;
+                                 
+                                 sctf:Description.term.en-us.preferred "Pus" .
+
+
+
+###  http://snomed.info/id/115668003
+
+<http://snomed.info/id/115668003> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Biological substance (substance)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/105590001> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Biological substance" .
+
+
+
+###  http://snomed.info/id/115669006
+
+<http://snomed.info/id/115669006> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Substance categorized by physical state (substance)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/105590001> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Substance categorized by physical state" .
+
+
+
+###  http://snomed.info/id/118245000
+
+<http://snomed.info/id/118245000> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Measurement finding (finding)" ;
+                                  
+                                  owl:equivalentClass [ rdf:type owl:Class ;
+                                                        owl:intersectionOf ( <http://snomed.info/id/441742003>
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://snomed.info/id/363714003> ;
+                                                                                                    owl:someValuesFrom <http://snomed.info/id/122869004>
+                                                                                                  ]
+                                                                             ]
+                                                                           )
+                                                      ] ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Measurement finding" .
+
+
+
+###  http://snomed.info/id/119361006
+
+<http://snomed.info/id/119361006> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Plasma specimen (specimen)" ;
+                                  
+                                  owl:equivalentClass [ rdf:type owl:Class ;
+                                                        owl:intersectionOf ( <http://snomed.info/id/122592007>
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://snomed.info/id/370133003> ;
+                                                                                                    owl:someValuesFrom <http://snomed.info/id/50863008>
+                                                                                                  ]
+                                                                             ]
+                                                                           )
+                                                      ] ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Plasma specimen" ;
+                                  
+                                  sctf:Description.term.en-us.synonym "Plasma sample" .
+
+
+
+###  http://snomed.info/id/119364003
+
+<http://snomed.info/id/119364003> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Serum specimen (specimen)" ;
+                                  
+                                  owl:equivalentClass [ rdf:type owl:Class ;
+                                                        owl:intersectionOf ( <http://snomed.info/id/122592007>
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://snomed.info/id/370133003> ;
+                                                                                                    owl:someValuesFrom <http://snomed.info/id/67922002>
+                                                                                                  ]
+                                                                             ]
+                                                                           )
+                                                      ] ;
+                                  
+                                  sctf:Description.term.en-us.synonym "Serum sample" ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Serum specimen" .
+
+
+
+###  http://snomed.info/id/122592007
+
+<http://snomed.info/id/122592007> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Acellular blood (serum or plasma) specimen (specimen)" ;
+                                  
+                                  rdfs:subClassOf [ rdf:type owl:Class ;
+                                                    owl:intersectionOf ( <http://snomed.info/id/309051001>
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                           owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                owl:onProperty <http://snomed.info/id/370133003> ;
+                                                                                                owl:someValuesFrom <http://snomed.info/id/261226001>
+                                                                                              ]
+                                                                         ]
+                                                                       )
+                                                  ] ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Acellular blood (serum or plasma) specimen" .
+
+
+
+###  http://snomed.info/id/122869004
+
+<http://snomed.info/id/122869004> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Measurement procedure (procedure)" ;
+                                  
+                                  owl:equivalentClass [ rdf:type owl:Class ;
+                                                        owl:intersectionOf ( <http://snomed.info/id/128927009>
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://snomed.info/id/260686004> ;
+                                                                                                    owl:someValuesFrom <http://snomed.info/id/129266000>
+                                                                                                  ]
+                                                                             ]
+                                                                           )
+                                                      ] ;
+                                  
+                                  sctf:TextDefinition.term "An observation, by some objective method, of amount, number, quantity, size, level, extent, or magnitude, resulting in an ordinal or quantitative value" ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Measurement" ;
+                                  
+                                  sctf:Description.term.en-us.synonym "Measurement procedure" .
+
+
+
+###  http://snomed.info/id/123038009
+
+<http://snomed.info/id/123038009> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Specimen (specimen)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/138875005> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Specimen" ;
+                                  
+                                  sctf:TextDefinition.term "Material (structure, substance, device) removed from a source (patient, donor, physical location, product)" .
+
+
+
+###  http://snomed.info/id/128927009
+
+<http://snomed.info/id/128927009> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Procedure by method (procedure)" ;
+                                  
+                                  owl:equivalentClass [ rdf:type owl:Class ;
+                                                        owl:intersectionOf ( <http://snomed.info/id/71388002>
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://snomed.info/id/260686004> ;
+                                                                                                    owl:someValuesFrom <http://snomed.info/id/129264002>
+                                                                                                  ]
+                                                                             ]
+                                                                           )
+                                                      ] ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Procedure by method" .
+
+
+
+###  http://snomed.info/id/129264002
+
+<http://snomed.info/id/129264002> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Action (qualifier value)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/362981000> ;
+                                  
+                                  sctf:Description.term.en-us.synonym "Clinical actions" ,
+                                                                      "Clinical action" ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Action" .
+
+
+
+###  http://snomed.info/id/129265001
+
+<http://snomed.info/id/129265001> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Evaluation - action (qualifier value)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/129264002> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Evaluation - action" ;
+                                  
+                                  sctf:Description.term.en-us.synonym "Patient evaluation - action" ,
+                                                                      "Evaluation" .
+
+
+
+###  http://snomed.info/id/129266000
+
+<http://snomed.info/id/129266000> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Measurement - action (qualifier value)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/129265001> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Measurement - action" .
+
+
+
+###  http://snomed.info/id/135842001
+
+<http://snomed.info/id/135842001> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Serum C reactive protein level (procedure)" ;
+                                  
+                                  owl:equivalentClass [ rdf:type owl:Class ;
+                                                        owl:intersectionOf ( <http://snomed.info/id/55235003>
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://snomed.info/id/116686009> ;
+                                                                                                    owl:someValuesFrom <http://snomed.info/id/119364003>
+                                                                                                  ]
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://snomed.info/id/246093002> ;
+                                                                                                    owl:someValuesFrom <http://snomed.info/id/61425002>
+                                                                                                  ]
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://snomed.info/id/260686004> ;
+                                                                                                    owl:someValuesFrom <http://snomed.info/id/129266000>
+                                                                                                  ]
+                                                                             ]
+                                                                           )
+                                                      ] ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Serum C reactive protein level" .
+
+
+
+###  http://snomed.info/id/138875005
+
+<http://snomed.info/id/138875005> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "SNOMED CT Concept (SNOMED RT+CTV3)" ;
+                                  
+                                  sctf:Description.term.en-us.preferred "SNOMED CT Concept" .
+
+
+
+###  http://snomed.info/id/166583007
+
+<http://snomed.info/id/166583007> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "C-reactive protein normal (finding)" ;
+                                  
+                                  owl:equivalentClass [ rdf:type owl:Class ;
+                                                        owl:intersectionOf ( <http://snomed.info/id/118245000>
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                                    owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                           owl:onProperty <http://snomed.info/id/363713009> ;
+                                                                                                                           owl:someValuesFrom <http://snomed.info/id/281301001>
+                                                                                                                         ]
+                                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                                           owl:onProperty <http://snomed.info/id/363714003> ;
+                                                                                                                           owl:someValuesFrom <http://snomed.info/id/55235003>
+                                                                                                                         ]
+                                                                                                                       )
+                                                                                                  ]
+                                                                             ]
+                                                                           )
+                                                      ] ;
+                                  
+                                  sctf:Description.term.en-us.preferred "C-reactive protein normal" .
+
+
+
+###  http://snomed.info/id/166584001
+
+<http://snomed.info/id/166584001> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "C-reactive protein abnormal (finding)" ;
+                                  
+                                  owl:equivalentClass [ rdf:type owl:Class ;
+                                                        owl:intersectionOf ( <http://snomed.info/id/441742003>
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                                    owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                           owl:onProperty <http://snomed.info/id/363713009> ;
+                                                                                                                           owl:someValuesFrom <http://snomed.info/id/394844007>
+                                                                                                                         ]
+                                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                                           owl:onProperty <http://snomed.info/id/363714003> ;
+                                                                                                                           owl:someValuesFrom <http://snomed.info/id/55235003>
+                                                                                                                         ]
+                                                                                                                       )
+                                                                                                  ]
+                                                                             ]
+                                                                           )
+                                                      ] ;
+                                  
+                                  sctf:Description.term.en-us.preferred "C-reactive protein abnormal" .
+
+
+
+###  http://snomed.info/id/256906008
+
+<http://snomed.info/id/256906008> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Blood material (substance)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/115668003> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Blood material" .
+
+
+
+###  http://snomed.info/id/259776003
+
+<http://snomed.info/id/259776003> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Immunology analyte (substance)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/272524002> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Immunology analyte" .
+
+
+
+###  http://snomed.info/id/259777007
+
+<http://snomed.info/id/259777007> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Immunochemistry analyte (substance)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/259776003> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Immunochemistry analyte" .
+
+
+
+###  http://snomed.info/id/260245000
+
+<http://snomed.info/id/260245000> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Findings values (qualifier value)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/362981000> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Findings values" .
+
+
+
+###  http://snomed.info/id/261226001
+
+<http://snomed.info/id/261226001> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Blood component (substance)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/256906008> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Blood component" .
+
+
+
+###  http://snomed.info/id/270980008
+
+<http://snomed.info/id/270980008> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Plasma C-reactive protein measurement (procedure)" ;
+                                  
+                                  owl:equivalentClass [ rdf:type owl:Class ;
+                                                        owl:intersectionOf ( <http://snomed.info/id/55235003>
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://snomed.info/id/116686009> ;
+                                                                                                    owl:someValuesFrom <http://snomed.info/id/119361006>
+                                                                                                  ]
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://snomed.info/id/246093002> ;
+                                                                                                    owl:someValuesFrom <http://snomed.info/id/61425002>
+                                                                                                  ]
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://snomed.info/id/260686004> ;
+                                                                                                    owl:someValuesFrom <http://snomed.info/id/129266000>
+                                                                                                  ]
+                                                                             ]
+                                                                           )
+                                                      ] ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Plasma C-reactive protein measurement" ;
+                                  
+                                  sctf:Description.term.en-us.synonym "Plasma C-reactive protein level" .
+
+
+
+###  http://snomed.info/id/272524002
+
+<http://snomed.info/id/272524002> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Analyte (substance)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/312412007> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Analyte" .
+
+
+
+###  http://snomed.info/id/281301001
+
+<http://snomed.info/id/281301001> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Within reference range (qualifier value)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/442705008> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Within reference range" .
+
+
+
+###  http://snomed.info/id/309050000
+
+<http://snomed.info/id/309050000> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Body substance sample (specimen)" ;
+                                  
+                                  owl:equivalentClass [ rdf:type owl:Class ;
+                                                        owl:intersectionOf ( <http://snomed.info/id/123038009>
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://snomed.info/id/370133003> ;
+                                                                                                    owl:someValuesFrom <http://snomed.info/id/91720002>
+                                                                                                  ]
+                                                                             ]
+                                                                           )
+                                                      ] ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Body substance sample" .
+
+
+
+###  http://snomed.info/id/309051001
+
+<http://snomed.info/id/309051001> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Body fluid sample (specimen)" ;
+                                  
+                                  owl:equivalentClass [ rdf:type owl:Class ;
+                                                        owl:intersectionOf ( <http://snomed.info/id/309050000>
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://snomed.info/id/370133003> ;
+                                                                                                    owl:someValuesFrom <http://snomed.info/id/32457005>
+                                                                                                  ]
+                                                                             ]
+                                                                           )
+                                                      ] ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Body fluid sample" ;
+                                  
+                                  sctf:Description.term.en-us.synonym "Body fluid specimen" .
+
+
+
+###  http://snomed.info/id/312412007
+
+<http://snomed.info/id/312412007> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Substance categorized functionally (substance)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/105590001> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Substance categorized functionally" .
+
+
+
+###  http://snomed.info/id/312413002
+
+<http://snomed.info/id/312413002> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Substance categorized structurally (substance)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/105590001> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Substance categorized structurally" .
+
+
+
+###  http://snomed.info/id/312415009
+
+<http://snomed.info/id/312415009> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Chemical categorized structurally (substance)" ;
+                                  
+                                  rdfs:subClassOf [ rdf:type owl:Class ;
+                                                    owl:intersectionOf ( <http://snomed.info/id/312413002>
+                                                                         <http://snomed.info/id/441900009>
+                                                                       )
+                                                  ] ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Chemical categorized structurally" .
+
+
+
+###  http://snomed.info/id/32457005
+
+<http://snomed.info/id/32457005> rdf:type owl:Class ;
+                                 
+                                 rdfs:label "Body fluid (substance)" ;
+                                 
+                                 rdfs:subClassOf [ rdf:type owl:Class ;
+                                                   owl:intersectionOf ( <http://snomed.info/id/33463005>
+                                                                        <http://snomed.info/id/91720002>
+                                                                      )
+                                                 ] ;
+                                 
+                                 sctf:Description.term.en-us.preferred "Body fluid" .
+
+
+
+###  http://snomed.info/id/33463005
+
+<http://snomed.info/id/33463005> rdf:type owl:Class ;
+                                 
+                                 rdfs:label "Liquid substance (substance)" ;
+                                 
+                                 rdfs:subClassOf <http://snomed.info/id/115669006> ;
+                                 
+                                 sctf:Description.term.en-us.preferred "Liquid substance" ;
+                                 
+                                 sctf:Description.term.en-us.synonym "Liquid" ,
+                                                                     "Fluid" .
+
+
+
+###  http://snomed.info/id/362981000
+
+<http://snomed.info/id/362981000> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Qualifier value (qualifier value)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/138875005> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Qualifier value" .
+
+
+
+###  http://snomed.info/id/386053000
+
+<http://snomed.info/id/386053000> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Evaluation procedure (procedure)" ;
+                                  
+                                  owl:equivalentClass [ rdf:type owl:Class ;
+                                                        owl:intersectionOf ( <http://snomed.info/id/128927009>
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://snomed.info/id/260686004> ;
+                                                                                                    owl:someValuesFrom <http://snomed.info/id/129265001>
+                                                                                                  ]
+                                                                             ]
+                                                                           )
+                                                      ] ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Evaluation procedure" ;
+                                  
+                                  sctf:Description.term.en-us.synonym "Patient evaluation procedure" ;
+                                  
+                                  sctf:TextDefinition.term "Determination of a value, conclusion, or inference by evaluating evidence" ;
+                                  
+                                  sctf:Description.term.en-us.synonym "Assessment" ,
+                                                                      "Clinical investigation" ,
+                                                                      "Investigations" ,
+                                                                      "Clinical evaluation" .
+
+
+
+###  http://snomed.info/id/394844007
+
+<http://snomed.info/id/394844007> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Outside reference range (qualifier value)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/442705008> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Outside reference range" .
+
+
+
+###  http://snomed.info/id/395835001
+
+<http://snomed.info/id/395835001> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Plasma protein (substance)" ;
+                                  
+                                  rdfs:subClassOf [ rdf:type owl:Class ;
+                                                    owl:intersectionOf ( <http://snomed.info/id/261226001>
+                                                                         <http://snomed.info/id/88878007>
+                                                                       )
+                                                  ] ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Plasma protein" .
+
+
+
+###  http://snomed.info/id/404684003
+
+<http://snomed.info/id/404684003> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Clinical finding (finding)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/138875005> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Clinical finding" .
+
+
+
+###  http://snomed.info/id/41175001
+
+<http://snomed.info/id/41175001> rdf:type owl:Class ;
+                                 
+                                 rdfs:label "Organic compound (substance)" ;
+                                 
+                                 rdfs:subClassOf <http://snomed.info/id/312415009> ;
+                                 
+                                 sctf:Description.term.en-us.preferred "Organic compound" ;
+                                 
+                                 sctf:Description.term.en-us.synonym "Organic chemical" .
+
+
+
+###  http://snomed.info/id/430925007
+
+<http://snomed.info/id/430925007> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Measurement of substance (procedure)" ;
+                                  
+                                  owl:equivalentClass [ rdf:type owl:Class ;
+                                                        owl:intersectionOf ( <http://snomed.info/id/122869004>
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://snomed.info/id/246093002> ;
+                                                                                                    owl:someValuesFrom <http://snomed.info/id/105590001>
+                                                                                                  ]
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://snomed.info/id/260686004> ;
+                                                                                                    owl:someValuesFrom <http://snomed.info/id/129266000>
+                                                                                                  ]
+                                                                             ]
+                                                                           )
+                                                      ] ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Measurement of substance" .
+
+
+
+###  http://snomed.info/id/441742003
+
+<http://snomed.info/id/441742003> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Evaluation finding (finding)" ;
+                                  
+                                  owl:equivalentClass [ rdf:type owl:Class ;
+                                                        owl:intersectionOf ( <http://snomed.info/id/404684003>
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://snomed.info/id/363714003> ;
+                                                                                                    owl:someValuesFrom <http://snomed.info/id/386053000>
+                                                                                                  ]
+                                                                             ]
+                                                                           )
+                                                      ] ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Evaluation finding" .
+
+
+
+###  http://snomed.info/id/441900009
+
+<http://snomed.info/id/441900009> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Chemical (substance)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/105590001> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Chemical" .
+
+
+
+###  http://snomed.info/id/442499005
+
+<http://snomed.info/id/442499005> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Interpretation value (qualifier value)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/260245000> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Interpretation value" .
+
+
+
+###  http://snomed.info/id/442705008
+
+<http://snomed.info/id/442705008> rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Reference range interpretation value (qualifier value)" ;
+                                  
+                                  rdfs:subClassOf <http://snomed.info/id/442499005> ;
+                                  
+                                  sctf:Description.term.en-us.preferred "Reference range interpretation value" .
+
+
+
+###  http://snomed.info/id/50863008
+
+<http://snomed.info/id/50863008> rdf:type owl:Class ;
+                                 
+                                 rdfs:label "Plasma (substance)" ;
+                                 
+                                 rdfs:subClassOf [ rdf:type owl:Class ;
+                                                   owl:intersectionOf ( <http://snomed.info/id/261226001>
+                                                                        <http://snomed.info/id/32457005>
+                                                                      )
+                                                 ] ;
+                                 
+                                 sctf:Description.term.en-us.preferred "Plasma" .
+
+
+
+###  http://snomed.info/id/55235003
+
+<http://snomed.info/id/55235003> rdf:type owl:Class ;
+                                 
+                                 rdfs:label "C-reactive protein measurement (procedure)" ;
+                                 
+                                 owl:equivalentClass [ rdf:type owl:Class ;
+                                                       owl:intersectionOf ( <http://snomed.info/id/74040009>
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty <http://snomed.info/id/246093002> ;
+                                                                                                   owl:someValuesFrom <http://snomed.info/id/61425002>
+                                                                                                 ]
+                                                                            ]
+                                                                          )
+                                                     ] ;
+                                 
+                                 sctf:Description.term.en-us.synonym "C-reactive protein level" ;
+                                 
+                                 sctf:Description.term.en-us.preferred "C-reactive protein measurement" ;
+                                 
+                                 sctf:Description.term.en-us.synonym "CRP - C-reactive protein level" .
+
+
+
+###  http://snomed.info/id/61425002
+
+<http://snomed.info/id/61425002> rdf:type owl:Class ;
+                                 
+                                 rdfs:label "C reactive protein (substance)" ;
+                                 
+                                 rdfs:subClassOf [ rdf:type owl:Class ;
+                                                   owl:intersectionOf ( <http://snomed.info/id/81905004>
+                                                                        <http://snomed.info/id/91309004>
+                                                                      )
+                                                 ] ;
+                                 
+                                 sctf:Description.term.en-us.synonym "CRP - C-reactive protein" ;
+                                 
+                                 sctf:Description.term.en-us.preferred "C reactive protein" ;
+                                 
+                                 sctf:Description.term.en-us.synonym "C-reactive protein" .
+
+
+
+###  http://snomed.info/id/67922002
+
+<http://snomed.info/id/67922002> rdf:type owl:Class ;
+                                 
+                                 rdfs:label "Serum (substance)" ;
+                                 
+                                 rdfs:subClassOf [ rdf:type owl:Class ;
+                                                   owl:intersectionOf ( <http://snomed.info/id/261226001>
+                                                                        <http://snomed.info/id/32457005>
+                                                                      )
+                                                 ] ;
+                                 
+                                 sctf:Description.term.en-us.preferred "Serum" .
+
+
+
+###  http://snomed.info/id/71388002
+
+<http://snomed.info/id/71388002> rdf:type owl:Class ;
+                                 
+                                 rdfs:label "Procedure (procedure)" ;
+                                 
+                                 rdfs:subClassOf <http://snomed.info/id/138875005> ;
+                                 
+                                 sctf:Description.term.en-us.preferred "Procedure" .
+
+
+
+###  http://snomed.info/id/74040009
+
+<http://snomed.info/id/74040009> rdf:type owl:Class ;
+                                 
+                                 rdfs:label "Protein measurement (procedure)" ;
+                                 
+                                 owl:equivalentClass [ rdf:type owl:Class ;
+                                                       owl:intersectionOf ( <http://snomed.info/id/430925007>
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty <http://snomed.info/id/609096000> ;
+                                                                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty <http://snomed.info/id/246093002> ;
+                                                                                                   owl:someValuesFrom <http://snomed.info/id/88878007>
+                                                                                                 ]
+                                                                            ]
+                                                                          )
+                                                     ] ;
+                                 
+                                 sctf:Description.term.en-us.preferred "Protein measurement" .
+
+
+
+###  http://snomed.info/id/81905004
+
+<http://snomed.info/id/81905004> rdf:type owl:Class ;
+                                 
+                                 rdfs:label "Globulin (substance)" ;
+                                 
+                                 rdfs:subClassOf <http://snomed.info/id/88878007> ;
+                                 
+                                 sctf:Description.term.en-us.preferred "Globulin" .
+
+
+
+###  http://snomed.info/id/88878007
+
+<http://snomed.info/id/88878007> rdf:type owl:Class ;
+                                 
+                                 rdfs:label "Protein (substance)" ;
+                                 
+                                 rdfs:subClassOf [ rdf:type owl:Class ;
+                                                   owl:intersectionOf ( <http://snomed.info/id/115668003>
+                                                                        <http://snomed.info/id/41175001>
+                                                                      )
+                                                 ] ;
+                                 
+                                 sctf:Description.term.en-us.preferred "Protein" ;
+                                 
+                                 sctf:Description.term.en-us.synonym "Proteins" .
+
+
+
+###  http://snomed.info/id/91309004
+
+<http://snomed.info/id/91309004> rdf:type owl:Class ;
+                                 
+                                 rdfs:label "Acute phase reactant (substance)" ;
+                                 
+                                 rdfs:subClassOf [ rdf:type owl:Class ;
+                                                   owl:intersectionOf ( <http://snomed.info/id/259777007>
+                                                                        <http://snomed.info/id/395835001>
+                                                                      )
+                                                 ] ;
+                                 
+                                 sctf:Description.term.en-us.preferred "Acute phase reactant" .
+
+
+
+###  http://snomed.info/id/91720002
+
+<http://snomed.info/id/91720002> rdf:type owl:Class ;
+                                 
+                                 rdfs:label "Body substance (substance)" ;
+                                 
+                                 rdfs:subClassOf <http://snomed.info/id/105590001> ;
+                                 
+                                 sctf:Description.term.en-us.preferred "Body substance" ;
+                                 
+                                 sctf:Description.term.en-us.synonym "Human body substance" .
+
+
+
+
+###  Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net
+

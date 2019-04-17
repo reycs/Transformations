@@ -623,6 +623,34 @@ public interface OwlPackage extends EPackage {
 	int DATA_PROPERTY_EXPRESSION_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link owl.impl.SubObjectPropertyExpressionImpl <em>Sub Object Property Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see owl.impl.SubObjectPropertyExpressionImpl
+	 * @see owl.impl.OwlPackageImpl#getSubObjectPropertyExpression()
+	 * @generated
+	 */
+	int SUB_OBJECT_PROPERTY_EXPRESSION = 89;
+
+	/**
+	 * The number of structural features of the '<em>Sub Object Property Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_OBJECT_PROPERTY_EXPRESSION_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>Sub Object Property Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_OBJECT_PROPERTY_EXPRESSION_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link owl.impl.ObjectPropertyExpressionImpl <em>Object Property Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -639,7 +667,7 @@ public interface OwlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_PROPERTY_EXPRESSION_FEATURE_COUNT = 0;
+	int OBJECT_PROPERTY_EXPRESSION_FEATURE_COUNT = SUB_OBJECT_PROPERTY_EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Object Property Expression</em>' class.
@@ -648,7 +676,7 @@ public interface OwlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_PROPERTY_EXPRESSION_OPERATION_COUNT = 0;
+	int OBJECT_PROPERTY_EXPRESSION_OPERATION_COUNT = SUB_OBJECT_PROPERTY_EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link owl.impl.AsymmetricObjectPropertyImpl <em>Asymmetric Object Property</em>}' class.
@@ -2894,22 +2922,22 @@ public interface OwlPackage extends EPackage {
 	int SUB_OBJECT_PROPERTY_OF__AXIOM_ANNOTATIONS = OBJECT_PROPERTY_AXIOM__AXIOM_ANNOTATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Super Object Property Expression</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUB_OBJECT_PROPERTY_OF__SUPER_OBJECT_PROPERTY_EXPRESSION = OBJECT_PROPERTY_AXIOM_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Sub Object Property Expressions</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SUB_OBJECT_PROPERTY_OF__SUB_OBJECT_PROPERTY_EXPRESSIONS = OBJECT_PROPERTY_AXIOM_FEATURE_COUNT + 1;
+	int SUB_OBJECT_PROPERTY_OF__SUB_OBJECT_PROPERTY_EXPRESSIONS = OBJECT_PROPERTY_AXIOM_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Super Object Property Expression</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_OBJECT_PROPERTY_OF__SUPER_OBJECT_PROPERTY_EXPRESSION = OBJECT_PROPERTY_AXIOM_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Sub Object Property Of</em>' class.
@@ -3499,13 +3527,22 @@ public interface OwlPackage extends EPackage {
 	int INVERSE_OBJECT_PROPERTIES__AXIOM_ANNOTATIONS = OBJECT_PROPERTY_AXIOM__AXIOM_ANNOTATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Inverse Object Properties</b></em>' reference list.
+	 * The feature id for the '<em><b>First Property</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INVERSE_OBJECT_PROPERTIES__INVERSE_OBJECT_PROPERTIES = OBJECT_PROPERTY_AXIOM_FEATURE_COUNT + 0;
+	int INVERSE_OBJECT_PROPERTIES__FIRST_PROPERTY = OBJECT_PROPERTY_AXIOM_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Second Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVERSE_OBJECT_PROPERTIES__SECOND_PROPERTY = OBJECT_PROPERTY_AXIOM_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Inverse Object Properties</em>' class.
@@ -3514,7 +3551,7 @@ public interface OwlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INVERSE_OBJECT_PROPERTIES_FEATURE_COUNT = OBJECT_PROPERTY_AXIOM_FEATURE_COUNT + 1;
+	int INVERSE_OBJECT_PROPERTIES_FEATURE_COUNT = OBJECT_PROPERTY_AXIOM_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Inverse Object Properties</em>' class.
@@ -3858,13 +3895,22 @@ public interface OwlPackage extends EPackage {
 	int DATA_UNION_OF = 80;
 
 	/**
+	 * The feature id for the '<em><b>Arity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_UNION_OF__ARITY = DATA_RANGE__ARITY;
+
+	/**
 	 * The feature id for the '<em><b>Data Ranges</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_UNION_OF__DATA_RANGES = 0;
+	int DATA_UNION_OF__DATA_RANGES = DATA_RANGE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Data Union Of</em>' class.
@@ -3873,7 +3919,7 @@ public interface OwlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_UNION_OF_FEATURE_COUNT = 1;
+	int DATA_UNION_OF_FEATURE_COUNT = DATA_RANGE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Data Union Of</em>' class.
@@ -3882,7 +3928,7 @@ public interface OwlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_UNION_OF_OPERATION_COUNT = 0;
+	int DATA_UNION_OF_OPERATION_COUNT = DATA_RANGE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link owl.impl.DataTypeDefinitionImpl <em>Data Type Definition</em>}' class.
@@ -4204,6 +4250,44 @@ public interface OwlPackage extends EPackage {
 	 * @ordered
 	 */
 	int ANNOTATION_ASSERTION_OPERATION_COUNT = ANNOTATION_AXIOM_OPERATION_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link owl.impl.ObjectPropertyChainImpl <em>Object Property Chain</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see owl.impl.ObjectPropertyChainImpl
+	 * @see owl.impl.OwlPackageImpl#getObjectPropertyChain()
+	 * @generated
+	 */
+	int OBJECT_PROPERTY_CHAIN = 90;
+
+	/**
+	 * The feature id for the '<em><b>Object Property Expressions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_PROPERTY_CHAIN__OBJECT_PROPERTY_EXPRESSIONS = SUB_OBJECT_PROPERTY_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Object Property Chain</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_PROPERTY_CHAIN_FEATURE_COUNT = SUB_OBJECT_PROPERTY_EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Object Property Chain</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_PROPERTY_CHAIN_OPERATION_COUNT = SUB_OBJECT_PROPERTY_EXPRESSION_OPERATION_COUNT + 0;
 
 
 	/**
@@ -6106,15 +6190,26 @@ public interface OwlPackage extends EPackage {
 	EClass getInverseObjectProperties();
 
 	/**
-	 * Returns the meta object for the reference list '{@link owl.InverseObjectProperties#getInverseObjectProperties <em>Inverse Object Properties</em>}'.
+	 * Returns the meta object for the reference '{@link owl.InverseObjectProperties#getFirstProperty <em>First Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Inverse Object Properties</em>'.
-	 * @see owl.InverseObjectProperties#getInverseObjectProperties()
+	 * @return the meta object for the reference '<em>First Property</em>'.
+	 * @see owl.InverseObjectProperties#getFirstProperty()
 	 * @see #getInverseObjectProperties()
 	 * @generated
 	 */
-	EReference getInverseObjectProperties_InverseObjectProperties();
+	EReference getInverseObjectProperties_FirstProperty();
+
+	/**
+	 * Returns the meta object for the reference '{@link owl.InverseObjectProperties#getSecondProperty <em>Second Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Second Property</em>'.
+	 * @see owl.InverseObjectProperties#getSecondProperty()
+	 * @see #getInverseObjectProperties()
+	 * @generated
+	 */
+	EReference getInverseObjectProperties_SecondProperty();
 
 	/**
 	 * Returns the meta object for class '{@link owl.AnonymousIndividual <em>Anonymous Individual</em>}'.
@@ -6517,6 +6612,37 @@ public interface OwlPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getAnnotationValue();
+
+	/**
+	 * Returns the meta object for class '{@link owl.SubObjectPropertyExpression <em>Sub Object Property Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Sub Object Property Expression</em>'.
+	 * @see owl.SubObjectPropertyExpression
+	 * @generated
+	 */
+	EClass getSubObjectPropertyExpression();
+
+	/**
+	 * Returns the meta object for class '{@link owl.ObjectPropertyChain <em>Object Property Chain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Object Property Chain</em>'.
+	 * @see owl.ObjectPropertyChain
+	 * @generated
+	 */
+	EClass getObjectPropertyChain();
+
+	/**
+	 * Returns the meta object for the reference list '{@link owl.ObjectPropertyChain#getObjectPropertyExpressions <em>Object Property Expressions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Object Property Expressions</em>'.
+	 * @see owl.ObjectPropertyChain#getObjectPropertyExpressions()
+	 * @see #getObjectPropertyChain()
+	 * @generated
+	 */
+	EReference getObjectPropertyChain_ObjectPropertyExpressions();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -8128,12 +8254,20 @@ public interface OwlPackage extends EPackage {
 		EClass INVERSE_OBJECT_PROPERTIES = eINSTANCE.getInverseObjectProperties();
 
 		/**
-		 * The meta object literal for the '<em><b>Inverse Object Properties</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>First Property</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INVERSE_OBJECT_PROPERTIES__INVERSE_OBJECT_PROPERTIES = eINSTANCE.getInverseObjectProperties_InverseObjectProperties();
+		EReference INVERSE_OBJECT_PROPERTIES__FIRST_PROPERTY = eINSTANCE.getInverseObjectProperties_FirstProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Second Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INVERSE_OBJECT_PROPERTIES__SECOND_PROPERTY = eINSTANCE.getInverseObjectProperties_SecondProperty();
 
 		/**
 		 * The meta object literal for the '{@link owl.impl.AnonymousIndividualImpl <em>Anonymous Individual</em>}' class.
@@ -8470,6 +8604,34 @@ public interface OwlPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ANNOTATION_VALUE = eINSTANCE.getAnnotationValue();
+
+		/**
+		 * The meta object literal for the '{@link owl.impl.SubObjectPropertyExpressionImpl <em>Sub Object Property Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see owl.impl.SubObjectPropertyExpressionImpl
+		 * @see owl.impl.OwlPackageImpl#getSubObjectPropertyExpression()
+		 * @generated
+		 */
+		EClass SUB_OBJECT_PROPERTY_EXPRESSION = eINSTANCE.getSubObjectPropertyExpression();
+
+		/**
+		 * The meta object literal for the '{@link owl.impl.ObjectPropertyChainImpl <em>Object Property Chain</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see owl.impl.ObjectPropertyChainImpl
+		 * @see owl.impl.OwlPackageImpl#getObjectPropertyChain()
+		 * @generated
+		 */
+		EClass OBJECT_PROPERTY_CHAIN = eINSTANCE.getObjectPropertyChain();
+
+		/**
+		 * The meta object literal for the '<em><b>Object Property Expressions</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OBJECT_PROPERTY_CHAIN__OBJECT_PROPERTY_EXPRESSIONS = eINSTANCE.getObjectPropertyChain_ObjectPropertyExpressions();
 
 	}
 

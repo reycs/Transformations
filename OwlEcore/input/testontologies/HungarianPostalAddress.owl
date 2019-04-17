@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+  
+  <owl:Class rdf:about="http://www.w3.org/2001/sw/Europe/200409/geox/h#Building"/>
+  <owl:Class rdf:about="http://www.w3.org/2001/sw/Europe/200409/geox/h#Street"/>
+  <owl:Class rdf:about="http://progos.hu/2004/10/HungarianPostalAddress#PostalAddress"/>
+  <owl:Class rdf:about="http://www.w3.org/2001/sw/Europe/200409/geox/h#Floor"/>
+  <owl:Class rdf:about="http://www.w3.org/2001/sw/Europe/200409/geox/h#SpatialThing"/>
+  <owl:Class rdf:about="http://www.w3.org/2001/sw/Europe/200409/geox/h#Country"/>
+  <owl:Class rdf:about="http://www.w3.org/2001/sw/Europe/200409/geox/h#City"/>
+  <owl:Class rdf:about="http://www.w3.org/2001/sw/Europe/200409/geox/h#District"/>
+  <owl:Class rdf:about="http://www.w3.org/2001/sw/Europe/200409/geox/h#PostalRegion"/>
+  
+  <owl:ObjectProperty rdf:about="http://progos.hu/2004/10/HungarianPostalAddress#city">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#City"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#SpatialThing"/>
+    <rdfs:domain rdf:resource="http://progos.hu/2004/10/HungarianPostalAddress#PostalAddress"/>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://www.w3.org/2001/sw/Europe/200409/geox/h#in">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#SpatialThing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#Street"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#Street"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#District"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#City"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#Floor"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#PostalRegion"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#Floor"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#Building"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#SpatialThing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#PostalRegion"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#Country"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#City"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#District"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#Building"/>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://progos.hu/2004/10/HungarianPostalAddress#country">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#Country"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#SpatialThing"/>
+    <rdfs:domain rdf:resource="http://progos.hu/2004/10/HungarianPostalAddress#PostalAddress"/>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://progos.hu/2004/10/HungarianPostalAddress#street">
+    <rdfs:domain rdf:resource="http://progos.hu/2004/10/HungarianPostalAddress#PostalAddress"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#Street"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#SpatialThing"/>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://progos.hu/2004/10/HungarianPostalAddress#building">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#SpatialThing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#Building"/>
+    <rdfs:domain rdf:resource="http://progos.hu/2004/10/HungarianPostalAddress#PostalAddress"/>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://progos.hu/2004/10/HungarianPostalAddress#district">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#District"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#SpatialThing"/>
+    <rdfs:domain rdf:resource="http://progos.hu/2004/10/HungarianPostalAddress#PostalAddress"/>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://progos.hu/2004/10/HungarianPostalAddress#room">
+    <rdfs:domain rdf:resource="http://progos.hu/2004/10/HungarianPostalAddress#PostalAddress"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#Floor"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#SpatialThing"/>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://progos.hu/2004/10/HungarianPostalAddress#postalRegion">
+    <rdfs:domain rdf:resource="http://progos.hu/2004/10/HungarianPostalAddress#PostalAddress"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#PostalRegion"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#SpatialThing"/>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://www.w3.org/2001/sw/Europe/200409/geox/h#postalAddress">
+    <rdfs:domain rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#SpatialThing"/>
+    <rdfs:range rdf:resource="http://progos.hu/2004/10/HungarianPostalAddress#PostalAddress"/>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://progos.hu/2004/10/HungarianPostalAddress#floor">
+    <rdfs:domain rdf:resource="http://progos.hu/2004/10/HungarianPostalAddress#PostalAddress"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#SpatialThing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#Floor"/>
+  </owl:ObjectProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://progos.hu/2004/10/HungarianPostalAddress#postalCode">
+    <rdfs:domain rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#SpatialThing"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#PostalRegion"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://progos.hu/2004/10/HungarianPostalAddress#number">
+    <rdfs:domain rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#Building"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#SpatialThing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2001/sw/Europe/200409/geox/h#Floor"/>
+  </owl:DatatypeProperty>
+</rdf:RDF>

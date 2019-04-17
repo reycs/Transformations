@@ -1,0 +1,790 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+     Copyright (C)2004 W3C(R) (MIT, ERCIM, Keio), All Rights Reserved.
+     W3C viability, trademark, document use and software licensing rules
+     apply.                                                             
+     http://www.w3.org/Consortium/Legal/
+                                        
+     This document is governed by the W3C Software License [1] as
+     described in the FAQ [2].
+
+     [1] http://www.w3.org/Consortium/Legal/copyright-software-20021231
+     [2] http://www.w3.org/Consortium/Legal/IPR-FAQ-20000620.html#DTD
+-->
+<!DOCTYPE uridef[
+  <!ENTITY owl "http://www.w3.org/2002/07/owl">
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY MessageModel "http://www.w3.org/2004/02/wsa/MessageModel.owl">
+  <!ENTITY PolicyModel "http://www.w3.org/2004/02/wsa/PolicyModel.owl">
+  <!ENTITY ResourceModel "http://www.w3.org/2004/02/wsa/ResourceModel.owl">
+  <!ENTITY Extensions "http://www.w3.org/2004/02/wsa/Extensions.owl">
+
+]>
+
+<rdf:RDF
+  xmlns:owl  ="http://www.w3.org/2002/07/owl#"
+  xmlns:rdf  ="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs ="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd  ="http://www.w3.org/2001/XMLSchema#"
+        xml:base	 ="http://www.w3.org/2004/02/wsa/ServiceModel.owl"
+
+  xmlns      ="http://www.w3.org/2004/02/wsa/ServiceModel.owl#"
+ >
+
+<owl:Ontology rdf:about="">
+ <owl:versionInfo>$Id: ServiceModel.owl,v 1.2 2004/02/05 16:18:21 hugo Exp $</owl:versionInfo>
+ <rdfs:comment> Compiled by Massimo Paolucci, Naveen Srinivasan and Katia Sycara. Carnegie Mellon University
+ </rdfs:comment>
+ 
+  <owl:imports rdf:resource="http://www.w3.org/2004/02/wsa/PolicyModel.owl"/>
+  <owl:imports rdf:resource="http://www.w3.org/2004/02/wsa/MessageModel.owl"/>
+   <owl:imports rdf:resource="http://www.w3.org/2004/02/wsa/ResourceModel.owl"/>
+   <owl:imports rdf:resource="http://www.w3.org/2004/02/wsa/Extensions.owl"/>
+
+</owl:Ontology>
+
+<!-- Created: Wed Jan 21 23:07:31 2004 -->
+
+<!-- 2.3.2.1 Action -->
+
+<owl:Class rdf:ID="Action">
+  <rdfs:label>Action</rdfs:label>
+  <rdfs:comment>
+    An action, for the purposes of this architecture, is any action
+    that may be performed by an agent, possibly as a result of
+    receiving a message, or which results in sending a message or
+    other observable state change.
+  </rdfs:comment>
+</owl:Class>
+
+
+<owl:ObjectProperty rdf:ID="result">
+  <rdfs:label>result</rdfs:label>
+  <rdfs:comment>
+    An action may result in a desired goal state
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Action"/>
+  <rdfs:range rdf:resource="#Goal_State"/>
+</owl:ObjectProperty>
+
+<!-- 
+	We interpret the two statements "An action may be the sending of a message" and " An action may be the processing of a received message" as an action can either be sending of a message action or processing of message action. 
+-->
+
+<owl:Class rdf:ID="SendingAction">
+  <rdfs:label>Agent</rdfs:label>
+  <rdfs:comment>
+    An action may be the sending of a message
+  </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="#Action"/>
+</owl:Class>
+
+<owl:Class rdf:ID="ProcessingAction">
+  <rdfs:label>Agent</rdfs:label>
+  <rdfs:comment>
+     An action may be the processing of a received message
+  </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="#Action"/>
+</owl:Class>
+
+
+<!-- 2.3.2.2 Agent -->
+
+<owl:Class rdf:ID="Agent">
+  <rdfs:label>Agent</rdfs:label>
+  <rdfs:comment>
+    And agent is a program acting on behalf of another person, entity,
+    or process
+  </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="&ResourceModel;#Resource"/>
+  <rdfs:subClassOf rdf:resource="&Extensions;#Computational_Resource"/>
+</owl:Class>
+
+
+<owl:ObjectProperty rdf:ID="has_owner">
+  <rdfs:label>has_owner</rdfs:label>
+  <rdfs:comment>
+    An agent has an owner that is a person or organization
+  </rdfs:comment>
+  <owl:inverseOf rdf:resource="&PolicyModel;#owner" />
+</owl:ObjectProperty>
+
+
+<owl:ObjectProperty rdf:ID="realize_service">
+  <rdfs:label>realize_service</rdfs:label>
+  <rdfs:comment>
+    An agent may realize zer or more services
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Agent"/>
+  <rdfs:range rdf:resource="#Service"/>
+</owl:ObjectProperty>
+
+
+<owl:ObjectProperty rdf:ID="request_service">
+  <rdfs:label>request_service</rdfs:label>
+  <rdfs:comment>
+    An agent may request zer or more services
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Agent"/>
+  <rdfs:range rdf:resource="#Service"/>
+</owl:ObjectProperty>
+
+
+<!-- 2.3.2.3 Choreography -->
+
+<owl:Class rdf:ID="Choreography">
+  <rdfs:label>Choreography</rdfs:label>
+  <rdfs:comment>
+    A choreography defines the sequence and conditions under which
+    multiple cooperating independent agents exchange information in
+    order to achieve some useful function.
+  </rdfs:comment>
+</owl:Class>
+
+<owl:ObjectProperty rdf:ID="uses">
+  <rdfs:label>uses</rdfs:label>
+  <rdfs:comment>
+    A choreography uses one or more service interfaces
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Choreography"/>
+  <rdfs:range rdf:resource="#Service_Interface"/>
+</owl:ObjectProperty>
+
+<!-- Not Expressed :  A choreography defines the pattern of possible interactions between a set of agents . -->
+
+<!-- 
+	ChoreographyDescriptionLanguage is concept that represents choreography description language.
+-->
+
+<owl:ObjectProperty rdf:ID="expressedIn">
+  <rdfs:label>uses</rdfs:label>
+  <rdfs:comment>
+    A choreography may be expressed in a choreography description language
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Choreography"/>
+  <rdfs:range rdf:resource="&Extensions;#ChoreographyDescriptionLanguage"/>
+</owl:ObjectProperty>
+
+
+<!--  Not Expressed : A choreography pertains to a given task-->
+
+<!--  Not Expressed : A choreography defines the relationship between exchanged messages and tasks of a service. -->
+
+<!-- 2.3.2.4 Capability-->
+
+<owl:Class rdf:ID="Capability">
+  <rdfs:label>Capability</rdfs:label>
+  <rdfs:comment>A capability is a named piece of functionality (or feature) that is declared as supported or requested by an agent. 
+ </rdfs:comment>
+</owl:Class>
+
+<owl:ObjectProperty rdf:ID="has_identifier">
+  <rdfs:label>has_identifier</rdfs:label>
+  <rdfs:comment>
+    a capability has a identifier which is a URI
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Capability"/>
+  <rdfs:range rdf:resource="&ResourceModel;#Identifier"/>
+</owl:ObjectProperty>
+
+
+<!--  Not Expressed : a capability has a description of its semantics-->
+
+<owl:ObjectProperty rdf:ID="capability_semantics">
+  <rdfs:label>has_identifier</rdfs:label>
+  <rdfs:comment>
+	a capability has a description of its semantics
+</rdfs:comment>
+  <rdfs:domain rdf:resource="#Capability"/>
+  <rdfs:range rdf:resource="&Extensions;#Capability_Semantics"/>
+</owl:ObjectProperty>
+
+
+<owl:ObjectProperty rdf:ID="advertised_by">
+  <rdfs:label>has_identifier</rdfs:label>
+  <rdfs:comment>
+    a capability can be advertised by an agent that supports it
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Agent"/>
+  <rdfs:range rdf:resource="#Capability"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="required_by">
+  <rdfs:label>has_identifier</rdfs:label>
+  <rdfs:comment>
+    a capability can be required by agent that wishes to use it
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Agent"/>
+  <rdfs:range rdf:resource="#Capability"/>
+</owl:ObjectProperty>
+
+
+<!-- 
+Note : 
+A capability may be @@referenced@@ by a service description. We interpret that a capability can be part of Service Description. Hence we define a  property  has_capability using which a Service Description refer a capability either provided or required by an agent. Please note that domain of this property is Service Description and not Capability
+-->
+<owl:ObjectProperty rdf:ID="has_capability">
+  <rdfs:label>has_identifier</rdfs:label>
+  <rdfs:comment>
+    a capability may be @@referenced@@ by a service description
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service_Description"/>
+  <rdfs:range rdf:resource="#Capability"/>
+</owl:ObjectProperty>
+
+
+<!--  2.3.2.5 Goal State -->
+<owl:Class rdf:ID="Goal_State">
+  <rdfs:label>Goal_State</rdfs:label>
+  <rdfs:comment>A goal state is a state of some service or resource that is desireable from some person or organization's point of view. 
+ </rdfs:comment>
+</owl:Class>
+
+<!-- 
+	To represent the relation "a goal state is a state of the real world, which includes the state of relevant resources" we define a concept called State which represent the state in real world.
+-->
+<owl:Class rdf:about="Goal_State">
+  <rdfs:label>Goal_State</rdfs:label>
+  <rdfs:comment>a goal state is a state of the real world, which includes the state of relevant resources 
+  </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="&Extensions;#State"/>
+</owl:Class>
+
+
+<owl:ObjectProperty rdf:ID="desired_goal_state">
+  <rdfs:label>desired_goal_state</rdfs:label>
+  <rdfs:comment>
+    a goal state is desired by some person or organization which has an interest in defining it.
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Goal_State"/>
+  <rdfs:range rdf:resource="&PolicyModel;#Person_or_Organization"/>
+</owl:ObjectProperty>
+
+
+
+<!-- Not Expressed : a goal state may be characterized informally, or formally with a formal expression.  -->
+
+
+<!-- 2.3.2.6  Provider Agent -->
+
+<owl:Class rdf:ID="Provider_Agent">
+  <rdfs:label>Provider_Agent</rdfs:label>
+  <rdfs:comment>A provider agent is an agent that is capable of and empowered to perform the actions associated with a service on behalf of its owner the provider entity.
+  </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="#Agent"/>
+</owl:Class>
+
+<!-- 
+Note : "a provider agent realizes one or more services " This relation is already present because the Provider_Agent is a sub class of Agent, and an agent realizes one or more services 
+-->
+
+<!-- 
+
+	Not Expressed : a provider agent performs, or causes to perform the actions associated with a task 
+	
+	Let us assume Class A and Class B are related by property prop1, Let (B1,B2,B3,...Bn) be the instances of Class B for which the relation prop1 holds. In OWL it is not possible to refers the classes for which a property hold (in this case B1,B2,B3..Bn). Hence is not possible to define any relation involving such reference. We believe that we will be able to write such relations using Semantic Web Rule Language. 	
+	
+	We are going to call this problem as MetaProperty Property in the rest of the ontology files.
+	
+	In this case provider agent performs that actions with has a relation with a particular task, which is same as the example explained above. 
+-->
+
+<!-- Note : We can also model the property "acts_on_behalf" as subclass of owner property, However it may not be semantically correct -->
+
+<owl:ObjectProperty rdf:ID="pa_acts_on_behalf">
+  <rdfs:label>acts_on_behalf</rdfs:label>
+  <rdfs:comment>
+    a provider agent acts on behalf of a provider entity
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Provider_Agent"/>
+  <rdfs:range rdf:resource="#Provider_Entity"/>
+</owl:ObjectProperty>
+
+
+<!-- 2.3.2.7 Provider Entity-->
+
+<owl:Class rdf:ID="Provider_Entity">
+  <rdfs:label>Provider_Entity</rdfs:label>
+  <rdfs:comment>The provider entity is the person or organization that is providing a Web service.
+  </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="&PolicyModel;#Person_or_Organization"/>
+</owl:Class>
+
+
+<owl:ObjectProperty rdf:ID="offers">
+  <rdfs:label>owns</rdfs:label>
+  <rdfs:comment>
+    a provider entity offers a Web service
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Provider_Entity"/>
+  <rdfs:range rdf:resource="#Service"/>
+</owl:ObjectProperty>
+
+<!-- 
+"a provider entity owns a provider agent" is modeled as a restriction. We restrict the range of the object property 'owner',  inherited from class Person_or_Organization, to Provider_Agent
+-->
+
+<owl:Class rdf:about="Provider_Entity">
+  <rdfs:comment>
+    a provider entity owns a provider agent
+  </rdfs:comment>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="&PolicyModel;#owner" />
+      <owl:allValuesFrom rdf:resource="#Provider_Agent" />
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+
+
+<!-- 2.3.2.8 - Requester Agent -->
+
+
+<owl:Class rdf:ID="Requester_Agent">
+  <rdfs:label>Requester_Agent</rdfs:label>
+  <rdfs:comment>A requester agent is a software agent that wishes to interact with a provider agent in order to request that a task be performed on behalf of its owner the requester entity
+  </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="#Agent"/>
+</owl:Class>
+
+
+<!-- 
+Note : "a requester agent uses a service " This relation is already established because the Requester_Agent is a sub class of Agent, and an agent request one or more services. In this context we interpret 'uses' and 'request' are the same.
+-->
+
+<!-- Note : We can also model the property "acts_on_behalf" as inverse of owner property, However it may not be semantically correct -->
+
+
+<owl:ObjectProperty rdf:ID="ra_acts_on_behalf">
+  <rdfs:label>acts_on_behalf</rdfs:label>
+  <rdfs:comment>
+    a requester agent acts on behalf of a requester entity
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Requester_Agent"/>
+  <rdfs:range rdf:resource="#Requester_Entity"/>
+</owl:ObjectProperty>
+
+
+<!-- 2.3.2.9 RequesterEntity-->
+
+<owl:Class rdf:ID="Requester_Entity">
+  <rdfs:label>Requester_Entity</rdfs:label>
+  <rdfs:comment>The requester entity is the person or organization that wishes to use a provider entity's Web service.
+  </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="&PolicyModel;#Person_or_Organization"/>
+</owl:Class>
+
+<!-- Note : 
+"a requester entity owns a request agent" is modeled as a restriction. The object property own is inherited from class Person_or_Organization, so restrict the range of property to Provider_Agent
+-->
+
+<owl:Class rdf:about="Requester_Entity">
+  <rdfs:comment>
+    a provider entity owns a provider agent
+  </rdfs:comment>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="&PolicyModel;#owner" />
+      <owl:allValuesFrom rdf:resource="#Requester_Agent" />
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+
+
+<!-- 2.3.2.10 - Service -->
+
+<owl:Class rdf:ID="Service">
+  <rdfs:label>Service</rdfs:label>
+  <rdfs:comment>A service is an abstract resource that represents a capability of performing tasks that represents a coherent functionality from the point of view of provider entities and requester entities. To be used, a service must be realized by a concrete provider agent.
+  </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="&ResourceModel;#Resource"/>
+  <rdfs:comment>
+    A service is a resource
+  </rdfs:comment>
+</owl:Class>
+
+
+<owl:ObjectProperty rdf:ID="perform_task">
+  <rdfs:label>perform_task</rdfs:label>
+  <rdfs:comment>
+    A service performs one or more tasks
+    Here I assume that "task" is infact "service task"
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service"/>
+  <rdfs:range rdf:resource="#Service_Task"/>
+</owl:ObjectProperty>
+
+
+<owl:Class rdf:about="Service">
+  <rdfs:comment>
+    A service performs ONE OR MORE TASKS
+  </rdfs:comment>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#perform_task"/>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+
+<owl:ObjectProperty rdf:ID="service_description">
+  <rdfs:label>service_description</rdfs:label>
+  <rdfs:comment>
+    A service has a service description
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service"/>
+  <rdfs:range rdf:resource="#Service_Description"/>
+</owl:ObjectProperty>
+
+
+<owl:Class rdf:about="Service">
+  <rdfs:comment>
+    A service has A (ONE) service description
+  </rdfs:comment>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#service_description"/>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+
+<owl:ObjectProperty rdf:ID="service_interface">
+  <rdfs:label>service_interface</rdfs:label>
+  <rdfs:comment>
+    A service has a service interface
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service"/>
+  <rdfs:range rdf:resource="#Service_Interface"/>
+</owl:ObjectProperty>
+
+
+<owl:ObjectProperty rdf:ID="service_semantics">
+  <rdfs:label>service_semantics</rdfs:label>
+  <rdfs:comment>
+    A service has a service semantics
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service"/>
+  <rdfs:range rdf:resource="#Service_Semantics"/>
+</owl:ObjectProperty>
+
+
+<owl:ObjectProperty rdf:ID="service_identifier">
+  <rdfs:label>service_identifier</rdfs:label>
+  <rdfs:comment>
+    A service has a service identifier
+    Here I assume that "service identifier" is the same of the
+    resource model "identifier"
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service"/>
+  <rdfs:range rdf:resource="&ResourceModel;#Identifier"/>
+</owl:ObjectProperty>
+
+
+<owl:ObjectProperty rdf:ID="service_role">
+  <rdfs:label>service_role</rdfs:label>
+  <rdfs:comment>
+    a service has one or more service roles in relation to the
+    service's owner
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service"/>
+  <rdfs:range rdf:resource="#Service_Role"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:about="Service">
+  <rdfs:comment>
+    a service has one or more service roles in relation to the
+  </rdfs:comment>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#service_role"/>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+
+<owl:ObjectProperty rdf:ID="policy">
+  <rdfs:label>policies</rdfs:label>
+  <rdfs:comment>
+    A service may have one or more policies applied to it
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service"/>
+  <rdfs:range rdf:resource="&PolicyModel;#Policy"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:about="Service">
+  <rdfs:comment>
+    A service may have one or more policies applied to it
+  </rdfs:comment>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#policy"/>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:ObjectProperty rdf:ID="owned_by">
+  <rdfs:label>owned_by</rdfs:label>
+  <rdfs:comment>
+    A service is owned by a person or an organization
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service"/>
+  <rdfs:range rdf:resource="&PolicyModel;#Person_or_Organization"/>
+</owl:ObjectProperty>
+
+
+<owl:ObjectProperty rdf:ID="provided_by">
+  <rdfs:label>provided_by</rdfs:label>
+  <rdfs:comment>
+    A service is provided by a person or an organization
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service"/>
+  <rdfs:range rdf:resource="&PolicyModel;#Person_or_Organization"/>
+</owl:ObjectProperty>
+
+
+<!-- Note : "a service is realized by  a provider agent" We have modeled this relationship as an inverse relation of the relation "realize_service" which is a relationship associated with the concept 'Agent'. This property will be inherited by Provider_Agent and hence this relationship is satisfied. However, this relation will also be inherited by the Requester_Agent which is not a part of the specification. 
+
+However, we can show that every agent provides and request service, hence we can justifying the our modeling. Consider an agent which searches for cheap air tickets on behalf of a person. The agent may request airline services to provide fares of ticket and also provides service to the person, who owns the agent. 
+
+In OWL we cannot refer to a property of a child that is inherited from its parent. In our case we should have expressed "a service is realized by  a provider agent" as an inverse relation of property "realizes" which is associated with the Provider_Agent, as mentioned earlier OWL does not provide such functionality. Another way of modeling would be to define a subproperty of "realizes" in Provider_Agent and use it in modeling the relationship.
+
+-->
+<owl:ObjectProperty rdf:ID="realized_by">
+  <rdfs:label>realized_by</rdfs:label>
+  <rdfs:comment>a service is realized by  a provider agent.
+  </rdfs:comment>
+  <owl:inverseOf rdf:resource="#realize_service"/>
+</owl:ObjectProperty>
+
+<!-- 
+	Note: Please refer the comment for "realized_by" property
+-->
+<owl:ObjectProperty rdf:ID="used_by">
+  <rdfs:label>used_by</rdfs:label>
+  <rdfs:comment> a service is used by a requester agent.
+  </rdfs:comment>
+  <owl:inverseOf rdf:resource="#request_service"/>
+</owl:ObjectProperty>
+
+
+
+<!-- 2.3.2.11 Service Description-->
+
+<owl:Class rdf:ID="Service_Description">
+  <rdfs:label>Service_Description</rdfs:label>
+  <rdfs:comment>
+    A service description is a set of documents that describe the
+    interface to and semantics of a service.
+  </rdfs:comment>
+</owl:Class>
+
+<!-- 
+  A service description is a machine-processable description of a service. 
+-->
+<owl:ObjectProperty rdf:ID="service_description_of">
+  <rdfs:label>description_service_interface</rdfs:label>
+  <rdfs:comment>
+    a service description is a machine-processable description of a service
+  </rdfs:comment>
+  <owl:inverseOf rdf:resource="#service_description"/>  
+</owl:ObjectProperty>
+
+
+<owl:ObjectProperty rdf:ID="sd_service_interface">
+  <rdfs:label>description_service_interface</rdfs:label>
+  <rdfs:comment>
+    a service description is a machine-processable description of the service's interface
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service_Description"/>
+  <rdfs:range rdf:resource="#Service_Interface"/>
+</owl:ObjectProperty>
+
+<!--  
+Not Expressed : "a service description contains a machine-processable description of the messages that are exchanged by the service " falls in the same category as the MetaProperty Problem.
+-->
+
+<owl:ObjectProperty rdf:ID="sd_service_semantics">
+  <rdfs:label>service_description_semantics</rdfs:label>
+  <rdfs:comment>
+    a service description may include a description of the service's semantics
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service_Description"/>
+  <rdfs:range rdf:resource="#Service_Semantics"/>
+</owl:ObjectProperty>
+
+<!--  
+Note: We define a class ServiceDescriptionLanguage to express this relationship
+-->
+
+<owl:ObjectProperty rdf:ID="sd_expressed_in">
+  <rdfs:label>sd_expressed_in</rdfs:label>
+  <rdfs:comment>
+    a service description may include a description of the service's semantics
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service_Description"/>
+  <rdfs:range rdf:resource="&Extensions;#ServiceDescriptionLanguage"/>
+</owl:ObjectProperty>
+
+
+
+<!-- 2.3.2.12- Service Interface -->
+
+<owl:Class rdf:ID="Service_Interface">
+  <rdfs:label>Service_Interface</rdfs:label>
+  <rdfs:comment> A service interface is the abstract boundary that a service exposes. It defines the types of messages and the message exchange patterns that are involved in interacting with the service, together with any conditions implied by those messages. 
+  </rdfs:comment>
+</owl:Class>
+
+<owl:ObjectProperty rdf:ID="define">
+  <rdfs:label>define</rdfs:label>
+  <rdfs:comment>
+    A service interface defines the message relevant to the service 
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service_Interface"/>
+  <rdfs:range rdf:resource="&MessageModel;#Message"/>
+</owl:ObjectProperty>
+
+
+
+<!-- 2.3.2.13 ServiceIntermediary-->
+
+<owl:Class rdf:ID="Service_Intermediary">
+  <rdfs:label>Service_Intermediary</rdfs:label>
+  <rdfs:comment>A service intermediary is a Web service whose main role is to transform messages in a value-added way. (From a messaging point of view, an intermediary processes messages en route from one agent to another.) Specifically, we say that a service intermediary is a service whose outgoing messages are equivalent to its incoming messages in some application-defined sense. 
+  </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="#Service"/>
+</owl:Class>
+
+
+<owl:ObjectProperty rdf:ID="has_role">
+  <rdfs:label>has_role</rdfs:label>
+  <rdfs:comment>A service intermediary adopts a specific service role.  
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service_Intermediary"/>
+  <rdfs:range rdf:resource="#Service_Role"/>
+</owl:ObjectProperty>
+
+<!--  
+  We define a class Message_Semantics to represent this relationship
+-->
+
+<owl:ObjectProperty rdf:ID="preserves">
+  <rdfs:label>has_role</rdfs:label>
+  <rdfs:comment>A service intermediary preserves the semantics of messages it receives and sends.
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service_Intermediary"/>
+  <rdfs:range rdf:resource="&Extensions;#Message_Semantics"/>
+</owl:ObjectProperty>
+
+
+
+<!-- 2.3.2.14 - Service Role -->
+
+
+<owl:Class rdf:ID="Service_Role">
+  <rdfs:label>Service_Role</rdfs:label>
+  <rdfs:comment>A service role is an abstract set of tasks which is identified to be relevant by a person or organization offering a service. Service roles are also associated with particular aspects of messages exchanged with a service.
+  </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="#Service_Task"/>
+  <rdfs:comment>
+    a service role is a set of service tasks 
+  </rdfs:comment>
+</owl:Class>
+
+<owl:ObjectProperty rdf:ID="associated_with">
+  <rdfs:label>associated_with</rdfs:label>
+  <rdfs:comment>a service role is a set of service tasks
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service_Role"/>
+  <rdfs:range rdf:resource="#Service_Task"/>
+</owl:ObjectProperty>
+
+<!-- Not Expressed : a service role may be defined in terms of particular properties of messages. -->
+
+<owl:ObjectProperty rdf:ID="sr_defined_by">
+  <rdfs:label>associated_with</rdfs:label>
+  <rdfs:comment>a service role may be established by a service owner
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service_Role"/>
+  <rdfs:range rdf:resource="&PolicyModel;#Person_or_Organization"/>
+</owl:ObjectProperty>
+
+<!-- 2.3.2.15 - Service Semantics -->
+
+
+<owl:Class rdf:ID="Service_Semantics">
+  <rdfs:label>Service_Semantics</rdfs:label>
+  <rdfs:comment> The semantics of a service is the behavior expected when interacting with the service. The semantics expresses a contract (not necessarily a legal contract) between the provider entity and the requester entity. It expresses the intended real-world effect of invoking the service. A service semantics may be formally described in a machine readable form, identified but not formally defined, or informally defined via an `out of band' agreement between the provider entity and the requester entity.
+  </rdfs:comment>
+</owl:Class>
+
+<!-- Not Expressed : a service semantics is the contract between the provider entity and the requester entity concerning the effects and requirements pertaining to the use of a service -->
+
+<owl:ObjectProperty rdf:ID="service_semantics_of">
+  <rdfs:label>about</rdfs:label>
+  <rdfs:comment>
+    Approximation of the following statement:
+    a service semantics describes the intended effects of using a service
+  </rdfs:comment>
+  <owl:inverseOf rdf:resource="#service_semantics"/>
+</owl:ObjectProperty>
+
+<!-- Not Expressed : "a service semantics is about the service tasks that constitute the service." falls in the same category as the MetaProperty Problem.
+
+-->
+
+<owl:ObjectProperty rdf:ID="sd_service_semantics_of">
+  <rdfs:label>service_semantics_of</rdfs:label>
+  <rdfs:comment>a service semantics should be identified in a service description
+  </rdfs:comment>
+  <owl:inverseOf rdf:resource="#sd_service_semantics"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="ss_described_in">
+  <rdfs:label>associated_with</rdfs:label>
+  <rdfs:comment>a service semantics may be described in a formal, machine-processable language 
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service_Semantics"/>
+  <rdfs:range rdf:resource="&Extensions;#ServiceSemanticsDescriptionLanguage"/>
+</owl:ObjectProperty>
+
+
+
+
+
+<!-- 2.3.2.16 - - Service Task -->
+
+
+<owl:Class rdf:ID="Service_Task">
+  <rdfs:label>Service_Task</rdfs:label>
+  <rdfs:comment>A service task is an action or combination of actions that is associated with a desired goal state. Performing the task involves executing the actions, and is intended to achieve a particular goal state.
+  </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="#Action"/>
+</owl:Class>
+
+<!-- Note : "a service task is associated with one or more intended goal states." This relationship is inherited from it parent class "Action" -->
+
+<!--  Not Expressed : a service task is performed by executing the actions associated with the task.-->
+
+<owl:ObjectProperty rdf:ID="st_service_interface">
+  <rdfs:label>service_interface</rdfs:label>
+  <rdfs:comment>a service task has a service interface
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Service_Task"/>
+  <rdfs:range rdf:resource="#Service_Interface"/>
+</owl:ObjectProperty>
+
+
+
+
+</rdf:RDF>
+

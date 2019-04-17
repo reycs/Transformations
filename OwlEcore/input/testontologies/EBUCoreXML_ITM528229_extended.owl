@@ -1,0 +1,258 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:EBUProviderCode="http://www.ebu.ch/metadata/ontologies/skos/EBUProviderCode#"
+    xmlns:EBUServicerCode="http://www.ebu.ch/metadata/ontologies/skos/EBUServicerCode#"
+    xmlns:EBUNMSSRVCodeOrigin="http://www.ebu.ch/metadata/ontologies/skos/EBUNMSSRVCodeOrigin#"
+    xmlns:EBUNMSRatingCode="http://www.ebu.ch/metadata/ontologies/skos/EBUNMSRatingCode#"
+    xmlns:EBURightsHolderCode="http://www.ebu.ch/metadata/ontologies/skos/EBURightsHolderCode#"
+    xmlns:EBULanguageCode="http://www.ebu.ch/metadata/ontologies/skos/EBULanguageCode#"
+    xmlns:EBUNMSSRVCodeSource3="http://www.ebu.ch/metadata/ontologies/skos/EBUNMSSRVCodeSource3#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:EBUNMSClassCode="http://www.ebu.ch/metadata/ontologies/skos/EBUNMSClassCode#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:EBUNMSCityCode="http://www.ebu.ch/metadata/ontologies/skos/EBUNMSCityCode#"
+	xmlns:EBUNMSCountryCode="http://www.ebu.ch/metadata/ontologies/skos/ebu_ISO3166CountryCodeCS#"
+    xmlns:EBUNMSCategoryCode="http://www.ebu.ch/metadata/ontologies/skos/EBUNMSCategoryCode#"
+    xmlns:EBUNMSStatusCode="http://www.ebu.ch/metadata/ontologies/skos/EBUNMSStatusCode#"
+    xmlns:EBUNMSWebcatCode="http://www.ebu.ch/metadata/ontologies/skos/EBUNMSWebcatCode#"
+    xmlns:EBUNMSTargetAudienceCode="http://www.ebu.ch/metadata/ontologies/skos/EBUNMSTargetAudienceCode#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:EBUNMSGenreCode="http://www.ebu.ch/metadata/ontologies/skos/EBUNMSGenreCode#"
+    xmlns:ma-ont="http://www.w3.org/ns/ma-ont#"
+    xmlns:EBUNMSSRVCodeSource4="http://www.ebu.ch/metadata/ontologies/skos/EBUNMSSRVCodeSource4#"
+    xmlns:EBUNMSSRVCodeSource2="http://www.ebu.ch/metadata/ontologies/skos/EBUNMSSRVCodeSource2#"
+    xmlns:EBULanguageUsageCode="http://www.ebu.ch/metadata/ontologies/skos/EBULanguageUsageCode#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:EBUNMSSRVCodeSource="http://www.ebu.ch/metadata/ontologies/skos/EBUNMSSRVCodeSource#"
+    xmlns:EBUNMSDescription="http://www.ebu.ch/metadata/ontologies/skos/EBUNMSDescription#"
+    xmlns:ebu="http://ebu.org/nar-extensions/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+  <rdf:Description>
+    <owl:imports rdf:resource="http://www.w3.org/ns/ma-ont"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229/20110116-PNN-0428-528229-04372601">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#Image"/>
+    <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229//News/16Jan2011/Keyframes/20110116-PNN-0428-528229//20110116-PNN-0428-528229-04372601.jpeg</ma-ont:locator>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229/20110116-PNN-0428-528229-04373809">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#Image"/>
+    <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229//News/16Jan2011/Keyframes/20110116-PNN-0428-528229//20110116-PNN-0428-528229-04373809.jpeg</ma-ont:locator>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428">
+    <ma-ont:frameHeight rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">720</ma-ont:frameHeight>
+    <ma-ont:frameWidth rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1080</ma-ont:frameWidth>
+    <ma-ont:hasFragment rdf:resource="http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428#EVN_528229_116A0428_Part5_ID"/>
+    <ma-ont:hasCompression rdf:nodeID="A0"/>
+    <ma-ont:hasFragment rdf:resource="http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428#EVN_528229_116A0428_Part1_ID"/>
+    <ma-ont:hasFragment rdf:resource="http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428#EVN_528229_116A0428_Part6_ID"/>
+    <ma-ont:frameRate rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">25</ma-ont:frameRate>
+    <ma-ont:duration rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">211.32</ma-ont:duration>
+    <ma-ont:hasFragment rdf:resource="http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428#EVN_528229_116A0428_Part8_ID"/>
+    <ma-ont:hasFragment rdf:resource="http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428#EVN_528229_116A0428_Part4_ID"/>
+    <ma-ont:samplingRate rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">41000</ma-ont:samplingRate>
+    <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/</ma-ont:locator>
+    <ma-ont:hasFragment rdf:resource="http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428#EVN_528229_116A0428_Part3_ID"/>
+    <ma-ont:numberOfTracks rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</ma-ont:numberOfTracks>
+    <ma-ont:hasFragment rdf:resource="http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428#EVN_528229_116A0428_Part7_ID"/>
+    <ma-ont:averageBitRate rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12456321.23</ma-ont:averageBitRate>
+    <ma-ont:hasFragment rdf:resource="http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428#EVN_528229_116A0428_Part2_ID"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaResource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="EBUNMSTargetAudienceCode:all">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#TargetAudience"/>
+    <ma-ont:hasClassification rdf:nodeID="A1"/>
+    <ma-ont:hasClassificationSystem rdf:nodeID="A2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="EBUProviderCode:EBU">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#Organisation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">European
+         Broadcasting Union - EVN</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428#EVN_528229_116A0428_Part4_ID">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaFragment"/>
+    <ma-ont:fragmentName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4</ma-ont:fragmentName>
+    <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428/t=16498.04,16581.24</ma-ont:locator>
+    <ma-ont:hasRelatedImage rdf:resource="http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229/20110116-PNN-0428-528229-04345801"/>
+    <owl:sameAs rdf:resource="EVN_528229_116A0428_Part4_ID"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428#EVN_528229_116A0428_Part7_ID">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaFragment"/>
+    <ma-ont:fragmentName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7</ma-ont:fragmentName>
+    <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428/t=16646.04,16658.32</ma-ont:locator>
+    <ma-ont:hasRelatedImage rdf:resource="http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229/20110116-PNN-0428-528229-04372601"/>
+    <owl:sameAs rdf:resource="EVN_528229_116A0428_Part7_ID"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428#EVN_528229_116A0428_Part1_ID">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaFragment"/>
+    <ma-ont:fragmentName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</ma-ont:fragmentName>
+    <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428/t=16447.04,16467.68</ma-ont:locator>
+    <ma-ont:hasRelatedImage rdf:resource="http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229/20110116-PNN-0428-528229-04340701"/>
+    <owl:sameAs rdf:resource="EVN_528229_116A0428_Part1_ID"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A3">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#Person"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Durand</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="EBUNMSCityCode:CARACAS">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#Location"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CARACAS</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="EBUNMSCountryCode:VE">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#Location"/>
+	<rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VENEZUELA</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229/20110116-PNN-0428-528229-04340701">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#Image"/>
+    <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229//News/16Jan2011/Keyframes/20110116-PNN-0428-528229//20110116-PNN-0428-528229-04340701.jpeg</ma-ont:locator>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428#EVN_528229_116A0428_Part6_ID">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaFragment"/>
+    <ma-ont:fragmentName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6</ma-ont:fragmentName>
+    <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428/t=16626.44,16646</ma-ont:locator>
+    <ma-ont:hasRelatedImage rdf:resource="http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229/20110116-PNN-0428-528229-04370611"/>
+    <owl:sameAs rdf:resource="EVN_528229_116A0428_Part6_ID"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EBU
+               internal target audience code @en</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dummy.ch/News/16Jan2011/Items/">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#Collection"/>
+    <ma-ont:collectionName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DailyNewsItems</ma-ont:collectionName>
+  </rdf:Description>
+  <rdf:Description rdf:about="EBULanguageCode:Spanish">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spanish @en</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428#EVN_528229_116A0428_Part8_ID">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaFragment"/>
+    <ma-ont:fragmentName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8</ma-ont:fragmentName>
+    <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428/t=16658.36,</ma-ont:locator>
+    <ma-ont:hasRelatedImage rdf:resource="http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229/20110116-PNN-0428-528229-04373809"/>
+    <owl:sameAs rdf:resource="EVN_528229_116A0428_Part8_ID"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spanish</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428#EVN_528229_116A0428_Part3_ID">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaFragment"/>
+    <ma-ont:fragmentName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</ma-ont:fragmentName>
+    <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428/t=16482.72,16498</ma-ont:locator>
+    <owl:sameAs rdf:resource="EVN_528229_116A0428_Part3_ID"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="EBUNMSWebcatCode:AMERICAS">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Americas @en</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> all
+            </rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="EBUNMSSRVCodeSource2:GBAPTN">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#Agent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229/20110116-PNN-0428-528229-04342718">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#Image"/>
+    <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229//News/16Jan2011/Keyframes/20110116-PNN-0428-528229//20110116-PNN-0428-528229-04342718.jpeg</ma-ont:locator>
+  </rdf:Description>
+  <rdf:Description rdf:about="EBUNMSSRVCodeSource:GBRTV">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#Organisation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Reuters
+         Television Ltd</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229/20110116-PNN-0428-528229-04362107">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#Image"/>
+    <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229//News/16Jan2011/Keyframes/20110116-PNN-0428-528229//20110116-PNN-0428-528229-04362107.jpeg</ma-ont:locator>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A5">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#Organisation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EBU</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428#EVN_528229_116A0428_Part5_ID">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaFragment"/>
+    <ma-ont:fragmentName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5</ma-ont:fragmentName>
+    <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428/t=16581.28,16626.4</ma-ont:locator>
+    <ma-ont:hasRelatedImage rdf:resource="http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229/20110116-PNN-0428-528229-04362107"/>
+    <owl:sameAs rdf:resource="EVN_528229_116A0428_Part5_ID"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A0">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mp4</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229/20110116-PNN-0428-528229-04345801">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#Image"/>
+    <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229//News/16Jan2011/Keyframes/20110116-PNN-0428-528229//20110116-PNN-0428-528229-04345801.jpeg</ma-ont:locator>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428#EVN_528229_116A0428_Part2_ID">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaFragment"/>
+    <ma-ont:fragmentName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2</ma-ont:fragmentName>
+    <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428/t=16467.72,16482.68</ma-ont:locator>
+    <ma-ont:hasRelatedImage rdf:resource="http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229/20110116-PNN-0428-528229-04342718"/>
+    <owl:sameAs rdf:resource="EVN_528229_116A0428_Part2_ID"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229/20110116-PNN-0428-528229-04370611">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#Image"/>
+    <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.dummy.ch/News/16Jan2011/keyframe/20110116-PNN-0428-528229//News/16Jan2011/Keyframes/20110116-PNN-0428-528229//20110116-PNN-0428-528229-04370611.jpeg</ma-ont:locator>
+  </rdf:Description>
+  <rdf:Description rdf:about="tag:ebu.ch,2011:528229">
+    <ma-ont:hasKeyword rdf:resource="EBUNMSCategoryCode:EXCH"/>
+    <ma-ont:hasLanguage rdf:nodeID="A4"/>
+    <ma-ont:hasTargetAudience rdf:resource="EBUNMSTargetAudienceCode:all"/>
+    <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.dummy.ch/News/16Jan2011/Items/20110116-PNN-0428-528229/index.html</ma-ont:locator>
+    <ma-ont:hasPublisher rdf:resource="EBUProviderCode:EBU"/>
+    <ma-ont:hasRating rdf:resource="http://www.ebu.ch/metadata/ontologies/skos/EBUNMSRatingCode#10"/>
+    <ma-ont:hasContributor rdf:nodeID="A3"/>
+    <ma-ont:hasSource rdf:resource="http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428"/>
+    <ma-ont:hasCreator rdf:resource="EBUNMSSRVCodeSource2:GBAPTN"/>
+    <ma-ont:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2011-01-15T00:00:00Z</ma-ont:creationDate>
+    <ma-ont:hasRelatedResource rdf:resource="http://www.dummy.ch/News/16Jan2011/File/20110116-PNN-0428-528229/EVN_528229_116A0428"/>
+    <ma-ont:hasKeyword rdf:resource="EBUNMSWebcatCode:AMERICAS"/>
+    <ma-ont:editDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2011-01-16T04:38:20Z</ma-ont:editDate>
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaResource"/>
+    <ma-ont:isMemberOf rdf:resource="http://www.dummy.ch/News/16Jan2011/Items/"/>
+    <owl:sameAs rdf:resource="tag:ebu.ch,2011:528229"/>
+    <ma-ont:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NMSStatusCode:TRS</ma-ont:description>
+    <ma-ont:releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2011-01-16T03:47:06Z</ma-ont:releaseDate>
+    <ma-ont:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+         President Hugo Chavez offered on Saturday (January 15) to give up much-criticized decree
+         powers in May, a year ahead of schedule, if post-flood emergency measures were implemented
+         quickly.Addressing the South American nation's parliament,.......... @en </ma-ont:description>
+    <ma-ont:isCopyrightedBy rdf:nodeID="A5"/>
+    <ma-ont:createdIn rdf:resource="EBUNMSCityCode:CARACAS"/>
+    <ma-ont:createdIn rdf:resource="ebu_ISO3166CountryCodeCS:VE"/>
+    <ma-ont:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+         CARACAS, VENEZUELA (JANUARY 15, 2011) (REUTERS - ACCESS ALL)1. GENERAL VIEW OF PRESIDENT
+         HUGO CHAVEZ ARRIVING TO NATIONAL ASSEMBLY2. VARIOUS OF CHAVEZ WALKING INCARACAS, VENEZUELA
+         (JANUARY 15, 2011) (ORIGINALLY 4:3) (GOVERNMENT TV - ACCESS ALL)3. VARIOUS OF AUDIENCE
+         CLAPPING4. VARIOUS OF CHAVEZ WALKING IN, GREETING VARIOUS LAWMAKERS5. (SOUNDBITE) (Spanish)
+         CHAVEZ SAYING:"We regret the absence of some ambassadors, @en</ma-ont:description>
+    <ma-ont:hasCreator rdf:resource="EBUNMSSRVCodeSource:GBRTV"/>
+    <ma-ont:alternativeTitle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VE Chavez decree</ma-ont:alternativeTitle>
+    <ma-ont:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VE Chavez
+         decree</ma-ont:title>
+    <ma-ont:hasGenre rdf:resource="EBUNMSGenreCode:news"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ebu.ch/metadata/ontologies/skos/EBUNMSRatingCode#10">
+    <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#Rating"/>
+    <ma-ont:hasRatingSystem rdf:nodeID="A6"/>
+    <ma-ont:ratingValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10</ma-ont:ratingValue>
+    <ma-ont:ratingScaleMax rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10</ma-ont:ratingScaleMax>
+    <ma-ont:ratingScaleMin rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</ma-ont:ratingScaleMin>
+  </rdf:Description>
+  <rdf:Description rdf:about="EBUNMSGenreCode:news">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="EBUNMSCategoryCode:EXCH">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EBUNMSRatingCode</rdfs:label>
+  </rdf:Description>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

@@ -1,0 +1,177 @@
+# baseURI: http://example.org/sotaspin
+# imports: http://spinrdf.org/spin
+# imports: http://spinrdf.org/spl
+
+@prefix : <http://www.w3.org/2012/12/rdf-val/SOTA-ex#> .
+@prefix arg: <http://spinrdf.org/arg#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sotaspin: <http://example.org/sotaspin#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/issue4>
+  :reportedOn "2012-12-31T23:57:00"^^xsd:dateTime ;
+  :state :unsinged ;
+.
+<http://example.org/issue7>
+  rdf:type :Issue ;
+  :related <http://example.org/issue2> ;
+  :related <http://example.org/issue3> ;
+  :related <http://example.org/issue4> ;
+  :reportedBy <http://example.org/user2> ;
+  :reportedBy <http://example.org/user6> ;
+  :reportedOn "2012-12-31T23:57:00"^^xsd:dateTime ;
+  :reproducedBy <http://example.org/user1> ;
+  :reproducedBy <http://example.org/user2> ;
+  :reproducedOn "2012-11-30T23:57:00"^^xsd:dateTime ;
+  :state :unassigned ;
+.
+<http://example.org/sotaspin>
+  rdf:type owl:Ontology ;
+  owl:imports <http://spinrdf.org/spin> ;
+  owl:imports <http://spinrdf.org/spl> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+<http://example.org/user2>
+  rdf:type foaf:Person ;
+  foaf:familyName "Smith" ;
+  foaf:givenName "Alice" ;
+  foaf:mbox <mailto:alice@example.com> ;
+  foaf:phone <tel:+1.555.222.2222> ;
+.
+<http://example.org/user6>
+  rdf:type foaf:Person ;
+  foaf:givenName "Bob" ;
+  foaf:mbox <mailto:alice@example.com> ;
+  foaf:phone <tel:+.555.222.2222> ;
+.
+rdfs:Resource
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:text """CONSTRUCT {
+    ?instance a ?domain .
+}
+WHERE {
+    ?property <http://www.w3.org/2000/01/rdf-schema#domain> ?domain .
+    ?instance ?property ?anyValue .
+    FILTER NOT EXISTS {
+        ?instance a ?anyType .
+    } .
+}"""^^xsd:string ;
+    ] ;
+.
+:Issue
+  rdf:type owl:Class ;
+  spin:constraint [
+      rdf:type sp:Ask ;
+      sp:text """# Issue was reproduced before being reported
+ASK WHERE {
+    ?this <http://www.w3.org/2012/12/rdf-val/SOTA-ex#reproducedOn> ?reproducedOn .
+    ?this <http://www.w3.org/2012/12/rdf-val/SOTA-ex#reportedOn> ?reportedOn .
+    FILTER (?reproducedOn < ?reportedOn) .
+}"""^^xsd:string ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:ObjectCountPropertyConstraint ;
+      arg:maxCount 1 ;
+      arg:property :reportedBy ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:UntypedObjectPropertyConstraint ;
+      arg:property :related ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:UntypedObjectPropertyConstraint ;
+      arg:property :state ;
+    ] ;
+  rdfs:label "Issue"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:ValidState
+  rdf:type owl:Class ;
+  rdfs:label "Valid state"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:assigned
+  rdf:type :ValidState ;
+  rdfs:label "assigned"^^xsd:string ;
+.
+:related
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :Issue ;
+  rdfs:label "related"^^xsd:string ;
+  rdfs:range :Issue ;
+.
+:reportedBy
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :Issue ;
+  rdfs:label "reported by"^^xsd:string ;
+  rdfs:range foaf:Person ;
+.
+:reportedOn
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain :Issue ;
+  rdfs:label "reported on"^^xsd:string ;
+  rdfs:range xsd:dateTime ;
+.
+:reproducedBy
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :Issue ;
+  rdfs:label "reproduced by"^^xsd:string ;
+  rdfs:range foaf:Person ;
+.
+:reproducedOn
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain :Issue ;
+  rdfs:label "reproduced on"^^xsd:string ;
+  rdfs:range xsd:dateTime ;
+.
+:state
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :Issue ;
+  rdfs:label "state"^^xsd:string ;
+  rdfs:range :ValidState ;
+.
+:unassigned
+  rdf:type :ValidState ;
+  rdfs:label "unassigned"^^xsd:string ;
+.
+foaf:Person
+  rdf:type owl:Class ;
+  spin:constraint [
+      rdf:type spl:RegexPropertyConstraint ;
+      arg:pattern "^tel:((?:\\+[\\d().-]*\\d[\\d().-]*|[0-9A-F*#().-]*[0-9A-F*#][0-9A-F*#().-]*(?:;[a-z\\d-]+(?:=(?:[a-z\\d\\[\\]\\/:&+$_!~*'().-]|%[\\dA-F]{2})+)?)*;phone-context=(?:\\+[\\d().-]*\\d[\\d().-]*|(?:[a-z0-9]\\.|[a-z0-9][a-z0-9-]*[a-z0-9]\\.)*(?:[a-z]|[a-z][a-z0-9-]*[a-z0-9])))(?:;[a-z\\d-]+(?:=(?:[a-z\\d\\[\\]\\/:&+$_!~*'().-]|%[\\dA-F]{2})+)?)*(?:,(?:\\+[\\d().-]*\\d[\\d().-]*|[0-9A-F*#().-]*[0-9A-F*#][0-9A-F*#().-]*(?:;[a-z\\d-]+(?:=(?:[a-z\\d\\[\\]\\/:&+$_!~*'().-]|%[\\dA-F]{2})+)?)*;phone-context=\\+[\\d().-]*\\d[\\d().-]*)(?:;[a-z\\d-]+(?:=(?:[a-z\\d\\[\\]\\/:&+$_!~*'().-]|%[\\dA-F]{2})+)?)*)*)$"^^xsd:string ;
+      arg:property foaf:phone ;
+    ] ;
+  rdfs:label "Person"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+foaf:familyName
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain foaf:Person ;
+  rdfs:label "family name"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+foaf:givenName
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain foaf:Person ;
+  rdfs:label "given name"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+foaf:mbox
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain foaf:Person ;
+  rdfs:label "mbox"^^xsd:string ;
+  rdfs:range rdfs:Resource ;
+.
+foaf:phone
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain foaf:Person ;
+  rdfs:label "phone"^^xsd:string ;
+  rdfs:range xsd:anyURI ;
+.

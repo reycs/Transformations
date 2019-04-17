@@ -1,0 +1,449 @@
+<?xml version="1.0"?>
+<rdf:RDF 
+    xmlns:time="http://www.w3.org/2006/time#"
+    xmlns:temp="http://www.loa-cnr.it/ontologies/TemporalRelations.owl#" 
+    xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+    xmlns:wn="http://xmlns.com/wordnet/1.6/" 
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:owl="http://www.w3.org/2002/07/owl#" 
+    xmlns:rim="http://wopeg.he.agfa.be/rules/RIMV3OWL#" 
+    xmlns:inf="http://www.loa-cnr.it/ontologies/InformationObjects.owl#" 
+    xmlns:galen="http://www.co-ode.org/ontologies/galen#" 
+    xmlns:dol="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#" 
+    xmlns="http://purl.org/cpr/1.0/problem-oriented-medical-record.owl#" 
+    xmlns:edns="http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#" 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#" 
+    xml:base="http://purl.org/cpr/1.0/problem-oriented-medical-record.owl#">
+  <owl:Ontology rdf:about="">
+    <rdfs:label>A Problem-Oriented Medical Record Ontology</rdfs:label>
+    <rdfs:comment>
+        The goal is to define a minimal set of terms that connect representations from well defined healthcare information &amp; process models 
+        (such as HL7 RIM) with more expressive foundational ontologies [3] (both domain-agnostic and those specific to the domains of 
+        life sciences and healthcare) through the use of the criteria outlined in the traditional Problem-oriented Medical Record structure.    
+    </rdfs:comment>
+    <!--owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
+    <owl:imports rdf:resource="http://xmlns.com/foaf/0.1/index.rdf"/>
+    <owl:imports rdf:resource="http://www.cs.man.ac.uk/~horrocks/OWL/Ontologies/galen.owl"/>
+    <owl:imports rdf:resource="http://www.loa-cnr.it/ontologies/InformationObjects.owl"/>
+    <owl:imports rdf:resource="http://www.loa-cnr.it/ontologies/ExtendedDnS.owl"/>
+    <owl:imports rdf:resource="http://www.w3.org/2006/time"/>
+    <owl:imports rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl"/-->
+  </owl:Ontology>
+  <!-- 
+        cpr:patient-record
+        cpr:person
+            cpr:patient
+            cpr:clinician
+            cpr:physician
+        cpr:anatomical-structure
+        cpr:immaterial-anatomical-entity
+            cpr:anatomical-space
+            cpr:anatomical-surface
+            cpr:anatomical-point
+        cpr:physiological-state
+        cpr:physiological-role
+        cpr:physiological-process
+        cpr:clinical-description
+        cpr:medical-problem
+            cpr:medical-sign
+            cpr:symptom
+        cpr:disease
+            cpr:immaterial-pathological-entity
+                cpr:pathological-space
+                cpr:pathological-surface
+            cpr:pathological-structure
+            cpr:pathological-process
+            cpr:pathological-state
+        cpr:clinical-act
+            cpr:diagnostic-act
+                cpr:screening
+                cpr:surgical-procedure
+            cpr:substance-administration
+        cpr:medical-device
+        cpr:medication    
+    -->
+    
+  <owl:Class rdf:ID="patient-record">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Patient Record</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.loa-cnr.it/ontologies/InformationObjects.owl#linguistic-object"/>
+          <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Document"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>    
+    
+  <!-- 
+    cpr:person 
+    cpr:person is-a foaf:Person and galen:Person and rim:EntityPerson and edns:rational-agent
+    cpr:person is-a (cpr:patient or cpr:clinicians or cpr:physician)
+    -->
+  <owl:Class rdf:about="#person">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person"/>
+          <owl:Class rdf:about="http://www.co-ode.org/ontologies/galen#Person"/>
+          <owl:Class rdf:about="http://wopeg.he.agfa.be/rules/RIMV3OWL#EntityPerson"/>
+          <owl:Class rdf:about="http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#rational-agent"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>  
+  <owl:Class rdf:ID="person">
+    <owl:unionOf rdf:parseType="Collection">
+        <owl:Thing rdf:about="#patient"/>
+        <owl:Thing rdf:about="#clinician"/>
+        <owl:Thing rdf:about="#physician"/>
+    </owl:unionOf>
+  </owl:Class>
+  
+  <owl:Class rdf:ID="physician">
+    <rdfs:subClassOf rdf:resource="#person"/>  
+  </owl:Class>
+  
+  <!-- 
+    cpr:patient
+    cpr:patient is-a galen:Patient
+    -->  
+  <owl:Class rdf:ID="patient">
+    <rdfs:label>Patient</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/galen#Patient"/>
+    <rdfs:subClassOf rdf:resource="#person"/>
+  </owl:Class>  
+  <!-- 
+    cpr:clinician
+    cpr:clinician is-a (galen:playsSocialRole some { galen:NurseRole galen:DoctorRole ... } ) and cpr:person
+    -->    
+  <owl:Class rdf:about="#clinician">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="http://www.co-ode.org/ontologies/galen#playsSocialRole"/>
+            <owl:someValuesFrom>
+              <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="http://www.co-ode.org/ontologies/galen#NurseRole"/>
+                  <owl:Class rdf:about="http://www.co-ode.org/ontologies/galen#DoctorRole"/>
+                </owl:oneOf>
+              </owl:Class>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Thing rdf:about="#person"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#person"/>
+    <rdfs:label>Clinician</rdfs:label>
+  </owl:Class>
+  
+  <!-- 
+    cpr:clinical-description 
+    cpr:clinical-description is-a (foaf:maker exactly 1) and inf:depiction and (dol:has-quality only time:TemporalEntity)
+                                  (edns:realizes only cpr:patient-record) and (cpr:description-of min 1) and rim:Act
+    -->
+  <owl:Class rdf:ID="clinical-description">
+    <rdfs:label>Clinical Description</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="http://xmlns.com/foaf/0.1/maker"/>
+            <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+          </owl:Restriction>
+          <owl:Class rdf:about="http://www.loa-cnr.it/ontologies/InformationObjects.owl#depiction"/>
+          <owl:Class rdf:about="http://wopeg.he.agfa.be/rules/RIMV3OWL#Act"/>
+          <owl:Restriction>
+            <owl:allValuesFrom rdf:resource="#patient-record"/>
+            <owl:onProperty rdf:resource="http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#realizes"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:allValuesFrom rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+            <owl:onProperty rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#has-quality"/>
+          </owl:Restriction>          
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="description-of"/>
+            </owl:onProperty>
+            <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+  <!-- 
+    cpr:anatomical-structure
+    -->
+  <owl:Class rdf:ID="anatomical-structure"/>
+  
+  <!-- 
+    cpr:immaterial-anatomical-entity
+    cpr:immaterial-anatomical-entity is-a (cpr:anatomical-space or cpr:anatomical-surface or cpr:anatomical-point)
+    -->
+  <owl:Class rdf:ID="immaterial-anatomical-entity">
+    <owl:unionOf rdf:parseType="Collection">
+        <owl:Thing rdf:about="#anatomical-space"/>
+        <owl:Thing rdf:about="#anatomical-surface"/>
+        <owl:Thing rdf:about="#anatomical-point"/>
+    </owl:unionOf>  
+  </owl:Class>
+  
+  <owl:Class rdf:ID="anatomical-space">
+    <rdfs:subClassOf rdf:resource="#immaterial-anatomical-entity"/>
+  </owl:Class>
+  <owl:Class rdf:ID="anatomical-surface">
+    <rdfs:subClassOf rdf:resource="#immaterial-anatomical-entity"/>
+  </owl:Class>
+  <owl:Class rdf:ID="anatomical-point">
+    <rdfs:subClassOf rdf:resource="#immaterial-anatomical-entity"/>
+  </owl:Class>
+  
+  <!-- 
+    cpr:physiological-state
+    cpr:physiological-role
+    cpr:physiological-process
+    -->
+  <owl:Class rdf:ID="physiological-state"/>
+  <owl:Class rdf:ID="physiological-role"/>
+  <owl:Class rdf:ID="physiological-process"/>
+  
+  <!--
+    cpr:medical-problem
+    cpr:medical-problem is-a cpr:active-medical-problem or cpr:inactive-medical-problem
+    cpr:medical-problem is-a dol:linguistic-object and (galen:hasSeverity min 1) and (time:TemporalEntity)
+    cpr:medical-problem is-a cpr:symptom or cpr:medical-sign or cpr:disease
+    -->
+  <owl:Class rdf:about="#medical-problem">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.w3.org/2006/time#TemporalEntity"/>
+          <owl:Class rdf:about="http://www.loa-cnr.it/ontologies/InformationObjects.owl#linguistic-object"/>
+          <owl:Restriction>
+            <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+            <owl:onProperty rdf:resource="http://www.co-ode.org/ontologies/galen#hasSeverity"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="medical-problem">
+    <owl:unionOf rdf:parseType="Collection">
+        <owl:Thing rdf:about="#symptom"/>
+        <owl:Thing rdf:about="#medical-sign"/>
+        <owl:Thing rdf:about="#disease"/>
+    </owl:unionOf>  
+  </owl:Class>    
+  
+  <!-- 
+    cpr:medical-sign is-a cpr:medical-problem and 
+                          (edns:interpreted-by only cpr:clinician) and 
+                          (cpr:interpretant-of only cpr:disease) and 
+                          (cpr:interpretant-of min 1) 
+    -->
+  <owl:Class rdf:ID="medical-sign">
+    <rdfs:subClassOf rdf:resource="#medical-problem"/>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#interpretant-of"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="disease"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>    
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+        <owl:onProperty rdf:resource="#interpretant-of"/>
+      </owl:Restriction> 
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#clinician"/>
+        <owl:onProperty rdf:resource="http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#interpreted-by"/>
+      </owl:Restriction>      
+    </owl:intersectionOf>
+  </owl:Class>
+
+  <!-- 
+    cpr:symptom is-a cpr:medical-problem and 
+                     ((dol:interpreted-by only cpr:patient) and 
+                      (cpr:interpretant-of only (cpr:disease or physiological-state or physiological-process))))
+
+    -->
+  <owl:Class rdf:ID="symptom">
+    <rdfs:subClassOf rdf:resource="#medical-problem"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#interpretant-of"/>
+        <owl:allValuesFrom>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class rdf:about="#disease"/>
+                    <owl:Class rdf:about="#physiological-state"/>
+                    <owl:Class rdf:about="#physiological-process"/>
+                </owl:unionOf>  
+            </owl:Class>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#interpreted-by"/>
+        <owl:allValuesFrom rdf:resource="#patient"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <!--
+    cpr:disease is-a cpr:immaterial-pathological-entity or cpr:pathological-structure or cpr:pathological-process or cpr:pathological-state
+    
+    -->
+  <owl:Class rdf:about="#disease">
+    <rdfs:subClassOf rdf:resource="#medical-problem"/>
+    <owl:unionOf rdf:parseType="Collection">
+        <owl:Thing rdf:about="#immaterial-patholological-entity">
+            <owl:unionOf rdf:parseType="Collection">
+                <owl:Class rdf:about="#pathological-space"/>
+                <owl:Class rdf:about="#pathological-surface"/>        
+            </owl:unionOf>
+        </owl:Thing>
+        <owl:Class rdf:about="#pathological-structure"/>
+        <owl:Class rdf:about="#pathological-process"/>
+        <owl:Class rdf:about="#pathological-state"/>
+    </owl:unionOf>    
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wordnet: An impairment of health or a condition of abnormal functioning.</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="immaterial-patholological-entity">
+    <rdfs:subClassOf rdf:resource="#disease"/>
+  </owl:Class>
+  <owl:Class rdf:ID="pathological-structure">
+    <rdfs:subClassOf rdf:resource="#disease"/>
+  </owl:Class>
+  <owl:Class rdf:ID="pathological-process">
+    <rdfs:subClassOf rdf:resource="#disease"/>
+  </owl:Class>
+  <owl:Class rdf:ID="pathological-state">
+    <rdfs:subClassOf rdf:resource="#disease"/>
+  </owl:Class>
+  <owl:Class rdf:ID="pathological-space">
+    <rdfs:subClassOf rdf:resource="#immaterial-patholological-entity"/>
+  </owl:Class>
+  <owl:Class rdf:ID="pathological-surface">
+    <rdfs:subClassOf rdf:resource="#immaterial-patholological-entity"/>
+  </owl:Class>
+  
+  <!--
+    cpr:clinical-act is-a edns:action and (dol:participant some cpr:clinician) and galen:ClinicalAct
+    cpr:clinical-act is-a cpr:diagnostic-act or cpr:therapeutic-act      
+    -->
+  <owl:Class rdf:about="#clinical-act">
+    <owl:unionOf rdf:parseType="Collection">
+        <owl:Thing rdf:about="#diagnostic-act"/>
+        <owl:Thing rdf:about="#therapeutic-act"/>
+    </owl:unionOf>      
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="http://www.co-ode.org/ontologies/galen#ClinicalAct"/>
+      <owl:Class rdf:about="http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#action"/>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="clinician"/>
+        </owl:someValuesFrom>
+        <owl:onProperty rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#participant"/>
+      </owl:Restriction>
+    </owl:intersectionOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="therapeutic-act">
+    <rdfs:subClassOf rdf:resource="#clinical-act"/>
+  </owl:Class>
+
+  <!--  
+    cpr:diagnostic-act is-a galen:InvestigationAct or galen:ExaminationAct or cpr:screening
+    -->
+  <owl:Class rdf:about="diagnostic-act">
+      <rdfs:subClassOf rdf:resource="#clinical-act"/>
+      <owl:unionOf rdf:parseType="Collection">
+        <owl:Class rdf:about="http://www.co-ode.org/ontologies/galen#InvestigationAct"/>
+        <owl:Class rdf:about="http://www.co-ode.org/ontologies/galen#ExaminationAct"/>
+        <owl:Thing rdf:about="#screening"/>
+      </owl:unionOf>                     
+  </owl:Class>
+  
+  <!--
+    cpr:screening is-a cpr:wellness-screening or cpr:physical-examination or cpr:medical-history
+    cpr:screening is-a inf:information-realization and (edns:realizes only cpr:medical-problem)
+    -->
+  <owl:Class rdf:ID="screening">
+    <rdfs:subClassOf rdf:resource="#diagnostic-act"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.loa-cnr.it/ontologies/InformationObjects.owl#information-realization"/>
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#realizes"/>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#medical-problem"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Process of data collection with pre-defined and standardized screening questionnaires in order to discover problems.</rdfs:comment>
+  </owl:Class>
+  
+  <!--
+    cpr:substance-administration is-a rim:SubstanceAdministration and galen:DrugAdministration
+    -->
+  <owl:Class rdf:ID="substance-administration">
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/galen#DrugAdministration"/>
+    <rdfs:subClassOf rdf:resource="http://wopeg.he.agfa.be/rules/RIMV3OWL#ActSubstanceAdministration"/>
+    <rdfs:subClassOf rdf:resource="#therapeutic-act"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The act of introducing or otherwise applying a substance to the subject.</rdfs:comment>
+  </owl:Class>
+  
+  <!--
+    cpr:medical-device is-a galen:Device
+    -->
+  <owl:Class rdf:ID="medical-device">
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/galen#Device"/>
+  </owl:Class>    
+  
+  <!--
+    cpr:medication = dol:chemical-object and galen:NAMEDDrug
+    -->
+  <owl:Class rdf:ID="medication">
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/galen#NAMEDDrug"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(medicine) something that treats or prevents or alleviates the symptoms of disease.</rdfs:comment>
+  </owl:Class>
+  
+  
+  <!--
+    Roles / Properties
+    -->
+  <owl:ObjectProperty rdf:about="#description-of">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="described-by"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="#clinical-description"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#described-by">
+    <rdfs:range rdf:resource="#clinical-description"/>
+    <owl:inverseOf rdf:resource="#description-of"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#interpretant-of">
+    <rdfs:domain rdf:resource="#medical-sign"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+            <owl:Class rdf:about="#disease"/>
+            <owl:Class rdf:about="#physiological-state"/>
+            <owl:Class rdf:about="#physiological-process"/>
+        </owl:unionOf>
+      </owl:Class>      
+    </rdfs:range>
+  </owl:ObjectProperty>  
+</rdf:RDF>

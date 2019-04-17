@@ -78,6 +78,7 @@ import owl.ObjectOneOf;
 import owl.ObjectProperty;
 import owl.ObjectPropertyAssertion;
 import owl.ObjectPropertyAxiom;
+import owl.ObjectPropertyChain;
 import owl.ObjectPropertyDomain;
 import owl.ObjectPropertyExpression;
 import owl.ObjectPropertyRange;
@@ -91,6 +92,7 @@ import owl.StringLiteral;
 import owl.SubAnnotationPropertyOf;
 import owl.SubClassOf;
 import owl.SubDataPropertyOf;
+import owl.SubObjectPropertyExpression;
 import owl.SubObjectPropertyOf;
 import owl.SymmetricObjectProperty;
 import owl.TransitiveObjectProperty;
@@ -251,6 +253,7 @@ public class OwlSwitch<T> extends Switch<T> {
 			case OwlPackage.OBJECT_PROPERTY_EXPRESSION: {
 				ObjectPropertyExpression objectPropertyExpression = (ObjectPropertyExpression)theEObject;
 				T result = caseObjectPropertyExpression(objectPropertyExpression);
+				if (result == null) result = caseSubObjectPropertyExpression(objectPropertyExpression);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -267,6 +270,7 @@ public class OwlSwitch<T> extends Switch<T> {
 				T result = caseObjectProperty(objectProperty);
 				if (result == null) result = caseEntity(objectProperty);
 				if (result == null) result = caseObjectPropertyExpression(objectProperty);
+				if (result == null) result = caseSubObjectPropertyExpression(objectProperty);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -274,6 +278,7 @@ public class OwlSwitch<T> extends Switch<T> {
 				InverseObjectProperty inverseObjectProperty = (InverseObjectProperty)theEObject;
 				T result = caseInverseObjectProperty(inverseObjectProperty);
 				if (result == null) result = caseObjectPropertyExpression(inverseObjectProperty);
+				if (result == null) result = caseSubObjectPropertyExpression(inverseObjectProperty);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -748,6 +753,7 @@ public class OwlSwitch<T> extends Switch<T> {
 			case OwlPackage.DATA_UNION_OF: {
 				DataUnionOf dataUnionOf = (DataUnionOf)theEObject;
 				T result = caseDataUnionOf(dataUnionOf);
+				if (result == null) result = caseDataRange(dataUnionOf);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -806,6 +812,19 @@ public class OwlSwitch<T> extends Switch<T> {
 			case OwlPackage.ANNOTATION_VALUE: {
 				AnnotationValue annotationValue = (AnnotationValue)theEObject;
 				T result = caseAnnotationValue(annotationValue);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OwlPackage.SUB_OBJECT_PROPERTY_EXPRESSION: {
+				SubObjectPropertyExpression subObjectPropertyExpression = (SubObjectPropertyExpression)theEObject;
+				T result = caseSubObjectPropertyExpression(subObjectPropertyExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OwlPackage.OBJECT_PROPERTY_CHAIN: {
+				ObjectPropertyChain objectPropertyChain = (ObjectPropertyChain)theEObject;
+				T result = caseObjectPropertyChain(objectPropertyChain);
+				if (result == null) result = caseSubObjectPropertyExpression(objectPropertyChain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2145,6 +2164,36 @@ public class OwlSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAnnotationValue(AnnotationValue object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sub Object Property Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sub Object Property Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSubObjectPropertyExpression(SubObjectPropertyExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Object Property Chain</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Object Property Chain</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseObjectPropertyChain(ObjectPropertyChain object) {
 		return null;
 	}
 

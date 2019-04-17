@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://www.w3.org/2002/ws/sawsdl/spec/examples/wsdl/ontologies/SampleOntology.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xml:base="http://www.w3.org/2002/ws/sawsdl/spec/examples/wsdl/ontologies/SampleOntology.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="UPC"/>
+  <owl:Class rdf:ID="NumBundles">
+    <owl:equivalentClass>
+      <owl:Class rdf:ID="Quantity"/>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="SKU">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PartNumber"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DueDate">
+    <owl:equivalentClass>
+      <owl:Class rdf:ID="DeliveryDate"/>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#Quantity">
+    <owl:equivalentClass rdf:resource="#NumBundles"/>
+  </owl:Class>
+  <owl:Class rdf:about="#DeliveryDate">
+    <owl:equivalentClass rdf:resource="#DueDate"/>
+  </owl:Class>
+</rdf:RDF>
+

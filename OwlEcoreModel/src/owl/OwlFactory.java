@@ -679,6 +679,15 @@ public interface OwlFactory extends EFactory {
 	AnnotationAssertion createAnnotationAssertion();
 
 	/**
+	 * Returns a new object of class '<em>Object Property Chain</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Object Property Chain</em>'.
+	 * @generated
+	 */
+	ObjectPropertyChain createObjectPropertyChain();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

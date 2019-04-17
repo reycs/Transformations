@@ -1,0 +1,95 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+@prefix dt: <http://www.hl7.org/owl/iso-dt-2.0#> .
+@prefix bridg: <http://www.bridgmodel.org/owl#> .
+
+@prefix : <http://www.w3.org/2013/12/FDA-TA/RheumatoidArthritis#> .
+@prefix core: <http://www.w3.org/2013/12/FDA-TA/core#> .
+@prefix data: <http://www.w3.org/2013/12/FDA-TA/datatypes#> .
+@prefix hl7: <http://hl7.org/owl/metadata#> .
+@prefix ucum: <http://unitsofmeasure.org/ucum-essence.xml#> .
+@prefix evs: <http://a.example/#evs> .
+@base <http://a.example/ns#> .
+
+<http://www.w3.org/2013/12/FDA-TA/RheumatoidArthritis> a owl:Ontology .
+
+hl7:coding a owl:ObjectProperty .
+dt:CDCoding.code a owl:DatatypeProperty .
+dt:CDCoding.codeSystem a owl:DatatypeProperty .
+dt:CDCoding.displayName a owl:DatatypeProperty .
+dt:CDCoding.codeSystemName a owl:DatatypeProperty .
+
+
+core:Observation a owl:Class .
+
+# Definition of RheumatoidFactorObservation
+:RheumatoidFactorObservation 
+  rdfs:subClassOf 
+    # MUST have a LOINC code of 14034-3 or 13930-3
+    [ owl:unionOf (
+      [ owl:onProperty hl7:coding ; owl:someValuesFrom :loinc-Rheumatoid_factor-ACnc-Pt-CSF-Qn ] 
+      [ owl:onProperty hl7:coding ; owl:someValuesFrom :loinc-Rheumatoid_factor-Titr-Pt-Synv_fld-Qn-Aggl ] 
+    ) ] .
+
+# loinc-Rheumatoid_factor-ACnc-Pt-CSF-Qn is anything with a LOINC code of 14034-3.
+:loinc-Rheumatoid_factor-ACnc-Pt-CSF-Qn 
+  rdfs:subClassOf evs:Rheumatoid_factor ;
+  owl:equivalentClass [
+    owl:onProperty hl7:coding ;
+    owl:someValuesFrom [
+      owl:intersectionOf (
+        [ owl:onProperty dt:CDCoding.codeSystem ; owl:hasValue "2.16.840.1.113883.6.1" ]
+        [ owl:onProperty dt:CDCoding.code       ; owl:hasValue "14034-3" ]
+        ) ]
+    ] .
+
+:loinc-Rheumatoid_factor-Titr-Pt-Synv_fld-Qn-Aggl 
+  rdfs:subClassOf evs:Rheumatoid_factor ;
+  owl:equivalentClass [
+    owl:onProperty hl7:coding ;
+    owl:someValuesFrom [
+      owl:intersectionOf (
+        [ owl:onProperty dt:CDCoding.codeSystem ; owl:hasValue "2.16.840.1.113883.6.1" ]
+        [ owl:onProperty dt:CDCoding.code       ; owl:hasValue "13930-3" ]
+        ) ]
+    ] .
+
+
+
+
+# Example instance data -- Sue's baseline measured in cerebral spinal fluid.
+<labObs1234> 
+  # Rheumatoid Factor Observations are defined in the Rheumatoid Artheritis ontology
+  a :RheumatoidFactorObservation ;
+  # All observations have a time
+  core:hasObservationTime "2013-07-07T19:02:00Z"^^xsd:dateTime ;
+  # We reuse the hl7 schema to capture the convention of a code and a code system (à la ISO 21090)
+  hl7:coding [
+    dt:CDCoding.code "14034-3" ; dt:CDCoding.codeSystem "2.16.840.1.113883.6.1" ;
+    dt:CDCoding.displayName "Rheumatoid factor:Arbitrary Concentration:Point in time:Cerebral spinal fluid:Quantitative" ; dt:CDCoding.codeSystemName "LOINC" ] ;
+  # Instance data will of course have results...
+  core:hasResultValue [ data:value 65 ; data:units ucum:u_mL ] .
+
+
+# More instance data using a very different measurement.
+<labObs5678> 
+  a :RheumatoidFactorObservation ;
+  core:hasObservationTime "2012-06-06T18:01:00Z"^^xsd:dateTime ;
+  hl7:coding [
+    dt:CDCoding.code "13930-3" ; dt:CDCoding.codeSystem "2.16.840.1.113883.6.1" ;
+    dt:CDCoding.displayName "Rheumatoid factor:Arbitrary Concentration:Point in time:Cerebral spinal fluid:Quantitative" ; dt:CDCoding.codeSystemName "LOINC" ] ;
+  core:hasResultValue [ data:value 63 ; data:units ucum:u_mL ] .
+
+# PREFIX : <http://www.w3.org/2013/12/FDA-TA/RheumatoidArthritis#>
+# PREFIX hl7: <http://hl7.org/owl/metadata#>
+# SELECT ?subject
+#  WHERE {
+#   ?subject a :RheumatoidFactorObservation ;
+#     hl7:coding [ a <http://a.example/#evsRheumatoid_factor> ]
+#  }
+
+# search for RheumatoidFactorObservation and hl7:coding some <http://a.example/#evsRheumatoid_factor>
+

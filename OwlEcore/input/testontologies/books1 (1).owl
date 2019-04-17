@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rdf:RDF
+    xmlns="http://protege.stanford.edu/swbp/books1.owl#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:p1="http://isbn.nu/089686328"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xml:base="http://protege.stanford.edu/swbp/books1.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="AnimalClass">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </owl:Class>
+  <owl:Class rdf:ID="BookAboutAnimals">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://purl.org/dc/elements/1.1/subject"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#AnimalClass"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://purl.org/dc/elements/1.1/subject">
+    <rdfs:domain rdf:resource="#BookAboutAnimals"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="bookTitle">
+    <rdfs:domain rdf:resource="#BookAboutAnimals"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <AnimalClass rdf:ID="AfricanLion">
+    <rdfs:subClassOf>
+      <AnimalClass rdf:ID="Lion">
+        <rdfs:subClassOf>
+          <AnimalClass rdf:ID="Animal"/>
+        </rdfs:subClassOf>
+      </AnimalClass>
+    </rdfs:subClassOf>
+  </AnimalClass>
+  <BookAboutAnimals rdf:ID="LionsLifeInThePrideBook">
+    <bookTitle rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Lions: Life in the Pride</bookTitle>
+    <dc:subject rdf:resource="#Lion"/>
+    <rdfs:seeAlso rdf:resource="http://isbn.nu/0736809643"/>
+  </BookAboutAnimals>
+  <rdf:Description rdf:about="http://protege.stanford.edu/swbp/1">
+    <owl:sameAs>
+      <BookAboutAnimals rdf:ID="TheAfricanLionBook">
+        <owl:sameAs rdf:resource="http://isbn.nu/089686328X"/>
+        <dc:subject rdf:resource="#AfricanLion"/>
+        <rdfs:seeAlso rdf:resource="http://isbn.nu/089686328X"/>
+        <bookTitle rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >The African Lion</bookTitle>
+      </BookAboutAnimals>
+    </owl:sameAs>
+  </rdf:Description>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 1.1 beta, Build 126)  http://protege.stanford.edu -->

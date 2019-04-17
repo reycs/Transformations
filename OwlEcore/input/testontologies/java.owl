@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?><rdf:RDF xmlns="http://www.w3.org/2007/uwa/context/java.owl#" xmlns:assert="http://www.owl-ontologies.com/assert.owl#" xmlns:common="http://www.w3.org/2007/uwa/context/common.owl#" xmlns:dc="http://purl.org/dc/terms/" xmlns:dcn="http://www.w3.org/2007/uwa/context/deliverycontext.owl#" xmlns:ex="http://www.example.org/2007/uwa/context/examples.owl#" xmlns:hard="http://www.w3.org/2007/uwa/context/hardware.owl#" xmlns:java="http://www.w3.org/2007/uwa/context/java.owl#" xmlns:loc="http://www.w3.org/2007/uwa/context/location.owl#" xmlns:net="http://www.w3.org/2007/uwa/context/network.owl#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:push="http://www.w3.org/2007/uwa/context/push.owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:soft="http://www.w3.org/2007/uwa/context/software.owl#" xmlns:web="http://www.w3.org/2007/uwa/context/web.owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xml:base="http://www.w3.org/2007/uwa/context/java.owl">
+  <common:TermGroup rdf:about="#TermGroup_Java">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These terms model a minimal set of properties and classes that allow to represent the features of a Delivery Context related to the support of Java technologies</rdfs:comment>
+        <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+        <common:termGroupPrefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string">java</common:termGroupPrefix>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Java</rdfs:label>
+      </common:TermGroup>
+  <owl:Class rdf:about="#JavaPlatform">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents Java Platforms</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Java Platform</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_JavaEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#name"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#version"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JavaPlatform</common:relatedUAProfEntity>
+  </owl:Class>
+  <owl:Class rdf:about="#J2meConfiguration">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J2ME Configuration</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_JavaEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#version"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#name"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#jsr"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents J2ME configurations</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#J2meProfile">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J2ME Profile</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#jsr"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#version"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_JavaEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#name"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JavaPlatform</common:relatedUAProfEntity>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents J2ME Profiles</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Context_JavaEntity">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class subsumes all the classes that are related to the Java characteristics of a Delivery Context</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#Context_SoftwareEntity"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Context Java Entity</rdfs:label>
+  </owl:Class>
+  <java:J2meProfile rdf:about="#MIDP20">
+            <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MIDP</common:name>
+            <java:jsr rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JSR-000118</java:jsr>
+            <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MIDP 2.0</rdfs:label>
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mobile Information Device Profile 2.0</rdfs:comment>
+            <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+            <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2.0</common:version>
+            <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://jcp.org/aboutJava/communityprocess/final/jsr118/index.html</common:normativeReference>
+          </java:J2meProfile>
+  <java:J2meConfiguration rdf:about="#CLCD10">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J2ME Connected, Limited Device Configuration</rdfs:comment>
+            <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CLDC 1.0</rdfs:label>
+            <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+            <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+            <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://jcp.org/aboutJava/communityprocess/final/jsr030/index.html</common:normativeReference>
+            <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CLDC</common:name>
+            <java:jsr rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JSR-000030</java:jsr>
+          </java:J2meConfiguration>
+  <java:J2meOptionalPackage rdf:about="#JSR120">
+            <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+            <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://jcp.org/aboutJava/communityprocess/final/jsr120/index2.html</common:normativeReference>
+            <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Informative"/>
+            <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JSR 120</rdfs:label>
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wireless Messaging API</rdfs:comment>
+            <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JSR-120</common:name>
+            <java:jsr rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JSR-000120</java:jsr>
+          </java:J2meOptionalPackage>
+  <owl:Class rdf:about="#J2meOptionalPackage">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents standard optional packages that can run ina J2ME runtime environment</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J2ME Standard Optional Package</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Context_JavaEntity"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#Api"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#jsr"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#JavaRuntimeEnvironment">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents Java Runtime Environments</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Java Runtime Environment</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#RuntimeEnvironment"/>
+    <rdfs:subClassOf rdf:resource="#Context_JavaEntity"/>
+  </owl:Class>
+  <owl:Class rdf:about="#J2meRuntimeEnvironment">
+    <rdfs:subClassOf rdf:resource="#JavaRuntimeEnvironment"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue>
+          <java:JavaPlatform rdf:about="#JavaPlatform_J2ME">
+            <common:informativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://java.sun.com/javame/index.jsp</common:informativeReference>
+            <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+            <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Java ME</rdfs:label>
+            <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</common:version>
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Java Platform, Micro Edition</rdfs:comment>
+            <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Java ME</common:name>
+          </java:JavaPlatform>
+        </owl:hasValue>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#javaPlatforms"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#j2meConfigurations"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#j2meProfiles"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J2ME Runtime Environment</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a J2ME runtime environment</rdfs:comment>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JavaPlatform</common:relatedUAProfEntity>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#javaPlatforms">
+    <rdfs:domain rdf:resource="#JavaRuntimeEnvironment"/>
+    <rdfs:range rdf:resource="#JavaPlatform"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Java Platforms</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Java  Platforms supported by a Java Runtime Environment</rdfs:comment>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#availableJREs">
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#DeviceSoftware"/>
+    <rdfs:range rdf:resource="#JavaRuntimeEnvironment"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Available Java Runtime Environments</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The available Java Runtime Environments</rdfs:comment>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/deliverycontext.owl#component"/>
+    </rdfs:subPropertyOf>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#available"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#j2meProfiles">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Supported J2ME Profiles</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The supported J2ME profiles</rdfs:comment>
+    <rdfs:range rdf:resource="#J2meProfile"/>
+    <rdfs:domain rdf:resource="#J2meRuntimeEnvironment"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#j2meOptionalPackages">
+    <rdfs:domain rdf:resource="#J2meRuntimeEnvironment"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The optional packages that makes available a J2ME runtime environment</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J2ME Optional Packages</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#j2meConfigurations">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Supported J2ME Configurations</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The supported J2ME configurations</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+    <rdfs:domain rdf:resource="#J2meRuntimeEnvironment"/>
+    <rdfs:range rdf:resource="#J2meConfiguration"/>
+  </owl:ObjectProperty>
+  <owl:FunctionalProperty rdf:about="#maxJarSize">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The maximum JAR size for a Java Application supported by a Java Runtime Environment</rdfs:comment>
+    <rdfs:domain rdf:resource="#JavaRuntimeEnvironment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedLong"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximum JAR size</rdfs:label>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JavaMaxDownloadJarSize</common:relatedUAProfEntity>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#defaultJRE">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#defaultComponent"/>
+    <rdfs:subPropertyOf rdf:resource="#availableJREs"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Default Java Runtime Environment</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The default Java Runtime Environment</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#DeviceSoftware"/>
+    <rdfs:range rdf:resource="#JavaRuntimeEnvironment"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#jsr">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The JSR specification id that corresponds to a Java Technology</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JSR</rdfs:label>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#J2meProfile"/>
+          <owl:Class rdf:about="#J2meConfiguration"/>
+          <owl:Class rdf:about="#J2meOptionalPackage"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#id"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#totalMemoryForJavaApps">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JavaMaxMemorySize</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indicates the device's maximum size in bytes for storing Java applications</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Device"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedLong"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#maxHeapSize">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The maximum heap size in bytes supported by a Java Runtime Environment</rdfs:comment>
+    <rdfs:domain rdf:resource="#JavaRuntimeEnvironment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedLong"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximum Heap Size</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <common:AllDisjointSet rdf:about="#AllSibling_Disjoint">
+    <common:disjointSet>
+      <common:AllDisjointSet rdf:about="#Sibling_Disjoint2">
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">java:JavaRuntimeEnvironment</common:disjointClass>
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">java:J2meOptionalPackage</common:disjointClass>
+      </common:AllDisjointSet>
+    </common:disjointSet>
+    <common:disjointSet>
+      <common:AllDisjointSet rdf:about="#Sibling_Disjoint">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Java Disjoint</rdfs:label>
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">java:J2meConfiguration</common:disjointClass>
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">java:J2meProfile</common:disjointClass>
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">java:JavaPlatform</common:disjointClass>
+      </common:AllDisjointSet>
+    </common:disjointSet>
+  </common:AllDisjointSet>
+  <java:J2meOptionalPackage rdf:about="#JSR179">
+                <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JSR-179</common:name>
+                <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JSR-179</rdfs:comment>
+                <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+              </java:J2meOptionalPackage>
+  <java:J2meProfile rdf:about="#MIDP10">
+                <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mobile Information Device Profile (MIDP)</rdfs:comment>
+                <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MIDP 1.0</rdfs:label>
+                <java:jsr rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JSR-000037</java:jsr>
+                <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MIDP</common:name>
+                <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://jcp.org/aboutJava/communityprocess/final/jsr037/index.html</common:normativeReference>
+                <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+                <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+              </java:J2meProfile>
+  <java:JavaPlatform rdf:about="#JavaPlatform_7">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J2EE</common:name>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.4</common:version>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J2EE 1.4</rdfs:comment>
+  </java:JavaPlatform>
+  <java:JavaPlatform rdf:about="#JavaPlatform_5">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J2SE</common:name>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.4</common:version>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J2SE 1.4</rdfs:comment>
+  </java:JavaPlatform>
+  <java:JavaPlatform rdf:about="#JavaPlatform_3">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J2SE 1.2</rdfs:comment>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.2</common:version>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J2SE</common:name>
+  </java:JavaPlatform>
+  <java:JavaPlatform rdf:about="#JavaPlatform_4">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J2SE</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J2SE 1.3</rdfs:comment>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.3</common:version>
+  </java:JavaPlatform>
+  <java:JavaPlatform rdf:about="#JavaPlatform_2">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J2SE</common:name>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.1</common:version>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J2SE 1.1</rdfs:comment>
+  </java:JavaPlatform>
+  <java:J2meOptionalPackage rdf:about="#JSR82">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JSR-82</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JSR-82</rdfs:comment>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+  </java:J2meOptionalPackage>
+  <java:J2meConfiguration rdf:about="#CLDC11">
+    <java:jsr rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JSR-000139</java:jsr>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CLDC</common:name>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CLDC 1.1</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Connected Limited Device Configuration 1.1</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://jcp.org/aboutJava/communityprocess/final/jsr139/index.html</common:normativeReference>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.1</common:version>
+  </java:J2meConfiguration>
+  <java:J2meOptionalPackage rdf:about="#JSR135">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JSR-135</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JSR-135</rdfs:comment>
+  </java:J2meOptionalPackage>
+</rdf:RDF>

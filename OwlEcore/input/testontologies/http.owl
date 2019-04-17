@@ -1,0 +1,286 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY http "http://w3.org/2001/tag/awwsw/http#" >
+    <!ENTITY powder-s "http://www.w3.org/2007/05/powder-s#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY httph "http://w3.org/2001/tag/awwsw/http#httph:" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://w3.org/2001/tag/awwsw/http#"
+     xml:base="http://w3.org/2001/tag/awwsw/http"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:http="http://w3.org/2001/tag/awwsw/http#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:powder-s="http://www.w3.org/2007/05/powder-s#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:httph="&http;httph:"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about=""/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3.org/2001/tag/awwsw/http#corresponds_to -->
+
+    <owl:ObjectProperty rdf:about="#corresponds_to">
+        <rdfs:label xml:lang="en">corresponds to</rdfs:label>
+        <rdfs:comment
+            >This property is supposed to capture whatever &quot;corresponds to&quot; means in HTTP/1.1 and HTTPbis. The term is not defined and if it has any meaning at all the meaning must be inferred from the way HTTP works and is used.
+
+This relation is time-varying and shouldn&#39;t be used in time-aware applications.</rdfs:comment>
+        <rdfs:domain rdf:resource="#ContentEntity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3.org/2001/tag/awwsw/http#hasContentLocation -->
+
+    <owl:ObjectProperty rdf:about="#hasContentLocation">
+        <rdfs:comment
+            >HTTP resource R1 hasContentLocation HTTP resource R2 means that H2 correspondences lead to correspondences of R1, similarly to a 302 redirect.
+
+This is interesting. I need to learn how this is used in the protocol.
+
+As this is time-varying this property probably ought to be tied to some particular Correspondence. In this form it has to mean &quot;there is/was/will be some time t at which ...&quot;.</rdfs:comment>
+        <owl:deprecated>maybe</owl:deprecated>
+        <rdfs:domain rdf:resource="#IetfResource"/>
+        <rdfs:range rdf:resource="#IetfResource"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3.org/2001/tag/awwsw/http#ofSecondResource -->
+
+    <owl:ObjectProperty rdf:about="#ofSecondResource">
+        <rdfs:label
+            >of second resource</rdfs:label>
+        <rdfs:domain rdf:resource="#Coincidence"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3.org/2001/tag/awwsw/http#ofWaRepresentation -->
+
+    <owl:ObjectProperty rdf:about="#ofWaRepresentation">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label
+            >of content entity</rdfs:label>
+        <rdfs:comment
+            >C (a Correspondence) hasWaRepresentation R toResource Z means R corresponds to Z during C&#39;s lifetime.</rdfs:comment>
+        <rdfs:range rdf:resource="#ContentEntity"/>
+        <rdfs:domain rdf:resource="#Correspondence"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3.org/2001/tag/awwsw/http#residesWith -->
+
+    <owl:ObjectProperty rdf:about="#residesWith">
+        <rdfs:label>coincides with</rdfs:label>
+        <rdfs:comment
+            >For 302 and 307, HTTP says &quot;The requested resource resides temporarily under a different URI.&quot;
+
+Let&#39;s interpret this to mean that content entities that currently correspond to the second (redirected-to) resource also correspond to the target entity.
+
+Other things we would learn about the second resource via HTTP may also propagate as a consequence, such as coincidences and described-by relationships.
+
+This is a time-sensitive relationship and shouldn&#39;t be asserted in RDF graphs that are time-aware.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3.org/2001/tag/awwsw/http#toResource -->
+
+    <owl:ObjectProperty rdf:about="#toResource">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>to resource</rdfs:label>
+        <rdfs:comment
+            >Each correspondence is an aspect of some particular resource, much as the redness of a wall might be an aspect of a red wall. (Compare BFO &quot;inheres_in&quot;.) This relation connects a correspondence with the resource it belongs to.</rdfs:comment>
+        <rdfs:domain rdf:resource="#Endurant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2007/05/powder-s#describedby -->
+
+    <owl:ObjectProperty rdf:about="&powder-s;describedby">
+        <rdfs:label>is described by</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="&xsd;anyURI"
+            >http://www.w3.org/TR/powder-dr/#directDescript</rdfs:seeAlso>
+        <rdfs:comment
+            >Per POWDER - a resource is described by a document, which plays the role of description resource for that document.
+
+Presumably one would learn of such relationships from the outcome of the LRDD protocol or a 303 redirect.
+
+The range is POWDER documents, so this may have limited applicability in our situation.  Better to use foaf:topic perhaps.
+
+This is a time-sensitive property and should not be used in time-aware applications.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3.org/2001/tag/awwsw/http#hasContentLength -->
+
+    <owl:DatatypeProperty rdf:about="#hasContentLength">
+        <rdfs:label
+            >has content length</rdfs:label>
+        <rdfs:comment
+            >The content, after (or is it before?) decoding according to content-transfer-encoding, has this many octets.</rdfs:comment>
+        <rdfs:domain rdf:resource="#ContentEntity"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3.org/2001/tag/awwsw/http#hasEntityBody -->
+
+    <owl:DatatypeProperty rdf:about="#hasEntityBody">
+        <rdfs:label
+            >has entity-body (part)</rdfs:label>
+        <rdfs:comment
+            >An HTTP message can have an entity, and an entity can have an entity-body (which is the message-body with the transfer-coding applied). The entity-body is basically a string, but of course it can be quite long.
+
+Not clear to me whether this should be a string (after the Content-Transfer-Encoding is applied to convert the octet stream to a character stream) or if it should be the octet sequence. I expect the former, but note that Content-MD5 is calculated based on the raw octet sequence.</rdfs:comment>
+        <rdfs:domain rdf:resource="#ContentEntity"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3.org/2001/tag/awwsw/http#heldAt -->
+
+    <owl:DatatypeProperty rdf:about="#heldAt">
+        <rdfs:label>held at</rdfs:label>
+        <rdfs:comment
+            >the correspondence (of its wa-representation to its resource) held at the given time</rdfs:comment>
+        <rdfs:domain rdf:resource="#Correspondence"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3.org/2001/tag/awwsw/http#holdsUntil -->
+
+    <owl:DatatypeProperty rdf:about="#holdsUntil">
+        <rdfs:label>holds until</rdfs:label>
+        <rdfs:comment
+            >&#39;Correspondence C holds until time T&#39; means that C&#39;s content entity will correspond to C&#39;s target resource up until just before time T.</rdfs:comment>
+        <rdfs:domain rdf:resource="#Correspondence"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3.org/2001/tag/awwsw/http#Coincidence -->
+
+    <owl:Class rdf:about="#Coincidence">
+        <rdfs:subClassOf rdf:resource="#Endurant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3.org/2001/tag/awwsw/http#ContentEntity -->
+
+    <owl:Class rdf:about="#ContentEntity">
+        <rdfs:label>Content entity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Principal"/>
+        <rdfs:comment
+            >HTTP/1.1 has &quot;The information transferred as the payload of a request or response. An entity consists of metainformation in the form of entity-header fields and content in the form of an entity-body...&quot;
+
+We leave open the possibility that there are content entities that would be transmitted by a protocol other than HTTP that possess metainformation that is not expressible in HTTP.
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://w3.org/2001/tag/awwsw/http#Correspondence -->
+
+    <owl:Class rdf:about="#Correspondence">
+        <rdfs:label>Correspondence</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Endurant"/>
+        <owl:disjointWith rdf:resource="#IetfResource"/>
+        <rdfs:seeAlso rdf:datatype="&xsd;anyURI"
+            >http://lists.w3.org/Archives/Public/public-awwsw/2009Jun/0036.html</rdfs:seeAlso>
+        <rdfs:seeAlso rdf:datatype="&xsd;anyURI"
+            >http://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-06#section-8.2.1</rdfs:seeAlso>
+        <rdfs:comment
+            >A &#39;correspondence&#39; here means a correspondence between an HTTP resource and an HTTP entity, of the sort [not] implied in the HTTP spec.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://w3.org/2001/tag/awwsw/http#Endurant -->
+
+    <owl:Class rdf:about="#Endurant"/>
+    
+
+
+    <!-- http://w3.org/2001/tag/awwsw/http#IetfResource -->
+
+    <owl:Class rdf:about="#IetfResource">
+        <rdfs:label
+            >IETF resource (sensu RFC 3986)</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment
+            >anything that can be identified by a URI</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://w3.org/2001/tag/awwsw/http#Principal -->
+
+    <owl:Class rdf:about="#Principal"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+

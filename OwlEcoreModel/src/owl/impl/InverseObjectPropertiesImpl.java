@@ -2,14 +2,11 @@
  */
 package owl.impl;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.util.EList;
-
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import owl.InverseObjectProperties;
 import owl.ObjectPropertyExpression;
 import owl.OwlPackage;
@@ -22,22 +19,31 @@ import owl.OwlPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link owl.impl.InverseObjectPropertiesImpl#getInverseObjectProperties <em>Inverse Object Properties</em>}</li>
+ *   <li>{@link owl.impl.InverseObjectPropertiesImpl#getFirstProperty <em>First Property</em>}</li>
+ *   <li>{@link owl.impl.InverseObjectPropertiesImpl#getSecondProperty <em>Second Property</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class InverseObjectPropertiesImpl extends ObjectPropertyAxiomImpl implements InverseObjectProperties {
 	/**
-	 * The cached value of the '{@link #getInverseObjectProperties() <em>Inverse Object Properties</em>}' reference list.
+	 * The cached value of the '{@link #getFirstProperty() <em>First Property</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInverseObjectProperties()
+	 * @see #getFirstProperty()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ObjectPropertyExpression> inverseObjectProperties;
-
+	protected ObjectPropertyExpression firstProperty;
+	/**
+	 * The cached value of the '{@link #getSecondProperty() <em>Second Property</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSecondProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected ObjectPropertyExpression secondProperty;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -62,11 +68,75 @@ public class InverseObjectPropertiesImpl extends ObjectPropertyAxiomImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ObjectPropertyExpression> getInverseObjectProperties() {
-		if (inverseObjectProperties == null) {
-			inverseObjectProperties = new EObjectResolvingEList<ObjectPropertyExpression>(ObjectPropertyExpression.class, this, OwlPackage.INVERSE_OBJECT_PROPERTIES__INVERSE_OBJECT_PROPERTIES);
+	public ObjectPropertyExpression getFirstProperty() {
+		if (firstProperty != null && firstProperty.eIsProxy()) {
+			InternalEObject oldFirstProperty = (InternalEObject)firstProperty;
+			firstProperty = (ObjectPropertyExpression)eResolveProxy(oldFirstProperty);
+			if (firstProperty != oldFirstProperty) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.INVERSE_OBJECT_PROPERTIES__FIRST_PROPERTY, oldFirstProperty, firstProperty));
+			}
 		}
-		return inverseObjectProperties;
+		return firstProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ObjectPropertyExpression basicGetFirstProperty() {
+		return firstProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFirstProperty(ObjectPropertyExpression newFirstProperty) {
+		ObjectPropertyExpression oldFirstProperty = firstProperty;
+		firstProperty = newFirstProperty;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.INVERSE_OBJECT_PROPERTIES__FIRST_PROPERTY, oldFirstProperty, firstProperty));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ObjectPropertyExpression getSecondProperty() {
+		if (secondProperty != null && secondProperty.eIsProxy()) {
+			InternalEObject oldSecondProperty = (InternalEObject)secondProperty;
+			secondProperty = (ObjectPropertyExpression)eResolveProxy(oldSecondProperty);
+			if (secondProperty != oldSecondProperty) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OwlPackage.INVERSE_OBJECT_PROPERTIES__SECOND_PROPERTY, oldSecondProperty, secondProperty));
+			}
+		}
+		return secondProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ObjectPropertyExpression basicGetSecondProperty() {
+		return secondProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSecondProperty(ObjectPropertyExpression newSecondProperty) {
+		ObjectPropertyExpression oldSecondProperty = secondProperty;
+		secondProperty = newSecondProperty;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OwlPackage.INVERSE_OBJECT_PROPERTIES__SECOND_PROPERTY, oldSecondProperty, secondProperty));
 	}
 
 	/**
@@ -77,8 +147,12 @@ public class InverseObjectPropertiesImpl extends ObjectPropertyAxiomImpl impleme
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OwlPackage.INVERSE_OBJECT_PROPERTIES__INVERSE_OBJECT_PROPERTIES:
-				return getInverseObjectProperties();
+			case OwlPackage.INVERSE_OBJECT_PROPERTIES__FIRST_PROPERTY:
+				if (resolve) return getFirstProperty();
+				return basicGetFirstProperty();
+			case OwlPackage.INVERSE_OBJECT_PROPERTIES__SECOND_PROPERTY:
+				if (resolve) return getSecondProperty();
+				return basicGetSecondProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -92,9 +166,11 @@ public class InverseObjectPropertiesImpl extends ObjectPropertyAxiomImpl impleme
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OwlPackage.INVERSE_OBJECT_PROPERTIES__INVERSE_OBJECT_PROPERTIES:
-				getInverseObjectProperties().clear();
-				getInverseObjectProperties().addAll((Collection<? extends ObjectPropertyExpression>)newValue);
+			case OwlPackage.INVERSE_OBJECT_PROPERTIES__FIRST_PROPERTY:
+				setFirstProperty((ObjectPropertyExpression)newValue);
+				return;
+			case OwlPackage.INVERSE_OBJECT_PROPERTIES__SECOND_PROPERTY:
+				setSecondProperty((ObjectPropertyExpression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -108,8 +184,11 @@ public class InverseObjectPropertiesImpl extends ObjectPropertyAxiomImpl impleme
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OwlPackage.INVERSE_OBJECT_PROPERTIES__INVERSE_OBJECT_PROPERTIES:
-				getInverseObjectProperties().clear();
+			case OwlPackage.INVERSE_OBJECT_PROPERTIES__FIRST_PROPERTY:
+				setFirstProperty((ObjectPropertyExpression)null);
+				return;
+			case OwlPackage.INVERSE_OBJECT_PROPERTIES__SECOND_PROPERTY:
+				setSecondProperty((ObjectPropertyExpression)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -123,8 +202,10 @@ public class InverseObjectPropertiesImpl extends ObjectPropertyAxiomImpl impleme
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OwlPackage.INVERSE_OBJECT_PROPERTIES__INVERSE_OBJECT_PROPERTIES:
-				return inverseObjectProperties != null && !inverseObjectProperties.isEmpty();
+			case OwlPackage.INVERSE_OBJECT_PROPERTIES__FIRST_PROPERTY:
+				return firstProperty != null;
+			case OwlPackage.INVERSE_OBJECT_PROPERTIES__SECOND_PROPERTY:
+				return secondProperty != null;
 		}
 		return super.eIsSet(featureID);
 	}

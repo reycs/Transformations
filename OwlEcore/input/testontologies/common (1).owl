@@ -1,0 +1,826 @@
+<?xml version="1.0" encoding="UTF-8"?><rdf:RDF xmlns="http://www.w3.org/2007/uwa/context/common.owl#" xmlns:assert="http://www.owl-ontologies.com/assert.owl#" xmlns:common="http://www.w3.org/2007/uwa/context/common.owl#" xmlns:dc="http://purl.org/dc/terms/" xmlns:dcn="http://www.w3.org/2007/uwa/context/deliverycontext.owl#" xmlns:ex="http://www.example.org/2007/uwa/context/examples.owl#" xmlns:hard="http://www.w3.org/2007/uwa/context/hardware.owl#" xmlns:java="http://www.w3.org/2007/uwa/context/java.owl#" xmlns:loc="http://www.w3.org/2007/uwa/context/location.owl#" xmlns:net="http://www.w3.org/2007/uwa/context/network.owl#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:push="http://www.w3.org/2007/uwa/context/push.owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:soft="http://www.w3.org/2007/uwa/context/software.owl#" xmlns:web="http://www.w3.org/2007/uwa/context/web.owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xml:base="http://www.w3.org/2007/uwa/context/common.owl">
+  <common:NormativeStatus rdf:about="#Utility">
+            <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Utility</rdfs:label>
+            <common:normativeStatus rdf:resource="#Utility"/>
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This instance represents the "utility" status</rdfs:comment>
+          </common:NormativeStatus>
+  <common:TermGroup rdf:about="#TermGroup_Common">
+        <common:normativeStatus rdf:resource="#Utility"/>
+        <common:termGroupPrefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common</common:termGroupPrefix>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">They are a set of general purpose, generic classes, properties and instances which are used to support the modelling of the different aspects of a Delivery Context</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Common</rdfs:label>
+      </common:TermGroup>
+  <owl:Class rdf:about="#FeatureRestriction">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents feature restrictions related to an implementation</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Feature Restriction</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#id"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_CommonEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#name"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ContentType">
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.iana.org/assignments/media-types/</common:normativeReference>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.ietf.org/rfc/rfc2046.txt</common:normativeReference>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Content Type</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class that represents content types,  the combination of a MIME media type, subtype and optional parameters</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_CommonEntity"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#CharacterSet">
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CcppAccept-Charset</common:relatedUAProfEntity>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OutputCharset</common:relatedUAProfEntity>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InputCharset</common:relatedUAProfEntity>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#charsetName"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_CommonEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents specific character sets officially identified by IANA</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Character Set</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#TimeZone">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A time zone is an identifier for a specific location or region which translates into a combination of rules for calculating an UTC offset</rdfs:comment>
+    <common:informativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/TR/2005/NOTE-timezone-20051013/</common:informativeReference>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:about="#tzName"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:about="#timeZoneString"/>
+            </owl:onProperty>
+            <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+          </owl:Restriction>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_CommonEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Timezone</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#Context_CommonEntity">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Context Common Entity</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class subsumes all the general purpose classes</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Context_Entity"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <common:UriScheme rdf:about="#UriScheme_HTTP">
+            <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HTTP Schema</common:name>
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This instance represents the "http" URI Scheme</rdfs:comment>
+            <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.ietf.org/rfc/rfc2616.txt</common:normativeReference>
+            <common:uriSchemeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http</common:uriSchemeName>
+            <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HTTP Scheme</rdfs:label>
+            <common:normativeStatus>
+              <common:NormativeStatus rdf:about="#Normative">
+                <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Normative</rdfs:label>
+                <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This isntance represents a "normative" status</rdfs:comment>
+                <common:normativeStatus rdf:resource="#Utility"/>
+              </common:NormativeStatus>
+            </common:normativeStatus>
+          </common:UriScheme>
+  <owl:Class rdf:about="#Language">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Language</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#languageTag"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Context_CommonEntity"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#languageCode"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents languages</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#NormativeStatus">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Normative Status</rdfs:label>
+    <common:normativeStatus rdf:resource="#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents the normative status of an entity in the ontology. It is used  as an auxiliary element for automatic documentation generation</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Associated_Entity"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <common:NormativeStatus rdf:about="#Normative"/>
+          <common:NormativeStatus rdf:about="#Informative">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This instance represents an "informative" status</rdfs:comment>
+            <common:normativeStatus rdf:resource="#Utility"/>
+            <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Informative</rdfs:label>
+          </common:NormativeStatus>
+          <common:NormativeStatus rdf:about="#Utility"/>
+          <common:NormativeStatus rdf:about="#PlaceHolder">
+            <common:normativeStatus rdf:resource="#Utility"/>
+            <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Place Holder</rdfs:label>
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This isntance represents "Place Holder" status</rdfs:comment>
+          </common:NormativeStatus>
+        </owl:oneOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Feature">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Feature</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Context_CommonEntity"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#name"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#id"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents features, which are distinguishing characteristics of an item</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#ApplicationProtocol">
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Push-SupportedBearers</common:relatedUAProfEntity>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#id"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Context_CommonEntity"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Application Protocol</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents application-level protocols</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#InputModality">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents input modalities</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input Modality</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Modality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#TransferEncoding">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents transfer encoding formats as specified by RFC 2045 and registered with IANA</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Transfer Encoding</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#transferEncodingName"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Context_CommonEntity"/>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CcppAccept-Encoding</common:relatedUAProfEntity>
+  </owl:Class>
+  <owl:Class rdf:about="#Vendor">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#name"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Context_CommonEntity"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vendor</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a vendor, i.e an entity that commercializes a product</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#AllDisjointSet">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is an utility class for representing groups of classes that are pairwise disjoint, following the approach specified by the OWL Abstract Syntax. This class has been created as a workaround to the absence in OWL 1 of an specific construct for establishing class disjointness between groups of classes</rdfs:comment>
+    <common:normativeStatus rdf:resource="#Utility"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Associated_Entity"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:DatatypeProperty rdf:about="#disjointClass"/>
+            </owl:onProperty>
+            <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#disjointSet"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#AllDisjointSet"/>
+          </owl:Restriction>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">All Disjoint Set</rdfs:label>
+    <common:informativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/TR/2004/REC-owl-semantics-20040210/syntax.html#2.3.2.1</common:informativeReference>
+  </owl:Class>
+  <owl:Class rdf:about="#OutputModality">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents output modalities</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Modality"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output Modality</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#SoundMode">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#name"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Context_CommonEntity"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#id"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sound Mode</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents the sound modes that can be chosen by the user of a device</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#UriScheme">
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://tools.ietf.org/html/rfc3986</common:normativeReference>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents URI Schemas as per RFC 3986</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">URI Schema</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Context_CommonEntity"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#uriSchemeName"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Modality">
+    <common:informativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/TR/2003/NOTE-mmi-reqs-20030108/#modality</common:informativeReference>
+    <rdfs:subClassOf rdf:resource="#Context_CommonEntity"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#id"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Modality</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents modalities, the type of communication channel used for interaction. It also covers the way an idea is expressed or perceived, or the manner in which an action is performed.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#TermGroup">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is an utility class that serves to represent the different term groups that compose the Delivery Context Ontology</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Term Group</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Associated_Entity"/>
+    <common:normativeStatus rdf:resource="#Utility"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#vendor">
+    <common:relatedDDRCoreVoc rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vendor</common:relatedDDRCoreVoc>
+    <rdfs:range rdf:resource="#Vendor"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents a vendor</rdfs:comment>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vendor</common:relatedUAProfEntity>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BrowserVendor</common:relatedUAProfEntity>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CPU</common:relatedUAProfEntity>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OSVendor</common:relatedUAProfEntity>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vendor</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#available">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#supports"/>
+    </rdfs:subPropertyOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A generic property that represents what Context Entities makes available a Context Entity</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Available</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#default">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#supports"/>
+    </rdfs:subPropertyOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Default</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a generic property that can be used to represent the relationship between a Context Entity and a default element for such entity</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#timeZone">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Time Zone</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents a time zone</rdfs:comment>
+    <rdfs:range rdf:resource="#TimeZone"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#supports">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A generic property that indicates what is supported by a Context Entity</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Supports</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Context_Entity"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Context_Entity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#restrictions">
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Context_Entity"/>
+    <rdfs:range rdf:resource="#FeatureRestriction"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Restrictions</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The restrictions presented by a context entity</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#disjointSet">
+    <rdfs:range rdf:resource="#AllDisjointSet"/>
+    <common:normativeStatus rdf:resource="#Utility"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Disjoint Set</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property is aimed at linking groups of disjoint classes between them</rdfs:comment>
+    <rdfs:domain rdf:resource="#AllDisjointSet"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#active">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents a generic relationship between a Context Entity and other Context Entities which are  active in the scope of the former. For instance, the active Bluetooth Profile of a Device or the active Font within an Application</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="#available"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Active</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="#contentTypeName">
+    <rdfs:domain rdf:resource="#ContentType"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Content Type Name</rdfs:label>
+    <rdfs:subPropertyOf>
+      <owl:FunctionalProperty rdf:about="#id"/>
+    </rdfs:subPropertyOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property identifies univoquely a content type. It is  the concatenation of the MIME Media type, subtype and optional parameters  according to the syntax specified on RFC 2045, section 5.1</rdfs:comment>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://tools.ietf.org/html/rfc2045#section-5.1</common:normativeReference>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#charsetName">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The name of a charset officially assigned by IANA</rdfs:comment>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.iana.org/assignments/character-sets</common:normativeReference>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Character Set Name</rdfs:label>
+    <rdfs:domain rdf:resource="#CharacterSet"/>
+    <rdfs:subPropertyOf>
+      <owl:FunctionalProperty rdf:about="#id"/>
+    </rdfs:subPropertyOf>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#transferEncodingName">
+    <rdfs:subPropertyOf>
+      <owl:FunctionalProperty rdf:about="#id"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#TransferEncoding"/>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.iana.org/assignments/transfer-encodings/</common:normativeReference>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Transfer Encoding Name</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The name of a transfer encoding as officially defined by IANA</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#disjointClass">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Disjoint Class</rdfs:label>
+    <common:normativeStatus rdf:resource="#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property contains the URI of a disjoint class in a AllDisjointSet. The URI is represented following the CURIE notation</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#AllDisjointSet"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#languageCode">
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.sil.org/iso639-3/codes.asp</common:normativeReference>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">It represents a language code according to ISO 639 Part 3</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Language"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Language Code</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#name">
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BrowserName</common:relatedUAProfEntity>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OSName</common:relatedUAProfEntity>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Context_Entity"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The name of a delivery context entity</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Name</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#restrictionValue">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The value of a feature restriction</rdfs:comment>
+    <rdfs:domain rdf:resource="#FeatureRestriction"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Restriction Value</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anySimpleType"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#uriSchemeName">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">URI Scheme Name</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The name of a URI scheme as officially defined by IANA</rdfs:comment>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.iana.org/assignments/uri-schemes.html</common:normativeReference>
+    <rdfs:subPropertyOf>
+      <owl:FunctionalProperty rdf:about="#id"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#UriScheme"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:about="#serialNumber">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf>
+      <owl:FunctionalProperty rdf:about="#id"/>
+    </rdfs:subPropertyOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Serial Number</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The serial number of something</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#standardNumber">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a generic property that holds a  machine-readable string that identifies univoquely an standard, for example,  EN 302 409 or TS 102 221</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Standard Number</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#countryCode">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:subPropertyOf>
+      <owl:FunctionalProperty rdf:about="#id"/>
+    </rdfs:subPropertyOf>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.iso.org/iso/list-en1-semic-2.txt</common:normativeReference>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Country Code</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents a country code as per ISO 3166-1 alpha 3, so the country code is composed by a three letter code</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#pixelAspectRatio">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The pixel aspect ratio as a decimal value, for example 1.33 for a 4:3 aspect. The pixel aspect ratio is the ratio of the resolution width in pixels, to the resolution height in pixels</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pixel Aspect Ratio</rdfs:label>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PixelAspectRatio</common:relatedUAProfEntity>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#id">
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Context_Entity"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A machine-readable alphanumeric string that univoquely identifies a Context Entity</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Id</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#resolutionHeight">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The total number of addressable pixels in the vertical direction of a rectangular element (such as Camera, Display, Image, Video, ...) when held in its default orientation</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Resolution Height</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScreenSize</common:relatedUAProfEntity>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <common:relatedDDRCoreVoc rdf:datatype="http://www.w3.org/2001/XMLSchema#string">displayHeight</common:relatedDDRCoreVoc>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#version">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The version number assigned to something by its vendor</rdfs:comment>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HtmlVersion</common:relatedUAProfEntity>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XhtmlVersion</common:relatedUAProfEntity>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JavaScriptVersion</common:relatedUAProfEntity>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JVMVersion</common:relatedUAProfEntity>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WmlVersion</common:relatedUAProfEntity>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WmlScriptVersion</common:relatedUAProfEntity>
+    <common:relatedDDRCoreVoc rdf:datatype="http://www.w3.org/2001/XMLSchema#string">version</common:relatedDDRCoreVoc>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WapVersion</common:relatedUAProfEntity>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BrowserVersion</common:relatedUAProfEntity>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WtaVersion</common:relatedUAProfEntity>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Version</rdfs:label>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OSVersion</common:relatedUAProfEntity>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#normativeStatus">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This annotation property indicates the normative status of an entity in the ontology. The  criteria used is that classes and properties are normative by default. On the other hand instances are not normative by default</rdfs:comment>
+    <common:normativeStatus rdf:resource="#Utility"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Normative Status</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Context_Entity"/>
+    <rdfs:range rdf:resource="#NormativeStatus"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#timeZoneString">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Time Zone String</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property is a string that denotes the timezone as per the rules defined by POSIX 1003.1 in Section 8.3</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#TimeZone"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#normativeURI">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Normative URI</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property holds a URI that points to the normative specification of a software technology. One example are the estable  URIs that are associated to W3C Recommendations</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#Context_SoftwareEntity"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#languageTag">
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.ietf.org/rfc/rfc4646.txt</common:normativeReference>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#Language"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#id"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A language tag according to the rules specified by RFC 4646</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Language Tag</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#resolutionWidth">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <common:relatedDDRCoreVoc rdf:datatype="http://www.w3.org/2001/XMLSchema#string">displayWidth</common:relatedDDRCoreVoc>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScreenSize</common:relatedUAProfEntity>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">resolutionWidth</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The total number of addressable pixels in the horizontal direction of a rectangular entity (such as Camera, Display, Image, Video, ...) when held in its default orientation. The Property does not apply to entities that are not rectangular or square</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#tzName">
+    <rdfs:domain rdf:resource="#TimeZone"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TZ Name</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the name of a Zone entry in the database commonly referred  to as the TZ database.  Specifically, in the database's  textual form,  the string refers to the name field of a zone line</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#model">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The model identification assigned to something by its vendor</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Model</rdfs:label>
+    <common:relatedDDRCoreVoc rdf:datatype="http://www.w3.org/2001/XMLSchema#string">model</common:relatedDDRCoreVoc>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CPU</common:relatedUAProfEntity>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Model</common:relatedUAProfEntity>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#restrictedElement">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The element to which a restriction applies</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Restricted Element</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#FeatureRestriction"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#soundMode">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the sound mode currently setted on a device</rdfs:comment>
+    <rdfs:range rdf:resource="#SoundMode"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Device"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sound Mode</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:AnnotationProperty rdf:about="#normativeReference">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">normativeReference</rdfs:label>
+    <common:normativeStatus rdf:resource="#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This annotation property serves for indicating normative references for an entity in the ontology. It can be used in order to support the (automatic) documentation generation process</rdfs:comment>
+  </owl:AnnotationProperty>
+  <common:UriScheme rdf:about="#UriSchema_34">
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+        <common:uriSchemeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mailto</common:uriSchemeName>
+      </common:UriScheme>
+  <common:CharacterSet rdf:about="#UTF-8">
+        <common:charsetName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UTF-8</common:charsetName>
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UTF-8</common:name>
+      </common:CharacterSet>
+  <common:ApplicationProtocol rdf:about="#ApplicationProtocol_23">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FTP</rdfs:comment>
+        <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__FTP</common:id>
+        <common:normativeStatus rdf:resource="#Utility"/>
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FTP</common:name>
+      </common:ApplicationProtocol>
+  <common:UriScheme rdf:about="#UriSchema_32">
+        <common:uriSchemeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tel</common:uriSchemeName>
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+      </common:UriScheme>
+  <common:TransferEncoding rdf:about="#TransferEncoding_Base64">
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">base64</common:name>
+        <common:transferEncodingName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">base64</common:transferEncodingName>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The base 64 transfer encoding format as specified in RFC4289</rdfs:comment>
+      </common:TransferEncoding>
+  <common:TransferEncoding rdf:about="#TransferEncoding_7bit">
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+        <common:transferEncodingName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7bit</common:transferEncodingName>
+        <common:normativeStatus rdf:resource="#Utility"/>
+      </common:TransferEncoding>
+  <common:ApplicationProtocol rdf:about="#ApplicationProtocol_24">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HTTP</rdfs:comment>
+        <common:normativeStatus rdf:resource="#Utility"/>
+        <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__HTTP</common:id>
+      </common:ApplicationProtocol>
+  <common:CharacterSet rdf:about="#CharacterSet_ISO-8859-1">
+        <common:charsetName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ISO_8859-1:1987</common:charsetName>
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ISO-8859-1</common:name>
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ANSI_X3.4-1986</common:name>
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">iso-ir-6</common:name>
+      </common:CharacterSet>
+  <common:ApplicationProtocol rdf:about="#ApplicationProtocol_22">
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HTTPS</common:name>
+        <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__HTTPS</common:id>
+        <common:normativeStatus rdf:resource="#Utility"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HTTPS</rdfs:comment>
+      </common:ApplicationProtocol>
+  <common:ApplicationProtocol rdf:about="#ApplicationProtocol_26">
+        <common:normativeStatus rdf:resource="#Utility"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WSP Connection Oriented</rdfs:comment>
+        <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__WSP-CO</common:id>
+      </common:ApplicationProtocol>
+  <common:TransferEncoding rdf:about="#TransferEncoding_8bit">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8bit</common:name>
+    <common:transferEncodingName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8bit</common:transferEncodingName>
+  </common:TransferEncoding>
+  <owl:AnnotationProperty rdf:about="#relatedDDRCoreVoc">
+    <common:normativeStatus rdf:resource="#Informative"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The name of a  W3C DDR Core Vocabulary property to which a property in the ontology relates to</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Related DDR Core Vocabulary Property</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="#termGroupPrefix">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The prefix used for a group of terms</rdfs:comment>
+    <common:normativeStatus rdf:resource="#Utility"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Term Group Prefix</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#TermGroup"/>
+  </owl:AnnotationProperty>
+  <common:CharacterSet rdf:about="#CharacterSet_UTF-16be">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <common:charsetName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UTF-16BE</common:charsetName>
+  </common:CharacterSet>
+  <common:TransferEncoding rdf:about="#TransferEncoding_QuotedPrintable">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The quoted printable transfer encoding format as specified in the RFC "Multipurpose Internet Mail Extensions (MIME) Part Four</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">quoted-printable</common:name>
+    <common:transferEncodingName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">quoted-printable</common:transferEncodingName>
+  </common:TransferEncoding>
+  <common:CharacterSet rdf:about="#CharacterSet_CharacterSet_UTF-7">
+            <common:charsetName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UTF-7</common:charsetName>
+            <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+          </common:CharacterSet>
+  <common:CharacterSet rdf:about="#CharacterSet_WINDOWS-1252">
+            <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WINDOWS-1252</common:name>
+            <common:charsetName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">windows-1252</common:charsetName>
+          </common:CharacterSet>
+  <common:CharacterSet rdf:about="#CharacterSet_ISO-8859-2">
+            <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ISO-8859-2</common:name>
+            <common:charsetName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ISO_8859-2:1987</common:charsetName>
+          </common:CharacterSet>
+  <common:CharacterSet rdf:about="#CharacterSet_UTF-16">
+            <common:charsetName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UTF-16</common:charsetName>
+            <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+          </common:CharacterSet>
+  <common:CharacterSet rdf:about="#CharacterSet_US-ASCII">
+            <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ISO_646.irv:1991</common:name>
+            <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">US-ASCII</common:name>
+            <common:charsetName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ANSI_X3.4-1968</common:charsetName>
+          </common:CharacterSet>
+  <common:CharacterSet rdf:about="#CharacterSet_ISO-10646-UCS-2">
+            <common:charsetName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ISO-10646-UCS-2</common:charsetName>
+            <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+          </common:CharacterSet>
+  <common:CharacterSet rdf:about="#CharacterSet_UTF-16le">
+            <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+            <common:charsetName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UTF-16LE</common:charsetName>
+          </common:CharacterSet>
+  <common:InputModality rdf:about="#InputModality_GESTURE">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gesture</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Modality that consists of the realization of gestures to input information or commands to the system</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gesture Input Modality</rdfs:label>
+    <common:normativeStatus rdf:resource="#Normative"/>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__InputModality_Gesture</common:id>
+  </common:InputModality>
+  <common:SoundMode rdf:about="#SoundMode_SILENCE">
+        <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__SoundMode_Silence</common:id>
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Silence</common:name>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Silence</rdfs:label>
+        <common:normativeStatus rdf:resource="#Normative"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Silence Sound Mode</rdfs:comment>
+      </common:SoundMode>
+  <common:SoundMode rdf:about="#SoundMode_NORMAL">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Normal Sound Mode</rdfs:comment>
+        <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__SoundMode_Normal</common:id>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Normal</rdfs:label>
+        <common:normativeStatus rdf:resource="#Normative"/>
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Normal</common:name>
+      </common:SoundMode>
+  <owl:AnnotationProperty rdf:about="#relatedUAProfEntity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The name of the related UAProf entities</rdfs:comment>
+    <common:normativeStatus rdf:resource="#Informative"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Related UAProf entity</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:AnnotationProperty>
+  <common:ApplicationProtocol rdf:about="#ApplicationProtocol_28">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__WTLS</common:id>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WTLS</rdfs:comment>
+    <common:normativeStatus rdf:resource="#Utility"/>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WTLS</common:name>
+  </common:ApplicationProtocol>
+  <common:ApplicationProtocol rdf:about="#ApplicationProtocol_27">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__WSP-CL</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WSP-CL</common:name>
+    <common:normativeStatus rdf:resource="#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WSP Connection-Less</rdfs:comment>
+  </common:ApplicationProtocol>
+  <common:Language rdf:about="#EnglishUSA">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">English USA</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">American English</rdfs:comment>
+    <common:normativeStatus rdf:resource="#Utility"/>
+    <common:languageCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</common:languageCode>
+    <common:languageTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">en-US</common:languageTag>
+  </common:Language>
+  <common:ApplicationProtocol rdf:about="#ApplicationProtocol_21">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__W-HTTP</common:id>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">W-HTTP</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">W-HTTP</common:name>
+    <common:normativeStatus rdf:resource="#Utility"/>
+  </common:ApplicationProtocol>
+  <common:ContentType rdf:about="#MIME_TYPE_GIF">
+    <common:contentTypeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">image/gif</common:contentTypeName>
+    <common:normativeStatus rdf:resource="#Utility"/>
+  </common:ContentType>
+  <common:InputModality rdf:about="#InputModality_VOICE">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Modality that consists of input introduction by means of voice</rdfs:comment>
+    <common:normativeStatus rdf:resource="#Normative"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Voice Input Modality</rdfs:label>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Voice</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__InputModality_Voice</common:id>
+  </common:InputModality>
+  <common:UriScheme rdf:about="#sip">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sip</common:name>
+    <common:uriSchemeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sip</common:uriSchemeName>
+  </common:UriScheme>
+  <common:OutputModality rdf:about="#OutputModality_TACTILE">
+    <common:normativeStatus rdf:resource="#Normative"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tactile Output Modality</rdfs:label>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tactile</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a tactile modality in which user receives information from the system by means of the tac</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__OutputModality_Tactile</common:id>
+  </common:OutputModality>
+  <common:UriScheme rdf:about="#UriSchema_31">
+    <common:uriSchemeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https</common:uriSchemeName>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+  </common:UriScheme>
+  <common:UriScheme rdf:about="#UriSchema_37">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <common:uriSchemeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sips</common:uriSchemeName>
+  </common:UriScheme>
+  <owl:AnnotationProperty rdf:about="#termGroups">
+    <rdfs:range rdf:resource="#TermGroup"/>
+    <common:normativeStatus rdf:resource="#Utility"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">termGroups</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An annotation property to indicate the term groups of the Delivery Context Ontology</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:AnnotationProperty>
+  <common:OutputModality rdf:about="#OutputModality_AURAL">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__OutputModality_Aural</common:id>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Aural Output Modality</rdfs:label>
+    <common:normativeStatus rdf:resource="#Normative"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This modality indicates the ability to use audio as an output modality</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Aural</common:name>
+  </common:OutputModality>
+  <common:InputModality rdf:about="#InputModality_TYPING">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__InputModality_Typing</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Typing</common:name>
+    <common:normativeStatus rdf:resource="#Normative"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Typing Input Modality</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An input modality in whoch the user enters information by typing using a keyboard or similar</rdfs:comment>
+  </common:InputModality>
+  <common:OutputModality rdf:about="#OutputModality_VISUAL">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Visual Output Modality</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is an output modality in which information is perceived visually by the user</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__OutputModality_Visual</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Visual</common:name>
+  </common:OutputModality>
+  <common:AllDisjointSet rdf:about="#Sibling_Disjoint">
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common:UriScheme</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common:ContentType</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common:Feature</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common:Modality</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common:Language</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common:TimeZone</common:disjointClass>
+    <common:normativeStatus rdf:resource="#Utility"/>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common:FeatureRestriction</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common:TransferEncoding</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common:Vendor</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common:ApplicationProtocol</common:disjointClass>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Common Sibling</rdfs:label>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common:CharacterSet</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common:SoundMode</common:disjointClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+  </common:AllDisjointSet>
+  <common:TransferEncoding rdf:about="#TransferEncoding_Binary">
+    <common:transferEncodingName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">binary</common:transferEncodingName>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The binary encoding format as specified in RFC4289</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">binary</common:name>
+  </common:TransferEncoding>
+  <common:InputModality rdf:about="#InputModality_TACTILE">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__InputModality_TACTILE</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tactile</common:name>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tactile Input Modality</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An input modality in which information is entered by touching some sensor or device</rdfs:comment>
+    <common:normativeStatus rdf:resource="#Normative"/>
+  </common:InputModality>
+  <owl:AnnotationProperty rdf:about="#informativeReference">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This annotation property serves for indicating informative references for an entity in the ontology. It can be used in order to support the (automatic) documentation generation process</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Informative Reference</rdfs:label>
+    <common:normativeStatus rdf:resource="#Utility"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:AnnotationProperty>
+  <common:Language rdf:about="#SpanishSpain">
+    <common:normativeStatus rdf:resource="#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spanish spoken Spain</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spanish-Spain</rdfs:label>
+    <common:languageTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">es-ES</common:languageTag>
+    <common:languageCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">spa</common:languageCode>
+  </common:Language>
+</rdf:RDF>

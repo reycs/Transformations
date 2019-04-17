@@ -2,8 +2,6 @@
  */
 package owl;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Object Property Expression</b></em>'.
@@ -14,5 +12,5 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface ObjectPropertyExpression extends EObject {
+public interface ObjectPropertyExpression extends SubObjectPropertyExpression {
 } // ObjectPropertyExpression

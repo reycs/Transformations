@@ -66,6 +66,7 @@ import owl.ObjectMinCardinality;
 import owl.ObjectOneOf;
 import owl.ObjectProperty;
 import owl.ObjectPropertyAssertion;
+import owl.ObjectPropertyChain;
 import owl.ObjectPropertyDomain;
 import owl.ObjectPropertyRange;
 import owl.ObjectSomeValuesFrom;
@@ -202,6 +203,7 @@ public class OwlFactoryImpl extends EFactoryImpl implements OwlFactory {
 			case OwlPackage.ANNOTATION_PROPERTY_DOMAIN: return createAnnotationPropertyDomain();
 			case OwlPackage.ANNOTATION_PROPERTY_RANGE: return createAnnotationPropertyRange();
 			case OwlPackage.ANNOTATION_ASSERTION: return createAnnotationAssertion();
+			case OwlPackage.OBJECT_PROPERTY_CHAIN: return createObjectPropertyChain();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -935,6 +937,16 @@ public class OwlFactoryImpl extends EFactoryImpl implements OwlFactory {
 	public AnnotationAssertion createAnnotationAssertion() {
 		AnnotationAssertionImpl annotationAssertion = new AnnotationAssertionImpl();
 		return annotationAssertion;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ObjectPropertyChain createObjectPropertyChain() {
+		ObjectPropertyChainImpl objectPropertyChain = new ObjectPropertyChainImpl();
+		return objectPropertyChain;
 	}
 
 	/**

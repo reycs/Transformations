@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://protege.stanford.edu/swbp/flight.owl#"
+  xml:base="http://protege.stanford.edu/swbp/flight.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="FlightSegment">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="destination"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="Airport"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#destination"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Flight"/>
+  <owl:Class rdf:ID="FinalFlightSegment">
+    <rdfs:subClassOf rdf:resource="#FlightSegment"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="next_segment"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The last flight segment has no next_segment</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="flight_sequence">
+    <rdfs:range rdf:resource="#FlightSegment"/>
+    <rdfs:domain rdf:resource="#Flight"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#destination">
+    <rdfs:domain rdf:resource="#FlightSegment"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:FunctionalProperty rdf:about="#next_segment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#FlightSegment"/>
+    <rdfs:domain rdf:resource="#FlightSegment"/>
+  </owl:FunctionalProperty>
+  <FinalFlightSegment rdf:ID="UA_1377_3">
+    <destination>
+      <Airport rdf:ID="JFK"/>
+    </destination>
+  </FinalFlightSegment>
+  <Flight rdf:ID="UA_1377">
+    <flight_sequence>
+      <FlightSegment rdf:ID="UA_1377_1">
+        <next_segment>
+          <FlightSegment rdf:ID="UA_1377_2">
+            <next_segment rdf:resource="#UA_1377_3"/>
+            <destination>
+              <Airport rdf:ID="DFW"/>
+            </destination>
+          </FlightSegment>
+        </next_segment>
+        <destination>
+          <Airport rdf:ID="LAX"/>
+        </destination>
+      </FlightSegment>
+    </flight_sequence>
+  </Flight>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 2.1 beta, Build 271)  http://protege.stanford.edu -->

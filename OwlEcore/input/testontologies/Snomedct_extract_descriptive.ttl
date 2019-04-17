@@ -1,0 +1,646 @@
+@prefix snomedct: <http://snomed.info/id/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sctf: <http://snomed.info/field/> .
+@prefix sctp: <http://snomed.info/field/Description.term.> .
+@base <http://snomed.info/sct/900000000000207008> .
+
+<http://snomed.info/sct/900000000000207008> rdf:type owl:Ontology ;
+    owl:versionIRI <http://snomed.info/sct/900000000000207008/version/20140731> .
+
+sctf:Description.term.en-us.preferred rdf:type owl:AnnotationProperty .
+sctf:Description.term.en-us.synonym rdf:type owl:AnnotationProperty .
+sctf:TextDefinition.term rdf:type owl:AnnotationProperty .
+
+snomedct:has_specimen-attr 
+    a owl:ObjectProperty ;
+    rdfs:label "Has specimen (attribute)" ;
+    sctf:Description.term.en-us.preferred "Has specimen" .
+
+snomedct:component-attr 
+    a owl:ObjectProperty ;
+    rdfs:label "Component (attribute)" ;
+    sctf:Description.term.en-us.preferred "Component" .
+
+snomedct:method-attr 
+    a owl:ObjectProperty ;
+    rdfs:label "Method (attribute)" ;
+    sctf:Description.term.en-us.preferred "Method" .
+
+snomedct:has_interpretation-attr 
+    a owl:ObjectProperty ;
+    rdfs:label "Has interpretation (attribute)" ;
+    sctf:Description.term.en-us.preferred "Has interpretation" .
+
+snomedct:interprets-attr 
+    a owl:ObjectProperty ;
+    rdfs:label "Interprets (attribute)" ;
+    sctf:Description.term.en-us.preferred "Interprets" .
+
+snomedct:specimen_substance-attr 
+    a owl:ObjectProperty ;
+    rdfs:label "Specimen substance (attribute)" ;
+    sctf:Description.term.en-us.preferred "Specimen substance" .
+
+snomedct:role_group-attr 
+    a owl:ObjectProperty ;
+    rdfs:label "Role group (attribute)" ;
+    sctf:Description.term.en-us.preferred "Role group" .
+
+
+
+snomedct:SNOMED_CT_CONCEPT 
+    a owl:Class ;
+    rdfs:label "SNOMED CT Concept (SNOMED RT+CTV3)" ;
+    sctf:Description.term.en-us.preferred "SNOMED CT Concept" .
+
+snomedct:Substance-subst 
+    a owl:Class ;
+    rdfs:label "Substance (substance)" ;
+    rdfs:subClassOf snomedct:SNOMED_CT_CONCEPT ;
+    sctf:Description.term.en-us.synonym "Substances" ;
+    sctf:Description.term.en-us.preferred "Substance" .
+
+  snomedct:Substance_categorized_by_physical_state-subst 
+      a owl:Class ;
+      rdfs:label "Substance categorized by physical state (substance)" ;
+      rdfs:subClassOf snomedct:Substance-subst ;
+      sctf:Description.term.en-us.preferred "Substance categorized by physical state" .
+
+    snomedct:Liquid_substance-subst 
+        a owl:Class ;
+        rdfs:label "Liquid substance (substance)" ;
+        rdfs:subClassOf snomedct:Substance_categorized_by_physical_state-subst ;
+        sctf:Description.term.en-us.preferred "Liquid substance" ;
+        sctf:Description.term.en-us.synonym "Liquid" , "Fluid" .
+
+  snomedct:Body_substance-subst 
+      a owl:Class ;
+      rdfs:label "Body substance (substance)" ;
+      rdfs:subClassOf snomedct:Substance-subst ;
+      sctf:Description.term.en-us.preferred "Body substance" ;
+      sctf:Description.term.en-us.synonym "Human body substance" .
+
+  snomedct:Biological_substance-subst 
+      a owl:Class ;
+      rdfs:label "Biological substance (substance)" ;
+      rdfs:subClassOf snomedct:Substance-subst ;
+      sctf:Description.term.en-us.preferred "Biological substance" .
+
+    snomedct:Blood_material-subst 
+        a owl:Class ;
+        rdfs:label "Blood material (substance)" ;
+        rdfs:subClassOf snomedct:Biological_substance-subst ;
+        sctf:Description.term.en-us.preferred "Blood material" .
+
+      snomedct:Blood_component-subst 
+          a owl:Class ;
+          rdfs:label "Blood component (substance)" ;
+          rdfs:subClassOf snomedct:Blood_material-subst ;
+          sctf:Description.term.en-us.preferred "Blood component" .
+
+  snomedct:Substance_categorized_structurally-subst 
+      a owl:Class ;
+      rdfs:label "Substance categorized structurally (substance)" ;
+      rdfs:subClassOf snomedct:Substance-subst ;
+      sctf:Description.term.en-us.preferred "Substance categorized structurally" .
+
+  snomedct:Chemical-subst 
+      a owl:Class ;
+      rdfs:label "Chemical (substance)" ;
+      rdfs:subClassOf snomedct:Substance-subst ;
+      sctf:Description.term.en-us.preferred "Chemical" .
+
+  snomedct:Substance_categorized_functionally-subst 
+      a owl:Class ;
+      rdfs:label "Substance categorized functionally (substance)" ;
+      rdfs:subClassOf snomedct:Substance-subst ;
+      sctf:Description.term.en-us.preferred "Substance categorized functionally" .
+
+    snomedct:Analyte-subst 
+        a owl:Class ;
+        rdfs:label "Analyte (substance)" ;
+        rdfs:subClassOf snomedct:Substance_categorized_functionally-subst ;
+        sctf:Description.term.en-us.preferred "Analyte" .
+
+      snomedct:Immunology_analyte-subst 
+          a owl:Class ;
+          rdfs:label "Immunology analyte (substance)" ;
+          rdfs:subClassOf snomedct:Analyte-subst ;
+          sctf:Description.term.en-us.preferred "Immunology analyte" .
+
+        snomedct:Immunochemistry_analyte-subst 
+            a owl:Class ;
+            rdfs:label "Immunochemistry analyte (substance)" ;
+            rdfs:subClassOf snomedct:Immunology_analyte-subst ;
+            sctf:Description.term.en-us.preferred "Immunochemistry analyte" .
+
+snomedct:Body_fluid-subst 
+    a owl:Class ;
+    rdfs:label "Body fluid (substance)" ;
+    rdfs:subClassOf 
+      [ owl:intersectionOf 
+        ( snomedct:Liquid_substance-subst snomedct:Body_substance-subst )
+      ] ;
+    sctf:Description.term.en-us.preferred "Body fluid" .
+
+  snomedct:Pus-subst 
+      a owl:Class ;
+      rdfs:label "Pus (substance)" ;
+      rdfs:subClassOf snomedct:Body_fluid-subst ;
+      sctf:Description.term.en-us.preferred "Pus" .
+
+snomedct:Plasma-subst 
+    a owl:Class ;
+    rdfs:label "Plasma (substance)" ;
+    rdfs:subClassOf [ rdf:type owl:Class ;
+                      owl:intersectionOf ( snomedct:Blood_component-subst
+                                           snomedct:Body_fluid-subst
+                                         )
+                    ] ;
+    sctf:Description.term.en-us.preferred "Plasma" .
+
+snomedct:Serum-subst 
+    a owl:Class ;
+    rdfs:label "Serum (substance)" ;
+    rdfs:subClassOf [ rdf:type owl:Class ;
+                      owl:intersectionOf ( snomedct:Blood_component-subst
+                                           snomedct:Body_fluid-subst
+                                         )
+                    ] ;
+    sctf:Description.term.en-us.preferred "Serum" .
+
+snomedct:Chemical_categorized_structurally-subst 
+    a owl:Class ;
+    rdfs:label "Chemical categorized structurally (substance)" ;
+    rdfs:subClassOf 
+      [ owl:intersectionOf 
+        ( snomedct:Substance_categorized_structurally-subst 
+          snomedct:Chemical-subst 
+        )
+      ] ;
+    sctf:Description.term.en-us.preferred "Chemical categorized structurally" .
+
+  snomedct:Organic_compound-subst 
+      a owl:Class ;
+      rdfs:label "Organic compound (substance)" ;
+      rdfs:subClassOf snomedct:Chemical_categorized_structurally-subst ;
+      sctf:Description.term.en-us.preferred "Organic compound" ;
+      sctf:Description.term.en-us.synonym "Organic chemical" .
+
+snomedct:Protein_subst 
+    a owl:Class ;
+    rdfs:label "Protein (substance)" ;
+    rdfs:subClassOf 
+      [ owl:intersectionOf 
+        ( snomedct:Biological_substance-subst
+          snomedct:Organic_compound-subst
+        )
+      ] ;
+    sctf:Description.term.en-us.preferred "Protein" ;
+    sctf:Description.term.en-us.synonym "Proteins" .
+
+  snomedct:Globulin-subst 
+      a owl:Class ;
+      rdfs:label "Globulin (substance)" ;
+      rdfs:subClassOf snomedct:Protein_subst ;
+      sctf:Description.term.en-us.preferred "Globulin" .
+
+snomedct:Plasma_protein-subst 
+    a owl:Class ;
+    rdfs:label "Plasma protein (substance)" ;
+    rdfs:subClassOf [ rdf:type owl:Class ;
+                      owl:intersectionOf ( snomedct:Blood_component-subst 
+                                           snomedct:Protein_subst 
+                                         )
+                    ] ;
+    sctf:Description.term.en-us.preferred "Plasma protein" .
+
+snomedct:Acute_phase_reactant-subst 
+    a owl:Class ;
+    rdfs:label "Acute phase reactant (substance)" ;
+    rdfs:subClassOf [ rdf:type owl:Class ;
+                      owl:intersectionOf ( snomedct:Immunochemistry_analyte-subst 
+                                           snomedct:Plasma_protein-subst 
+                                         )
+                    ] ;
+    sctf:Description.term.en-us.preferred "Acute phase reactant" .
+
+snomedct:Qualifier_value-qual 
+    a owl:Class ;
+    rdfs:label "Qualifier value (qualifier value)" ;
+    rdfs:subClassOf snomedct:SNOMED_CT_CONCEPT ;
+    sctf:Description.term.en-us.preferred "Qualifier value" .
+
+  snomedct:Action-qual 
+      a owl:Class ;
+      rdfs:label "Action (qualifier value)" ;
+      rdfs:subClassOf snomedct:Qualifier_value-qual ;
+      sctf:Description.term.en-us.synonym "Clinical actions" ,
+                                          "Clinical action" ;
+      sctf:Description.term.en-us.preferred "Action" .
+
+    snomedct:Evaluation_action-qual 
+        a owl:Class ;
+        rdfs:label "Evaluation - action (qualifier value)" ;
+        rdfs:subClassOf snomedct:Action-qual ;
+        sctf:Description.term.en-us.preferred "Evaluation - action" ;
+        sctf:Description.term.en-us.synonym "Patient evaluation - action" , "Evaluation" .
+
+      snomedct:Measurement_action-qual 
+          a owl:Class ;
+          rdfs:label "Measurement - action (qualifier value)" ;
+          rdfs:subClassOf snomedct:Evaluation_action-qual ;
+          sctf:Description.term.en-us.preferred "Measurement - action" .
+
+  snomedct:Findings_values-qual 
+      a owl:Class ;
+      rdfs:label "Findings values (qualifier value)" ;
+      rdfs:subClassOf snomedct:Qualifier_value-qual ;
+      sctf:Description.term.en-us.preferred "Findings values" .
+
+    snomedct:Interpretation_value-qual 
+        a owl:Class ;
+        rdfs:label "Interpretation value (qualifier value)" ;
+        rdfs:subClassOf snomedct:Findings_values-qual ;
+        sctf:Description.term.en-us.preferred "Interpretation value" .
+
+      snomedct:Reference_range_interpretation_value-qual 
+          a owl:Class ;
+          rdfs:label "Reference range interpretation value (qualifier value)" ;
+          rdfs:subClassOf snomedct:Interpretation_value-qual ;
+          sctf:Description.term.en-us.preferred "Reference range interpretation value" .
+
+        snomedct:Within_reference_range-qual 
+            a owl:Class ;
+            rdfs:label "Within reference range (qualifier value)" ;
+            rdfs:subClassOf snomedct:Reference_range_interpretation_value-qual ;
+            sctf:Description.term.en-us.preferred "Within reference range" .
+
+        snomedct:Outside_reference_range-qual 
+            a owl:Class ;
+            rdfs:label "Outside reference range (qualifier value)" ;
+            rdfs:subClassOf snomedct:Reference_range_interpretation_value-qual ;
+            sctf:Description.term.en-us.preferred "Outside reference range" .
+
+snomedct:Procedure-proc 
+    a owl:Class ;
+    rdfs:label "Procedure (procedure)" ;
+    rdfs:subClassOf snomedct:SNOMED_CT_CONCEPT ;
+    sctf:Description.term.en-us.preferred "Procedure" .
+
+  snomedct:Procedure_by_method-proc 
+      a owl:Class ;
+      rdfs:label "Procedure by method (procedure)" ;
+      owl:equivalentClass 
+        [ owl:intersectionOf 
+          ( snomedct:Procedure-proc 
+            [ owl:onProperty snomedct:role_group-attr ; owl:someValuesFrom 
+              [ owl:onProperty snomedct:method-attr ; owl:someValuesFrom snomedct:Action-qual ]
+            ]
+          )
+        ] ;
+      sctf:Description.term.en-us.preferred "Procedure by method" .
+
+    snomedct:Evaluation_procedure-proc 
+        a owl:Class ;
+        rdfs:label "Evaluation procedure (procedure)" ;
+        owl:equivalentClass 
+          [ owl:intersectionOf 
+            ( snomedct:Procedure_by_method-proc 
+              [ owl:onProperty snomedct:role_group-attr ;
+                owl:someValuesFrom 
+                  [ owl:onProperty snomedct:method-attr ; owl:someValuesFrom snomedct:Evaluation_action-qual ]
+              ]
+            )
+          ] ;
+        sctf:Description.term.en-us.preferred "Evaluation procedure" ;
+        sctf:Description.term.en-us.synonym "Patient evaluation procedure" ;
+        sctf:TextDefinition.term "Determination of a value, conclusion, or inference by evaluating evidence" ;
+        sctf:Description.term.en-us.synonym "Assessment" , "Clinical investigation" , "Investigations" , "Clinical evaluation" .
+
+    snomedct:Measurement_procedure-proc 
+        a owl:Class ;
+        rdfs:label "Measurement procedure (procedure)" ;
+        owl:equivalentClass 
+          [ owl:intersectionOf 
+            ( snomedct:Procedure_by_method-proc 
+              [ owl:onProperty snomedct:role_group-attr ;
+                owl:someValuesFrom 
+                  [ owl:onProperty snomedct:method-attr ;
+                    owl:someValuesFrom snomedct:Measurement_action-qual 
+                  ]
+              ]
+            )
+          ] ;
+        sctf:TextDefinition.term "An observation, by some objective method, of amount, number, quantity, size, level, extent, or magnitude, resulting in an ordinal or quantitative value" ;
+        sctf:Description.term.en-us.preferred "Measurement" ;
+        sctf:Description.term.en-us.synonym "Measurement procedure" .
+
+      snomedct:Measurement_of_substance-proc 
+          a owl:Class ;
+          rdfs:label "Measurement of substance (procedure)" ;
+          owl:equivalentClass 
+            [ owl:intersectionOf 
+                ( snomedct:Measurement_procedure-proc 
+                  [ owl:onProperty snomedct:role_group-attr ;
+                    owl:someValuesFrom 
+                      [ owl:onProperty snomedct:component-attr ;
+                        owl:someValuesFrom snomedct:Substance-subst 
+                      ]
+                  ]
+                  [ owl:onProperty snomedct:role_group-attr ;
+                    owl:someValuesFrom 
+                      [ owl:onProperty snomedct:method-attr ;
+                        owl:someValuesFrom snomedct:Measurement_action-qual 
+                      ]
+                  ]
+                )
+            ] ;
+          sctf:Description.term.en-us.preferred "Measurement of substance" .
+
+        snomedct:Protein_measurement-proc 
+            a owl:Class ;
+            rdfs:label "Protein measurement (procedure)" ;
+            owl:equivalentClass 
+              [ owl:intersectionOf 
+                ( snomedct:Measurement_of_substance-proc 
+                  [ owl:onProperty snomedct:role_group-attr ;
+                    owl:someValuesFrom 
+                      [ owl:onProperty snomedct:component-attr ;
+                        owl:someValuesFrom snomedct:Protein_subst
+                      ]
+                  ]
+                )
+              ] ;
+            sctf:Description.term.en-us.preferred "Protein measurement" .
+
+snomedct:Clinical_finding-finding 
+    a owl:Class ;
+    rdfs:label "Clinical finding (finding)" ;
+    rdfs:subClassOf snomedct:SNOMED_CT_CONCEPT ;
+    sctf:Description.term.en-us.preferred "Clinical finding" .
+
+  snomedct:Evaluation_finding-find 
+      a owl:Class ;
+      rdfs:label "Evaluation finding (finding)" ;
+      owl:equivalentClass 
+        [ owl:intersectionOf 
+          ( snomedct:Clinical_finding-finding 
+            [ owl:onProperty snomedct:role_group-attr ;
+              owl:someValuesFrom 
+                [ owl:onProperty snomedct:interprets-attr ;
+                  owl:someValuesFrom snomedct:Evaluation_procedure-proc 
+                ]
+            ]
+          )
+        ] ;
+      sctf:Description.term.en-us.preferred "Evaluation finding" .
+
+snomedct:measurement_finding-finding 
+    a owl:Class ;
+    rdfs:label "Measurement finding (finding)" ;
+    owl:equivalentClass 
+      [ owl:intersectionOf 
+        ( snomedct:Evaluation_finding-find 
+          [ owl:onProperty snomedct:role_group-attr ;
+            owl:someValuesFrom 
+              [ owl:onProperty snomedct:interprets-attr ;
+                owl:someValuesFrom snomedct:Measurement_procedure-proc 
+              ]
+          ]
+        )
+      ] ;
+    sctf:Description.term.en-us.preferred "Measurement finding" .
+
+snomedct:Specimen-spec 
+    a owl:Class ;
+    rdfs:label "Specimen (specimen)" ;
+    rdfs:subClassOf snomedct:SNOMED_CT_CONCEPT ;
+    sctf:Description.term.en-us.preferred "Specimen" ;
+    sctf:TextDefinition.term "Material (structure, substance, device) removed from a source (patient, donor, physical location, product)" .
+
+  snomedct:Body_substance_sample-spec 
+      a owl:Class ;
+      rdfs:label "Body substance sample (specimen)" ;
+      owl:equivalentClass 
+        [ owl:intersectionOf 
+          ( snomedct:Specimen-spec 
+            [ owl:onProperty snomedct:role_group-attr ;
+              owl:someValuesFrom 
+                [ owl:onProperty snomedct:specimen_substance-attr ;
+                  owl:someValuesFrom snomedct:Body_substance-subst 
+                ]
+            ]
+          )
+        ] ;
+      sctf:Description.term.en-us.preferred "Body substance sample" .
+
+    snomedct:Body_fluid_sample-spec 
+        a owl:Class ;
+        rdfs:label "Body fluid sample (specimen)" ;
+        owl:equivalentClass 
+          [ rdf:type owl:Class ;
+            owl:intersectionOf 
+              ( snomedct:Body_substance_sample-spec 
+                [ owl:onProperty snomedct:role_group-attr ;
+                  owl:someValuesFrom 
+                    [ owl:onProperty snomedct:specimen_substance-attr ;
+                      owl:someValuesFrom snomedct:Body_fluid-subst 
+                    ]
+                ]
+              )
+          ] ;
+        sctf:Description.term.en-us.preferred "Body fluid sample" ;
+        sctf:Description.term.en-us.synonym "Body fluid specimen" .
+
+      snomedct:Acellular_blood__serum_or_plasma__specimen-spec 
+          a owl:Class ;
+          rdfs:label "Acellular blood (serum or plasma) specimen (specimen)" ;
+          rdfs:subClassOf 
+            [ owl:intersectionOf 
+              ( snomedct:Body_fluid_sample-spec 
+                [ owl:onProperty snomedct:role_group-attr ;
+                  owl:someValuesFrom 
+                    [ owl:onProperty snomedct:specimen_substance-attr ;
+                      owl:someValuesFrom snomedct:Blood_component-subst 
+                    ]
+                ]
+              )
+            ] ;
+          sctf:Description.term.en-us.preferred "Acellular blood (serum or plasma) specimen" .
+
+        snomedct:Plasma_specimen-spec 
+            a owl:Class ;
+            rdfs:label "Plasma specimen (specimen)" ;
+            owl:equivalentClass 
+             [ rdf:type owl:Class ;
+               owl:intersectionOf 
+                 ( snomedct:Acellular_blood__serum_or_plasma__specimen-spec 
+                   [ owl:onProperty snomedct:role_group-attr ;
+                     owl:someValuesFrom 
+                       [ owl:onProperty snomedct:specimen_substance-attr ;
+                         owl:someValuesFrom snomedct:Plasma-subst
+                       ]
+                   ]
+                 )
+             ] ;
+            sctf:Description.term.en-us.preferred "Plasma specimen" ;
+            sctf:Description.term.en-us.synonym "Plasma sample" .
+
+        snomedct:Serum_specimen-spec 
+            a owl:Class ;
+            rdfs:label "Serum specimen (specimen)" ;
+            owl:equivalentClass 
+              [ owl:intersectionOf 
+                  ( snomedct:Acellular_blood__serum_or_plasma__specimen-spec 
+                    [ owl:onProperty snomedct:role_group-attr ;
+                      owl:someValuesFrom 
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty snomedct:specimen_substance-attr ;
+                          owl:someValuesFrom snomedct:Serum-subst 
+                        ]
+                    ]
+                  )
+              ] ;
+            sctf:Description.term.en-us.synonym "Serum sample" ;
+            sctf:Description.term.en-us.preferred "Serum specimen" .
+
+# C-reactive protein
+#
+
+snomedct:C_reactive_protein-subst 
+    a owl:Class ;
+    rdfs:label "C reactive protein (substance)" ;
+    rdfs:subClassOf 
+      [ owl:intersectionOf 
+          ( snomedct:Globulin-subst
+            snomedct:Acute_phase_reactant-subst
+          )
+      ] ;
+    sctf:Description.term.en-us.synonym "CRP - C-reactive protein" ;
+    sctf:Description.term.en-us.preferred "C reactive protein" ;
+    sctf:Description.term.en-us.synonym "C-reactive protein" .
+
+snomedct:C_reactive_protein_measurement-proc 
+    a owl:Class ;
+    rdfs:label "C-reactive protein measurement (procedure)" ;
+    owl:equivalentClass 
+      [ owl:intersectionOf 
+          ( snomedct:Protein_measurement-proc 
+            [ owl:onProperty snomedct:role_group-attr ;
+              owl:someValuesFrom 
+                [ owl:onProperty snomedct:component-attr ;
+                  owl:someValuesFrom snomedct:C_reactive_protein-subst 
+                ]
+            ]
+          )
+      ] ;
+    sctf:Description.term.en-us.synonym "C-reactive protein level" ;
+    sctf:Description.term.en-us.preferred "C-reactive protein measurement" ;
+    sctf:Description.term.en-us.synonym "CRP - C-reactive protein level" .
+
+snomedct:Serum_C_reactive_protein_level-proc 
+    a owl:Class ;
+    rdfs:label "Serum C reactive protein level (procedure)" ;
+    owl:equivalentClass 
+      [ owl:intersectionOf 
+          ( snomedct:C_reactive_protein_measurement-proc 
+            [ owl:onProperty snomedct:role_group-attr ;
+              owl:someValuesFrom 
+                [ owl:onProperty snomedct:has_specimen-attr ;
+                  owl:someValuesFrom snomedct:Serum_specimen-spec 
+                ]
+            ]
+            [ owl:onProperty snomedct:role_group-attr ;
+              owl:someValuesFrom 
+                [ owl:onProperty snomedct:component-attr ;
+                  owl:someValuesFrom snomedct:C_reactive_protein-subst 
+                ]
+            ]
+            [ owl:onProperty snomedct:role_group-attr ;
+              owl:someValuesFrom 
+                [ owl:onProperty snomedct:method-attr ;
+                  owl:someValuesFrom snomedct:Measurement_action-qual 
+                ]
+            ]
+          )
+      ] ;
+    sctf:Description.term.en-us.preferred "Serum C reactive protein level" .
+
+snomedct:C_reactive_protein_normal-finding 
+    a owl:Class ;
+    rdfs:label "C-reactive protein normal (finding)" ;
+    owl:equivalentClass 
+      [ owl:intersectionOf 
+          ( snomedct:measurement_finding-finding
+            [ owl:onProperty snomedct:role_group-attr ;
+              owl:someValuesFrom 
+                [ owl:intersectionOf 
+                    ( [ owl:onProperty snomedct:has_interpretation-attr ;
+                        owl:someValuesFrom snomedct:Within_reference_range-qual
+                      ]
+                      [ owl:onProperty snomedct:interprets-attr ;
+                        owl:someValuesFrom snomedct:C_reactive_protein_measurement-proc
+                      ]
+                    )
+                ]
+            ]
+          )
+      ] ;
+    sctf:Description.term.en-us.preferred "C-reactive protein normal" .
+
+snomedct:C_reactive_protein_abnormal-finding 
+    a owl:Class ;
+    rdfs:label "C-reactive protein abnormal (finding)" ;
+    owl:equivalentClass 
+      [ owl:intersectionOf 
+          ( snomedct:Evaluation_finding-find 
+            [ owl:onProperty snomedct:role_group-attr ;
+              owl:someValuesFrom 
+                [ owl:intersectionOf 
+                    ( [ owl:onProperty snomedct:has_interpretation-attr ;
+                        owl:someValuesFrom snomedct:Outside_reference_range-qual 
+                      ]
+                      [ owl:onProperty snomedct:interprets-attr ;
+                        owl:someValuesFrom snomedct:C_reactive_protein_measurement-proc 
+                      ]
+                    )
+                ]
+            ]
+          )
+      ] ;
+    sctf:Description.term.en-us.preferred "C-reactive protein abnormal" .
+
+snomedct:Plasma_C_reactive_protein_measurement-proc 
+    a owl:Class ;
+    rdfs:label "Plasma C-reactive protein measurement (procedure)" ;
+    owl:equivalentClass 
+      [ owl:intersectionOf 
+          ( snomedct:C_reactive_protein_measurement-proc 
+            [ owl:onProperty snomedct:role_group-attr ;
+              owl:someValuesFrom 
+                [ owl:onProperty snomedct:has_specimen-attr ;
+                  owl:someValuesFrom snomedct:Plasma_specimen-spec 
+                ]
+            ]
+            [ owl:onProperty snomedct:role_group-attr ;
+              owl:someValuesFrom 
+                [ owl:onProperty snomedct:component-attr ;
+                  owl:someValuesFrom snomedct:C_reactive_protein-subst 
+                ]
+            ]
+            [ owl:onProperty snomedct:role_group-attr ;
+              owl:someValuesFrom 
+                [ owl:onProperty snomedct:method-attr ;
+                  owl:someValuesFrom snomedct:Measurement_action-qual 
+                ]
+            ]
+          )
+      ] ;
+    sctf:Description.term.en-us.preferred "Plasma C-reactive protein measurement" ;
+    sctf:Description.term.en-us.synonym "Plasma C-reactive protein level" .
+

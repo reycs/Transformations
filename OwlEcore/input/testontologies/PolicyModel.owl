@@ -1,0 +1,336 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+     Copyright (C)2004 W3C(R) (MIT, ERCIM, Keio), All Rights Reserved.
+     W3C viability, trademark, document use and software licensing rules
+     apply.                                                             
+     http://www.w3.org/Consortium/Legal/
+                                        
+     This document is governed by the W3C Software License [1] as
+     described in the FAQ [2].
+
+     [1] http://www.w3.org/Consortium/Legal/copyright-software-20021231
+     [2] http://www.w3.org/Consortium/Legal/IPR-FAQ-20000620.html#DTD
+-->
+<!DOCTYPE uridef[
+  <!ENTITY owl "http://www.w3.org/2002/07/owl">
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY ServiceModel "http://www.w3.org/2004/02/wsa/ServiceModel.owl">
+  <!ENTITY ResourceModel "http://www.w3.org/2004/02/wsa/ResourceModel.owl">
+  <!ENTITY Extensions "http://www.w3.org/2004/02/wsa/Extensions.owl">
+  
+]>
+
+<rdf:RDF
+  xmlns:owl  ="http://www.w3.org/2002/07/owl#"
+  xmlns:rdf  ="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs ="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd  ="http://www.w3.org/2001/XMLSchema#"
+  xml:base	 ="http://www.w3.org/2004/02/wsa/PolicyModel.owl"
+  xmlns      ="http://www.w3.org/2004/02/wsa/PolicyModel.owl#"
+ >
+
+<owl:Ontology rdf:about="">
+ <owl:versionInfo>$Id: PolicyModel.owl,v 1.2 2004/02/05 16:18:21 hugo Exp $</owl:versionInfo>
+ <rdfs:comment>
+   The Policy Model focuses on those aspects of the architecture that
+   relate to policies and, by extension security and quality of
+   service.
+ </rdfs:comment>
+ <rdfs:comment> Compiled by Massimo Paolucci, Naveen Srinivasan and Katia Sycara. Carnegie Mellon University
+ </rdfs:comment> 
+
+ <owl:imports rdf:resource="http://www.w3.org/2004/02/wsa/ServiceModel.owl"/>
+ <owl:imports rdf:resource="http://www.w3.org/2004/02/wsa/MessageModel.owl"/>
+  <owl:imports rdf:resource="http://www.w3.org/2004/02/wsa/ResourceModel.owl"/>
+  <owl:imports rdf:resource="http://www.w3.org/2004/02/wsa/Extensions.owl"/>
+
+
+</owl:Ontology>
+
+<!-- Created: Mon Jan 12 14:53:10 2004 -->
+
+<!-- 2.3.4.1 Audit Guard -->
+
+
+<owl:Class rdf:ID="Audit_Guard">
+  <rdfs:comment>An audit guard is a mechanism used on behalf of an owner that monitors actions and agents to verify the satisfaction of obligations
+  </rdfs:comment>
+  <rdfs:label>Audit_Guard</rdfs:label>
+  <rdfs:comment>
+    An audit guard is a policy guard. 
+  </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="#Policy_Guard"/>
+</owl:Class>
+
+
+
+<owl:ObjectProperty rdf:ID="monitor">
+  <rdfs:comment>
+    An audit guard may monitor one or more resources (2.3.4.1.2)
+  </rdfs:comment>
+  <rdfs:label>monitor</rdfs:label>
+  <rdfs:domain rdf:resource="#Audit_Guard"/>
+  <rdfs:range rdf:resource="&ResourceModel;#Resource"/>
+</owl:ObjectProperty>
+
+<!-- Not Expressed : "an audit guard may monitor actions relative to one or more services."	falls in the same category as the MetaProperty Problem described in ServiceModel.owl 
+-->
+
+<!-- Not Expressed : an audit guard may determine if an agent's obligations have been discharged. -->
+
+<!-- 2.3.4.2  Domain -->
+
+<owl:Class rdf:ID="Domain">
+  <rdfs:comment>
+    A domain is a set of agents and/or resources that is subject to
+    constrains of one or more policies. 
+  </rdfs:comment>
+  <rdfs:label>Domain</rdfs:label>
+   <rdfs:subClassOf rdf:resource="&rdf;#List"/>
+
+	<rdfs:subClassOf>
+      	<owl:Restriction>
+         	<owl:onProperty rdf:resource="&rdf;#first"/>
+                <owl:allValuesFrom>
+					<owl:Class>
+					  <owl:unionOf rdf:parseType="Collection">
+						<owl:Class rdf:about="&ResourceModel;#Resource" />
+						<owl:Class rdf:about="&ServiceModel;#Agent" />
+					  </owl:unionOf>
+					</owl:Class>
+
+                </owl:allValuesFrom>
+              </owl:Restriction>
+    </rdfs:subClassOf>
+
+</owl:Class>
+
+<owl:ObjectProperty rdf:ID="scopeOf">
+  <rdfs:comment> A domain defines the scope of application of zero or more  policies. 
+  </rdfs:comment>
+  <rdfs:label>define</rdfs:label>
+  <rdfs:domain rdf:resource="#Domain"/>
+  <rdfs:range rdf:resource="#Policy"/>
+</owl:ObjectProperty>
+
+
+<!-- 2.3.4.3 Obligation-->
+
+<owl:Class rdf:ID="Obligation">
+  <rdfs:comment>An obligation is a kind of policy that prescribes actions and/or states of an agent and/or resource.
+  </rdfs:comment>
+  <rdfs:label>Obligation</rdfs:label>
+  <rdfs:comment>
+    An obligation of a type of policy
+  </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="#Policy"/>
+</owl:Class>
+
+<!-- Not Expressed : an obligation may require an agent to perform one or more actions-->
+
+<!-- Not Expressed : an obligation may require an agent or service to be in one or more allowable states-->
+
+<!-- Not Expressed : an obligation may be discharged by the performance of an action or other event.-->
+
+
+
+
+<!-- 2.3.4.4 Permission-->
+
+<owl:Class rdf:ID="Permission">
+  <rdfs:comment>
+    A permission is a kind of policy that relates to the allowed
+    actions and states of an agent and/or resource. (2.3.4.5.1)
+  </rdfs:comment>
+  <rdfs:label>Permission</rdfs:label>
+  <rdfs:comment>
+    An obligation of a type of policy (2.3.4.5.2)
+  </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="#Policy"/>
+</owl:Class>
+
+<owl:ObjectProperty rdf:ID="enable_action">
+  <rdfs:comment>
+a permission may enable one or more actions  </rdfs:comment>
+  <rdfs:label>monitor</rdfs:label>
+  <rdfs:domain rdf:resource="#Permission"/>
+  <rdfs:range rdf:resource="&ServiceModel;#Action"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="enable_state">
+  <rdfs:comment>
+a permission may enable one or more allowable states  </rdfs:comment>
+  <rdfs:label>monitor</rdfs:label>
+  <rdfs:domain rdf:resource="#Permission"/>
+  <rdfs:range rdf:resource="&Extensions;#State"/>
+</owl:ObjectProperty>
+
+
+<!-- 2.3.4.5 Permission Guard-->
+
+<owl:Class rdf:ID="Permission_Guard">
+  <rdfs:comment>
+    A permission guard is a mechanism deployed on behalf of an owner
+    that enforces permission policies. 
+  </rdfs:comment>
+  <rdfs:label>Permission_Guard</rdfs:label>
+  <rdfs:comment>
+    A permission guard is a policy guard 
+  </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="#Policy_Guard"/>
+</owl:Class>
+
+<!-- 
+	Note : This property definition does not the capture the  meaning of "A permission guard is a mechanism that enforces permissive policies". However it refers to all the permissions that will be enforced by this guard
+-->
+
+<owl:ObjectProperty rdf:ID="enforce">
+  <rdfs:comment>
+    A permission guard is a mechanism that enforces permissive policies
+  </rdfs:comment>
+  <rdfs:label>enforce</rdfs:label>
+  <rdfs:domain rdf:resource="#Permission_Guard"/>
+  <rdfs:range rdf:resource="#Permission"/>
+</owl:ObjectProperty>
+
+
+<owl:ObjectProperty rdf:ID="control">
+  <rdfs:comment>
+    A permission guard controls one or more resources 
+  </rdfs:comment>
+  <rdfs:label>control</rdfs:label>
+  <rdfs:domain rdf:resource="#Permission_Guard"/>
+  <rdfs:range rdf:resource="&ResourceModel;#Resource"/>
+</owl:ObjectProperty>
+
+<!--   
+Not Expressed :  A permission guard enables actions relative to one or more service	falls in the same category as the MetaProperty Problem described in ServiceModel.owl
+-->
+
+
+<!-- 2.3.4.6 Person or Organization-->
+
+
+<owl:Class rdf:ID="Person_or_Organization">
+  <rdfs:comment>
+    A person or organization may be the owner or agents that provide
+    or request Web services. 
+  </rdfs:comment>
+  <rdfs:label>Person_or_Organization</rdfs:label>
+</owl:Class>
+
+<owl:ObjectProperty rdf:ID="owner">
+  <rdfs:comment>
+    A person or organization may be the owner of an agent. 
+  </rdfs:comment>
+  <rdfs:label>owner</rdfs:label>
+  <rdfs:domain rdf:resource="#Person_or_Organization"/>
+  <rdfs:range rdf:resource="&ServiceModel;#Agent"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="member_of">
+  <rdfs:comment>
+    A person or organization belongs to a domain. 
+  </rdfs:comment>
+  <rdfs:label>member_of</rdfs:label>
+  <rdfs:domain rdf:resource="#Person_or_Organization"/>
+  <rdfs:range rdf:resource="#Domain"/>
+</owl:ObjectProperty>
+
+
+<!-- 
+	Not Expressed : a person or organization may establish policies governing resources that they own	falls in the same category as the MetaProperty Problem described in ServiceModel.owl
+-->
+
+
+<!-- 2.3.4.7 Policy-->
+
+<owl:Class rdf:ID="Policy">
+  <rdfs:comment>
+    A policy is a constraint on the behavior of agents. 
+  </rdfs:comment>
+  <rdfs:label>Policy</rdfs:label>
+</owl:Class>
+
+<owl:ObjectProperty rdf:ID="constraints_action">
+  <rdfs:comment>
+    a policy is a constraint on the allowable actions or states of an agent or person or organization
+    (interpreted as: a policy constraints the actions performed by an
+    agent) 
+  </rdfs:comment>
+  <rdfs:label>constraints</rdfs:label>
+  <rdfs:domain rdf:resource="#Policy"/>
+  <rdfs:range rdf:resource="&ServiceModel;#Action"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="has_identifier">
+  <rdfs:comment>
+    A policy may have an identifier.
+  </rdfs:comment>
+  <rdfs:label>has_identifier</rdfs:label>
+  <rdfs:domain rdf:resource="#Policy"/>
+  <rdfs:range rdf:resource="&ResourceModel;#Identifier"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="describedBy">
+  <rdfs:label>has_a</rdfs:label>
+  <rdfs:comment>
+    a policy description describes a policy 
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Policy"/>
+  <rdfs:range rdf:resource="#Policy_Description"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="capability">
+  <rdfs:label>has_a</rdfs:label>
+  <rdfs:comment>
+    a policy may define a capability 
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Policy"/>
+  <rdfs:range rdf:resource="&ServiceModel;#Capability"/>
+</owl:ObjectProperty>
+
+
+<!-- 2.3.4.8 Policy Description-->
+
+<owl:Class rdf:ID="Policy_Description">
+  <rdfs:comment>A policy description is a machine-processable description of a policy or set of policies
+  </rdfs:comment>
+  <rdfs:label>Policy_Description</rdfs:label>
+</owl:Class>
+
+<owl:ObjectProperty rdf:ID="describes">
+  <rdfs:label>has_a</rdfs:label>
+  <rdfs:comment>
+    a policy description describes a policy 
+  </rdfs:comment>
+<owl:inverseOf rdf:resource="#describedBy"/>
+</owl:ObjectProperty>
+
+<!-- 2.3.4.9 Policy Guard-->
+
+<owl:Class rdf:ID="Policy_Guard">
+  <rdfs:comment>
+    A policy guard is a mechanism deployed on behalf of an owner that
+    enforces a policy (or set of policies).
+    A policy guard is a mechanism that enforces policies. (2.3.4.9.2)
+  </rdfs:comment>
+  <rdfs:label>Policy_Guard</rdfs:label>
+</owl:Class>
+
+<!--
+  Note : Since there is no concept Owner. We assume Owner is same as Person_or_Organization 
+-->
+<owl:ObjectProperty rdf:ID="has_a">
+  <rdfs:label>has_a</rdfs:label>
+  <rdfs:comment>
+    A policy guard has an owner responsible for establishing the guard. 
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#Policy_Guard"/>
+  <rdfs:range rdf:resource="#Person_or_Organization"/>
+</owl:ObjectProperty>
+
+</rdf:RDF>
+

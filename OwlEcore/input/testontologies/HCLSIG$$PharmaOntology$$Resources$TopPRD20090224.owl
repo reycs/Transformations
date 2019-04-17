@@ -1,0 +1,1559 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:Top="http://www.owl-ontologies.com/file1.owl#"
+    xmlns="http://www.lilly.com/TopLevel.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+  xml:base="http://www.lilly.com/TopLevel.owl">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:resource="Created with TopBraid Composer"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Permeability">
+    <rdfs:label>Permeability Assay</rdfs:label>
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="BiochemicalWholeCellAssay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DNAReplicationModulation">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>DNA Replication Modulation Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BiochemicalWholeCellAssay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PathwayTarget">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Pathway Target</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Target"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Pathway"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RadioligandBinding">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Radioligand Binding Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="BiochemicalExVivoAssay"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="BiochemicalInVitroAssay"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="WholeCellBindingAssay"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BiochemicalWholeCellAssay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="OtherSARLibrary">
+    <hasDataSource>GSM</hasDataSource>
+    <rdfs:label>Other SAR Library</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Library"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MoleculeProteinInteraction">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Molecule protein interaction</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PhenotypeTarget">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Phenotype Target</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Target"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Phenotype"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CellProliferation">
+    <rdfs:label>Cell Proliferation Assay</rdfs:label>
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BiochemicalWholeCellAssay"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BiochemicalInVitroAssay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="LeadOptimizationStudy">
+    <rdfs:label>Lead Optimization Study</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Study"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="EnzymeInhibition">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Enzyme Inhibition Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="BiochemicalInSituAssay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ProjectAssayAssociation">
+    <rdfs:comment>This is a relation class that links Project and Assay.  This class is introduced so that other classes or properties can be used to describe the relationship between Project and Assay.</rdfs:comment>
+    <isRelationClass rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</isRelationClass>
+    <rdfs:label>Project Assay Association</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="LillyWorker">
+    <hasDataSource>SAP</hasDataSource>
+    <rdfs:label>LillyWorker</rdfs:label>
+    <rdfs:comment>A person for whom the corporation provides, may provide, or has provided direct employment, or has a specific work agreement to perform defined tasks for the company.  Some applicants may be included depending on the business need to track information about certain types of applicants.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AssayActivity">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:comment>A place holder, need further modeling</rdfs:comment>
+    <rdfs:label>Assay Activity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ReleaseOfSubstanceIntoExtracellularMatrix">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Release of Substance into Extracellular Matrix Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InVivoAssay"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BiochemicalWholeCellAssay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="BehavioralAssay">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Behavioral Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Assay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Apoptosis">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Apoptosis Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BiochemicalWholeCellAssay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TherapeuticArea">
+    <rdfs:label>Therapeutic Area</rdfs:label>
+    <rdfs:comment>The major research fields that are defined at Lilly.  For example, Cardivacular, Oncology.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="WholeCellUptakeAssay">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Whole Cell Uptake Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Assay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Cytotoxicity">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Cytotoxicity Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BiochemicalWholeCellAssay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ElectrophysiologicalInSituAssay">
+    <rdfs:label>Electrophysiological in Situ Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Assay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ReferenceStandardLibrary">
+    <hasDataSource>GSM</hasDataSource>
+    <rdfs:label>Reference Standard Library</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Library"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#BiochemicalWholeCellAssay">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Biochemical Whole Cell Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Assay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CytoplasmicNuclearTranslocation">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Cytoplasmic Nuclear Translocation Assay</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiochemicalWholeCellAssay"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ElectrophysiologicalInVitroAssay">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Electrophysiological in Vitro Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Assay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#WholeCellBindingAssay">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Whole Cell Binding Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Assay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Solubility">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Solubility Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PhysicalChemistryAssay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ClinicalStudy">
+    <rdfs:label>Clinical Study</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Study"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ReceptorOccupancy">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Receptor Occupancy Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BiochemicalExVivoAssay"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="BiochemicalInVivoAssay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AntitumorEfficacyInVitroTargetModulation">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Antitumor Efficacy in Vitro Target Modulation</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InVivoAssay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#PhysicalChemistryAssay">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Physical Chemistry Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Assay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DrugHuntingTeam">
+    <hasDataSource>SAP</hasDataSource>
+    <rdfs:comment>A Lilly organization that is doing drug discovery research.</rdfs:comment>
+    <rdfs:label>Drug Hunting Team</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="IntermediateLibrary">
+    <hasDataSource>GSM</hasDataSource>
+    <rdfs:label>Intermediate Library</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Library"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ATC">
+    <hasDataSource>WHO</hasDataSource>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Therapeutic area code (ATC)</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:about="#BiochemicalInVivoAssay">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Biochemical in Vivo Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Assay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Antibody">
+    <rdfs:label>Antibody</rdfs:label>
+    <rdfs:comment>A defense protein that binds to foreign molecules to allow elimination of the foreign molecule.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ProteinMolecule"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="LypolysisModulation">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Lypolysis Modulation Assay</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiochemicalWholeCellAssay"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ProteinMolecule">
+    <rdfs:label>Protein Molecule</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Protein"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="LargeMolecule"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ADMESolubility">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>ADME Solubility Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BiochemicalInVitroAssay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ReuptakeInhibition">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Reuptake Inhibition Assay</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiochemicalWholeCellAssay"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ProjectStage">
+    <rdfs:label>Project Stage</rdfs:label>
+    <rdfs:comment>The stage of a project that is defined in SAP. Currently, the stages can be: DISCOVERY, CANDIDATE DEVELOPMENT, PRODUCT DEVELOPMENT, LEGACY, OTHER, EXPLORATORY, TARGET DEVELOPMENT, LEAD DEVELOPMENT, NON-MOLECULE</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GeneTarget">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Gene Target</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Target"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Gene"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PrimarySARLibrary">
+    <hasDataSource>GSM</hasDataSource>
+    <rdfs:label>Primary SAR Library</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Library"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="G-ProteinBinding">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>G-Protein Binding Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BiochemicalInVitroAssay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ElectrophysiologicalInVivoAssay">
+    <rdfs:label>Electrophysiological in Vivo Assay</rdfs:label>
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Assay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Indication">
+    <hasDataSource>GSM</hasDataSource>
+    <rdfs:label>Indication</rdfs:label>
+    <rdfs:comment>In medicine, an indication is a term describing a valid reason to use a certain test, medication, procedure, or surgery. In the United States, indications for medications are strictly regulated by the Food and Drug Administration, which includes them in the package insert under the phrase "Indications and Usage".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Chemotaxis">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Chemotaxis Assay</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiochemicalWholeCellAssay"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Company">
+    <hasDataSource>ChemTracker</hasDataSource>
+    <hasDataSource>ExternalCompoundAcquisition</hasDataSource>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Company</rdfs:label>
+    <rdfs:comment>Generally, a company is a form of business organization.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="EnzymeModulation">
+    <rdfs:label>Enzyme Modulation Assay</rdfs:label>
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BiochemicalInVitroAssay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NuclearReceptorModulator">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Nuclear Receptor Modulator Assay</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiochemicalWholeCellAssay"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Target">
+    <rdfs:comment>Anything that our research is aimed at and ususally is something that we think that has a correlation with a drugable substance. It maybe biological target, pathway, phenotype and MOA, etc.</rdfs:comment>
+    <rdfs:label>Target</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Project">
+    <hasDataSource>SAP</hasDataSource>
+    <rdfs:label>Project</rdfs:label>
+    <rdfs:comment>A planned endeavor that is defined by Lilly SAP.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="LYNumber">
+    <hasDataSource>SAP</hasDataSource>
+    <hasDataSource>GSM</hasDataSource>
+    <rdfs:label>LY Number</rdfs:label>
+    <rdfs:comment>The number used to identify a pre-product or project that emerges as a possible therapeutic agent to be submitted to the FDA.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="cAMPModulation">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>cAMP Modulation Assay</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiochemicalWholeCellAssay"/>
+  </owl:Class>
+  <owl:Class rdf:ID="QuenchMeasurement">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Quench Measurement Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BiochemicalInVitroAssay"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#BiochemicalWholeCellAssay"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CofactorRecruitment">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Cofactor Recruitment Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BiochemicalInVitroAssay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#BiochemicalExVivoAssay">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Biochemical ex Vivo Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Assay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Protein">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Protein</rdfs:label>
+    <rdfs:comment>A large molecule composed of one or more chains of amino acids in a specific order. The order is determined by the base sequence of nucleotides in the gene that codes for the protein. Proteins are required for the structure, function, and regulation of the body's cells, tissues, and organs; and each protein has unique functions. Examples are hormones, enzymes, and antibodies.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Phenotype">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Phenotype</rdfs:label>
+    <rdfs:comment>The visible appearance or set of traits of an organism, resulting from the combined action of genotype and environment.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TransporterModulation">
+    <rdfs:label>Transporter Modulation Assay</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiochemicalWholeCellAssay"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Phospholipidosis">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Phospholipidosis Assay</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiochemicalWholeCellAssay"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Library">
+    <rdfs:label>Library</rdfs:label>
+    <rdfs:comment>A grouping of two or more substances.  Each Library is associated with a specific Library Type.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ResearchEffort">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Assay Collection</rdfs:label>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Research Effort</rdfs:label>
+    <rdfs:comment>A project or program that organizes research activities for investigations related to specific Biological Target(s). It has also been used as a collection of assays.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SmallMolecule">
+    <hasDataSource>GSM</hasDataSource>
+    <rdfs:label>Compound</rdfs:label>
+    <rdfs:label>Small Molecule</rdfs:label>
+    <rdfs:comment>A molecule with smaller molecular weight.  In general, we consider a molecule with the molecular weight less than 1000 dalton is a small molecule.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Molecule"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="WholeCellEnzymeModulation">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Whole Cell Enzyme Modulation Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BiochemicalInVitroAssay"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#BiochemicalExVivoAssay"/>
+    <rdfs:subClassOf rdf:resource="#BiochemicalWholeCellAssay"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AntiProliferation">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Anti - Proliferation Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PhenotypicAssay"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#BiochemicalWholeCellAssay"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CompanySite">
+    <hasDataSource>ChemTracker</hasDataSource>
+    <hasDataSource>ExternalCompoundAcquisition</hasDataSource>
+    <rdfs:label>Collaborator</rdfs:label>
+    <rdfs:comment>A location of a company.</rdfs:comment>
+    <rdfs:label>Company Site</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Pathway">
+    <rdfs:label>Pathway</rdfs:label>
+    <rdfs:comment>Network of interacting proteins used to carry out biological functions such as metabolism and signal transduction.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Species">
+    <rdfs:label>Species</rdfs:label>
+    <rdfs:comment>In biology, a species is one of the basic units of biological classification and a taxonomic rank. A species is often defined as a group of organisms capable of interbreeding and producing fertile offspring. ...</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TargetFamily">
+    <rdfs:comment>A grouping of Target.  It is called biological entity type in RefDB.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Target Family</rdfs:label>
+    <rdfs:label>Biological Entity Type</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CalculatedPhysicalChemical">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Calculated Physical Chemical</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#PhysicalChemistryAssay"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ProteinTarget">
+    <rdfs:label>Protein Target</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Target"/>
+    <rdfs:subClassOf rdf:resource="#Protein"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TGR5GPCRmGLP-1ModulationSulfo-tag2564757">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>TGR5 GPCR mGLP-1 Modulation Sulfo-tag 2564757 Assay</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiochemicalWholeCellAssay"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ReporterGeneModulation">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Reporter Gene Modulation Assay</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiochemicalWholeCellAssay"/>
+  </owl:Class>
+  <owl:Class rdf:ID="IonChannelModulation">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Ion Channel Modulation Assay</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ElectrophysiologicalInSituAssay"/>
+    <rdfs:subClassOf rdf:resource="#ElectrophysiologicalInVitroAssay"/>
+    <rdfs:subClassOf rdf:resource="#BiochemicalWholeCellAssay"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ToxicologyStudy">
+    <rdfs:label>Toxicology Study</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Study"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#LargeMolecule">
+    <rdfs:label>Large Molecule</rdfs:label>
+    <rdfs:comment>A molecule with greater molecular weight.  In general, we consider a molecule with the molecular weight greater than 1000 dalton is a large molecule.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Molecule"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Molecule">
+    <rdfs:label>Substance</rdfs:label>
+    <rdfs:label>Molecule</rdfs:label>
+    <rdfs:comment>The smallest division of a compound that still retains or exhibits all the properties of the substance.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GeneFamily">
+    <rdfs:comment>A grouping of genes.</rdfs:comment>
+    <rdfs:label>Gene Family</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ReductionReactions">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Reduction Reaction Assay</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#PhysicalChemistryAssay"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PLSLibrary">
+    <hasDataSource>GSM</hasDataSource>
+    <rdfs:label>PLS Library</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Library"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Gene">
+    <hasDataSource>NCBI</hasDataSource>
+    <rdfs:label>Gene</rdfs:label>
+    <rdfs:comment>The basic unit of inheritance. A gene is a segment of DNA that specifies the structure of a protein or an RNA molecule.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Lew">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Lew Assay</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BehavioralAssay"/>
+    <rdfs:subClassOf rdf:resource="#ElectrophysiologicalInSituAssay"/>
+  </owl:Class>
+  <owl:Class rdf:about="#InVivoAssay">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>in Vivo Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Assay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#PhenotypicAssay">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Phenotypic Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Assay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#BiochemicalInVitroAssay">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Biochemical in Vitro Assay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Assay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="EndogenousGeneModulation">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Endogenous Gene Modulation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiochemicalWholeCellAssay"/>
+  </owl:Class>
+  <owl:Class rdf:about="#BiochemicalInSituAssay">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Biochemical in Situ lAssay</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Assay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MechanismOfAction">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Mechanism Of Action</rdfs:label>
+    <rdfs:comment>The chemical interaction of the drug and various physiological dimensions of the body.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Assay">
+    <hasDataSource>ICARIS</hasDataSource>
+    <hasDataSource>STAR</hasDataSource>
+    <rdfs:label>Assay</rdfs:label>
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:comment>A method to analyze or quantify a substance in a sample.</rdfs:comment>
+    <rdfs:label>Biological Method Version</rdfs:label>
+    <rdfs:label>Screen</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CalciumMobilization">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Calcium Mobilization Assay</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiochemicalInVitroAssay"/>
+    <rdfs:subClassOf rdf:resource="#BiochemicalWholeCellAssay"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ScreenStudy">
+    <rdfs:label>Screen Study</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Study"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CellCycleModulation">
+    <rdfs:label>Cell Cycle Modulation</rdfs:label>
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:subClassOf rdf:resource="#BiochemicalWholeCellAssay"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MOATarget">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MOATarget</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Target"/>
+    <rdfs:subClassOf rdf:resource="#MechanismOfAction"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Study">
+    <rdfs:label>Study</rdfs:label>
+    <rdfs:comment>Place holder for clinical study, tox study.  - need further modeling.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ProteinModulation">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Protein Modulation Assay</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiochemicalInVitroAssay"/>
+    <rdfs:subClassOf rdf:resource="#BiochemicalWholeCellAssay"/>
+  </owl:Class>
+  <owl:Class rdf:ID="BiomarkerMeasurement">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Biomarker Measurement Assay</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiochemicalInVivoAssay"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CytotoxicityCytolethalityAndCellProliferation">
+    <hasDataSource>RefDB</hasDataSource>
+    <rdfs:label>Cytotoxicity Cytolethality And Cell Proliferation Assay</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiochemicalWholeCellAssay"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hasProgramLeader">
+    <rdfs:label>has program leader</rdfs:label>
+    <rdfs:comment>An object property that defines who is the Program Leader of a given Project.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#LillyWorker"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="hasLillyWorker"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isStudiedIn">
+    <rdfs:comment>An object property that defines the relationship from Target to Assay, specifying which target was tested for a given assay.</rdfs:comment>
+    <rdfs:label>is studied in</rdfs:label>
+    <rdfs:domain rdf:resource="#Target"/>
+    <rdfs:range rdf:resource="#Assay"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasAssociatedSecondaryIndication">
+    <rdfs:label>has associated secondary indication</rdfs:label>
+    <rdfs:domain rdf:resource="#Molecule"/>
+    <rdfs:range rdf:resource="#Indication"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="hasAssociatedIndication"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="runBy">
+    <rdfs:comment>An object property that defines the relationship from Project Assay to Company Site, specifying for where a given Project, the given assay was run.</rdfs:comment>
+    <rdfs:label>run by</rdfs:label>
+    <rdfs:domain rdf:resource="#ProjectAssayAssociation"/>
+    <rdfs:range rdf:resource="#CompanySite"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasLeadBiologist">
+    <rdfs:comment>An object property that defines who is the Lead Biologist of a given Project.</rdfs:comment>
+    <rdfs:label>has lead biologist</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#LillyWorker"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasLillyWorker"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasProjectStage">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has project stage</rdfs:label>
+    <rdfs:comment>An object property that defines the relationship from Project to Project Stage.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#ProjectStage"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasDrugHuntingTeam">
+    <rdfs:label>has drug hunting team</rdfs:label>
+    <rdfs:comment>An object property that defines the relationship from Project to Drug Hunting Team, specifying which Drug Hunting Team works on a given Project.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#DrugHuntingTeam"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="IsExpressedBy">
+    <rdfs:comment>An object property that defines the relationship from Protein Target to Gene, specifying which Protein Target is expressed by a given Gene.</rdfs:comment>
+    <rdfs:label>is expressed by</rdfs:label>
+    <rdfs:domain rdf:resource="#ProteinTarget"/>
+    <rdfs:range rdf:resource="#Gene"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMedicalDirector">
+    <rdfs:comment>An object property that defines who is the Medical Direcotr of a given Project.</rdfs:comment>
+    <rdfs:label>has medical director</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#LillyWorker"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasLillyWorker"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasAssociatedIndication">
+    <rdfs:label>has associated indication</rdfs:label>
+    <rdfs:comment>An object property that defines the relationship from Molecule to Indication.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Molecule"/>
+    <rdfs:range rdf:resource="#Indication"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasCollaborator">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has collaborator</rdfs:label>
+    <rdfs:comment>An object property that defines the collaborative relationship from Project to Company Site.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#CompanySite"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasStudy">
+    <rdfs:comment>An object property that defines the relationship from Project to Study.</rdfs:comment>
+    <rdfs:label>has study</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#Study"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasRelativeActivity">
+    <rdfs:label>has relative activity</rdfs:label>
+    <rdfs:comment>An object property that defines the relationship from Project Assay to Assay Activity, specifying which Assay Activity is a relative activity to a given Project Assay.</rdfs:comment>
+    <rdfs:domain rdf:resource="#ProjectAssayAssociation"/>
+    <rdfs:range rdf:resource="#AssayActivity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isAssignedToLibrary">
+    <rdfs:comment>An object property that defines the relationship from Study to Library.</rdfs:comment>
+    <rdfs:label>is assigned to library</rdfs:label>
+    <rdfs:domain rdf:resource="#Study"/>
+    <rdfs:range rdf:resource="#Library"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isCollectionOf">
+    <rdfs:comment>An object property that defines the relationship from Research Effort to Assay.</rdfs:comment>
+    <rdfs:label>is collection of</rdfs:label>
+    <rdfs:domain rdf:resource="#ResearchEffort"/>
+    <rdfs:range rdf:resource="#Assay"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasTarget">
+    <rdfs:comment>An object property that defines the relationship from Target Family to Target, specifying how targets are grouped together.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has target</rdfs:label>
+    <rdfs:domain rdf:resource="#TargetFamily"/>
+    <rdfs:range rdf:resource="#Target"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasCATLeader">
+    <rdfs:comment>An object property that defines who is the CAT Leader of a given Project.</rdfs:comment>
+    <rdfs:label>has CAT leader</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#LillyWorker"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasLillyWorker"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="locatedAt">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >located at</rdfs:label>
+    <rdfs:comment>An object property that defines the relationship from Company to Company Site.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Company"/>
+    <rdfs:range rdf:resource="#CompanySite"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasAdministrativeAssistant">
+    <rdfs:comment>An object property that defines who is the Administrative Assistant of a given Project.</rdfs:comment>
+    <rdfs:label>has adminstrative assistant</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#LillyWorker"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasLillyWorker"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isAssociatedWithATC">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >is associated withATC</rdfs:label>
+    <rdfs:domain rdf:resource="#Molecule"/>
+    <rdfs:range rdf:resource="#ATC"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasSpecies">
+    <rdfs:comment>An object property that defines the relationship from Gene to Species.</rdfs:comment>
+    <rdfs:label>has species</rdfs:label>
+    <rdfs:domain rdf:resource="#Gene"/>
+    <rdfs:range rdf:resource="#Species"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasAssociatedPrimaryIndication">
+    <rdfs:label>has associated primary indication</rdfs:label>
+    <rdfs:domain rdf:resource="#Molecule"/>
+    <rdfs:range rdf:resource="#Indication"/>
+    <rdfs:subPropertyOf rdf:resource="#hasAssociatedIndication"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isAssignedToLYNumber">
+    <rdfs:comment>An object property that defines the relationship from Molecule to LY Number.</rdfs:comment>
+    <rdfs:label>is assigned to LY number</rdfs:label>
+    <rdfs:domain rdf:resource="#Molecule"/>
+    <rdfs:range rdf:resource="#LYNumber"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasQuantativeBiologist">
+    <rdfs:label>has quantative biologist</rdfs:label>
+    <rdfs:comment>An object property that defines who is the Quantative Biologist of a given Project.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#LillyWorker"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasLillyWorker"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasRegulatoryCoordinator">
+    <rdfs:comment>An object property that defines who is the Regulatory Coordinator of a given Project.</rdfs:comment>
+    <rdfs:label>has regulatory coordinator</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#LillyWorker"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasLillyWorker"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasScientificLeader">
+    <rdfs:label>has scientific leader</rdfs:label>
+    <rdfs:comment>An object property that defines who is the Scientific Leader of a given Project.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#LillyWorker"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasLillyWorker"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="involveProtein">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >involve protein</rdfs:label>
+    <rdfs:domain rdf:resource="#MoleculeProteinInteraction"/>
+    <rdfs:range rdf:resource="#ProteinTarget"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isPrimaryTheraputicAreaFor">
+    <rdfs:label>is primary theraputic area for</rdfs:label>
+    <rdfs:domain rdf:resource="#TherapeuticArea"/>
+    <rdfs:range rdf:resource="#Project"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="isTheraputicAreaFor"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasGene">
+    <rdfs:comment>An object property that defines the relationship from Gene Family to Gene, specifying how Genes are grouped into Gene Family.</rdfs:comment>
+    <rdfs:label>has gene</rdfs:label>
+    <rdfs:domain rdf:resource="#GeneFamily"/>
+    <rdfs:range rdf:resource="#Gene"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isTertiaryTheraputicAreaFor">
+    <rdfs:label>is tertiary theraputic area for</rdfs:label>
+    <rdfs:domain rdf:resource="#TherapeuticArea"/>
+    <rdfs:range rdf:resource="#Project"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#isTheraputicAreaFor"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasLillyWorker">
+    <rdfs:comment>An object property that defines the relationship from Project to Lilly Worker.</rdfs:comment>
+    <rdfs:label>has Lilly worker</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#LillyWorker"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="useAssay">
+    <rdfs:comment>An object property that defines the relationship from Project Assay (a relation class) to Assay.</rdfs:comment>
+    <rdfs:label>use assay</rdfs:label>
+    <rdfs:domain rdf:resource="#ProjectAssayAssociation"/>
+    <rdfs:range rdf:resource="#Assay"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasPrimaryContact">
+    <rdfs:label>has primary contact</rdfs:label>
+    <rdfs:comment>An object property that defines who is the Primary contact of a given Project.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#LillyWorker"/>
+    <rdfs:subPropertyOf rdf:resource="#hasLillyWorker"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="involveMolecule">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >involve molecule</rdfs:label>
+    <rdfs:domain rdf:resource="#MoleculeProteinInteraction"/>
+    <rdfs:range rdf:resource="#Molecule"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasTADirector">
+    <rdfs:comment>An object property that defines who is the Therapeutic Area Director of a given Project.</rdfs:comment>
+    <rdfs:label>has TA Director</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#LillyWorker"/>
+    <rdfs:subPropertyOf rdf:resource="#hasLillyWorker"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasLeadBioChemist">
+    <rdfs:label>has lead biochemist</rdfs:label>
+    <rdfs:comment>An object property that defines who is the Lead Biochemist of a given Project.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#LillyWorker"/>
+    <rdfs:subPropertyOf rdf:resource="#hasLillyWorker"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasTertiaryDrugHuntingTeam">
+    <rdfs:label>has tertiary drug hunting team</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#DrugHuntingTeam"/>
+    <rdfs:subPropertyOf rdf:resource="#hasDrugHuntingTeam"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isSecondaryTheraputicAreaFor">
+    <rdfs:label>is secondary theraputic area for</rdfs:label>
+    <rdfs:domain rdf:resource="#TherapeuticArea"/>
+    <rdfs:range rdf:resource="#Project"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#isTheraputicAreaFor"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasCMCRep">
+    <rdfs:label>has CMC rep</rdfs:label>
+    <rdfs:comment>An object property that defines who is the CMC Representative of a given Project.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#LillyWorker"/>
+    <rdfs:subPropertyOf rdf:resource="#hasLillyWorker"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasPrimaryDrugHuntingTeam">
+    <rdfs:label>has primary drug hunting team</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#DrugHuntingTeam"/>
+    <rdfs:subPropertyOf rdf:resource="#hasDrugHuntingTeam"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isTheraputicAreaFor">
+    <rdfs:label>is theraputic area for</rdfs:label>
+    <rdfs:comment>An object property that defines the relationship from Therapeutic Area to Project.</rdfs:comment>
+    <rdfs:domain rdf:resource="#TherapeuticArea"/>
+    <rdfs:range rdf:resource="#Project"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasRequiredActivity">
+    <rdfs:comment>An object property that defines the relationship from Project Assay to Assay Activity, specifying which Assay Activity is a required activity for a given Project Assay.</rdfs:comment>
+    <rdfs:label>has required activity</rdfs:label>
+    <rdfs:domain rdf:resource="#ProjectAssayAssociation"/>
+    <rdfs:range rdf:resource="#AssayActivity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasAssociatedLYNumber">
+    <rdfs:label>has associated LY number</rdfs:label>
+    <rdfs:comment>An object property that defines the relationship from Project to LY Number.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#LYNumber"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasProjectAssay">
+    <rdfs:comment>An object property that defines the relationship from Project to Project Assay (a relation class).</rdfs:comment>
+    <rdfs:label>has project assay</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#ProjectAssayAssociation"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMilestoneMolecule">
+    <rdfs:comment>An object property that defines the relationship from Project Stage to Molecule, specifying what molecules have reached the milestone at a given project stage.</rdfs:comment>
+    <rdfs:label>has milestone molecule</rdfs:label>
+    <rdfs:domain rdf:resource="#ProjectStage"/>
+    <rdfs:range rdf:resource="#Molecule"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasAssociatedTertiaryIndication">
+    <rdfs:label>has associated tertiary indication</rdfs:label>
+    <rdfs:domain rdf:resource="#Molecule"/>
+    <rdfs:range rdf:resource="#Indication"/>
+    <rdfs:subPropertyOf rdf:resource="#hasAssociatedIndication"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasCOO">
+    <rdfs:label>has COO</rdfs:label>
+    <rdfs:comment>An object property that defines who is the COO of a given Project.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#LillyWorker"/>
+    <rdfs:subPropertyOf rdf:resource="#hasLillyWorker"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasLeadChemist">
+    <rdfs:label>has lead chemist</rdfs:label>
+    <rdfs:comment>An object property that defines who is the Lead Chemist of a given Project.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#LillyWorker"/>
+    <rdfs:subPropertyOf rdf:resource="#hasLillyWorker"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasCPM">
+    <rdfs:label>has CPM</rdfs:label>
+    <rdfs:comment>An object property that defines who is the CPM of a given Project.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#LillyWorker"/>
+    <rdfs:subPropertyOf rdf:resource="#hasLillyWorker"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasCRP">
+    <rdfs:comment>An object property that defines who is the CRP of a given Project.</rdfs:comment>
+    <rdfs:label>has CRP</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#LillyWorker"/>
+    <rdfs:subPropertyOf rdf:resource="#hasLillyWorker"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isGroupedBy">
+    <rdfs:comment>An object property that defines the relationship from Molecule to Library.</rdfs:comment>
+    <rdfs:label>is grouped by</rdfs:label>
+    <rdfs:domain rdf:resource="#Molecule"/>
+    <rdfs:range rdf:resource="#Library"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has ID</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasLibrary">
+    <rdfs:label>has library</rdfs:label>
+    <rdfs:comment>An object property that defines the relationship from Project to Library.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#Library"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasProjectAssociate">
+    <rdfs:comment>An object property that defines who is the Project Associate of a given Project.</rdfs:comment>
+    <rdfs:label>has project associate</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#LillyWorker"/>
+    <rdfs:subPropertyOf rdf:resource="#hasLillyWorker"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasSecondaryDrugHuntingTeam">
+    <rdfs:label>has secondary drug hunting team</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="#DrugHuntingTeam"/>
+    <rdfs:subPropertyOf rdf:resource="#hasDrugHuntingTeam"/>
+  </owl:ObjectProperty>
+  <rdf:Property rdf:ID="hasDataSource">
+    <rdfs:label>hasDataSource</rdfs:label>
+    <rdfs:comment>An annotation property that defines the data souce of a given class.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Property>
+  <owl:DatatypeProperty rdf:ID="hasProjectName">
+    <rdfs:label>has project name</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf>
+      <owl:DatatypeProperty rdf:ID="hasName"/>
+    </rdfs:subPropertyOf>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasSpeciesGenbankCommonName">
+    <rdfs:label>has species Genbank common name</rdfs:label>
+    <rdfs:domain rdf:resource="#Species"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf>
+      <owl:DatatypeProperty rdf:about="#hasName"/>
+    </rdfs:subPropertyOf>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasGeneSymbol">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has gene symbol</rdfs:label>
+    <rdfs:comment>A data property that defines the symbol for a given Gene.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Gene"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#hasName">
+    <rdfs:comment>A data property that defines at Thing level.  It stores the text label for a given node.</rdfs:comment>
+    <rdfs:label>has name</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasAssayDescription">
+    <rdfs:label>has assay description</rdfs:label>
+    <rdfs:domain rdf:resource="#Assay"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf>
+      <owl:DatatypeProperty rdf:ID="hasDescription"/>
+    </rdfs:subPropertyOf>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasAlternateGeneSymbol">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has alternate gene symbol</rdfs:label>
+    <rdfs:domain rdf:resource="#Gene"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasGeneSymbol"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasLYNumber">
+    <rdfs:label>has LY number</rdfs:label>
+    <rdfs:domain rdf:resource="#LYNumber"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasTherapeuticAreaName">
+    <rdfs:label>has therapeutic area name</rdfs:label>
+    <rdfs:domain rdf:resource="#TherapeuticArea"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasMolecularWeight">
+    <rdfs:comment>A data property that defines the molecular weight for a given Molecule.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has molecular weight</rdfs:label>
+    <rdfs:domain rdf:resource="#Molecule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#hasDescription">
+    <rdfs:comment>A data property that defines at Thing level.  It gives the detailed information about a given node.</rdfs:comment>
+    <rdfs:label>has description</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasValue">
+    <rdfs:comment>A data property that defines the result value that is generated from a given Assay Activity.</rdfs:comment>
+    <rdfs:label>has value</rdfs:label>
+    <rdfs:domain rdf:resource="#AssayActivity"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasMatadorProteinName">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Matador Protein Name</rdfs:label>
+    <rdfs:domain rdf:resource="#Protein"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasATCCode">
+    <rdfs:label>has ATC code</rdfs:label>
+    <rdfs:domain rdf:resource="#ATC"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasFullName">
+    <rdfs:label>has full name</rdfs:label>
+    <rdfs:domain rdf:resource="#LillyWorker"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasPathwayName">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has pathway name</rdfs:label>
+    <rdfs:domain rdf:resource="#Pathway"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasUniProtAccessionNumber">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has uni prot accession number</rdfs:label>
+    <rdfs:domain rdf:resource="#Protein"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasUOM">
+    <rdfs:comment>A data property that defines the Result Type that is used in a given Assay Activity.</rdfs:comment>
+    <rdfs:label>has UOM</rdfs:label>
+    <rdfs:domain rdf:resource="#AssayActivity"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasSiteName">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has site name</rdfs:label>
+    <rdfs:domain rdf:resource="#CompanySite"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasTargetName">
+    <rdfs:label>has target name</rdfs:label>
+    <rdfs:domain rdf:resource="#Target"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasPlatformName">
+    <rdfs:label>has platform name</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasMatadorScore">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has matador score</rdfs:label>
+    <rdfs:domain rdf:resource="#MoleculeProteinInteraction"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasMoleculeName">
+    <rdfs:label>has molecule name</rdfs:label>
+    <rdfs:domain rdf:resource="#Molecule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasGeneName">
+    <rdfs:label>has gene name</rdfs:label>
+    <rdfs:domain rdf:resource="#Gene"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasPrefix">
+    <rdfs:comment>A data property that defines Prefix of a given Assay Activity.</rdfs:comment>
+    <rdfs:label>has prefix</rdfs:label>
+    <rdfs:domain rdf:resource="#AssayActivity"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasDrugHuntingTeamName">
+    <rdfs:label>has drug hunting team name</rdfs:label>
+    <rdfs:domain rdf:resource="#DrugHuntingTeam"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="lastRunAt">
+    <rdfs:comment>A data property that records the date when the given Assay was last run.</rdfs:comment>
+    <rdfs:label>last run at</rdfs:label>
+    <rdfs:domain rdf:resource="#Assay"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasGeneFamilyName">
+    <rdfs:label>has gene family name</rdfs:label>
+    <rdfs:domain rdf:resource="#GeneFamily"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasMOAName">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has MOA name</rdfs:label>
+    <rdfs:domain rdf:resource="#MechanismOfAction"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasStatusDate">
+    <rdfs:comment>A data property that defines at Thing level, which specifies the data wihen a given status is assigned to the node.</rdfs:comment>
+    <rdfs:label>has status date</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasResultType">
+    <rdfs:comment>A data property that defines the Result Type that is used in a given Assay Activity.</rdfs:comment>
+    <rdfs:label>has result type</rdfs:label>
+    <rdfs:domain rdf:resource="#AssayActivity"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasAssayType">
+    <rdfs:comment>A data property that defines the type of a given Assay.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has assay type</rdfs:label>
+    <rdfs:domain rdf:resource="#Assay"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasResearchEffortName">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has research effort name</rdfs:label>
+    <rdfs:domain rdf:resource="#ResearchEffort"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="isAvailableToRun">
+    <rdfs:comment>A data property that defines whether the given Assay is available to run.</rdfs:comment>
+    <rdfs:label>is available to run</rdfs:label>
+    <rdfs:domain rdf:resource="#Assay"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasMoleculeAlias">
+    <rdfs:comment>A data property that stores other names of a given molecule.</rdfs:comment>
+    <rdfs:label>has molecule alias</rdfs:label>
+    <rdfs:domain rdf:resource="#Molecule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasSystemLogonID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has system logon ID</rdfs:label>
+    <rdfs:comment>A data property that defines the System Logon ID for a given Lilly Worker.</rdfs:comment>
+    <rdfs:domain rdf:resource="#LillyWorker"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasPhenotypeName">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has phenotype name</rdfs:label>
+    <rdfs:domain rdf:resource="#Phenotype"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasStatus">
+    <rdfs:comment>A data property that defines at Thing Level, specifying what is the status of a given node.</rdfs:comment>
+    <rdfs:label>has status</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasSmilesText">
+    <rdfs:comment>A data property that defines the smiles text for a given molecule.</rdfs:comment>
+    <rdfs:label>has smiles text</rdfs:label>
+    <rdfs:domain rdf:resource="#Molecule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="isValidated">
+    <rdfs:comment>A data property that defines whether a given Assay is a validated assay.</rdfs:comment>
+    <rdfs:label>is validated</rdfs:label>
+    <rdfs:domain rdf:resource="#Assay"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasLibraryName">
+    <rdfs:label>has library name</rdfs:label>
+    <rdfs:domain rdf:resource="#Library"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasAssayName">
+    <rdfs:label>has assay name</rdfs:label>
+    <rdfs:domain rdf:resource="#Assay"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasPreferredGeneSymbol">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has preferred gene symbol</rdfs:label>
+    <rdfs:domain rdf:resource="#Gene"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasGeneSymbol"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="followAssay">
+    <rdfs:comment>A data property that defines the workflow of the assays for a given Project.</rdfs:comment>
+    <rdfs:label>follow assay</rdfs:label>
+    <rdfs:domain rdf:resource="#ProjectAssayAssociation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasTargetFamilyName">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has target family name</rdfs:label>
+    <rdfs:domain rdf:resource="#TargetFamily"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasATCDescription">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has ATCDescription</rdfs:label>
+    <rdfs:domain rdf:resource="#ATC"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasDescription"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasMatadorAnnotation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has matador annotation</rdfs:label>
+    <rdfs:domain rdf:resource="#MoleculeProteinInteraction"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="isPlatform">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >is platform</rdfs:label>
+    <rdfs:comment>A data property that defines whether a given Research Effort is used as a Platform.</rdfs:comment>
+    <rdfs:domain rdf:resource="#ResearchEffort"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasSAPInternalNumber">
+    <rdfs:comment>A data property that defines the SAP internal number for a given Project.</rdfs:comment>
+    <rdfs:label>has SAP internal number</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasCurrentStage">
+    <rdfs:comment>A data property that defines a current stage of a given Project.</rdfs:comment>
+    <rdfs:label>has current stage</rdfs:label>
+    <rdfs:domain rdf:resource="#ProjectStage"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasIndicationName">
+    <rdfs:label>has indication name</rdfs:label>
+    <rdfs:domain rdf:resource="#Indication"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasName"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasLibraryDescription">
+    <rdfs:label>has library description</rdfs:label>
+    <rdfs:domain rdf:resource="#Library"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasDescription"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasSpeciesCommonName">
+    <rdfs:comment>A data property that defines the common names of a species.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has species common name</rdfs:label>
+    <rdfs:domain rdf:resource="#Species"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasCurrentPhase">
+    <rdfs:comment>A data property that defines the current phase of a given Project.</rdfs:comment>
+    <rdfs:label>has current phase</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasTargetFamilyDescription">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has target family description</rdfs:label>
+    <rdfs:domain rdf:resource="#TargetFamily"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasDescription"/>
+  </owl:DatatypeProperty>
+  <owl:TransitiveProperty rdf:ID="isRelatedAssayOf">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >is related assay of</rdfs:label>
+    <rdfs:comment>An symmetric and transitive object property that defines the relationship between assays.  This relationship will help the navigations among various assasys.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Assay"/>
+    <rdfs:range rdf:resource="#Assay"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+  </owl:TransitiveProperty>
+  <owl:SymmetricProperty rdf:ID="isMappedTo">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >is mapped to</rdfs:label>
+    <rdfs:comment>An symmetric object property that defines the relationship between Gene and Target.  Since it is symmetric, it allows queries go from either direction.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Gene"/>
+    <rdfs:range rdf:resource="#Target"/>
+  </owl:SymmetricProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasRefDBAssayID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Ref Biological Method Version ID</rdfs:label>
+    <rdfs:domain rdf:resource="#Assay"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasTherapeuticAreaID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Therapeutic Area ID</rdfs:label>
+    <rdfs:domain rdf:resource="#TherapeuticArea"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasLYNumberID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has LY number ID</rdfs:label>
+    <rdfs:domain rdf:resource="#LYNumber"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasEntrezGeneID">
+    <rdfs:label>has Entrez gene ID</rdfs:label>
+    <rdfs:domain rdf:resource="#Gene"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasIndicationID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has indication ID</rdfs:label>
+    <rdfs:domain rdf:resource="#Indication"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasTargetID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Biological Target ID</rdfs:label>
+    <rdfs:domain rdf:resource="#Target"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasMatadorProteinID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Matador Protein ID</rdfs:label>
+    <rdfs:domain rdf:resource="#Protein"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasPubChemChemicalID">
+    <rdfs:label>has PubChem Chemical ID</rdfs:label>
+    <rdfs:domain rdf:resource="#Molecule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasSAPNumber">
+    <rdfs:label>has SAP Number</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasUniProtProteinID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has UniProt Protein ID</rdfs:label>
+    <rdfs:domain rdf:resource="#Protein"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasGlobalID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has global ID</rdfs:label>
+    <rdfs:domain rdf:resource="#LillyWorker"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasTargetFamilyID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has target family ID</rdfs:label>
+    <rdfs:domain rdf:resource="#TargetFamily"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasMeshID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has mesh ID</rdfs:label>
+    <rdfs:domain rdf:resource="#Protein"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasResearchEffortID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Research Effort ID</rdfs:label>
+    <rdfs:domain rdf:resource="#ResearchEffort"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasLillySerialNumber">
+    <rdfs:label>has Lilly serial number</rdfs:label>
+    <rdfs:domain rdf:resource="#Molecule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasDrugHuntingTeamID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has drug hungting team ID</rdfs:label>
+    <rdfs:domain rdf:resource="#DrugHuntingTeam"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasSpeciesNcbiTaxonomyID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has NCBI taxonomy ID</rdfs:label>
+    <rdfs:domain rdf:resource="#Species"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasGeneFamilyID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has gene family ID</rdfs:label>
+    <rdfs:domain rdf:resource="#GeneFamily"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasLibraryID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has GSM library ID</rdfs:label>
+    <rdfs:domain rdf:resource="#Library"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasProjectStageID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has project stage ID</rdfs:label>
+    <rdfs:domain rdf:resource="#ProjectStage"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasICARISAssayID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has ICARIS assay ID</rdfs:label>
+    <rdfs:domain rdf:resource="#Assay"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="hasSTARAssayID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has STAR assay ID</rdfs:label>
+    <rdfs:domain rdf:resource="#Assay"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#hasID"/>
+  </owl:InverseFunctionalProperty>
+  <owl:AnnotationProperty rdf:ID="isRelationClass">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >isRelationClass</rdfs:label>
+    <rdfs:comment>An annotation property that defines whether the given class is a relation class.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:AnnotationProperty>
+</rdf:RDF>
+
+<!-- Created with TopBraid Composer -->

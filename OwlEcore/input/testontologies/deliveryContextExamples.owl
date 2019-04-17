@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?><rdf:RDF xmlns="http://www.example.org/2007/uwa/context/examples.owl#" xmlns:assert="http://www.owl-ontologies.com/assert.owl#" xmlns:common="http://www.w3.org/2007/uwa/context/common.owl#" xmlns:dc="http://purl.org/dc/terms/" xmlns:dcn="http://www.w3.org/2007/uwa/context/deliverycontext.owl#" xmlns:ex="http://www.example.org/2007/uwa/context/examples.owl#" xmlns:hard="http://www.w3.org/2007/uwa/context/hardware.owl#" xmlns:java="http://www.w3.org/2007/uwa/context/java.owl#" xmlns:loc="http://www.w3.org/2007/uwa/context/location.owl#" xmlns:net="http://www.w3.org/2007/uwa/context/network.owl#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:push="http://www.w3.org/2007/uwa/context/push.owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:soft="http://www.w3.org/2007/uwa/context/software.owl#" xmlns:web="http://www.w3.org/2007/uwa/context/web.owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xml:base="http://www.example.org/2007/uwa/context/examples.owl">
+  <owl:Class rdf:about="#JtwiRuntimeEnvironment">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/java.owl#J2meRuntimeEnvironment"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue>
+          <java:J2meProfile rdf:about="http://www.w3.org/2007/uwa/context/java.owl#MIDP20"/>
+        </owl:hasValue>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/java.owl#j2meProfiles"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue>
+          <java:J2meConfiguration rdf:about="http://www.w3.org/2007/uwa/context/java.owl#CLCD10"/>
+        </owl:hasValue>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/java.owl#j2meConfigurations"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/java.owl#j2meOptionalPackages"/>
+        </owl:onProperty>
+        <owl:hasValue>
+          <java:J2meOptionalPackage rdf:about="http://www.w3.org/2007/uwa/context/java.owl#JSR120"/>
+        </owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JTWI Runtime Environment</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a JTWI-compliant J2ME runtime environment</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Informative"/>
+  </owl:Class>
+  <web:WebBrowser rdf:about="#WebBrowser_x">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FashionBrowser</common:name>
+    <soft:uriSchemes rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#UriScheme_HTTP"/>
+    <soft:uriSchemes>
+      <common:UriScheme rdf:about="http://www.w3.org/2007/uwa/context/common.owl#UriSchema_34"/>
+    </soft:uriSchemes>
+    <soft:acceptedCharacterSets>
+      <common:CharacterSet rdf:about="http://www.w3.org/2007/uwa/context/common.owl#UTF-8"/>
+    </soft:acceptedCharacterSets>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6.31</common:version>
+    <soft:applicationProtocols>
+      <common:ApplicationProtocol rdf:about="http://www.w3.org/2007/uwa/context/common.owl#ApplicationProtocol_23"/>
+    </soft:applicationProtocols>
+    <soft:uriSchemes>
+      <common:UriScheme rdf:about="http://www.w3.org/2007/uwa/context/common.owl#UriSchema_32"/>
+    </soft:uriSchemes>
+    <soft:acceptedTransferEncodings>
+      <common:TransferEncoding rdf:about="http://www.w3.org/2007/uwa/context/common.owl#TransferEncoding_Base64"/>
+    </soft:acceptedTransferEncodings>
+    <soft:acceptedTransferEncodings>
+      <common:TransferEncoding rdf:about="http://www.w3.org/2007/uwa/context/common.owl#TransferEncoding_7bit"/>
+    </soft:acceptedTransferEncodings>
+    <soft:applicationProtocols>
+      <common:ApplicationProtocol rdf:about="http://www.w3.org/2007/uwa/context/common.owl#ApplicationProtocol_24"/>
+    </soft:applicationProtocols>
+    <soft:apis>
+      <web:WebBrowserApi rdf:about="http://www.w3.org/2007/uwa/context/web.owl#DomLevel0"/>
+    </soft:apis>
+    <soft:apis>
+      <web:WebBrowserApi rdf:about="http://www.w3.org/2007/uwa/context/web.owl#XmlHttpRequest"/>
+    </soft:apis>
+    <soft:acceptedCharacterSets>
+      <common:CharacterSet rdf:about="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_ISO-8859-1"/>
+    </soft:acceptedCharacterSets>
+    <soft:applicationProtocols>
+      <common:ApplicationProtocol rdf:about="http://www.w3.org/2007/uwa/context/common.owl#ApplicationProtocol_22"/>
+    </soft:applicationProtocols>
+    <web:javascriptEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</web:javascriptEnabled>
+  </web:WebBrowser>
+  <web:WebBrowser rdf:about="#WebBrowser_y">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BrandBrowser</common:name>
+    <soft:applicationProtocols>
+      <common:ApplicationProtocol rdf:about="http://www.w3.org/2007/uwa/context/common.owl#ApplicationProtocol_26"/>
+    </soft:applicationProtocols>
+    <web:javascriptEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</web:javascriptEnabled>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</common:version>
+  </web:WebBrowser>
+  <hard:Battery rdf:about="#Battery_Hyp_Devi">
+    <hard:batteryLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#int">60</hard:batteryLevel>
+    <hard:batteryBeingCharged rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</hard:batteryBeingCharged>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The battery in a Hypothetical Device</rdfs:comment>
+  </hard:Battery>
+  <net:NetworkBearer rdf:about="#NetworkBearer_2">
+    <net:bearerTechnology>
+      <net:NetworkBearerTechnology rdf:about="http://www.w3.org/2007/uwa/context/network.owl#BearerType_GPRS"/>
+    </net:bearerTechnology>
+  </net:NetworkBearer>
+  <dcn:Environment rdf:about="#Environment_2">
+    <net:presentNetworks>
+      <net:Network rdf:about="#MobileNetwork_1">
+        <net:networkMode rdf:resource="http://www.w3.org/2007/uwa/context/network.owl#GSM_900_1800_1900"/>
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example_Network</common:name>
+        <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Informative"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example Mobile Network</rdfs:comment>
+        <net:mcc rdf:datatype="http://www.w3.org/2001/XMLSchema#string">224</net:mcc>
+      </net:Network>
+    </net:presentNetworks>
+    <loc:currentLocation>
+      <loc:Location rdf:about="#Place_Example"/>
+    </loc:currentLocation>
+    <loc:lastKnownLocation rdf:resource="#Place_Example"/>
+  </dcn:Environment>
+  <push:MmsClient rdf:about="#MmsClient_Example">
+    <push:mmsVersions rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2.4</push:mmsVersions>
+    <soft:acceptedCharacterSets rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_ISO-8859-1"/>
+    <soft:acceptedTransferEncodings rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#TransferEncoding_Base64"/>
+    <push:maxMmsMessageSize rdf:datatype="http://www.w3.org/2001/XMLSchema#long">3400</push:maxMmsMessageSize>
+  </push:MmsClient>
+  <dcn:Device rdf:about="#Device_Hypothetical">
+    <common:model rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hypothetical_Model</common:model>
+    <soft:deviceSoftware>
+      <soft:DeviceSoftware rdf:about="#DeviceSoftware_Hyp_Devi">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Device Software Example</rdfs:comment>
+        <soft:certificates>
+          <soft:X509Certificate rdf:about="http://www.w3.org/2007/uwa/context/deliverycontext.owl#xx"/>
+        </soft:certificates>
+        <java:defaultJRE>
+          <java:J2meRuntimeEnvironment rdf:about="#J2meRuntimeEnvironment_20">
+            <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+            <java:j2meConfigurations rdf:resource="http://www.w3.org/2007/uwa/context/java.owl#CLCD10"/>
+            <java:j2meOptionalPackages>
+              <java:J2meOptionalPackage rdf:about="http://www.w3.org/2007/uwa/context/java.owl#JSR179"/>
+            </java:j2meOptionalPackages>
+            <java:j2meProfiles>
+              <java:J2meProfile rdf:about="http://www.w3.org/2007/uwa/context/java.owl#MIDP10"/>
+            </java:j2meProfiles>
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KVM</rdfs:comment>
+            <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KVM</common:name>
+          </java:J2meRuntimeEnvironment>
+        </java:defaultJRE>
+        <soft:fonts>
+          <soft:Font rdf:about="#TimesFont10">
+            <soft:fontSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int">10</soft:fontSize>
+            <soft:fontFamily>
+              <soft:FontFamily rdf:about="#TimesNewRoman">
+                <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_TNR</common:id>
+                <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Times New Roman</rdfs:label>
+                <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Times New Roman</common:name>
+                <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example Font Family 'Times New Roman'</rdfs:comment>
+              </soft:FontFamily>
+            </soft:fontFamily>
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example instances with a Times Roman 10 font</rdfs:comment>
+          </soft:Font>
+        </soft:fonts>
+        <web:defaultWebBrowser rdf:resource="#WebBrowser_x"/>
+      </soft:DeviceSoftware>
+    </soft:deviceSoftware>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+    <common:vendor>
+      <common:Vendor rdf:about="#Nokia">
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nokia</common:name>
+      </common:Vendor>
+    </common:vendor>
+    <hard:deviceHardware>
+      <hard:DeviceHardware rdf:about="#DeviceHardware_Hypothetical_Device">
+        <hard:extensionMemory>
+          <hard:MemoryUnit rdf:about="#MemoryUnit_Hyp_Dev_Card">
+            <hard:availableSize rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedLong">29800000</hard:availableSize>
+            <hard:size rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedLong">32000000</hard:size>
+          </hard:MemoryUnit>
+        </hard:extensionMemory>
+        <hard:outputCharacterSets>
+          <common:CharacterSet rdf:about="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_CharacterSet_UTF-7"/>
+        </hard:outputCharacterSets>
+        <hard:inputCharacterSets rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_ISO-8859-1"/>
+        <hard:display>
+          <hard:Display rdf:about="#Display_Hypothetical_Device">
+            <hard:colorDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#int">16</hard:colorDepth>
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The display for the Hypothetical device</rdfs:comment>
+          </hard:Display>
+        </hard:display>
+        <hard:inputCharacterSets>
+          <common:CharacterSet rdf:about="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_WINDOWS-1252"/>
+        </hard:inputCharacterSets>
+        <hard:outputCharacterSets rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_UTF-16be"/>
+        <hard:pointingResolution>
+          <hard:PointingResolution rdf:about="http://www.w3.org/2007/uwa/context/hardware.owl#PointingResolution_PIXEL"/>
+        </hard:pointingResolution>
+        <hard:inputCharacterSets>
+          <common:CharacterSet rdf:about="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_ISO-8859-2"/>
+        </hard:inputCharacterSets>
+        <hard:inputCharacterSets rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_UTF-16be"/>
+        <hard:outputCharacterSets>
+          <common:CharacterSet rdf:about="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_UTF-16"/>
+        </hard:outputCharacterSets>
+        <hard:outputCharacterSets>
+          <common:CharacterSet rdf:about="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_US-ASCII"/>
+        </hard:outputCharacterSets>
+        <hard:outputCharacterSets rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#UTF-8"/>
+        <hard:outputCharacterSets rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_ISO-8859-2"/>
+        <hard:builtInMemory>
+          <hard:MemoryUnit rdf:about="#MemoryUnit_Hyp_Dev_Internal">
+            <hard:size rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">64000000</hard:size>
+            <hard:availableSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">45900000</hard:availableSize>
+          </hard:MemoryUnit>
+        </hard:builtInMemory>
+        <hard:inputCharacterSets rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_CharacterSet_UTF-7"/>
+        <hard:battery rdf:resource="#Battery_Hyp_Devi"/>
+        <hard:inputCharacterSets rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#UTF-8"/>
+        <hard:inputCharacterSets>
+          <common:CharacterSet rdf:about="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_ISO-10646-UCS-2"/>
+        </hard:inputCharacterSets>
+        <hard:outputCharacterSets rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_ISO-10646-UCS-2"/>
+        <hard:inputCharacterSets rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_UTF-16"/>
+        <hard:softkeyNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</hard:softkeyNumber>
+        <hard:inputCharacterSets>
+          <common:CharacterSet rdf:about="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_UTF-16le"/>
+        </hard:inputCharacterSets>
+        <hard:inputCharacterSets rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_US-ASCII"/>
+        <hard:outputCharacterSets rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_UTF-16le"/>
+        <hard:outputCharacterSets rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_WINDOWS-1252"/>
+        <hard:outputCharacterSets rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_ISO-8859-1"/>
+      </hard:DeviceHardware>
+    </hard:deviceHardware>
+    <hard:imei rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aaaa</hard:imei>
+  </dcn:Device>
+  <loc:WGS84Coordinates rdf:about="#WGS84Coordinates_25">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example WGS84 coordinates</rdfs:comment>
+    <loc:latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#float">44.0</loc:latitude>
+    <loc:longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#float">10.0</loc:longitude>
+  </loc:WGS84Coordinates>
+  <hard:Camera rdf:about="#Camera_Hypothetical_Device">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This represents the camera on a Hypothetical Device</rdfs:comment>
+    <common:resolutionWidth rdf:datatype="http://www.w3.org/2001/XMLSchema#int">307000</common:resolutionWidth>
+  </hard:Camera>
+  <web:WebBrowserFeatures rdf:about="#WebBrowserFeatures_1">
+    <web:cacheSize rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedLong">2048</web:cacheSize>
+    <web:rendersTables rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</web:rendersTables>
+    <web:maxEmbeddedObjectSize rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedLong">1024</web:maxEmbeddedObjectSize>
+    <web:supportsAccessKeys rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</web:supportsAccessKeys>
+    <web:supportsCookies rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</web:supportsCookies>
+    <web:showsAcessKeys rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</web:showsAcessKeys>
+    <web:maxDownloadableObjectSize rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedLong">4096</web:maxDownloadableObjectSize>
+    <web:maxTotalPageWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#long">10240</web:maxTotalPageWeight>
+    <web:maxCacheObjectSize rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedLong">256</web:maxCacheObjectSize>
+    <web:showsPageTitle rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</web:showsPageTitle>
+  </web:WebBrowserFeatures>
+  <hard:CPU rdf:about="#ARM9">
+    <hard:maxCpuFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#int">4000</hard:maxCpuFrequency>
+    <common:model rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ARM9</common:model>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The ARM ARM9 central processing unit</rdfs:comment>
+  </hard:CPU>
+  <loc:UTMCoordinates rdf:about="#UTMCoordinates_1">
+    <loc:datum rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WGS84</loc:datum>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example UTM Coordinates</rdfs:comment>
+    <loc:easting rdf:datatype="http://www.w3.org/2001/XMLSchema#float">165300.0</loc:easting>
+    <loc:longitudeZone rdf:datatype="http://www.w3.org/2001/XMLSchema#int">30</loc:longitudeZone>
+    <loc:latitudeZone rdf:datatype="http://www.w3.org/2001/XMLSchema#string">T</loc:latitudeZone>
+    <loc:northing rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.788875</loc:northing>
+  </loc:UTMCoordinates>
+  <dcn:DeliveryContext rdf:about="#ExampleDC_1">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example of a Delivery Context</rdfs:comment>
+    <dcn:currentNetworkBearer rdf:resource="#NetworkBearer_2"/>
+    <dcn:currentEnvironment rdf:resource="#Environment_2"/>
+    <dcn:usablePixelsY rdf:datatype="http://www.w3.org/2001/XMLSchema#int">220</dcn:usablePixelsY>
+    <dcn:currentUserAgent rdf:resource="#WebBrowser_x"/>
+    <dcn:currentDevice rdf:resource="#Device_Hypothetical"/>
+    <dcn:usablePixelsX rdf:datatype="http://www.w3.org/2001/XMLSchema#int">340</dcn:usablePixelsX>
+  </dcn:DeliveryContext>
+  <java:J2meRuntimeEnvironment rdf:about="#J2meRuntimeEnvironment_27">
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J9</rdfs:comment>
+    <java:j2meConfigurations rdf:resource="http://www.w3.org/2007/uwa/context/java.owl#CLCD10"/>
+    <java:j2meOptionalPackages rdf:resource="http://www.w3.org/2007/uwa/context/java.owl#JSR179"/>
+    <java:j2meProfiles rdf:resource="http://www.w3.org/2007/uwa/context/java.owl#MIDP10"/>
+    <java:j2meProfiles rdf:resource="http://www.w3.org/2007/uwa/context/java.owl#MIDP20"/>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J9</common:name>
+  </java:J2meRuntimeEnvironment>
+  <soft:OperatingSystem rdf:about="#OperatingSystem_SymbianOS7">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example Operating System</rdfs:comment>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7</common:version>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MyOperatingSystem</common:name>
+  </soft:OperatingSystem>
+  <common:FeatureRestriction rdf:about="#FeatureRestriction_8">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <common:restrictionValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</common:restrictionValue>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">document.layers</common:id>
+    <common:restrictedElement rdf:resource="http://www.w3.org/2007/uwa/context/web.owl#WebBrowserApi_DOM_LEVEL_1"/>
+  </common:FeatureRestriction>
+  <common:FeatureRestriction rdf:about="#FeatureRestriction_9">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <common:restrictedElement rdf:resource="http://www.w3.org/2007/uwa/context/web.owl#WebBrowserApi_DOM_LEVEL_1"/>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">document.all</common:id>
+    <common:restrictionValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</common:restrictionValue>
+  </common:FeatureRestriction>
+  <common:FeatureRestriction rdf:about="#FeatureRestriction_4">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">animated</common:id>
+    <common:restrictionValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</common:restrictionValue>
+    <common:restrictedElement rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#gif89a"/>
+  </common:FeatureRestriction>
+  <common:FeatureRestriction rdf:about="#FeatureRestriction_11">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveXBased</common:id>
+    <common:restrictionValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</common:restrictionValue>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <common:restrictedElement rdf:resource="http://www.w3.org/2007/uwa/context/web.owl#XmlHttpRequest"/>
+  </common:FeatureRestriction>
+  <common:FeatureRestriction rdf:about="#FeatureRestriction_14">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">interlaced</common:id>
+    <common:restrictionValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</common:restrictionValue>
+    <common:restrictedElement rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#gif89a"/>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+  </common:FeatureRestriction>
+  <common:FeatureRestriction rdf:about="#FeatureRestriction_15">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <common:restrictedElement rdf:resource="http://www.w3.org/2007/uwa/context/web.owl#WebBrowserApi_DOM_LEVEL_1"/>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">innerHTML</common:id>
+    <common:restrictionValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</common:restrictionValue>
+  </common:FeatureRestriction>
+  <common:FeatureRestriction rdf:about="#FeatureRestriction_12">
+    <common:restrictedElement rdf:resource="http://www.w3.org/2007/uwa/context/web.owl#XmlHttpRequest"/>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WindowProperty</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <common:restrictionValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</common:restrictionValue>
+  </common:FeatureRestriction>
+  <push:WapPushClient rdf:about="#WapPushClient_Example_1">
+    <soft:acceptedTransferEncodings rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#TransferEncoding_7bit"/>
+    <soft:acceptedCharacterSets rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet_ISO-8859-1"/>
+    <push:maxWapPushMessageSize rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2000</push:maxWapPushMessageSize>
+    <push:maxWapPushRequests rdf:datatype="http://www.w3.org/2001/XMLSchema#int">4</push:maxWapPushRequests>
+    <push:wapPushVersions rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2.1</push:wapPushVersions>
+  </push:WapPushClient>
+  <common:FeatureRestriction rdf:about="#FeatureRestriction_13">
+    <common:restrictedElement rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#gif89a"/>
+    <common:restrictionValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</common:restrictionValue>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">maximumNumberOfFrames</common:id>
+  </common:FeatureRestriction>
+  <loc:LocationProvider rdf:about="#LocationProvider_ExampleGPS">
+    <loc:supportedGeoCoordinateRS rdf:resource="http://www.w3.org/2007/uwa/context/location.owl#GeoCoordinateRS_UTM"/>
+    <loc:supportedGeoCoordinateRS rdf:resource="http://www.w3.org/2007/uwa/context/location.owl#GeoCoordinateRS_WGS84"/>
+    <loc:verticalAccuracy rdf:datatype="http://www.w3.org/2001/XMLSchema#int">2</loc:verticalAccuracy>
+    <loc:horizontalAccuracy rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</loc:horizontalAccuracy>
+    <loc:locationMethod rdf:resource="http://www.w3.org/2007/uwa/context/location.owl#TerminallGPSUnAssisted"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A location provider based on a GPS receiver</rdfs:comment>
+    <loc:locationCostsMoney rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</loc:locationCostsMoney>
+  </loc:LocationProvider>
+  <loc:Position rdf:about="#Position1">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An example position</rdfs:comment>
+    <loc:wgs84Coordinates rdf:resource="#WGS84Coordinates_25"/>
+  </loc:Position>
+  <common:FeatureRestriction rdf:about="#FeatureRestriction_16">
+    <common:restrictedElement rdf:resource="http://www.w3.org/2007/uwa/context/web.owl#WebBrowserApi_DOM_LEVEL_1"/>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">getElementById</common:id>
+    <common:restrictionValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</common:restrictionValue>
+  </common:FeatureRestriction>
+  <common:FeatureRestriction rdf:about="#FeatureRestriction_17">
+    <common:restrictedElement rdf:resource="http://www.w3.org/2007/uwa/context/web.owl#WebBrowserApi_DOM_LEVEL_1"/>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">getElementById</common:id>
+    <common:restrictionValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</common:restrictionValue>
+  </common:FeatureRestriction>
+</rdf:RDF>

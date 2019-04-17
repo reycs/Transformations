@@ -1,0 +1,1714 @@
+@prefix : <http://purl.org/gao/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://purl.org/gao/> .
+
+<http://purl.org/gao/> rdf:type owl:Ontology ;
+                       
+                       owl:versionInfo "Deliverable D02 - Initial extension of auto.schema.org terms"@en ;
+                       
+                       rdfs:seeAlso "https://www.w3.org/community/gao/wiki"^^xsd:anyURI ;
+                       
+                       rdfs:label "Automotive Ontology"@en .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+
+<http://www.w3.org/2004/02/skos/core#altLabel> rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/2004/02/skos/core#closeMatch
+
+<http://www.w3.org/2004/02/skos/core#closeMatch> rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/2004/02/skos/core#exactMatch
+
+<http://www.w3.org/2004/02/skos/core#exactMatch> rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/2004/02/skos/core#hiddenLabel
+
+<http://www.w3.org/2004/02/skos/core#hiddenLabel> rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://purl.org/gao/bodyType
+
+:bodyType rdf:type owl:ObjectProperty ;
+          
+          rdfs:domain :Vehicle ;
+          
+          rdfs:range :BodyType ;
+          
+          <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/bodyType"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/engineType
+
+:engineType rdf:type owl:ObjectProperty ;
+            
+            rdfs:domain :Vehicle ;
+            
+            rdfs:range :Engine ;
+            
+            <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/engineType"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/transmission
+
+:transmission rdf:type owl:ObjectProperty ;
+              
+              rdfs:domain :Vehicle ;
+              
+              rdfs:range :Transmission ;
+              
+              rdfs:label "gearbox type"@en .
+
+
+
+###  http://purl.org/gao/vehicleSpecialUsage
+
+:vehicleSpecialUsage rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:domain :Vehicle ;
+                     
+                     rdfs:range :CarUsageType ;
+                     
+                     rdfs:label "vehicle special usage"@en ;
+                     
+                     <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/vehicleSpecialUsage"^^xsd:anyURI .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://purl.org/gao/accelerationTime
+
+:accelerationTime rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:domain :Vehicle ;
+                  
+                  <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/accelerationTime"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/acrissCode
+
+:acrissCode rdf:type owl:DatatypeProperty ;
+            
+            rdfs:domain :Vehicle ;
+            
+            <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/acrissCode"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/brakingTrailerWeight
+
+:brakingTrailerWeight rdf:type owl:DatatypeProperty ;
+                      
+                      rdfs:label "braking trailer weight"@en .
+
+
+
+###  http://purl.org/gao/combinedCycleFuelConsumption
+
+:combinedCycleFuelConsumption rdf:type owl:DatatypeProperty ;
+                              
+                              rdfs:subPropertyOf :fuelConsumption ;
+                              
+                              <http://www.w3.org/2004/02/skos/core#hiddenLabel> "combined cycle"@en .
+
+
+
+###  http://purl.org/gao/compressionRatio
+
+:compressionRatio rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:domain :Engine ;
+                  
+                  rdfs:label "Compression ratio"@en .
+
+
+
+###  http://purl.org/gao/emissionsCO2
+
+:emissionsCO2 rdf:type owl:DatatypeProperty ;
+              
+              rdfs:domain :Vehicle ;
+              
+              rdfs:label "CO2 emission"@en ;
+              
+              <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/emissionsCO2"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/emissionsCO2MixedCycle
+
+:emissionsCO2MixedCycle rdf:type owl:DatatypeProperty ;
+                        
+                        rdfs:subPropertyOf :emissionsCO2 ;
+                        
+                        rdfs:domain :Vehicle ;
+                        
+                        rdfs:label "CO2 emission mixed cycle"@en .
+
+
+
+###  http://purl.org/gao/engineCapacity
+
+:engineCapacity rdf:type owl:DatatypeProperty ;
+                
+                rdfs:domain :Engine ;
+                
+                rdfs:label "Engine capacity"@en .
+
+
+
+###  http://purl.org/gao/engineDisplacement
+
+:engineDisplacement rdf:type owl:DatatypeProperty ;
+                    
+                    rdfs:domain :Engine ;
+                    
+                    <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/engineDisplacement"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/enginePower
+
+:enginePower rdf:type owl:DatatypeProperty ;
+             
+             rdfs:domain :Engine ;
+             
+             rdfs:label "engine power"@en ;
+             
+             <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/enginePower"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/extraUrbancycleFuelConsumption
+
+:extraUrbancycleFuelConsumption rdf:type owl:DatatypeProperty ;
+                                
+                                rdfs:subPropertyOf :fuelConsumption ;
+                                
+                                <http://www.w3.org/2004/02/skos/core#hiddenLabel> "Extra Urban cycle"@en .
+
+
+
+###  http://purl.org/gao/fuelCapacity
+
+:fuelCapacity rdf:type owl:DatatypeProperty ;
+              
+              rdfs:domain :Vehicle ;
+              
+              rdfs:label "fuel capacity"@en ;
+              
+              <http://www.w3.org/2004/02/skos/core#altLabel> "fuel tank capacity"@en ;
+              
+              <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/fuelCapacity"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/fuelConsumption
+
+:fuelConsumption rdf:type owl:DatatypeProperty ;
+                 
+                 rdfs:domain :Vehicle ;
+                 
+                 rdfs:label "fuel consumption"@en .
+
+
+
+###  http://purl.org/gao/gearsNumber
+
+:gearsNumber rdf:type owl:DatatypeProperty ;
+             
+             <http://www.w3.org/2004/02/skos/core#hiddenLabel> "number of gears"@en .
+
+
+
+###  http://purl.org/gao/grossTrainWeight
+
+:grossTrainWeight rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "GTW"@en ,
+                             "Gross train weight"@en .
+
+
+
+###  http://purl.org/gao/grossVehicleWeight
+
+:grossVehicleWeight rdf:type owl:DatatypeProperty ;
+                    
+                    rdfs:label "GVW"@en ,
+                               "Gross vehicle weight"@en .
+
+
+
+###  http://purl.org/gao/grossVehicleWeightRating
+
+:grossVehicleWeightRating rdf:type owl:DatatypeProperty ;
+                          
+                          rdfs:label "GVWR"@en ,
+                                     "Gross vehicle weight rating"@en .
+
+
+
+###  http://purl.org/gao/kerbWeight
+
+:kerbWeight rdf:type owl:DatatypeProperty ;
+            
+            rdfs:domain :Vehicle ;
+            
+            rdfs:label "kerb weight"@en ;
+            
+            <http://www.w3.org/2004/02/skos/core#altLabel> "curb weight"@en .
+
+
+
+###  http://purl.org/gao/lockToLockSteeringWheelTurns
+
+:lockToLockSteeringWheelTurns rdf:type owl:DatatypeProperty ;
+                              
+                              rdfs:domain :Vehicle ;
+                              
+                              rdfs:label "Lock-to-lock steering wheel turns"@en .
+
+
+
+###  http://purl.org/gao/meetsEmissionStandard
+
+:meetsEmissionStandard rdf:type owl:DatatypeProperty ;
+                       
+                       rdfs:domain :Vehicle ;
+                       
+                       rdfs:label "meets emission etandard"@en ;
+                       
+                       <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/meetsEmissionStandard"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/modelDate
+
+:modelDate rdf:type owl:DatatypeProperty ;
+           
+           rdfs:domain :Vehicle ;
+           
+           rdfs:range xsd:dateTime ;
+           
+           rdfs:label "model date"@en ;
+           
+           <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/modelDate"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/numberOfSteeringWheelRotations
+
+:numberOfSteeringWheelRotations rdf:type owl:DatatypeProperty ;
+                                
+                                rdfs:domain :Vehicle ;
+                                
+                                rdfs:label "No. of steering wheel rotations"@en ,
+                                           "Number of steering wheel rotations"@en .
+
+
+
+###  http://purl.org/gao/payload
+
+:payload rdf:type owl:DatatypeProperty ;
+         
+         rdfs:domain :Vehicle ;
+         
+         rdfs:label "payload"@en ;
+         
+         <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/payload"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/roofLoad
+
+:roofLoad rdf:type owl:DatatypeProperty ;
+          
+          rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( :BusOrCoach
+                                      :Car
+                                    )
+                      ] ;
+          
+          rdfs:label "roof load"@en ;
+          
+          <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/roofLoad"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/seatingCapacity
+
+:seatingCapacity rdf:type owl:DatatypeProperty ;
+                 
+                 rdfs:domain :Vehicle ;
+                 
+                 rdfs:label "seating capacity"@en ;
+                 
+                 <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/seatingCapacity"@en .
+
+
+
+###  http://purl.org/gao/speed
+
+:speed rdf:type owl:DatatypeProperty ;
+       
+       rdfs:domain :Vehicle ;
+       
+       rdfs:label "speed"@en ;
+       
+       <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/speed"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/stoppingDistance1000m
+
+:stoppingDistance1000m rdf:type owl:DatatypeProperty ;
+                       
+                       rdfs:label "1000m stopping distance"@en .
+
+
+
+###  http://purl.org/gao/stoppingDistance400m
+
+:stoppingDistance400m rdf:type owl:DatatypeProperty ;
+                      
+                      rdfs:label "400m stopping distance"@en .
+
+
+
+###  http://purl.org/gao/timeFrom0To100
+
+:timeFrom0To100 rdf:type owl:DatatypeProperty ;
+                
+                rdfs:label "time 0-100 km/h"@en .
+
+
+
+###  http://purl.org/gao/tongueWeight
+
+:tongueWeight rdf:type owl:DatatypeProperty ;
+              
+              rdfs:domain :Vehicle ;
+              
+              rdfs:label "tongue weight"@en ;
+              
+              <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/tongueWeight"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/topSpeed
+
+:topSpeed rdf:type owl:DatatypeProperty ;
+          
+          rdfs:label "Top Speed"@en .
+
+
+
+###  http://purl.org/gao/trailerWeight
+
+:trailerWeight rdf:type owl:DatatypeProperty ;
+               
+               rdfs:domain :Vehicle ;
+               
+               rdfs:label "trailer weight"@en ;
+               
+               <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/trailerWeight"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/turningCircle
+
+:turningCircle rdf:type owl:DatatypeProperty ;
+               
+               rdfs:label "Turning circle between kerbs/walls (m)"@en .
+
+
+
+###  http://purl.org/gao/unbrakedTrailerWeight
+
+:unbrakedTrailerWeight rdf:type owl:DatatypeProperty ;
+                       
+                       rdfs:label "unbraked trailer weight"@en .
+
+
+
+###  http://purl.org/gao/urbanCycleFuelConsumption
+
+:urbanCycleFuelConsumption rdf:type owl:DatatypeProperty ;
+                           
+                           rdfs:subPropertyOf :fuelConsumption ;
+                           
+                           rdfs:label "Urban cycle"@en .
+
+
+
+###  http://purl.org/gao/weightTotal
+
+:weightTotal rdf:type owl:DatatypeProperty ;
+             
+             rdfs:domain :Vehicle ;
+             
+             rdfs:label "weight total"@en ;
+             
+             <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/weightTotal"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/wheelbase
+
+:wheelbase rdf:type owl:DatatypeProperty ;
+           
+           rdfs:domain :Vehicle ;
+           
+           rdfs:label "wheel base"@en ;
+           
+           <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/wheelbase"^^xsd:anyURI .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://purl.org/gao/ABS
+
+:ABS rdf:type owl:Class ;
+     
+     rdfs:subClassOf :SafetySystem ;
+     
+     rdfs:label "Anti-lock braking system"@en ;
+     
+     <http://www.w3.org/2004/02/skos/core#altLabel> "ABS"@en ;
+     
+     <http://www.w3.org/2004/02/skos/core#hiddenLabel> "Anti-Lock Brakes"@en .
+
+
+
+###  http://purl.org/gao/ASR
+
+:ASR rdf:type owl:Class ;
+     
+     rdfs:subClassOf :SafetySystem ;
+     
+     rdfs:label "ASR"@en ,
+                "Anti-Slip Regulation"@en .
+
+
+
+###  http://purl.org/gao/AirConditioning
+
+:AirConditioning rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :ComfortAndConvenience ;
+                 
+                 rdfs:label "Air conditioning"@en .
+
+
+
+###  http://purl.org/gao/Airbag
+
+:Airbag rdf:type owl:Class ;
+        
+        rdfs:subClassOf :SafetySystem ;
+        
+        rdfs:label "airbag"@en .
+
+
+
+###  http://purl.org/gao/Audio
+
+:Audio rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Media ;
+       
+       rdfs:label "Audio"@en .
+
+
+
+###  http://purl.org/gao/AutomaticAirConditioning
+
+:AutomaticAirConditioning rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf :AirConditioning ;
+                          
+                          rdfs:label "Automatic air-conditioning"@en .
+
+
+
+###  http://purl.org/gao/Bluetooth
+
+:Bluetooth rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Media .
+
+
+
+###  http://purl.org/gao/BodyColouredMirror
+
+:BodyColouredMirror rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Mirror ;
+                    
+                    rdfs:label "Body Coloured Mirror"@en ;
+                    
+                    <http://www.w3.org/2004/02/skos/core#altLabel> "Body coloured exterior mirror"@en .
+
+
+
+###  http://purl.org/gao/BodyType
+
+:BodyType rdf:type owl:Class ;
+          
+          rdfs:subClassOf :CarSpecification ;
+          
+          rdfs:label "body type"@en .
+
+
+
+###  http://purl.org/gao/BusOrCoach
+
+:BusOrCoach rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Vehicle ;
+            
+            rdfs:label "bus or coach"@en ;
+            
+            <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/BusOrCoach"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/Car
+
+:Car rdf:type owl:Class ;
+     
+     rdfs:subClassOf :Vehicle ;
+     
+     rdfs:comment "This cars' classification is based on the United States National Highway Traffic Safety Administration (NHTSA) classification of cars."@en ;
+     
+     rdfs:label "car"@en ,
+                "samochód"@pl ;
+     
+     <http://www.w3.org/2004/02/skos/core#exactMatch> "https://schema.org/Car"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/CarEquipment
+
+:CarEquipment rdf:type owl:Class ;
+              
+              rdfs:subClassOf owl:Thing ;
+              
+              rdfs:label "car equipment"@en .
+
+
+
+###  http://purl.org/gao/CarPart
+
+:CarPart rdf:type owl:Class .
+
+
+
+###  http://purl.org/gao/CarQuality
+
+:CarQuality rdf:type owl:Class ;
+            
+            rdfs:subClassOf owl:Thing .
+
+
+
+###  http://purl.org/gao/CarSpecification
+
+:CarSpecification rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf owl:Thing ;
+                  
+                  rdfs:label "Specification"@en .
+
+
+
+###  http://purl.org/gao/CarUsageType
+
+:CarUsageType rdf:type owl:Class ;
+              
+              rdfs:subClassOf :CarSpecification ;
+              
+              rdfs:label "car usage type"@en ;
+              
+              <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/CarUsageType"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/CatalyticConverter
+
+:CatalyticConverter rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :CarPart ;
+                    
+                    rdfs:label "Catalytic Converter"@en .
+
+
+
+###  http://purl.org/gao/CentralDoorLockingWithRemote
+
+:CentralDoorLockingWithRemote rdf:type owl:Class ;
+                              
+                              rdfs:subClassOf :ComfortAndConvenience ;
+                              
+                              rdfs:label "Remote central locking"@en ;
+                              
+                              <http://www.w3.org/2004/02/skos/core#altLabel> "Central door locking with remote"@en .
+
+
+
+###  http://purl.org/gao/CodedEngineImmobiliserSystem
+
+:CodedEngineImmobiliserSystem rdf:type owl:Class ;
+                              
+                              rdfs:subClassOf :ComfortAndConvenience ;
+                              
+                              rdfs:label "Coded engine immobiliser system"@en .
+
+
+
+###  http://purl.org/gao/Color
+
+:Color rdf:type owl:Class ;
+       
+       rdfs:subClassOf :CarQuality ;
+       
+       rdfs:label "Color"@en ,
+                  "Colour"@en .
+
+
+
+###  http://purl.org/gao/ComfortAndConvenience
+
+:ComfortAndConvenience rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :CarEquipment ;
+                       
+                       rdfs:label "Comfort and convenience"@en .
+
+
+
+###  http://purl.org/gao/CommercialVehicle
+
+:CommercialVehicle rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :Car ;
+                   
+                   owl:disjointWith :PassangareCar ;
+                   
+                   rdfs:label "commercial vehicle"@en ;
+                   
+                   <http://www.w3.org/2004/02/skos/core#altLabel> "VAN"@en .
+
+
+
+###  http://purl.org/gao/CorneringFogLight
+
+:CorneringFogLight rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :SafetySystem ;
+                   
+                   rdfs:label "CORNERING FOG LIGHT"@en .
+
+
+
+###  http://purl.org/gao/DeactivatablePassengerAirBag
+
+:DeactivatablePassengerAirBag rdf:type owl:Class ;
+                              
+                              rdfs:subClassOf :PassengerAirBag ;
+                              
+                              rdfs:label "deactivatable passenger airbag"@en .
+
+
+
+###  http://purl.org/gao/DefrostFunction
+
+:DefrostFunction rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :Visibility ;
+                 
+                 rdfs:label "defrost function"@en .
+
+
+
+###  http://purl.org/gao/DoorOpenIndicator
+
+:DoorOpenIndicator rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :SafetySystem ;
+                   
+                   rdfs:label "Door open indicator"@en .
+
+
+
+###  http://purl.org/gao/DriverAirBag
+
+:DriverAirBag rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Airbag ;
+              
+              rdfs:label "Driver airbag"@en .
+
+
+
+###  http://purl.org/gao/EBA
+
+:EBA rdf:type owl:Class ;
+     
+     rdfs:subClassOf :SafetySystem ;
+     
+     rdfs:label "EBA"@en ,
+                "Emergency Brake Assist"@en .
+
+
+
+###  http://purl.org/gao/ECOmode
+
+:ECOmode rdf:type owl:Class ;
+         
+         rdfs:subClassOf :CarEquipment ;
+         
+         rdfs:label "ECO mode"@en .
+
+
+
+###  http://purl.org/gao/ESC
+
+:ESC rdf:type owl:Class ;
+     
+     rdfs:subClassOf :SafetySystem ;
+     
+     rdfs:label "ELECTRONIC STABILITY CONTROL"@en ,
+                "ESC"@en .
+
+
+
+###  http://purl.org/gao/ElectricDefrostingWingMirror
+
+:ElectricDefrostingWingMirror rdf:type owl:Class ;
+                              
+                              rdfs:subClassOf :DefrostFunction ;
+                              
+                              rdfs:label "electric defrosting wing mirror"@en .
+
+
+
+###  http://purl.org/gao/ElectricFoldingWingMirror
+
+:ElectricFoldingWingMirror rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf :ElectricWingMirror ;
+                           
+                           rdfs:label "Electric folding wing mirrors"@en .
+
+
+
+###  http://purl.org/gao/ElectricFrontWindowWinder
+
+:ElectricFrontWindowWinder rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf :ElectricWindowWinder ;
+                           
+                           rdfs:label "Electric front window winder"@en ;
+                           
+                           <http://www.w3.org/2004/02/skos/core#altLabel> "Electric windows front"@en .
+
+
+
+###  http://purl.org/gao/ElectricRearWindowWinder
+
+:ElectricRearWindowWinder rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf :ElectricWindowWinder ;
+                          
+                          rdfs:label "Electric rear window winder"@en ;
+                          
+                          <http://www.w3.org/2004/02/skos/core#altLabel> "Electric windows back"@en .
+
+
+
+###  http://purl.org/gao/ElectricWindowWinder
+
+:ElectricWindowWinder rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :ComfortAndConvenience ;
+                      
+                      rdfs:label "electric window winder"@en .
+
+
+
+###  http://purl.org/gao/ElectricWingMirror
+
+:ElectricWingMirror rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :ComfortAndConvenience ;
+                    
+                    rdfs:label "electric wing mirror"@en ;
+                    
+                    <http://www.w3.org/2004/02/skos/core#altLabel> "electric door mirror"@en ;
+                    
+                    <http://www.w3.org/2004/02/skos/core#hiddenLabel> "electric mirror"@en .
+
+
+
+###  http://purl.org/gao/ElectricallyOperatedDoorMirror
+
+:ElectricallyOperatedDoorMirror rdf:type owl:Class ;
+                                
+                                rdfs:subClassOf :ElectricWingMirror ;
+                                
+                                rdfs:label "electrically operated door mirror"@en .
+
+
+
+###  http://purl.org/gao/Engine
+
+:Engine rdf:type owl:Class ;
+        
+        rdfs:subClassOf :CarPart ;
+        
+        rdfs:label "Engine Type"@en ,
+                   "engine"@en ;
+        
+        <http://www.w3.org/2004/02/skos/core#closeMatch> "https://schema.org/EngineSpecification"^^xsd:anyURI ;
+        
+        <http://www.w3.org/2004/02/skos/core#hiddenLabel> "engine specification"@en .
+
+
+
+###  http://purl.org/gao/FixedGlassRoof
+
+:FixedGlassRoof rdf:type owl:Class ;
+                
+                rdfs:subClassOf :ComfortAndConvenience ;
+                
+                rdfs:label "Fixed glass roof"@en .
+
+
+
+###  http://purl.org/gao/FrontAirBag
+
+:FrontAirBag rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Airbag ;
+             
+             rdfs:label "Front airbag"@en .
+
+
+
+###  http://purl.org/gao/FrontFogLamp
+
+:FrontFogLamp rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Visibility ;
+              
+              rdfs:label "Front foglamp"@en .
+
+
+
+###  http://purl.org/gao/FunctionOnBoardComputer
+
+:FunctionOnBoardComputer rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf :ComfortAndConvenience ;
+                         
+                         rdfs:label "Function on-board computer"@en .
+
+
+
+###  http://purl.org/gao/HSA
+
+:HSA rdf:type owl:Class ;
+     
+     rdfs:subClassOf :SafetySystem ;
+     
+     rdfs:label "HILL-START ASSIST"@en ,
+                "HSA"@en .
+
+
+
+###  http://purl.org/gao/HandsFreeTelephony
+
+:HandsFreeTelephony rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Media ;
+                    
+                    rdfs:label "hands-free telephony"@en ;
+                    
+                    <http://www.w3.org/2004/02/skos/core#hiddenLabel> "Hands free"@en .
+
+
+
+###  http://purl.org/gao/HeatedRearWindow
+
+:HeatedRearWindow rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Visibility ;
+                  
+                  rdfs:label "Heated rear window"@en .
+
+
+
+###  http://purl.org/gao/HeatingAndVentilationWithAirRecirculation
+
+:HeatingAndVentilationWithAirRecirculation rdf:type owl:Class ;
+                                           
+                                           rdfs:subClassOf :ComfortAndConvenience ;
+                                           
+                                           rdfs:label "heating and ventilation with air recirculation"@en .
+
+
+
+###  http://purl.org/gao/HeightAdjustableDriversSeat
+
+:HeightAdjustableDriversSeat rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf :ComfortAndConvenience ;
+                             
+                             rdfs:label "Driver's seat height adjustment"@en ;
+                             
+                             <http://www.w3.org/2004/02/skos/core#altLabel> "Height-adjustable driver's seat"@en .
+
+
+
+###  http://purl.org/gao/HeightAdjustableSteeringWheel
+
+:HeightAdjustableSteeringWheel rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf :ComfortAndConvenience ;
+                               
+                               rdfs:label "Height adjustable steering wheel"@en ;
+                               
+                               <http://www.w3.org/2004/02/skos/core#hiddenLabel> "Height-adjustable steering wheel"@en .
+
+
+
+###  http://purl.org/gao/HighGroundClearance
+
+:HighGroundClearance rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :SafetySystem ;
+                     
+                     rdfs:label "HIGH GROUND CLEARANCE"@en ,
+                                "Raised ground clearance"@en ;
+                     
+                     <http://www.w3.org/2004/02/skos/core#altLabel> "clearance"@en .
+
+
+
+###  http://purl.org/gao/HubCap
+
+:HubCap rdf:type owl:Class ;
+        
+        rdfs:subClassOf :CarPart ;
+        
+        rdfs:label "hub cap"@en .
+
+
+
+###  http://purl.org/gao/Isofix
+
+:Isofix rdf:type owl:Class ;
+        
+        rdfs:subClassOf :SafetySystem ;
+        
+        rdfs:label "ISOFIX"@en ,
+                   "Isofix system in rear side seats"@en .
+
+
+
+###  http://purl.org/gao/Jack
+
+:Jack rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Media ;
+      
+      rdfs:label "Jack"@en .
+
+
+
+###  http://purl.org/gao/LeatherGearLeverKnobWithChromInsert
+
+:LeatherGearLeverKnobWithChromInsert rdf:type owl:Class ;
+                                     
+                                     rdfs:subClassOf :ComfortAndConvenience ;
+                                     
+                                     rdfs:label "leather gear lever knob with chrom insert"@en .
+
+
+
+###  http://purl.org/gao/LeatherSteeringWheelWithChromePaint
+
+:LeatherSteeringWheelWithChromePaint rdf:type owl:Class ;
+                                     
+                                     rdfs:subClassOf :ComfortAndConvenience ;
+                                     
+                                     rdfs:label "Leather steering wheel with chrome paint"@en .
+
+
+
+###  http://purl.org/gao/LockingOfDoorsAsVehicleDrivesOff
+
+:LockingOfDoorsAsVehicleDrivesOff rdf:type owl:Class ;
+                                  
+                                  rdfs:subClassOf :SafetySystem ;
+                                  
+                                  rdfs:label "Locking of doors as vehicle drives off"@en .
+
+
+
+###  http://purl.org/gao/LuggageComparment
+
+:LuggageComparment rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :CarPart ;
+                   
+                   rdfs:label "LUGGAGE COMPARTMENT"@en .
+
+
+
+###  http://purl.org/gao/ManualAirConditioning
+
+:ManualAirConditioning rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :AirConditioning ;
+                       
+                       rdfs:label "Manual air-conditioning"@en .
+
+
+
+###  http://purl.org/gao/ManualParkingBrake
+
+:ManualParkingBrake rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :SafetySystem ;
+                    
+                    rdfs:label "manual parking brake"@en .
+
+
+
+###  http://purl.org/gao/Media
+
+:Media rdf:type owl:Class ;
+       
+       rdfs:subClassOf :ComfortAndConvenience ;
+       
+       rdfs:label "MEDIA"@en .
+
+
+
+###  http://purl.org/gao/Mirror
+
+:Mirror rdf:type owl:Class ;
+        
+        rdfs:subClassOf :CarPart ;
+        
+        rdfs:label "Mirror"@en .
+
+
+
+###  http://purl.org/gao/Motorcycle
+
+:Motorcycle rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Vehicle ;
+            
+            rdfs:label "motocycle"@en ;
+            
+            <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/Motorcycle"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/MotorizedBicycle
+
+:MotorizedBicycle rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Vehicle ;
+                  
+                  rdfs:label "motorized bicycle"@en ;
+                  
+                  <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/MotorizedBicycle"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/Navigation
+
+:Navigation rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Media ;
+            
+            rdfs:label "navigation"@en .
+
+
+
+###  http://purl.org/gao/OnBoardComputer
+
+:OnBoardComputer rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :Media ;
+                 
+                 rdfs:label "On-board computer"@en .
+
+
+
+###  http://purl.org/gao/OneTouchUpFrontWindowWinder
+
+:OneTouchUpFrontWindowWinder rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf :ElectricFrontWindowWinder ;
+                             
+                             rdfs:label "One-touch-up front window winder (driver)"@en .
+
+
+
+###  http://purl.org/gao/Overboost
+
+:Overboost rdf:type owl:Class ;
+           
+           rdfs:subClassOf :CarEquipment ;
+           
+           rdfs:label "OVERBOOST"@en .
+
+
+
+###  http://purl.org/gao/OverboostFunction
+
+:OverboostFunction rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :ComfortAndConvenience ;
+                   
+                   rdfs:label "Overboost function"@en .
+
+
+
+###  http://purl.org/gao/ParkDistanceControlSensor
+
+:ParkDistanceControlSensor rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf :SafetySystem ;
+                           
+                           rdfs:label "PARK DISTANCE CONTROL SENSOR"@en ;
+                           
+                           <http://www.w3.org/2004/02/skos/core#altLabel> "parking sensor"@en .
+
+
+
+###  http://purl.org/gao/PassangareCar
+
+:PassangareCar rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Car ;
+               
+               rdfs:label "passangare car"@en ;
+               
+               <http://www.w3.org/2004/02/skos/core#altLabel> "PC"@en .
+
+
+
+###  http://purl.org/gao/PassengerAirBag
+
+:PassengerAirBag rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :Airbag ;
+                 
+                 rdfs:label "Passenger airbag"@en .
+
+
+
+###  http://purl.org/gao/PickupTruck
+
+:PickupTruck rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Car ;
+             
+             rdfs:label "pickup truck"@en ;
+             
+             <http://www.w3.org/2004/02/skos/core#altLabel> "PU"@en .
+
+
+
+###  http://purl.org/gao/Price
+
+:Price rdf:type owl:Class ;
+       
+       rdfs:subClassOf :CarQuality ;
+       
+       rdfs:label "Price"@en .
+
+
+
+###  http://purl.org/gao/RPlug
+
+:RPlug rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Media ;
+       
+       rdfs:label "R-Plug"@en .
+
+
+
+###  http://purl.org/gao/Radio
+
+:Radio rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Media ;
+       
+       rdfs:label "radio"@en .
+
+
+
+###  http://purl.org/gao/RainAndLightSensor
+
+:RainAndLightSensor rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Visibility ;
+                    
+                    rdfs:label "Rain and light sensor"@en .
+
+
+
+###  http://purl.org/gao/Rearparkingsensor
+
+:Rearparkingsensor rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :ParkDistanceControlSensor ;
+                   
+                   rdfs:label "REAR PARKING DISTANCE CONTROL"@en ,
+                              "Rear parking sensor"@en .
+
+
+
+###  http://purl.org/gao/Retailprice
+
+:Retailprice rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Price ;
+             
+             rdfs:label "Retail price"@en .
+
+
+
+###  http://purl.org/gao/Revcounter
+
+:Revcounter rdf:type owl:Class ;
+            
+            rdfs:subClassOf :ComfortAndConvenience ;
+            
+            rdfs:label "Rev counter"@en ;
+            
+            <http://www.w3.org/2004/02/skos/core#altLabel> "false"@en ,
+                                                           "revolution counter"@en .
+
+
+
+###  http://purl.org/gao/Reverseparkingsensor
+
+:Reverseparkingsensor rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :ParkDistanceControlSensor ;
+                      
+                      rdfs:label "Reverse parking sensor"@en .
+
+
+
+###  http://purl.org/gao/Rim
+
+:Rim rdf:type owl:Class ;
+     
+     rdfs:subClassOf :CarPart ;
+     
+     rdfs:label "rim"@en .
+
+
+
+###  http://purl.org/gao/SafetySystem
+
+:SafetySystem rdf:type owl:Class ;
+              
+              rdfs:subClassOf :CarEquipment ;
+              
+              rdfs:label "safety system"@en ;
+              
+              <http://www.w3.org/2004/02/skos/core#hiddenLabel> "safety"@en .
+
+
+
+###  http://purl.org/gao/SatelliteRadioControl
+
+:SatelliteRadioControl rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :Media ;
+                       
+                       rdfs:label "satellite radio control"@en .
+
+
+
+###  http://purl.org/gao/SideAirBag
+
+:SideAirBag rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Airbag ;
+            
+            rdfs:label "Side airbag"@en .
+
+
+
+###  http://purl.org/gao/SkidPanel
+
+:SkidPanel rdf:type owl:Class ;
+           
+           rdfs:subClassOf :CarPart ;
+           
+           rdfs:label "skid panel"@en .
+
+
+
+###  http://purl.org/gao/SpeedLimiter
+
+:SpeedLimiter rdf:type owl:Class ;
+              
+              rdfs:subClassOf :SafetySystem ;
+              
+              rdfs:label "Speed limiter"@en .
+
+
+
+###  http://purl.org/gao/SplitfoldRearBenchSeat1to3And2to3
+
+:SplitfoldRearBenchSeat1to3And2to3 rdf:type owl:Class ;
+                                   
+                                   rdfs:subClassOf :ComfortAndConvenience ;
+                                   
+                                   rdfs:label "1/3-2/3 splitfold rear bench seat"@en .
+
+
+
+###  http://purl.org/gao/SportUtilityVehicle
+
+:SportUtilityVehicle rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :Car ;
+                     
+                     rdfs:label "sport utility vehicle"@en ;
+                     
+                     <http://www.w3.org/2004/02/skos/core#altLabel> "SUV"@en .
+
+
+
+###  http://purl.org/gao/StartingCard
+
+:StartingCard rdf:type owl:Class ;
+              
+              rdfs:subClassOf :ComfortAndConvenience ;
+              
+              rdfs:label "Starting card"@en .
+
+
+
+###  http://purl.org/gao/SteeringType
+
+:SteeringType rdf:type owl:Class ;
+              
+              rdfs:subClassOf :CarPart ;
+              
+              rdfs:label "Steering Type"@en .
+
+
+
+###  http://purl.org/gao/Suspension
+
+:Suspension rdf:type owl:Class ;
+            
+            rdfs:subClassOf :CarPart ;
+            
+            rdfs:label "Suspension"@en .
+
+
+
+###  http://purl.org/gao/Transmission
+
+:Transmission rdf:type owl:Class ;
+              
+              rdfs:subClassOf :CarPart ;
+              
+              rdfs:label "Gearbox"@en ,
+                         "Skrzynia biegów"@pl ,
+                         "Transmission"@en .
+
+
+
+###  http://purl.org/gao/Tyre
+
+:Tyre rdf:type owl:Class ;
+      
+      rdfs:subClassOf :CarPart .
+
+
+
+###  http://purl.org/gao/USB
+
+:USB rdf:type owl:Class ;
+     
+     rdfs:subClassOf :Media ;
+     
+     rdfs:label "USB"@en .
+
+
+
+###  http://purl.org/gao/VariablePowerSteering
+
+:VariablePowerSteering rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :ComfortAndConvenience ;
+                       
+                       rdfs:label "Variable Power steering"@en .
+
+
+
+###  http://purl.org/gao/Vehicle
+
+:Vehicle rdf:type owl:Class ;
+         
+         rdfs:label "pojazd"@pl ,
+                    "vehicle"@en ;
+         
+         <http://www.w3.org/2004/02/skos/core#exactMatch> "https://schema.org/Vehicle"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/VentControl
+
+:VentControl rdf:type owl:Class ;
+             
+             rdfs:subClassOf :CarEquipment ;
+             
+             rdfs:label "VENT CONTROL"@en .
+
+
+
+###  http://purl.org/gao/Visibility
+
+:Visibility rdf:type owl:Class ;
+            
+            rdfs:subClassOf :CarEquipment ;
+            
+            rdfs:label "Visibility"@en .
+
+
+
+###  http://purl.org/gao/Wheel
+
+:Wheel rdf:type owl:Class ;
+       
+       rdfs:subClassOf :CarPart .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://purl.org/gao/Automatic
+
+:Automatic rdf:type owl:NamedIndividual ,
+                    :Transmission ;
+           
+           rdfs:label "Automatic Transmission"@en ,
+                      "Automatyczna Skrzynia Biegów"@pl .
+
+
+
+###  http://purl.org/gao/AverageFuelConsumption
+
+:AverageFuelConsumption rdf:type owl:NamedIndividual ,
+                                 :FunctionOnBoardComputer ;
+                        
+                        rdfs:label "average fuel consumption"@en .
+
+
+
+###  http://purl.org/gao/AverageSpeed
+
+:AverageSpeed rdf:type owl:NamedIndividual ,
+                       :FunctionOnBoardComputer ;
+              
+              rdfs:label "average speed"@en .
+
+
+
+###  http://purl.org/gao/Disel
+
+:Disel rdf:type owl:NamedIndividual ,
+                :Engine ;
+       
+       rdfs:label "DCI"@en ,
+                  "DCI"@pl ,
+                  "Diesel"@en ,
+                  "Diesel"@pl .
+
+
+
+###  http://purl.org/gao/DrivingSchoolVehicleUsage
+
+:DrivingSchoolVehicleUsage rdf:type owl:NamedIndividual ,
+                                    :CarUsageType ;
+                           
+                           rdfs:label "driving school vehicle usage"@en ;
+                           
+                           <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/DrivingSchoolVehicleUsage"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/Electric
+
+:Electric rdf:type owl:NamedIndividual ,
+                   :Engine ;
+          
+          rdfs:label "Electric"@en ,
+                     "Elektryczny"@pl .
+
+
+
+###  http://purl.org/gao/FuelUsed
+
+:FuelUsed rdf:type owl:NamedIndividual ,
+                   :FunctionOnBoardComputer ;
+          
+          rdfs:label "fuel used"@en .
+
+
+
+###  http://purl.org/gao/KilometresRemaining
+
+:KilometresRemaining rdf:type owl:NamedIndividual ,
+                              :FunctionOnBoardComputer ;
+                     
+                     rdfs:label "kilometres remaining"@en .
+
+
+
+###  http://purl.org/gao/Manual
+
+:Manual rdf:type owl:NamedIndividual ,
+                 :Transmission ;
+        
+        rdfs:label "Manual Transmission"@en ,
+                   "Ręczna skrzynia biegów"@pl .
+
+
+
+###  http://purl.org/gao/Petrol
+
+:Petrol rdf:type owl:NamedIndividual ,
+                 :Engine ;
+        
+        rdfs:label "Benzynowy"@pl ,
+                   "Petrol"@en .
+
+
+
+###  http://purl.org/gao/PowerSteering
+
+:PowerSteering rdf:type owl:NamedIndividual ,
+                        :SteeringType ;
+               
+               rdfs:label "power steering"@en .
+
+
+
+###  http://purl.org/gao/RentalVehicleUsage
+
+:RentalVehicleUsage rdf:type owl:NamedIndividual ,
+                             :CarUsageType ;
+                    
+                    rdfs:label "rental vehicle usage"@en ;
+                    
+                    <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/RentalVehicleUsage"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/TaxiVehicleUsage
+
+:TaxiVehicleUsage rdf:type owl:NamedIndividual ,
+                           :CarUsageType ;
+                  
+                  rdfs:label "taxi vehicle usage"@en ;
+                  
+                  <http://www.w3.org/2004/02/skos/core#exactMatch> "http://auto.schema.org/TaxiVehicleUsage"^^xsd:anyURI .
+
+
+
+###  http://purl.org/gao/TotalDistance
+
+:TotalDistance rdf:type owl:NamedIndividual ,
+                        :FunctionOnBoardComputer ;
+               
+               rdfs:label "total distance"@en .
+
+
+
+###  http://purl.org/gao/TripDistance
+
+:TripDistance rdf:type owl:NamedIndividual ,
+                       :FunctionOnBoardComputer ;
+              
+              rdfs:label "trip distance"@en .
+
+
+
+
+###  Generated by the OWL API (version 4.2.1.20160306-0033) https://github.com/owlcs/owlapi
+

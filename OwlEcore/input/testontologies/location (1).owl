@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?><rdf:RDF xmlns="http://www.w3.org/2007/uwa/context/location.owl#" xmlns:assert="http://www.owl-ontologies.com/assert.owl#" xmlns:common="http://www.w3.org/2007/uwa/context/common.owl#" xmlns:dc="http://purl.org/dc/terms/" xmlns:dcn="http://www.w3.org/2007/uwa/context/deliverycontext.owl#" xmlns:ex="http://www.example.org/2007/uwa/context/examples.owl#" xmlns:hard="http://www.w3.org/2007/uwa/context/hardware.owl#" xmlns:java="http://www.w3.org/2007/uwa/context/java.owl#" xmlns:loc="http://www.w3.org/2007/uwa/context/location.owl#" xmlns:net="http://www.w3.org/2007/uwa/context/network.owl#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:push="http://www.w3.org/2007/uwa/context/push.owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:soft="http://www.w3.org/2007/uwa/context/software.owl#" xmlns:web="http://www.w3.org/2007/uwa/context/web.owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xml:base="http://www.w3.org/2007/uwa/context/location.owl">
+  <common:TermGroup rdf:about="#TermGroup_Location">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This group of terms is aimed at defining a set of classes, properties and instances that have to do with Geographic Location</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Location</rdfs:label>
+        <common:termGroupPrefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string">loc</common:termGroupPrefix>
+        <common:normativeStatus>
+          <common:NormativeStatus rdf:about="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+        </common:normativeStatus>
+      </common:TermGroup>
+  <owl:Class rdf:about="#SatelliteLocMethod">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The location method uses satellites to assist in obtaining the location</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Satellite  Method</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#LocationMethod"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#CellIdLocMethod">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Location method Cell-ID for cellular (in GSM, this is the same as CGI, Cell Global Identity)</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cell Id Method</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#LocationMethod"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#AngleOfArrivalLocMethod">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Angle Of Arrival Method</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Location method Angle of Arrival for cellular / terrestrial RF system</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#LocationMethod"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#GeoCoordinates">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_LocationEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#geoReferenceSystem"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#geoReferenceSystem"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#GeoCoordinateRS"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents geographical coordinates that allow to locate precisely a point on the Earth surface</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Geographical Coordinates</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#NetworkBasedLocMethod">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Location method is of type network based. This means that the final location result is calculated in the network</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Network Based Method</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#LocationMethod"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#GeoCoordinateRS">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Geographical Coordinate Reference System</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#id"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#name"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_LocationEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a geographical coordinate system</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#LocationMethod">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_LocationEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#name"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">It represents an specific mechanism used to calculate the location of a thing</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Location Method</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#WGS84Coordinates">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents WGS84 coordinates</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WGS84 Coordinates</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#datum"/>
+        </owl:onProperty>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WGS84</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#longitude"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#latitude"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GeoCoordinates"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue>
+          <loc:GeoCoordinateRS rdf:about="#GeoCoordinateRS_WGS84">
+            <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WGS 84</rdfs:label>
+            <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The WGS 84 geographic coordinates reference system</rdfs:comment>
+            <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__GeoCordinateRS_WGS84</common:id>
+            <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WGS84</common:name>
+          </loc:GeoCoordinateRS>
+        </owl:hasValue>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#geoReferenceSystem"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#TerminalBasedLocMethod">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Location method is of type terminal based. This means that the final location result is calculated in the terminal</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Terminal Based Method</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#LocationMethod"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ShortRangeLocMethod">
+    <rdfs:subClassOf rdf:resource="#LocationMethod"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Short Range Method</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Location method Short-range positioning system (for example, Bluetooth LP)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#TimeDifferenceLocMethod">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Location method Time Difference for cellular / terrestrial RF system</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#LocationMethod"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Time Difference Method</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#UTMCoordinates">
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Informative"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#latitudeZone"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UTM Coordinates</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#longitudeZone"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#datum"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents UTM coordinates</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#GeoCoordinates"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#northing"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#easting"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#geoReferenceSystem"/>
+        </owl:onProperty>
+        <owl:hasValue>
+          <loc:GeoCoordinateRS rdf:about="#GeoCoordinateRS_UTM">
+            <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__GeocordinateRS_UTM</common:id>
+            <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UTM</common:name>
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Universal Traversal Marcator coordinate reference system</rdfs:comment>
+            <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+            <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UTM</rdfs:label>
+          </loc:GeoCoordinateRS>
+        </owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Position">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a position, which it is composed by the coordinates of a point on the Earth surface, together with the speed, course, and the corresponding accuracies and timestamp</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#coordinates"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#GeoCoordinates"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:about="#coordinates"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:about="#iso6709String"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_LocationEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Position</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#TimeOfArrivalLocMethod">
+    <rdfs:subClassOf rdf:resource="#LocationMethod"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Location method Time of Arrival (TOA) for cellular / terrestrial RF system</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Time of Arrival Method</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#Location">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#Position"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#position"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_LocationEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Location</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents all the information about a location</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#LocationProvider">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#GeoCoordinateRS"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#supportedGeoCoordinateRS"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_LocationEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#GeoCoordinateRS"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#supportedGeoCoordinateRS"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#LocationMethod"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#locationMethod"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#LocationMethod"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#locationMethod"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Location Provider</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Represents an entity capable of providing location information</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#UnassistedLocMethod">
+    <rdfs:subClassOf rdf:resource="#LocationMethod"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Unassisted Method</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Location method is unassisted it does not need other party in order to obtain the location</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#AssistedLocMethod">
+    <rdfs:subClassOf rdf:resource="#LocationMethod"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Assisted Method</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Location method is assisted by the other party (Terminal assisted for Network based, Network assisted for terminal based)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Context_LocationEntity">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class reprensents the set of all delivery context entities that has to do with location</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Context Location Entity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Context_Entity"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#geoReferenceSystem">
+    <rdfs:range rdf:resource="#GeoCoordinateRS"/>
+    <rdfs:domain rdf:resource="#GeoCoordinates"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the reference system in which are expressed the geographical coordinates</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Georeference System</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#supportedLocationProviders">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property is a list of the Location Providers supported by a Device or a Network</rdfs:comment>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Device"/>
+          <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/network.owl#Network"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#LocationProvider"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Supported Location Providers</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#supportedGeoCoordinateRS">
+    <rdfs:domain rdf:resource="#LocationProvider"/>
+    <rdfs:range rdf:resource="#GeoCoordinateRS"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indicates what are goegraphical coordinate systems supported by the location provider</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Geographical Coordinate Systems</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#availableLocationProviders">
+    <rdfs:subPropertyOf rdf:resource="#supportedLocationProviders"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#available"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/network.owl#Network"/>
+          <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Device"/>
+          <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/deliverycontext.owl#DeliveryContext"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#LocationProvider"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Available Location Providers</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the LocationProviders that are currently available in a network, device or the Delivery Context itself as whole</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="#typicalResponseTime">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Typical Response Time</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the typical response time in seconds of a location provider from the instant in which the location is requested to the moment in which the location is returned</rdfs:comment>
+    <rdfs:domain rdf:resource="#LocationProvider"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:about="#easting">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The easting (x) component of the UTM coordinates measured in metres</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Easting</rdfs:label>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Informative"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#UTMCoordinates"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#timestamp">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A timestamp that indicates when it was obtained the position in question</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Location Timestamp</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:domain rdf:resource="#Position"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#longitude">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The longitude as defined by the WGS84 coordinate system</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Longitude</rdfs:label>
+    <rdfs:domain rdf:resource="#WGS84Coordinates"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#course">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="#Position"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The course made good in degrees relative to true north. The value is always in the range [0.0,360.0) degrees</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Course</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#speed">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Speed</rdfs:label>
+    <rdfs:domain rdf:resource="#Position"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Observed speed in meters per second</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#verticalAccuracy">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stimate of the vertical accuracy of the location in metres</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Position"/>
+          <owl:Class rdf:about="#LocationProvider"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vertical Accuracy</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#estimatedPosition">
+    <rdfs:domain rdf:resource="#LocationProvider"/>
+    <rdfs:range rdf:resource="#Position"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The estimated position provided by a location provider</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Estimated Position</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#wgs84Coordinates">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Coordinates of a point expressed in the  WGS84 reference system</rdfs:comment>
+    <rdfs:range rdf:resource="#WGS84Coordinates"/>
+    <rdfs:subPropertyOf>
+      <owl:FunctionalProperty rdf:about="#coordinates"/>
+    </rdfs:subPropertyOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WGS84 Coordinates</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#lastKnownLocation">
+    <rdfs:range rdf:resource="#Location"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Environment"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Last Known Location</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The last known location associated to a Delivery Context</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#latitude">
+    <rdfs:domain rdf:resource="#WGS84Coordinates"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Latitude</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Latitude as defined by the WGS84 coordinate reference system</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#locationMethod">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#LocationProvider"/>
+    <rdfs:range rdf:resource="#LocationMethod"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Location Method</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The location method used by a LocationProvider for determining the current location</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#locationCostsMoney">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property indicates whether the location provider has a cost for the user</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Location Costs Money</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#LocationProvider"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#currentLocation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The current location associated to the environment component of this Delivery Context</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Current Location</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Environment"/>
+    <rdfs:range rdf:resource="#Location"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#northing">
+    <rdfs:domain rdf:resource="#UTMCoordinates"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Northing</rdfs:label>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Informative"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The northing component of the UTM coordinates measured in metres</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#datum">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#GeoCoordinates"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Datum</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The datum that express the reference of the coordinates</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#position">
+    <rdfs:domain rdf:resource="#Location"/>
+    <rdfs:range rdf:resource="#Position"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Position</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The position associated to a Location</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#utmCoordinates">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UTM Coordinates</rdfs:label>
+    <rdfs:subPropertyOf>
+      <owl:FunctionalProperty rdf:about="#coordinates"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#UTMCoordinates"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Coordinates of a point expressed in the  UTM reference system</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Informative"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#altitude">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#WGS84Coordinates"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Altitude</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The altitude as defined by the WGS84 coordinate system</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#coordinates">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Coordinates</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#GeoCoordinates"/>
+    <rdfs:domain rdf:resource="#Position"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The coordinates of a point</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#longitudeZone">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#UTMCoordinates"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the longitude zone according to the UTM coordinate system</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Informative"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UTM Longitude Zone</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#horizontalAccuracy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stimate of the horizontal accuracy of the location in metres</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Horizontal Accuracy</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Position"/>
+          <owl:Class rdf:about="#LocationProvider"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#iso6709String">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Position"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ISO 6709:1983 String</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The position represented as an ISO6709:1983 String</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#latitudeZone">
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Informative"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UTM Latitude Zone</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represent the UTM latitude zone</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#UTMCoordinates"/>
+  </owl:FunctionalProperty>
+  <loc:CellIdLocMethod rdf:about="#GSMCellGlobalIdentity">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GSMCellGlobalIdentity</common:name>
+    <rdf:type rdf:resource="#TerminalBasedLocMethod"/>
+    <rdf:type rdf:resource="#AssistedLocMethod"/>
+  </loc:CellIdLocMethod>
+  <common:AllDisjointSet rdf:about="#AllSibling_Disjoint">
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">loc:GeoCoordinateRS</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">loc:GeoCoordinates</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">loc:Location</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">loc:LocationMethod</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">loc:LocationProvider</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">loc:Position</common:disjointClass>
+  </common:AllDisjointSet>
+  <common:Feature rdf:about="#Feature_SPEED">
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This feature indicates that a location provider is capable of determining the speed</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__Location_Feature_Speed</common:id>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Speed Feature</rdfs:label>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Speed</common:name>
+  </common:Feature>
+  <loc:TimeDifferenceLocMethod rdf:about="#TDOA">
+    <rdf:type rdf:resource="#TimeOfArrivalLocMethod"/>
+    <rdf:type rdf:resource="#NetworkBasedLocMethod"/>
+    <rdf:type rdf:resource="#UnassistedLocMethod"/>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TDOA</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The TDOA technique works by measuring the exact time of arrival of a handset radio signal at three or more separate cell sites.</rdfs:comment>
+  </loc:TimeDifferenceLocMethod>
+  <common:Feature rdf:about="#Feature_COURSE">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Course Feature</rdfs:label>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Course</common:name>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__Location_Feature_Course</common:id>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This feature indicates that the location provider supports course determination</rdfs:comment>
+  </common:Feature>
+  <loc:SatelliteLocMethod rdf:about="#TerminallGPSUnAssisted">
+    <rdf:type rdf:resource="#UnassistedLocMethod"/>
+    <rdf:type rdf:resource="#TerminalBasedLocMethod"/>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TerminallGPSUnAssisted</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Location method GPS assisted with no network cooperation</rdfs:comment>
+  </loc:SatelliteLocMethod>
+  <loc:ShortRangeLocMethod rdf:about="#BluetoothBinaryLocMeth">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A room-oriented approach, uses a proximity detection method. An
+access point is installed in every room. For each tag, the system than
+finds the nearest AP, and respectively indicates its room location</rdfs:comment>
+    <rdf:type rdf:resource="#TerminalBasedLocMethod"/>
+    <rdf:type rdf:resource="#UnassistedLocMethod"/>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BluetoothBinaryLocationMethod</common:name>
+  </loc:ShortRangeLocMethod>
+  <common:AllDisjointSet rdf:about="#LocMeth_Disjoint1">
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">loc:UnassistedLocMethod</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">loc:AssistedLocMethod</common:disjointClass>
+  </common:AllDisjointSet>
+  <common:AllDisjointSet rdf:about="#LocMeth_Disjoint2">
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">loc:NetworkBasedLocMethod</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">loc:TerminalBasedLocMethod</common:disjointClass>
+  </common:AllDisjointSet>
+  <loc:TimeDifferenceLocMethod rdf:about="#E-OTD">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">E-OTD</common:name>
+    <rdf:type rdf:resource="#TimeOfArrivalLocMethod"/>
+    <rdf:type rdf:resource="#NetworkBasedLocMethod"/>
+    <rdf:type rdf:resource="#AssistedLocMethod"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">E-OTD systems operate by placing location receivers or reference beacons, overlaid on the wireless network as a location measurement units (LMU) at multiple sites geographically dispersed in a wide area.</rdfs:comment>
+  </loc:TimeDifferenceLocMethod>
+  <common:Feature rdf:about="#Feature_ALTITUDE">
+        <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__Location_Feature_Altitude</common:id>
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Altitude</common:name>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Altitude Feature</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indicates that the location provider is capable of determining the altitude</rdfs:comment>
+        <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+      </common:Feature>
+  <loc:AngleOfArrivalLocMethod rdf:about="#CellularStandardAngleOfArrival">
+    <rdf:type rdf:resource="#NetworkBasedLocMethod"/>
+    <rdf:type rdf:resource="#UnassistedLocMethod"/>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CellularStandardAngleOfArrival</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CellularStandardAngleOfArrival</common:id>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Standard angle of arrival location method in a cellular network</rdfs:comment>
+  </loc:AngleOfArrivalLocMethod>
+</rdf:RDF>

@@ -1,0 +1,31 @@
+# Example SAWSDL schemaMapping file -- XSD to RDF via SPDL.
+
+# $Id: AWSECommerceService-SAWSDL-item-terms.ttl,v 1.3 2006/11/05 17:02:00 eric Exp $
+
+@prefix spat: <http://dev.w3.org/cvsweb/perl/modules/W3C/SPDL/> .
+@prefix tns: <http://webservices.amazon.com/AWSECommerceService/2004-11-10> .
+@prefix : <http://dev.w3.org/cvsweb/perl/modules/W3C/SPDL/descriptions/AWSECommerceService-SAWSDL-item-terms.ttl#> .
+
+# Item search taxonomy terms:
+
+:ProductSearch a :WSDLoperation .
+:ProductDetails a :WSDLoperation .
+
+
+# SPARQL annotations:
+
+:id spat:SPAT '?req :id xpath(".")' .
+:keywords spat:SPAT '?req :keywords xpath("tns:Keywords") ; :index    xpath("tns:SearchIndex")' .
+:asin spat:SPAT '?item :asin xpath("tns:ASIN")' .
+:title spat:SPAT '?item :title xpath("tns:Title")' .
+
+
+# $Log: AWSECommerceService-SAWSDL-item-terms.ttl,v $
+# Revision 1.3  2006/11/05 17:02:00  eric
+# + modelReferences for search and details operations
+#
+# Revision 1.2  2006/07/04 15:55:59  eric
+# ~ rearranged
+#
+# Revision 1.1  2006/07/04 15:55:20  eric
+# created

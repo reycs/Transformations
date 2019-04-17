@@ -1,0 +1,321 @@
+<?xml version="1.0"?>
+<!DOCTYPE owl [
+<!ENTITY dc "http://purl.org/dc/elements/1.1/">
+<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+<!ENTITY toy "http://www.w3.org/2005/06/toy-p3p/toy.owl#">
+]>
+<rdf:RDF
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:owl="http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:toy="http://www.w3.org/2005/06/toy-p3p/toy.owl#"
+ xml:base="http://www.w3.org/2005/06/toy-p3p/toy.owl"
+>
+<owl:Ontology rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl">
+<rdfs:comment>A toy version of P3P, to experiment with building the entire thing on top of OWL.</rdfs:comment>
+<owl:versionInfo>0</owl:versionInfo>
+<rdfs:label>Toy P3P</rdfs:label>
+</owl:Ontology>
+<owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing">
+</owl:Class>
+<owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Access">
+  <rdfs:label>abstract access class</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#AccessAll">
+  <rdfs:subClassOf>
+    <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Access">
+    </owl:Class>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#AccessIdentifiable">
+  <rdfs:subClassOf>
+    <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Access">
+    </owl:Class>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#AccessNone">
+  <rdfs:subClassOf>
+    <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Access">
+    </owl:Class>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Data">
+  <rdfs:label>Abstract data class</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Policy">
+</owl:Class>
+<owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Purpose">
+  <rdfs:label>abstract purpose class</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#PurposeAny">
+  <owl:equivalentClass>
+    <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Purpose">
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+<owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#PurposeDelivery">
+  <rdfs:subClassOf>
+    <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Purpose">
+    </owl:Class>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#PurposeOurs">
+  <rdfs:subClassOf>
+    <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Purpose">
+    </owl:Class>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#PurposeDelivery">
+    </owl:Class>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#click-stream">
+  <rdfs:subClassOf>
+    <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Data">
+    </owl:Class>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#personal">
+  <rdfs:subClassOf>
+    <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Data">
+    </owl:Class>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:ObjectProperty rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#access">
+  <rdf:type rdf:resource="&owl;ObjectProperty" />
+  <rdfs:domain>
+    <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Policy">
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range>
+    <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Access">
+    </owl:Class>
+  </rdfs:range>
+  <rdfs:label>the access granted by a policy</rdfs:label>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#data">
+  <rdf:type rdf:resource="&owl;FunctionalProperty" />
+  <rdfs:domain>
+    <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Policy">
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range>
+    <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Data">
+    </owl:Class>
+  </rdfs:range>
+  <rdfs:label>The data to which a policy applies</rdfs:label>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#purpose">
+  <rdf:type rdf:resource="&owl;FunctionalProperty" />
+  <rdfs:domain>
+    <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Policy">
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range>
+    <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Purpose">
+    </owl:Class>
+  </rdfs:range>
+  <rdfs:label>The purposes to which a policy applies</rdfs:label>
+</owl:ObjectProperty>
+
+
+
+<owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Policy">
+  <owl:disjointWith>
+  <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Purpose">
+  </owl:Class>
+  </owl:disjointWith>
+</owl:Class>
+<owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Purpose">
+  <owl:disjointWith>
+  <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Data">
+  </owl:Class>
+  </owl:disjointWith>
+</owl:Class>
+<owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Policy">
+  <owl:disjointWith>
+  <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Access">
+  </owl:Class>
+  </owl:disjointWith>
+</owl:Class>
+<owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Access">
+  <owl:disjointWith>
+  <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Data">
+  </owl:Class>
+  </owl:disjointWith>
+</owl:Class>
+<owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Purpose">
+  <owl:disjointWith>
+  <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Access">
+  </owl:Class>
+  </owl:disjointWith>
+</owl:Class>
+<owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Policy">
+  <owl:disjointWith>
+  <owl:Class rdf:about="http://www.w3.org/2005/06/toy-p3p/toy.owl#Data">
+  </owl:Class>
+  </owl:disjointWith>
+</owl:Class>
+
+<owl:Class rdf:about="&toy;Policy">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="&toy;access"/>
+      <owl:someValuesFrom rdf:resource="&toy;Access"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="&toy;purpose"/>
+      <owl:someValuesFrom rdf:resource="&toy;Purpose"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="&toy;data"/>
+      <owl:someValuesFrom rdf:resource="&toy;Data"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- SOME EXAMPLES -->
+
+<!-- An example policy -->
+<owl:Class rdf:ID="samplePolicy">
+  <owl:unionOf rdf:parseType="Collection">
+    <!-- Permit the DenyEverything policy -->
+    <owl:Class rdf:about="&toy;DenyEverything"/>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+	<!-- This is a policy -->
+	<owl:Class rdf:about="&toy;Policy"/>
+
+	<!-- We grant access to identifiable information -->
+	<owl:Restriction>
+	  <owl:onProperty rdf:resource="&toy;access"/>
+	  <owl:someValuesFrom rdf:resource="&toy;AccessIdentifiable"/>
+	</owl:Restriction>
+	
+	<!-- It applies to personal information -->
+	<owl:Restriction>
+	  <owl:onProperty rdf:resource="&toy;data"/>
+	  <owl:allValuesFrom rdf:resource="&toy;personal"/>
+	</owl:Restriction>
+	
+	<!-- Collected for "our" purpose -->
+	<owl:Restriction>
+	  <owl:onProperty rdf:resource="&toy;purpose"/>
+	  <owl:allValuesFrom rdf:resource="&toy;PurposeOurs"/>
+	</owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:unionOf>
+</owl:Class>
+
+
+<!-- Another example policy -->
+<owl:Class rdf:ID="samplePolicy2">
+      <owl:intersectionOf rdf:parseType="Collection">
+	<!-- This is a policy. -->
+	<owl:Class rdf:about="&toy;Policy"/>
+	
+	<!-- Personal information -->
+	<owl:Restriction>
+	  <owl:onProperty rdf:resource="&toy;data"/>
+	  <owl:allValuesFrom rdf:resource="&toy;personal"/>
+	</owl:Restriction>
+	
+
+	<!-- Access to all data, and all identifiable data -->
+	<owl:Restriction>
+	  <owl:onProperty rdf:resource="&toy;access"/>
+	  <owl:someValuesFrom rdf:resource="&toy;AccessAll"/>
+	</owl:Restriction>
+
+	<owl:Restriction>
+	  <owl:onProperty rdf:resource="&toy;access"/>
+	  <owl:someValuesFrom
+	      rdf:resource="&toy;AccessIdentifiable"/>
+	</owl:Restriction>
+
+	
+	<!-- Collected for "our" purpose -->
+	<owl:Restriction>
+	  <owl:onProperty rdf:resource="&toy;purpose"/>
+	  <owl:allValuesFrom rdf:resource="&toy;PurposeOurs"/>
+	</owl:Restriction>
+	
+      </owl:intersectionOf>
+</owl:Class>
+
+<!-- Another example access request -->
+<owl:Class rdf:ID="samplePolicy3">
+      <owl:intersectionOf rdf:parseType="Collection">
+	<!-- Yes, this is type policy too. -->
+	<owl:Class rdf:about="&toy;Policy"/>
+	
+	<!-- Any data, so no restriction on the data property -->
+	<!--    
+	     <owl:Restriction>
+	     <owl:onProperty rdf:resource="&toy;data"/>
+	     <owl:allValuesFrom rdf:resource="&toy;personal"/>
+	     </owl:Restriction>
+	-->
+
+	<!-- Access to all data, and all identifiable data -->
+	<owl:Restriction>
+	  <owl:onProperty rdf:resource="&toy;access"/>
+	  <owl:someValuesFrom rdf:resource="&toy;AccessAll"/>
+	</owl:Restriction>
+
+	<owl:Restriction>
+	  <owl:onProperty rdf:resource="&toy;access"/>
+	  <owl:someValuesFrom
+	      rdf:resource="&toy;AccessIdentifiable"/>
+	</owl:Restriction>
+
+	
+	<!-- Collected for "our" purpose -->
+	<owl:Restriction>
+	  <owl:onProperty rdf:resource="&toy;purpose"/>
+	  <owl:allValuesFrom rdf:resource="&toy;PurposeOurs"/>
+	</owl:Restriction>
+	
+      </owl:intersectionOf>
+</owl:Class>
+
+<!-- And here's a single atomic policy - using labeled nodes to
+  work around what looks like a mistake in SWOOP.  See:
+  http://lists.mindswap.org/pipermail/swoop/2005-June/000406.html
+-->
+
+<toy:Policy rdf:ID="sampleAtomicPolicyInstance">
+  <toy:data>
+    <toy:personal rdf:ID="_e"/>
+  </toy:data>
+  <toy:access>
+    <toy:AccessNone rdf:ID="_f"/>
+  </toy:access>
+  <toy:purpose>
+    <toy:PurposeOurs rdf:ID="_g"/>
+  </toy:purpose>
+</toy:Policy>
+
+</rdf:RDF>

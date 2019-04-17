@@ -1,0 +1,934 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY owl11 "http://www.w3.org/2006/12/owl11#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl11xml "http://www.w3.org/2006/12/owl11-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY daml "http://www.daml.org/2001/03/daml+oil#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
+    <!ENTITY CTEligibility "http://www.owl-ontologies.com/2007/CTEligibility.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.owl-ontologies.com/2007/CTEligibility.owl#"
+     xml:base="http://www.owl-ontologies.com/2007/CTEligibility.owl"
+     xmlns:CTEligibility="http://www.owl-ontologies.com/2007/CTEligibility.owl#"
+     xmlns:owl11="http://www.w3.org/2006/12/owl11#"
+     xmlns:owl11xml="http://www.w3.org/2006/12/owl11-xml#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="">
+        <dc:creator
+            >Helen Chen, Rachel Richesson</dc:creator>
+        <owl:versionInfo>V1.0</owl:versionInfo>
+        <rdfs:comment
+            >CT Eligibility Ontology</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;creator"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#hasAdminParameter -->
+
+    <owl:ObjectProperty rdf:about="#hasAdminParameter">
+        <rdfs:range rdf:resource="#Administration"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >assign administrative description to a clinical trial</rdfs:comment>
+        <rdfs:domain rdf:resource="#CTTrial"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#hasAgeLimite -->
+
+    <owl:ObjectProperty rdf:about="#hasAgeLimite">
+        <rdfs:range rdf:resource="#Age"/>
+        <rdfs:domain rdf:resource="#AgeLimiteOlderThan30Y"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#hasCTID -->
+
+    <owl:ObjectProperty rdf:about="#hasCTID">
+        <rdfs:label>hasCTID</rdfs:label>
+        <rdfs:domain rdf:resource="#Inclusion"/>
+        <rdfs:range rdf:resource="#CTTrial"/>
+        <rdfs:domain rdf:resource="#Exclusion"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#hasClinicalCondition -->
+
+    <owl:ObjectProperty rdf:about="#hasClinicalCondition">
+        <rdfs:label
+            >hasClinicalCondition</rdfs:label>
+        <rdfs:domain rdf:resource="#Inclusion"/>
+        <rdfs:range rdf:resource="#Condition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#hasComobidity -->
+
+    <owl:ObjectProperty rdf:about="#hasComobidity">
+        <rdfs:domain rdf:resource="#DiseaseUnderStudy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#hasGender -->
+
+    <owl:ObjectProperty rdf:about="#hasGender">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#FemalePatient"/>
+        <rdfs:range rdf:resource="#Gender"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#hasMutation -->
+
+    <owl:ObjectProperty rdf:about="#hasMutation">
+        <rdfs:domain rdf:resource="#DiseaseUnderStudy"/>
+        <rdfs:range rdf:resource="#Mutation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#hasPhysicalStatus -->
+
+    <owl:ObjectProperty rdf:about="#hasPhysicalStatus"/>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#hasPreviousProcedures -->
+
+    <owl:ObjectProperty rdf:about="#hasPreviousProcedures">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Inclusion"/>
+                    <rdf:Description rdf:about="#Exclusion"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="#Procedures"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#hasProcedure -->
+
+    <owl:ObjectProperty rdf:about="#hasProcedure">
+        <rdfs:range rdf:resource="#Procedures"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Inclusion"/>
+                    <rdf:Description rdf:about="#Exclusion"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#hasReproductiveStatus -->
+
+    <owl:ObjectProperty rdf:about="#hasReproductiveStatus">
+        <rdfs:domain rdf:resource="#PeproductivePotentialExclusion"/>
+        <rdfs:range rdf:resource="#ReproductivePotential"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#hasStage -->
+
+    <owl:ObjectProperty rdf:about="#hasStage">
+        <rdfs:label>hasStage</rdfs:label>
+        <rdfs:domain rdf:resource="#Stage"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#completionTime -->
+
+    <owl:DatatypeProperty rdf:about="#completionTime">
+        <rdfs:label>completionTime</rdfs:label>
+        <rdfs:domain rdf:resource="#Procedures"/>
+        <rdfs:range rdf:resource="&xsd;gMonth"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#grantConsent -->
+
+    <owl:DatatypeProperty rdf:about="#grantConsent">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>grantConsent</rdfs:label>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+        <rdfs:domain rdf:resource="#PatientConsent"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#hasAge -->
+
+    <owl:DatatypeProperty rdf:about="#hasAge">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >age of a patient</rdfs:comment>
+        <rdfs:domain rdf:resource="#Age"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#hasCode -->
+
+    <owl:DatatypeProperty rdf:about="#hasCode">
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Procedures"/>
+                    <rdf:Description rdf:about="#Condition"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#hasCodingSystem -->
+
+    <owl:DatatypeProperty rdf:about="#hasCodingSystem">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Procedures"/>
+                    <rdf:Description rdf:about="#Condition"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#AbleToUndergoRadiation -->
+
+    <owl:Class rdf:about="#AbleToUndergoRadiation">
+        <rdfs:subClassOf rdf:resource="#Physical_Status"/>
+        <rdfs:comment
+            >Patients who are unable to lie on their back and raise their arms above their heads in the treatment planning position for radiotherapy are exclude</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Administration -->
+
+    <owl:Class rdf:about="#Administration"/>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Age -->
+
+    <owl:Class rdf:about="#Age">
+        <rdfs:subClassOf rdf:resource="#PatientCharacteristics"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Age30YTo90Y -->
+
+    <owl:Class rdf:about="#Age30YTo90Y">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasAge"/>
+                        <owl:someValuesFrom>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&owl;DataRange"/>
+                                <owl11:onDataRange rdf:resource="&xsd;gYear"/>
+                                <owl11:minInclusive rdf:datatype="&xsd;int">30</owl11:minInclusive>
+                                <owl11:maxInclusive rdf:datatype="&xsd;int">90</owl11:maxInclusive>
+                            </rdf:Description>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <rdf:Description rdf:about="#Age"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#Age"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Age between 30 Y and 90Y inclusive</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#AgeLimiteOlderThan30Y -->
+
+    <owl:Class rdf:about="#AgeLimiteOlderThan30Y">
+        <rdfs:label
+            >AgeLimiteOlderThan30Y</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasAgeLimite"/>
+                <owl:allValuesFrom rdf:resource="#Age30YTo90Y"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#Inclusion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Allergy -->
+
+    <owl:Class rdf:about="#Allergy">
+        <rdfs:subClassOf rdf:resource="#Reported_Finding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Anthropometry -->
+
+    <owl:Class rdf:about="#Anthropometry">
+        <rdfs:subClassOf rdf:resource="#Observables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#BreastCancer -->
+
+    <owl:Class rdf:about="#BreastCancer">
+        <rdfs:label>BreastCancer</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#DiseaseUnderStudy"/>
+        <rdfs:comment
+            >patient diagnosed with stage I-III breast cancer (AJCC-6)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#BreastCancerUnderStudy -->
+
+    <owl:Class rdf:about="#BreastCancerUnderStudy">
+        <rdfs:subClassOf rdf:resource="#Inclusion"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasMutation"/>
+                <owl:allValuesFrom rdf:resource="#DeteriousMutationBRCA"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#CT001 -->
+
+    <owl:Class rdf:about="#CT001">
+        <rdfs:label>CT001</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#PhysicalStatusInclusion"/>
+                    <rdf:Description rdf:about="#ConsentProphylacticIrradiation"/>
+                    <rdf:Description rdf:about="#AgeLimiteOlderThan30Y"/>
+                    <rdf:Description rdf:about="#FemalePatient"/>
+                    <rdf:Description rdf:about="#BreastCancerUnderStudy"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#CTTrial"/>
+        <owl:disjointWith rdf:resource="#ComorbidityExclusion"/>
+        <rdfs:comment
+            >Prophylactic Irradiation to the Contralateral Breast for BRCA Mutation Carriers Undergoing Treatment for Breast Cancer
+http://www.clinicaltrials.gov/ct/show/NCT00496288?order=2</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#CT002 -->
+
+    <owl:Class rdf:about="#CT002">
+        <rdfs:label>CT002</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#CTTrial"/>
+        <rdfs:comment
+            >Breast Density, Hormone Levels, and Anticancer Drug Levels in Women With Invasive Breast Cancer Who Are Receiving Exemestane or Anastrozole
+http://www.clinicaltrials.gov/ct/show/NCT00316836?order=4</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#CT003 -->
+
+    <owl:Class rdf:about="#CT003">
+        <rdfs:label>CT003</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#CTTrial"/>
+        <rdfs:comment
+            >Changes in Breast Density and Breast Cancer Risk in Women With Breast Cancer and in Healthy Women
+http://www.clinicaltrials.gov/ct/show/NCT00445445?order=13</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#CTTrial -->
+
+    <owl:Class rdf:about="#CTTrial"/>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Chemotherapy -->
+
+    <owl:Class rdf:about="#Chemotherapy">
+        <rdfs:label>Chemotherapy</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Procedures"/>
+        <rdfs:comment
+            >Patient may receive any regimen of adjuvant chemotherapy, according to the treating physician.  All cycles of chemotherapy must be completed at least 3 weeks prior to the start of radiation therapy</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Clinical_Finding -->
+
+    <owl:Class rdf:about="#Clinical_Finding"/>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#ComorbidityExclusion -->
+
+    <owl:Class rdf:about="#ComorbidityExclusion">
+        <rdfs:label
+            >ComorbidityExclusion</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Exclusion"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComobidity"/>
+                <owl:allValuesFrom rdf:resource="#ConnectiveTissueDisease"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Exclude patient with active connective Tissue diease due to potiential risk of significant radiotherapy toxicity</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Condition -->
+
+    <owl:Class rdf:about="#Condition">
+        <rdfs:subClassOf rdf:resource="#Clinical_Finding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#ConditionExclusion -->
+
+    <owl:Class rdf:about="#ConditionExclusion">
+        <rdfs:subClassOf rdf:resource="#Exclusion"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasClinicalCondition"/>
+                <owl:allValuesFrom rdf:resource="#MetastaticBreastCancer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#CT001"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#ConnectiveTissueDisease -->
+
+    <owl:Class rdf:about="#ConnectiveTissueDisease">
+        <rdfs:label
+            >Connective Tissue Disease</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Condition"/>
+        <rdfs:comment
+            >ConnectiveTissueDiease</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#ConsentProphylacticIrradiation -->
+
+    <owl:Class rdf:about="#ConsentProphylacticIrradiation">
+        <rdfs:label
+            >ConsentProphylacticIrradiation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Inclusion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#ContralateralProphylacticIrradiation -->
+
+    <owl:Class rdf:about="#ContralateralProphylacticIrradiation">
+        <rdfs:label
+            >ContralateralProphylacticIrradiation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#PatientConsent"/>
+        <rdfs:comment
+            >Patient consent for  Contralateral Prophylactic Irradiation</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#DeteriousMutationBRCA -->
+
+    <owl:Class rdf:about="#DeteriousMutationBRCA">
+        <rdfs:subClassOf rdf:resource="#Mutation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#DiseaseUnderStudy -->
+
+    <owl:Class rdf:about="#DiseaseUnderStudy">
+        <rdfs:subClassOf rdf:resource="#Clinical_Finding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Exclusion -->
+
+    <owl:Class rdf:about="#Exclusion"/>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#FamilyHistory -->
+
+    <owl:Class rdf:about="#FamilyHistory">
+        <rdfs:subClassOf rdf:resource="#Reported_Finding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Female -->
+
+    <owl:Class rdf:about="#Female">
+        <rdfs:subClassOf rdf:resource="#Gender"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Female</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#FemalePatient -->
+
+    <owl:Class rdf:about="#FemalePatient">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasGender"/>
+                <owl:allValuesFrom rdf:resource="#Female"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#Inclusion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Gender -->
+
+    <owl:Class rdf:about="#Gender">
+        <rdfs:subClassOf rdf:resource="#PatientCharacteristics"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#HormonalTreatment -->
+
+    <owl:Class rdf:about="#HormonalTreatment">
+        <rdfs:label
+            >HormonalTreatment</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Procedures"/>
+        <rdfs:comment
+            >Hormonal Treatment</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Inclusion -->
+
+    <owl:Class rdf:about="#Inclusion">
+        <owl:disjointWith rdf:resource="#Exclusion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#IrradiationOfBreast -->
+
+    <owl:Class rdf:about="#IrradiationOfBreast">
+        <rdfs:label
+            >IrradiationOfBreast</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Procedures"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#IrradiationOfChestWall -->
+
+    <owl:Class rdf:about="#IrradiationOfChestWall">
+        <rdfs:label
+            >IrradiationOfChestWall</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Procedures"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Lab -->
+
+    <owl:Class rdf:about="#Lab">
+        <rdfs:subClassOf rdf:resource="#Observables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Male -->
+
+    <owl:Class rdf:about="#Male">
+        <rdfs:subClassOf rdf:resource="#Gender"/>
+        <owl:disjointWith rdf:resource="#Female"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Male</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Mental_Status -->
+
+    <owl:Class rdf:about="#Mental_Status">
+        <rdfs:subClassOf rdf:resource="#Observables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#MetastaticBreastCancer -->
+
+    <owl:Class rdf:about="#MetastaticBreastCancer">
+        <rdfs:label
+            >MetastaticBreastCancer</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Condition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Mutation -->
+
+    <owl:Class rdf:about="#Mutation">
+        <rdfs:subClassOf rdf:resource="#Clinical_Finding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Observables -->
+
+    <owl:Class rdf:about="#Observables"/>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#PatientCharacteristics -->
+
+    <owl:Class rdf:about="#PatientCharacteristics"/>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#PatientConsent -->
+
+    <owl:Class rdf:about="#PatientConsent">
+        <rdfs:label>PatientConsent</rdfs:label>
+        <rdfs:comment
+            >Patient Consent or awareness of a certain potential  or consequences</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#PeproductivePotentialExclusion -->
+
+    <owl:Class rdf:about="#PeproductivePotentialExclusion">
+        <rdfs:subClassOf rdf:resource="#Exclusion"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasReproductiveStatus"/>
+                <owl:allValuesFrom rdf:resource="#Pregnancy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#CT001"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#PhysicalStatusInclusion -->
+
+    <owl:Class rdf:about="#PhysicalStatusInclusion">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasPhysicalStatus"/>
+                <owl:allValuesFrom rdf:resource="#AbleToUndergoRadiation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#Inclusion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Physical_Status -->
+
+    <owl:Class rdf:about="#Physical_Status">
+        <rdfs:subClassOf rdf:resource="#Observables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Pregnancy -->
+
+    <owl:Class rdf:about="#Pregnancy">
+        <rdfs:label>Pregnancy</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#ReproductivePotential"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#ProcedureExclusion -->
+
+    <owl:Class rdf:about="#ProcedureExclusion">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasProcedure"/>
+                <owl:someValuesFrom rdf:resource="#IrradiationOfChestWall"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasProcedure"/>
+                <owl:someValuesFrom rdf:resource="#IrradiationOfBreast"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasProcedure"/>
+                <owl:someValuesFrom rdf:resource="#Chemotherapy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#Exclusion"/>
+        <owl:disjointWith rdf:resource="#CT001"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Procedures -->
+
+    <owl:Class rdf:about="#Procedures">
+        <rdfs:label>Procedures</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment
+            >Procedures that the patient is undertaking or has finished</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#ProphylacticContralateralMastectomy -->
+
+    <owl:Class rdf:about="#ProphylacticContralateralMastectomy">
+        <rdfs:label
+            >ProphylacticContralateralMastectomy</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#PatientConsent"/>
+        <rdfs:comment
+            >Patient consent for Contralateral Prophylactic Contralateral</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Reported_Finding -->
+
+    <owl:Class rdf:about="#Reported_Finding"/>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#ReproductivePotential -->
+
+    <owl:Class rdf:about="#ReproductivePotential">
+        <rdfs:subClassOf rdf:resource="#Clinical_Finding"/>
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#RiskBehaviors -->
+
+    <owl:Class rdf:about="#RiskBehaviors">
+        <rdfs:subClassOf rdf:resource="#Reported_Finding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#Stage -->
+
+    <owl:Class rdf:about="#Stage">
+        <rdfs:label
+            >Stage of Disease</rdfs:label>
+        <rdfs:comment>Stage</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#StudyArm -->
+
+    <owl:Class rdf:about="#StudyArm">
+        <rdfs:subClassOf rdf:resource="#Administration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#SubsequentMastectomy -->
+
+    <owl:Class rdf:about="#SubsequentMastectomy">
+        <rdfs:label
+            >SubsequentMastectomy</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#PatientConsent"/>
+        <rdfs:comment
+            >Patient aware that subsequent breast cancer in the irradiated breast will probably mandate mastectomy</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#VitalSign -->
+
+    <owl:Class rdf:about="#VitalSign">
+        <rdfs:subClassOf rdf:resource="#Observables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#breastCancer -->
+
+    <BreastCancer rdf:about="#breastCancer">
+        <hasCodingSystem rdf:datatype="&xsd;string">SNOMED</hasCodingSystem>
+        <hasCode rdf:datatype="&xsd;string">254837009</hasCode>
+    </BreastCancer>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#stage1 -->
+
+    <Stage rdf:about="#stage1">
+        <hasCode rdf:datatype="&xsd;string">258219001</hasCode>
+        <hasCodingSystem rdf:datatype="&xsd;string">SNOMED CT</hasCodingSystem>
+        <rdfs:comment
+            >Breast Cancer Stage 1</rdfs:comment>
+    </Stage>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="#stage3"/>
+            <rdf:Description rdf:about="#stage1"/>
+            <rdf:Description rdf:about="#stage2"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#stage2 -->
+
+    <Stage rdf:about="#stage2">
+        <rdfs:comment
+            >Breast Cancer Stage 2</rdfs:comment>
+        <hasCode rdf:datatype="&xsd;string">258219007</hasCode>
+        <hasCodingSystem rdf:datatype="&xsd;string">SNOMED CT</hasCodingSystem>
+    </Stage>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="#stage3"/>
+            <rdf:Description rdf:about="#stage1"/>
+            <rdf:Description rdf:about="#stage2"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.owl-ontologies.com/2007/CTEligibility.owl#stage3 -->
+
+    <Stage rdf:about="#stage3">
+        <rdfs:comment
+            >Breast Cancer Stage 3</rdfs:comment>
+        <hasCodingSystem rdf:datatype="&xsd;string">SNOMED CT</hasCodingSystem>
+        <hasCode rdf:datatype="&xsd;string">258224005</hasCode>
+    </Stage>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="#stage3"/>
+            <rdf:Description rdf:about="#stage1"/>
+            <rdf:Description rdf:about="#stage2"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+</rdf:RDF>

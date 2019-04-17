@@ -1,0 +1,111 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:metadata="http://obi.org/metadata#">
+  <owl:Ontology rdf:about="http://obi.org/metadata"/>
+  <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#string"/>
+  <owl:Class rdf:about="http://obi.org/metadata#meshTerm">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://obi.org/metadata#publication"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://obi.org/metadata#webPageOnDate">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://obi.org/metadata#publication"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://obi.org/metadata#myexample">
+    <metadata:definition_source_string>DOI:10.1002/ijc.20376</metadata:definition_source_string>
+    <metadata:alternative_term_string>[French:mon exemple|Web:&lt;http://ets.freetranslation.com/>][Norwegian:min eksempel|Web:&lt;http://ets.freetranslation.com/>]</metadata:alternative_term_string>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >My Example</rdfs:label>
+    <metadata:definition_source>
+      <metadata:article rdf:about="http://obi.org/metadata#myexample_definition_source">
+        <metadata:metadataFor rdf:resource="http://obi.org/metadata#myexample"/>
+        <metadata:metadataOnProperty>
+          <owl:AnnotationProperty rdf:about="http://obi.org/metadata#definition_source"/>
+        </metadata:metadataOnProperty>
+        <metadata:identifiedByDOI>10.1002/ijc.20376</metadata:identifiedByDOI>
+      </metadata:article>
+    </metadata:definition_source>
+    <metadata:alternative_term>
+      <metadata:taggedTerm rdf:about="http://obi.org/metadata#myexample_French_mon exemple">
+        <metadata:isTagged>
+          <metadata:tag rdf:about="http://obi.org/metadata#Tag_French">
+            <rdfs:label>French</rdfs:label>
+          </metadata:tag>
+        </metadata:isTagged>
+        <metadata:isTerm>mon exemple</metadata:isTerm>
+        <metadata:fromSource>
+          <metadata:webPage rdf:about="http://ets.freetranslation.com/"/>
+        </metadata:fromSource>
+      </metadata:taggedTerm>
+    </metadata:alternative_term>
+    <metadata:alternative_term>
+      <metadata:taggedTerm rdf:about="http://obi.org/metadata#myexample_Norwegian_min eksempel">
+        <metadata:isTagged>
+          <metadata:tag rdf:about="http://obi.org/metadata#Tag_Norwegian">
+            <rdfs:label>Norwegian</rdfs:label>
+          </metadata:tag>
+        </metadata:isTagged>
+        <metadata:isTerm>min eksempel</metadata:isTerm>
+        <metadata:fromSource rdf:resource="http://ets.freetranslation.com/"/>
+      </metadata:taggedTerm>
+    </metadata:alternative_term>
+  </owl:Class>
+  <owl:Class rdf:about="http://obi.org/metadata#publication">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://obi.sourceforge.net/ontology/OBI.owl#OBI1002"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://obi.sourceforge.net/ontology/OBI.owl#OBI1002">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Digital document</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://obi.org/metadata#book">
+    <rdfs:subClassOf rdf:resource="http://obi.org/metadata#publication"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://obi.org/metadata#taggedTerm"/>
+  <owl:Class rdf:about="http://obi.org/metadata#personalCommunication">
+    <rdfs:subClassOf rdf:resource="http://obi.org/metadata#publication"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://obi.org/metadata#webPage">
+    <rdfs:subClassOf rdf:resource="http://obi.org/metadata#publication"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://obi.org/metadata#tag"/>
+  <owl:Class rdf:about="http://obi.org/metadata#article">
+    <rdfs:subClassOf rdf:resource="http://obi.org/metadata#publication"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://obi.org/metadata#fromSource">
+    <rdfs:domain rdf:resource="http://obi.org/metadata#taggedTerm"/>
+    <rdfs:range rdf:resource="http://obi.org/metadata#publication"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://obi.org/metadata#isTagged">
+    <rdfs:domain rdf:resource="http://obi.org/metadata#taggedTerm"/>
+    <rdfs:range rdf:resource="http://obi.org/metadata#tag"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://obi.org/metadata#identifiedByDOI">
+    <rdfs:domain rdf:resource="http://obi.org/metadata#article"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://obi.org/metadata#identifiedByPubmedId">
+    <rdfs:domain rdf:resource="http://obi.org/metadata#article"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://obi.org/metadata#isTerm">
+    <rdfs:domain rdf:resource="http://obi.org/metadata#taggedTerm"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://obi.org/metadata#identifiedByISBN">
+    <rdfs:domain rdf:resource="http://obi.org/metadata#book"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:AnnotationProperty rdf:about="http://obi.org/metadata#metadataFor"/>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#label"/>
+  <owl:AnnotationProperty rdf:about="http://obi.org/metadata#alternative_term"/>
+  <owl:AnnotationProperty rdf:about="http://obi.org/metadata#alternative_term_string"/>
+  <owl:AnnotationProperty rdf:about="http://obi.org/metadata#metadataOnProperty"/>
+  <owl:AnnotationProperty rdf:about="http://obi.org/metadata#definition_source_string"/>
+</rdf:RDF>

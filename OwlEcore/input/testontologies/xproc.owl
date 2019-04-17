@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xml:base="http://www.w3.org/2007/03/xproc" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:s="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#">
+ <owl:Ontology rdf:about=""/>
+ <owl:Class rdf:ID="Pipeline" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Pipeline</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Construct"/>
+ </owl:Class>
+ <owl:Class rdf:ID="Component" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Component</rdfs:label>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#name"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#signature"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#container"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#environment"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:DatatypeProperty rdf:ID="name" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain>
+   <owl:Class>
+    <owl:unionOf rdf:parseType="Collection">
+     <owl:Class rdf:about="#Component"/>
+     <owl:Class rdf:about="#Port"/>
+     <owl:Class rdf:about="#Port_Signature"/>
+    </owl:unionOf>
+   </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema.xsd#NCName"/>
+ </owl:DatatypeProperty>
+ <owl:Class rdf:ID="Subpipeline" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Subpipeline</rdfs:label>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#component"/>
+    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:minCardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#environment"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:Class rdf:ID="Port" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Port</rdfs:label>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#name"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:Class rdf:ID="OutputPort" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>OutputPort</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Port"/>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#opSignature"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:Class rdf:ID="Built-in_Step" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Built-in Step</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Step"/>
+ </owl:Class>
+ <owl:Class rdf:ID="User-defined_Step" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>User-defined Step</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Step"/>
+ </owl:Class>
+ <owl:Class rdf:ID="Construct" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Construct</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Component"/>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#subpipeline"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:Class rdf:ID="Group" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Group</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Construct"/>
+ </owl:Class>
+ <owl:Class rdf:ID="Choose" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Choose</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Construct"/>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#alternative"/>
+    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:minCardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#default"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:Class rdf:ID="For-each" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>For-each</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Construct"/>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#select"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:DatatypeProperty rdf:ID="select" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain>
+   <owl:Class>
+    <owl:unionOf rdf:parseType="Collection">
+     <owl:Class rdf:about="#For-each"/>
+     <owl:Class rdf:about="#InputPort"/>
+     <owl:Class rdf:about="#PorO_Signature"/>
+     <owl:Class rdf:about="#PorO"/>
+    </owl:unionOf>
+   </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema.xsd#XPath"/>
+ </owl:DatatypeProperty>
+ <owl:Class rdf:ID="Viewport" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Viewport</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Construct"/>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#match"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:DatatypeProperty rdf:ID="match" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Viewport"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema.xsd#XPath"/>
+ </owl:DatatypeProperty>
+ <owl:Class rdf:ID="Step" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Step</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Component"/>
+ </owl:Class>
+ <owl:Class rdf:ID="Alternative" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Alternative</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Subpipeline"/>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#test"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#i"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#contextDocument"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:DatatypeProperty rdf:ID="test" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Alternative"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema.xsd#XPath"/>
+ </owl:DatatypeProperty>
+ <owl:DatatypeProperty rdf:ID="i" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Alternative"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+ </owl:DatatypeProperty>
+ <owl:Class rdf:ID="Default" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Default</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Subpipeline"/>
+ </owl:Class>
+ <owl:Class rdf:ID="User_Step_Definition" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>User Step Definition</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Component_Definition"/>
+ </owl:Class>
+ <owl:Class rdf:ID="InputPort" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>InputPort</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Port"/>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#select"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#ipSignature"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:Class rdf:ID="XInclude" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>XInclude</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Built-in_Step"/>
+ </owl:Class>
+ <owl:Class rdf:ID="XSLT_1.0" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>XSLT 1.0</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Built-in_Step"/>
+ </owl:Class>
+ <owl:Class rdf:ID="Signature" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Signature</rdfs:label>
+  <rdfs:comment>There's a coherence
+condition relating the
+signature of a stage
+to its ports and params</rdfs:comment>
+  <rdfs:comment>There's a predefined
+CompDef instance
+for every built-in step
+which &lt;b&gt;must&lt;/b&gt; be
+the value of the &lt;i&gt;signature&lt;/i&gt;
+of all of its instances</rdfs:comment>
+ </owl:Class>
+ <owl:Class rdf:ID="Load" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Load</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Built-in_Step"/>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#URI"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:DatatypeProperty rdf:ID="URI" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Load"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+ </owl:DatatypeProperty>
+ <owl:Class rdf:ID="Literal" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Literal</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Built-in_Step"/>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#infoset"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:Class rdf:ID="Connect" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Connect</rdfs:label>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#destination"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdf:type rdf:resource="#Invertable"/>
+  <p:onProperty rdf:resource="#destination"/>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#source"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:Class rdf:ID="XML_Document" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>XML Document</rdfs:label>
+ </owl:Class>
+ <owl:Class rdf:ID="Input_Signature" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Input Signature</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Port_Signature"/>
+ </owl:Class>
+ <owl:Class rdf:ID="Output_Signature" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Output Signature</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Port_Signature"/>
+ </owl:Class>
+ <owl:Class rdf:ID="Port_Signature" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Port Signature</rdfs:label>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#name"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#cardinality"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:DatatypeProperty rdf:ID="cardinality" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Port_Signature"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:comment>Permitted values are 1|*.</rdfs:comment>
+ </owl:DatatypeProperty>
+ <owl:Class rdf:ID="._._." xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>. . .</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Built-in_Step"/>
+ </owl:Class>
+ <owl:Class rdf:ID="PorO_Signature" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>PorO Signature</rdfs:label>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#localName"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#namespaceName"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#required"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#value"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#select"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#input"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:DatatypeProperty rdf:ID="localName" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain>
+   <owl:Class>
+    <owl:unionOf rdf:parseType="Collection">
+     <owl:Class rdf:about="#PorO_Signature"/>
+     <owl:Class rdf:about="#PorO"/>
+     <owl:Class rdf:about="#Component_Definition"/>
+    </owl:unionOf>
+   </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema.xsd#NCName"/>
+ </owl:DatatypeProperty>
+ <owl:DatatypeProperty rdf:ID="namespaceName" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain>
+   <owl:Class>
+    <owl:unionOf rdf:parseType="Collection">
+     <owl:Class rdf:about="#PorO_Signature"/>
+     <owl:Class rdf:about="#PorO"/>
+     <owl:Class rdf:about="#Component_Definition"/>
+    </owl:unionOf>
+   </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+ </owl:DatatypeProperty>
+ <owl:DatatypeProperty rdf:ID="required" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#PorO_Signature"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+ </owl:DatatypeProperty>
+ <owl:DatatypeProperty rdf:ID="value" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain>
+   <owl:Class>
+    <owl:unionOf rdf:parseType="Collection">
+     <owl:Class rdf:about="#PorO_Signature"/>
+     <owl:Class rdf:about="#PorO"/>
+    </owl:unionOf>
+   </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+ </owl:DatatypeProperty>
+ <owl:Class rdf:ID="Parameter" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Parameter</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#PorO"/>
+ </owl:Class>
+ <owl:Class rdf:ID="Environment" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Environment</rdfs:label>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#defaultReadablePort"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:Class rdf:ID="Try-_Catch" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Try- Catch</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Construct"/>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#recovery"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#initial"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:Class rdf:ID="Initial" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Initial</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Subpipeline"/>
+ </owl:Class>
+ <owl:Class rdf:ID="Recovery" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Recovery</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Subpipeline"/>
+ </owl:Class>
+ <owl:Class rdf:ID="Pipeline_Shell" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Pipeline Shell</rdfs:label>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#pipeline"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:Class rdf:ID="Built-in_Step_Definition" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Built-in Step Definition</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Component_Definition"/>
+ </owl:Class>
+ <owl:Class rdf:ID="Pipeline_Document" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Pipeline Document</rdfs:label>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#representsPipeShell"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:Class rdf:ID="PorO" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>PorO</rdfs:label>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#localName"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#namespaceName"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#value"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#select"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#input"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#poSignature"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:Class rdf:ID="Option" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Option</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#PorO"/>
+ </owl:Class>
+ <owl:Class rdf:ID="Parameter_Signature" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Parameter Signature</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#PorO_Signature"/>
+ </owl:Class>
+ <owl:Class rdf:ID="Option_Signature" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Option Signature</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#PorO_Signature"/>
+ </owl:Class>
+ <owl:Class rdf:ID="Component_Definition" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Component Definition</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Signature"/>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#localName"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="#namespaceName"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+ </owl:Class>
+ <owl:ObjectProperty rdf:ID="output" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Component"/>
+  <rdfs:range rdf:resource="#OutputPort"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="component" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Subpipeline"/>
+  <rdfs:range rdf:resource="#Component"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="alternative" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Choose"/>
+  <rdfs:range rdf:resource="#Alternative"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="default" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Choose"/>
+  <rdfs:range rdf:resource="#Default"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="input" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain>
+   <owl:Class>
+    <owl:unionOf rdf:parseType="Collection">
+     <owl:Class rdf:about="#Component"/>
+     <owl:Class rdf:about="#PorO_Signature"/>
+     <owl:Class rdf:about="#PorO"/>
+    </owl:unionOf>
+   </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#InputPort"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="signature" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Component"/>
+  <rdfs:range rdf:resource="#Signature"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="destination" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Connect"/>
+  <rdfs:range rdf:resource="#InputPort"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="source" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Connect"/>
+  <rdfs:range rdf:resource="#OutputPort"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="infoset" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Literal"/>
+  <rdfs:range rdf:resource="#XML_Document"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="inputSig" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Signature"/>
+  <rdfs:range rdf:resource="#Input_Signature"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="outputSig" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Signature"/>
+  <rdfs:range rdf:resource="#Output_Signature"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="connect" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Subpipeline"/>
+  <rdfs:range rdf:resource="#Connect"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="parameter" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain>
+   <owl:Class>
+    <owl:unionOf rdf:parseType="Collection">
+     <owl:Class rdf:about="#Component"/>
+     <owl:Class rdf:about="#Environment"/>
+    </owl:unionOf>
+   </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Parameter"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="subpipeline" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Construct"/>
+  <rdfs:range rdf:resource="#Subpipeline"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="container" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Component"/>
+  <rdfs:range rdf:resource="#Construct"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="recovery" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Try-_Catch"/>
+  <rdfs:range rdf:resource="#Recovery"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="initial" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Try-_Catch"/>
+  <rdfs:range rdf:resource="#Initial"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="contextDocument" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Alternative"/>
+  <rdfs:range rdf:resource="#InputPort"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="definition" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Pipeline_Shell"/>
+  <rdfs:range rdf:resource="#Signature"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="representsPipeShell" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Pipeline_Document"/>
+  <rdfs:range rdf:resource="#Pipeline_Shell"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="defaultReadablePort" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Environment"/>
+  <rdfs:range rdf:resource="#OutputPort"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="readablePort" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Environment"/>
+  <rdfs:range rdf:resource="#OutputPort"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="pipeline" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Pipeline_Shell"/>
+  <rdfs:range rdf:resource="#Subpipeline"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="environment" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain>
+   <owl:Class>
+    <owl:unionOf rdf:parseType="Collection">
+     <owl:Class rdf:about="#Component"/>
+     <owl:Class rdf:about="#Subpipeline"/>
+    </owl:unionOf>
+   </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Environment"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="ipSignature" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#InputPort"/>
+  <rdfs:range rdf:resource="#Input_Signature"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="opSignature" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#OutputPort"/>
+  <rdfs:range rdf:resource="#Output_Signature"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="option" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Component"/>
+  <rdfs:range rdf:resource="#Option"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="poSignature" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#PorO"/>
+  <rdfs:range rdf:resource="#PorO_Signature"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="oSig" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Signature"/>
+  <rdfs:range rdf:resource="#Option_Signature"/>
+ </owl:ObjectProperty>
+ <owl:ObjectProperty rdf:ID="pSig" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:domain rdf:resource="#Signature"/>
+  <rdfs:range rdf:resource="#Parameter_Signature"/>
+ </owl:ObjectProperty>
+ <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema.xsd#XPath" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#"/>
+ <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema.xsd#NCName" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#"/>
+ <owl:Class rdf:ID="Invertable" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>Invertable</rdfs:label>
+ </owl:Class>
+ <owl:ObjectProperty rdf:ID="onProperty" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:p="http://www.w3.org/2007/03/xproc#">
+  <rdfs:label>onProperty</rdfs:label>
+  <rdfs:domain rdf:resource="#Invertable"/>
+ </owl:ObjectProperty>
+</rdf:RDF>

@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="UTF-8"?><rdf:RDF xmlns="http://www.w3.org/2007/uwa/context/software.owl#" xmlns:assert="http://www.owl-ontologies.com/assert.owl#" xmlns:common="http://www.w3.org/2007/uwa/context/common.owl#" xmlns:dc="http://purl.org/dc/terms/" xmlns:dcn="http://www.w3.org/2007/uwa/context/deliverycontext.owl#" xmlns:ex="http://www.example.org/2007/uwa/context/examples.owl#" xmlns:hard="http://www.w3.org/2007/uwa/context/hardware.owl#" xmlns:java="http://www.w3.org/2007/uwa/context/java.owl#" xmlns:loc="http://www.w3.org/2007/uwa/context/location.owl#" xmlns:net="http://www.w3.org/2007/uwa/context/network.owl#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:push="http://www.w3.org/2007/uwa/context/push.owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:soft="http://www.w3.org/2007/uwa/context/software.owl#" xmlns:web="http://www.w3.org/2007/uwa/context/web.owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xml:base="http://www.w3.org/2007/uwa/context/software.owl">
+  <common:TermGroup rdf:about="#TermGroup_Software">
+        <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+        <common:termGroupPrefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soft</common:termGroupPrefix>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Software</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">It is a set of properties, classes and instances that model the software elements of a Delivery Context</rdfs:comment>
+      </common:TermGroup>
+  <owl:Class rdf:about="#AudioFormat">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Audio Format</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a particular audio format, such as MP3 or WAV</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Format"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Application">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Application Program</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Program"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents an application program</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Plugin">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a plugin, i.e. a software piece which extends the functionality offered by a host application (web browser, drawing application, etc)</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Plugin</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_SoftwareEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#version"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SoftwareAspect"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#name"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Context_SoftwareEntity">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Context_Entity"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Context Software Entity</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class subsumes all the entities in the ontology that have to do with software-specific characterisitics</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#MediaRecorder">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#UserAgent"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Media Recorder</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a user agent capable of recording different kind of media, such as a audio or video</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#VideoFormat">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a particular video format, such as AVI or MP4</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Format"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Video Format</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#Api">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a generic class that represents an application programming interface</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Context_SoftwareEntity"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#name"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#version"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">API</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#AudioRecorder">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#AudioFormat"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#supportedFormats"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#MediaRecorder"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Audio Recorder</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a user agent capable of recording audio</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#OperatingSystem">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents operating systems</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Operating System</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Program"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#VideoRecorder">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a user agent capable of recording video</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Video Recorder</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#VideoFormat"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#supportedFormats"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#MediaRecorder"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Format">
+    <rdfs:subClassOf rdf:resource="#Context_SoftwareEntity"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#name"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#version"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Format</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents formats that can be used to represent something</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#EmailClient">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#UserAgent"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">E-Mail Client</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a user agent capable of sending and receiving e-mail</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#X509Certificate">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents an X.509 certificate</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Certificate"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#serialNumber"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">X.509 Certificate</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#Font">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents fonts</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Font</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#fontStyle"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#FontStyle"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#fontFamily"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#FontFamily"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#fontFamily"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#fontSize"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Context_SoftwareEntity"/>
+  </owl:Class>
+  <owl:Class rdf:about="#RuntimeEnvironment">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a runtime environment present in a device. It can be a JRE, Brew or any other technology</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Program"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Runtime Environment</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#HandlingAssociation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents the relationship between an entity (MIME Type, URI Scheme, etc.)  and a program capable of handling such entity</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Context_SoftwareEntity"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#handledElement"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#Program"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#handler"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#handler"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#handledElement"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Context_Entity"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Handling Association</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#FontStyle">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class denotes font styles</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Font Style</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#name"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Context_SoftwareEntity"/>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/CSS21/fonts.html#font-styling</common:normativeReference>
+  </owl:Class>
+  <owl:Class rdf:about="#VideoPlayer">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#supportedFormats"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#VideoFormat"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MediaPlayer"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents user agents capable of dealing with video formats</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Video Player</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#MediaPlayer">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#UserAgent"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Media Player</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents any kind of user agent capable of playing media</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#AudioPlayer">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#AudioFormat"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#supportedFormats"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#MediaPlayer"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Audio Player</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a user agent capable of dealing with audio formats</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Program">
+    <rdfs:subClassOf rdf:resource="#Context_SoftwareEntity"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#version"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#name"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#vendor"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SoftwareAspect"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Program</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a computer program</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#FontFamily">
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/CSS21/fonts.html#font-family-prop</common:normativeReference>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#name"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Context_SoftwareEntity"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Font Family</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents  Font Familiies</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#SoftwareAspect">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Aspect"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Software Aspect</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a software aspect</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#XmlFormat">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XML Format</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents formats that are represented using XML</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#namespace"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Format"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ImageFormat">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a particular image format, such as jpeg, gif or png</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Image Format</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Format"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Certificate">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#notBefore"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#subject"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#notAfter"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#issuer"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Context_SoftwareEntity"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Certificate</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a digital certificate</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#DeviceSoftware">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Device Software</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents the software in a device</rdfs:comment>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoftwarePlatform</common:relatedUAProfEntity>
+    <rdfs:subClassOf rdf:resource="#Context_SoftwareEntity"/>
+    <rdfs:subClassOf rdf:resource="#SoftwareAspect"/>
+  </owl:Class>
+  <owl:Class rdf:about="#UserAgent">
+    <common:informativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/TR/di-gloss/#def-user-agent</common:informativeReference>
+    <rdfs:subClassOf rdf:resource="#Application"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">User Agent</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a client within a device</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#acceptedCharacterSets">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Accepted Character Sets</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the charsets accepted  by a user agent</rdfs:comment>
+    <rdfs:domain rdf:resource="#Program"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+    </rdfs:subPropertyOf>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CcppAccept-Charset</common:relatedUAProfEntity>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Push-Accept-Charset</common:relatedUAProfEntity>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MmsCcppAcceptCharSet</common:relatedUAProfEntity>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#apis">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+    </rdfs:subPropertyOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The  APIs supported by a user agent</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">APIs</rdfs:label>
+    <rdfs:domain rdf:resource="#UserAgent"/>
+    <rdfs:range rdf:resource="#Api"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#availableUserAgents">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/deliverycontext.owl#component"/>
+    </rdfs:subPropertyOf>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#available"/>
+    </rdfs:subPropertyOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the available User Agents on a device</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Available User Agents</rdfs:label>
+    <rdfs:domain rdf:resource="#DeviceSoftware"/>
+    <rdfs:range rdf:resource="#UserAgent"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#supportedStreamedFormats">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#supportedFormats"/>
+    </rdfs:subPropertyOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the formats that are supported by a program in streaming mode</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Supported Streamed Formats</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#uriSchemes">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Supported URI Schemes</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The supported URI Schemes of a user agent</rdfs:comment>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Email-URI-Schemes</common:relatedUAProfEntity>
+    <rdfs:range rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#UriScheme"/>
+    <rdfs:domain rdf:resource="#UserAgent"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#applicationProtocols">
+    <rdfs:range rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#ApplicationProtocol"/>
+    <rdfs:domain rdf:resource="#Program"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+    </rdfs:subPropertyOf>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Push-SupportedBearers</common:relatedUAProfEntity>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the  application protocols by a program</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Supported Application Protocols</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#preferredFormats">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Preferred Formats</rdfs:label>
+    <rdfs:range rdf:resource="#Format"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#supportedFormats"/>
+    </rdfs:subPropertyOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The best supported formats</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#supportedFormats">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the formats that are supported by a program</rdfs:comment>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#Program"/>
+    <rdfs:range rdf:resource="#Format"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Supported Formats</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#certificates">
+    <rdfs:range rdf:resource="#Certificate"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#DeviceSoftware"/>
+          <owl:Class rdf:about="#UserAgent"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#available"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Certificates</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Installed certificates in a device or user agent</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#fonts">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#available"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fonts</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The fonts provided by a Context Entity. It can be the Device Software in general, a Web Browser or other program</rdfs:comment>
+    <rdfs:range rdf:resource="#Font"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Program"/>
+          <owl:Class rdf:about="#DeviceSoftware"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#acceptedTransferEncodings">
+    <rdfs:range rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#TransferEncoding"/>
+    <rdfs:domain rdf:resource="#Program"/>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MmsCcppAcceptEncoding</common:relatedUAProfEntity>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Push-Accept-Encoding</common:relatedUAProfEntity>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CcppAccept-Encoding</common:relatedUAProfEntity>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The accepted transfer encodings supported by a user agent.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Accepted Transfer Encodings</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#defaultHandler">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#default"/>
+    <rdfs:domain rdf:resource="#DeviceSoftware"/>
+    <rdfs:range rdf:resource="#HandlingAssociation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Default Handler</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents a default handler</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#contentType">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are the MIME types associated with this type of format</rdfs:comment>
+    <rdfs:domain rdf:resource="#Format"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#ContentType"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MIME Type</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="#issuer">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The issuer of a certificate</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Certificate"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Issuer</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:about="#subject">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Certificate"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The subject of a certificate</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Subject</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#characterRows">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScreenSizeChar</common:relatedUAProfEntity>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Character Rows</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The typical number of rows of characters that can be displayed on the device display. This is an estimate using the default font for the device</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Device"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#maxDeliveryUnitSize">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The maximum message size for a delivery unit supported by a user agent measured in bytes. A Delivery Unit can be defined as a set of material transferred between two cooperating  programs as the response to a single request</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedLong"/>
+    <rdfs:domain rdf:resource="#UserAgent"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximum Delivery Unit Size</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#notBefore">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:domain rdf:resource="#Certificate"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property indicates that this certificate is valid not before this date</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Before</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#handledElement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#HandlingAssociation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the handled element in a handler relationship</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Handled Element</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#deviceSoftware">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the software on the device</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Device Software</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#DeviceSoftware"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Device"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#fontSize">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Font Size</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The absolute size of a font measured in points</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Font"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#handler">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents a program that acts as a handler</rdfs:comment>
+    <rdfs:range rdf:resource="#Program"/>
+    <rdfs:domain rdf:resource="#HandlingAssociation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Handler</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#notAfter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property conveys a date that indicates that the certificate in question will not be valid after that date</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not After</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:domain rdf:resource="#Certificate"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#namespace">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#XmlFormat"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The namespace of an XML format</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Namespace</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#operatingSystem">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Active Operating System</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is the active operating system</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#activeComponent"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#OperatingSystem"/>
+    <rdfs:domain rdf:resource="#DeviceSoftware"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#fontStyle">
+    <rdfs:domain rdf:resource="#Font"/>
+    <rdfs:range rdf:resource="#FontStyle"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Font Style</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the font style of a font</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#fontFamily">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The font family of a font</rdfs:comment>
+    <rdfs:domain rdf:resource="#Font"/>
+    <rdfs:range rdf:resource="#FontFamily"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Font Family</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#characterColumns">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Device"/>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScreenSizeChar</common:relatedUAProfEntity>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The typical number of characters that can be displayed in a single row on the device display. This is an estimate using the default font for the device</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Character Columns</rdfs:label>
+  </owl:FunctionalProperty>
+  <soft:ImageFormat rdf:about="#png">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The PNG file image format image type.</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_PNG</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PNG</common:name>
+  </soft:ImageFormat>
+  <soft:ImageFormat rdf:about="#gif87">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GIF</common:name>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GIF87</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_GIF87</common:id>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">87</common:version>
+  </soft:ImageFormat>
+  <soft:FontFamily rdf:about="#FontFamily_CURSIVE">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Generic Cursive Family</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__FontFamily_Cursive</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cursive</common:name>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cursive</rdfs:label>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/CSS21/fonts.html#cursive-def</common:normativeReference>
+  </soft:FontFamily>
+  <soft:ImageFormat rdf:about="#gif89a">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GIF89a</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_GIF89A</common:id>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">89a</common:version>
+  </soft:ImageFormat>
+  <soft:FontStyle rdf:about="#FontStyle_ITALICS">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Italics</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__FontStyle_Italics</common:id>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Italics</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Italics style</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+  </soft:FontStyle>
+  <common:AllDisjointSet rdf:about="#Program_Disjoint">
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soft:Application</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soft:OperatingSystem</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soft:RuntimeEnvironment</common:disjointClass>
+  </common:AllDisjointSet>
+  <common:Feature rdf:about="#Feature_VIRTUALKEYBOARD">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtualKeyboard</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__Feature_VirtualKeyboard</common:id>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Virtual keyboard feature indicates that exists a virtual keyboard that facilitiates user input</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Virtual Keyboard</rdfs:label>
+  </common:Feature>
+  <soft:Format rdf:about="#PDF">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PDF</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_PDF</common:id>
+  </soft:Format>
+  <soft:ImageFormat rdf:about="#PJPG">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The progressive JPEG file image format image type.</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_PJPG</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PJPG</common:name>
+  </soft:ImageFormat>
+  <soft:FontFamily rdf:about="#FontFamily_SERIF">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Serif</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Generic Serif Family</rdfs:comment>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/CSS21/fonts.html#serif-def</common:normativeReference>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__FontFamily_Serif</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Serif</common:name>
+  </soft:FontFamily>
+  <soft:FontFamily rdf:about="#FontFamily_FANTASY">
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/CSS21/fonts.html#fantasive-def</common:normativeReference>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__FontFamily_Fantasy</common:id>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Generic Fantasy Family</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fantasy</rdfs:label>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fantasy</common:name>
+  </soft:FontFamily>
+  <common:AllDisjointSet rdf:about="#SiblingDisjoint2">
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soft:Api</common:disjointClass>
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soft:Format</common:disjointClass>
+      </common:AllDisjointSet>
+  <common:AllDisjointSet rdf:about="#Sibling_Disjoint1">
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soft:HandlingAssociation</common:disjointClass>
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soft:FontStyle</common:disjointClass>
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soft:FontFamily</common:disjointClass>
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soft:Font</common:disjointClass>
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soft:Certificate</common:disjointClass>
+      </common:AllDisjointSet>
+  <common:AllDisjointSet rdf:about="#SiblingDisjoint4">
+    <common:disjointSet>
+      <common:AllDisjointSet rdf:about="#Sibling_Disjoint3">
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soft:DeviceSoftware</common:disjointClass>
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soft:Plugin</common:disjointClass>
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soft:Program</common:disjointClass>
+      </common:AllDisjointSet>
+    </common:disjointSet>
+    <common:disjointSet rdf:resource="#Sibling_Disjoint1"/>
+    <common:disjointSet rdf:resource="#SiblingDisjoint2"/>
+  </common:AllDisjointSet>
+  <soft:ImageFormat rdf:about="#jpeg">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</common:name>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPEG</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The JPEG file image format image type.</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_JPEG</common:id>
+  </soft:ImageFormat>
+  <soft:FontFamily rdf:about="#FontFamily_MONOSPACE">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Monospace</rdfs:label>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Monospace</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__FontFamily_MonoSpace</common:id>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Generic Monospace Family</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/CSS21/fonts.html#monospace-def</common:normativeReference>
+  </soft:FontFamily>
+  <soft:FontStyle rdf:about="#FontStyle_NORMAL">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Normal</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__FontStyle_Normal</common:id>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Normal</rdfs:label>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Normal Style</rdfs:comment>
+  </soft:FontStyle>
+  <soft:FontStyle rdf:about="#FontStyle_OBLIQUE">
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Oblique Style</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__FontStyle_Oblique</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Oblique</common:name>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Oblique</rdfs:label>
+  </soft:FontStyle>
+  <soft:VideoFormat rdf:about="#MP4">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_MP4</common:id>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The MP4 video format</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MP4</common:name>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MPEG-4</common:name>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4</common:version>
+  </soft:VideoFormat>
+  <soft:AudioFormat rdf:about="#MP3">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_MP3</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MPEG-3</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MP3 audio format</rdfs:comment>
+  </soft:AudioFormat>
+  <soft:FontFamily rdf:about="#FontFamily_SANS_SERIF">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Generic Sans Serif Family</rdfs:comment>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/CSS21/fonts.html#sans-serif-def</common:normativeReference>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sans Serif</rdfs:label>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sansserif</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__FontFamily_SansSerif</common:id>
+  </soft:FontFamily>
+</rdf:RDF>

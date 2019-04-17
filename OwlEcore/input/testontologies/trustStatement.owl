@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://www.owl-ontologies.com/unnamed.owl#"
+  xml:base="http://www.owl-ontologies.com/unnamed.owl">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://protege.stanford.edu/plugins/owl/protege"/>
+  </owl:Ontology>
+
+  <owl:Class rdf:ID="TrustStatement"/>
+  <owl:Class rdf:ID="TrustMetric"/>
+  <owl:Class rdf:ID="Agent"/>
+  <owl:Class rdf:ID="TrustLevel"/>
+  <owl:Class rdf:ID="TrustValue"/>
+  <owl:Class rdf:ID="Action"/>
+  <owl:Class rdf:ID="Constriant"/>
+
+  <owl:ObjectProperty rdf:ID="trustor">
+    <rdfs:range rdf:resource="#Agent"/>
+    <rdfs:domain rdf:resource="#TrustStatement"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="constriant">
+    <rdfs:domain rdf:resource="#TrustStatement"/>
+    <rdfs:range rdf:resource="#Constriant"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="level">
+    <rdfs:domain rdf:resource="#TrustStatement"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="#TrustLevel"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="action">
+    <rdfs:domain rdf:resource="#TrustStatement"/>
+    <rdfs:range rdf:resource="#Action"/>
+  </owl:ObjectProperty>
+
+  <owl:FunctionalProperty rdf:ID="metric">
+    <rdfs:domain rdf:resource="#TrustLevel"/>
+    <rdfs:range rdf:resource="#TrustMetric"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+
+  <owl:FunctionalProperty rdf:ID="trustee">
+    <rdfs:range rdf:resource="#Agent"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#TrustStatement"/>
+  </owl:FunctionalProperty>
+
+  <owl:FunctionalProperty rdf:ID="value">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#TrustLevel"/>
+    <rdfs:range rdf:resource="#TrustValue"/>
+  </owl:FunctionalProperty>
+
+</rdf:RDF>
+

@@ -5,10 +5,10 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>OwlEcore</name>
   <dependencies>
-	<dependency>
-	    <groupId>net.sourceforge.owlapi</groupId>
-	    <artifactId>owlapi-distribution</artifactId>
-	    <version>5.1.10</version>
+   	<dependency>
+	  <groupId>net.sourceforge.owlapi</groupId>
+	  <artifactId>owlapi-distribution</artifactId>
+	  <version>5.1.10</version>
 	</dependency>
 	<dependency>
 	  <groupId>org.eclipse.emf</groupId>
@@ -26,6 +26,15 @@
 	   <version>1.7.22</version>
 	   <scope>compile</scope>
 	</dependency>
+	<dependency>
+	   <groupId>owlapi-contract</groupId>
+	   <artifactId>owlapi-contract-test</artifactId>
+	   <scope>system</scope>
+	   <version>5.1.10</version>
+       <classifier>tests</classifier>
+       <type>test-jar</type>
+	   <systemPath>${basedir}\lib\owlapi-contract-5.1.10-tests.jar</systemPath>
+   	</dependency>
   </dependencies>
   <properties>
      <maven.compiler.source>1.8</maven.compiler.source>

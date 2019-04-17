@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><rdf:RDF xmlns="http://www.w3.org/2007/uwa/context/push.owl#" xmlns:assert="http://www.owl-ontologies.com/assert.owl#" xmlns:common="http://www.w3.org/2007/uwa/context/common.owl#" xmlns:dc="http://purl.org/dc/terms/" xmlns:dcn="http://www.w3.org/2007/uwa/context/deliverycontext.owl#" xmlns:ex="http://www.example.org/2007/uwa/context/examples.owl#" xmlns:hard="http://www.w3.org/2007/uwa/context/hardware.owl#" xmlns:java="http://www.w3.org/2007/uwa/context/java.owl#" xmlns:loc="http://www.w3.org/2007/uwa/context/location.owl#" xmlns:net="http://www.w3.org/2007/uwa/context/network.owl#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:push="http://www.w3.org/2007/uwa/context/push.owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:soft="http://www.w3.org/2007/uwa/context/software.owl#" xmlns:web="http://www.w3.org/2007/uwa/context/web.owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xml:base="http://www.w3.org/2007/uwa/context/push.owl">
+  <owl:Class rdf:about="#WapPushClient">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PushClient"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#wapPushVersions"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WAP Push Client</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A user agent capable of managing WAP Push incoming messages</rdfs:comment>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PushCharacteristics</common:relatedUAProfEntity>
+  </owl:Class>
+  <owl:Class rdf:about="#MmsClient">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A user agent capable of managing MMS Messages</rdfs:comment>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MmsCharacteristics</common:relatedUAProfEntity>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#mmsVersions"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PushClient"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MMS User Agent</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#PushClient">
+    <common:informativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.openmobilealliance.biz/document/OMA-ORG-Dictionary-V2_6-20070614-A.pdf</common:informativeReference>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PushCharacteristics</common:relatedUAProfEntity>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Push Client</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents user agents capable of receiving and processing push requests</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/software.owl#UserAgent"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:DatatypeProperty rdf:about="#wapPushVersions">
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Push-Version</common:relatedUAProfEntity>
+    <rdfs:domain rdf:resource="#WapPushClient"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WAP Push Versions</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Represents the versions of the (WAP) Push enabler supported</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#mmsVersions">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MMS versions</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The supported MMS versions</rdfs:comment>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MmsVersion</common:relatedUAProfEntity>
+    <rdfs:domain rdf:resource="#MmsClient"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#applicationIds">
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.openmobilealliance.org/tech/omna/omna-push-app-id.htm</common:normativeReference>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the list of types of Push-enabled applications supported by the device. Application identifiers are represented on absolute URI format. A wildcard ("*") may be used to indicate support for any application</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Push Application Ids</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#DeviceSoftware"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:about="#maxWapPushMessageSize">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WAP Push Maximum Message Size</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">THe maximum message size supported by the WAP Push User Agent in bytes</rdfs:comment>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Push-MsgSize</common:relatedUAProfEntity>
+    <rdfs:domain rdf:resource="#WapPushClient"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedLong"/>
+    <rdfs:subPropertyOf>
+      <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/software.owl#maxDeliveryUnitSize"/>
+    </rdfs:subPropertyOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#maxWapPushRequests">
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Push-MaxPushReq</common:relatedUAProfEntity>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#WapPushClient"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WAP Push Maximum Number of Requests</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The maximum number of WAP Push requests that the WAP Push User Agent is capable to deal with</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#defaultMmsClient">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The default MMS client on the device</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#availableUserAgents"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#defaultComponent"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Default MMS Client</rdfs:label>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MmsCharacteristics</common:relatedUAProfEntity>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#MmsClient"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#DeviceSoftware"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#maxMmsMessageSize">
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MmsMaxMessageSize</common:relatedUAProfEntity>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MMS Maximum Message Size</rdfs:label>
+    <rdfs:domain rdf:resource="#MmsClient"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedLong"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#maxDeliveryUnitSize"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The maximum size of an interchanged message in byes</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#defaultWapPushClient">
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#DeviceSoftware"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#WapPushClient"/>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PushCharacteristics</common:relatedUAProfEntity>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#availableUserAgents"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#defaultComponent"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The default WAP Push Client on a device</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Default WAP Push Client</rdfs:label>
+  </owl:FunctionalProperty>
+</rdf:RDF>

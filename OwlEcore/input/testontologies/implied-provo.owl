@@ -1,0 +1,1114 @@
+@prefix : <http://www.semanticweb.org/stain/ontologies/2012/6/untitled-ontology-2#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/stain/ontologies/2012/6/untitled-ontology-2> .
+
+<http://www.semanticweb.org/stain/ontologies/2012/6/untitled-ontology-2> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://www.w3.org/2002/07/owl#topObjectProperty
+
+owl:topObjectProperty rdf:type owl:ReflexiveProperty ,
+                               owl:SymmetricProperty ,
+                               owl:TransitiveProperty ;
+                      
+                      owl:inverseOf owl:topObjectProperty .
+
+
+
+###  http://www.w3.org/ns/prov#actedOnBehalfOf
+
+<http://www.w3.org/ns/prov#actedOnBehalfOf> rdf:type owl:ObjectProperty ;
+                                            
+                                            rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy> ;
+                                            
+                                            owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#actedOnBehalfOf>
+                                                          ] ;
+                                            
+                                            rdfs:subPropertyOf [ owl:inverseOf <http://www.w3.org/ns/prov#influenced>
+                                                               ] .
+
+
+
+###  http://www.w3.org/ns/prov#activity
+
+<http://www.w3.org/ns/prov#activity> rdf:type owl:ObjectProperty ;
+                                     
+                                     rdfs:subPropertyOf <http://www.w3.org/ns/prov#influencer> ;
+                                     
+                                     owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#activity>
+                                                   ] .
+
+
+
+###  http://www.w3.org/ns/prov#agent
+
+<http://www.w3.org/ns/prov#agent> rdf:type owl:ObjectProperty ;
+                                  
+                                  rdfs:subPropertyOf <http://www.w3.org/ns/prov#influencer> ;
+                                  
+                                  owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#agent>
+                                                ] .
+
+
+
+###  http://www.w3.org/ns/prov#alternateOf
+
+<http://www.w3.org/ns/prov#alternateOf> rdf:type owl:ObjectProperty ;
+                                        
+                                        rdfs:subPropertyOf owl:topObjectProperty ;
+                                        
+                                        owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#alternateOf>
+                                                      ] .
+
+
+
+###  http://www.w3.org/ns/prov#asInBundle
+
+<http://www.w3.org/ns/prov#asInBundle> rdf:type owl:ObjectProperty ;
+                                       
+                                       rdfs:subPropertyOf owl:topObjectProperty ;
+                                       
+                                       owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#asInBundle>
+                                                     ] .
+
+
+
+###  http://www.w3.org/ns/prov#atLocation
+
+<http://www.w3.org/ns/prov#atLocation> rdf:type owl:ObjectProperty ;
+                                       
+                                       rdfs:subPropertyOf owl:topObjectProperty ;
+                                       
+                                       owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#atLocation>
+                                                     ] .
+
+
+
+###  http://www.w3.org/ns/prov#entity
+
+<http://www.w3.org/ns/prov#entity> rdf:type owl:ObjectProperty ;
+                                   
+                                   rdfs:subPropertyOf <http://www.w3.org/ns/prov#influencer> ;
+                                   
+                                   owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#entity>
+                                                 ] .
+
+
+
+###  http://www.w3.org/ns/prov#generated
+
+<http://www.w3.org/ns/prov#generated> rdf:type owl:AsymmetricProperty ,
+                                               owl:IrreflexiveProperty ,
+                                               owl:ObjectProperty ,
+                                               owl:TransitiveProperty ;
+                                      
+                                      rdfs:subPropertyOf <http://www.w3.org/ns/prov#influenced> ;
+                                      
+                                      owl:inverseOf <http://www.w3.org/ns/prov#wasGeneratedBy> ;
+                                      
+                                      owl:equivalentProperty [ owl:inverseOf <http://www.w3.org/ns/prov#wasGeneratedBy>
+                                                             ] ;
+                                      
+                                      rdfs:subPropertyOf [ owl:inverseOf <http://www.w3.org/ns/prov#wasInfluencedBy>
+                                                         ] ;
+                                      
+                                      owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#generated>
+                                                    ] .
+
+
+
+###  http://www.w3.org/ns/prov#hadActivity
+
+<http://www.w3.org/ns/prov#hadActivity> rdf:type owl:ObjectProperty ;
+                                        
+                                        rdfs:subPropertyOf owl:topObjectProperty ;
+                                        
+                                        owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#hadActivity>
+                                                      ] .
+
+
+
+###  http://www.w3.org/ns/prov#hadGeneration
+
+<http://www.w3.org/ns/prov#hadGeneration> rdf:type owl:AsymmetricProperty ,
+                                                   owl:IrreflexiveProperty ,
+                                                   owl:ObjectProperty ,
+                                                   owl:TransitiveProperty ;
+                                          
+                                          rdfs:subPropertyOf owl:topObjectProperty ;
+                                          
+                                          owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#hadGeneration>
+                                                        ] .
+
+
+
+###  http://www.w3.org/ns/prov#hadMember
+
+<http://www.w3.org/ns/prov#hadMember> rdf:type owl:ObjectProperty ;
+                                      
+                                      rdfs:subPropertyOf owl:topObjectProperty ;
+                                      
+                                      owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#hadMember>
+                                                    ] .
+
+
+
+###  http://www.w3.org/ns/prov#hadPlan
+
+<http://www.w3.org/ns/prov#hadPlan> rdf:type owl:ObjectProperty ;
+                                    
+                                    rdfs:subPropertyOf owl:topObjectProperty ;
+                                    
+                                    owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#hadPlan>
+                                                  ] .
+
+
+
+###  http://www.w3.org/ns/prov#hadPrimarySource
+
+<http://www.w3.org/ns/prov#hadPrimarySource> rdf:type owl:ObjectProperty ;
+                                             
+                                             rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasDerivedFrom> ;
+                                             
+                                             owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#hadPrimarySource>
+                                                           ] .
+
+
+
+###  http://www.w3.org/ns/prov#hadRole
+
+<http://www.w3.org/ns/prov#hadRole> rdf:type owl:ObjectProperty ;
+                                    
+                                    rdfs:subPropertyOf owl:topObjectProperty ;
+                                    
+                                    owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#hadRole>
+                                                  ] .
+
+
+
+###  http://www.w3.org/ns/prov#hadUsage
+
+<http://www.w3.org/ns/prov#hadUsage> rdf:type owl:ObjectProperty ;
+                                     
+                                     rdfs:subPropertyOf owl:topObjectProperty ;
+                                     
+                                     owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#hadUsage>
+                                                   ] .
+
+
+
+###  http://www.w3.org/ns/prov#hasAnchor
+
+<http://www.w3.org/ns/prov#hasAnchor> rdf:type owl:ObjectProperty ;
+                                      
+                                      rdfs:subPropertyOf owl:topObjectProperty ;
+                                      
+                                      owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#hasAnchor>
+                                                    ] .
+
+
+
+###  http://www.w3.org/ns/prov#hasProvenance
+
+<http://www.w3.org/ns/prov#hasProvenance> rdf:type owl:ObjectProperty ;
+                                          
+                                          rdfs:subPropertyOf owl:topObjectProperty ;
+                                          
+                                          owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#hasProvenance>
+                                                        ] .
+
+
+
+###  http://www.w3.org/ns/prov#hasProvenanceService
+
+<http://www.w3.org/ns/prov#hasProvenanceService> rdf:type owl:ObjectProperty ;
+                                                 
+                                                 rdfs:subPropertyOf owl:topObjectProperty ;
+                                                 
+                                                 owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#hasProvenanceService>
+                                                               ] .
+
+
+
+###  http://www.w3.org/ns/prov#influenced
+
+<http://www.w3.org/ns/prov#influenced> rdf:type owl:ObjectProperty ;
+                                       
+                                       rdfs:subPropertyOf owl:topObjectProperty ;
+                                       
+                                       owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#influenced>
+                                                     ] ;
+                                       
+                                       owl:equivalentProperty [ owl:inverseOf <http://www.w3.org/ns/prov#wasInfluencedBy>
+                                                              ] .
+
+
+
+###  http://www.w3.org/ns/prov#influencer
+
+<http://www.w3.org/ns/prov#influencer> rdf:type owl:ObjectProperty ;
+                                       
+                                       rdfs:subPropertyOf owl:topObjectProperty ;
+                                       
+                                       owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#influencer>
+                                                     ] .
+
+
+
+###  http://www.w3.org/ns/prov#invalidated
+
+<http://www.w3.org/ns/prov#invalidated> rdf:type owl:AsymmetricProperty ,
+                                                 owl:IrreflexiveProperty ,
+                                                 owl:ObjectProperty ,
+                                                 owl:TransitiveProperty ;
+                                        
+                                        rdfs:subPropertyOf <http://www.w3.org/ns/prov#influenced> ;
+                                        
+                                        owl:inverseOf <http://www.w3.org/ns/prov#wasInvalidatedBy> ,
+                                                      [ owl:inverseOf <http://www.w3.org/ns/prov#invalidated>
+                                                      ] ;
+                                        
+                                        rdfs:subPropertyOf [ owl:inverseOf <http://www.w3.org/ns/prov#wasInfluencedBy>
+                                                           ] ;
+                                        
+                                        owl:equivalentProperty [ owl:inverseOf <http://www.w3.org/ns/prov#wasInvalidatedBy>
+                                                               ] .
+
+
+
+###  http://www.w3.org/ns/prov#mentionOf
+
+<http://www.w3.org/ns/prov#mentionOf> rdf:type owl:ObjectProperty ;
+                                      
+                                      rdfs:subPropertyOf <http://www.w3.org/ns/prov#specializationOf> ;
+                                      
+                                      owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#mentionOf>
+                                                    ] .
+
+
+
+###  http://www.w3.org/ns/prov#qualifiedAssociation
+
+<http://www.w3.org/ns/prov#qualifiedAssociation> rdf:type owl:ObjectProperty ;
+                                                 
+                                                 rdfs:subPropertyOf owl:topObjectProperty ;
+                                                 
+                                                 owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#qualifiedAssociation>
+                                                               ] .
+
+
+
+###  http://www.w3.org/ns/prov#qualifiedAttribution
+
+<http://www.w3.org/ns/prov#qualifiedAttribution> rdf:type owl:ObjectProperty ;
+                                                 
+                                                 rdfs:subPropertyOf owl:topObjectProperty ;
+                                                 
+                                                 owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#qualifiedAttribution>
+                                                               ] .
+
+
+
+###  http://www.w3.org/ns/prov#qualifiedCommunication
+
+<http://www.w3.org/ns/prov#qualifiedCommunication> rdf:type owl:ObjectProperty ;
+                                                   
+                                                   rdfs:subPropertyOf owl:topObjectProperty ;
+                                                   
+                                                   owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#qualifiedCommunication>
+                                                                 ] .
+
+
+
+###  http://www.w3.org/ns/prov#qualifiedDelegation
+
+<http://www.w3.org/ns/prov#qualifiedDelegation> rdf:type owl:ObjectProperty ;
+                                                
+                                                rdfs:subPropertyOf owl:topObjectProperty ;
+                                                
+                                                owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#qualifiedDelegation>
+                                                              ] .
+
+
+
+###  http://www.w3.org/ns/prov#qualifiedDerivation
+
+<http://www.w3.org/ns/prov#qualifiedDerivation> rdf:type owl:ObjectProperty ;
+                                                
+                                                rdfs:subPropertyOf owl:topObjectProperty ;
+                                                
+                                                owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#qualifiedDerivation>
+                                                              ] .
+
+
+
+###  http://www.w3.org/ns/prov#qualifiedEnd
+
+<http://www.w3.org/ns/prov#qualifiedEnd> rdf:type owl:ObjectProperty ;
+                                         
+                                         rdfs:subPropertyOf owl:topObjectProperty ;
+                                         
+                                         owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#qualifiedEnd>
+                                                       ] .
+
+
+
+###  http://www.w3.org/ns/prov#qualifiedGeneration
+
+<http://www.w3.org/ns/prov#qualifiedGeneration> rdf:type owl:AsymmetricProperty ,
+                                                         owl:IrreflexiveProperty ,
+                                                         owl:ObjectProperty ,
+                                                         owl:TransitiveProperty ;
+                                                
+                                                rdfs:subPropertyOf owl:topObjectProperty ;
+                                                
+                                                owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#qualifiedGeneration>
+                                                              ] .
+
+
+
+###  http://www.w3.org/ns/prov#qualifiedInfluence
+
+<http://www.w3.org/ns/prov#qualifiedInfluence> rdf:type owl:ObjectProperty ;
+                                               
+                                               rdfs:subPropertyOf owl:topObjectProperty ;
+                                               
+                                               owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#qualifiedInfluence>
+                                                             ] .
+
+
+
+###  http://www.w3.org/ns/prov#qualifiedInvalidation
+
+<http://www.w3.org/ns/prov#qualifiedInvalidation> rdf:type owl:AsymmetricProperty ,
+                                                           owl:IrreflexiveProperty ,
+                                                           owl:ObjectProperty ,
+                                                           owl:TransitiveProperty ;
+                                                  
+                                                  rdfs:subPropertyOf owl:topObjectProperty ;
+                                                  
+                                                  owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#qualifiedInvalidation>
+                                                                ] .
+
+
+
+###  http://www.w3.org/ns/prov#qualifiedQuotation
+
+<http://www.w3.org/ns/prov#qualifiedQuotation> rdf:type owl:ObjectProperty ;
+                                               
+                                               rdfs:subPropertyOf owl:topObjectProperty ;
+                                               
+                                               owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#qualifiedQuotation>
+                                                             ] .
+
+
+
+###  http://www.w3.org/ns/prov#qualifiedRevision
+
+<http://www.w3.org/ns/prov#qualifiedRevision> rdf:type owl:ObjectProperty ;
+                                              
+                                              rdfs:subPropertyOf owl:topObjectProperty ;
+                                              
+                                              owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#qualifiedRevision>
+                                                            ] .
+
+
+
+###  http://www.w3.org/ns/prov#qualifiedSource
+
+<http://www.w3.org/ns/prov#qualifiedSource> rdf:type owl:ObjectProperty ;
+                                            
+                                            rdfs:subPropertyOf owl:topObjectProperty ;
+                                            
+                                            owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#qualifiedSource>
+                                                          ] .
+
+
+
+###  http://www.w3.org/ns/prov#qualifiedStart
+
+<http://www.w3.org/ns/prov#qualifiedStart> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:subPropertyOf owl:topObjectProperty ;
+                                           
+                                           owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#qualifiedStart>
+                                                         ] .
+
+
+
+###  http://www.w3.org/ns/prov#qualifiedUsage
+
+<http://www.w3.org/ns/prov#qualifiedUsage> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:subPropertyOf owl:topObjectProperty ;
+                                           
+                                           owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#qualifiedUsage>
+                                                         ] .
+
+
+
+###  http://www.w3.org/ns/prov#specializationOf
+
+<http://www.w3.org/ns/prov#specializationOf> rdf:type owl:ObjectProperty ;
+                                             
+                                             rdfs:subPropertyOf <http://www.w3.org/ns/prov#alternateOf> ;
+                                             
+                                             owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#specializationOf>
+                                                           ] .
+
+
+
+###  http://www.w3.org/ns/prov#used
+
+<http://www.w3.org/ns/prov#used> rdf:type owl:AsymmetricProperty ,
+                                          owl:IrreflexiveProperty ,
+                                          owl:ObjectProperty ,
+                                          owl:TransitiveProperty ;
+                                 
+                                 rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy> ,
+                                                    [ owl:inverseOf <http://www.w3.org/ns/prov#influenced>
+                                                    ] ;
+                                 
+                                 owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#used>
+                                               ] .
+
+
+
+###  http://www.w3.org/ns/prov#wasAssociatedWith
+
+<http://www.w3.org/ns/prov#wasAssociatedWith> rdf:type owl:ObjectProperty ;
+                                              
+                                              rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy> ;
+                                              
+                                              owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#wasAssociatedWith>
+                                                            ] ;
+                                              
+                                              rdfs:subPropertyOf [ owl:inverseOf <http://www.w3.org/ns/prov#influenced>
+                                                                 ] .
+
+
+
+###  http://www.w3.org/ns/prov#wasAttributedTo
+
+<http://www.w3.org/ns/prov#wasAttributedTo> rdf:type owl:ObjectProperty ;
+                                            
+                                            rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy> ;
+                                            
+                                            owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#wasAttributedTo>
+                                                          ] ;
+                                            
+                                            rdfs:subPropertyOf [ owl:inverseOf <http://www.w3.org/ns/prov#influenced>
+                                                               ] .
+
+
+
+###  http://www.w3.org/ns/prov#wasDerivedFrom
+
+<http://www.w3.org/ns/prov#wasDerivedFrom> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy> ;
+                                           
+                                           owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#wasDerivedFrom>
+                                                         ] ;
+                                           
+                                           rdfs:subPropertyOf [ owl:inverseOf <http://www.w3.org/ns/prov#influenced>
+                                                              ] .
+
+
+
+###  http://www.w3.org/ns/prov#wasEndedBy
+
+<http://www.w3.org/ns/prov#wasEndedBy> rdf:type owl:AsymmetricProperty ,
+                                                owl:IrreflexiveProperty ,
+                                                owl:ObjectProperty ,
+                                                owl:TransitiveProperty ;
+                                       
+                                       rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy> ,
+                                                          [ owl:inverseOf <http://www.w3.org/ns/prov#influenced>
+                                                          ] ;
+                                       
+                                       owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#wasEndedBy>
+                                                     ] .
+
+
+
+###  http://www.w3.org/ns/prov#wasGeneratedBy
+
+<http://www.w3.org/ns/prov#wasGeneratedBy> rdf:type owl:AsymmetricProperty ,
+                                                    owl:IrreflexiveProperty ,
+                                                    owl:ObjectProperty ,
+                                                    owl:TransitiveProperty ;
+                                           
+                                           rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy> ;
+                                           
+                                           owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#wasGeneratedBy>
+                                                         ] ;
+                                           
+                                           rdfs:subPropertyOf [ owl:inverseOf <http://www.w3.org/ns/prov#influenced>
+                                                              ] ;
+                                           
+                                           owl:equivalentProperty [ owl:inverseOf <http://www.w3.org/ns/prov#generated>
+                                                                  ] .
+
+
+
+###  http://www.w3.org/ns/prov#wasInfluencedBy
+
+<http://www.w3.org/ns/prov#wasInfluencedBy> rdf:type owl:ObjectProperty ;
+                                            
+                                            rdfs:subPropertyOf owl:topObjectProperty ;
+                                            
+                                            owl:inverseOf <http://www.w3.org/ns/prov#influenced> ;
+                                            
+                                            owl:equivalentProperty [ owl:inverseOf <http://www.w3.org/ns/prov#influenced>
+                                                                   ] ;
+                                            
+                                            owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#wasInfluencedBy>
+                                                          ] .
+
+
+
+###  http://www.w3.org/ns/prov#wasInformedBy
+
+<http://www.w3.org/ns/prov#wasInformedBy> rdf:type owl:ObjectProperty ;
+                                          
+                                          rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy> ,
+                                                             [ owl:inverseOf <http://www.w3.org/ns/prov#influenced>
+                                                             ] ;
+                                          
+                                          owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#wasInformedBy>
+                                                        ] .
+
+
+
+###  http://www.w3.org/ns/prov#wasInvalidatedBy
+
+<http://www.w3.org/ns/prov#wasInvalidatedBy> rdf:type owl:AsymmetricProperty ,
+                                                      owl:IrreflexiveProperty ,
+                                                      owl:ObjectProperty ,
+                                                      owl:TransitiveProperty ;
+                                             
+                                             rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy> ,
+                                                                [ owl:inverseOf <http://www.w3.org/ns/prov#influenced>
+                                                                ] ;
+                                             
+                                             owl:equivalentProperty [ owl:inverseOf <http://www.w3.org/ns/prov#invalidated>
+                                                                    ] ;
+                                             
+                                             owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#wasInvalidatedBy>
+                                                           ] .
+
+
+
+###  http://www.w3.org/ns/prov#wasQuotedFrom
+
+<http://www.w3.org/ns/prov#wasQuotedFrom> rdf:type owl:ObjectProperty ;
+                                          
+                                          rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasDerivedFrom> ;
+                                          
+                                          owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#wasQuotedFrom>
+                                                        ] .
+
+
+
+###  http://www.w3.org/ns/prov#wasRevisionOf
+
+<http://www.w3.org/ns/prov#wasRevisionOf> rdf:type owl:ObjectProperty ;
+                                          
+                                          rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasDerivedFrom> ;
+                                          
+                                          owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#wasRevisionOf>
+                                                        ] .
+
+
+
+###  http://www.w3.org/ns/prov#wasStartedBy
+
+<http://www.w3.org/ns/prov#wasStartedBy> rdf:type owl:AsymmetricProperty ,
+                                                  owl:IrreflexiveProperty ,
+                                                  owl:ObjectProperty ,
+                                                  owl:TransitiveProperty ;
+                                         
+                                         rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy> ;
+                                         
+                                         owl:inverseOf [ owl:inverseOf <http://www.w3.org/ns/prov#wasStartedBy>
+                                                       ] ;
+                                         
+                                         rdfs:subPropertyOf [ owl:inverseOf <http://www.w3.org/ns/prov#influenced>
+                                                            ] .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://www.w3.org/ns/prov#atTime
+
+<http://www.w3.org/ns/prov#atTime> rdf:type owl:DatatypeProperty ,
+                                            owl:FunctionalProperty .
+
+
+
+###  http://www.w3.org/ns/prov#endedAtTime
+
+<http://www.w3.org/ns/prov#endedAtTime> rdf:type owl:DatatypeProperty ,
+                                                 owl:FunctionalProperty .
+
+
+
+###  http://www.w3.org/ns/prov#generatedAtTime
+
+<http://www.w3.org/ns/prov#generatedAtTime> rdf:type owl:DatatypeProperty ,
+                                                     owl:FunctionalProperty .
+
+
+
+###  http://www.w3.org/ns/prov#invalidatedAtTime
+
+<http://www.w3.org/ns/prov#invalidatedAtTime> rdf:type owl:DatatypeProperty ,
+                                                       owl:FunctionalProperty .
+
+
+
+###  http://www.w3.org/ns/prov#provenanceUriTemplate
+
+
+
+
+###  http://www.w3.org/ns/prov#startedAtTime
+
+<http://www.w3.org/ns/prov#startedAtTime> rdf:type owl:DatatypeProperty ,
+                                                   owl:FunctionalProperty .
+
+
+
+###  http://www.w3.org/ns/prov#value
+
+<http://www.w3.org/ns/prov#value> rdf:type owl:DatatypeProperty ,
+                                           owl:FunctionalProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://www.w3.org/2002/07/owl#Nothing
+
+owl:Nothing owl:disjointWith owl:Thing ,
+                             <http://www.w3.org/ns/prov#Activity> ,
+                             <http://www.w3.org/ns/prov#ActivityInfluence> ,
+                             <http://www.w3.org/ns/prov#Agent> ,
+                             <http://www.w3.org/ns/prov#AgentInfluence> ,
+                             <http://www.w3.org/ns/prov#Association> ,
+                             <http://www.w3.org/ns/prov#Attribution> ,
+                             <http://www.w3.org/ns/prov#Bundle> ,
+                             <http://www.w3.org/ns/prov#Collection> ,
+                             <http://www.w3.org/ns/prov#Communication> ,
+                             <http://www.w3.org/ns/prov#Delegation> ,
+                             <http://www.w3.org/ns/prov#Derivation> ,
+                             <http://www.w3.org/ns/prov#End> ,
+                             <http://www.w3.org/ns/prov#Entity> ,
+                             <http://www.w3.org/ns/prov#EntityInfluence> ,
+                             <http://www.w3.org/ns/prov#Generation> ,
+                             <http://www.w3.org/ns/prov#Influence> ,
+                             <http://www.w3.org/ns/prov#InstantaneousEvent> ,
+                             <http://www.w3.org/ns/prov#Invalidation> ,
+                             <http://www.w3.org/ns/prov#Location> ,
+                             <http://www.w3.org/ns/prov#Organization> ,
+                             <http://www.w3.org/ns/prov#Person> ,
+                             <http://www.w3.org/ns/prov#Plan> ,
+                             <http://www.w3.org/ns/prov#ProvenanceService> ,
+                             <http://www.w3.org/ns/prov#Quotation> ,
+                             <http://www.w3.org/ns/prov#Revision> ,
+                             <http://www.w3.org/ns/prov#Role> ,
+                             <http://www.w3.org/ns/prov#SoftwareAgent> ,
+                             <http://www.w3.org/ns/prov#Source> ,
+                             <http://www.w3.org/ns/prov#Start> ,
+                             <http://www.w3.org/ns/prov#Usage> .
+
+
+
+###  http://www.w3.org/2002/07/owl#Thing
+
+
+
+
+###  http://www.w3.org/ns/prov#Activity
+
+<http://www.w3.org/ns/prov#Activity> rdf:type owl:Class ;
+                                     
+                                     rdfs:subClassOf owl:Thing ;
+                                     
+                                     owl:disjointWith <http://www.w3.org/ns/prov#Bundle> ,
+                                                      <http://www.w3.org/ns/prov#Collection> ,
+                                                      <http://www.w3.org/ns/prov#Entity> ,
+                                                      <http://www.w3.org/ns/prov#Plan> .
+
+
+
+###  http://www.w3.org/ns/prov#ActivityInfluence
+
+<http://www.w3.org/ns/prov#ActivityInfluence> rdf:type owl:Class ;
+                                              
+                                              rdfs:subClassOf <http://www.w3.org/ns/prov#Influence> ;
+                                              
+                                              owl:disjointWith <http://www.w3.org/ns/prov#Derivation> ,
+                                                               <http://www.w3.org/ns/prov#End> ,
+                                                               <http://www.w3.org/ns/prov#EntityInfluence> ,
+                                                               <http://www.w3.org/ns/prov#Quotation> ,
+                                                               <http://www.w3.org/ns/prov#Revision> ,
+                                                               <http://www.w3.org/ns/prov#Source> ,
+                                                               <http://www.w3.org/ns/prov#Start> ,
+                                                               <http://www.w3.org/ns/prov#Usage> .
+
+
+
+###  http://www.w3.org/ns/prov#Agent
+
+<http://www.w3.org/ns/prov#Agent> rdf:type owl:Class ;
+                                  
+                                  rdfs:subClassOf owl:Thing ;
+                                  
+                                  owl:disjointWith <http://www.w3.org/ns/prov#End> ,
+                                                   <http://www.w3.org/ns/prov#Generation> ,
+                                                   <http://www.w3.org/ns/prov#InstantaneousEvent> ,
+                                                   <http://www.w3.org/ns/prov#Invalidation> ,
+                                                   <http://www.w3.org/ns/prov#Start> ,
+                                                   <http://www.w3.org/ns/prov#Usage> .
+
+
+
+###  http://www.w3.org/ns/prov#AgentInfluence
+
+<http://www.w3.org/ns/prov#AgentInfluence> rdf:type owl:Class ;
+                                           
+                                           rdfs:subClassOf <http://www.w3.org/ns/prov#Influence> .
+
+
+
+###  http://www.w3.org/ns/prov#Association
+
+<http://www.w3.org/ns/prov#Association> rdf:type owl:Class ;
+                                        
+                                        rdfs:subClassOf <http://www.w3.org/ns/prov#AgentInfluence> .
+
+
+
+###  http://www.w3.org/ns/prov#Attribution
+
+<http://www.w3.org/ns/prov#Attribution> rdf:type owl:Class ;
+                                        
+                                        rdfs:subClassOf <http://www.w3.org/ns/prov#AgentInfluence> .
+
+
+
+###  http://www.w3.org/ns/prov#Bundle
+
+<http://www.w3.org/ns/prov#Bundle> rdf:type owl:Class ;
+                                   
+                                   rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
+                                   
+                                   owl:disjointWith <http://www.w3.org/ns/prov#End> ,
+                                                    <http://www.w3.org/ns/prov#Generation> ,
+                                                    <http://www.w3.org/ns/prov#InstantaneousEvent> ,
+                                                    <http://www.w3.org/ns/prov#Invalidation> ,
+                                                    <http://www.w3.org/ns/prov#Start> ,
+                                                    <http://www.w3.org/ns/prov#Usage> .
+
+
+
+###  http://www.w3.org/ns/prov#Collection
+
+<http://www.w3.org/ns/prov#Collection> rdf:type owl:Class ;
+                                       
+                                       rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
+                                       
+                                       owl:disjointWith <http://www.w3.org/ns/prov#End> ,
+                                                        <http://www.w3.org/ns/prov#Generation> ,
+                                                        <http://www.w3.org/ns/prov#InstantaneousEvent> ,
+                                                        <http://www.w3.org/ns/prov#Invalidation> ,
+                                                        <http://www.w3.org/ns/prov#Start> ,
+                                                        <http://www.w3.org/ns/prov#Usage> .
+
+
+
+###  http://www.w3.org/ns/prov#Communication
+
+<http://www.w3.org/ns/prov#Communication> rdf:type owl:Class ;
+                                          
+                                          rdfs:subClassOf <http://www.w3.org/ns/prov#ActivityInfluence> ;
+                                          
+                                          owl:disjointWith <http://www.w3.org/ns/prov#Derivation> ,
+                                                           <http://www.w3.org/ns/prov#End> ,
+                                                           <http://www.w3.org/ns/prov#EntityInfluence> ,
+                                                           <http://www.w3.org/ns/prov#Quotation> ,
+                                                           <http://www.w3.org/ns/prov#Revision> ,
+                                                           <http://www.w3.org/ns/prov#Source> ,
+                                                           <http://www.w3.org/ns/prov#Start> ,
+                                                           <http://www.w3.org/ns/prov#Usage> .
+
+
+
+###  http://www.w3.org/ns/prov#Delegation
+
+<http://www.w3.org/ns/prov#Delegation> rdf:type owl:Class ;
+                                       
+                                       rdfs:subClassOf <http://www.w3.org/ns/prov#AgentInfluence> .
+
+
+
+###  http://www.w3.org/ns/prov#Derivation
+
+<http://www.w3.org/ns/prov#Derivation> rdf:type owl:Class ;
+                                       
+                                       rdfs:subClassOf <http://www.w3.org/ns/prov#EntityInfluence> ;
+                                       
+                                       owl:disjointWith <http://www.w3.org/ns/prov#Generation> ,
+                                                        <http://www.w3.org/ns/prov#Invalidation> .
+
+
+
+###  http://www.w3.org/ns/prov#End
+
+<http://www.w3.org/ns/prov#End> rdf:type owl:Class ;
+                                
+                                rdfs:subClassOf <http://www.w3.org/ns/prov#EntityInfluence> ,
+                                                <http://www.w3.org/ns/prov#InstantaneousEvent> ;
+                                
+                                owl:disjointWith <http://www.w3.org/ns/prov#Entity> ,
+                                                 <http://www.w3.org/ns/prov#Generation> ,
+                                                 <http://www.w3.org/ns/prov#Invalidation> ,
+                                                 <http://www.w3.org/ns/prov#Organization> ,
+                                                 <http://www.w3.org/ns/prov#Person> ,
+                                                 <http://www.w3.org/ns/prov#Plan> ,
+                                                 <http://www.w3.org/ns/prov#ProvenanceService> ,
+                                                 <http://www.w3.org/ns/prov#SoftwareAgent> .
+
+
+
+###  http://www.w3.org/ns/prov#Entity
+
+<http://www.w3.org/ns/prov#Entity> rdf:type owl:Class ;
+                                   
+                                   rdfs:subClassOf owl:Thing ;
+                                   
+                                   owl:disjointWith <http://www.w3.org/ns/prov#Generation> ,
+                                                    <http://www.w3.org/ns/prov#InstantaneousEvent> ,
+                                                    <http://www.w3.org/ns/prov#Invalidation> ,
+                                                    <http://www.w3.org/ns/prov#Start> ,
+                                                    <http://www.w3.org/ns/prov#Usage> .
+
+
+
+###  http://www.w3.org/ns/prov#EntityInfluence
+
+<http://www.w3.org/ns/prov#EntityInfluence> rdf:type owl:Class ;
+                                            
+                                            rdfs:subClassOf <http://www.w3.org/ns/prov#Influence> ;
+                                            
+                                            owl:disjointWith <http://www.w3.org/ns/prov#Generation> ,
+                                                             <http://www.w3.org/ns/prov#Invalidation> .
+
+
+
+###  http://www.w3.org/ns/prov#Generation
+
+<http://www.w3.org/ns/prov#Generation> rdf:type owl:Class ;
+                                       
+                                       rdfs:subClassOf <http://www.w3.org/ns/prov#ActivityInfluence> ,
+                                                       <http://www.w3.org/ns/prov#InstantaneousEvent> ;
+                                       
+                                       owl:disjointWith <http://www.w3.org/ns/prov#Organization> ,
+                                                        <http://www.w3.org/ns/prov#Person> ,
+                                                        <http://www.w3.org/ns/prov#Plan> ,
+                                                        <http://www.w3.org/ns/prov#ProvenanceService> ,
+                                                        <http://www.w3.org/ns/prov#Quotation> ,
+                                                        <http://www.w3.org/ns/prov#Revision> ,
+                                                        <http://www.w3.org/ns/prov#SoftwareAgent> ,
+                                                        <http://www.w3.org/ns/prov#Source> ,
+                                                        <http://www.w3.org/ns/prov#Start> ,
+                                                        <http://www.w3.org/ns/prov#Usage> .
+
+
+
+###  http://www.w3.org/ns/prov#Influence
+
+<http://www.w3.org/ns/prov#Influence> rdf:type owl:Class ;
+                                      
+                                      rdfs:subClassOf owl:Thing .
+
+
+
+###  http://www.w3.org/ns/prov#InstantaneousEvent
+
+<http://www.w3.org/ns/prov#InstantaneousEvent> rdf:type owl:Class ;
+                                               
+                                               rdfs:subClassOf owl:Thing ;
+                                               
+                                               owl:disjointWith <http://www.w3.org/ns/prov#Organization> ,
+                                                                <http://www.w3.org/ns/prov#Person> ,
+                                                                <http://www.w3.org/ns/prov#Plan> ,
+                                                                <http://www.w3.org/ns/prov#ProvenanceService> ,
+                                                                <http://www.w3.org/ns/prov#SoftwareAgent> .
+
+
+
+###  http://www.w3.org/ns/prov#Invalidation
+
+<http://www.w3.org/ns/prov#Invalidation> rdf:type owl:Class ;
+                                         
+                                         rdfs:subClassOf <http://www.w3.org/ns/prov#ActivityInfluence> ,
+                                                         <http://www.w3.org/ns/prov#InstantaneousEvent> ;
+                                         
+                                         owl:disjointWith <http://www.w3.org/ns/prov#Organization> ,
+                                                          <http://www.w3.org/ns/prov#Person> ,
+                                                          <http://www.w3.org/ns/prov#Plan> ,
+                                                          <http://www.w3.org/ns/prov#ProvenanceService> ,
+                                                          <http://www.w3.org/ns/prov#Quotation> ,
+                                                          <http://www.w3.org/ns/prov#Revision> ,
+                                                          <http://www.w3.org/ns/prov#SoftwareAgent> ,
+                                                          <http://www.w3.org/ns/prov#Source> ,
+                                                          <http://www.w3.org/ns/prov#Start> ,
+                                                          <http://www.w3.org/ns/prov#Usage> .
+
+
+
+###  http://www.w3.org/ns/prov#Location
+
+<http://www.w3.org/ns/prov#Location> rdf:type owl:Class ;
+                                     
+                                     rdfs:subClassOf owl:Thing .
+
+
+
+###  http://www.w3.org/ns/prov#Organization
+
+<http://www.w3.org/ns/prov#Organization> rdf:type owl:Class ;
+                                         
+                                         rdfs:subClassOf <http://www.w3.org/ns/prov#Agent> ;
+                                         
+                                         owl:disjointWith <http://www.w3.org/ns/prov#Start> ,
+                                                          <http://www.w3.org/ns/prov#Usage> .
+
+
+
+###  http://www.w3.org/ns/prov#Person
+
+<http://www.w3.org/ns/prov#Person> rdf:type owl:Class ;
+                                   
+                                   rdfs:subClassOf <http://www.w3.org/ns/prov#Agent> ;
+                                   
+                                   owl:disjointWith <http://www.w3.org/ns/prov#Start> ,
+                                                    <http://www.w3.org/ns/prov#Usage> .
+
+
+
+###  http://www.w3.org/ns/prov#Plan
+
+<http://www.w3.org/ns/prov#Plan> rdf:type owl:Class ;
+                                 
+                                 rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
+                                 
+                                 owl:disjointWith <http://www.w3.org/ns/prov#Start> ,
+                                                  <http://www.w3.org/ns/prov#Usage> .
+
+
+
+###  http://www.w3.org/ns/prov#ProvenanceService
+
+<http://www.w3.org/ns/prov#ProvenanceService> rdf:type owl:Class ;
+                                              
+                                              rdfs:subClassOf <http://www.w3.org/ns/prov#SoftwareAgent> ;
+                                              
+                                              owl:disjointWith <http://www.w3.org/ns/prov#Start> ,
+                                                               <http://www.w3.org/ns/prov#Usage> .
+
+
+
+###  http://www.w3.org/ns/prov#Quotation
+
+<http://www.w3.org/ns/prov#Quotation> rdf:type owl:Class ;
+                                      
+                                      rdfs:subClassOf <http://www.w3.org/ns/prov#EntityInfluence> .
+
+
+
+###  http://www.w3.org/ns/prov#Revision
+
+<http://www.w3.org/ns/prov#Revision> rdf:type owl:Class ;
+                                     
+                                     rdfs:subClassOf <http://www.w3.org/ns/prov#EntityInfluence> .
+
+
+
+###  http://www.w3.org/ns/prov#Role
+
+<http://www.w3.org/ns/prov#Role> rdf:type owl:Class ;
+                                 
+                                 rdfs:subClassOf owl:Thing .
+
+
+
+###  http://www.w3.org/ns/prov#SoftwareAgent
+
+<http://www.w3.org/ns/prov#SoftwareAgent> rdf:type owl:Class ;
+                                          
+                                          rdfs:subClassOf <http://www.w3.org/ns/prov#Agent> ;
+                                          
+                                          owl:disjointWith <http://www.w3.org/ns/prov#Start> ,
+                                                           <http://www.w3.org/ns/prov#Usage> .
+
+
+
+###  http://www.w3.org/ns/prov#Source
+
+<http://www.w3.org/ns/prov#Source> rdf:type owl:Class ;
+                                   
+                                   rdfs:subClassOf <http://www.w3.org/ns/prov#EntityInfluence> .
+
+
+
+###  http://www.w3.org/ns/prov#Start
+
+<http://www.w3.org/ns/prov#Start> rdf:type owl:Class ;
+                                  
+                                  rdfs:subClassOf <http://www.w3.org/ns/prov#EntityInfluence> ,
+                                                  <http://www.w3.org/ns/prov#InstantaneousEvent> .
+
+
+
+###  http://www.w3.org/ns/prov#Usage
+
+<http://www.w3.org/ns/prov#Usage> rdf:type owl:Class ;
+                                  
+                                  rdfs:subClassOf <http://www.w3.org/ns/prov#EntityInfluence> ,
+                                                  <http://www.w3.org/ns/prov#InstantaneousEvent> .
+
+
+
+
+###  Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net
+

@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="UTF-8"?><rdf:RDF xmlns="http://www.w3.org/2007/uwa/context/web.owl#" xmlns:assert="http://www.owl-ontologies.com/assert.owl#" xmlns:common="http://www.w3.org/2007/uwa/context/common.owl#" xmlns:dc="http://purl.org/dc/terms/" xmlns:dcn="http://www.w3.org/2007/uwa/context/deliverycontext.owl#" xmlns:ex="http://www.example.org/2007/uwa/context/examples.owl#" xmlns:hard="http://www.w3.org/2007/uwa/context/hardware.owl#" xmlns:java="http://www.w3.org/2007/uwa/context/java.owl#" xmlns:loc="http://www.w3.org/2007/uwa/context/location.owl#" xmlns:net="http://www.w3.org/2007/uwa/context/network.owl#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:push="http://www.w3.org/2007/uwa/context/push.owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:soft="http://www.w3.org/2007/uwa/context/software.owl#" xmlns:web="http://www.w3.org/2007/uwa/context/web.owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xml:base="http://www.w3.org/2007/uwa/context/web.owl">
+  <common:TermGroup rdf:about="#TermGroup_Web">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This group of terms models a minimal set of properties and classes that allow to represent the features of a Delivery Context related to the support of Web Browsing technologies</rdfs:comment>
+        <common:termGroupPrefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string">web</common:termGroupPrefix>
+        <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Web Browsing</rdfs:label>
+      </common:TermGroup>
+  <owl:Class rdf:about="#ScriptLanguage">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a Script language</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Script Language</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#name"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_WebBrowsingEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/software.owl#Format"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#normativeURI"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#PageMarkup">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A page markup language, such as HTML or WML</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Standard Page Markup</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/software.owl#Format"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#normativeURI"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#version"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_WebBrowsingEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#id"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#MarkupModule">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Markup Module</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_WebBrowsingEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#id"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#name"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a module of a markup language</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#StyleLanguage">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a Style language</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/software.owl#Format"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_WebBrowsingEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#normativeURI"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#name"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Style Language</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#WebBrowser">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a Web Browser</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Web Browser</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/software.owl#UserAgent"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_WebBrowsingEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue>
+          <common:UriScheme rdf:about="http://www.w3.org/2007/uwa/context/common.owl#UriScheme_HTTP"/>
+        </owl:hasValue>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/software.owl#uriSchemes"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BrowserUA</common:relatedUAProfEntity>
+  </owl:Class>
+  <owl:Class rdf:about="#CTransformationProxy">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Content Transformation Proxy</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/network.owl#NonTransparentProxy"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a Content Transformation Proxy, an intermediary in the communications path between a web browser and the origin server. These intermediary adjust HTML pages designed for desktop presentation to provide an enhanced user experience when accessed from a mobile device.</rdfs:comment>
+    <common:informativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/TR/ct-landscape/</common:informativeReference>
+  </owl:Class>
+  <owl:Class rdf:about="#WebRuntime">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a Web Runtime capable of executing widgets</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Web Runtime</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/software.owl#RuntimeEnvironment"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_WebBrowsingEntity"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Context_WebBrowsingEntity">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#Context_SoftwareEntity"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Context Web Browser Entity</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class subsumes all the Delivery Context entities that have to do with web browsing characteristics</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#WebBrowserFeatures">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents the features of a Web Browser</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Web Browser Features</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Context_WebBrowsingEntity"/>
+  </owl:Class>
+  <owl:Class rdf:about="#WebBrowserApi">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Web Browser API</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Context_WebBrowsingEntity"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#normativeURI"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#Api"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents APIs implemented by Web Browsers</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#defaultWRE">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Default Web Runtime Environment</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the default Web Runtime Environment on a device</rdfs:comment>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#availableWREs"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#markupModules">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Markup Modules</rdfs:label>
+    <rdfs:domain rdf:resource="#PageMarkup"/>
+    <rdfs:range rdf:resource="#MarkupModule"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The modules used by a markup language</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#availableWREs">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Available Web Runtime Environments</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#component"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#available"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#DeviceSoftware"/>
+    <rdfs:range rdf:resource="#WebRuntime"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the Web Runtime Environments which are available on a device</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:FunctionalProperty rdf:about="#showsPageTitle">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#WebBrowserFeatures"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indicates whether the browser displays the title of the current page or not</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Shows Page Title</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#maxEmbeddedObjectSize">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximum size in bytes for media embedded in web pages</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximum Embedded Object Size</rdfs:label>
+    <rdfs:domain rdf:resource="#WebBrowserFeatures"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedLong"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#publicIdentifier">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#MarkupModule"/>
+          <owl:Class rdf:about="#PageMarkup"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Public Identifier</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The public identifier of an XML format or module</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#id"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#javascriptEnabled">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#WebBrowser"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property indicates whether Javascript is enabled or not in the web browser</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Javascript Enabled</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#showsAcessKeys">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Shows Access Keys</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property indicates whether the browser displays automatically the character associated to access keys  or not</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#WebBrowserFeatures"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#supportsCookies">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property indicates whether the browser supports cookies or not</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#WebBrowserFeatures"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <common:relatedDDRCoreVoc rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cookieSupport</common:relatedDDRCoreVoc>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Supports Cookies</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#defaultWebBrowser">
+    <rdfs:range rdf:resource="#WebBrowser"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#DeviceSoftware"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#availableUserAgents"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#defaultComponent"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Default Web Browser</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The default Web Browser in a device</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#rendersTables">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property indicates whether the browser renders tables or not</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Renders Tables</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#WebBrowserFeatures"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#maxCacheObjectSize">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The maximum size of an object in the browser cache in bytes</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximum Cache Object Size</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#WebBrowserFeatures"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedLong"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#cacheSize">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedLong"/>
+    <rdfs:domain rdf:resource="#WebBrowserFeatures"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cache Size</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The size of the cache (in bytes) implemented by the browser</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#maxTotalPageWeight">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#WebBrowserFeatures"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedLong"/>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WmlDeckSize</common:relatedUAProfEntity>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The maximum page weight in bytes supported by a browser (this includes the markup and all the possible referenced objects in the page) such as images, styleSheets, script files, etc</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximum Total Page Weight</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#maxDownloadableObjectSize">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximum Downloadable Object Size</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximum size in bytes for content (image, ringtone, etc.) downloaded via web browser</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedLong"/>
+    <rdfs:domain rdf:resource="#WebBrowserFeatures"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#supportsAccessKeys">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Supports Access Keys</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property indicates whether the browser supports access keys or not</rdfs:comment>
+    <rdfs:domain rdf:resource="#WebBrowserFeatures"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <web:StyleLanguage rdf:about="#StyleLanguage_9">
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2</common:version>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CSS</common:name>
+  </web:StyleLanguage>
+  <web:MarkupModule rdf:about="#Xhtml11Module_ServerSideImageMap">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Server Side Image Map Module</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Server Side Image Map</common:name>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+  </web:MarkupModule>
+  <web:PageMarkup rdf:about="#SVG_1_1_Basic">
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.1</common:version>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SVG 1.1 Tiny</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//W3C//DTD SVG 1.1//EN</web:publicIdentifier>
+    <soft:namespace rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/2000/svg</soft:namespace>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SVG Basic</common:name>
+    <rdf:type rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#ImageFormat"/>
+    <rdf:type rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#XmlFormat"/>
+  </web:PageMarkup>
+  <web:WebBrowserApi rdf:about="#DomLevel0">
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DOM Level 0</common:name>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DOM Level 0</rdfs:comment>
+        <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+        <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</common:version>
+        <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__DOM_Level_0</common:id>
+      </web:WebBrowserApi>
+  <web:WebBrowserApi rdf:about="#XmlHttpRequest">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XMLHttpRequest</rdfs:comment>
+        <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+        <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/TR/2008/WD-XMLHttpRequest-20080415/</common:id>
+        <common:normativeURI rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">tp://www.w3.org/TR/2008/WD-XMLHttpRequest-20080415/</common:normativeURI>
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XMLHttpRequest Level 1</common:name>
+      </web:WebBrowserApi>
+  <web:WebBrowserApi rdf:about="#WebBrowserApi_5">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DOM Level 3 XPath  Module</common:name>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Level 3.0</common:version>
+  </web:WebBrowserApi>
+  <web:MarkupModule rdf:about="#Xhtml11Module_BasicTables">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BasicTables</common:name>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Basic Tables Module</rdfs:comment>
+  </web:MarkupModule>
+  <web:WebBrowserApi rdf:about="#WebBrowserApi_DOM_LEVEL2_STYLE">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DOM Level 2 Style Api</rdfs:label>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2000/REC-DOM-Level-2-Style-20001113</common:normativeReference>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DOM Level 2 Style Module</common:name>
+    <common:normativeURI rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2000/REC-DOM-Level-2-Style-20001113</common:normativeURI>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/TR/2000/REC-DOM-Level-2-Style-20001113</common:id>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Document Object Model (DOM) Level 2 Style Specification</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+  </web:WebBrowserApi>
+  <soft:XmlFormat rdf:about="#SVG_1_1_Tiny">
+    <soft:namespace rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/2000/svg</soft:namespace>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SVG 1.1</rdfs:comment>
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//W3C//DTD SVG 1.1//EN</web:publicIdentifier>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdf:type rdf:resource="#PageMarkup"/>
+    <rdf:type rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#ImageFormat"/>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.1</common:version>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SVG Tiny</common:name>
+  </soft:XmlFormat>
+  <web:MarkupModule rdf:about="#Xhtml1Module_Target">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Target</common:name>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Target Module</rdfs:comment>
+  </web:MarkupModule>
+  <soft:XmlFormat rdf:about="#XHTML_MP_1_1">
+    <web:markupModules>
+      <web:MarkupModule rdf:about="#Partial_OMA_XHTML_MP_Legacy">
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Partial_OMA_XHTML_MP_Legacy</common:name>
+      </web:MarkupModule>
+    </web:markupModules>
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//WAPFORUM//DTD XHTML Mobile 1.1//EN</web:publicIdentifier>
+    <web:markupModules>
+      <web:MarkupModule rdf:about="#Partial_OMA_XHTML-MP_Presentation">
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Partial_OMA_XHTML-MP_1_2_Presentation</common:name>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Partial support of the Xhtml1 presentation module</rdfs:comment>
+      </web:MarkupModule>
+    </web:markupModules>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML MP 1.1</rdfs:comment>
+    <web:markupModules>
+      <web:MarkupModule rdf:about="#Partial_OMA_XHTML_MP_Forms">
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Partial_OMA_XHTML_MP_Forms</common:name>
+      </web:MarkupModule>
+    </web:markupModules>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.1</common:version>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML-MP</common:name>
+    <rdf:type rdf:resource="#PageMarkup"/>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <web:markupModules>
+      <web:MarkupModule rdf:about="#Partial_OMA_XHTML_MP_IntrinsicEvents">
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Partial_OMA_XHTML_MP_IntrinsicEvents</common:name>
+      </web:MarkupModule>
+    </web:markupModules>
+  </soft:XmlFormat>
+  <soft:XmlFormat rdf:about="#XHTML_MP_1_0">
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//WAPFORUM//DTD XHTML Mobile 1.0//EN</web:publicIdentifier>
+    <rdf:type rdf:resource="#PageMarkup"/>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML-MP</common:name>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML MP 1.0</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+  </soft:XmlFormat>
+  <web:ScriptLanguage rdf:about="#JavaScript_1.1">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JavaScript</common:name>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.1</common:version>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Javascript 1.1</rdfs:comment>
+  </web:ScriptLanguage>
+  <web:PageMarkup rdf:about="#HTML_4_0_1_Transitional">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HTML</common:name>
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//W3C//DTD HTML 4.01 Transitional//EN</web:publicIdentifier>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HTML 4.01 Transitional</rdfs:comment>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4.0.1 Transitional</common:version>
+  </web:PageMarkup>
+  <web:PageMarkup rdf:about="#XHTML_MP_1_2">
+    <web:markupModules rdf:resource="#Partial_OMA_XHTML_MP_Legacy"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML MP 1.2</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.2</common:version>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML-MP</common:name>
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//WAPFORUM//DTD XHTML Mobile 1.2//EN</web:publicIdentifier>
+    <web:markupModules>
+      <web:MarkupModule rdf:about="#XForms_OMA_TextInputModes">
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XForms_OMA_TextInputModes</common:name>
+      </web:MarkupModule>
+    </web:markupModules>
+    <web:markupModules rdf:resource="#Partial_OMA_XHTML_MP_IntrinsicEvents"/>
+    <rdf:type rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#XmlFormat"/>
+  </web:PageMarkup>
+  <web:MarkupModule rdf:about="#Xhtml1Module_Legacy">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Legacy Module</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Legacy</common:name>
+  </web:MarkupModule>
+  <soft:XmlFormat rdf:about="#XHTML_1_0_Transitional">
+    <rdf:type rdf:resource="#PageMarkup"/>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 Transitional</common:version>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1.0 Transitional</rdfs:comment>
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//W3C//DTD XHTML 1.0 Transitional//EN</web:publicIdentifier>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+  </soft:XmlFormat>
+  <soft:XmlFormat rdf:about="#i-XHTML_1_0">
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Japanese i-XHTML 1.0</rdfs:comment>
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//i-mode group (ja)//DTD XHTML i-XHTML(Locale/Ver.=ja/1.0) 1.0//EN</web:publicIdentifier>
+    <rdf:type rdf:resource="#PageMarkup"/>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">i-XHTML</common:name>
+  </soft:XmlFormat>
+  <web:ScriptLanguage rdf:about="#ECMAScript_1.2">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ECMAScript</common:name>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.2</common:version>
+  </web:ScriptLanguage>
+  <web:MarkupModule rdf:about="#Xhtml11Module_Object">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Object</common:name>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Object Module</rdfs:comment>
+  </web:MarkupModule>
+  <web:MarkupModule rdf:about="#Xhtml11Module_Image">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Image</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Image Module</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+  </web:MarkupModule>
+  <web:MarkupModule rdf:about="#Xhtml11Module_Text">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Text Module</rdfs:label>
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//W3C//ELEMENTS XHTML Text 1.0//EN</web:publicIdentifier>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This module defines all of the basic text container elements, attributes, and their content model</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Informative"/>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2008/REC-xhtml-modularization-20081008/abstract_modules.html#s_textmodule</common:normativeReference>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Text</common:name>
+  </web:MarkupModule>
+  <web:WebBrowserApi rdf:about="#DOMLevel3Events">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DOM Level 3 Event Module</common:name>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Level 3.0</common:version>
+  </web:WebBrowserApi>
+  <web:WebBrowserApi rdf:about="#WebBrowserApi_DOM_LEVEL2_HTML">
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/TR/2003/REC-DOM-Level-2-HTML-20030109</common:id>
+    <common:normativeURI rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2003/REC-DOM-Level-2-HTML-20030109</common:normativeURI>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DOM Level 2 HTML</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Document Object Model (DOM) Level 2 HTML Specification</rdfs:comment>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2003/REC-DOM-Level-2-HTML-20030109</common:normativeReference>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DOM Level 2 HTML Api</rdfs:label>
+  </web:WebBrowserApi>
+  <web:MarkupModule rdf:about="#Xhtml11Module_Table">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Table</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Table Module</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+  </web:MarkupModule>
+  <web:PageMarkup rdf:about="#HTML_4_0_1">
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4.0.1</common:version>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HTML 4 Strict</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//W3C//DTD HTML 4.01//EN</web:publicIdentifier>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HTML</common:name>
+  </web:PageMarkup>
+  <web:WebBrowserApi rdf:about="#WebBrowserApi_SVGDOM_1_1">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SVG DOM</common:name>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.1</common:version>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2003/REC-SVG11-20030114/svgdom.html</common:normativeReference>
+    <common:normativeURI rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2003/REC-SVG11-20030114/svgdom.html</common:normativeURI>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/TR/2003/REC-SVG11-20030114/svgdom.html</common:id>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SVG Document Object Model (DOM)</rdfs:comment>
+  </web:WebBrowserApi>
+  <web:MarkupModule rdf:about="#Xhtml11Module_Stylesheet">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stylesheet</common:name>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1Stylesheet Module</rdfs:comment>
+  </web:MarkupModule>
+  <common:AllDisjointSet rdf:about="#Sibling_Disjoint1">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Web Entities Disjoint Group</rdfs:label>
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">web:MarkupModule</common:disjointClass>
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">web:WebBrowserFeatures</common:disjointClass>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Web Entities Disjoint Group</rdfs:comment>
+      </common:AllDisjointSet>
+  <soft:XmlFormat rdf:about="#XHTML_1_1">
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdf:type rdf:resource="#PageMarkup"/>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.1</common:version>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1.1</rdfs:comment>
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//W3C//DTD XHTML 1.1//EN</web:publicIdentifier>
+  </soft:XmlFormat>
+  <web:ScriptLanguage rdf:about="#WMLScript13">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.3</common:version>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WMLScript</common:name>
+  </web:ScriptLanguage>
+  <soft:XmlFormat rdf:about="#XHTML_1_0">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1.0</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML</common:name>
+    <rdf:type rdf:resource="#PageMarkup"/>
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//W3C//DTD XHTML 1.0 Strict//EN</web:publicIdentifier>
+  </soft:XmlFormat>
+  <web:MarkupModule rdf:about="#Xhtml11Module_Bidirectional">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bidirectional</common:name>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Bidirectional Module</rdfs:comment>
+  </web:MarkupModule>
+  <web:MarkupModule rdf:about="#Xhtml1Module_StyleAttribute">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Style Attribute Module</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Style Attribute</common:name>
+  </web:MarkupModule>
+  <web:ScriptLanguage rdf:about="#WMLScript12">
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.2</common:version>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WMLScript</common:name>
+  </web:ScriptLanguage>
+  <web:MarkupModule rdf:about="#MarkupModule_1">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Extended_XHTML-MP_Format_Attr</common:name>
+  </web:MarkupModule>
+  <web:StyleLanguage rdf:about="#StyleLanguage_41">
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CSS Mobile Profile</common:name>
+  </web:StyleLanguage>
+  <common:AllDisjointSet rdf:about="#SiblingDisjoint3">
+    <common:disjointSet rdf:resource="#Sibling_Disjoint1"/>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">web:WebRuntime</common:disjointClass>
+  </common:AllDisjointSet>
+  <web:StyleLanguage rdf:about="#StyleLanguage_42">
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</common:version>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CSS</common:name>
+  </web:StyleLanguage>
+  <web:MarkupModule rdf:about="#Xhtml11Module_Structure">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Structure</common:name>
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//W3C//ELEMENTS XHTML Document Structure 1.0//EN</web:publicIdentifier>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2008/REC-xhtml-modularization-20081008/abstract_modules.html#s_structuremodule</common:normativeReference>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Structure Module</rdfs:label>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Structure Module defines the major structural elements for XHTML. These elements effectively act as the basis for the content model of many XHTML family document types.</rdfs:comment>
+  </web:MarkupModule>
+  <web:MarkupModule rdf:about="#Xhtml11Module_Base">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Base</common:name>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Base Module</rdfs:comment>
+  </web:MarkupModule>
+  <web:MarkupModule rdf:about="#Xhtml11Module_ClientSideImageMap">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Client Side Image Map</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Client Side Image Map Module</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+  </web:MarkupModule>
+  <web:StyleLanguage rdf:about="#StyleLanguage_43">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">W-CSS</common:name>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+  </web:StyleLanguage>
+  <common:AllDisjointSet rdf:about="#SiblingDisjoint2">
+    <common:disjointSet rdf:resource="#Sibling_Disjoint1"/>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">web:WebBrowser</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">web:WebBrowserApi</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">web:PageMarkup</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">web:StyleLanguage</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">web:ScriptLanguage</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">net:Proxy</common:disjointClass>
+  </common:AllDisjointSet>
+  <web:StyleLanguage rdf:about="#StyleLanguage_44">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CSS</common:name>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2 Revision 1</common:version>
+  </web:StyleLanguage>
+  <web:MarkupModule rdf:about="#Xhtml11Module_IntrinsicEvents">
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Intrinsic Events Module</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Intrinsic Events</common:name>
+  </web:MarkupModule>
+  <web:PageMarkup rdf:about="#SVG_1_1">
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.1</common:version>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SVG 1.1</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdf:type rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#XmlFormat"/>
+    <rdf:type rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#ImageFormat"/>
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//W3C//DTD SVG 1.1//EN</web:publicIdentifier>
+    <soft:namespace rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/2000/svg</soft:namespace>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SVG</common:name>
+  </web:PageMarkup>
+  <web:WebBrowserApi rdf:about="#WebBrowserApi_DOM_LEVEL2_EVENTS">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DOM Level 2 Events</common:name>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DOM Level 2 Events API</rdfs:label>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113</common:normativeReference>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Document Object Model (DOM) Level 2 Events Specification</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113</common:id>
+    <common:normativeURI rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113</common:normativeURI>
+  </web:WebBrowserApi>
+  <web:WebBrowserApi rdf:about="#WebBrowserApi_DOM_LEVEL3_CORE">
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407</common:normativeReference>
+    <common:normativeURI rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407</common:normativeURI>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DOM Level 3 Core</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Document Object Model (DOM) Level 3 Core Specification</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DOM Level 3 API</rdfs:label>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407</common:id>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+  </web:WebBrowserApi>
+  <web:MarkupModule rdf:about="#Xhtml11Module_Link">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Link</common:name>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Link Module</rdfs:comment>
+  </web:MarkupModule>
+  <web:PageMarkup rdf:about="#i-HTML_7_0">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">i-HTML7.0</common:name>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7.0</common:version>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Other i-Mode steps can be easily added</rdfs:comment>
+  </web:PageMarkup>
+  <web:WebBrowserApi rdf:about="#WebBrowserApi_DOM_LEVEL_1">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DOM Level 1</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/TR/REC-DOM-Level-1/</common:id>
+    <common:normativeURI rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/REC-DOM-Level-1/</common:normativeURI>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DOM Level 1 Api</rdfs:label>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/REC-DOM-Level-1/</common:normativeReference>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Document Object Model (DOM) Level 1 Specification</rdfs:comment>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+  </web:WebBrowserApi>
+  <soft:XmlFormat rdf:about="#XHTML_Basic_1_1">
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//W3C//DTD XHTML Basic 1.1//EN</web:publicIdentifier>
+    <web:markupModules rdf:resource="#XForms_OMA_TextInputModes"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML Basic 1.1</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML-Basic</common:name>
+    <rdf:type rdf:resource="#PageMarkup"/>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.1</common:version>
+  </soft:XmlFormat>
+  <web:MarkupModule rdf:about="#Xhtml11Module_Metainformation">
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Metainformation</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Metainformation Module</rdfs:comment>
+  </web:MarkupModule>
+  <soft:XmlFormat rdf:about="#XHTML_Basic_1_0">
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML Basic 1.0</rdfs:comment>
+    <web:markupModules rdf:resource="#XForms_OMA_TextInputModes"/>
+    <rdf:type rdf:resource="#PageMarkup"/>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML-Basic</common:name>
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//W3C//DTD XHTML Basic 1.0//EN</web:publicIdentifier>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+  </soft:XmlFormat>
+  <soft:XmlFormat rdf:about="#SVG_1_0">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SVG 1.0</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SVG</common:name>
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//W3C//DTD SVG 1.0//EN</web:publicIdentifier>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdf:type rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#ImageFormat"/>
+    <rdf:type rdf:resource="#PageMarkup"/>
+    <soft:namespace rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/2000/svg</soft:namespace>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+  </soft:XmlFormat>
+  <web:MarkupModule rdf:about="#Xhtml11Module_Scripting">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scripting</common:name>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Scripting Module</rdfs:comment>
+  </web:MarkupModule>
+  <web:MarkupModule rdf:about="#Xhtml1Module_Iframe">
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 iFrame Module</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Iframe</common:name>
+  </web:MarkupModule>
+  <web:PageMarkup rdf:about="#cHTML">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cHTML</common:name>
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//W3C//DTD Compact HTML 1.0 Draft//EN</web:publicIdentifier>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</common:version>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Compact HTML</rdfs:comment>
+  </web:PageMarkup>
+  <web:WebBrowserApi rdf:about="#WebBrowserApi_DOM_LEVEL2_CORE">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DOM Level 2 Core Api</rdfs:label>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113</common:normativeReference>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Document Object Model (DOM) Level 2 Core Specification</rdfs:comment>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DOM Level 2</common:name>
+    <common:normativeURI rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113</common:normativeURI>
+  </web:WebBrowserApi>
+  <web:MarkupModule rdf:about="#Xhtml11Module_Forms">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1  Forms Module</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Forms</common:name>
+  </web:MarkupModule>
+  <web:MarkupModule rdf:about="#Xhtml11Module_Edit">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Edit Module</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Edit</common:name>
+  </web:MarkupModule>
+  <web:PageMarkup rdf:about="#HTML_3_2">
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//W3C//DTD HTML 3.2//EN</web:publicIdentifier>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HTML 3.2</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HTML</common:name>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.2</common:version>
+  </web:PageMarkup>
+  <web:MarkupModule rdf:about="#Xhtml11Module_BasicForms">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BasicForms</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Basic Forms Module</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+  </web:MarkupModule>
+  <soft:XmlFormat rdf:about="#WML_1_1">
+    <rdf:type rdf:resource="#PageMarkup"/>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WML</common:name>
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//WAPFORUM//DTD WML 1.1//EN</web:publicIdentifier>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WML 1.1</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.1</common:version>
+  </soft:XmlFormat>
+  <soft:XmlFormat rdf:about="#XHTML_MP_OpenWave_Ext">
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//OPENWAVE//DTD XHTML Mobile 1.0//EN</web:publicIdentifier>
+    <rdf:type rdf:resource="#PageMarkup"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OpenWave XHTML-MP Extensions</rdfs:comment>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</common:version>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML_MP_OpenWave</common:name>
+  </soft:XmlFormat>
+  <web:StyleLanguage rdf:about="#StyleLanguage_39">
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2.0</common:version>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CSS Mobile Profile</common:name>
+  </web:StyleLanguage>
+  <soft:ImageFormat rdf:about="#SVG_1_2_Tiny">
+    <soft:namespace rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/2000/svg</soft:namespace>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SVG Tiny</common:name>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.2</common:version>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SVG 1.2 Tiny</rdfs:comment>
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//W3C//DTD SVG 1.2 Tiny//EN</web:publicIdentifier>
+    <rdf:type rdf:resource="#PageMarkup"/>
+    <rdf:type rdf:resource="http://www.w3.org/2007/uwa/context/software.owl#XmlFormat"/>
+  </soft:ImageFormat>
+  <web:MarkupModule rdf:about="#Xhtml11Module_List">
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//W3C//ELEMENTS XHTML Lists 1.0//EN</web:publicIdentifier>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">List</common:name>
+    <common:normativeURI rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2008/REC-xhtml-modularization-20081008/abstract_modules.html#s_listmodule</common:normativeURI>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">As its name suggests, the List Module provides list-oriented elements</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2008/REC-xhtml-modularization-20081008/abstract_modules.html#s_listmodule</common:normativeReference>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 List Module</rdfs:label>
+  </web:MarkupModule>
+  <web:MarkupModule rdf:about="#Xhtml11Module_Hypertext">
+    <web:publicIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-//W3C//ELEMENTS XHTML Hypertext 1.0//EN</web:publicIdentifier>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Hypertext Module</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Hypertext Module provides the element that is used to define hypertext links to other resources.</rdfs:comment>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2008/REC-xhtml-modularization-20081008/abstract_modules.html#s_hypertextmodule</common:normativeReference>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hypertext</common:name>
+  </web:MarkupModule>
+  <web:MarkupModule rdf:about="#Xhtml11Module_Presentation">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Presentation</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XHTML 1 Presentation Module</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+  </web:MarkupModule>
+  <web:StyleLanguage rdf:about="#WCSS11">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">W-CSS</common:name>
+    <common:version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.1</common:version>
+  </web:StyleLanguage>
+</rdf:RDF>

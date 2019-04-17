@@ -214,8 +214,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference owl2.ecore#//SameIndividual/individuals"/>
     </genClasses>
     <genClasses ecoreClass="owl2.ecore#//SubObjectPropertyOf">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference owl2.ecore#//SubObjectPropertyOf/superObjectPropertyExpression"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference owl2.ecore#//SubObjectPropertyOf/subObjectPropertyExpressions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference owl2.ecore#//SubObjectPropertyOf/superObjectPropertyExpression"/>
     </genClasses>
     <genClasses ecoreClass="owl2.ecore#//ObjectComplementOf">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference owl2.ecore#//ObjectComplementOf/classExpression"/>
@@ -267,7 +267,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference owl2.ecore#//TransitiveObjectProperty/objectPropertyExpression"/>
     </genClasses>
     <genClasses ecoreClass="owl2.ecore#//InverseObjectProperties">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference owl2.ecore#//InverseObjectProperties/inverseObjectProperties"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference owl2.ecore#//InverseObjectProperties/firstProperty"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference owl2.ecore#//InverseObjectProperties/secondProperty"/>
     </genClasses>
     <genClasses ecoreClass="owl2.ecore#//AnonymousIndividual">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute owl2.ecore#//AnonymousIndividual/nodeID"/>
@@ -319,5 +320,9 @@
     </genClasses>
     <genClasses ecoreClass="owl2.ecore#//AnnotationSubject"/>
     <genClasses ecoreClass="owl2.ecore#//AnnotationValue"/>
+    <genClasses ecoreClass="owl2.ecore#//SubObjectPropertyExpression"/>
+    <genClasses ecoreClass="owl2.ecore#//ObjectPropertyChain">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference owl2.ecore#//ObjectPropertyChain/objectPropertyExpressions"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

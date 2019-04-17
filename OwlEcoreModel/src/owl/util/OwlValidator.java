@@ -82,6 +82,7 @@ import owl.ObjectOneOf;
 import owl.ObjectProperty;
 import owl.ObjectPropertyAssertion;
 import owl.ObjectPropertyAxiom;
+import owl.ObjectPropertyChain;
 import owl.ObjectPropertyDomain;
 import owl.ObjectPropertyExpression;
 import owl.ObjectPropertyRange;
@@ -95,6 +96,7 @@ import owl.StringLiteral;
 import owl.SubAnnotationPropertyOf;
 import owl.SubClassOf;
 import owl.SubDataPropertyOf;
+import owl.SubObjectPropertyExpression;
 import owl.SubObjectPropertyOf;
 import owl.SymmetricObjectProperty;
 import owl.TransitiveObjectProperty;
@@ -415,6 +417,10 @@ public class OwlValidator extends EObjectValidator {
 				return validateAnnotationSubject((AnnotationSubject)value, diagnostics, context);
 			case OwlPackage.ANNOTATION_VALUE:
 				return validateAnnotationValue((AnnotationValue)value, diagnostics, context);
+			case OwlPackage.SUB_OBJECT_PROPERTY_EXPRESSION:
+				return validateSubObjectPropertyExpression((SubObjectPropertyExpression)value, diagnostics, context);
+			case OwlPackage.OBJECT_PROPERTY_CHAIN:
+				return validateObjectPropertyChain((ObjectPropertyChain)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -1379,6 +1385,24 @@ public class OwlValidator extends EObjectValidator {
 	 */
 	public boolean validateAnnotationValue(AnnotationValue annotationValue, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(annotationValue, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSubObjectPropertyExpression(SubObjectPropertyExpression subObjectPropertyExpression, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(subObjectPropertyExpression, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateObjectPropertyChain(ObjectPropertyChain objectPropertyChain, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(objectPropertyChain, diagnostics, context);
 	}
 
 	/**

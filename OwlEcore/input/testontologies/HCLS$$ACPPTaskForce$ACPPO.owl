@@ -1,0 +1,704 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://www.owl-ontologies.com/ACPPO.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xml:base="http://www.owl-ontologies.com/ACPPO.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="ClinicalFacility">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MaterialResources"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="operatoryRoom">
+    <rdfs:subClassOf rdf:resource="#ClinicalFacility"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Class_52">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="UtilityClass"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="nurse">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="HealthCareProvider"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="fullSchedulingList">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="schedulingList"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="confirmationOfAcuteStroke">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="acuteStroke"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasExpectedClinicalState"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Task"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="newNeurologicalDeficit"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasInitialClinicalState"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasGoal"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="confirmAcuteStroke"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="evaluationForThrombolysisEligibility"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasOtherPlanCompleted"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="STATPhysician"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasAgent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PlanStatus">
+    <rdfs:subClassOf rdf:resource="#UtilityClass"/>
+  </owl:Class>
+  <owl:Class rdf:ID="hemorragicAcuteStroke">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#acuteStroke"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="eligibleForThrombolysis">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="nonEligibleForThrombolysis"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#newNeurologicalDeficit"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Completed">
+    <rdfs:subClassOf rdf:resource="#PlanStatus"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Cost">
+    <rdfs:subClassOf rdf:resource="#UtilityClass"/>
+  </owl:Class>
+  <owl:Class rdf:ID="preparePatientForThrombolysis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Goal"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="laboratory">
+    <rdfs:subClassOf rdf:resource="#ClinicalFacility"/>
+  </owl:Class>
+  <owl:Class rdf:ID="triageRoom">
+    <rdfs:subClassOf rdf:resource="#ClinicalFacility"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CBC-PT-PTT_stat">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#acuteStroke"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasInitialClinicalState"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasAgent"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#laboratory"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasGoal"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="evaluateThrombolysisEligibility"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Task"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="orderTPA">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="physician"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasAgent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Task"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasActualClinicalState"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="nonHemorragicAcuteStroke"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="oldNeurologiclDeficit">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#newNeurologicalDeficit"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="neurologicalDeficit"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="HL7Resources"/>
+  <owl:Class rdf:about="#newNeurologicalDeficit">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#neurologicalDeficit"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#oldNeurologiclDeficit"/>
+  </owl:Class>
+  <owl:Class rdf:about="#nonEligibleForThrombolysis">
+    <rdfs:subClassOf rdf:resource="#newNeurologicalDeficit"/>
+    <owl:disjointWith rdf:resource="#eligibleForThrombolysis"/>
+  </owl:Class>
+  <owl:Class rdf:about="#HealthCareProvider">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="HumanResources"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="prepareTPA">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasAgent"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="pharmacy"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class>
+            <owl:intersectionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#orderTPA"/>
+              <owl:Class rdf:ID="reviewLab"/>
+              <owl:Class rdf:ID="securitizeIVAccessAndPump"/>
+              <owl:Class rdf:ID="obtainInformedConsent"/>
+            </owl:intersectionOf>
+          </owl:Class>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOtherPlanCompleted"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Task"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="administrativeStaff">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#HumanResources"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PatientClinicalState">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PatientState"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="radiologyRoom">
+    <rdfs:subClassOf rdf:resource="#ClinicalFacility"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ambulatory">
+    <rdfs:subClassOf rdf:resource="#ClinicalFacility"/>
+  </owl:Class>
+  <owl:Class rdf:ID="openSchedulingList">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#schedulingList"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#reviewLab">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#physician"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasAgent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#CBC-PT-PTT_stat"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOtherPlanCompleted"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Task"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#HumanResources">
+    <rdfs:subClassOf rdf:resource="#HL7Resources"/>
+  </owl:Class>
+  <owl:Class rdf:about="#STATPhysician">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#physician"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#acuteStroke">
+    <rdfs:subClassOf rdf:resource="#newNeurologicalDeficit"/>
+  </owl:Class>
+  <owl:Class rdf:about="#evaluateThrombolysisEligibility">
+    <rdfs:subClassOf rdf:resource="#Goal"/>
+  </owl:Class>
+  <owl:Class rdf:about="#securitizeIVAccessAndPump">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasAgent"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#nurse"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasInitialClinicalState"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#nonHemorragicAcuteStroke"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#nonHemorragicAcuteStroke"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasExpectedClinicalState"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Task"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasGoal"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#preparePatientForThrombolysis"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOtherPlanCompleted"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="emergentHeadCT"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#pharmacy">
+    <rdfs:subClassOf rdf:resource="#ClinicalFacility"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Priority">
+    <rdfs:subClassOf rdf:resource="#UtilityClass"/>
+  </owl:Class>
+  <owl:Class rdf:about="#emergentHeadCT">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#confirmationOfAcuteStroke"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOtherPlanCompleted"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="assessHemorragePresence"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasGoal"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="radiologist"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasAgent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#acuteStroke"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasInitialClinicalState"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Task"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#acuteStroke"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasExpectedClinicalState"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Task">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="usesResources"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasAgent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOtherPlanCompleted"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasExpectedClinicalState"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasGoal"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasInitialClinicalState"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#evaluationForThrombolysisEligibility">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasGoal"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#evaluateThrombolysisEligibility"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasInitialClinicalState"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#newNeurologicalDeficit"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#nurse"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasAgent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOtherPlanCompleted"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="triage"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Task"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasExpectedClinicalState"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#newNeurologicalDeficit"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="triageAdmission">
+    <rdfs:subClassOf rdf:resource="#Task"/>
+  </owl:Class>
+  <owl:Class rdf:about="#physician">
+    <rdfs:subClassOf rdf:resource="#HealthCareProvider"/>
+  </owl:Class>
+  <owl:Class rdf:ID="assessNeurologicalDeficit">
+    <rdfs:subClassOf rdf:resource="#Goal"/>
+  </owl:Class>
+  <owl:Class rdf:about="#assessHemorragePresence">
+    <rdfs:subClassOf rdf:resource="#Goal"/>
+  </owl:Class>
+  <owl:Class rdf:about="#schedulingList">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MaterialResources"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#neurologicalDeficit">
+    <rdfs:subClassOf rdf:resource="#PatientClinicalState"/>
+  </owl:Class>
+  <owl:Class rdf:about="#obtainInformedConsent">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#nonHemorragicAcuteStroke"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasExpectedClinicalState"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasInitialClinicalState"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#nonHemorragicAcuteStroke"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOtherPlanCompleted"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#emergentHeadCT"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#preparePatientForThrombolysis"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasGoal"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Task"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasAgent"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#nurse"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="triageStaff">
+    <rdfs:subClassOf rdf:resource="#HealthCareProvider"/>
+  </owl:Class>
+  <owl:Class rdf:about="#nonHemorragicAcuteStroke">
+    <rdfs:subClassOf rdf:resource="#acuteStroke"/>
+  </owl:Class>
+  <owl:Class rdf:about="#radiologist">
+    <rdfs:subClassOf rdf:resource="#physician"/>
+  </owl:Class>
+  <owl:Class rdf:ID="radiologyAdministrativeStaff">
+    <rdfs:subClassOf rdf:resource="#administrativeStaff"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Pending">
+    <rdfs:subClassOf rdf:resource="#PlanStatus"/>
+  </owl:Class>
+  <owl:Class rdf:ID="rescheduleOtherPatients">
+    <rdfs:subClassOf rdf:resource="#Task"/>
+  </owl:Class>
+  <owl:Class rdf:ID="administerTPA">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasAgent"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#nurse"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Task"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOtherPlanCompleted"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#prepareTPA"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PatientPhysicalState">
+    <rdfs:subClassOf rdf:resource="#PatientState"/>
+  </owl:Class>
+  <owl:Class rdf:about="#confirmAcuteStroke">
+    <rdfs:subClassOf rdf:resource="#Goal"/>
+  </owl:Class>
+  <owl:Class rdf:ID="HL7Patient">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasActualClinicalState"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="emergencyRoom">
+    <rdfs:subClassOf rdf:resource="#ClinicalFacility"/>
+  </owl:Class>
+  <owl:Class rdf:about="#triage">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasGoal"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#assessNeurologicalDeficit"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOtherPlanCompleted"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#triageAdmission"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasAgent"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#triageStaff"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#usesResources"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#triageRoom"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasInitialClinicalState"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#neurologicalDeficit"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Task"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#neurologicalDeficit"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasExpectedClinicalState"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#MaterialResources">
+    <rdfs:subClassOf rdf:resource="#HL7Resources"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hasPriority"/>
+  <owl:ObjectProperty rdf:about="#hasActualClinicalState">
+    <rdfs:domain rdf:resource="#HL7Patient"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasExpectedClinicalState">
+    <rdfs:domain rdf:resource="#Task"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasOtherPlanCompleted">
+    <rdfs:domain rdf:resource="#Task"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasGoal">
+    <rdfs:domain rdf:resource="#Task"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasAgent">
+    <rdfs:domain rdf:resource="#Task"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#usesResources">
+    <rdfs:domain rdf:resource="#Task"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasInitialClinicalState">
+    <rdfs:domain rdf:resource="#Task"/>
+  </owl:ObjectProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 2.2, Build 311)  http://protege.stanford.edu -->

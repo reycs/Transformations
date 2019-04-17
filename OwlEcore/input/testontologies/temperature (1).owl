@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://protege.stanford.edu/swbp/temperature.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xml:base="http://protege.stanford.edu/swbp/temperature.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="Temperature_trend">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <Temperature_trend rdf:ID="FALLING"/>
+          <Temperature_trend rdf:ID="RISING"/>
+          <Temperature_trend rdf:ID="STABLE"/>
+        </owl:oneOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Temperature_Relation">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#temperature_trend"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#Temperature_trend"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#temperature_value"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Temperature_value"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Temperature_value">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <Temperature_value rdf:ID="ELEVATED"/>
+          <Temperature_value rdf:ID="NORMAL"/>
+          <Temperature_value rdf:ID="BELOW_NORMAL"/>
+        </owl:oneOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Person">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#has_temperature"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#Temperature_Relation"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="has_temperature">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="#Temperature_Relation"/>
+  </owl:ObjectProperty>
+  <owl:FunctionalProperty rdf:ID="temperature_trend">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="temperature_value">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:AllDifferent>
+    <owl:distinctMembers rdf:parseType="Collection">
+      <Temperature_trend rdf:about="#FALLING"/>
+      <Temperature_trend rdf:about="#RISING"/>
+      <Temperature_trend rdf:about="#STABLE"/>
+    </owl:distinctMembers>
+  </owl:AllDifferent>
+  <Temperature_Relation rdf:ID="Temperature_Relation_1">
+    <temperature_trend rdf:resource="#FALLING"/>
+    <temperature_value rdf:resource="#ELEVATED"/>
+  </Temperature_Relation>
+  <Person rdf:ID="Steve"/>
+  <owl:AllDifferent>
+    <owl:distinctMembers rdf:parseType="Collection">
+      <Temperature_value rdf:about="#BELOW_NORMAL"/>
+      <Temperature_value rdf:about="#ELEVATED"/>
+      <Temperature_value rdf:about="#NORMAL"/>
+    </owl:distinctMembers>
+  </owl:AllDifferent>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 1.1 beta, Build 132)  http://protege.stanford.edu -->

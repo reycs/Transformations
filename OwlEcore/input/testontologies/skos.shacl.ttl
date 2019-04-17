@@ -1,0 +1,158 @@
+# baseURI: http://topbraid.org/shacl/skos.shacl
+
+# SHACL library for SKOS
+# Draft last edited on 2015-08-18
+# Editor: Holger Knublauch <holger@topquadrant.com>
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix shskos: <http://topbraid.org/shacl/skos.shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+<http://topbraid.org/shacl/skos.shacl>
+	a sh:Graph ;
+	sh:include <http://www.w3.org/ns/shacl> ;
+	sh:include <http://www.w3.org/2004/02/skos/core> ;
+	rdfs:label "SHACL library for SKOS" ;
+	rdfs:comment "A collection of SKOS-related templates and constraints." ;
+.
+
+
+# Shapes ----------------------------------------------------------------------
+
+shskos:ConceptShape
+	a sh:Shape ;
+	rdfs:label "Concept shape" ;
+	rdfs:comment "Defines various constraints for skos:Concepts" ;
+	sh:scopeClass skos:Concept ;
+	sh:property [
+		a shskos:UniqueLanguagePropertyConstraint ;
+		sh:predicate skos:prefLabel ;
+	] ;
+	sh:constraint [
+		a shskos:DisjointPropertyPairConstraint ;
+		shskos:predicate1 skos:altLabel ;
+		shskos:predicate2 skos:hiddenLabel ;
+		rdfs:comment "Constraint S13: skos:altLabel and skos:hiddenLabel must be disjoint" ;
+	] ;
+	sh:constraint [
+		a shskos:DisjointPropertyPairConstraint ;
+		shskos:predicate1 skos:altLabel ;
+		shskos:predicate2 skos:prefLabel ;
+		rdfs:comment "Constraint S13: skos:altLabel and skos:prefLabel must be disjoint" ;
+	] ;
+	sh:constraint [
+		a shskos:DisjointPropertyPairConstraint ;
+		shskos:predicate1 skos:hiddenLabel ;
+		shskos:predicate2 skos:prefLabel ;
+		rdfs:comment "Constraint S13: skos:hiddenLabel and skos:prefLabel must be disjoint" ;
+	] ;
+	sh:constraint [
+		a shskos:DisjointPropertyPairConstraint ;
+		shskos:predicate1 skos:related ;
+		shskos:predicate2 skos:broaderTransitive ;
+		rdfs:comment "Constraint S27: skos:related must be disjoint with the property skos:broaderTransitive" ;
+	] ;
+	sh:constraint [
+		a shskos:DisjointPropertyPairConstraint ;
+		shskos:predicate1 skos:exactMatch ;
+		shskos:predicate2 skos:broadMatch ;
+		rdfs:comment "Constraint S46a: skos:exactMatch must be disjoint with each of the properties skos:broadMatch and skos:relatedMatch" ;
+	] ;
+	sh:constraint [
+		a shskos:DisjointPropertyPairConstraint ;
+		shskos:predicate1 skos:exactMatch ;
+		shskos:predicate2 skos:relatedMatch ;
+		rdfs:comment "Constraint S46b: skos:exactMatch must be disjoint with each of the properties skos:broadMatch and skos:relatedMatch" ;
+	] ;
+.
+
+shskos:OrderedCollectionShape
+	a sh:Shape ;
+	sh:scopeClass skos:OrderedCollection ;
+	sh:constraint [
+		sh:message "S36: For any resource, every item in the list given as the value of the skos:memberList property must also be a value of the skos:member property." ;
+		sh:sparql """
+			SELECT ?this (?this AS ?subject) (skos:member AS ?predicate) ?object
+			WHERE {
+				?this skos:memberList ?list .
+				?list rdf:rest*/rdf:first ?object .
+				FILTER NOT EXISTS { ?this skos:member ?object } .
+			}
+			""" ;
+	] ;
+.
+
+
+# Templates -------------------------------------------------------------------
+
+shskos:CollectionPropertyConstraint
+	a sh:ConstraintTemplate ;
+	rdfs:subClassOf sh:PropertyConstraint ;
+	rdfs:label "SKOS Collection property constraint" ;
+	rdfs:comment "A property constraint enforcing that all values of the property must be member of a given skos:Collection" ;
+	sh:argument [
+		sh:predicate sh:allowedValuesCollection ;
+		sh:valueClass skos:Collection ;
+		rdfs:label "allowed values collection" ;
+	] ;
+	sh:message "All values of {?predicate} must be from the collection {?allowedValuesCollection}" ;
+	sh:sparql """
+		SELECT ?this (?this AS ?subject) ?predicate ?object ?allowedValuesCollection
+		WHERE {
+			?this ?predicate ?object .
+			FILTER NOT EXISTS {
+				?allowedValuesCollection skos:member ?object .
+			}
+		}
+		""" ;
+.
+
+shskos:DisjointPropertyPairConstraint
+	a sh:ConstraintTemplate ;
+	rdfs:subClassOf sh:TemplateConstraint ;
+	sh:argument [
+		sh:predicate shskos:predicate1 ;
+		sh:valueClass rdf:Property ;
+		rdfs:label "predicate 1" ;
+		rdfs:comment "The first property to compare" ;
+	] ;
+	sh:argument [
+		sh:predicate shskos:predicate2 ;
+		sh:valueClass rdf:Property ;
+		rdfs:label "predicate 2" ;
+		rdfs:comment "The second property to compare" ;
+	] ;
+	sh:message "A concept can't have the same value (in the same language) in both {?predicate1} and {?predicate2}" ;
+	sh:labelTemplate "Values of {?predicate1} and {?predicate2} must be pairwise disjoint." ;
+	sh:sparql """
+		SELECT ?this (?this AS ?subject) (?predicate1 AS ?predicate) ?object ?predicate1 ?predicate2
+		WHERE {
+			?this ?predicate1 ?object .
+			?this ?predicate2 ?object .
+		}
+		""" ;
+.
+
+shskos:UniqueLanguagePropertyConstraint
+	a sh:ConstraintTemplate ;
+	rdfs:subClassOf sh:PropertyConstraint ;
+	rdfs:label "Unique language property constraint" ;
+	rdfs:comment "Constraint S14: Specifies that there cannot be any two property values with the same language for the same subject." ;
+	sh:labelTemplate "Unique language property constraint for {?predicate}" ;
+	sh:message "A resource must not have more than one value of {?predicate} per language tag (@{?lang}." ;
+	sh:sparql """
+		SELECT ?this (?this AS ?subject) ?predicate ?object (lang(?object) AS ?lang)
+		WHERE {	
+			?this ?predicate ?object .
+			FILTER EXISTS {
+				?this ?predicate ?other .
+				FILTER (?object != ?other && lang(?object) = lang(?other)) .
+			}
+		}
+		""" ;
+.
+

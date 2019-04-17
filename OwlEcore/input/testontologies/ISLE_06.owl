@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<rdf:RDF xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<!--
+An RDF Schema for ISLE lexical entries
+v 0.6 2002/11/04
+Author: Nancy Ide
+-->
+
+<!--
+Ported to OWL by Aldo Gangemi (a.gangemi@istc.cnr.it), 2004/01/21
+- Revised syntax
+- Changed "http://www.w3.org/2000/01/rdf-schema#Literal" to:
+"http://www.w3.org/2001/XMLSchema#string" or
+"http://www.w3.org/2001/XMLSchema#float" or
+"http://www.w3.org/2001/XMLSchema#integer" according to context (the original
+has annotations on where to interpret literal as number).
+- Changed Property to either ObjectProperty or DatatypeProperty accordingly
+- Corrected string domain to range in sourceSlot and targetSlot
+- Changed "http://www.w3.org/2000/01/rdf-schema#Phrase" to 
+"http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Phrase" in afterPhrase and beforePhrase
+-->
+
+    <owl:Ontology rdf:about=""/>
+    <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#MU">
+        <rdfs:comment><![CDATA[This class holds morpho-syntactic information]]></rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-enumerated-classes#SynFeatureName"/>
+    <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SynFeature">
+        <rdfs:comment><![CDATA[This class holds feature-value pairs]]></rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-enumerated-classes#FunctionType"/>
+    <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#RelatedSlots"/>
+    <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-enumerated-classes#SynFeatureValue"/>
+    <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Entry">
+        <rdfs:comment><![CDATA[This class holds entries]]></rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#PhraseElement">
+        <rdfs:comment><![CDATA[Things that have the slot property]]></rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#RelativeOrderConstraint">
+        <rdfs:comment><![CDATA[Groups together ordering constraint information]]></rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SlotRealization">
+        <rdfs:comment><![CDATA[specifies ways the slot can be syntactically realized]]></rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Self">
+        <rdfs:comment><![CDATA[Specifies the properties of the head of the syntactic pattern]]></rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SemU">
+        <rdfs:comment><![CDATA[This class holds semantic information]]></rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SynU">
+        <rdfs:comment><![CDATA[This class holds syntactic information]]></rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SyntacticFrame">
+        <rdfs:comment><![CDATA[Holds subcategorization information]]></rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Construction">
+        <rdfs:comment><![CDATA[Specifies the complementation pattern of Self]]></rdfs:comment>
+        <rdfs:subClassOf>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#PhraseElement"/>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Phrase">
+        <rdfs:comment><![CDATA[This class holds phrases]]></rdfs:comment>
+        <rdfs:subClassOf>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#PhraseElement"/>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#Resource"/>
+    <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#FrameSet"/>
+    <owl:DatatypeProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#corpus">
+        <rdfs:comment><![CDATA[specifies the corpus upon which the frequency is based]]></rdfs:comment>
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#Resource"/>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#correspondsTo">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SynU"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SemU"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#headedBy">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Self"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Phrase"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#hasSyntacticFrame">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SynU"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SyntacticFrame"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#hasSynFeature">
+        <rdfs:comment><![CDATA[specifies the feature-value pairs]]></rdfs:comment>
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Phrase"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SynFeature"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#hasFrameSet">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SynU"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#FrameSet"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#hasTargetFrame">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#RelatedSlots"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SyntacticFrame"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#filledBy">
+        <rdfs:comment><![CDATA[specifies]]></rdfs:comment>
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SlotRealization"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Phrase"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#beforePhrase">
+        <rdfs:comment><![CDATA[phrase occurring before in an ordering constraint
+specification]]></rdfs:comment>
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#Resource"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Phrase"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:DatatypeProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#targetSlot">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#RelatedSlots"/>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#beforeSlot">
+        <rdfs:comment><![CDATA[the number of the slot occurring before in an ordering constraint
+specification]]></rdfs:comment>
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#Resource"/>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#afterSlot">
+        <rdfs:comment><![CDATA[the number of the slot occurring after in an ordering constraint
+specification]]></rdfs:comment>
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#Resource"/>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#relatesFrames">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#FrameSet"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SyntacticFrame"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#selectTargetPhrase">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#RelatedSlots"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Phrase"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#hasSelf">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SyntacticFrame"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Self"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#hasSynu">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Entry"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SynU"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#hasInternalConstruction">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Self"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Construction"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:DatatypeProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#position">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Construction"/>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#hasConstruction">
+        <rdfs:comment><![CDATA[Used to encode MWEs]]></rdfs:comment>
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SyntacticFrame"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Construction"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#hasSynFeatureName">
+        <rdfs:comment><![CDATA[specifies the feature name]]></rdfs:comment>
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SynFeature"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-enumerated-classes#SynFeatureName"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#hasSourceFrame">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#RelatedSlots"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SyntacticFrame"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#specifiedBy">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#FrameSet"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#RelatedSlots"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#lexicalizedBy">
+        <rdfs:comment><![CDATA[lexicalization of the phrase]]></rdfs:comment>
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Phrase"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#MU"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#slot">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#PhraseElement"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SlotRealization"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#hasSynFeatureValue">
+        <rdfs:comment><![CDATA[specifies the feature value]]></rdfs:comment>
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SynFeature"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-enumerated-classes#SynFeatureValue"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#hasFunction">
+        <rdfs:comment><![CDATA[specifies the head]]></rdfs:comment>
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SlotRealization"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-enumerated-classes#FunctionType"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:FunctionalProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#hasFunction"/>
+    <owl:DatatypeProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#sourceSlot">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#RelatedSlots"/>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#selectSourcePhrase">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#RelatedSlots"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Phrase"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#afterPhrase">
+        <rdfs:comment><![CDATA[phrase occurring after in an ordering constraint
+specification]]></rdfs:comment>
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#Resource"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Phrase"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:DatatypeProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#example">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#Resource"/>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#hasFrequency">
+        <rdfs:comment><![CDATA[specifies the frequency in the corpus]]></rdfs:comment>
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#Resource"/>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#orderedBy">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#Construction"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#RelativeOrderConstraint"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#composedBy">
+        <rdfs:domain>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#SynU"/>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class rdf:about="http://www.cs.vassar.edu/~ide/rdf/isle-schema-v.6#MU"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+</rdf:RDF>

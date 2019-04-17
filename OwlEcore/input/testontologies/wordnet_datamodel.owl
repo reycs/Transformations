@@ -1,0 +1,420 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://wordnet.princeton.edu/wndatamodel#"
+  xml:base="http://wordnet.princeton.edu/wndatamodel">
+  <owl:Ontology rdf:about="">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    > WordNet2.0 datamodel, version 3.
+      This ontology is an attempt to encode part of the WordNet 2.0 datamodel into OWL. It is part of the work made by the WNET Task Force of the SWBPD Working Group of W3C.
+      First version has been edited by Guus Schreiber, then revised by Brian McBride. Current version (3) has been enlarged, commented, and
+      checked after the original WordNet specifications by Aldo Gangemi.
+     </rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >
+      From WordNet documentation (http://wordnet.princeton.edu/man/wngloss.7WN):
+      
+       Information in WordNet is organized around logical groupings called synsets. Each synset consists of a list of synonymous words or collocations (eg. "fountain pen" , "take in" ), and pointers that describe the relations between this synset and other synsets. A word or collocation may appear in more than one synset, and in more than one part of speech. The words in a synset are logically grouped such that they are interchangeable in some context.
+
+ Two kinds of relations are represented by pointers: lexical and semantic. Lexical relations hold between word forms; semantic relations hold between word meanings. These relations include (but are not limited to) hypernymy/hyponymy, antonymy, entailment, and meronymy/holonymy.
+
+ Nouns and verbs are organized into hierarchies based on the hypernymy/hyponymy relation between synsets. Additional pointers are be used to indicate other relations.
+
+ Adjectives are arranged in clusters containing head synsets and satellite synsets. Each cluster is organized around antonymous pairs (and occasionally antonymous triplets). The antonymous pairs (or triplets) are indicated in the head synsets of a cluster. Most head synsets have one or more satellite synsets, each of which represents a concept that is similar in meaning to the concept represented by the head synset. One way to think of the adjective cluster organization is to visualize a wheel, with a head synset as the hub and satellite synsets as the spokes. Two or more wheels are logically connected via antonymy, which can be thought of as an axle between the wheels.
+
+ Pertainyms are relational adjectives and do not follow the structure just described. Pertainyms do not have antonyms; the synset for a pertainym most often contains only one word or collocation and a lexical pointer to the noun that the adjective is "of or pertaining to". Participial adjectives have lexical pointers to the verbs that they are derived from.
+
+ Adverbs are often derived from adjectives, and sometimes have antonyms; therefore the synset for an adverb usually contains a lexical pointer to the adjective from which it is derived.
+	 </rdfs:comment>
+  </owl:Ontology>
+  <owl:Class rdf:ID="AdjectiveSatelliteSynset">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="AdjectiveSynset"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Synset in an adjective cluster representing a concept that is similar in meaning to the concept represented by its head synset .</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="VerbSynset">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Synset"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A synset including verb word senses.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="AdjectiveWordSense">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="WordSense"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A meaning of an adjective word.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#WordSense">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A meaning of a word in WordNet. Each sense of a word is in a different synset.
+
+****For the sake of ontological clarity, here it is assumed that synsets include word senses, in order to partition the logical space of the lexicon (words as forms, which belong to different natural language lexica, words as meanings, which also can be peculiar to different natural languages, but usually exist in several of them, and synsets, which cluster word senses by abstracting out their distributional context.****</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="VerbWordSense">
+    <rdfs:subClassOf rdf:resource="#WordSense"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A meaning of a verb word.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="SynsetUsedAsClassifier">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A noun synset that is used to classify (it is the 'domain term of') other synsets (as a topic, region, or usage context).
+
+****This notion is not instantiated in WordNet documentation, but it is included here, since it gives some idea of a possible partition of WordNet synsets into 'topics', which are to be kept distinct from the synsets used to provide terms to name them. BTW, as for 2.0, only little more 8,000 topic assignment exist.****
+</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Synset"/>
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#Synset"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="classifies"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#AdjectiveSynset">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Synset"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A synset including adjective word senses.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="AdverbSynset">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A synset including adverb word senses.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Synset"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Word">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Any word or composed term (collocation) deputed to have a sense in WordNet.
+
+****For the sake of ontological clarity, here it is assumed that synsets include word senses, in order to partition the logical space of the lexicon (words as forms, which belong to different natural language lexica, words as meanings, which also can be peculiar to different natural languages, but usually exist in several of them, and synsets, which cluster word senses by abstracting out their distributional context.****</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Synset">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A synonym set; a set of words that are interchangeable in some context.
+
+****For the sake of ontological clarity, here it is assumed that synsets include word senses, in order to partition the logical space of the lexicon (words as forms, which belong to different natural language lexica, words as meanings, which also can be peculiar to different natural languages, but usually exist in several of them, and synsets, which cluster word senses by abstracting out their distributional context.****</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="NounWordSense">
+    <rdfs:subClassOf rdf:resource="#WordSense"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A meaning of a noun word.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Collocation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A collocation in WordNet is a string of two or more words, connected by spaces or hyphens. Examples are: man-eatingÊshark , blue-collar , dependÊon , lineÊofÊproducts . In the database files spaces are represented as underscore (_ ) characters.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Word"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NounSynset">
+    <rdfs:subClassOf rdf:resource="#Synset"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A synset including noun word senses.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Frame"/>
+  <owl:Class rdf:ID="AdverbWordSense">
+    <rdfs:subClassOf rdf:resource="#WordSense"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A meaning of an adverb word.</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="causedBy">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It specifies that the second synset is a cause of the first synset. This relation only holds for verbs.</rdfs:comment>
+    <rdfs:range rdf:resource="#VerbSynset"/>
+    <rdfs:domain rdf:resource="#VerbSynset"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="attribute">
+    <rdfs:domain rdf:resource="#NounSynset"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="attributeOf"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#AdjectiveSynset"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It defines the attribute relation between noun and adjective synset pairs in which the adjective is a value of the noun.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="seeAlso">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It specifies that additional information about the first word can be obtained by seeing the second word. This operator is only defined for verbs and adjectives.
+There is no symmetric relation (ie. it cannot be inferred that the additional information about the second word can be obtained from the first word).</rdfs:comment>
+    <rdfs:range>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#AdjectiveWordSense"/>
+          <owl:Class rdf:about="#VerbWordSense"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="classifiedByTopic">
+    <rdfs:domain rdf:resource="#Synset"/>
+    <rdfs:range rdf:resource="#NounSynset"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="classifiedBy"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#classifies">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#classifiedBy"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="#NounSynset"/>
+    <rdfs:range rdf:resource="#Synset"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="frame">
+    <rdfs:domain rdf:resource="#VerbWordSense"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="frameOf"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#Frame"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It specifies a generic sentence frame for one or all words in a synset. The operator is defined only for verbs.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="similarTo">
+    <rdfs:range rdf:resource="#AdjectiveSynset"/>
+    <rdfs:domain rdf:resource="#AdjectiveSynset"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It specifies that the second synset is similar in meaning to the first synset. This means that the second synset is a satellite of the first synset, which is the cluster head. This relation only holds for adjective synsets contained in adjective clusters.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="classifiedByUsage">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#classifiedBy"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#NounSynset"/>
+    <rdfs:domain rdf:resource="#Synset"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="inSynset">
+    <rdfs:domain rdf:resource="#WordSense"/>
+    <rdfs:range rdf:resource="#Synset"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >****A relation added here to link word senses and synsets explicitly (in the WordNet db, it is implicit in the sense tag record)****</rdfs:comment>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="containsWordSense"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="holonymOf">
+    <rdfs:range rdf:resource="#NounSynset"/>
+    <rdfs:domain rdf:resource="#NounSynset"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="meronymOf"/>
+    </owl:inverseOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It specifies that the second synset is a meronym of the first synset. This relation only holds for nouns.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="word">
+    <rdfs:domain rdf:resource="#WordSense"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >****A relation added here to link word senses and words explicitly (in the WordNet db, it is implicit in the synset record)****</rdfs:comment>
+    <rdfs:range rdf:resource="#Word"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="sense"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#classifiedBy">
+    <owl:inverseOf rdf:resource="#classifies"/>
+    <rdfs:range rdf:resource="#NounSynset"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It specifies that the first synset has been classified as a member of the class (either as topic or 'category', as region, or as usage) represented by the second synset.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Synset"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="derivationallyRelated">
+    <owl:inverseOf rdf:resource="#derivationallyRelated"/>
+    <rdfs:domain rdf:resource="#WordSense"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It specifies that there exists a symmetric lexical morphosemantic relation between the first and second synset terms representing derivational morphology.
+***In the WordNet database this relation extends over word senses within synsets***</rdfs:comment>
+    <rdfs:range rdf:resource="#WordSense"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="substanceMeronymOf">
+    <rdfs:range rdf:resource="#NounSynset"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="substanceHolonymOf"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="#NounSynset"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#meronymOf"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="sameVerbGroupAs">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It specifies verb synsets that are similar in meaning and should be grouped together when displayed in response to a grouped synset search.</rdfs:comment>
+    <rdfs:range rdf:resource="#VerbSynset"/>
+    <rdfs:domain rdf:resource="#VerbSynset"/>
+    <owl:inverseOf rdf:resource="#sameVerbGroupAs"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#frameOf">
+    <owl:inverseOf rdf:resource="#frame"/>
+    <rdfs:range rdf:resource="#VerbWordSense"/>
+    <rdfs:domain rdf:resource="#Frame"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="antonymOf">
+    <rdfs:domain rdf:resource="#WordSense"/>
+    <owl:inverseOf rdf:resource="#antonymOf"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It specifies antonymous word s. This is a lexical relation that holds for all syntactic categories. For each antonymous pair, both relations are listed.</rdfs:comment>
+    <rdfs:range rdf:resource="#WordSense"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#sense">
+    <owl:inverseOf rdf:resource="#word"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >****A relation added here to link words and word senses explicitly (in the WordNet db, it is implicit in the synset record)****</rdfs:comment>
+    <rdfs:domain rdf:resource="#Word"/>
+    <rdfs:range rdf:resource="#WordSense"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="partHolonymOf">
+    <rdfs:range rdf:resource="#NounSynset"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It specifies that the second synset is a part meronym of the first synset. This relation only holds for nouns.</rdfs:comment>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="partMeronymOf"/>
+    </owl:inverseOf>
+    <rdfs:subPropertyOf rdf:resource="#holonymOf"/>
+    <rdfs:domain rdf:resource="#NounSynset"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="entailedBy">
+    <rdfs:domain rdf:resource="#VerbSynset"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="entails"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#VerbSynset"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#entails">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A verb X entails Y if X cannot be done unless Y is, or has been, done.
+It specifies that the second synset is an entailment of first synset. This relation only holds for verbs.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#entailedBy"/>
+    <rdfs:range rdf:resource="#VerbSynset"/>
+    <rdfs:domain rdf:resource="#VerbSynset"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="participleOf">
+    <rdfs:domain rdf:resource="#AdjectiveWordSense"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It specifies that the adjective first word is a participle of the verb second word.</rdfs:comment>
+    <rdfs:range rdf:resource="#VerbWordSense"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="memberHolonymOf">
+    <rdfs:domain rdf:resource="#NounSynset"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="memberMeronymOf"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#NounSynset"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It specifies that the second synset is a member meronym of the first synset. This relation only holds for nouns.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="#holonymOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#attributeOf">
+    <owl:inverseOf rdf:resource="#attribute"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="adverbPertainsTo">
+    <rdfs:range rdf:resource="#AdjectiveWordSense"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It specifies an adverb word sense that pertains to the adjective second word sense.</rdfs:comment>
+    <rdfs:domain rdf:resource="#AdverbWordSense"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="classifiedByRegion">
+    <rdfs:range rdf:resource="#NounSynset"/>
+    <rdfs:domain rdf:resource="#Synset"/>
+    <rdfs:subPropertyOf rdf:resource="#classifiedBy"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#memberMeronymOf">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#meronymOf"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#NounSynset"/>
+    <owl:inverseOf rdf:resource="#memberHolonymOf"/>
+    <rdfs:range rdf:resource="#NounSynset"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#meronymOf">
+    <rdfs:range rdf:resource="#NounSynset"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >noun/noun
+
+nose/face</rdfs:comment>
+    <rdfs:domain rdf:resource="#NounSynset"/>
+    <owl:inverseOf rdf:resource="#holonymOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#partMeronymOf">
+    <rdfs:domain rdf:resource="#NounSynset"/>
+    <owl:inverseOf rdf:resource="#partHolonymOf"/>
+    <rdfs:range rdf:resource="#NounSynset"/>
+    <rdfs:subPropertyOf rdf:resource="#meronymOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hyponymOf">
+    <rdfs:range rdf:resource="#Synset"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It specifies that the second synset is a hypernym of the first synset. This relation holds for nouns and verbs. The symmetric operator, hyponym, implies that the first synset is a hyponym of the second synset.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Synset"/>
+    <owl:inverseOf>
+      <owl:TransitiveProperty rdf:ID="hypernymOf"/>
+    </owl:inverseOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#containsWordSense">
+    <rdfs:domain rdf:resource="#Synset"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >****A relation added here to link synsets and word senses explicitly (in the WordNet db, it is implicit in the sense tag record)****</rdfs:comment>
+    <owl:inverseOf rdf:resource="#inSynset"/>
+    <rdfs:range rdf:resource="#WordSense"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#substanceHolonymOf">
+    <owl:inverseOf rdf:resource="#substanceMeronymOf"/>
+    <rdfs:range rdf:resource="#NounSynset"/>
+    <rdfs:domain rdf:resource="#NounSynset"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It specifies that the second synset is a substance meronym of the first synset. This relation only holds for nouns.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="#holonymOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="adjectivePertainsTo">
+    <rdfs:range>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#AdjectiveWordSense"/>
+          <owl:Class rdf:about="#NounWordSense"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#AdjectiveWordSense"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It specifies an adjective word sense that pertains to either the noun or adjective second word sense.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="tagCount">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A datatype relation between word senses and their tags within synsets.</rdfs:comment>
+    <rdfs:domain rdf:resource="#WordSense"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="gloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It specifies the gloss for a synset.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Synset"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="synsetId">
+    <rdfs:domain rdf:resource="#Synset"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A datatype relation between synsets and their integer identifiers.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:DatatypeProperty>
+  <owl:TransitiveProperty rdf:about="#hypernymOf">
+    <owl:inverseOf rdf:resource="#hyponymOf"/>
+    <rdfs:range rdf:resource="#Synset"/>
+    <rdfs:domain rdf:resource="#Synset"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:TransitiveProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 1.3, Build 225.4)  http://protege.stanford.edu -->

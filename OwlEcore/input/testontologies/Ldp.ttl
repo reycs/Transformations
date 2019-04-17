@@ -1,0 +1,129 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ldp: <http://www.w3.org/ns/ldp#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+
+ldp:Resource a rdfs:Class;
+  rdfs:label "ldp Resource";
+  rdfs:comment """
+     A HTTP resource whose state is represented in any way that conforms to the simple 
+     lifecycle patterns and conventions in section 5. Linked Data Platform Resources.
+  """ .
+
+ldp:Source a rdfs:Class;
+  rdfs:label "ldp Resource";
+  rdfs:subClassOf ldp:Resource;
+  rdfs:comment """
+    an ldp:Resource that is also an rdf source: ie that is an RDF graph.
+  """ .
+
+ldp:Container a rdfs:Class, owl:Class;
+  rdfs:label "ldp Container";
+  rdfs:subClassOf ldp:Source;
+  rdfs:comment """
+    An LDPR representing a collection of member resources and/or contained documents 
+    (RDF Document [rdf11-concepts]  or information resources [WEBARCH]) that responds 
+    to client requests for creation, modification, and/or enumeration 
+    of its members and documents, and that conforms to the simple lifecycle patterns 
+    and conventions in section6. Linked Data Platform Containers.
+  """;
+  skos:editorialNote """
+    As the outermost class of the container hierarchy it may be that the ldp:Container could 
+be made to be the same as the ldp:IndirectContainer. But leaving space could allow for further
+extensions.    
+  """ .
+
+ldp:IndirectContainer a rdfs:Class, owl:Class;
+   rdfs:subClassOf ldp:Container;
+   rdfs:comment """
+   A LDPC that has the flexibility of choosing what form its membership triples take, 
+   and allows members to be any resources [WEBARCH], defined in the posted document.
+   """ .
+
+ldp:DirectContainer a rdfs:Class, owl:Class;
+  rdfs:subClassOf ldp:Container;
+   rdfs:comment """
+   A LDPC that has the flexibility of choosing what form its membership triples take, 
+   and allows members to be any resources [WEBARCH], not only documents.
+   """ .
+
+ldp:BasicContainer a rdfs:Class, owl:Class;
+  rdfs:label "BasicContainer";
+  rdfs:subClassOf ldp:Container;
+  rdfs:comment """
+  A LDPC that uses a single pre-defined predicate to link to both its contained and 
+  member documents (information resources). Posting to an ldp:BasicContainer has
+  no extra consequences other than creating an ldp:contains relation from the container to
+  the newly created resource.
+  """ .
+ 
+ldp:contains a rdf:Property, owl:ObjectProperty;
+  rdfs:label "contains";
+  rdfs:domain ldp:Container;
+  rdfs:range ldp:Resource;
+  rdfs:comment """
+    the ldp:contains relation relates an ldp:Container to a ldp:Resource ( ie a document of some form )
+  """ .
+
+ldp:membershipResource a rdf:Property, owl:FunctionalProperty;
+  rdfs:label "membershipResource";
+  rdfs:domain ldp:IndirectContainer;
+  rdfs:range  rdfs:Resource .
+
+
+ldp:hasMemberRelation a rdf:Property, owl:FunctionalProperty, owl:ObjectProperty;
+  rdfs:label "hasMemberRelation";
+  rdfs:domain ldp:IndirectContainer;
+  rdfs:range  rdf:Property .
+  
+
+ldp:isMemberOfRelation a rdf:Property, owl:FunctionalProperty, owl:ObjectProperty; 
+   rdfs:label "isMemberOfRelation";
+   owl:subPropertyOf [ owl:propertyChainAxiom ( ldp:hasMemberRelation owl:inverseOf ) ];
+   skos:editorialNote """
+      the ldp:isMemberOfRelation is the equivalent to the hasMemberRelation followed by the owl:inverseOf property 
+   """;
+   rdfs:domain ldp:IndirectContainer; 
+   rdfs:range rdf:Property .
+
+ldp:insertedContentRelation a rdf:Property, owl:FunctionalProperty, owl:ObjectProperty;
+  rdfs:label "insertedContentRelation";
+  rdfs:domain ldp:IndirectContainer;
+  rdfs:range  rdf:Property .
+
+## restrictions
+
+ldp:DirectContainer 
+    owl:equivalentClass [ a owl:Restriction;
+                     owl:onProperty ldp:insertedContentRelation;
+                     owl:hasValue ldp:MemberSubject
+                    ]. 
+
+ldp:BasicContainer 
+    owl:equivalentClass [ owl:intersectionOf ( [ a owl:Restriction;
+                     owl:onProperty ldp:membershipResource;
+                     owl:hasSelf "true"^^xsd:boolean ]
+                    [ a owl:Restriction;
+                     owl:onProperty ldp:hasMemberRelation;
+                     owl:hasValue ldp:contains ] 
+                    [ a owl:Restriction;
+                     owl:onProperty ldp:insertedContentRelation;
+                     owl:hasValue ldp:MemberSubject
+                    ])].
+
+
+## example
+@prefix ex: <http://example/> .
+@prefix sioc: <http://rdfs.org/sioc/ns#> .
+
+<http://example/2014/> a ldp:DirectContainer;
+     ldp:isMemberOfRelation sioc:has_container;
+     ldp:membershipResource <http://example/2014/>;
+     ldp:contains <http://example/2014/e1> .
+
+sioc:has_container owl:inverseOf ldp:contains .
+
+

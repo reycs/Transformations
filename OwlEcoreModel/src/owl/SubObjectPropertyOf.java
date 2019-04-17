@@ -12,8 +12,8 @@ package owl;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link owl.SubObjectPropertyOf#getSuperObjectPropertyExpression <em>Super Object Property Expression</em>}</li>
  *   <li>{@link owl.SubObjectPropertyOf#getSubObjectPropertyExpressions <em>Sub Object Property Expressions</em>}</li>
+ *   <li>{@link owl.SubObjectPropertyOf#getSuperObjectPropertyExpression <em>Super Object Property Expression</em>}</li>
  * </ul>
  *
  * @see owl.OwlPackage#getSubObjectPropertyOf()
@@ -30,12 +30,12 @@ public interface SubObjectPropertyOf extends ObjectPropertyAxiom {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Super Object Property Expression</em>' reference.
-	 * @see #setSuperObjectPropertyExpression(ObjectPropertyExpression)
+	 * @see #setSuperObjectPropertyExpression(SubObjectPropertyExpression)
 	 * @see owl.OwlPackage#getSubObjectPropertyOf_SuperObjectPropertyExpression()
-	 * @model required="true" ordered="false"
+	 * @model required="true"
 	 * @generated
 	 */
-	ObjectPropertyExpression getSuperObjectPropertyExpression();
+	SubObjectPropertyExpression getSuperObjectPropertyExpression();
 
 	/**
 	 * Sets the value of the '{@link owl.SubObjectPropertyOf#getSuperObjectPropertyExpression <em>Super Object Property Expression</em>}' reference.
@@ -45,7 +45,7 @@ public interface SubObjectPropertyOf extends ObjectPropertyAxiom {
 	 * @see #getSuperObjectPropertyExpression()
 	 * @generated
 	 */
-	void setSuperObjectPropertyExpression(ObjectPropertyExpression value);
+	void setSuperObjectPropertyExpression(SubObjectPropertyExpression value);
 
 	/**
 	 * Returns the value of the '<em><b>Sub Object Property Expressions</b></em>' reference.
@@ -56,12 +56,12 @@ public interface SubObjectPropertyOf extends ObjectPropertyAxiom {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sub Object Property Expressions</em>' reference.
-	 * @see #setSubObjectPropertyExpressions(ObjectPropertyExpression)
+	 * @see #setSubObjectPropertyExpressions(SubObjectPropertyExpression)
 	 * @see owl.OwlPackage#getSubObjectPropertyOf_SubObjectPropertyExpressions()
 	 * @model required="true"
 	 * @generated
 	 */
-	ObjectPropertyExpression getSubObjectPropertyExpressions();
+	SubObjectPropertyExpression getSubObjectPropertyExpressions();
 
 	/**
 	 * Sets the value of the '{@link owl.SubObjectPropertyOf#getSubObjectPropertyExpressions <em>Sub Object Property Expressions</em>}' reference.
@@ -71,6 +71,6 @@ public interface SubObjectPropertyOf extends ObjectPropertyAxiom {
 	 * @see #getSubObjectPropertyExpressions()
 	 * @generated
 	 */
-	void setSubObjectPropertyExpressions(ObjectPropertyExpression value);
+	void setSubObjectPropertyExpressions(SubObjectPropertyExpression value);
 
 } // SubObjectPropertyOf

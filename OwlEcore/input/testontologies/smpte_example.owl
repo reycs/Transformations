@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- created by hand by Martin Höffernig (Joanneum Research) for DMS-1 example file : version 1.0 -->
+<rdf:RDF xmlns:p1="http://www.w3.org/ns/ma-ont#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://mawg_smpte_example#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xml:base="http://mawg_smpte_example">
+	<owl:Ontology rdf:about="">
+		<owl:imports rdf:resource="http://www.w3.org/ns/ma-ont"/>
+	</owl:Ontology>
+	<p1:MediaResource rdf:about="urn:uuid:36a87260-1102-11df-8a39-0800200c9a66">
+		<p1:title>Sample Programme</p1:title>
+		<p1:isMemberOf>
+			<p1:Collection>
+				<p1:collectionName>The 99 Example Series</p1:collectionName>
+			</p1:Collection>
+		</p1:isMemberOf>
+		<p1:hasLanguage rdf:parseType="Resource">
+			<rdfs:label>en-us</rdfs:label>
+		</p1:hasLanguage>
+		<p1:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://somewhere.com/othermaterial.mov</p1:locator>
+		<p1:features>
+			<p1:Person>
+				<rdfs:label>John Doe</rdfs:label>
+			</p1:Person>
+		</p1:features>
+		<p1:hasCreator>
+			<p1:Person>
+				<rdfs:label>Jim Foo</rdfs:label>
+			</p1:Person>
+		</p1:hasCreator>
+		<p1:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1994</p1:creationDate>
+		<p1:createdIn>
+			<p1:Location>
+				<p1:locationName>south pole</p1:locationName>
+				<p1:hasLocationAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2800.0</p1:hasLocationAltitude>
+				<p1:locationLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</p1:locationLongitude>
+				<p1:locationLatitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-90.0</p1:locationLatitude>
+			</p1:Location>
+		</p1:createdIn>
+		<p1:hasTargetAudience>
+			<p1:TargetAudience>
+				<p1:hasClassification rdf:parseType="Resource">
+					<rdfs:label>US</rdfs:label>
+				</p1:hasClassification>
+				<p1:hasClassificationSystem rdf:parseType="Resource">
+					<rdfs:label>Region Classification</rdfs:label>
+				</p1:hasClassificationSystem>
+			</p1:TargetAudience>
+		</p1:hasTargetAudience>
+		<p1:hasTargetAudience>
+			<p1:TargetAudience>
+				<p1:hasClassification rdf:parseType="Resource">
+					<rdfs:label>u</rdfs:label>
+				</p1:hasClassification>
+				<p1:hasClassificationSystem rdf:parseType="Resource">
+					<rdfs:label>Age Classification</rdfs:label>
+				</p1:hasClassificationSystem>
+			</p1:TargetAudience>
+		</p1:hasTargetAudience>
+		<p1:description>This is the synopsis of the story.</p1:description>
+		<p1:hasGenre>
+			<rdf:Description>
+				<rdfs:label>Horror</rdfs:label>
+			</rdf:Description>
+		</p1:hasGenre>
+		<p1:hasKeyword>
+			<rdf:Description>
+				<rdfs:label>about</rdfs:label>
+			</rdf:Description>
+		</p1:hasKeyword>
+		<p1:hasRating>
+			<p1:Rating>
+				<p1:ratingValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">99.0</p1:ratingValue>
+			</p1:Rating>
+		</p1:hasRating>
+		<p1:copyright>All rights reserved.</p1:copyright>
+		<p1:hasPublisher>
+			<p1:Organisation>
+				<rdfs:label>W3 Pictures Inc.</rdfs:label>
+			</p1:Organisation>
+		</p1:hasPublisher>
+		<p1:frameHeight rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">576</p1:frameHeight>
+		<p1:frameWidth rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">720</p1:frameWidth>
+		<p1:hasCompression>
+			<rdf:Description>
+				<rdfs:label>AVC</rdfs:label>
+			</rdf:Description>
+		</p1:hasCompression>
+		<p1:duration rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5402.88</p1:duration>
+		<p1:hasFormat>
+			<rdf:Description>
+				<rdfs:label>video/mp4</rdfs:label>
+			</rdf:Description>
+		</p1:hasFormat>
+		<p1:samplingRate rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">44100.0</p1:samplingRate>
+		<p1:frameRate rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">25.0</p1:frameRate>
+		<p1:numberOfTracks rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</p1:numberOfTracks>
+		<p1:hasFragment>
+			<p1:VideoTrack>
+				<p1:averageBitRate rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5000000.0</p1:averageBitRate>
+			</p1:VideoTrack>
+		</p1:hasFragment>
+		<p1:hasFragment>
+			<p1:AudioTrack>
+				<p1:averageBitRate rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">128000.0</p1:averageBitRate>
+			</p1:AudioTrack>
+		</p1:hasFragment>
+		<p1:hasRelatedResource>
+			<rdf:Description rdf:about="http://docs.company.com/scripts/123.pdf" />
+		</p1:hasRelatedResource>
+		<p1:hasPolicy>
+		  <rdf:Description rdf:about="http://creativecommons.org/licenses/by-nc-nd/3.0" />
+		</p1:hasPolicy>
+	</p1:MediaResource>
+</rdf:RDF>

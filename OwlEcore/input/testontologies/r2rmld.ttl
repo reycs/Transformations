@@ -1,0 +1,41 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.com/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://mappingpedia.org/rdb2rdf/r2rml/tc/> .
+
+<TriplesMap1>
+     a rr:TriplesMap;
+
+     rr:logicalTable [ 
+                      rr:sqlQuery """
+                     SELECT ('Student' || "ID" || "FirstName" || "LastName") as StudentID,
+                            "ID",
+                            "FirstName",
+                            "LastName"
+                     FROM "Student"
+                     """
+                     ];
+
+    rr:subjectMap [ rr:template "http://example.com/{StudentID}"; rr:termType rr:IRI;  ];
+	
+    rr:predicateObjectMap
+    [ 
+      rr:predicateMap [ rr:constant ex:id ]; 
+      rr:objectMap    [ rr:column "ID"; rr:datatype xsd:integer ]
+    ];
+
+    rr:predicateObjectMap
+    [ 
+      rr:predicateMap [ rr:constant ex:firstName ]; 
+      rr:objectMap    [ rr:template "http://example.com/data/{FirstName}";
+						rr:termType rr:IRI ]
+    ];
+
+    rr:predicateObjectMap
+    [ 
+      rr:predicateMap [ rr:constant ex:lastName ]; 
+      rr:objectMap    [ rr:template "http://example.com/data/{LastName}";
+						rr:termType rr:IRI ]
+    ]
+    .

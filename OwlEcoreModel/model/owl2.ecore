@@ -32,7 +32,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="ClassExpression" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="ClassAxiom" abstract="true" eSuperTypes="#//Axiom"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataPropertyExpression" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ObjectPropertyExpression" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectPropertyExpression" abstract="true"
+      eSuperTypes="#//SubObjectPropertyExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="AsymmetricObjectProperty" eSuperTypes="#//ObjectPropertyAxiom">
     <eStructuralFeatures xsi:type="ecore:EReference" name="objectPropertyExpression"
         ordered="false" lowerBound="1" eType="#//ObjectPropertyExpression"/>
@@ -306,10 +307,10 @@
         upperBound="-1" eType="#//Individual"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SubObjectPropertyOf" eSuperTypes="#//ObjectPropertyAxiom">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="superObjectPropertyExpression"
-        ordered="false" lowerBound="1" eType="#//ObjectPropertyExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subObjectPropertyExpressions"
-        lowerBound="1" eType="#//ObjectPropertyExpression"/>
+        lowerBound="1" eType="#//SubObjectPropertyExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superObjectPropertyExpression"
+        lowerBound="1" eType="#//SubObjectPropertyExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectComplementOf" eSuperTypes="#//ClassExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="classExpression" ordered="false"
@@ -388,8 +389,10 @@
         ordered="false" lowerBound="1" eType="#//ObjectPropertyExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InverseObjectProperties" eSuperTypes="#//ObjectPropertyAxiom">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inverseObjectProperties"
-        ordered="false" lowerBound="2" upperBound="2" eType="#//ObjectPropertyExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="firstProperty" lowerBound="1"
+        eType="#//ObjectPropertyExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="secondProperty" lowerBound="1"
+        eType="#//ObjectPropertyExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AnonymousIndividual" eSuperTypes="#//Individual #//AnnotationSubject #//AnnotationValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nodeID" ordered="false"
@@ -425,7 +428,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="dataRanges" lowerBound="2"
         upperBound="-1" eType="#//DataRange"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DataUnionOf">
+  <eClassifiers xsi:type="ecore:EClass" name="DataUnionOf" eSuperTypes="#//DataRange">
     <eStructuralFeatures xsi:type="ecore:EReference" name="dataRanges" lowerBound="2"
         upperBound="-1" eType="#//DataRange"/>
   </eClassifiers>
@@ -463,4 +466,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AnnotationSubject" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="AnnotationValue" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SubObjectPropertyExpression" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectPropertyChain" eSuperTypes="#//SubObjectPropertyExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objectPropertyExpressions"
+        lowerBound="2" upperBound="-1" eType="#//ObjectPropertyExpression"/>
+  </eClassifiers>
 </ecore:EPackage>

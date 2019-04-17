@@ -1,0 +1,419 @@
+@prefix : <http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/peter/ontologies/2015/4/best-practices> .
+
+<http://www.semanticweb.org/peter/ontologies/2015/4/best-practices> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#A_Federation_Tool_For_Opendata_Portals
+
+:A_Federation_Tool_For_Opendata_Portals rdf:type owl:Class ;
+                                        
+                                        rdfs:subClassOf :Discoverability .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#An_ongoing_open_dialog_in_an_open_data_ecosystem
+
+:An_ongoing_open_dialog_in_an_open_data_ecosystem rdf:type owl:Class ;
+                                                  
+                                                  rdfs:subClassOf :Citizen_Engagement .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Business_Models
+
+:Business_Models rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Catalogs_and_Indexes
+
+:Catalogs_and_Indexes rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :Discoverability .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Citizen_Engagement
+
+:Citizen_Engagement rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Civic_Use_Of_Open_Data
+
+:Civic_Use_Of_Open_Data rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf :Citizen_Engagement .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Commercial_Considerations_in_Open_Data_Portal_Design
+
+:Commercial_Considerations_in_Open_Data_Portal_Design rdf:type owl:Class ;
+                                                      
+                                                      rdfs:subClassOf :Business_Models .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Cost_and_Revenue
+
+:Cost_and_Revenue rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Cost_of_Publication
+
+:Cost_of_Publication rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :Cost_and_Revenue .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Cross_Agency_Strategy
+
+:Cross_Agency_Strategy rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :Management_and_Strategy .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Data
+
+:Data rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Issues .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Discover_published_information_by_site_scraping
+
+:Discover_published_information_by_site_scraping rdf:type owl:Class ;
+                                                 
+                                                 rdfs:subClassOf :Existing_Publications .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Discoverability
+
+:Discoverability rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Efficiency
+
+:Efficiency rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Encourage_crowdsourcing
+
+:Encourage_crowdsourcing rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf :Citizen_Engagement .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Existing_Publications
+
+:Existing_Publications rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Feedback_to_Improve_Quality
+
+:Feedback_to_Improve_Quality rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf :Quality .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Free_our_maps
+
+:Free_our_maps rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Geography .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Geography
+
+:Geography rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#High_Level_Support
+
+:High_Level_Support rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Management_and_Strategy .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Holistic_Metrics
+
+:Holistic_Metrics rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Quality .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Human_Readability_and_Machine_Processing
+
+:Human_Readability_and_Machine_Processing rdf:type owl:Class ;
+                                          
+                                          rdfs:subClassOf :Technical_Considerations .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Identifying_what_you_already_publish
+
+:Identifying_what_you_already_publish rdf:type owl:Class ;
+                                      
+                                      rdfs:subClassOf :Existing_Publications .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Infomediary_Sector_Characteristics
+
+:Infomediary_Sector_Characteristics rdf:type owl:Class ;
+                                    
+                                    rdfs:subClassOf :Business_Models .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Issues
+
+:Issues rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Make_the_data_available_in_the_language_people_want_it
+
+:Make_the_data_available_in_the_language_people_want_it rdf:type owl:Class ;
+                                                        
+                                                        rdfs:subClassOf :Discoverability .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Making_Research_Results_Open_For_The_Country
+
+:Making_Research_Results_Open_For_The_Country rdf:type owl:Class ;
+                                              
+                                              rdfs:subClassOf :Citizen_Engagement .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Management_Of_A_Wide_Public_Actors_Network
+
+:Management_Of_A_Wide_Public_Actors_Network rdf:type owl:Class ;
+                                            
+                                            rdfs:subClassOf :Management_and_Strategy .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Management_and_Strategy
+
+:Management_and_Strategy rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Monitoring_and_Benchmarking
+
+:Monitoring_and_Benchmarking rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf :Quality .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Open_Data_2.0_-_Changing_Perspectives
+
+:Open_Data_2.0_-_Changing_Perspectives rdf:type owl:Class ;
+                                       
+                                       rdfs:subClassOf :Business_Models .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Open_Data_Business_Model_Patterns_and_Open_Data_Business_Value_Disciplines
+
+:Open_Data_Business_Model_Patterns_and_Open_Data_Business_Value_Disciplines rdf:type owl:Class ;
+                                                                            
+                                                                            rdfs:subClassOf :Business_Models .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Open_Data_Publication_Plan
+
+:Open_Data_Publication_Plan rdf:type owl:Class ;
+                            
+                            rdfs:subClassOf :Discoverability .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Open_Data_To_Improve_Sharing_And_Publication_Of_Information_Between_Public_Administrations
+
+:Open_Data_To_Improve_Sharing_And_Publication_Of_Information_Between_Public_Administrations rdf:type owl:Class ;
+                                                                                            
+                                                                                            rdfs:subClassOf :Efficiency .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Open_Data_quality_assessment
+
+:Open_Data_quality_assessment rdf:type owl:Class ;
+                              
+                              rdfs:subClassOf :Quality .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Optimization_for_Search_Engines
+
+:Optimization_for_Search_Engines rdf:type owl:Class ;
+                                 
+                                 rdfs:subClassOf :Discoverability .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Organisation
+
+:Organisation rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Issues .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Organisational-internal_engagement
+
+:Organisational-internal_engagement rdf:type owl:Class ;
+                                    
+                                    rdfs:subClassOf :Management_and_Strategy .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Privacy_Impact_Assessment
+
+:Privacy_Impact_Assessment rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Publication_with_Common_Metadata
+
+:Publication_with_Common_Metadata rdf:type owl:Class ;
+                                  
+                                  rdfs:subClassOf :Discoverability .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Publish_spatial_data_on_the_web
+
+:Publish_spatial_data_on_the_web rdf:type owl:Class ;
+                                 
+                                 rdfs:subClassOf :Geography .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Publishing_Statistical_Data_In_Linked_Data_Format
+
+:Publishing_Statistical_Data_In_Linked_Data_Format rdf:type owl:Class ;
+                                                   
+                                                   rdfs:subClassOf :Technical_Considerations .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Quality
+
+:Quality rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Reuse
+
+:Reuse rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Issues .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Specific_Tools
+
+:Specific_Tools rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Stakeholders_Interests_and_Rights
+
+:Stakeholders_Interests_and_Rights rdf:type owl:Class ;
+                                   
+                                   rdfs:subClassOf :Citizen_Engagement .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Technical_Considerations
+
+:Technical_Considerations rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Technology
+
+:Technology rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Issues .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#The_Central_Role_of_Location
+
+:The_Central_Role_of_Location rdf:type owl:Class ;
+                              
+                              rdfs:subClassOf :Geography .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Traffic_Light_System_For_Data_Sharing
+
+:Traffic_Light_System_For_Data_Sharing rdf:type owl:Class ;
+                                       
+                                       rdfs:subClassOf :Privacy_Impact_Assessment .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#User_engagement_and_collaboration
+
+:User_engagement_and_collaboration rdf:type owl:Class ;
+                                   
+                                   rdfs:subClassOf :Citizen_Engagement .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Using_Business_Process_Paradigm_For_Open_Data_Lifecycle_Management
+
+:Using_Business_Process_Paradigm_For_Open_Data_Lifecycle_Management rdf:type owl:Class ;
+                                                                    
+                                                                    rdfs:subClassOf :Business_Models .
+
+
+
+###  http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Supervizor_-_An_Indispensable_Open_Government_Application_(Transparency_Of_Public_Spending)
+
+<http://www.semanticweb.org/peter/ontologies/2015/4/best-practices#Supervizor_-_An_Indispensable_Open_Government_Application_(Transparency_Of_Public_Spending)> rdf:type owl:Class ;
+                                                                                                                                                                
+                                                                                                                                                                rdfs:subClassOf :Specific_Tools .
+
+
+
+
+###  Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net
+

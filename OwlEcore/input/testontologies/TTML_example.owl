@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- created by hand by Martin Höffernig (Joanneum Research) for TTML example file : version 1.0 -->
+<rdf:RDF xmlns:p1="http://www.w3.org/ns/ma-ont#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://mawg_smpte_example#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xml:base="http://mawg_ttml_example">
+	<owl:Ontology rdf:about="">
+		<owl:imports rdf:resource="http://www.w3.org/ns/ma-ont"/>
+	</owl:Ontology>
+	<p1:MediaResource rdf:about="ttml_example">
+		<p1:hasLanguage rdf:parseType="Resource">
+			<rdfs:label>en</rdfs:label>
+		</p1:hasLanguage>	
+		<p1:title>Document Metadata Example</p1:title>
+		<p1:description>This document employs document metadata.</p1:description>
+		<p1:copyright>This example is made up from example fragments by the TimedText WG</p1:copyright>
+		<p1:features>
+			<p1:Person>
+				<rdfs:label>Sir Thomas Sean Connery</rdfs:label>
+			</p1:Person>
+		</p1:features>
+		<p1:hasCreator>
+			<p1:Person>
+				<rdfs:label>Jim Foo</rdfs:label>
+			</p1:Person>
+		</p1:hasCreator>
+		<p1:hasPublisher>
+			<p1:Organisation>
+				<rdfs:label>W3 Pictures Inc.</rdfs:label>
+			</p1:Organisation>
+		</p1:hasPublisher>
+		<p1:title>Bond speaking</p1:title>
+		<p1:description>Holmes shows Watson how the murderer entered the window.</p1:description>
+		<p1:duration rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.5</p1:duration>
+		<p1:frameRate rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">25.0</p1:frameRate>
+		<p1:hasNamedFragment>
+			<p1:MediaFragment rdf:about="ttml_example#subtitle1">
+				<owl:sameAs rdf:resource="ttml_example#t=0.76,3.45"/>
+				<p1:description>I travel, a sort of licensed troubleshooter.</p1:description>
+				<p1:duration rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.69</p1:duration>
+			</p1:MediaFragment>
+		</p1:hasNamedFragment>
+		<p1:hasFragment>
+			<p1:MediaFragment rdf:about="ttml_example#t=0.76,3.45"/>
+		</p1:hasFragment>
+	</p1:MediaResource>
+</rdf:RDF>

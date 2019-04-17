@@ -7,9 +7,6 @@ import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import owl.DataRange;
@@ -29,7 +26,7 @@ import owl.OwlPackage;
  *
  * @generated
  */
-public class DataUnionOfImpl extends MinimalEObjectImpl.Container implements DataUnionOf {
+public class DataUnionOfImpl extends DataRangeImpl implements DataUnionOf {
 	/**
 	 * The cached value of the '{@link #getDataRanges() <em>Data Ranges</em>}' reference list.
 	 * <!-- begin-user-doc -->

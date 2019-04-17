@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns="http://www.w3.org/2007/03/xproc#" xmlns:p="http://www.w3.org/2007/03/xproc" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:po="http://www.w3.org/2007/03/xproc#">
+ <owl:Ontology rdf:about="file:///d:/work/xproc/fig1.xml">
+  <owl:imports rdf:resource="xproc.owl"/>
+ </owl:Ontology>
+ <rdf:Description rdf:about="xproc.owl">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+ </rdf:Description>
+ <rdf:Description rdf:about="file:///d:/work/xproc/fig1.xml">
+  <rdf:type rdf:resource="http://www.w3.org/2007/03/xproc#Pipeline_Document"/>
+  <representsPipeShell rdf:resource="file:///d:/work/xproc/fig1"/>
+ </rdf:Description>
+ <rdf:Description rdf:about="file:///d:/work/xproc/fig1">
+  <rdf:type rdf:resource="http://www.w3.org/2007/03/xproc#Pipeline_Shell"/>
+  <definition>
+   <Built-in_Step_Definition rdf:about="http://www.w3.org/2007/03/xproc#xml-schema-validate">
+    <localName>xml-schema-validate</localName>
+    <namespaceName rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/2007/03/xproc</namespaceName>
+  <inputSig>
+     <Input_Signature rdf:about="http://www.w3.org/2007/03/xproc#xml-schema-validate.iSig.document">
+      <name>document</name>
+      <cardinality>1</cardinality>
+     </Input_Signature>
+    </inputSig>
+  <inputSig>
+     <Input_Signature rdf:about="http://www.w3.org/2007/03/xproc#xml-schema-validate.iSig.schema">
+      <name>schema</name>
+      <cardinality>*</cardinality>
+     </Input_Signature>
+    </inputSig>
+  <outputSig>
+     <Output_Signature rdf:about="http://www.w3.org/2007/03/xproc#xml-schema-validate.oSig.result">
+      <name>result</name>
+      <cardinality>1</cardinality>
+     </Output_Signature>
+    </outputSig>
+ </Built-in_Step_Definition>
+  </definition>
+  <definition>
+   <Built-in_Step_Definition rdf:about="http://www.w3.org/2007/03/xproc#xinclude">
+    <localName>xinclude</localName>
+    <namespaceName rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/2007/03/xproc</namespaceName>
+  <inputSig>
+     <Input_Signature rdf:about="http://www.w3.org/2007/03/xproc#xinclude.iSig.document">
+      <name>document</name>
+      <cardinality>1</cardinality>
+     </Input_Signature>
+    </inputSig>
+  <outputSig>
+     <Output_Signature rdf:about="http://www.w3.org/2007/03/xproc#xinclude.oSig.result">
+      <name>result</name>
+      <cardinality>1</cardinality>
+     </Output_Signature>
+    </outputSig>
+ </Built-in_Step_Definition>
+  </definition>
+  <definition>
+   <Built-in_Step_Definition rdf:about="http://www.w3.org/2007/03/xproc#insert">
+    <localName>insert</localName>
+    <namespaceName rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/2007/03/xproc</namespaceName>
+     <inputSig>
+     <Input_Signature rdf:about="http://www.w3.org/2007/03/xproc#insert.iSig.source">
+      <name>source</name>
+      <cardinality>1</cardinality>
+     </Input_Signature>
+    </inputSig>
+  <inputSig>
+     <Input_Signature rdf:about="http://www.w3.org/2007/03/xproc#insert.iSig.insertion">
+      <name>insertion</name>
+      <cardinality>1</cardinality>
+     </Input_Signature>
+    </inputSig>
+     <outputSig>
+     <Output_Signature rdf:about="http://www.w3.org/2007/03/xproc#insert.oSig.result">
+      <name>result</name>
+      <cardinality>1</cardinality>
+     </Output_Signature>
+    </outputSig>
+     <oSig>
+     <Option_Signature rdf:about="http://www.w3.org/2007/03/xproc#insert.anon.opt.target">
+      <localName>target</localName>
+      <required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</required>
+     </Option_Signature>
+    </oSig>
+     <oSig>
+     <Option_Signature rdf:about="http://www.w3.org/2007/03/xproc#insert.anon.opt.at-start">
+      <localName>at-start</localName>
+      <required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</required>
+     </Option_Signature>
+    </oSig>
+ </Built-in_Step_Definition>
+  </definition>
+  <definition>
+   <Built-in_Step_Definition rdf:about="http://www.w3.org/2007/03/xproc#xslt">
+    <localName>xslt</localName>
+    <namespaceName rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/2007/03/xproc</namespaceName>
+     <inputSig>
+     <Input_Signature rdf:about="http://www.w3.org/2007/03/xproc#xslt.iSig.source">
+      <name>source</name>
+      <cardinality>1</cardinality>
+     </Input_Signature>
+    </inputSig>
+  <inputSig>
+     <Input_Signature rdf:about="http://www.w3.org/2007/03/xproc#xslt.iSig.stylesheet">
+      <name>stylesheet</name>
+      <cardinality>1</cardinality>
+     </Input_Signature>
+    </inputSig>
+     <outputSig>
+     <Output_Signature rdf:about="http://www.w3.org/2007/03/xproc#xslt.oSig.result">
+      <name>result</name>
+      <cardinality>1</cardinality>
+     </Output_Signature>
+    </outputSig>
+ </Built-in_Step_Definition>
+  </definition>
+  <definition>
+   <Built-in_Step_Definition rdf:about="http://www.w3.org/2007/03/xproc#load">
+    <localName>load</localName>
+    <namespaceName rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/2007/03/xproc</namespaceName>
+  <oSig>
+     <Option_Signature rdf:about="http://www.w3.org/2007/03/xproc#load.anon.opt.href">
+      <localName>href</localName>
+      <required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</required>
+     </Option_Signature>
+    </oSig>
+  <outputSig>
+     <Output_Signature rdf:about="http://www.w3.org/2007/03/xproc#load.oSig.result">
+      <name>result</name>
+      <cardinality>1</cardinality>
+     </Output_Signature>
+    </outputSig>
+ </Built-in_Step_Definition>
+  </definition>
+  <pipeline>
+   <Subpipeline>
+    <environment>
+     <Environment/>
+    </environment>
+    
+   <component>
+     <Pipeline rdf:about="file:///d:/work/xproc/fig1#fig1">
+      <environment>
+       <Environment/>
+      </environment>
+      <input>
+       <InputPort rdf:about="file:///d:/work/xproc/fig1#i.fig1.doc">
+        <name>doc</name>
+        <ipSignature rdf:resource="file:///d:/work/xproc/fig1#fig1.iSig.doc"/>
+        <rdf:type rdf:resource="http://www.w3.org/2007/03/xproc#OutputPort"/>
+        <opSignature rdf:resource="file:///d:/work/xproc/fig1#fig1.iSig.doc"/>
+       </InputPort>
+      </input>
+      <input>
+       <InputPort rdf:about="file:///d:/work/xproc/fig1#i.fig1.schemaDoc">
+        <name>schemaDoc</name>
+        <ipSignature rdf:resource="file:///d:/work/xproc/fig1#fig1.iSig.schemaDoc"/>
+        <rdf:type rdf:resource="http://www.w3.org/2007/03/xproc#OutputPort"/>
+        <opSignature rdf:resource="file:///d:/work/xproc/fig1#fig1.iSig.schemaDoc"/>
+       </InputPort>
+      </input>
+      <output>
+       <OutputPort rdf:about="file:///d:/work/xproc/fig1#o.fig1.out">
+        <name>out</name>
+        <opSignature rdf:resource="file:///d:/work/xproc/fig1#fig1.oSig.out"/>
+        <rdf:type rdf:resource="http://www.w3.org/2007/03/xproc#InputPort"/>
+        <ipSignature rdf:resource="file:///d:/work/xproc/fig1#fig1.oSig.out"/>
+       </OutputPort>
+      </output>
+      <name>fig1</name>
+      <signature>
+       <Signature>
+        <inputSig>
+         <Input_Signature rdf:about="file:///d:/work/xproc/fig1#fig1.iSig.doc">
+          <name>doc</name>
+          <cardinality>1</cardinality>
+         </Input_Signature>
+        </inputSig>
+        <inputSig>
+         <Input_Signature rdf:about="file:///d:/work/xproc/fig1#fig1.iSig.schemaDoc">
+          <name>schemaDoc</name>
+          <cardinality>*</cardinality>
+         </Input_Signature>
+        </inputSig>
+        <outputSig>
+         <Output_Signature rdf:about="file:///d:/work/xproc/fig1#fig1.oSig.out">
+          <name>out</name>
+          <cardinality>1</cardinality>
+         </Output_Signature>
+        </outputSig>
+       </Signature>
+      </signature>
+      
+      
+      
+      <subpipeline>
+       <Subpipeline>
+        <environment>
+         <Environment>
+          <readablePort rdf:resource="file:///d:/work/xproc/fig1#i.fig1.doc"/>
+          <readablePort rdf:resource="file:///d:/work/xproc/fig1#i.fig1.schemaDoc"/>
+          <readablePort rdf:resource="file:///d:/work/xproc/fig1#o.s1.result"/>
+          <readablePort rdf:resource="file:///d:/work/xproc/fig1#o.s2.result"/>
+          <defaultReadablePort rdf:resource="file:///d:/work/xproc/fig1#i.fig1.doc"/>
+         </Environment>
+        </environment>
+        
+        
+       <component>
+         <Step rdf:about="file:///d:/work/xproc/fig1#s1">
+          <input>
+           <InputPort rdf:about="file:///d:/work/xproc/fig1#i.s1.document">
+            <name>document</name>
+            <ipSignature rdf:resource="http://www.w3.org/2007/03/xproc#xinclude.iSig.document"/>
+           </InputPort>
+          </input>
+          <environment>
+           <Environment>
+            <readablePort rdf:resource="file:///d:/work/xproc/fig1#i.fig1.doc"/>
+            <readablePort rdf:resource="file:///d:/work/xproc/fig1#i.fig1.schemaDoc"/>
+            <readablePort rdf:resource="file:///d:/work/xproc/fig1#o.s1.result"/>
+            <readablePort rdf:resource="file:///d:/work/xproc/fig1#o.s2.result"/>
+            <defaultReadablePort rdf:resource="file:///d:/work/xproc/fig1#i.fig1.doc"/>
+           </Environment>
+          </environment>
+          <output>
+           <OutputPort rdf:about="file:///d:/work/xproc/fig1#o.s1.result">
+            <name>result</name>
+            <opSignature rdf:resource="http://www.w3.org/2007/03/xproc#xinclude.oSig.result"/>
+           </OutputPort>
+          </output>
+          <container rdf:resource="file:///d:/work/xproc/fig1#fig1"/>
+          <name>s1</name>
+          <signature rdf:resource="http://www.w3.org/2007/03/xproc#xinclude"/>
+          
+         </Step>
+        </component><connect>
+         <Connect>
+          <source rdf:resource="file:///d:/work/xproc/fig1#i.fig1.doc"/>
+          <destination rdf:resource="file:///d:/work/xproc/fig1#i.s1.document"/>
+         </Connect>
+        </connect><component>
+         <Step rdf:about="file:///d:/work/xproc/fig1#s2">
+          <input>
+           <InputPort rdf:about="file:///d:/work/xproc/fig1#i.s2.document">
+            <name>document</name>
+            <ipSignature rdf:resource="http://www.w3.org/2007/03/xproc#xml-schema-validate.iSig.document"/>
+           </InputPort>
+          </input>
+          <input>
+           <InputPort rdf:about="file:///d:/work/xproc/fig1#i.s2.schema">
+            <name>schema</name>
+            <ipSignature rdf:resource="http://www.w3.org/2007/03/xproc#xml-schema-validate.iSig.schema"/>
+           </InputPort>
+          </input>
+          <environment>
+           <Environment>
+            <readablePort rdf:resource="file:///d:/work/xproc/fig1#i.fig1.doc"/>
+            <readablePort rdf:resource="file:///d:/work/xproc/fig1#i.fig1.schemaDoc"/>
+            <readablePort rdf:resource="file:///d:/work/xproc/fig1#o.s1.result"/>
+            <readablePort rdf:resource="file:///d:/work/xproc/fig1#o.s2.result"/>
+            <defaultReadablePort rdf:resource="file:///d:/work/xproc/fig1#o.s1.result"/>
+           </Environment>
+          </environment>
+          <output>
+           <OutputPort rdf:about="file:///d:/work/xproc/fig1#o.s2.result">
+            <name>result</name>
+            <opSignature rdf:resource="http://www.w3.org/2007/03/xproc#xml-schema-validate.oSig.result"/>
+           </OutputPort>
+          </output>
+          <container rdf:resource="file:///d:/work/xproc/fig1#fig1"/>
+          <name>s2</name>
+          <signature rdf:resource="http://www.w3.org/2007/03/xproc#xml-schema-validate"/>
+          
+          
+         </Step>
+        </component><connect>
+         <Connect>
+          <source rdf:resource="file:///d:/work/xproc/fig1#o.s1.result"/>
+          <destination rdf:resource="file:///d:/work/xproc/fig1#i.s2.document"/>
+         </Connect>
+        </connect><connect>
+         <Connect>
+          <source rdf:resource="file:///d:/work/xproc/fig1#i.fig1.schemaDoc"/>
+          <destination rdf:resource="file:///d:/work/xproc/fig1#i.s2.schema"/>
+         </Connect>
+        </connect></Subpipeline>
+      </subpipeline>
+     </Pipeline>
+    </component><connect>
+     <Connect>
+      <source rdf:resource="file:///d:/work/xproc/fig1#o.s2.result"/>
+      <destination rdf:resource="file:///d:/work/xproc/fig1#o.fig1.out"/>
+     </Connect>
+    </connect></Subpipeline>
+  </pipeline>
+ </rdf:Description>
+</rdf:RDF>

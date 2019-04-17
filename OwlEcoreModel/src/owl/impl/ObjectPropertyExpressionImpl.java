@@ -3,9 +3,6 @@
 package owl.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import owl.ObjectPropertyExpression;
 import owl.OwlPackage;
 
@@ -16,7 +13,7 @@ import owl.OwlPackage;
  *
  * @generated
  */
-public abstract class ObjectPropertyExpressionImpl extends MinimalEObjectImpl.Container implements ObjectPropertyExpression {
+public abstract class ObjectPropertyExpressionImpl extends SubObjectPropertyExpressionImpl implements ObjectPropertyExpression {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

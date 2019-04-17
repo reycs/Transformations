@@ -1,0 +1,429 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix DUL: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix oml: <http://def.seegrid.csiro.au/ontology/om/om-lite#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix meta: <http://meta.schema.org/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssnx: <http://purl.oclc.org/NET/ssnx/ssn#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix xhtm: <http://www.w3.org/1999/xhtml> .
+@prefix samfl: <http://def.seegrid.csiro.au/ontology/om/sam-lite#> .
+@prefix schema: <http://schema.org/> .
+@prefix ssn-dul: <http://www.w3.org/ns/ssn/dul#> .
+@prefix ssn-ssnx: <http://www.w3.org/2017/01/ssn-ssnx/> .
+
+<https://www.w3.org/2015/spatial/wiki/Mapping_Table> rdf:type owl:Ontology ;
+                                                     
+                                                     dct:modified "2016-03-01" ;
+                                                     
+                                                     dc:date "2016-03-01" ;
+                                                     
+                                                     dc:title "sosa ontology" ,
+                                                              "samfl ontology" ;
+                                                     
+                                                     dc:description "samfl (from worksheet)" .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://purl.org/dc/elements/1.1/creator
+
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/elements/1.1/date
+
+dc:date rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/elements/1.1/description
+
+dc:description rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/elements/1.1/identifier
+
+dc:identifier rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/elements/1.1/rights
+
+dc:rights rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/elements/1.1/source
+
+dc:source rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/elements/1.1/title
+
+dc:title rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/terms/modified
+
+dct:modified rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/2000/01/rdf-schema#isDefinedBy
+
+rdfs:isDefinedBy rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://def.seegrid.csiro.au/ontology/om/om-lite#featureOfInterest
+
+oml:featureOfInterest rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:label "feature of interest";
+                      
+                      rdfs:subPropertyOf sosa:hasFeatureOfInterest .
+
+sosa:hasFeatureOfInterest rdf:type owl:ObjectProperty .
+
+###  http://def.seegrid.csiro.au/ontology/om/om-lite#observedProperty
+
+oml:observedProperty rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:label "observed property" ;
+                     
+                     rdfs:subPropertyOf sosa:observedProperty .
+
+sosa:observedProperty rdf:type owl:ObjectProperty .
+
+
+
+###  http://def.seegrid.csiro.au/ontology/om/om-lite#phenomenonTime
+# CANNOT ALIGN ONJECT VS. DATATYPE PROPERTY
+# oml:phenomenonTime rdf:type owl:ObjectProperty ;
+#                   
+#                   rdfs:label "phenomenon time";
+#                   
+#                   rdfs:subPropertyOf sosa:phenomenonTime .
+#
+# sosa:phenomenonTime rdf:type owl:DatatypeProperty .
+
+###  http://def.seegrid.csiro.au/ontology/om/om-lite#procedure
+
+oml:procedure rdf:type owl:ObjectProperty ;
+              
+              rdfs:label "procedure" ;
+              
+              rdfs:subPropertyOf sosa:usedProcess .
+
+sosa:usedProcess rdf:type owl:ObjectProperty .
+
+
+
+###  http://def.seegrid.csiro.au/ontology/om/om-lite#result
+
+oml:result rdf:type owl:ObjectProperty ;
+           
+           rdfs:label "result" ;
+           
+           rdfs:isDefinedBy "https://www.w3.org/2015/spatial/wiki/Mapping_Table" ;
+           
+           rdfs:subPropertyOf sosa:hasResult .
+
+sosa:hasResult rdf:type owl:ObjectProperty .
+
+###  http://def.seegrid.csiro.au/ontology/om/om-lite#resultTime
+
+oml:resultTime rdf:type owl:DatatypeProperty ;
+               
+               rdfs:label "result time" ;
+               
+               rdfs:subPropertyOf sosa:resultTime .
+
+sosa:resultTime rdf:type owl:DatatypeProperty .
+
+###  http://def.seegrid.csiro.au/ontology/om/sam-lite#hostedProcedure
+
+samfl:hostedProcedure rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:label "hosted procedure";
+                      
+                      rdfs:subPropertyOf sosa:hosts .
+
+sosa:hosts rdf:type owl:ObjectProperty .
+
+
+###  http://def.seegrid.csiro.au/ontology/om/sam-lite#sampledFeature
+
+samfl:sampledFeature rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:label "sampled feature" ;
+                     
+                     rdfs:subPropertyOf sosa:isSampleOf .
+
+
+sosa:isSampleOf rdf:type owl:ObjectProperty .
+
+
+
+###  http://www.w3.org/ns/ssn/attachedSystem
+
+ssn:attachedSystem rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:label "attached system".
+
+
+
+###  http://www.w3.org/ns/ssn/featureOfInterest
+
+ssn:featureOfInterest rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:label "feature of interest".
+
+
+
+###  http://www.w3.org/ns/ssn/madeObservation
+
+ssn:madeObservation rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:label "made observation" .
+
+
+
+###  http://www.w3.org/ns/ssn/observationResult
+
+ssn:observationResult rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:label "observation result".
+
+
+
+###  http://www.w3.org/ns/ssn/observationResultTime
+
+ssn:observationResultTime rdf:type owl:ObjectProperty ;
+                          
+                          rdfs:label "observation result time" .
+
+
+
+###  http://www.w3.org/ns/ssn/observationSamplingTime
+
+ssn:observationSamplingTime rdf:type owl:ObjectProperty ;
+                            
+                            rdfs:label "observation sampling time"  .
+
+
+
+###  http://www.w3.org/ns/ssn/observedProperty
+
+ssn:observedProperty rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:label "observed property" .
+
+
+
+###  http://www.w3.org/ns/ssn/observes
+
+ssn:observes rdf:type owl:ObjectProperty ;
+             
+             rdfs:label "observes" .
+
+
+
+###  http://www.w3.org/ns/ssn/onPlatform
+
+ssn:onPlatform rdf:type owl:ObjectProperty ;
+               
+               rdfs:label "on platform" .
+
+
+
+###  http://www.w3.org/ns/ssn/sensingMethodUsed
+
+ssn:sensingMethodUsed rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:label "sensing method used".
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://def.seegrid.csiro.au/ontology/om/om-lite#Observation
+
+oml:Observation rdf:type owl:Class ;
+                
+                rdfs:label "Observation" ;
+                
+                owl:equivalentClass sosa:Observation ;
+                
+                rdfs:isDefinedBy "https://www.w3.org/2015/spatial/wiki/Mapping_Table" .
+
+
+
+###  http://def.seegrid.csiro.au/ontology/om/om-lite#Process
+
+oml:Process rdf:type owl:Class ;
+            
+            rdfs:label "Procedure" ;
+            
+            owl:equivalentClass sosa:Procedure ;
+            
+            rdfs:isDefinedBy "https://www.w3.org/2015/spatial/wiki/Mapping_Table" .
+
+
+
+###  http://def.seegrid.csiro.au/ontology/om/sam-lite#SamplingFeature
+
+samfl:SamplingFeature rdf:type owl:Class ;
+                      
+                      rdfs:label "Sampling feature" ;
+                      
+                      owl:equivalentClass sosa:Sample.
+
+
+
+###  http://www.w3.org/ns/sosa/FeatureOfInterest
+
+sosa:FeatureOfInterest rdf:type owl:Class ;
+                       
+                       rdfs:label "Feature Of Interest" ;
+                       
+                       owl:equivalentClass ssn:FeatureOfInterest ;
+                       
+                       rdfs:isDefinedBy "https://www.w3.org/2015/spatial/wiki/Mapping_Table" .
+
+
+
+###  http://www.w3.org/ns/sosa/ObservableProperty
+
+sosa:ObservableProperty rdf:type owl:Class ;
+                        
+                        rdfs:label "Observable Property" ;
+                        
+                        owl:equivalentClass ssn:Property ;
+                        
+                        rdfs:isDefinedBy "https://www.w3.org/2015/spatial/wiki/Mapping_Table" .
+
+
+
+###  http://www.w3.org/ns/sosa/Observation
+
+sosa:Observation rdf:type owl:Class ;
+                 
+                 rdfs:label "Observation" ;
+                 
+                 owl:equivalentClass ssn:Observation ;
+                 
+                 rdfs:isDefinedBy "https://www.w3.org/2015/spatial/wiki/Mapping_Table" .
+
+
+
+###  http://www.w3.org/ns/sosa/Procedure
+
+sosa:Procedure rdf:type owl:Class .
+
+
+
+###  http://www.w3.org/ns/sosa/Result
+
+sosa:Result rdf:type owl:Class ;
+            
+            rdfs:label "Result" ;
+            
+            rdfs:isDefinedBy "https://www.w3.org/2015/spatial/wiki/Mapping_Table" .
+
+
+
+###  http://www.w3.org/ns/sosa/Sample
+
+sosa:Sample rdf:type owl:Class .
+
+
+
+###  http://www.w3.org/ns/sosa/Sensor
+
+sosa:Sensor rdf:type owl:Class ;
+            
+            rdfs:label "Sensor" ;
+            
+            owl:equivalentClass ssn:Sensor ;
+            
+            rdfs:isDefinedBy "https://www.w3.org/2015/spatial/wiki/Mapping_Table" .
+
+
+
+###  http://www.w3.org/ns/ssn/FeatureOfInterest
+
+ssn:FeatureOfInterest rdf:type owl:Class ;
+                      
+                      rdfs:label "Feature Of Interest".
+
+
+
+###  http://www.w3.org/ns/ssn/Observation
+
+ssn:Observation rdf:type owl:Class ;
+                
+                rdfs:label "Observation" ;
+                
+                rdfs:isDefinedBy "https://www.w3.org/2015/spatial/wiki/Mapping_Table" .
+
+
+
+###  http://www.w3.org/ns/ssn/Property
+
+ssn:Property rdf:type owl:Class ;
+             
+             rdfs:label "Observable Property" .
+
+
+
+###  http://www.w3.org/ns/ssn/Sensor
+
+ssn:Sensor rdf:type owl:Class ;
+           
+           rdfs:label "Sensor" ;
+           
+           rdfs:isDefinedBy "https://www.w3.org/2015/spatial/wiki/Mapping_Table" .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

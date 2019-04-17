@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="UTF-8"?><rdf:RDF xmlns="http://www.w3.org/2007/uwa/context/hardware.owl#" xmlns:assert="http://www.owl-ontologies.com/assert.owl#" xmlns:common="http://www.w3.org/2007/uwa/context/common.owl#" xmlns:dc="http://purl.org/dc/terms/" xmlns:dcn="http://www.w3.org/2007/uwa/context/deliverycontext.owl#" xmlns:ex="http://www.example.org/2007/uwa/context/examples.owl#" xmlns:hard="http://www.w3.org/2007/uwa/context/hardware.owl#" xmlns:java="http://www.w3.org/2007/uwa/context/java.owl#" xmlns:loc="http://www.w3.org/2007/uwa/context/location.owl#" xmlns:net="http://www.w3.org/2007/uwa/context/network.owl#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:push="http://www.w3.org/2007/uwa/context/push.owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:soft="http://www.w3.org/2007/uwa/context/software.owl#" xmlns:web="http://www.w3.org/2007/uwa/context/web.owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xml:base="http://www.w3.org/2007/uwa/context/hardware.owl">
+  <common:TermGroup rdf:about="#TermGroup_Hardware">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A group of terms with properties, classes and instances that model the hardware elements of a Delivery Context</rdfs:comment>
+        <common:termGroupPrefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hard</common:termGroupPrefix>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hardware</rdfs:label>
+        <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+      </common:TermGroup>
+  <owl:Class rdf:about="#GraphicDisplay">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a graphic display</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Display"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Graphic Display</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#Context_HardwareEntity">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is the base class for those ontology entities that have to do with hardware</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Context Hardware Entity</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Context_Entity"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#HardwareStatus">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents the status of a hardware component</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Context_HardwareEntity"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hardware Status</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#Keyboard">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a keyboard in a device</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Keyboard</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InputDevice"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#InfraredHardware">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents the infrared hardware on a device</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#HardwareComponent"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfraredHardware</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#Camera">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InputDevice"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Camera</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a camera in a device</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Battery">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#HardwareComponent"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Battery</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a battery in a device</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#BluetoothProfile">
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BluetoothProfile</common:relatedUAProfEntity>
+    <rdfs:subClassOf rdf:resource="#Context_HardwareEntity"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#name"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#id"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bluetooth Profile</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class describes a specific Bluetooth profile used to support a particular user scenario</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Microphone">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a microphone in a device</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Microphone</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InputDevice"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#OutputDevice">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents an output mechanism that can be available in a device</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#HardwareComponent"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output Device</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#DeviceHardware">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Device Hardware</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#primaryCamera"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#InputDevice"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#inputDevice"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#pointingResolution"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#PointingResolution"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#HardwareComponent"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents the hardware in a device</rdfs:comment>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HardwarePlatform</common:relatedUAProfEntity>
+  </owl:Class>
+  <owl:Class rdf:about="#BluetoothStatus">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents the possible statuses of Bluetooth in a device</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bluetooth Status</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#id"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Context_HardwareEntity"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Display">
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HardwarePlatform</common:relatedUAProfEntity>
+    <rdfs:subClassOf rdf:resource="#OutputDevice"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Display</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a visual display on a device</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#MemoryCard">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a storage card which can be attached to a device</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Memory Card</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#volatile"/>
+        </owl:onProperty>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MemoryUnit"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#HardwareComponent">
+    <rdfs:subClassOf rdf:resource="#Context_HardwareEntity"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Aspect"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#status"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#HardwareStatus"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hardware Component</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a hardware component of a Device</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#WiFiHardware">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents  hardware in a device that can be used to access to WiFi networks</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#HardwareComponent"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WiFi Hardware</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#PointingResolution">
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PointingResolution</common:relatedUAProfEntity>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pointing Resolution</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents the precision with which the pointing can be achieved on a  device</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#id"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Context_HardwareEntity"/>
+  </owl:Class>
+  <owl:Class rdf:about="#MemoryUnit">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#size"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#HardwareComponent"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Memory Unit</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents some memory used in a device. It might, for example, be built-in memory that is part of the device, or it might be removable memory on some form of storage card</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#CPU">
+    <rdfs:subClassOf rdf:resource="#HardwareComponent"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CPU</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class describes a central processing unit associated with a device</rdfs:comment>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CPU</common:relatedUAProfEntity>
+  </owl:Class>
+  <owl:Class rdf:about="#InputDevice">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents an input mechanism that can be available in a device</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input Device</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#HardwareComponent"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#id"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#TactileDisplay">
+    <rdfs:subClassOf rdf:resource="#Display"/>
+    <rdfs:subClassOf rdf:resource="#InputDevice"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tactile Display</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A display that is tac-sensitive, allowing users to interact directly with the objects shown on the screen</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#CellularHardware">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cellular Hardware</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#HardwareComponent"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents device hardware that can be used to access to mobile operator telephony networks</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Speaker">
+    <rdfs:subClassOf rdf:resource="#OutputDevice"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Speaker</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a speaker component in a device</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#NfcHardware">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NFC Hardware</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#HardwareComponent"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents the NFC hardware on a device</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#BluetoothHardware">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bluetooth Hardware</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#BluetoothProfile"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#supportedBluetoothProfiles"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#HardwareComponent"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents device hardware that can be used to access to Bluetooth technology</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#CharacterDisplay">
+    <rdfs:subClassOf rdf:resource="#Display"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Character Display</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a character oriented display</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#battery">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hardwareComponent"/>
+    </rdfs:subPropertyOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Battery</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents one or more batteries in a device</rdfs:comment>
+    <rdfs:domain rdf:resource="#DeviceHardware"/>
+    <rdfs:range rdf:resource="#Battery"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#secondaryCamera">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Secondary Camera</rdfs:label>
+    <rdfs:domain rdf:resource="#DeviceHardware"/>
+    <rdfs:range rdf:resource="#Camera"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hardwareComponent"/>
+    </rdfs:subPropertyOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents a secondary camera of a device</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#outputCharacterSets">
+    <rdfs:domain rdf:resource="#DeviceHardware"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet"/>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OutputCharSet</common:relatedUAProfEntity>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+    </rdfs:subPropertyOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property defines the character sets supported by the device for output</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output Character Sets</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#display">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents a display associated with a device</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Display</rdfs:label>
+    <rdfs:domain rdf:resource="#DeviceHardware"/>
+    <rdfs:range rdf:resource="#Display"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hardwareComponent"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#primary">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents a relationship between the device hardware and the primary components it contains</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Primary</rdfs:label>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hardwareComponent"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#memory">
+    <rdfs:range rdf:resource="#MemoryUnit"/>
+    <rdfs:domain rdf:resource="#DeviceHardware"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hardwareComponent"/>
+    </rdfs:subPropertyOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the hardware memory component/s of a device</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Memory</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#supportedBluetoothProfiles">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property defines the Bluetooth profiles supported by the device</rdfs:comment>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BluetoothProfile</common:relatedUAProfEntity>
+    <rdfs:range rdf:resource="#BluetoothProfile"/>
+    <rdfs:domain rdf:resource="#BluetoothHardware"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Supported Bluetooth Profiles</rdfs:label>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hardwareComponent">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hardware Component</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents a hardware component</rdfs:comment>
+    <rdfs:domain rdf:resource="#DeviceHardware"/>
+    <rdfs:range rdf:resource="#HardwareComponent"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/deliverycontext.owl#component"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#inputDevice">
+    <rdfs:domain rdf:resource="#DeviceHardware"/>
+    <rdfs:range rdf:resource="#InputDevice"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The input mechanisms supported by a device</rdfs:comment>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Keyboard</common:relatedUAProfEntity>
+    <common:relatedDDRCoreVoc rdf:datatype="http://www.w3.org/2001/XMLSchema#string">inputDevices</common:relatedDDRCoreVoc>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input Devices</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#extensionMemory">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property identifies additional memory that is provided to a device, typically in the form of removable memory cards</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Extension Memory</rdfs:label>
+    <rdfs:domain rdf:resource="#DeviceHardware"/>
+    <rdfs:range rdf:resource="#MemoryUnit"/>
+    <rdfs:subPropertyOf rdf:resource="#memory"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#inputCharacterSets">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property defines the character sets supported by the device for input</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+    <rdfs:domain rdf:resource="#DeviceHardware"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#CharacterSet"/>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InputCharSet</common:relatedUAProfEntity>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input Character Sets</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#outputDevice">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The output mechanisms supported by a Device</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output Devices</rdfs:label>
+    <rdfs:range rdf:resource="#OutputDevice"/>
+    <rdfs:domain rdf:resource="#DeviceHardware"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#cpu">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CPU</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents a CPU for a device</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="#hardwareComponent"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="#bluetoothVersion">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#DeviceHardware"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Supported Bluetooth Version</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the version/s of Bluetooth supported</rdfs:comment>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupportedBluetoothVersion</common:relatedUAProfEntity>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#supportedOrientations">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Supported Orientation</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property holds the supported orientations of a display</rdfs:comment>
+    <rdfs:domain rdf:resource="#Display"/>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:rest rdf:parseType="Resource">
+              <rdf:rest rdf:parseType="Resource">
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int">180</rdf:first>
+              </rdf:rest>
+              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int">-90</rdf:first>
+            </rdf:rest>
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int">90</rdf:first>
+          </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</rdf:first>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:about="#size">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the total size of a hardware element (memory, registry, etc.) in bytes</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedLong"/>
+    <rdfs:domain rdf:resource="#MemoryUnit"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Size</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#bluetoothName">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Bluetooth friendly name of the device</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bluetooth Friendly Name</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Device"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#bluetoothAddress">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bluetooth Address</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Bluetooth address of the device represented in hexadecimal format. he Bluetooth address will be 12 characters long. Valid characters are 0-9 and A-F</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#BluetoothHardware"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#status">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the status of a hardware component</rdfs:comment>
+    <rdfs:domain rdf:resource="#HardwareComponent"/>
+    <rdfs:range rdf:resource="#HardwareStatus"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Status</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#bluetoothStatus">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property indicates the Bluetooth Status of a device</rdfs:comment>
+    <rdfs:range rdf:resource="#BluetoothStatus"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Device"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bluetooth Status</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#batteryBeingCharged">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Battery"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property indicates whether the battery is currently being charged or not</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Battery Being Charged</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#thickness">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Thickness</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The thickness of something measured in centimeters</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#builtInMemory">
+    <rdfs:subPropertyOf rdf:resource="#memory"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Built-in Memory</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the memory built into the device and which is not removable during normal operation</rdfs:comment>
+    <rdfs:domain rdf:resource="#DeviceHardware"/>
+    <rdfs:range rdf:resource="#MemoryUnit"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#height">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The total height of something as a linear measure in centimeters</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Height</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#muted">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Muted</rdfs:label>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Speaker"/>
+          <owl:Class rdf:about="#Microphone"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indicates if a speaker or microphone is muted or not</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#batteryCapacity">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Battery Capacity</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The capacity of a battery, as an amount of electric charge that it can store, measured in ampere-hours</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#Battery"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#availableSize">
+    <rdfs:domain rdf:resource="#MemoryUnit"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedLong"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the amount of memory available for use, in bytes</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Available Memory Size</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#meid">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MEID</rdfs:label>
+    <rdfs:subPropertyOf>
+      <owl:FunctionalProperty rdf:about="#deviceIdentifier"/>
+    </rdfs:subPropertyOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mobile Equipment Identifier (MEID) is a globally unique number identifying a physical piece of CDMA mobile station equipment. The number format is defined by the 3GPP2 standard S.R0048 but in practical terms, it can be seen as an IMEI but with hexadecimal digits</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Device"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#imei">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The International Mobile Equipment Identity or IMEI is a number unique to every GSM and UMTS mobile phone.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IMEI</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Device"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf>
+      <owl:FunctionalProperty rdf:about="#deviceIdentifier"/>
+    </rdfs:subPropertyOf>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#primaryCamera">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the primary camera of  a device</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="#hardwareComponent"/>
+    <rdfs:subPropertyOf rdf:resource="#primary"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Primary Camera</rdfs:label>
+    <rdfs:domain rdf:resource="#DeviceHardware"/>
+    <rdfs:range rdf:resource="#Camera"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#softkeyNumber">
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NumberOfSoftKeys</common:relatedUAProfEntity>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Number of Soft Keys</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the number of input keys on the keyboard whose function can be controlled programatically</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#DeviceHardware"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#volumeLevel">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The relative volume level of a speaker (between 0 and 100)</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Volume Level</rdfs:label>
+    <rdfs:domain rdf:resource="#Speaker"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#deviceHardware">
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Device"/>
+    <rdfs:range rdf:resource="#DeviceHardware"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Device Hardware</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the hardware associated with a device</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#maxCpuFrequency">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#CPU"/>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CPUMaximumFrequency</common:relatedUAProfEntity>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Processor maximum speed</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CPU Maximum Frequency</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#volatile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Volatile</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property indicates if the memory unit is volatile or not</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#MemoryUnit"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#weight">
+    <rdfs:domain rdf:resource="#Context_HardwareEntity"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The weight of something physical, measured in kilos</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Weight</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#colorDepth">
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BitsPerPixel</common:relatedUAProfEntity>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Count the number of bits used for color definition</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Color Depth</rdfs:label>
+    <common:relatedDDRCoreVoc rdf:datatype="http://www.w3.org/2001/XMLSchema#string">displayColorDepth</common:relatedDDRCoreVoc>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#isTethered">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property states whether this Device is actuating "tethered" to another Device, giving the latter some kind of wireless connection</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tethered</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Device"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#pointingResolution">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pointing Resolution</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#DeviceHardware"/>
+    <rdfs:range rdf:resource="#PointingResolution"/>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PointingResolution</common:relatedUAProfEntity>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the precision with which pointing can be carried out on a device</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#currentOrientation">
+    <rdfs:subPropertyOf rdf:resource="#supportedOrientations"/>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:rest rdf:parseType="Resource">
+              <rdf:rest rdf:parseType="Resource">
+                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int">180</rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+              </rdf:rest>
+              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int">-90</rdf:first>
+            </rdf:rest>
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int">90</rdf:first>
+          </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</rdf:first>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#Display"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Orientation</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the current orientation of a display</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#deviceIdentifier">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Identifies univoquely a device</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#id"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Device"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Device Identifier</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#batteryLevel">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property holds the percentage of the battery capacity that remains available</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Battery Level</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Battery"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#width">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Context_HardwareEntity"/>
+          <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Device"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The total width of something as a linear measure, measured in centimeters</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Width</rdfs:label>
+  </owl:FunctionalProperty>
+  <common:Feature rdf:about="#Feature_COLOR_DISPLAY">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ColorDisplay</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This feature indicates that color display is supported</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Color Display</rdfs:label>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__Feature_ColorDisplay</common:id>
+  </common:Feature>
+  <hard:TactileDisplay rdf:about="#InputDevice_TOUCH_SCREEN">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Touch screen that allows pointing to an area on the screen</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Touch Screen</rdfs:label>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__InputDevice_TouchScreen</common:id>
+  </hard:TactileDisplay>
+  <hard:BluetoothStatus rdf:about="#BluetoothStatus_DISCOVERABLE">
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This status indicates that the device can be discovered by other Bluetooth devices</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bluetooth Discoverable</rdfs:label>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__BTStatus_Discoverable</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Discoverable</common:name>
+  </hard:BluetoothStatus>
+  <hard:Keyboard rdf:about="#InputDevice_QWERTY_KEYBOARD">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__InputDevice_QwertyKeyboard</common:id>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Qwerty Keyboard</rdfs:label>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Represents a full alphanumeric keyboard</rdfs:comment>
+  </hard:Keyboard>
+  <hard:InputDevice rdf:about="#InputDevice_STYLUS">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Represents a stylus</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stylus</rdfs:label>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__InputDevice_Stylus</common:id>
+  </hard:InputDevice>
+  <hard:BluetoothStatus rdf:about="#BluetoothStatus_PAIRED">
+        <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__BTStatus_Paired</common:id>
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paired</common:name>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This status indicates that the device is paired to other Bluetooth device</rdfs:comment>
+        <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bluetooth Status Paired</rdfs:label>
+      </hard:BluetoothStatus>
+  <hard:BluetoothStatus rdf:about="#BluetoothStatus_HIDDEN">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bluetooth Status Hidden</rdfs:label>
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hidden</common:name>
+        <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This status indicates that the device cannot be discovered by other Bluetooth devices</rdfs:comment>
+        <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__BTStatus_Hidden</common:id>
+      </hard:BluetoothStatus>
+  <hard:BluetoothStatus rdf:about="#BluetoothStatus_TEMP_DISCOVERABLE">
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Temporary Discoverable</common:name>
+        <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__BTStatus_Temp_Discoverable</common:id>
+        <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This status indicates that the device can be temporarily discovered by other Bluetooth devices</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bluetooth Status Temporarily Discoverable</rdfs:label>
+      </hard:BluetoothStatus>
+  <hard:PointingResolution rdf:about="#PointingResolution_PIXEL">
+            <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__PointingResolution_Pixel</common:id>
+            <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pixel</common:name>
+            <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pixel Pointing Resolution</rdfs:label>
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The pointing device can select an individual pixel</rdfs:comment>
+            <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+          </hard:PointingResolution>
+  <common:AllDisjointSet rdf:about="#Sibling_Disjoint2">
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hard:Display</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hard:MemoryUnit</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hard:CPU</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hard:Microphone</common:disjointClass>
+    <common:disjointSet>
+      <common:AllDisjointSet rdf:about="#Sibling_Disjoint">
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hard:HardwareStatus</common:disjointClass>
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hard:BluetoothStatus</common:disjointClass>
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hard:PointingResolution</common:disjointClass>
+        <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hard:BluetoothProfile</common:disjointClass>
+      </common:AllDisjointSet>
+    </common:disjointSet>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hard:BluetoothHardware</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hard:DeviceHardware</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hard:Battery</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hard:NfcHardware</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hard:Camera</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hard:WiFiHardware</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hard:CellularHardware</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hard:Speaker</common:disjointClass>
+  </common:AllDisjointSet>
+  <common:Feature rdf:about="#Feature_MONOCHROME_DISPLAY">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MonochromeDisplay</rdfs:label>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This feature indicates that a display is monochrome</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MonochromeDisplay</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__Feature_MonochromeDisplay</common:id>
+  </common:Feature>
+  <hard:InputDevice rdf:about="#InputDevice_MOUSE">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__InputDevice_Mouse</common:id>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mouse</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Represents a typical two button mouse found on a PC device</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+  </hard:InputDevice>
+  <hard:BluetoothProfile rdf:about="#BluetoothProfile_genericAccess">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Bluetooth profile that defines the basic level of function that all devices must implement.</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Generic Access</common:name>
+  </hard:BluetoothProfile>
+  <hard:PointingResolution rdf:about="#PointingResolution_CHAR">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The pointing device can select an individual character</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">character</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__PointingResolution_Character</common:id>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Character Pointing Resolution</rdfs:label>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+  </hard:PointingResolution>
+  <hard:InputDevice rdf:about="#InputDevice_CLICK_WHEEL">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__InputDevice_ClickWheel</common:id>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Click Wheel</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A wheel that is normally placed either below the screen or on the side of the device that lets the user quickly move up and down and click on link or items on the screen</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+  </hard:InputDevice>
+  <hard:InputDevice rdf:about="#InputDevice_FOUR_WAY_SCROLLER">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scroll up and down and side to side</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Four Way Scroller</rdfs:label>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__InputDevice_FourWayScroller</common:id>
+  </hard:InputDevice>
+  <hard:HardwareStatus rdf:about="#HardwareStatus_OFF">
+        <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This status indicates that the hardware component is off</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Off</rdfs:label>
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Off</common:name>
+        <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__HardwareStatus_Off</common:id>
+      </hard:HardwareStatus>
+  <hard:HardwareStatus rdf:about="#HardwareStatus_ON">
+        <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__HardwareStatus_On</common:id>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This status indicates that the hardware component is on</rdfs:comment>
+        <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">On</rdfs:label>
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">On</common:name>
+      </hard:HardwareStatus>
+  <hard:InputDevice rdf:about="#InputDevice_JOG_DIAL">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A jog dial, jog wheel, shuttle dial, or shuttle wheel is a type of knob, ring, wheel, or dial which allows the user to shuttle or jog</rdfs:comment>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jog Dial</rdfs:label>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__InputDevice_JogDial</common:id>
+  </hard:InputDevice>
+  <hard:BluetoothProfile rdf:about="#BluetoothProfile_objectPush">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Bluetooth profile that defines how predefined standard objects, such as virtual business cards, are pushed to another device.</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Object Push</common:name>
+  </hard:BluetoothProfile>
+  <hard:Keyboard rdf:about="#InputDevice_NUMERIC_KEYPAD">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Numeric Keypad</rdfs:label>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A keyboard with only numeric input</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__InputDevice_NumericKeypad</common:id>
+  </hard:Keyboard>
+  <hard:BluetoothProfile rdf:about="#BluetoothProfile_dialup">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dialup Networking</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Bluetooth profile that defines how devices provide modem services.</rdfs:comment>
+  </hard:BluetoothProfile>
+  <hard:BluetoothProfile rdf:about="#BluetoothProfile_genericObjExch">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Bluetooth profile that defines how the Infra Red Data Association's OBEX object exchange protocol is used to allow devices to exchange objects.</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Generic Object Exchange</common:name>
+  </hard:BluetoothProfile>
+  <hard:BluetoothProfile rdf:about="#BluetoothProfile_headSet">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Bluetooth profile that defines how headsets communicate with devices.</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Head Set</common:name>
+  </hard:BluetoothProfile>
+  <hard:BluetoothProfile rdf:about="#BluetoothProfile_serialPort">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Bluetooth profile that defines how devices provide serial port emulation for communication.</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Serial Port</common:name>
+  </hard:BluetoothProfile>
+  <hard:PointingResolution rdf:about="#PointingResolution_LINE">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">line</common:name>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Line Pointing Resolution</rdfs:label>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The pointing device can select a line of text</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__PointingResolution_Line</common:id>
+  </hard:PointingResolution>
+  <hard:HardwareStatus rdf:about="#HardwareStatus_STANDBY">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Standby</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This status indicates that harware component is in standby mode</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__HardwareStatus_STANDBY</common:id>
+  </hard:HardwareStatus>
+  <hard:InputDevice rdf:about="#InputDevice_TRACK_BALL">
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A little sphere that acts like a trackball mouse</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__InputDevice_TrackBall</common:id>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Track Ball</rdfs:label>
+  </hard:InputDevice>
+  <hard:BluetoothProfile rdf:about="#BluetoothProfile_fileTransfer">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Bluetooth profile that defines how devices perform file transfer.</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">File Transfer</common:name>
+  </hard:BluetoothProfile>
+  <hard:Keyboard rdf:about="#InputDevice_PHONE_KEYPAD">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__InputDevice_PhoneKeypad</common:name>
+    <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Normative"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A phone-style keypad where multiple symbols are available through multiple presses of a limited number of keys</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Phone Keypad</rdfs:label>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">__InputDevice_PhoneKeypad</common:id>
+  </hard:Keyboard>
+</rdf:RDF>

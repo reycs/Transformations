@@ -1,0 +1,268 @@
+<rdf:RDF
+    xmlns:unlkb="http://www.undl.org/unlkb#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#">
+  <owl:Class rdf:ID="UniversalWord"/>
+  <owl:ObjectProperty rdf:ID="has-agt-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+     <rdfs:label>"Agent"</rdfs:label>
+    <rdfs:range rdf:resource="#UniversalWord"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-obj-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"affected thing"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-icl-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"included/a kind of"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-cao-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"co-thing with attribute"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-aoj-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"thing with attribute"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-cag-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"co-agent"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-ptn-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"partner"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-ben-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"beneficiary"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-cob-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"affected co-thing"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-opl-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"affected place"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-ins-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"instrument"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-met-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"method of means"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-man-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"manner"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-plc-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"place"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-plf-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"initial place"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-plt-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"final place"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-scn-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"scene"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-gol-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"goal, final state"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-opl-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"affected place"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-src-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"source, initial state"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-via-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"immidiate place or state"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-dur-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"duration"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-tim-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"time"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-tmf-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"initial time"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-tmt-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"final time"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-and-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"conjunction"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-or-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"disjunction"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-frm-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"origin"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-to-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"destination"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-fmt-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"range/from-to"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-equ-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"equivalent"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-icl-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"included/a kind of"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-iof-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"an inctance of"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-condition-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"condition"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-coo-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"co-ocuarance"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-pur-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"purpose or objective"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-rsn-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"reason"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-seq-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"sequance"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-bas-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"basis for expressing a standard"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-cnt-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"content/namely"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-man-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"manner"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-mod-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"modification"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-nam-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"name"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-per-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"proportiion/rate or distribution"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-pof-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"part of"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-pos-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"possessor"</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-qua-relation"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="#UniversalWord"/>
+    <rdfs:label>"quantity"</rdfs:label>
+  </owl:ObjectProperty>
+  
+  <owl:DatatypeProperty rdf:ID="head-word"
+     rdf:type="http://www.w3.org/2002/07/owl#FunctionalProperty">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  
+  <unlkb:UniversalWord rdf:ID="thing">
+    <unlkb:head-word>thing</unlkb:head-word>
+  </unlkb:UniversalWord>
+  <unlkb:UniversalWord rdf:ID="calculate(agt&gt;thing,obj&gt;thing)">
+    <unlkb:head-word>calculate</unlkb:head-word>
+    <unlkb:has-agt-relation rdf:resource="#thing"/>
+    <unlkb:has-obj-relation rdf:resource="#thing"/>
+  </unlkb:UniversalWord>
+  <unlkb:UniversalWord rdf:ID="calculate(agt&gt;thing,obj&gt;thing)">
+    <unlkb:head-word>calculate</unlkb:head-word>
+    <unlkb:has-agt-relation rdf:resource="#thing"/>
+    <unlkb:has-obj-relation rdf:resource="#thing"/>
+  </unlkb:UniversalWord>
+  <unlkb:UniversalWord rdf:ID="adjust(icl&gt;calculate(agt&gt;thing,obj&gt;thing))">
+    <unlkb:head-word>adjust</unlkb:head-word>
+    <unlkb:has-icl-relation rdf:resource="#calculate(agt&gt;thing,obj&gt;thing)"/>
+    <unlkb:has-agt-relation rdf:resource="#thing"/>
+    <unlkb:has-obj-relation rdf:resource="#thing"/>
+  </unlkb:UniversalWord>
+
+</rdf:RDF>

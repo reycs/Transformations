@@ -80,6 +80,7 @@ import owl.ObjectOneOf;
 import owl.ObjectProperty;
 import owl.ObjectPropertyAssertion;
 import owl.ObjectPropertyAxiom;
+import owl.ObjectPropertyChain;
 import owl.ObjectPropertyDomain;
 import owl.ObjectPropertyExpression;
 import owl.ObjectPropertyRange;
@@ -93,6 +94,7 @@ import owl.StringLiteral;
 import owl.SubAnnotationPropertyOf;
 import owl.SubClassOf;
 import owl.SubDataPropertyOf;
+import owl.SubObjectPropertyExpression;
 import owl.SubObjectPropertyOf;
 import owl.SymmetricObjectProperty;
 import owl.TransitiveObjectProperty;
@@ -510,6 +512,14 @@ public class OwlAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseAnnotationValue(AnnotationValue object) {
 				return createAnnotationValueAdapter();
+			}
+			@Override
+			public Adapter caseSubObjectPropertyExpression(SubObjectPropertyExpression object) {
+				return createSubObjectPropertyExpressionAdapter();
+			}
+			@Override
+			public Adapter caseObjectPropertyChain(ObjectPropertyChain object) {
+				return createObjectPropertyChainAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -1774,6 +1784,34 @@ public class OwlAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAnnotationValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link owl.SubObjectPropertyExpression <em>Sub Object Property Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see owl.SubObjectPropertyExpression
+	 * @generated
+	 */
+	public Adapter createSubObjectPropertyExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link owl.ObjectPropertyChain <em>Object Property Chain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see owl.ObjectPropertyChain
+	 * @generated
+	 */
+	public Adapter createObjectPropertyChainAdapter() {
 		return null;
 	}
 

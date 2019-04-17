@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/"
+  xml:base="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets">
+  <owl:Ontology rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/value-partitions-variant-1.n3"/>
+  <owl:Ontology rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/"/>
+  <owl:Ontology rdf:about="http://a.com/ontology"/>
+  <owl:Class rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Modifier"/>
+  <owl:Class rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Medium_health_value">
+    <owl:disjointWith>
+      <owl:Class rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Poor_health_value"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Health_Value"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Good_health_value"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Healthy_person">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Person"/>
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Good_health_value"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/has_health_status"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Good_health_value">
+    <owl:disjointWith>
+      <owl:Class rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Poor_health_value"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Health_Value"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Medium_health_value"/>
+  </owl:Class>
+  <owl:Class rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Person">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Self_standing_entity"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Health_Value">
+    <rdfs:subClassOf rdf:resource="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Modifier"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Poor_health_value"/>
+          <owl:Class rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Medium_health_value"/>
+          <owl:Class rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Good_health_value"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Poor_health_value">
+    <rdfs:subClassOf rdf:resource="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Health_Value"/>
+    <owl:disjointWith rdf:resource="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Medium_health_value"/>
+    <owl:disjointWith rdf:resource="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Good_health_value"/>
+  </owl:Class>
+  <owl:FunctionalProperty rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/has_health_status">
+    <rdfs:domain rdf:resource="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Person"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/Health_Value"/>
+  </owl:FunctionalProperty>
+  <Good_health_value rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/johns_health"/>
+  <Person rdf:about="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/John">
+    <has_health_status rdf:resource="file:/C:/Program%20Files/Protege_2.1_beta/projects-2004-03-05/Value-Sets/johns_health"/>
+  </Person>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 1.1 beta, Build 134)  http://protege.stanford.edu -->

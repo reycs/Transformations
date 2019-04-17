@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://protege.stanford.edu/swbp/purchase.owl#"
+  xml:base="http://protege.stanford.edu/swbp/purchase.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="Object"/>
+  <owl:Class rdf:ID="Purpose"/>
+  <owl:Class rdf:ID="Book">
+    <rdfs:subClassOf rdf:resource="#Object"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Purchase">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="buyer"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Purpose"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#purpose"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="seller"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Company"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty rdf:resource="#seller"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#Object"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="object"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Person"/>
+        </owl:someValuesFrom>
+        <owl:onProperty rdf:resource="#buyer"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="purpose">
+    <rdfs:range rdf:resource="#Purpose"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="amount">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:DatatypeProperty>
+  <Person rdf:ID="John"/>
+  <Purchase rdf:ID="Purchase_1">
+    <amount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >15.0</amount>
+    <object>
+      <Book rdf:ID="Lenny_The_Lion"/>
+    </object>
+    <buyer rdf:resource="#John"/>
+    <purpose>
+      <Purpose rdf:ID="Birthday_Gift"/>
+    </purpose>
+    <seller rdf:resource="http://books.example.com"/>
+  </Purchase>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 1.1 beta, Build 132)  http://protege.stanford.edu -->

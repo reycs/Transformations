@@ -4,8 +4,6 @@ package owl;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Data Union Of</b></em>'.
@@ -22,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface DataUnionOf extends EObject {
+public interface DataUnionOf extends DataRange {
 	/**
 	 * Returns the value of the '<em><b>Data Ranges</b></em>' reference list.
 	 * The list contents are of type {@link owl.DataRange}.

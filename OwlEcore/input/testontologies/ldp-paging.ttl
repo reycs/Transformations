@@ -1,0 +1,85 @@
+# See details within this document for linkage to specification and purpose.
+# This ontology file is a non-normative supporting document.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix : <http://www.w3.org/ns/ldp#>.
+
+:
+	a owl:Ontology;
+    dcterms:description "Vocabulary URIs defined in the Linked Data Platform Paging (LDP-Paging) namespace.";
+	dcterms:title "The W3C Linked Data Platform Paging (LDP-Paging) Vocabulary";
+	rdfs:label "W3C Linked Data Platform Paging (LDP-Paging)";
+	rdfs:comment "This ontology provides an informal representation of the concepts and terms
+	as defined in the LDP specification.  Consult the LDP specification for normative reference.";
+	rdfs:seeAlso <http://www.w3.org/2012/ldp>,
+		<http://www.w3.org/TR/ldp-ucr/>,
+		<http://www.w3.org/TR/ldp/>,
+		<http://www.w3.org/TR/ldp-paging/>,
+		<http://www.w3.org/2011/09/LinkedData/>.
+			
+:containerSortCriteria
+ 	a rdf:Property;
+	rdfs:comment "Link to the list of sorting criteria used by the server in a representation.";
+	vs:term_status "unstable";
+	rdfs:domain :Page;
+	rdfs:isDefinedBy :;
+	rdfs:label "containerSortCriteria";
+	rdfs:range rdf:List.
+	
+:ContainerSortCriterion
+ 	a rdf:Class;
+	rdfs:comment "Element in the list of container sorting criteria used by the server in a representation.";
+	vs:term_status "unstable";
+	rdfs:label "ContainerSortCriterion";
+	rdfs:isDefinedBy :.
+	
+:containerSortPredicate
+ 	a rdf:Property;
+	rdfs:comment "Predicate used to determine the order of the members in a page.";
+	vs:term_status "unstable";
+	rdfs:domain :ContainerSortCriterion;
+	rdfs:isDefinedBy :;
+	rdfs:label "containerSortPredicate";
+	rdfs:range rdf:Property.
+	
+:containerSortOrder
+ 	a rdf:Property;
+	rdfs:comment "The ascending/descending/etc order used to order the members in a page.";
+	vs:term_status "unstable";
+	rdfs:domain :ContainerSortCriterion;
+	rdfs:isDefinedBy :;
+	rdfs:label "containerSortOrder";
+	rdfs:range rdf:Resource.
+	
+:containerSortCollation
+ 	a rdf:Property;
+	rdfs:comment "The collation used to order the members in a page when comparing strings.";
+	vs:term_status "unstable";
+	rdfs:domain :ContainerSortCriterion;
+	rdfs:isDefinedBy :;
+	rdfs:label "containerSortCollation";
+	rdfs:range rdf:Property.
+	
+:Ascending
+ 	a rdf:Description;		# individual
+	rdfs:comment "Ascending order.";
+	vs:term_status "unstable";
+	rdfs:isDefinedBy :;
+	rdfs:label "Ascending".
+	
+:Descending
+ 	a rdf:Description;		# individual
+	rdfs:comment "Descending order.";
+	vs:term_status "unstable";
+	rdfs:isDefinedBy :;
+	rdfs:label "Descending".
+	
+:Page
+	a rdfs:Class;
+	rdfs:comment "A resource that represents a limited set of members of a LDP Container.";
+	vs:term_status "unstable";
+	rdfs:isDefinedBy :;
+	rdfs:label "Page".

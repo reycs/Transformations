@@ -1,0 +1,781 @@
+<?xml version="1.0" encoding="UTF-8"?><rdf:RDF xmlns="http://www.w3.org/2007/uwa/context/network.owl#" xmlns:assert="http://www.owl-ontologies.com/assert.owl#" xmlns:common="http://www.w3.org/2007/uwa/context/common.owl#" xmlns:dc="http://purl.org/dc/terms/" xmlns:dcn="http://www.w3.org/2007/uwa/context/deliverycontext.owl#" xmlns:ex="http://www.example.org/2007/uwa/context/examples.owl#" xmlns:hard="http://www.w3.org/2007/uwa/context/hardware.owl#" xmlns:java="http://www.w3.org/2007/uwa/context/java.owl#" xmlns:loc="http://www.w3.org/2007/uwa/context/location.owl#" xmlns:net="http://www.w3.org/2007/uwa/context/network.owl#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:push="http://www.w3.org/2007/uwa/context/push.owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:soft="http://www.w3.org/2007/uwa/context/software.owl#" xmlns:web="http://www.w3.org/2007/uwa/context/web.owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xml:base="http://www.w3.org/2007/uwa/context/network.owl">
+  <common:TermGroup rdf:about="#TermGroup_Network">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Network</rdfs:label>
+        <common:termGroupPrefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string">net</common:termGroupPrefix>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This group models classes, properties and instances that have to do with the Network characteristics of the Delivery Context</rdfs:comment>
+        <common:normativeStatus rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#Utility"/>
+      </common:TermGroup>
+  <owl:Class rdf:about="#NetworkSupport">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents the network characteristics of a device</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_NetworkEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#supportedNetworkModes"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#NetworkMode"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#NetworkBearer"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#supportedNetworkBearers"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Network Support</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#NetworkBearer">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#currentDownloadBandwidth"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Aspect"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#bearerTechnology"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a network bearer in a delivery context</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_NetworkEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Network Bearer</rdfs:label>
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NetworkCharacteristics</common:relatedUAProfEntity>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#currentUploadBandwidth"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#NetworkBearerTechnology"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#bearerTechnology"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Proxy">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Proxy</rdfs:label>
+    <common:informativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/TR/di-gloss/#def-proxy</common:informativeReference>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/software.owl#Program"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_NetworkEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Aspect"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A computer network service that allows clients to make indirect network connections to other network services</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#PLMNetwork">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A public land mobile network (PLMN) is a network that is established and operated by an administration or by a recognized operating agency (ROA) for the specific purpose of providing land mobile telecommunications services to the public</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#mnc"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#mcc"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Network"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Public Land Mobile Network</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#Network">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Aspect"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_NetworkEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#networkMode"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#NetworkMode"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a  Network in the Delivery Context</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Network</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#NetworkMode">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Newtwork Mode</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#NetworkTechnology"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#networkTechnology"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#networkTechnology"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_NetworkEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#operationBands"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A mode of operation of a network which includes network technology and operation frequency bands</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#NetworkBearerTechnology">
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NetworkCharacteristics</common:relatedUAProfEntity>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents network bearer technologies</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Network Bearer Technology</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#name"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_NetworkEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#id"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#NonTransparentProxy">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#HttpProxy"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Non Transparent HTTP Proxy</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An HTTP a proxy that modifies the request or response in order to provide some added service to the user agent, such as group annotation services, media type transformation, protocol reduction, or anonymity filtering.</rdfs:comment>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.ietf.org/rfc/rfc2616.txt</common:normativeReference>
+  </owl:Class>
+  <owl:Class rdf:about="#TransparentProxy">
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.ietf.org/rfc/rfc2616.txt</common:normativeReference>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An HTTP proxy that does not modify the request or response beyond what is required for proxy authentication and identification.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Transparent HTTP Proxy</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#HttpProxy"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#HttpProxy">
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://tools.ietf.org/html/rfc2616#section-1.3</common:normativeReference>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Http Proxy</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Proxy"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2007/uwa/context/web.owl#Context_WebBrowsingEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">It is a forwarding agent, receiving requests for a URI in its absolute form, rewriting all or part of the message, and forwarding the reformatted request toward the server identified by the URI.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#WiredNetwork">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wired Network</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a wired network in general</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Network"/>
+  </owl:Class>
+  <owl:Class rdf:about="#BandwidthSupport">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bandwidth Support</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents the bandwith characteristics provided by a Network Bearer Technology</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#typicalDownloadBandwith"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#maxDownloadBandwidth"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#minUploadBandwidth"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#maxUploadBandwidth"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#minDownloadBandwith"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#typicalUploadBandwidth"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_NetworkEntity"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#NetworkTechnology">
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NetworkCharacteristics</common:relatedUAProfEntity>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#id"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Context_NetworkEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#name"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Network Technology</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents different network technologies</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#WiFiNetwork">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WiFi Network</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#ssid"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Network"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class represents a WiFi network</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Context_NetworkEntity">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class reprensents the set of all delivery context entities that have  to do with network characteristics</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Context_Entity"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Context Network Entity</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#availableNetworkBearers">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The available network bearers offered by a Network or available for a Device</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Available Network Bearers</rdfs:label>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/deliverycontext.owl#component"/>
+    </rdfs:subPropertyOf>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#available"/>
+    </rdfs:subPropertyOf>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#supportedNetworkBearers"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#NetworkBearer"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Network"/>
+          <owl:Class rdf:about="#NetworkSupport"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#supportedNetworkBearers">
+    <common:relatedUAProfEntity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupportedBearers</common:relatedUAProfEntity>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property holds the set of network bearers supported by a Network or by a Device.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Supported Network Bearers</rdfs:label>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Network"/>
+          <owl:Class rdf:about="#NetworkSupport"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#NetworkBearer"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#presentNetworks">
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Environment"/>
+    <rdfs:range rdf:resource="#Network"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The networks that are present in the current Environment</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Present Networks</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#connectedNetworks">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Connected Networks</rdfs:label>
+    <rdfs:domain rdf:resource="#NetworkSupport"/>
+    <rdfs:range rdf:resource="#Network"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The networks to which a device is currently connected</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#proxy">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Proxy</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents one or more proxies that can be present while using a Network Bearer</rdfs:comment>
+    <rdfs:domain rdf:resource="#NetworkBearer"/>
+    <rdfs:range rdf:resource="#HttpProxy"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.w3.org/2007/uwa/context/deliverycontext.owl#activeComponent"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#supportedNetworkModes">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+    <rdfs:domain rdf:resource="#NetworkSupport"/>
+    <rdfs:range rdf:resource="#NetworkMode"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The supported Network Modes of a Device</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Supported Network Modes</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#networkMode">
+    <rdfs:domain rdf:resource="#Network"/>
+    <rdfs:range rdf:resource="#NetworkMode"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the network mode of a Network</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Network Mode</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#defaultNetworkBearer">
+    <rdfs:domain rdf:resource="#NetworkSupport"/>
+    <rdfs:range rdf:resource="#NetworkBearer"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#defaultComponent"/>
+    <rdfs:subPropertyOf rdf:resource="#supportedNetworkBearers"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the default Network Bearer for a Device</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Default Network Bearer</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="#ssid">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#WiFiNetwork"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Service Set Identifier</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The SSID of a WiFi network</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#operationBands">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Operation Band</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#NetworkMode"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The frequencies of operation of a network. Frequencies are expressed in  Mhz</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#typicalDownloadBandwith">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents a typical download bandwidth measured in Kbits/s</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Typical Download Bandwidth</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#BandwidthSupport"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:about="#bandwidthSupport">
+    <rdfs:range rdf:resource="#BandwidthSupport"/>
+    <rdfs:domain rdf:resource="#NetworkBearerTechnology"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The bandwidth support offered by a Network Bearer Technology</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#supports"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bandwidth Support</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#bearerTechnology">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Network Bearer Technology</rdfs:label>
+    <rdfs:range rdf:resource="#NetworkBearerTechnology"/>
+    <rdfs:domain rdf:resource="#NetworkBearer"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The technology used by a Network Bearer</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#mnc">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mobile Network Code</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A Mobile Network Code (MNC) is used in combination with a Mobile Country Code (MCC) (also known as a "MCC / MNC tuple") to uniquely identify a mobile phone operator/carrier using the GSM, CDMA, iDEN, TETRA and UMTS public land mobile networks and some satellite mobile networks</rdfs:comment>
+    <rdfs:domain rdf:resource="#PLMNetwork"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#cellId">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2007/uwa/context/common.owl#id"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cell Identifier</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The id of the cell to which the device is interacting with in the mobile network</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#NetworkSupport"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#networkSupport">
+    <rdfs:domain rdf:resource="http://www.w3.org/2007/uwa/context/deliverycontext.owl#Device"/>
+    <rdfs:range rdf:resource="#NetworkSupport"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Network Support</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The network-related characteristics of a device</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#minUploadBandwidth">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#BandwidthSupport"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Minimum Upload Bandwidth</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents a minimum upload bandwidth that can be offered measured in Kbits/s</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#bearerNetwork">
+    <rdfs:domain rdf:resource="#NetworkBearer"/>
+    <rdfs:range rdf:resource="#Network"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bearer Network</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The network that provides the infraestructure of a Network Bearer</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#networkTechnology">
+    <rdfs:range rdf:resource="#NetworkTechnology"/>
+    <rdfs:domain rdf:resource="#NetworkMode"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property holds a network technology</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Network Technology</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#homePLMNetwork">
+    <rdfs:range rdf:resource="#PLMNetwork"/>
+    <rdfs:domain rdf:resource="#NetworkSupport"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The home PLMN network of a device</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Home Network</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#signalStrength">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Signal Strength</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property indicates the relative (from 0 to 100) signal strength offered by a Network in this Context</rdfs:comment>
+    <rdfs:domain rdf:resource="#Network"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#mcc">
+    <rdfs:domain rdf:resource="#PLMNetwork"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mobile Country Code</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property identifies univoquely the country of a mobile network</rdfs:comment>
+    <common:normativeReference rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.itu.int/itudoc/itu-t/ob-lists/icc/e212_685.pdf</common:normativeReference>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#preferredNetworkBearer">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the preferred network bearer for a Network</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="#supportedNetworkBearers"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Preferred Network Bearer</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#NetworkBearer"/>
+    <rdfs:domain rdf:resource="#Network"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#typicalUploadBandwidth">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#BandwidthSupport"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents a typical upload bandwith measured in Kbits/s</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Typical Upload Bandwidth</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#maxUploadBandwidth">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#BandwidthSupport"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximum Upload Bandwidth</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents a maximum upload bandwidth measured in Kbits/s</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#currentUploadBandwidth">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Current Upload Bandwidth</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the current upload bandwidth offered by a Network Bearer measured in Kbits/s</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#NetworkBearer"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#minDownloadBandwith">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents a minimum download bandwidth that can be offered and measured in Kbits/s</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Minimum Download Bandwidth</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#BandwidthSupport"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#maxDownloadBandwidth">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents a maximum download bandwidth measured in Kbits/s</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximum download Bandwidth</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#BandwidthSupport"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#currentDownloadBandwidth">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Current Download Bandwidth</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This property represents the current download bandwidth offered by a network bearer measured in Kbits/s</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#NetworkBearer"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#APN">
+    <rdfs:domain rdf:resource="#NetworkBearer"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">APN</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Access Point Name associated to a network bearer</rdfs:comment>
+  </owl:FunctionalProperty>
+  <net:NetworkTechnology rdf:about="#NetworkType_PHS">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Personal Handy-phone System</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_PHS</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PHS</common:name>
+  </net:NetworkTechnology>
+  <net:NetworkBearerTechnology rdf:about="#BearerType_FLEX">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_FLEX</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FLEX</common:name>
+  </net:NetworkBearerTechnology>
+  <net:NetworkBearerTechnology rdf:about="#BearerType_GPRS">
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GPRS</common:name>
+        <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_GPRS</common:id>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GPRS over GSM networks</rdfs:comment>
+      </net:NetworkBearerTechnology>
+  <net:NetworkMode rdf:about="#GSM_900_1800_1900">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Typical GSM operation in Europe</rdfs:comment>
+    <net:networkTechnology>
+      <net:NetworkTechnology rdf:about="#NetworkType_GSM">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Global System for Mobile Communications</rdfs:comment>
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GSM</common:name>
+        <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_GSM</common:id>
+      </net:NetworkTechnology>
+    </net:networkTechnology>
+    <net:operationBands rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1900</net:operationBands>
+    <net:operationBands rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1800</net:operationBands>
+    <net:operationBands rdf:datatype="http://www.w3.org/2001/XMLSchema#long">900</net:operationBands>
+  </net:NetworkMode>
+  <net:NetworkTechnology rdf:about="#NetworkType_ANSI-136">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ANSI-136</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ANSI-136</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ANSI 136</common:id>
+  </net:NetworkTechnology>
+  <net:NetworkTechnology rdf:about="#NetworkType_UMTS_W-CDMA">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_WCDMA</common:id>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UMTS with W-CDMA air interface</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">W-CDMA</common:name>
+  </net:NetworkTechnology>
+  <net:NetworkBearerTechnology rdf:about="#UMTS">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_UMTS</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UMTS</common:name>
+  </net:NetworkBearerTechnology>
+  <net:NetworkMode rdf:about="#UMTS_2100">
+    <net:operationBands rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2100</net:operationBands>
+    <net:networkTechnology rdf:resource="#NetworkType_UMTS_W-CDMA"/>
+  </net:NetworkMode>
+  <net:NetworkTechnology rdf:about="#NetworkType_CDMA2000_1xRTT">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CDMA2000_1xRTT</common:name>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1xrtt</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CDMA 2000 1xRTT</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_CDMA2000_1xRTT</common:id>
+  </net:NetworkTechnology>
+  <common:AllDisjointSet rdf:about="#Proxies_Disjoint">
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">net:NonTransparentProxy</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">net:TransparentProxy</common:disjointClass>
+  </common:AllDisjointSet>
+  <net:NetworkBearerTechnology rdf:about="#BearerType_GUTS">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GUTS/R-Data</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_GUTS/R-Data</common:id>
+  </net:NetworkBearerTechnology>
+  <net:NetworkBearerTechnology rdf:about="#NetworkType_HSDPA">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">High-Speed Downlink Packet Access</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_HSDPA</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HSDPA</common:name>
+  </net:NetworkBearerTechnology>
+  <common:AllDisjointSet rdf:about="#Networks_Disjoint">
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">net:PLMNetwork</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">net:WiredNetwork</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">net:WiFiNetwork</common:disjointClass>
+  </common:AllDisjointSet>
+  <net:NetworkBearerTechnology rdf:about="#BearerType_MPAK">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MPAK</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_MPAK</common:id>
+  </net:NetworkBearerTechnology>
+  <net:NetworkTechnology rdf:about="#NetworkType_PDC">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PDC</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Personal Digital Cellular</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_PDC</common:id>
+  </net:NetworkTechnology>
+  <net:NetworkTechnology rdf:about="#NetworkType_TD-SCDMA">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_TD_SCDMA</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TD-SCDMA</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chinese standard</rdfs:comment>
+  </net:NetworkTechnology>
+  <common:AllDisjointSet rdf:about="#Sibling_Disjoint">
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">net:BandwidthSupport</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">net:NetworkBearerTechnology</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">net:NetworkMode</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">net:NetworkSupport</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">net:NetworkTechnology</common:disjointClass>
+  </common:AllDisjointSet>
+  <net:NetworkBearerTechnology rdf:about="#BearerType_HSUPA">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">High-Speed Uplink Packet Access</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_HSUPA</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HSUPA</common:name>
+  </net:NetworkBearerTechnology>
+  <net:NetworkMode rdf:about="#ANSI-136_800">
+    <net:operationBands rdf:datatype="http://www.w3.org/2001/XMLSchema#long">800</net:operationBands>
+    <net:networkTechnology rdf:resource="#NetworkType_ANSI-136"/>
+  </net:NetworkMode>
+  <net:NetworkBearerTechnology rdf:about="#BearerType_CDPD">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CDPD</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_CDPD</common:id>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cellular Digital Packet Data</rdfs:comment>
+  </net:NetworkBearerTechnology>
+  <net:NetworkBearerTechnology rdf:about="#BearerType_EDGE">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_EDGE</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EDGE</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Enhanced Data rates for GSM Evolution (EDGE)</rdfs:comment>
+  </net:NetworkBearerTechnology>
+  <net:NetworkMode rdf:about="#IS-95_800_1900">
+    <net:operationBands rdf:datatype="http://www.w3.org/2001/XMLSchema#long">800</net:operationBands>
+    <net:operationBands rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1900</net:operationBands>
+    <net:networkTechnology>
+      <net:NetworkTechnology rdf:about="#NetworkType_IS-95">
+        <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IS 95</common:id>
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IS-95</common:name>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IS-95</rdfs:comment>
+      </net:NetworkTechnology>
+    </net:networkTechnology>
+  </net:NetworkMode>
+  <net:NetworkTechnology rdf:about="#NetworkType_CDMA2000_EVDO">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_CDMA2000_EVDO</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CDMA2000 EVDO</common:name>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EVDO</common:name>
+  </net:NetworkTechnology>
+  <net:NetworkBearerTechnology rdf:about="#BearerType_GHOST">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_GHOST/R-Data</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GHOST/R-Data</common:name>
+  </net:NetworkBearerTechnology>
+  <net:NetworkTechnology rdf:about="#NetworkType_IEEE_802.11b">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WiFi 802.11b</rdfs:comment>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IEEE 802.11b</common:name>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WiFi</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IEEE 802.11b</common:id>
+  </net:NetworkTechnology>
+  <net:NetworkMode rdf:about="#Tetra_400_900">
+    <net:networkTechnology>
+      <net:NetworkTechnology rdf:about="#NetworkType_TETRA">
+        <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TETRA</common:name>
+        <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_TETRA</common:id>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TErrestrial Trunked RAdio</rdfs:comment>
+      </net:NetworkTechnology>
+    </net:networkTechnology>
+    <net:operationBands rdf:datatype="http://www.w3.org/2001/XMLSchema#long">400</net:operationBands>
+    <net:operationBands rdf:datatype="http://www.w3.org/2001/XMLSchema#long">900</net:operationBands>
+  </net:NetworkMode>
+  <net:NetworkTechnology rdf:about="#NetworkType_IEEE_802.11a">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IEEE 802.11a</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WiFi 802.11a</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IEEE 802.11a</common:id>
+  </net:NetworkTechnology>
+  <common:AllDisjointSet rdf:about="#SiblingDisjoint_2">
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">net:Network</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">net:NetworkBearer</common:disjointClass>
+    <common:disjointClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string">net:Proxy</common:disjointClass>
+    <common:disjointSet rdf:resource="#Sibling_Disjoint"/>
+  </common:AllDisjointSet>
+  <net:NetworkMode rdf:about="#WiFi80211b_2400">
+    <net:operationBands rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2400</net:operationBands>
+    <net:networkTechnology rdf:resource="#NetworkType_IEEE_802.11b"/>
+  </net:NetworkMode>
+  <net:NetworkTechnology rdf:about="#NetworkType_IEEE_802.11g">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IEEE 802.11g</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IEEE 802.11g</common:id>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wi-Fi 802.11g</rdfs:comment>
+  </net:NetworkTechnology>
+  <net:NetworkTechnology rdf:about="#NetworkType_CDMA2000_EVDV">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_CDMA2000_EVDV</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CDMA2000 EVDV</common:name>
+  </net:NetworkTechnology>
+  <net:NetworkTechnology rdf:about="#NetworkType_AMPS">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Advanced Mobile Phone System</rdfs:comment>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_AMPS</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AMPS</common:name>
+  </net:NetworkTechnology>
+  <net:NetworkMode rdf:about="#PDC_800_1500">
+    <net:networkTechnology rdf:resource="#NetworkType_PDC"/>
+    <net:operationBands rdf:datatype="http://www.w3.org/2001/XMLSchema#long">800</net:operationBands>
+    <net:operationBands rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1500</net:operationBands>
+  </net:NetworkMode>
+  <net:NetworkTechnology rdf:about="#NetworkType_iDEN">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_IDEN</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">iDEN</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Integrated Digital Enhanced Network</rdfs:comment>
+  </net:NetworkTechnology>
+  <net:NetworkBearerTechnology rdf:about="#BearerType_SDS">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_SDS</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SDS</common:name>
+  </net:NetworkBearerTechnology>
+  <net:NetworkBearerTechnology rdf:about="#BearerType_CSD">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CSD</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_CSD</common:id>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Circuit Switched Data</rdfs:comment>
+  </net:NetworkBearerTechnology>
+  <net:NetworkBearerTechnology rdf:about="#BearerType_HSCSD">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HSCSD</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_HSCSD</common:id>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">High-Speed Circuit-Switched Data</rdfs:comment>
+  </net:NetworkBearerTechnology>
+  <net:NetworkBearerTechnology rdf:about="#BearerType_PACKET">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PACKET</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_PACKET</common:id>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Generic packet-based bearer</rdfs:comment>
+  </net:NetworkBearerTechnology>
+  <net:NetworkMode rdf:about="#iDEN_800">
+    <net:networkTechnology rdf:resource="#NetworkType_iDEN"/>
+    <net:operationBands rdf:datatype="http://www.w3.org/2001/XMLSchema#long">800</net:operationBands>
+  </net:NetworkMode>
+  <net:NetworkTechnology rdf:about="#NetworkType_Mobitex">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mobitex</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_Mobitex</common:id>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MobiTex Network</rdfs:comment>
+  </net:NetworkTechnology>
+  <net:NetworkBearerTechnology rdf:about="#BearerType_USSD">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_USSD</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">USSD</common:name>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Unstructured Supplementary Service Data is a capability of all GSM phones. It is generally associated with real-time or instant messaging type phone services.</rdfs:comment>
+  </net:NetworkBearerTechnology>
+  <net:NetworkBearerTechnology rdf:about="#BearerType_REFLEX">
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">REFLEX</common:name>
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_REFLEX</common:id>
+  </net:NetworkBearerTechnology>
+  <net:NetworkBearerTechnology rdf:about="#BearerType_SMS">
+    <common:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">_SMS</common:id>
+    <common:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SMS</common:name>
+  </net:NetworkBearerTechnology>
+</rdf:RDF>

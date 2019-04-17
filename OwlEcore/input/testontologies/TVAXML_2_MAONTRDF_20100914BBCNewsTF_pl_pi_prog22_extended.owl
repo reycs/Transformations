@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:ma-ont="http://www.w3.org/ns/ma-ont#" xmlns:tva="urn:tva:metadata:2010"
+   xmlns:mpeg7="urn:tva:mpeg7:2008" xmlns:default="urn:tva:metadata:2010"
+   xmlns:fn="http://www.w3.org/2006/xpath-functions"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <!-- created by XSLT Transform by Jean-Pierre Evain (EBU) for the TV-Anytime example file : version 4 --> 
+      <rdf:Description>
+      <owl:imports rdf:resource="http://www.w3.org/ns/ma-ont"/>
+      <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="crid://bbc.co.uk/289400422">
+      <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaResource"/>
+      <ma-ont:copyright rdf:datatype="http://www.w3.org/2001/XMLSchema#string" xml:lang="en"
+         >usage restricted to the UK </ma-ont:copyright>
+   </rdf:Description>
+   <rdf:Description rdf:about="crid://bbc.co.uk/289400422">
+      <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaResource"/>
+      <ma-ont:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string" xml:lang="en">Breakfast</ma-ont:title>
+      <ma-ont:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string" xml:lang="en">All
+         the latest news, sport, business and weather from the BBC's Breakfast team. [S]</ma-ont:description>
+      <ma-ont:hasKeyword>
+         <owl:Thing>
+            <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string" xml:lang="en"
+               >breakfast news</rdfs:label>
+         </owl:Thing>
+      </ma-ont:hasKeyword>
+      <ma-ont:hasKeyword>
+         <owl:Thing>
+            <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string" xml:lang="en"
+            >topical</rdfs:label>
+         </owl:Thing>
+      </ma-ont:hasKeyword>
+      <ma-ont:hasGenre rdf:resource="urn:tva:metadata:cs:ContentCS:2005:3.1.1.1"/>
+      <ma-ont:hasGenre rdf:resource="urn:tva:metadata:cs:ContentCS:2005:3.1.1.13"/>
+      <ma-ont:hasGenre rdf:resource="urn:tva:metadata:cs:FormatCS:2005:2.1.1"/>
+      <ma-ont:hasGenre rdf:resource="urn:tva:metadata:cs:IntentionCS:2005:1.2"/>
+      <ma-ont:hasGenre rdf:resource="urn:tva:metadata:cs:ContentCS:2005:3.1.1.9"/>
+      <ma-ont:hasContributor>
+         <ma-ont:Agent>
+            <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string" xml:lang="en">Doe
+               John </rdfs:label>
+         </ma-ont:Agent>
+      </ma-ont:hasContributor>
+      <ma-ont:hasCreator>
+         <ma-ont:Agent>
+            <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string" xml:lang="en"
+               >creation Ltd</rdfs:label>
+         </ma-ont:Agent>
+      </ma-ont:hasCreator>
+      <ma-ont:hasRelatedResource rdf:resource="http://www.dummy-bbc.co.uk/catch-up.mp4"/>
+      <ma-ont:hasRelatedLocation rdf:resource="locationCS:London"/>
+      <ma-ont:hasTargetAudience
+         rdf:resource="http://www.ebu.ch/metadata/cs/web/ebu_ParentalGuidanceCodeCS.xml#27.1"/>
+      <ma-ont:hasPolicy>
+         <owl:Thing>
+            <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string" xml:lang="en">BBC
+               general policy</rdfs:label>
+         </owl:Thing>
+      </ma-ont:hasPolicy>
+   </rdf:Description>
+   <rdf:Description rdf:about="locationCS:London">
+      <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#Location"/>
+      <ma-ont:locationLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">51.50722</ma-ont:locationLongitude>
+      <ma-ont:locationLatitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.275</ma-ont:locationLatitude>
+   </rdf:Description>
+   <rdf:Description
+      rdf:about="http://www.ebu.ch/metadata/cs/web/ebu_ParentalGuidanceCodeCS.xml#27.1">
+      <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#TargetAudience"/>
+      <ma-ont:hasClassificationSystem rdf:parseType="Resource"><rdfs:label>GB-BBFC</rdfs:label></ma-ont:hasClassificationSystem>
+   </rdf:Description>
+   <rdf:Description rdf:about="crid://bbc.co.uk/289400422#captiontrack1">
+      <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#DataTrack"/>
+      <ma-ont:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string" xml:lang="en">closed
+         caption</ma-ont:title>
+      <ma-ont:hasLanguage rdf:parseType="Resource"><rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string" xml:lang="en"
+      >EN-UK</rdfs:label></ma-ont:hasLanguage>
+   </rdf:Description>
+   <rdf:Description rdf:about="crid://bbc.co.uk/289400422">
+      <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaResource"/>
+      <ma-ont:samplingRate rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">44100</ma-ont:samplingRate>
+      <ma-ont:hasTrack>
+         <ma-ont:VideoTrack>
+            <ma-ont:hasCompression
+               rdf:resource="http://www.ebu.ch/metadata/cs/ebu_VideoCompressionCodeCS.xml#2.4.3"/>
+         </ma-ont:VideoTrack>
+      </ma-ont:hasTrack>
+      <ma-ont:hasTrack>
+         <ma-ont:AudioTrack>
+            <ma-ont:hasCompression
+               rdf:resource="http://www.ebu.ch/metadata/cs/ebu_AudioCompressionCodeCS.xml#4"/>
+         </ma-ont:AudioTrack>
+      </ma-ont:hasTrack>
+      <ma-ont:numberOfTracks rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</ma-ont:numberOfTracks>
+      <ma-ont:hasFormat
+         rdf:resource="http://www.ebu.ch/metadata/cs/web/ebu_FileFormatCS_p.xml.htm#7.2.2"/>
+      <ma-ont:frameWidth rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1080</ma-ont:frameWidth>
+      <ma-ont:frameHeight rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">720</ma-ont:frameHeight>
+      <ma-ont:frameRate rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">25</ma-ont:frameRate>
+      <ma-ont:averageBitRate rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal" xml:lang="en"
+         >2345678</ma-ont:averageBitRate>
+      <ma-ont:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string" xml:lang="en"
+      >16:9</ma-ont:description>
+   </rdf:Description>
+   <rdf:Description rdf:about="crid://bbc.co.uk/289400422">
+      <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaResource"/>
+      <ma-ont:isMemberOf rdf:resource="crid://bbc.co.uk/__SERBreakfast"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="crid://bbc.co.uk/__SERBreakfast">
+      <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#Collection"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="crid://bbc.co.uk/289400422">
+      <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaResource"/>
+      <ma-ont:duration rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9000</ma-ont:duration>
+      <ma-ont:releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+         >2010-09-14T05:00:00Z</ma-ont:releaseDate>
+      <ma-ont:hasPublisher rdf:resource="http://www.bbc.co.uk#BBCNewsTF"/>
+      <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+         >dvb://233a.1004.113f;e666/t=clock:2010-09-14T05:00:00Z,2010-09-14T07:30:00</ma-ont:locator>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://www.bbc.co.uk#BBCNewsTF">
+      <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#Organisation"/>
+      <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string" xml:lang="en">BBC
+      </rdfs:label>
+   </rdf:Description>
+   <rdf:Description rdf:about="crid://bbc.co.uk/289400422">
+      <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaResource"/>
+      <ma-ont:hasRating>
+         <ma-ont:Rating>
+            <ma-ont:ratingValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10</ma-ont:ratingValue>
+            <ma-ont:ratingScaleMin rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</ma-ont:ratingScaleMin>
+            <ma-ont:ratingScaleMax rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10</ma-ont:ratingScaleMax>
+         </ma-ont:Rating>
+      </ma-ont:hasRating>
+   </rdf:Description>
+   <rdf:Description rdf:about="crid://bbc.co.uk/289400422">
+      <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaResource"/>
+      <ma-ont:hasFragment rdf:resource="crid://bbc.co.uk/289400422-1"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="crid://bbc.co.uk/289400422-1">
+      <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaFragment"/>
+      <ma-ont:fragmentName rdf:datatype="http://www.w3.org/2001/XMLSchema#string" xml:lang="en">news</ma-ont:fragmentName>
+      <ma-ont:hasGenre rdf:resource="urn:tva:metadata:cs:ContentCS:2005:3.1.1.1"/>
+      <owl:sameAs rdf:resource="crid://bbc.co.uk/289400422-1"/>
+      <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+         >dvb://233a.1004.113f;e666/t=clock:2010-09-14T05:00:10,2010-09-14T05:10:18</ma-ont:locator>
+   </rdf:Description>
+   <rdf:Description rdf:about="crid://bbc.co.uk/289400422">
+      <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaResource"/>
+      <ma-ont:hasFragment rdf:resource="crid://bbc.co.uk/289400422-2"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="crid://bbc.co.uk/289400422-2">
+      <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaFragment"/>
+      <ma-ont:fragmentName rdf:datatype="http://www.w3.org/2001/XMLSchema#string" xml:lang="en"
+         >sports</ma-ont:fragmentName>
+      <ma-ont:hasGenre rdf:resource="urn:tva:metadata:cs:ContentCS:2005:3.1.1.9"/>
+      <owl:sameAs rdf:resource="crid://bbc.co.uk/289400422-2"/>
+      <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+         >dvb://233a.1004.113f;e666/t=clock:2010-09-14T05:10:18,2010-09-14T05:17:11</ma-ont:locator>
+   </rdf:Description>
+   <rdf:Description rdf:about="crid://bbc.co.uk/289400422">
+      <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaResource"/>
+      <ma-ont:hasFragment rdf:resource="crid://bbc.co.uk/289400422-3"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="crid://bbc.co.uk/289400422-3">
+      <rdf:type rdf:resource="http://www.w3.org/ns/ma-ont#MediaFragment"/>
+      <ma-ont:fragmentName rdf:datatype="http://www.w3.org/2001/XMLSchema#string" xml:lang="en"
+         >weather forecasts</ma-ont:fragmentName>
+      <ma-ont:hasGenre rdf:resource="urn:tva:metadata:cs:ContentCS:2005:3.1.1.13"/>
+      <owl:sameAs rdf:resource="crid://bbc.co.uk/289400422-3"/>
+      <ma-ont:locator rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+         >dvb://233a.1004.113f;e666/t=clock:2010-09-14T05:17:11,2010-09-14T05:20:58</ma-ont:locator>
+   </rdf:Description>
+</rdf:RDF>

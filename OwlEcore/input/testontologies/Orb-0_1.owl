@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xml:base="NAMESPACE"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+ xmlns:owl="http://www.w3.org/2002/07/owl#"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:sw-vocab-status="http://www.w3.org/2003/06/sw-vocab-status/">
+ 
+ <owl:Ontology rdf:about="http://purl.org/orb/1.0/">
+   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rhetorical Block Structure Ontology v. 0.1</rdfs:label>
+   <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
+   <dc:language>en</dc:language>
+   <dc:title xml:lang="en">Ontology of Rhetorical Blocks</dc:title>
+   <dc:contributor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paolo Ciccarese</dc:contributor>
+   <dc:contributor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Anita de Waard</dc:contributor>
+   <dc:contributor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tim Clark</dc:contributor>
+   <dc:contributor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tudor Groza</dc:contributor>
+   <dc:contributor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Alex Garcia</dc:contributor>
+   <dc:contributor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Daniel Ronald</dc:contributor>
+   <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">September 22, 2010</dc:date>
+   <dc:format rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rdf/xml</dc:format>
+ </owl:Ontology>
+ 
+ <owl:Class rdf:about="Header" rdfs:label="Header">
+   <sw-vocab-status:nsterm_status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">unstable</sw-vocab-status:nsterm_status>
+   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">...</rdfs:comment>
+   <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+   <owl:disjointWith rdf:resource="Introduction"/>
+   <owl:disjointWith rdf:resource="Methods"/>
+   <owl:disjointWith rdf:resource="Results"/>
+   <owl:disjointWith rdf:resource="Discussion"/>
+   <owl:disjointWith rdf:resource="References"/>
+ </owl:Class>
+ <owl:Class rdf:about="Introduction" rdfs:label="Introduction">
+   <sw-vocab-status:nsterm_status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">unstable</sw-vocab-status:nsterm_status>
+   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">why and where was the study undertaken? What was the purpose?</rdfs:comment>
+   <rdfs:isDefinedBy rdf:resource="http://purl.org/orb/1.0/"/>
+   <owl:disjointWith rdf:resource="Header"/>
+   <owl:disjointWith rdf:resource="Methods"/>
+   <owl:disjointWith rdf:resource="Results"/>
+   <owl:disjointWith rdf:resource="Discussion"/>
+   <owl:disjointWith rdf:resource="References"/>
+ </owl:Class>
+ <owl:Class rdf:about="Methods" rdfs:label="Methods">
+   <sw-vocab-status:nsterm_status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">unstable</sw-vocab-status:nsterm_status>
+   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> ... </rdfs:comment>
+   <rdfs:isDefinedBy rdf:resource="http://purl.org/orb/1.0/"/>
+   <owl:disjointWith rdf:resource="Header"/>
+   <owl:disjointWith rdf:resource="Introduction"/>
+   <owl:disjointWith rdf:resource="Results"/>
+   <owl:disjointWith rdf:resource="Discussion"/>
+   <owl:disjointWith rdf:resource="References"/>
+ </owl:Class>
+ <owl:Class rdf:about="Results" rdfs:label="Results">
+   <sw-vocab-status:nsterm_status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">unstable</sw-vocab-status:nsterm_status>
+   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> ... </rdfs:comment>
+   <rdfs:isDefinedBy rdf:resource="http://purl.org/orb/1.0/"/>
+   <owl:disjointWith rdf:resource="Header"/>
+   <owl:disjointWith rdf:resource="Introduction"/>
+   <owl:disjointWith rdf:resource="Methods"/>
+   <owl:disjointWith rdf:resource="Discussion"/>
+   <owl:disjointWith rdf:resource="References"/>
+ </owl:Class>
+ <owl:Class rdf:about="Discussion" rdfs:label="Discussion">
+   <sw-vocab-status:nsterm_status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">unstable</sw-vocab-status:nsterm_status>
+   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Interesting issues discovered while researching the publication's topic.</rdfs:comment>
+   <rdfs:isDefinedBy rdf:resource="http://purl.org/orb/1.0/"/>
+   <owl:disjointWith rdf:resource="Header"/>
+   <owl:disjointWith rdf:resource="Introduction"/>
+   <owl:disjointWith rdf:resource="Methods"/>
+   <owl:disjointWith rdf:resource="Results"/>
+   <owl:disjointWith rdf:resource="References"/>
+ </owl:Class>
+ <owl:Class rdf:about="Conclusion" rdfs:label="References">
+   <sw-vocab-status:nsterm_status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">unstable</sw-vocab-status:nsterm_status>
+   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">...</rdfs:comment>
+   <rdfs:isDefinedBy rdf:resource="http://purl.org/orb/1.0/"/>
+   <owl:disjointWith rdf:resource="Header"/>
+   <owl:disjointWith rdf:resource="Introduction"/>
+   <owl:disjointWith rdf:resource="Methods"/>
+   <owl:disjointWith rdf:resource="Results"/>
+   <owl:disjointWith rdf:resource="Discussion"/>
+ </owl:Class>
+</rdf:RDF>
