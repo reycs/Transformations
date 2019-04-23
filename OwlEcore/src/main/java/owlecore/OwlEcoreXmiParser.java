@@ -54,6 +54,7 @@ import org.semanticweb.owlapi.model.OWLDisjointDataPropertiesAxiom;
 import org.semanticweb.owlapi.model.OWLDisjointObjectPropertiesAxiom;
 import org.semanticweb.owlapi.model.OWLDisjointUnionAxiom;
 import org.semanticweb.owlapi.model.OWLDocumentFormat;
+import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLEquivalentClassesAxiom;
 import org.semanticweb.owlapi.model.OWLEquivalentDataPropertiesAxiom;
 import org.semanticweb.owlapi.model.OWLEquivalentObjectPropertiesAxiom;
@@ -131,6 +132,7 @@ import owl.DataTypeDefinition;
 import owl.DataUnionOf;
 import owl.Datatype;
 import owl.DatatypeRestriction;
+import owl.Declaration;
 import owl.DifferentIndividuals;
 import owl.DisjointClasses;
 import owl.DisjointDataProperties;
@@ -299,6 +301,16 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 	* https://www.w3.org/TR/owl2-syntax/#Entities.2C_Literals.2C_and_Anonymous_Individuals
 	* Entities := Class | Datatype | ObjectProperty | DataProperty | AnnotationProperty | NamedIndividual
 	*/
+	@Override
+	public OWLDeclarationAxiom caseDeclaration(Declaration axiom) {
+		OWLEntity entity = (OWLEntity) this.doSwitch(axiom.getEntity());
+		OWLDeclarationAxiom newDeclarationAxiom = getOWLDataFactory().getOWLDeclarationAxiom(entity);
+		if (this.ontology.isDeclared(entity)) {
+			ontology.add(newDeclarationAxiom);
+		}
+		return newDeclarationAxiom;
+	}
+	
 	@Override
 	public OWLClass caseClass(owl.Class entity) {
 		OWLClass newEntity = getOWLDataFactory().getOWLClass(entity.getEntityURI().getValue());

@@ -82,6 +82,15 @@ public class OwlStatsCollector extends OwlEcoreXmiParser {
 		writeStringToCSV(sb.toString(), "percentageUseStats.csv");
 	}
 	
+	public void collectCoverage(List<HashMap<EClass, Integer>> objectTrackers) {
+		StringBuilder sb = new StringBuilder();
+		for (HashMap<EClass, Integer> objectTracker : objectTrackers) {
+			sb.append(calculateCoverage(objectTracker));
+			sb.append("\n");
+		}
+		writeStringToCSV(sb.toString(), "coverageStats.csv");
+	}
+	
 	private HashMap<EClass, Integer> getTotalobjects(List<HashMap<EClass, Integer>> objectTrackers) {
 		HashMap<EClass, Integer> totalObjects = new HashMap<EClass, Integer>();
 		for (HashMap<EClass, Integer> objectTracker : objectTrackers) {

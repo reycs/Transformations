@@ -121,11 +121,13 @@ import owl.DataTypeDefinition;
 import owl.DataUnionOf;
 import owl.Datatype;
 import owl.DatatypeRestriction;
+import owl.Declaration;
 import owl.DifferentIndividuals;
 import owl.DisjointClasses;
 import owl.DisjointDataProperties;
 import owl.DisjointObjectProperties;
 import owl.DisjointUnion;
+import owl.Entity;
 import owl.EquivalentClasses;
 import owl.EquivalentDataProperties;
 import owl.EquivalentObjectProperties;
@@ -294,7 +296,10 @@ public class OwlEcoreXmiWriter implements OWLObjectVisitor {
     
     @Override
     public void visit(OWLDeclarationAxiom axiom) {
+    	Declaration newDeclaration = ecoreOntologyFactory.createDeclaration();
         axiom.getEntity().accept(this);
+        newDeclaration.setEntity((Entity) lastVisitedObject);
+        ecoreOntologyInstance.getContents().add(newDeclaration);
     }
     
     @Override

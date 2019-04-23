@@ -18,7 +18,7 @@ import owlecore.OwlEcoreXmiWriter;
 public class RoundTripTest extends TestBase {
 
 	private List<String> iris = new ArrayList<String>();
-	private boolean createTestSet = false;
+	private boolean createTestSet = true;
 	private boolean collectStats = true;
 	
 	public void createUniqueOntologyTestSet() {
@@ -99,6 +99,7 @@ public class RoundTripTest extends TestBase {
 					if (count == directoryListing.length) {
 						parser.calculateUse(objectTrackers);
 						parser.calculatePercentageUse(objectTrackers);
+						parser.collectCoverage(objectTrackers);
 					}
 				}
 			}
