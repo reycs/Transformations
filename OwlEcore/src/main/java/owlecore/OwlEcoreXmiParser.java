@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.formats.RDFXMLDocumentFormat;
 import org.semanticweb.owlapi.model.AddOntologyAnnotation;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAnnotation;
@@ -196,7 +197,7 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 	}
 	
 	public OwlEcoreXmiParser(String uri, OWLOntologyManager ontologyManager) {
-;		this.ontologyManager = ontologyManager;
+		this.ontologyManager = ontologyManager;
 		resourceSet = new ResourceSetImpl();
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl());
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
@@ -245,6 +246,10 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 	
 	public OWLOntology getParsedOntology() {
 		return ontology;
+	}
+	
+	public void save(String fileName) {
+		save(fileName, new RDFXMLDocumentFormat());
 	}
 	
 	/**

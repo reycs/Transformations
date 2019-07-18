@@ -18,7 +18,7 @@ import owlecore.OwlEcoreXmiWriter;
 public class RoundTripTest extends TestBase {
 
 	private List<String> iris = new ArrayList<String>();
-	private boolean createTestSet = true;
+	private boolean createTestSet = false;
 	private boolean collectStats = true;
 	
 	public void createUniqueOntologyTestSet() {
@@ -72,6 +72,7 @@ public class RoundTripTest extends TestBase {
 		// test all the files in the input/uniquetestontologies folder
 		File dir = new File("input/uniquetestontologies/");
 		File[] directoryListing = dir.listFiles();
+		List<HashMap<String, Integer>> breakDownTrackers = new ArrayList<HashMap<String, Integer>>();
 		List<HashMap<EClass, Integer>> objectTrackers = new ArrayList<HashMap<EClass, Integer>>();
 		
 		System.out.println("[RoundTripTest] Going to test " + directoryListing.length + " ontologies");
@@ -95,11 +96,13 @@ public class RoundTripTest extends TestBase {
 				if (collectStats) {
 					System.out.println("[RoundTripTest] [" + file.getName() + "] covered [" + parser.calculateCoverage(parser.getObjectTracker()) + "%] of instantiable constructs");
 					objectTrackers.add(parser.getObjectTracker());
+					breakDownTrackers.add(parser.getBreakDown());
 					System.out.println("[RoundTripTest] Accummulative testontologyset covered [" + parser.calculateTotalCoverage(objectTrackers) + "%] of instantiable constructs");
 					if (count == directoryListing.length) {
 						parser.calculateUse(objectTrackers);
 						parser.calculatePercentageUse(objectTrackers);
 						parser.collectCoverage(objectTrackers);
+						parser.collectBreakDownStats(breakDownTrackers);
 					}
 				}
 			}
