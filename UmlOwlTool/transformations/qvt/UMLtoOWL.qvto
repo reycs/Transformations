@@ -280,7 +280,9 @@ helper processCardinality(prop : UML::Property, objExpr : OWL::ObjectProperty, d
 /* CONSTRUCTORS */
 
 constructor OWL::URI::URI(uri:String) {
-	if (uml.getCIMDatatype(uri).p1) {
+	if (uri.equalsIgnoreCase("")) {
+		value := IRIPrefix + uri;
+	} else if (uml.getCIMDatatype(uri).p1) {
 		value := uml.getCIMDatatype(uri).p2;
 	} else if (uml.getXSDDatatype(uri).p1) {
 		value := uml.getXSDDatatype(uri).p2;

@@ -64,7 +64,7 @@ public class ToolModel {
 				System.out.println(view.inputOWL.canRead());
 				OwlEcoreXmiWriter writer = new OwlEcoreXmiWriter(view.inputOWL);
 				System.out.println("break here?");
-				writer.write("file:///" + view.outputOWL + "\\" + FilenameUtils.removeExtension(view.inputOWL.getName()) + ".xmi");
+				writer.write("file:///" + view.outputOWL + "/" + FilenameUtils.removeExtension(view.inputOWL.getName()) + ".xmi");
 				publish(2); // STATUS 2: managed to write to XMI
 				System.out.println("break here?????????????");
 				
@@ -77,7 +77,7 @@ public class ToolModel {
 				contextOWL.setLog(new WriterLog(new OutputStreamWriter(System.out)));
 				publish(3); // STATUS 3; managed to set configuration
 				
-				Resource inOWLResource = resourceSet.getResource(URI.createURI("file:///" + view.outputOWL + "\\" + FilenameUtils.removeExtension(view.inputOWL.getName()) + ".xmi"), true);
+				Resource inOWLResource = resourceSet.getResource(URI.createURI("file:///" + view.outputOWL + "/" + FilenameUtils.removeExtension(view.inputOWL.getName()) + ".xmi"), true);
 				EList<EObject> inOWLObjects = inOWLResource.getContents();
 				ModelExtent inputOWL = new BasicModelExtent(inOWLObjects);
 				ModelExtent outputOWL = new BasicModelExtent();
@@ -88,7 +88,7 @@ public class ToolModel {
 					publish(4); // STATUS 4; managed to execute the transformation
 					System.out.println("ok");
 					List<EObject> outOWLObjects = outputOWL.getContents();
-					Resource outOWLResource = resourceSet.createResource(URI.createURI("file:///" + view.outputOWL + "\\" + FilenameUtils.removeExtension(view.inputOWL.getName()) + ".uml"));
+					Resource outOWLResource = resourceSet.createResource(URI.createURI("file:///" + view.outputOWL + "/" + FilenameUtils.removeExtension(view.inputOWL.getName()) + ".uml"));
 					outOWLResource.getContents().addAll(outOWLObjects);
 					outOWLResource.save(Collections.emptyMap());
 				} else {
@@ -179,7 +179,7 @@ public class ToolModel {
 					// the output objects got captured in the output extent
 					List<EObject> outUMLObjects = outputUML.getContents();
 					System.out.println(URI.createURI(view.outputUML + "\\" + FilenameUtils.removeExtension(view.inputUML.getName()) + ".xmi"));
-					Resource outUMLResource = resourceSet.createResource(URI.createURI("file:///" + view.outputUML + "\\" + FilenameUtils.removeExtension(view.inputUML.getName()) + ".xmi"));
+					Resource outUMLResource = resourceSet.createResource(URI.createURI("file:///" + view.outputUML + "/" + FilenameUtils.removeExtension(view.inputUML.getName()) + ".xmi"));
 					outUMLResource.getContents().addAll(outUMLObjects);
 					try {
 						outUMLResource.save(Collections.emptyMap());
@@ -189,8 +189,8 @@ public class ToolModel {
 					publish(4); // STATUS 4: transformation succesful
 					
 					// Serialize the OWL xmi
-					OwlEcoreXmiParser parser = new OwlEcoreXmiParser("file:///" + view.outputUML + "\\" + FilenameUtils.removeExtension(view.inputUML.getName()) + ".xmi");
-					parser.parse().save(view.outputUML + "\\" + FilenameUtils.removeExtension(view.inputUML.getName()) + ".owl", String.valueOf(view.owlFormats.getSelectedItem()));
+					OwlEcoreXmiParser parser = new OwlEcoreXmiParser("file:///" + view.outputUML + "/" + FilenameUtils.removeExtension(view.inputUML.getName()) + ".xmi");
+					parser.parse().save(view.outputUML + "/" + FilenameUtils.removeExtension(view.inputUML.getName()) + ".owl", String.valueOf(view.owlFormats.getSelectedItem()));
 					publish(5); // STATUS 5: serialization succesful
 				} else {
 					System.out.println("[QVT UML -> OWL] Something went wrong with the UML -> OWL transformation");
