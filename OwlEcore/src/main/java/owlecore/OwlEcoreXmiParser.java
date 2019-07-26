@@ -12,7 +12,9 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.formats.OWLXMLDocumentFormat;
 import org.semanticweb.owlapi.formats.RDFXMLDocumentFormat;
+import org.semanticweb.owlapi.formats.TurtleDocumentFormat;
 import org.semanticweb.owlapi.model.AddOntologyAnnotation;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAnnotation;
@@ -250,6 +252,20 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 	
 	public void save(String fileName) {
 		save(fileName, new RDFXMLDocumentFormat());
+	}
+	
+	public void save(String fileName, String ontologyFormat) {
+		System.out.println(ontologyFormat);
+		if (ontologyFormat.equals("RDF/XML")) {
+			save(fileName, new RDFXMLDocumentFormat());
+		} else if (ontologyFormat.equals("OWL/XML")) {
+			System.out.println("test");
+			save(fileName, new OWLXMLDocumentFormat());
+		} else if (ontologyFormat.equals("Turtle")) {
+			save(fileName, new TurtleDocumentFormat());
+		} else {
+			save(fileName, new RDFXMLDocumentFormat());
+		}
 	}
 	
 	/**

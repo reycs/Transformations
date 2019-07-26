@@ -199,25 +199,38 @@ public class OwlEcoreXmiWriter implements OWLObjectVisitor {
 	 * @param document OWL Api document to write
 	 */
     public OwlEcoreXmiWriter(String document) {
+    	File ontologyFile = new File(document);
+    	init(ontologyFile);
+    }
+    
+    public OwlEcoreXmiWriter(File ontologyFile) {
+    	init(ontologyFile);
+    }
+    
+    private void init(File ontologyFile) {
     	resourceSet = new ResourceSetImpl();
     	resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl());
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 		resourceSet.getPackageRegistry().put("http:///owl.ecore", OwlPackage.eINSTANCE);
     	ontologyManager = OWLManager.createOWLOntologyManager();
     	ecoreOntologyFactory = OwlFactory.eINSTANCE;
-    	loadOntology(document);
+    	loadOntology(ontologyFile);
     }
     
     /**
      * Loads an ontology using the OWL ontology manager 
      * @param document ontology to load
      */
-    public void loadOntology(String document) {
-    	File ontologyFile = new File(document);
+    public void loadOntology(File ontologyFile) {
+    	System.out.println("break here??");
     	try {
+    		System.out.println("try???");
     		ontologyManager.setOntologyLoaderConfiguration(new OWLOntologyLoaderConfiguration().setMissingImportHandlingStrategy(MissingImportHandlingStrategy.SILENT));
+    		System.out.println("try?????");
     		ontology = ontologyManager.loadOntologyFromOntologyDocument(ontologyFile);
+    		System.out.println(ontology);
     	} catch (OWLOntologyCreationException e) {
+    		System.out.println("test");
 			e.printStackTrace();
 		}
     }

@@ -1,0 +1,580 @@
+modeltype UML uses 'http://www.eclipse.org/uml2/5.0.0/UML';
+modeltype OWL uses 'http:///owl.ecore';
+
+transformation OWLtoUML(in owl : OWL, out uml : UML);
+
+configuration property useCIMDataTypes : Boolean;
+configuration property useXSDDataTypes : Boolean;
+configuration property useOWLThing : Boolean;
+configuration property useRDFLiteral : Boolean;
+configuration property removePrefix : String;
+
+main() {
+	owl.objectsOfType(OWL::Ontology)->asOrderedSet()->map OWLtoUML();
+	owl.objectsOfType(OWL::SubClassOf)->asOrderedSet()->map SubClassToGe();
+	owl.objectsOfType(OWL::ObjectProperty)->asOrderedSet()->map ProToPro();
+	owl.objectsOfType(OWL::DataProperty)->asOrderedSet()->map PropToPro();
+	uml.getPackage().packagedElement += owl.objectsOfType(OWL::ObjectProperty)->asOrderedSet()->map PropToAss();
+	// Cardinalities
+	owl.objectsOfType(OWL::ObjectMinCardinality)->asOrderedSet()->map ObjectMinToCard();
+	owl.objectsOfType(OWL::ObjectMaxCardinality)->asOrderedSet()->map ObjectMaxToCard();
+	owl.objectsOfType(OWL::ObjectExactCardinality)->asOrderedSet()->map ObjectExactToCard();
+	owl.objectsOfType(OWL::DataMinCardinality)->asOrderedSet()->map DataMinToCard();
+	owl.objectsOfType(OWL::DataMaxCardinality)->asOrderedSet()->map DataMaxToCard();
+	owl.objectsOfType(OWL::DataExactCardinality)->asOrderedSet()->map DataExactToCard();
+	owl.objectsOfType(OWL::SubObjectPropertyOf)->asOrderedSet()->map SubObjectToSubSet();
+	owl.objectsOfType(OWL::SubDataPropertyOf)->asOrderedSet()->map SubDataToSubSet();
+	// functional data and object
+	owl.objectsOfType(OWL::FunctionalObjectProperty)->asOrderedSet()->map FuncObjToCard();
+	owl.objectsOfType(OWL::FunctionalDataProperty)->asOrderedSet()->map FuncDataToCard();
+	owl.objectsOfType(OWL::EquivalentDataProperties)->asOrderedSet()->map eqToSup();
+	owl.objectsOfType(OWL::EquivalentObjectProperties)->asOrderedSet()->map eqToSup();
+	setDefaultCardinalities();
+}
+
+mapping OWL::EquivalentDataProperties::eqToSup() {
+	var props := self.dataPropertyExpressions->asOrderedSet();
+	if (self.dataPropertyExpressions->asOrderedSet()->size() = 2) {
+		props->at(1).resolveone(UML::Property).subsettedProperty += props->at(2).resolveone(UML::Property);
+		props->at(2).resolveone(UML::Property).subsettedProperty += props->at(1).resolveone(UML::Property);
+	}
+}
+
+mapping OWL::EquivalentObjectProperties::eqToSup() {
+	var props := self.objectPropertyExpressions->asOrderedSet();
+	if (self.objectPropertyExpressions->asOrderedSet()->size() = 2) {
+		props->at(1).resolveone(UML::Property).subsettedProperty += props->at(2).resolveone(UML::Property);
+		props->at(2).resolveone(UML::Property).subsettedProperty += props->at(1).resolveone(UML::Property);
+	}
+}
+
+mapping OWL::Ontology::OWLtoUML() : UML::Model {
+	packagedElement += object UML::Package {
+		// if use OWLTHING
+		if (useOWLThing) {
+			packagedElement += object UML::Class { name := "http://www.w3.org/2002/07/owl#Thing" };
+		};
+		
+		// everything in a package
+		packagedElement += owl.objectsOfType(OWL::Class)->asOrderedSet()->map ClassToClass();
+		packagedElement += owl.objectsOfType(OWL::Declaration)->asOrderedSet()->map TypeToEnum();
+		packagedElement += owl.objectsOfType(OWL::Declaration)->asOrderedSet()->map TypeToType();
+		packagedElement += owl.objectsOfType(OWL::DataTypeDefinition)->asOrderedSet()->map DefToEnumValues();
+	};
+			
+	// CIM datatypes
+	if (useCIMDataTypes) {
+		createCIMDatatypes();
+	};
+	
+	// XSDDatatypes
+	if (useXSDDataTypes) {
+		createXSDDatatypes();
+	};
+	
+	// RDF Literal
+	if (useRDFLiteral) {
+		createRDFLiteral();
+	}
+}
+
+// Classes
+mapping OWL::Class::ClassToClass() : UML::Class {
+	name := uml.removePrefix(self.entityURI.value);
+}
+
+// Enum declarations
+mapping OWL::Declaration::TypeToEnum() : UML::Enumeration 
+	when {
+		// only for enumerations, when an OWLDataTypeDefinition exists with DataOneOf or DataUnionOf
+	 	self.entity.oclIsTypeOf(OWL::Datatype) and owl.hasEnumDef(self.entity.oclAsType(OWL::Datatype).entityURI.value)
+	} {
+	name := uml.removePrefix(self.entity.oclAsType(OWL::Datatype).entityURI.value);
+}
+
+// Datatype to datatype
+mapping OWL::Declaration::TypeToType() : UML::DataType 
+	when {
+		self.entity.oclIsTypeOf(OWL::Datatype) and not (uml.getCIMDataType(self.entity.oclAsType(OWL::Datatype).entityURI.value).p1 and useCIMDataTypes) 
+		and not (uml.getXSDDataType(self.entity.oclAsType(OWL::Datatype).entityURI.value).p1 and useXSDDataTypes) and not owl.hasEnumDef(self.entity.oclAsType(OWL::Datatype).entityURI.value)
+	} {
+	name := uml.removePrefix(self.entity.entityURI.value);
+}
+
+// Enums
+mapping OWL::DataTypeDefinition::DefToEnumValues() 
+ 	when {
+ 		self.dataRange.oclIsTypeOf(OWL::DataOneOf) or self.dataRange.oclIsTypeOf(OWL::DataUnionOf)
+ 	} {
+ 	if (self.dataRange.oclIsTypeOf(OWL::DataOneOf)) {
+ 		self.dataRange.oclAsType(OWL::DataOneOf).literals->forEach (lit) {
+ 			uml.getEnum(self.dataType.entityURI.value).ownedLiteral += object UML::EnumerationLiteral { name := lit.oclAsType(OWL::StringLiteral).quotedString } 
+ 		}
+ 	} else {
+ 		self.dataRange.oclAsType(OWL::DataUnionOf).dataRanges->forEach (dataRange) {
+ 			// generalization
+ 			if (dataRange.oclAsType(OWL::DataRange).oclIsTypeOf(OWL::Datatype)) {
+ 				uml.getEnum(self.dataType.entityURI.value).generalization += object UML::Generalization { specific := uml.getEnum(self.dataType.entityURI.value); general := uml.getEnum(dataRange.oclAsType(OWL::Datatype).entityURI.value) };
+ 			} else if (self.dataRange.oclIsTypeOf(OWL::DataOneOf)) {
+	 				self.dataRange.oclAsType(OWL::DataOneOf).literals->forEach (lit) {
+	 				uml.getEnum(self.dataType.entityURI.value).ownedLiteral += object UML::EnumerationLiteral { name := lit.oclAsType(OWL::StringLiteral).quotedString } 
+	 			}
+ 			}
+ 		}
+ 	}
+}
+
+// Generalizations
+mapping OWL::SubClassOf::SubClassToGe() : UML::Generalization 
+	when {
+		self.subClassExpression.oclIsTypeOf(OWL::Class) and self.superClassExpression.oclIsTypeOf(OWL::Class)
+	} {
+		specific := self.subClassExpression.resolveone(UML::Class);
+		general := self.superClassExpression.resolveone(UML::Class);
+}
+
+// Generalization between properties
+mapping OWL::SubObjectPropertyOf::SubObjectToSubSet() 
+	when {
+		not self.subObjectPropertyExpressions.resolveone(UML::Property).oclIsUndefined() and not self.superObjectPropertyExpression.resolveone(UML::Property).oclIsUndefined()
+	} {
+	self.subObjectPropertyExpressions.resolveone(UML::Property).subsettedProperty += self.superObjectPropertyExpression.resolveone(UML::Property);
+}
+
+mapping OWL::SubDataPropertyOf::SubDataToSubSet() 
+	when {
+		not self.subDataPropertyExpression.resolveone(UML::Property).oclIsUndefined() and not self.superDataPropertyExpression.resolveone(UML::Property).oclIsUndefined()
+	} {
+	self.subDataPropertyExpression.resolveone(UML::Property).subsettedProperty += self.superDataPropertyExpression.resolveone(UML::Property);
+}
+
+// Cardinalities
+mapping OWL::ObjectMinCardinality::ObjectMinToCard() {
+	self.objectPropertyExpression.resolveone(UML::Property).lower := self.cardinality;	
+}
+
+mapping OWL::ObjectMaxCardinality::ObjectMaxToCard() {
+	self.objectPropertyExpression.resolveone(UML::Property).upper := self.cardinality;
+}
+
+mapping OWL::ObjectExactCardinality::ObjectExactToCard() {
+	self.objectPropertyExpression.resolveone(UML::Property).lower := self.cardinality;
+	self.objectPropertyExpression.resolveone(UML::Property).upper := self.cardinality;
+}
+
+mapping OWL::DataMinCardinality::DataMinToCard() {
+	self.dataPropertyExpression.resolveone(UML::Property).lower := self.cardinality;
+}
+
+mapping OWL::DataMaxCardinality::DataMaxToCard() {
+	self.dataPropertyExpression.resolveone(UML::Property).upper := self.cardinality;
+}
+
+mapping OWL::DataExactCardinality::DataExactToCard() {
+	self.dataPropertyExpression.resolveone(UML::Property).lower := self.cardinality;
+	self.dataPropertyExpression.resolveone(UML::Property).upper := self.cardinality;
+}
+
+// functional object and data TODO determine whether the lower bound should be 0 or 1
+mapping OWL::FunctionalObjectProperty::FuncObjToCard() {
+	self.objectPropertyExpression.resolveone(UML::Property).lower := 1;
+	self.objectPropertyExpression.resolveone(UML::Property).upper := 1;
+}
+
+mapping OWL::FunctionalDataProperty::FuncDataToCard() {
+	self.dataPropertyExpression.resolveone(UML::Property).lower := 1;
+	self.dataPropertyExpression.resolveone(UML::Property).upper := 1;
+}
+
+// Object properties to property and resolve class attributes
+mapping OWL::ObjectProperty::ProToPro() : UML::Property {
+	name := uml.removePrefix(self.entityURI.value);
+	if (useOWLThing)
+		type := uml.getOWLThing();
+		
+	// if one class as domain @TODO REFACTOR
+	if (self.getDomain()->size() = 1) {
+		var domain := self.getDomain()->asOrderedSet()->first().domain;
+		if (domain.oclIsTypeOf(OWL::Class)) {
+			domain.oclAsType(OWL::Class).resolveone(UML::Class).ownedAttribute += self.resolveone(UML::Property);
+		} else if (domain.oclIsTypeOf(OWL::ObjectUnionOf)) {
+			var classes := OrderedSet{ object UML::Class {} };
+			domain.oclAsType(OWL::ObjectUnionOf).classExpressions->forEach(ce) {
+				if (not ce.oclAsType(OWL::Class).resolveone(UML::Class).oclIsUndefined()) {
+					classes += ce.oclAsType(OWL::Class).resolveone(UML::Class);
+				}
+			};
+			createUnionHelper(classes).ownedAttribute += self.resolveone(UML::Property);
+		} else if (domain.oclIsTypeOf(OWL::ObjectIntersectionOf)) {
+			var classes := OrderedSet{ object UML::Class {} };
+			domain.oclAsType(OWL::ObjectIntersectionOf).classExpressions->forEach(ce) {
+				if (not ce.oclAsType(OWL::Class).resolveone(UML::Class).oclIsUndefined()) {
+					classes += ce.oclAsType(OWL::Class).resolveone(UML::Class);
+				}
+			};
+			createIntersectionHelper(classes).ownedAttribute += self.resolveone(UML::Property);
+		};
+	} else {
+		if (self.getDomain()->size() = 0) {
+			uml.getOWLThing().ownedAttribute += self.resolveone(UML::Property);
+		} else {
+			log("Instantiated helper class for intersection of object property domain");
+			//createIntersectionHelper(self);
+			var classes := OrderedSet{ object UML::Class {} };
+			self.getDomain()->forEach(dom) {
+				if (not dom.domain.oclAsType(OWL::Class).resolveone(UML::Class).oclIsUndefined()) {
+					classes += dom.domain.oclAsType(OWL::Class).resolveone(UML::Class);
+				}
+			};
+			createIntersectionHelper(classes).ownedAttribute += self.resolveone(UML::Property);
+		}
+	};
+	// if one class as range @TODO refactor this
+	if (self.getRange()->size() = 1) {
+		var range := self.getRange()->asOrderedSet()->first().range;
+		if (not self.getRange().range.oclAsType(OWL::Class).resolveone(UML::Class).oclIsUndefined()) {
+			type := self.getRange().range.oclAsType(OWL::Class).resolveone(UML::Class);
+		} else if (range.oclIsTypeOf(OWL::ObjectUnionOf)) {
+			var classes := OrderedSet{ object UML::Class {} };
+			range.oclAsType(OWL::ObjectUnionOf).classExpressions->forEach(ce) {
+				if (not ce.oclAsType(OWL::Class).resolveone(UML::Class).oclIsUndefined()) {
+					classes += ce.oclAsType(OWL::Class).resolveone(UML::Class);
+				}
+			};
+			type := createUnionHelper(classes);
+		} else if (range.oclIsTypeOf(OWL::ObjectIntersectionOf)) {
+			var classes := OrderedSet{ object UML::Class {} };
+			range.oclAsType(OWL::ObjectIntersectionOf).classExpressions->forEach(ce) {
+				if (not ce.oclAsType(OWL::Class).resolveone(UML::Class).oclIsUndefined()) {
+					classes += ce.oclAsType(OWL::Class).resolveone(UML::Class);
+				}
+			};
+			createIntersectionHelper(classes).ownedAttribute += self.resolveone(UML::Property);
+		};
+	} else {
+		if (self.getRange()->size() = 0 and useOWLThing) {
+			type := uml.getOWLThing();
+		} else {
+			log("Instantiated helper class for intersection of object property range");
+			var classes := OrderedSet{ object UML::Class {} };
+			self.getRange()->forEach(ran) {
+				if (not ran.range.oclAsType(OWL::Class).resolveone(UML::Class).oclIsUndefined()) {
+					classes += ran.range.oclAsType(OWL::Class).resolveone(UML::Class);
+				}
+			};
+			type := createIntersectionHelper(classes);
+		}
+	};
+}
+
+// classexpressions objectUnionOf and objectIntersectionOf @TODO write functions so that nesting of unions and intersection work
+
+// Data properties to class attributes
+mapping OWL::DataProperty::PropToPro() : UML::Property {
+	name := uml.removePrefix(self.entityURI.value);
+	// default type if use XSDTypes
+	if (useXSDDataTypes) {
+		type := uml.getClass("anyType");
+	};
+	// if one class as domain
+	if (self.getDomain()->size() = 1) {
+		var domain := self.getDomain()->asOrderedSet()->first().domain;
+		if (not self.getDomain().domain.oclAsType(OWL::Class).resolveone(UML::Class).oclIsUndefined()) {
+			self.getDomain().domain.oclAsType(OWL::Class).resolveone(UML::Class).ownedAttribute += self.resolveone(UML::Property);
+		} else if (domain.oclIsTypeOf(OWL::ObjectUnionOf)) {
+			var classes := OrderedSet{ object UML::Class {} };
+			domain.oclAsType(OWL::ObjectUnionOf).classExpressions->forEach(ce) {
+				if (not ce.oclAsType(OWL::Class).resolveone(UML::Class).oclIsUndefined()) {
+					classes += ce.oclAsType(OWL::Class).resolveone(UML::Class);
+				}
+			};
+			createUnionHelper(classes).ownedAttribute += self.resolveone(UML::Property);
+		} else if (domain.oclIsTypeOf(OWL::ObjectIntersectionOf)) {
+			var classes := OrderedSet{ object UML::Class {} };
+			domain.oclAsType(OWL::ObjectIntersectionOf).classExpressions->forEach(ce) {
+				if (not ce.oclAsType(OWL::Class).resolveone(UML::Class).oclIsUndefined()) {
+					classes += ce.oclAsType(OWL::Class).resolveone(UML::Class);
+				}
+			};
+			createIntersectionHelper(classes).ownedAttribute += self.resolveone(UML::Property);
+		};
+	} else {
+		if (self.getDomain()->size() = 0 and useOWLThing) {
+			uml.getOWLThing().ownedAttribute += self.resolveone(UML::Property);
+		} else {
+			log("Instantiated helper class for intersection of data property domain");
+			var classes := OrderedSet{ object UML::Class {} };
+			self.getDomain()->forEach(dom) {
+				if (not dom.domain.oclAsType(OWL::Class).resolveone(UML::Class).oclIsUndefined()) {
+					classes += dom.domain.oclAsType(OWL::Class).resolveone(UML::Class);
+				}
+			};
+			createIntersectionHelper(classes).ownedAttribute += self.resolveone(UML::Property);
+		}
+	};
+	// if one class as range
+	if (self.getRange()->size() = 1) {
+		if (useCIMDataTypes) {
+			if (uml.getCIMDataType(self.getRange().range.oclAsType(OWL::Datatype).entityURI.value->first()).p1) {
+				type := uml.getClass(uml.getCIMDataType(self.getRange().range.oclAsType(OWL::Datatype).entityURI.value->first()).p2);
+			} else {
+				// enum
+				if (not uml.getEnum(self.getRange().range.oclAsType(OWL::Datatype).entityURI.value->first()).oclIsUndefined()) {
+					type := uml.getEnum(self.getRange().range.oclAsType(OWL::Datatype).entityURI.value->first());
+				} else {
+					type := uml.getDataType(self.getRange().range.oclAsType(OWL::Datatype).entityURI.value->first());
+				}
+			}
+		};
+		
+		if (useXSDDataTypes) {
+			if (uml.getXSDDataType(self.getRange().range.oclAsType(OWL::Datatype).entityURI.value->first()).p1) {
+				type := uml.getClass(uml.getXSDDataType(self.getRange().range.oclAsType(OWL::Datatype).entityURI.value->first()).p2);
+			} else {
+				// enum
+				if (not uml.getEnum(self.getRange().range.oclAsType(OWL::Datatype).entityURI.value->first()).oclIsUndefined()) {
+					type := uml.getEnum(self.getRange().range.oclAsType(OWL::Datatype).entityURI.value->first());
+				} else if (not uml.getDataType(self.getRange().range.oclAsType(OWL::Datatype).entityURI.value->first()).oclIsUndefined()) {
+					type := uml.getDataType(self.getRange().range.oclAsType(OWL::Datatype).entityURI.value->first());
+				}
+			}
+		};
+		
+		if (useRDFLiteral) {
+			if (self.getRange().range.oclAsType(OWL::Datatype).entityURI.value->first().equalsIgnoreCase("http://www.w3.org/2000/01/rdf-schema#Literal")) {
+				type := uml.getClass("Literal");
+			}
+		};
+		
+		// @TODO UPDATE ENUMS TO COMPLETE THE DEFINITION
+		if (self.getRange()->asOrderedSet()->first().range.oclIsTypeOf(OWL::DataOneOf)) {
+			var en := object UML::Enumeration {};
+			var enName := "";
+			self.getRange()->asOrderedSet()->first().range.oclAsType(OWL::DataOneOf).literals->forEach (lit) {
+				en.ownedLiteral += object UML::EnumerationLiteral { name := lit.oclAsType(OWL::TypedLiteral).lexicalValue };
+				enName := enName + lit.oclAsType(OWL::TypedLiteral).lexicalValue;
+			};
+			en.name := self.entityURI.value + enName;
+			type := en;
+		}
+		
+		//log(self.getRange().range.oclAsType(OWL::Datatype).entityURI.value->first());
+	} else if (self.getRange()->size() = 0) {
+		log("No Range keeping default range");
+	} else if (self.getRange()->size() > 0) {
+		log("Multiple Ranges?????");
+	}
+}
+
+// Associations
+mapping OWL::ObjectProperty::PropToAss() : UML::Association
+	when {
+		self.hasInverse() and not self.existsAssociation(self)
+	} {
+		result.ownedEnd += self.resolveone(UML::Property);
+		result.ownedEnd += self.getInverse().resolveone(UML::Property);
+}
+
+/* Queries */
+
+query UML::getClass(name : String) : UML::Class {
+	return uml.objectsOfType(UML::Class)->asOrderedSet()->select(c | c.name.equalsIgnoreCase(uml.removePrefix(name)))->first();
+}
+
+query OWL::ObjectProperty::hasInverse() : Boolean {
+	return owl.objectsOfType(OWL::InverseObjectProperties)->asOrderedSet()->select(c | self = c.firstProperty or self = c.secondProperty)->asOrderedSet()->size() > 0;
+}
+
+query OWL::ObjectProperty::getInverse() : OWL::ObjectProperty {
+	var inverse := owl.objectsOfType(OWL::InverseObjectProperties)->asOrderedSet()->select(c | self = c.firstProperty or self = c.secondProperty)->asOrderedSet()->first();
+	if (inverse.firstProperty = self) {
+		return inverse.secondProperty.oclAsType(OWL::ObjectProperty);
+	} else {
+		return inverse.firstProperty.oclAsType(OWL::ObjectProperty);
+	};
+}
+
+query OWL::ObjectProperty::existsAssociation(prop : OWL::ObjectProperty) : Boolean {
+	if (prop.resolveone(UML::Property).owningAssociation.oclIsUndefined()) {
+		return false;
+	};
+	return true;
+}
+
+query OWL::ObjectProperty::getDomain() : OrderedSet(OWL::ObjectPropertyDomain) {
+	return owl.objectsOfType(OWL::ObjectPropertyDomain)->asOrderedSet()->select(c | self = c.objectPropertyExpression);
+}
+
+query OWL::ObjectProperty::getRange() : OrderedSet(OWL::ObjectPropertyRange) {
+	return owl.objectsOfType(OWL::ObjectPropertyRange)->asOrderedSet()->select(c | self = c.objectPropertyExpression);
+}
+
+query OWL::DataProperty::getDomain() : OrderedSet(OWL::DataPropertyDomain) {
+	return owl.objectsOfType(OWL::DataPropertyDomain)->asOrderedSet()->select(c | self = c.dataPropertyExpression);
+}
+
+query OWL::DataProperty::getRange() : OrderedSet(OWL::DataPropertyRange) {
+	return owl.objectsOfType(OWL::DataPropertyRange)->asOrderedSet()->select(c | self = c.dataPropertyExpression);
+}
+
+query UML::getEnum(name : String) : UML::Enumeration {
+	return uml.objectsOfType(UML::Enumeration)->asOrderedSet()->select(c | c.name.equalsIgnoreCase(uml.removePrefix(name)))->first();
+}
+
+query OWL::hasEnumDef(iri : String) : Boolean {
+	return owl.objectsOfType(OWL::DataTypeDefinition)->asOrderedSet()->select(c | c.dataType.entityURI.value.equalsIgnoreCase(iri) and (c.dataRange.oclIsTypeOf(OWL::DataOneOf) or c.dataRange.oclIsTypeOf(OWL::DataUnionOf)))->size() > 0
+}
+
+query UML::getPackage() : UML::Package {
+	return uml.objectsOfType(UML::Package)->asOrderedSet()->first();
+}
+
+query UML::getDataType(type : String) : UML::DataType {
+	return uml.objectsOfType(UML::DataType)->asOrderedSet()->select(c | c.name.equalsIgnoreCase(uml.removePrefix(type)))->first();
+}
+
+query UML::getCIMDataType(type : String) : p1 : Boolean, p2 : String {
+	p1 := false;
+	p2 := null;
+	switch {
+		case (type.equalsIgnoreCase("http://www.w3.org/2001/XMLSchema#string")) p2 := "String";
+		case (type.equalsIgnoreCase("http://www.w3.org/2001/XMLSchema#nonNegativeInteger")) p2 := "Integer";
+		case (type.equalsIgnoreCase("http://www.w3.org/2001/XMLSchema#boolean")) p2 := "Boolean";
+		case (type.equalsIgnoreCase("http://www.w3.org/2001/XMLSchema#dateTime")) p2 := "DateTime";
+		case (type.equalsIgnoreCase("http://www.w3.org/2001/XMLSchema#integer")) p2 := "UnlimitedNatural";
+		case (type.equalsIgnoreCase("http://www.w3.org/2001/XMLSchema#byte")) p2 := "Byte";
+		case (type.equalsIgnoreCase("http://www.w3.org/2001/XMLSchema#decimal")) p2 := "Currency";
+		case (type.equalsIgnoreCase("http://www.w3.org/2001/XMLSchema#date")) p2 := "Date";
+		case (type.equalsIgnoreCase("http://www.w3.org/2001/XMLSchema#double")) p2 := "Double";
+		case (type.equalsIgnoreCase("http://www.w3.org/2001/XMLSchema#float")) p2 := "Float";
+		case (type.equalsIgnoreCase("http://www.w3.org/2001/XMLSchema#long")) p2 := "Long";
+		case (type.equalsIgnoreCase("http://www.w3.org/2001/XMLSchema#short")) p2 := "Single";
+	};
+	if (not p2.oclIsUndefined()) {
+		p1 := true;
+	} else {
+		p2 := type;
+	}
+}
+
+query UML::getXSDDataType(type : String) : p1 : Boolean, p2 : String {
+	p1 := false;
+	p2 := null;
+	// Checking based on name (could also check on package if this is bad for performance)
+	var types := Set { "anySimpleType","anyType","anyURI","base64Binary","decimal","duration","ENTITIES","ENTITY","gDay","gMonth","gMonthDay","gYear","gYearMonth","hexBinary","ID","IDREF","IDREFS","int","language","Name","NCName","negativeInteger","NMTOKEN","NMTOKENS","nonNegativeInteger","nonPositiveInteger","normalizedString","NOTATION","positiveInteger","integer","QName","short","time","token","unsignedByte","unsignedInt","unsignedLong","unsignedShort","float","dateTime","string" };
+	if (types->equalsIgnoreCase(type.substringAfter("http://www.w3.org/2001/XMLSchema#"))->count(true) > 0) {
+		p2 := type.substringAfter("http://www.w3.org/2001/XMLSchema#");
+		p1 := true;
+	};
+}
+
+query UML::getOWLThing() : UML::Class {
+	return uml.getClass("http://www.w3.org/2002/07/owl#Thing");
+}
+
+query OWL::getOntologyURI() : String {
+	return owl.objectsOfType(OWL::Ontology)->asOrderedSet()->first().ontologyURI.value;
+}
+
+query UML::removePrefix(input : String) : String {
+	if (not removePrefix.oclIsUndefined() and input.startsWith(removePrefix)) {
+		return input.substringAfter(removePrefix);
+	};
+	return input;
+}
+
+query OWL::removeIRI(input : String) : String {
+	return input.replaceFirst("http://[^<>]+#", "");
+}
+
+/* Helpers */
+
+helper createIntersectionHelper(classes : OrderedSet(UML::Class)) : UML::Class {
+	var helperClass := object UML::Class{ };
+	var intName := "";
+	var first := true;
+	// Creating a helper class to resolve this
+	uml.getPackage().packagedElement += helperClass;
+	classes->forEach(cl) {
+		if (not cl.name.oclIsUndefined()) {
+			if (first) {
+				first := false;
+				intName := intName + cl.name;
+			} else {
+				var domainName := cl.name;
+				intName := intName + "_intersection_" + owl.removeIRI(domainName);
+			};
+			helperClass.general += cl;
+		} else {
+			uml.removeElement(cl);
+		};
+	};
+	if (not uml.getClass(intName).oclIsUndefined()) {
+		return uml.getClass(intName);
+	};
+	helperClass.name := intName;
+	return helperClass;
+}
+
+// @TODO refactor this to be one with the intersection helper @TODO FIX THIS TO PREVENT DUPLICATE GENERALIZATIONS
+helper createUnionHelper(classes : OrderedSet(UML::Class)) : UML::Class {
+	var helperClass := object UML::Class{ };
+	var intName := "";
+	var first := true;
+	// Creating a helper class to resolve this
+	uml.getPackage().packagedElement += helperClass;
+	classes->forEach(cl) {
+		if (not cl.name.oclIsUndefined()) {
+			if (first) {
+				first := false;
+				intName := intName + cl.name;
+			} else {
+				var domainName := cl.name;
+				intName := intName + "_union_" + owl.removeIRI(domainName);
+			};
+			cl.general += helperClass;
+		} else {
+			uml.removeElement(cl);
+		};
+	};
+	if (not uml.getClass(intName).oclIsUndefined()) {
+		return uml.getClass(intName);
+	};
+	helperClass.name := intName;
+	return helperClass;
+}
+
+helper createCIMDatatypes() {
+	var cimPackage := object UML::Package { name := "CIMDataTypes" };
+	Set {
+		"String","Integer","Boolean","DateTime","UnlimitedNatural","Byte","Currency","Date","Double","Float","Long","Single","Variant","CharacterString","DummyPrimitive"
+	}->forEach(type) {
+		cimPackage.packagedElement += object UML::Class { name := type };
+	}
+}
+
+helper createXSDDatatypes() {
+	var XSDDataTypes := object UML::Package { name := "XSDDataTypes" };
+	Set { 
+		"anySimpleType","anyType","anyURI","base64Binary","decimal","duration","ENTITIES","ENTITY","gDay","gMonth","gMonthDay","gYear","gYearMonth","hexBinary","ID","IDREF","IDREFS","int","language","Name","NCName","negativeInteger","NMTOKEN","NMTOKENS","nonNegativeInteger","nonPositiveInteger","normalizedString","NOTATION","positiveInteger","integer","QName","short","time","token","unsignedByte","unsignedInt","unsignedLong","unsignedShort","float","dateTime","string"
+	}->forEach(type) {
+		XSDDataTypes.packagedElement += object UML::Class { name := type };
+	}
+}
+
+helper createRDFLiteral() {
+	var RDFTypes := object UML::Package { name := "RDFTypes" };
+	RDFTypes.packagedElement += object UML::Class { name := "Literal" }
+}
+
+helper setDefaultCardinalities() {
+	uml.objectsOfType(UML::Property)->forEach(prop) {
+		if (prop.upperValue.oclIsUndefined()) {
+			prop.upper := -1;
+		};
+		
+		if (prop.lowerValue.oclIsUndefined()) {
+			prop.lower := 0;
+		};
+	}
+}

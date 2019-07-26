@@ -1,0 +1,1585 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:owl="http:///owl.ecore">
+  <owl:URI value="http://www.w3.org/2001/XMLSchema#"/>
+  <owl:URI value="http://transformed/uml#ActivityComplex"/>
+  <owl:Class entityURI="/1"/>
+  <owl:Declaration entity="/2"/>
+  <owl:URI value="http://transformed/uml#Appurtenance"/>
+  <owl:Class entityURI="/4"/>
+  <owl:Declaration entity="/5"/>
+  <owl:URI value="http://transformed/uml#AppurtenanceTypeValue"/>
+  <owl:Class entityURI="/7"/>
+  <owl:Declaration entity="/8"/>
+  <owl:URI value="http://transformed/uml#AreaOfResponsibilityType"/>
+  <owl:Class entityURI="/10"/>
+  <owl:Declaration entity="/11"/>
+  <owl:URI value="http://transformed/uml#CI_Citation"/>
+  <owl:Class entityURI="/13"/>
+  <owl:Declaration entity="/14"/>
+  <owl:URI value="http://transformed/uml#Cabinet"/>
+  <owl:Class entityURI="/16"/>
+  <owl:Declaration entity="/17"/>
+  <owl:URI value="http://transformed/uml#Cable"/>
+  <owl:Class entityURI="/19"/>
+  <owl:Declaration entity="/20"/>
+  <owl:URI value="http://transformed/uml#ClockTime"/>
+  <owl:Class entityURI="/22"/>
+  <owl:Declaration entity="/23"/>
+  <owl:URI value="http://transformed/uml#ConditionOfFacilityValue"/>
+  <owl:Class entityURI="/25"/>
+  <owl:Declaration entity="/26"/>
+  <owl:URI value="http://transformed/uml#DQ_Element"/>
+  <owl:Class entityURI="/28"/>
+  <owl:Declaration entity="/29"/>
+  <owl:URI value="http://transformed/uml#DQ_EvaluationMethodTypeCode"/>
+  <owl:Class entityURI="/31"/>
+  <owl:Declaration entity="/32"/>
+  <owl:URI value="http://transformed/uml#DQ_PositionalAccuracy"/>
+  <owl:Class entityURI="/34"/>
+  <owl:Declaration entity="/35"/>
+  <owl:URI value="http://transformed/uml#DQ_Result"/>
+  <owl:Class entityURI="/37"/>
+  <owl:Declaration entity="/38"/>
+  <owl:URI value="http://transformed/uml#DirectPosition"/>
+  <owl:Class entityURI="/40"/>
+  <owl:Declaration entity="/41"/>
+  <owl:URI value="http://transformed/uml#DirectedLink"/>
+  <owl:Class entityURI="/43"/>
+  <owl:Declaration entity="/44"/>
+  <owl:URI value="http://transformed/uml#Duct"/>
+  <owl:Class entityURI="/46"/>
+  <owl:Declaration entity="/47"/>
+  <owl:URI value="http://transformed/uml#EX_Extent"/>
+  <owl:Class entityURI="/49"/>
+  <owl:Declaration entity="/50"/>
+  <owl:URI value="http://transformed/uml#EconomicActivityValue"/>
+  <owl:Class entityURI="/52"/>
+  <owl:Declaration entity="/53"/>
+  <owl:URI value="http://transformed/uml#ElectricityAppurtenanceTypeValue"/>
+  <owl:Class entityURI="/55"/>
+  <owl:Declaration entity="/56"/>
+  <owl:URI value="http://transformed/uml#ElectricityCable"/>
+  <owl:Class entityURI="/58"/>
+  <owl:Declaration entity="/59"/>
+  <owl:URI value="http://transformed/uml#Function"/>
+  <owl:Class entityURI="/61"/>
+  <owl:Declaration entity="/62"/>
+  <owl:URI value="http://transformed/uml#GM_Complex"/>
+  <owl:Class entityURI="/64"/>
+  <owl:Declaration entity="/65"/>
+  <owl:URI value="http://transformed/uml#GM_Composite"/>
+  <owl:Class entityURI="/67"/>
+  <owl:Declaration entity="/68"/>
+  <owl:URI value="http://transformed/uml#GM_CompositeCurve"/>
+  <owl:Class entityURI="/70"/>
+  <owl:Declaration entity="/71"/>
+  <owl:URI value="http://transformed/uml#GM_CompositePoint"/>
+  <owl:Class entityURI="/73"/>
+  <owl:Declaration entity="/74"/>
+  <owl:URI value="http://transformed/uml#GM_Curve"/>
+  <owl:Class entityURI="/76"/>
+  <owl:Declaration entity="/77"/>
+  <owl:URI value="http://transformed/uml#GM_CurveInterpolation"/>
+  <owl:Class entityURI="/79"/>
+  <owl:Declaration entity="/80"/>
+  <owl:URI value="http://transformed/uml#GM_CurveSegment"/>
+  <owl:Class entityURI="/82"/>
+  <owl:Declaration entity="/83"/>
+  <owl:URI value="http://transformed/uml#GM_Object"/>
+  <owl:Class entityURI="/85"/>
+  <owl:Declaration entity="/86"/>
+  <owl:URI value="http://transformed/uml#GM_OrientableCurve"/>
+  <owl:Class entityURI="/88"/>
+  <owl:Declaration entity="/89"/>
+  <owl:URI value="http://transformed/uml#GM_OrientablePrimitive"/>
+  <owl:Class entityURI="/91"/>
+  <owl:Declaration entity="/92"/>
+  <owl:URI value="http://transformed/uml#GM_Point"/>
+  <owl:Class entityURI="/94"/>
+  <owl:Declaration entity="/95"/>
+  <owl:URI value="http://transformed/uml#GM_Primitive"/>
+  <owl:Class entityURI="/97"/>
+  <owl:Declaration entity="/98"/>
+  <owl:URI value="http://transformed/uml#GeneralisedLink"/>
+  <owl:Class entityURI="/100"/>
+  <owl:Declaration entity="/101"/>
+  <owl:URI value="http://transformed/uml#GenericName"/>
+  <owl:Class entityURI="/103"/>
+  <owl:Declaration entity="/104"/>
+  <owl:URI value="http://transformed/uml#GeographicalName"/>
+  <owl:Class entityURI="/106"/>
+  <owl:Declaration entity="/107"/>
+  <owl:URI value="http://transformed/uml#GovernmentalService"/>
+  <owl:Class entityURI="/109"/>
+  <owl:Declaration entity="/110"/>
+  <owl:URI value="http://transformed/uml#GrammaticalGenderValue"/>
+  <owl:Class entityURI="/112"/>
+  <owl:Declaration entity="/113"/>
+  <owl:URI value="http://transformed/uml#GrammaticalNumberValue"/>
+  <owl:Class entityURI="/115"/>
+  <owl:Declaration entity="/116"/>
+  <owl:URI value="http://transformed/uml#IO_IdentifiedObject"/>
+  <owl:Class entityURI="/118"/>
+  <owl:Declaration entity="/119"/>
+  <owl:URI value="http://transformed/uml#IO_IdentifiedObjectBase"/>
+  <owl:Class entityURI="/121"/>
+  <owl:Declaration entity="/122"/>
+  <owl:URI value="http://transformed/uml#Identifier"/>
+  <owl:Class entityURI="/124"/>
+  <owl:Declaration entity="/125"/>
+  <owl:URI value="http://transformed/uml#InputOutputValue"/>
+  <owl:Class entityURI="/127"/>
+  <owl:Declaration entity="/128"/>
+  <owl:URI value="http://transformed/uml#Length"/>
+  <owl:Class entityURI="/130"/>
+  <owl:Declaration entity="/131"/>
+  <owl:URI value="http://transformed/uml#Link"/>
+  <owl:Class entityURI="/133"/>
+  <owl:Declaration entity="/134"/>
+  <owl:URI value="http://transformed/uml#LinkSequence"/>
+  <owl:Class entityURI="/136"/>
+  <owl:Declaration entity="/137"/>
+  <owl:URI value="http://transformed/uml#LinkSet"/>
+  <owl:Class entityURI="/139"/>
+  <owl:Declaration entity="/140"/>
+  <owl:URI value="http://transformed/uml#LocalName"/>
+  <owl:Class entityURI="/142"/>
+  <owl:Declaration entity="/143"/>
+  <owl:URI value="http://transformed/uml#LocationReference"/>
+  <owl:Class entityURI="/145"/>
+  <owl:Declaration entity="/146"/>
+  <owl:URI value="http://transformed/uml#MD_Identifier"/>
+  <owl:Class entityURI="/148"/>
+  <owl:Declaration entity="/149"/>
+  <owl:URI value="http://transformed/uml#Manhole"/>
+  <owl:Class entityURI="/151"/>
+  <owl:Declaration entity="/152"/>
+  <owl:URI value="http://transformed/uml#Measure"/>
+  <owl:Class entityURI="/154"/>
+  <owl:Declaration entity="/155"/>
+  <owl:URI value="http://transformed/uml#MeasureType"/>
+  <owl:Class entityURI="/157"/>
+  <owl:Declaration entity="/158"/>
+  <owl:URI value="http://transformed/uml#NameSpace"/>
+  <owl:Class entityURI="/160"/>
+  <owl:Declaration entity="/161"/>
+  <owl:URI value="http://transformed/uml#NameStatusValue"/>
+  <owl:Class entityURI="/163"/>
+  <owl:Declaration entity="/164"/>
+  <owl:URI value="http://transformed/uml#NativenessValue"/>
+  <owl:Class entityURI="/166"/>
+  <owl:Declaration entity="/167"/>
+  <owl:URI value="http://transformed/uml#Network"/>
+  <owl:Class entityURI="/169"/>
+  <owl:Declaration entity="/170"/>
+  <owl:URI value="http://transformed/uml#NetworkElement"/>
+  <owl:Class entityURI="/172"/>
+  <owl:Declaration entity="/173"/>
+  <owl:URI value="http://transformed/uml#Node"/>
+  <owl:Class entityURI="/175"/>
+  <owl:Declaration entity="/176"/>
+  <owl:URI value="http://transformed/uml#NodeLocationReference"/>
+  <owl:Class entityURI="/178"/>
+  <owl:Declaration entity="/179"/>
+  <owl:URI value="http://transformed/uml#Number"/>
+  <owl:Class entityURI="/181"/>
+  <owl:Declaration entity="/182"/>
+  <owl:URI value="http://transformed/uml#Pipe"/>
+  <owl:Class entityURI="/184"/>
+  <owl:Declaration entity="/185"/>
+  <owl:URI value="http://transformed/uml#PointLocationReference"/>
+  <owl:Class entityURI="/187"/>
+  <owl:Declaration entity="/188"/>
+  <owl:URI value="http://transformed/uml#Pole"/>
+  <owl:Class entityURI="/190"/>
+  <owl:Declaration entity="/191"/>
+  <owl:URI value="http://transformed/uml#PronunciationOfName"/>
+  <owl:Class entityURI="/193"/>
+  <owl:Declaration entity="/194"/>
+  <owl:URI value="http://transformed/uml#RS_Identifier"/>
+  <owl:Class entityURI="/196"/>
+  <owl:Declaration entity="/197"/>
+  <owl:URI value="http://transformed/uml#RS_ReferenceSystem"/>
+  <owl:Class entityURI="/199"/>
+  <owl:Declaration entity="/200"/>
+  <owl:URI value="http://transformed/uml#Real"/>
+  <owl:Class entityURI="/202"/>
+  <owl:Declaration entity="/203"/>
+  <owl:URI value="http://transformed/uml#SC_CRS"/>
+  <owl:Class entityURI="/205"/>
+  <owl:Declaration entity="/206"/>
+  <owl:URI value="http://transformed/uml#SpecificAppurtenanceTypeValue"/>
+  <owl:Class entityURI="/208"/>
+  <owl:Declaration entity="/209"/>
+  <owl:URI value="http://transformed/uml#SpellingOfName"/>
+  <owl:Class entityURI="/211"/>
+  <owl:Declaration entity="/212"/>
+  <owl:URI value="http://transformed/uml#SubUnitsPerUnit"/>
+  <owl:Class entityURI="/214"/>
+  <owl:Declaration entity="/215"/>
+  <owl:URI value="http://transformed/uml#ThematicIdentifier"/>
+  <owl:Class entityURI="/217"/>
+  <owl:Declaration entity="/218"/>
+  <owl:URI value="http://transformed/uml#Tower"/>
+  <owl:Class entityURI="/220"/>
+  <owl:Declaration entity="/221"/>
+  <owl:URI value="http://transformed/uml#TypeName"/>
+  <owl:Class entityURI="/223"/>
+  <owl:Declaration entity="/224"/>
+  <owl:URI value="http://transformed/uml#URI"/>
+  <owl:Class entityURI="/226"/>
+  <owl:Declaration entity="/227"/>
+  <owl:URI value="http://transformed/uml#UnitOfMeasure"/>
+  <owl:Class entityURI="/229"/>
+  <owl:Declaration entity="/230"/>
+  <owl:URI value="http://transformed/uml#UomLength"/>
+  <owl:Class entityURI="/232"/>
+  <owl:Declaration entity="/233"/>
+  <owl:URI value="http://transformed/uml#UtilityDeliveryTypeValue"/>
+  <owl:Class entityURI="/235"/>
+  <owl:Declaration entity="/236"/>
+  <owl:URI value="http://transformed/uml#UtilityLinkSequence"/>
+  <owl:Class entityURI="/238"/>
+  <owl:Declaration entity="/239"/>
+  <owl:URI value="http://transformed/uml#UtilityLinkSet"/>
+  <owl:Class entityURI="/241"/>
+  <owl:Declaration entity="/242"/>
+  <owl:URI value="http://transformed/uml#UtilityNetworkElement"/>
+  <owl:Class entityURI="/244"/>
+  <owl:Declaration entity="/245"/>
+  <owl:URI value="http://transformed/uml#UtilityNetworkTypeValue"/>
+  <owl:Class entityURI="/247"/>
+  <owl:Declaration entity="/248"/>
+  <owl:URI value="http://transformed/uml#UtilityNode"/>
+  <owl:Class entityURI="/250"/>
+  <owl:Declaration entity="/251"/>
+  <owl:URI value="http://transformed/uml#UtilityNodeContainer"/>
+  <owl:Class entityURI="/253"/>
+  <owl:Declaration entity="/254"/>
+  <owl:URI value="http://transformed/uml#WarningTypeValue"/>
+  <owl:Class entityURI="/256"/>
+  <owl:Declaration entity="/257"/>
+  <owl:URI value="http://transformed/uml#Sequence%3CCharacter%3E"/>
+  <owl:Class entityURI="/259"/>
+  <owl:Declaration entity="/260"/>
+  <owl:URI value="http://transformed/uml#Cable_Duct"/>
+  <owl:ObjectProperty entityURI="/262"/>
+  <owl:Declaration entity="/263"/>
+  <owl:URI value="http://transformed/uml#Cable_Pipe"/>
+  <owl:ObjectProperty entityURI="/265"/>
+  <owl:Declaration entity="/266"/>
+  <owl:URI value="http://transformed/uml#DirectPosition_CRS"/>
+  <owl:ObjectProperty entityURI="/268"/>
+  <owl:Declaration entity="/269"/>
+  <owl:URI value="http://transformed/uml#DirectedLink_link"/>
+  <owl:ObjectProperty entityURI="/271"/>
+  <owl:Declaration entity="/272"/>
+  <owl:URI value="http://transformed/uml#Duct_Duct"/>
+  <owl:ObjectProperty entityURI="/274"/>
+  <owl:Declaration entity="/275"/>
+  <owl:URI value="http://transformed/uml#Duct_cables"/>
+  <owl:ObjectProperty entityURI="/277"/>
+  <owl:Declaration entity="/278"/>
+  <owl:URI value="http://transformed/uml#Duct_ducts"/>
+  <owl:ObjectProperty entityURI="/280"/>
+  <owl:Declaration entity="/281"/>
+  <owl:URI value="http://transformed/uml#Duct_pipes"/>
+  <owl:ObjectProperty entityURI="/283"/>
+  <owl:Declaration entity="/284"/>
+  <owl:URI value="http://transformed/uml#GM_Complex_element"/>
+  <owl:ObjectProperty entityURI="/286"/>
+  <owl:Declaration entity="/287"/>
+  <owl:URI value="http://transformed/uml#GM_Complex_subComplex"/>
+  <owl:ObjectProperty entityURI="/289"/>
+  <owl:Declaration entity="/290"/>
+  <owl:URI value="http://transformed/uml#GM_Complex_superComplex"/>
+  <owl:ObjectProperty entityURI="/292"/>
+  <owl:Declaration entity="/293"/>
+  <owl:URI value="http://transformed/uml#GM_CompositeCurve_generator"/>
+  <owl:ObjectProperty entityURI="/295"/>
+  <owl:Declaration entity="/296"/>
+  <owl:URI value="http://transformed/uml#GM_CompositePoint_generator"/>
+  <owl:ObjectProperty entityURI="/298"/>
+  <owl:Declaration entity="/299"/>
+  <owl:URI value="http://transformed/uml#GM_Composite_generator"/>
+  <owl:ObjectProperty entityURI="/301"/>
+  <owl:Declaration entity="/302"/>
+  <owl:URI value="http://transformed/uml#GM_CurveSegment_curve"/>
+  <owl:ObjectProperty entityURI="/304"/>
+  <owl:Declaration entity="/305"/>
+  <owl:URI value="http://transformed/uml#GM_Curve_segment"/>
+  <owl:ObjectProperty entityURI="/307"/>
+  <owl:Declaration entity="/308"/>
+  <owl:URI value="http://transformed/uml#GM_Object_CRS"/>
+  <owl:ObjectProperty entityURI="/310"/>
+  <owl:Declaration entity="/311"/>
+  <owl:URI value="http://transformed/uml#GM_OrientableCurve_composite"/>
+  <owl:ObjectProperty entityURI="/313"/>
+  <owl:Declaration entity="/314"/>
+  <owl:URI value="http://transformed/uml#GM_OrientablePrimitive_primitive"/>
+  <owl:ObjectProperty entityURI="/316"/>
+  <owl:Declaration entity="/317"/>
+  <owl:URI value="http://transformed/uml#GM_Point_composite"/>
+  <owl:ObjectProperty entityURI="/319"/>
+  <owl:Declaration entity="/320"/>
+  <owl:URI value="http://transformed/uml#GM_Primitive_complex"/>
+  <owl:ObjectProperty entityURI="/322"/>
+  <owl:Declaration entity="/323"/>
+  <owl:URI value="http://transformed/uml#GM_Primitive_composite"/>
+  <owl:ObjectProperty entityURI="/325"/>
+  <owl:Declaration entity="/326"/>
+  <owl:URI value="http://transformed/uml#GM_Primitive_containedPrimitive"/>
+  <owl:ObjectProperty entityURI="/328"/>
+  <owl:Declaration entity="/329"/>
+  <owl:URI value="http://transformed/uml#GM_Primitive_containingPrimitive"/>
+  <owl:ObjectProperty entityURI="/331"/>
+  <owl:Declaration entity="/332"/>
+  <owl:URI value="http://transformed/uml#GM_Primitive_proxy"/>
+  <owl:ObjectProperty entityURI="/334"/>
+  <owl:Declaration entity="/335"/>
+  <owl:URI value="http://transformed/uml#GeneralisedLink_LinkSet"/>
+  <owl:ObjectProperty entityURI="/337"/>
+  <owl:Declaration entity="/338"/>
+  <owl:URI value="http://transformed/uml#GenericName_scope"/>
+  <owl:ObjectProperty entityURI="/340"/>
+  <owl:Declaration entity="/341"/>
+  <owl:URI value="http://transformed/uml#LinkSet_link"/>
+  <owl:ObjectProperty entityURI="/343"/>
+  <owl:Declaration entity="/344"/>
+  <owl:URI value="http://transformed/uml#Link_DirectedLink"/>
+  <owl:ObjectProperty entityURI="/346"/>
+  <owl:Declaration entity="/347"/>
+  <owl:URI value="http://transformed/uml#Link_endNode"/>
+  <owl:ObjectProperty entityURI="/349"/>
+  <owl:Declaration entity="/350"/>
+  <owl:URI value="http://transformed/uml#Link_startNode"/>
+  <owl:ObjectProperty entityURI="/352"/>
+  <owl:Declaration entity="/353"/>
+  <owl:URI value="http://transformed/uml#Measure_uom"/>
+  <owl:ObjectProperty entityURI="/355"/>
+  <owl:Declaration entity="/356"/>
+  <owl:URI value="http://transformed/uml#NameSpace_name"/>
+  <owl:ObjectProperty entityURI="/358"/>
+  <owl:Declaration entity="/359"/>
+  <owl:URI value="http://transformed/uml#NetworkElement_inNetwork"/>
+  <owl:ObjectProperty entityURI="/361"/>
+  <owl:Declaration entity="/362"/>
+  <owl:URI value="http://transformed/uml#Network_elements"/>
+  <owl:ObjectProperty entityURI="/364"/>
+  <owl:Declaration entity="/365"/>
+  <owl:URI value="http://transformed/uml#NodeLocationReference_node"/>
+  <owl:ObjectProperty entityURI="/367"/>
+  <owl:Declaration entity="/368"/>
+  <owl:URI value="http://transformed/uml#Node_NodeLocationReference"/>
+  <owl:ObjectProperty entityURI="/370"/>
+  <owl:Declaration entity="/371"/>
+  <owl:URI value="http://transformed/uml#Node_spokeEnd"/>
+  <owl:ObjectProperty entityURI="/373"/>
+  <owl:Declaration entity="/374"/>
+  <owl:URI value="http://transformed/uml#Node_spokeStart"/>
+  <owl:ObjectProperty entityURI="/376"/>
+  <owl:Declaration entity="/377"/>
+  <owl:URI value="http://transformed/uml#Pipe_Duct"/>
+  <owl:ObjectProperty entityURI="/379"/>
+  <owl:Declaration entity="/380"/>
+  <owl:URI value="http://transformed/uml#Pipe_Pipe"/>
+  <owl:ObjectProperty entityURI="/382"/>
+  <owl:Declaration entity="/383"/>
+  <owl:URI value="http://transformed/uml#Pipe_cables"/>
+  <owl:ObjectProperty entityURI="/385"/>
+  <owl:Declaration entity="/386"/>
+  <owl:URI value="http://transformed/uml#Pipe_pipes"/>
+  <owl:ObjectProperty entityURI="/388"/>
+  <owl:Declaration entity="/389"/>
+  <owl:URI value="http://transformed/uml#SC_CRS_directPosition"/>
+  <owl:ObjectProperty entityURI="/391"/>
+  <owl:Declaration entity="/392"/>
+  <owl:URI value="http://transformed/uml#SC_CRS_object"/>
+  <owl:ObjectProperty entityURI="/394"/>
+  <owl:Declaration entity="/395"/>
+  <owl:URI value="http://transformed/uml#UnitOfMeasure_UnitOfMeasure"/>
+  <owl:ObjectProperty entityURI="/397"/>
+  <owl:Declaration entity="/398"/>
+  <owl:URI value="http://transformed/uml#UnitOfMeasure_measure"/>
+  <owl:ObjectProperty entityURI="/400"/>
+  <owl:Declaration entity="/401"/>
+  <owl:URI value="http://transformed/uml#UnitOfMeasure_subunits"/>
+  <owl:ObjectProperty entityURI="/403"/>
+  <owl:Declaration entity="/404"/>
+  <owl:URI value="http://transformed/uml#UtilityNodeContainer_nodes"/>
+  <owl:ObjectProperty entityURI="/406"/>
+  <owl:Declaration entity="/407"/>
+  <owl:URI value="http://transformed/uml#UtilityNode_UtilityNodeContainer"/>
+  <owl:ObjectProperty entityURI="/409"/>
+  <owl:Declaration entity="/410"/>
+  <owl:URI value="http://transformed/uml#acceptableClassList"/>
+  <owl:ObjectProperty entityURI="/412"/>
+  <owl:Declaration entity="/413"/>
+  <owl:URI value="http://transformed/uml#activity"/>
+  <owl:ObjectProperty entityURI="/415"/>
+  <owl:Declaration entity="/416"/>
+  <owl:URI value="http://transformed/uml#alias"/>
+  <owl:ObjectProperty entityURI="/418"/>
+  <owl:Declaration entity="/419"/>
+  <owl:URI value="http://transformed/uml#appurtenanceType"/>
+  <owl:ObjectProperty entityURI="/421"/>
+  <owl:Declaration entity="/422"/>
+  <owl:URI value="http://transformed/uml#areaOfResponsibility"/>
+  <owl:ObjectProperty entityURI="/424"/>
+  <owl:Declaration entity="/425"/>
+  <owl:URI value="http://transformed/uml#centrelineGeometry"/>
+  <owl:ObjectProperty entityURI="/427"/>
+  <owl:Declaration entity="/428"/>
+  <owl:URI value="http://transformed/uml#currentStatus"/>
+  <owl:ObjectProperty entityURI="/430"/>
+  <owl:Declaration entity="/431"/>
+  <owl:URI value="http://transformed/uml#domainOfValidity"/>
+  <owl:ObjectProperty entityURI="/433"/>
+  <owl:Declaration entity="/434"/>
+  <owl:URI value="http://transformed/uml#evaluationMethodType"/>
+  <owl:ObjectProperty entityURI="/436"/>
+  <owl:Declaration entity="/437"/>
+  <owl:URI value="http://transformed/uml#factor"/>
+  <owl:ObjectProperty entityURI="/439"/>
+  <owl:Declaration entity="/440"/>
+  <owl:URI value="http://transformed/uml#function"/>
+  <owl:ObjectProperty entityURI="/442"/>
+  <owl:Declaration entity="/443"/>
+  <owl:URI value="http://transformed/uml#geographicalName"/>
+  <owl:ObjectProperty entityURI="/445"/>
+  <owl:Declaration entity="/446"/>
+  <owl:URI value="http://transformed/uml#geometry"/>
+  <owl:ObjectProperty entityURI="/448"/>
+  <owl:Declaration entity="/449"/>
+  <owl:URI value="http://transformed/uml#governmentalServiceReference"/>
+  <owl:ObjectProperty entityURI="/451"/>
+  <owl:Declaration entity="/452"/>
+  <owl:URI value="http://transformed/uml#grammaticalGender"/>
+  <owl:ObjectProperty entityURI="/454"/>
+  <owl:Declaration entity="/455"/>
+  <owl:URI value="http://transformed/uml#grammaticalNumber"/>
+  <owl:ObjectProperty entityURI="/457"/>
+  <owl:Declaration entity="/458"/>
+  <owl:URI value="http://transformed/uml#identifier"/>
+  <owl:ObjectProperty entityURI="/460"/>
+  <owl:Declaration entity="/461"/>
+  <owl:URI value="http://transformed/uml#input"/>
+  <owl:ObjectProperty entityURI="/463"/>
+  <owl:Declaration entity="/464"/>
+  <owl:URI value="http://transformed/uml#inspireId"/>
+  <owl:ObjectProperty entityURI="/466"/>
+  <owl:Declaration entity="/467"/>
+  <owl:URI value="http://transformed/uml#interpolation"/>
+  <owl:ObjectProperty entityURI="/469"/>
+  <owl:Declaration entity="/470"/>
+  <owl:URI value="http://transformed/uml#link"/>
+  <owl:ObjectProperty entityURI="/472"/>
+  <owl:Declaration entity="/473"/>
+  <owl:URI value="http://transformed/uml#measureIdentification"/>
+  <owl:ObjectProperty entityURI="/475"/>
+  <owl:Declaration entity="/476"/>
+  <owl:URI value="http://transformed/uml#measureType"/>
+  <owl:ObjectProperty entityURI="/478"/>
+  <owl:Declaration entity="/479"/>
+  <owl:URI value="http://transformed/uml#name"/>
+  <owl:ObjectProperty entityURI="/481"/>
+  <owl:Declaration entity="/482"/>
+  <owl:URI value="http://transformed/uml#nameStatus"/>
+  <owl:ObjectProperty entityURI="/484"/>
+  <owl:Declaration entity="/485"/>
+  <owl:URI value="http://transformed/uml#nativeness"/>
+  <owl:ObjectProperty entityURI="/487"/>
+  <owl:Declaration entity="/488"/>
+  <owl:URI value="http://transformed/uml#networkReference"/>
+  <owl:ObjectProperty entityURI="/490"/>
+  <owl:Declaration entity="/491"/>
+  <owl:URI value="http://transformed/uml#nominalVoltage"/>
+  <owl:ObjectProperty entityURI="/493"/>
+  <owl:Declaration entity="/494"/>
+  <owl:URI value="http://transformed/uml#offsetToStandardUnit"/>
+  <owl:ObjectProperty entityURI="/496"/>
+  <owl:Declaration entity="/497"/>
+  <owl:URI value="http://transformed/uml#operatingVoltage"/>
+  <owl:ObjectProperty entityURI="/499"/>
+  <owl:Declaration entity="/500"/>
+  <owl:URI value="http://transformed/uml#output"/>
+  <owl:ObjectProperty entityURI="/502"/>
+  <owl:Declaration entity="/503"/>
+  <owl:URI value="http://transformed/uml#pipeDiameter"/>
+  <owl:ObjectProperty entityURI="/505"/>
+  <owl:Declaration entity="/506"/>
+  <owl:URI value="http://transformed/uml#poleHeight"/>
+  <owl:ObjectProperty entityURI="/508"/>
+  <owl:Declaration entity="/509"/>
+  <owl:URI value="http://transformed/uml#position"/>
+  <owl:ObjectProperty entityURI="/511"/>
+  <owl:Declaration entity="/512"/>
+  <owl:URI value="http://transformed/uml#pressure"/>
+  <owl:ObjectProperty entityURI="/514"/>
+  <owl:Declaration entity="/515"/>
+  <owl:URI value="http://transformed/uml#pronunciation"/>
+  <owl:ObjectProperty entityURI="/517"/>
+  <owl:Declaration entity="/518"/>
+  <owl:URI value="http://transformed/uml#pronunciationSoundLink"/>
+  <owl:ObjectProperty entityURI="/520"/>
+  <owl:Declaration entity="/521"/>
+  <owl:URI value="http://transformed/uml#result"/>
+  <owl:ObjectProperty entityURI="/523"/>
+  <owl:Declaration entity="/524"/>
+  <owl:URI value="http://transformed/uml#scaleToStandardUnit"/>
+  <owl:ObjectProperty entityURI="/526"/>
+  <owl:Declaration entity="/527"/>
+  <owl:URI value="http://transformed/uml#specificAppurtenanceType"/>
+  <owl:ObjectProperty entityURI="/529"/>
+  <owl:Declaration entity="/530"/>
+  <owl:URI value="http://transformed/uml#spelling"/>
+  <owl:ObjectProperty entityURI="/532"/>
+  <owl:Declaration entity="/533"/>
+  <owl:URI value="http://transformed/uml#subunit"/>
+  <owl:ObjectProperty entityURI="/535"/>
+  <owl:Declaration entity="/536"/>
+  <owl:URI value="http://transformed/uml#subunitsperunit"/>
+  <owl:ObjectProperty entityURI="/538"/>
+  <owl:Declaration entity="/539"/>
+  <owl:URI value="http://transformed/uml#thematicId"/>
+  <owl:ObjectProperty entityURI="/541"/>
+  <owl:Declaration entity="/542"/>
+  <owl:URI value="http://transformed/uml#towerHeight"/>
+  <owl:ObjectProperty entityURI="/544"/>
+  <owl:Declaration entity="/545"/>
+  <owl:URI value="http://transformed/uml#uom"/>
+  <owl:ObjectProperty entityURI="/547"/>
+  <owl:Declaration entity="/548"/>
+  <owl:URI value="http://transformed/uml#utilityDeliveryType"/>
+  <owl:ObjectProperty entityURI="/550"/>
+  <owl:Declaration entity="/551"/>
+  <owl:URI value="http://transformed/uml#utilityFacilityReference"/>
+  <owl:ObjectProperty entityURI="/553"/>
+  <owl:Declaration entity="/554"/>
+  <owl:URI value="http://transformed/uml#value"/>
+  <owl:ObjectProperty entityURI="/556"/>
+  <owl:Declaration entity="/557"/>
+  <owl:URI value="http://transformed/uml#warningType"/>
+  <owl:ObjectProperty entityURI="/559"/>
+  <owl:Declaration entity="/560"/>
+  <owl:URI value="http://transformed/uml#ISBN"/>
+  <owl:DataProperty entityURI="/562"/>
+  <owl:Declaration entity="/563"/>
+  <owl:URI value="http://transformed/uml#ISSN"/>
+  <owl:DataProperty entityURI="/565"/>
+  <owl:Declaration entity="/566"/>
+  <owl:URI value="http://transformed/uml#aName"/>
+  <owl:DataProperty entityURI="/568"/>
+  <owl:Declaration entity="/569"/>
+  <owl:URI value="http://transformed/uml#alternateTitle"/>
+  <owl:DataProperty entityURI="/571"/>
+  <owl:Declaration entity="/572"/>
+  <owl:URI value="http://transformed/uml#beginLifespanVersion"/>
+  <owl:DataProperty entityURI="/574"/>
+  <owl:Declaration entity="/575"/>
+  <owl:URI value="http://transformed/uml#code"/>
+  <owl:DataProperty entityURI="/577"/>
+  <owl:Declaration entity="/578"/>
+  <owl:URI value="http://transformed/uml#codeSpace"/>
+  <owl:DataProperty entityURI="/580"/>
+  <owl:Declaration entity="/581"/>
+  <owl:URI value="http://transformed/uml#collectiveTitle"/>
+  <owl:DataProperty entityURI="/583"/>
+  <owl:Declaration entity="/584"/>
+  <owl:URI value="http://transformed/uml#coordinate"/>
+  <owl:DataProperty entityURI="/586"/>
+  <owl:Declaration entity="/587"/>
+  <owl:URI value="http://transformed/uml#description"/>
+  <owl:DataProperty entityURI="/589"/>
+  <owl:Declaration entity="/590"/>
+  <owl:URI value="http://transformed/uml#dimension"/>
+  <owl:DataProperty entityURI="/592"/>
+  <owl:Declaration entity="/593"/>
+  <owl:URI value="http://transformed/uml#direction"/>
+  <owl:DataProperty entityURI="/595"/>
+  <owl:Declaration entity="/596"/>
+  <owl:URI value="http://transformed/uml#edition"/>
+  <owl:DataProperty entityURI="/598"/>
+  <owl:Declaration entity="/599"/>
+  <owl:URI value="http://transformed/uml#editionDate"/>
+  <owl:DataProperty entityURI="/601"/>
+  <owl:Declaration entity="/602"/>
+  <owl:URI value="http://transformed/uml#endLifespanVersion"/>
+  <owl:DataProperty entityURI="/604"/>
+  <owl:Declaration entity="/605"/>
+  <owl:URI value="http://transformed/uml#evaluationMethodDescription"/>
+  <owl:DataProperty entityURI="/607"/>
+  <owl:Declaration entity="/608"/>
+  <owl:URI value="http://transformed/uml#fictitious"/>
+  <owl:DataProperty entityURI="/610"/>
+  <owl:Declaration entity="/611"/>
+  <owl:URI value="http://transformed/uml#formula"/>
+  <owl:DataProperty entityURI="/613"/>
+  <owl:Declaration entity="/614"/>
+  <owl:URI value="http://transformed/uml#hour"/>
+  <owl:DataProperty entityURI="/616"/>
+  <owl:Declaration entity="/617"/>
+  <owl:DataProperty entityURI="/460"/>
+  <owl:Declaration entity="/619"/>
+  <owl:URI value="http://transformed/uml#identifierScheme"/>
+  <owl:DataProperty entityURI="/621"/>
+  <owl:Declaration entity="/622"/>
+  <owl:URI value="http://transformed/uml#isGlobal"/>
+  <owl:DataProperty entityURI="/624"/>
+  <owl:Declaration entity="/625"/>
+  <owl:URI value="http://transformed/uml#measureDescription"/>
+  <owl:DataProperty entityURI="/627"/>
+  <owl:Declaration entity="/628"/>
+  <owl:URI value="http://transformed/uml#minute"/>
+  <owl:DataProperty entityURI="/630"/>
+  <owl:Declaration entity="/631"/>
+  <owl:DataProperty entityURI="/481"/>
+  <owl:Declaration entity="/633"/>
+  <owl:URI value="http://transformed/uml#nameOfMeasure"/>
+  <owl:DataProperty entityURI="/635"/>
+  <owl:Declaration entity="/636"/>
+  <owl:URI value="http://transformed/uml#nameStandardUnit"/>
+  <owl:DataProperty entityURI="/638"/>
+  <owl:Declaration entity="/639"/>
+  <owl:URI value="http://transformed/uml#numDerivativeInterior"/>
+  <owl:DataProperty entityURI="/641"/>
+  <owl:Declaration entity="/642"/>
+  <owl:URI value="http://transformed/uml#numDerivativesAtEnd"/>
+  <owl:DataProperty entityURI="/644"/>
+  <owl:Declaration entity="/645"/>
+  <owl:URI value="http://transformed/uml#numDerivativesAtStart"/>
+  <owl:DataProperty entityURI="/647"/>
+  <owl:Declaration entity="/648"/>
+  <owl:URI value="http://transformed/uml#orientation"/>
+  <owl:DataProperty entityURI="/650"/>
+  <owl:Declaration entity="/651"/>
+  <owl:URI value="http://transformed/uml#otherCitationDetails"/>
+  <owl:DataProperty entityURI="/653"/>
+  <owl:Declaration entity="/654"/>
+  <owl:URI value="http://transformed/uml#pronunciationIPA"/>
+  <owl:DataProperty entityURI="/656"/>
+  <owl:Declaration entity="/657"/>
+  <owl:URI value="http://transformed/uml#remarks"/>
+  <owl:DataProperty entityURI="/659"/>
+  <owl:Declaration entity="/660"/>
+  <owl:URI value="http://transformed/uml#scope"/>
+  <owl:DataProperty entityURI="/662"/>
+  <owl:Declaration entity="/663"/>
+  <owl:URI value="http://transformed/uml#script"/>
+  <owl:DataProperty entityURI="/665"/>
+  <owl:Declaration entity="/666"/>
+  <owl:URI value="http://transformed/uml#second"/>
+  <owl:DataProperty entityURI="/668"/>
+  <owl:Declaration entity="/669"/>
+  <owl:URI value="http://transformed/uml#timeZone"/>
+  <owl:DataProperty entityURI="/671"/>
+  <owl:Declaration entity="/672"/>
+  <owl:URI value="http://transformed/uml#title"/>
+  <owl:DataProperty entityURI="/674"/>
+  <owl:Declaration entity="/675"/>
+  <owl:URI value="http://transformed/uml#transliterationScheme"/>
+  <owl:DataProperty entityURI="/677"/>
+  <owl:Declaration entity="/678"/>
+  <owl:URI value="http://transformed/uml#uomName"/>
+  <owl:DataProperty entityURI="/680"/>
+  <owl:Declaration entity="/681"/>
+  <owl:URI value="http://transformed/uml#uomSymbol"/>
+  <owl:DataProperty entityURI="/683"/>
+  <owl:Declaration entity="/684"/>
+  <owl:URI value="http://transformed/uml#validFrom"/>
+  <owl:DataProperty entityURI="/686"/>
+  <owl:Declaration entity="/687"/>
+  <owl:URI value="http://transformed/uml#validTo"/>
+  <owl:DataProperty entityURI="/689"/>
+  <owl:Declaration entity="/690"/>
+  <owl:URI value="http://transformed/uml#version"/>
+  <owl:DataProperty entityURI="/692"/>
+  <owl:Declaration entity="/693"/>
+  <owl:URI value="http://transformed/uml#verticalPosition"/>
+  <owl:DataProperty entityURI="/695"/>
+  <owl:Declaration entity="/696"/>
+  <owl:URI value="http://www.w3.org/2001/dateTime"/>
+  <owl:DataProperty entityURI="/698"/>
+  <owl:Declaration entity="/699"/>
+  <owl:URI value="http://transformed/uml#Sign"/>
+  <owl:Datatype entityURI="/701"/>
+  <owl:Declaration entity="/702"/>
+  <owl:URI value="http://transformed/uml#VerticalPositionValue"/>
+  <owl:Datatype entityURI="/704"/>
+  <owl:Declaration entity="/705"/>
+  <owl:URI value="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <owl:Datatype entityURI="/707"/>
+  <owl:Declaration entity="/708"/>
+  <owl:URI value="http://www.w3.org/2001/XMLSchema#date"/>
+  <owl:Datatype entityURI="/710"/>
+  <owl:Declaration entity="/711"/>
+  <owl:URI value="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  <owl:Datatype entityURI="/713"/>
+  <owl:Declaration entity="/714"/>
+  <owl:URI value="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+  <owl:Datatype entityURI="/716"/>
+  <owl:Declaration entity="/717"/>
+  <owl:URI value="http://www.w3.org/2001/XMLSchema#string"/>
+  <owl:Datatype entityURI="/719"/>
+  <owl:Declaration entity="/720"/>
+  <owl:ObjectMinCardinality cardinality="1" classExpression="/62" objectPropertyExpression="/443"/>
+  <owl:SubClassOf subClassExpression="/2" superClassExpression="/722"/>
+  <owl:ObjectMinCardinality classExpression="/218" objectPropertyExpression="/542"/>
+  <owl:SubClassOf subClassExpression="/2" superClassExpression="/724"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/86" objectPropertyExpression="/449"/>
+  <owl:SubClassOf subClassExpression="/2" superClassExpression="/726"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/125" objectPropertyExpression="/467"/>
+  <owl:SubClassOf subClassExpression="/2" superClassExpression="/728"/>
+  <owl:DataMinCardinality dataRange="/714" dataPropertyExpression="/605"/>
+  <owl:SubClassOf subClassExpression="/2" superClassExpression="/730"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/633"/>
+  <owl:SubClassOf subClassExpression="/2" superClassExpression="/732"/>
+  <owl:DataMinCardinality dataRange="/714" dataPropertyExpression="/690"/>
+  <owl:SubClassOf subClassExpression="/2" superClassExpression="/734"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/714" dataPropertyExpression="/575"/>
+  <owl:SubClassOf subClassExpression="/2" superClassExpression="/736"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/714" dataPropertyExpression="/687"/>
+  <owl:SubClassOf subClassExpression="/2" superClassExpression="/738"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/714" dataPropertyExpression="/605"/>
+  <owl:SubClassOf subClassExpression="/2" superClassExpression="/740"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/633"/>
+  <owl:SubClassOf subClassExpression="/2" superClassExpression="/742"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/714" dataPropertyExpression="/690"/>
+  <owl:SubClassOf subClassExpression="/2" superClassExpression="/744"/>
+  <owl:SubClassOf subClassExpression="/5" superClassExpression="/251"/>
+  <owl:ObjectMinCardinality classExpression="/209" objectPropertyExpression="/530"/>
+  <owl:SubClassOf subClassExpression="/5" superClassExpression="/747"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/8" objectPropertyExpression="/422"/>
+  <owl:SubClassOf subClassExpression="/5" superClassExpression="/749"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/209" objectPropertyExpression="/530"/>
+  <owl:SubClassOf subClassExpression="/5" superClassExpression="/751"/>
+  <owl:ObjectMinCardinality classExpression="/149" objectPropertyExpression="/461"/>
+  <owl:SubClassOf subClassExpression="/14" superClassExpression="/753"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/563"/>
+  <owl:SubClassOf subClassExpression="/14" superClassExpression="/755"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/566"/>
+  <owl:SubClassOf subClassExpression="/14" superClassExpression="/757"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/572"/>
+  <owl:SubClassOf subClassExpression="/14" superClassExpression="/759"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/584"/>
+  <owl:SubClassOf subClassExpression="/14" superClassExpression="/761"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/599"/>
+  <owl:SubClassOf subClassExpression="/14" superClassExpression="/763"/>
+  <owl:DataMinCardinality dataRange="/711" dataPropertyExpression="/602"/>
+  <owl:SubClassOf subClassExpression="/14" superClassExpression="/765"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/654"/>
+  <owl:SubClassOf subClassExpression="/14" superClassExpression="/767"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/675"/>
+  <owl:SubClassOf subClassExpression="/14" superClassExpression="/769"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/563"/>
+  <owl:SubClassOf subClassExpression="/14" superClassExpression="/771"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/566"/>
+  <owl:SubClassOf subClassExpression="/14" superClassExpression="/773"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/584"/>
+  <owl:SubClassOf subClassExpression="/14" superClassExpression="/775"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/599"/>
+  <owl:SubClassOf subClassExpression="/14" superClassExpression="/777"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/711" dataPropertyExpression="/602"/>
+  <owl:SubClassOf subClassExpression="/14" superClassExpression="/779"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/654"/>
+  <owl:SubClassOf subClassExpression="/14" superClassExpression="/781"/>
+  <owl:SubClassOf subClassExpression="/17" superClassExpression="/254"/>
+  <owl:SubClassOf subClassExpression="/20" superClassExpression="/242"/>
+  <owl:ObjectMinCardinality classExpression="/20" objectPropertyExpression="/263"/>
+  <owl:SubClassOf subClassExpression="/20" superClassExpression="/785"/>
+  <owl:ObjectMinCardinality classExpression="/20" objectPropertyExpression="/266"/>
+  <owl:SubClassOf subClassExpression="/20" superClassExpression="/787"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/631"/>
+  <owl:SubClassOf subClassExpression="/23" superClassExpression="/789"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/669"/>
+  <owl:SubClassOf subClassExpression="/23" superClassExpression="/791"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/672"/>
+  <owl:SubClassOf subClassExpression="/23" superClassExpression="/793"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/617"/>
+  <owl:SubClassOf subClassExpression="/23" superClassExpression="/795"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/631"/>
+  <owl:SubClassOf subClassExpression="/23" superClassExpression="/797"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/669"/>
+  <owl:SubClassOf subClassExpression="/23" superClassExpression="/799"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/672"/>
+  <owl:SubClassOf subClassExpression="/23" superClassExpression="/801"/>
+  <owl:ObjectMinCardinality classExpression="/32" objectPropertyExpression="/437"/>
+  <owl:SubClassOf subClassExpression="/29" superClassExpression="/803"/>
+  <owl:ObjectMinCardinality classExpression="/149" objectPropertyExpression="/476"/>
+  <owl:SubClassOf subClassExpression="/29" superClassExpression="/805"/>
+  <owl:ObjectMinCardinality cardinality="1" classExpression="/38" objectPropertyExpression="/524"/>
+  <owl:SubClassOf subClassExpression="/29" superClassExpression="/807"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/32" objectPropertyExpression="/437"/>
+  <owl:SubClassOf subClassExpression="/29" superClassExpression="/809"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/149" objectPropertyExpression="/476"/>
+  <owl:SubClassOf subClassExpression="/29" superClassExpression="/811"/>
+  <owl:ObjectMaxCardinality cardinality="2" classExpression="/38" objectPropertyExpression="/524"/>
+  <owl:SubClassOf subClassExpression="/29" superClassExpression="/813"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/608"/>
+  <owl:SubClassOf subClassExpression="/29" superClassExpression="/815"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/628"/>
+  <owl:SubClassOf subClassExpression="/29" superClassExpression="/817"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/636"/>
+  <owl:SubClassOf subClassExpression="/29" superClassExpression="/819"/>
+  <owl:DataMinCardinality dataRange="/714" dataPropertyExpression="/699"/>
+  <owl:SubClassOf subClassExpression="/29" superClassExpression="/821"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/608"/>
+  <owl:SubClassOf subClassExpression="/29" superClassExpression="/823"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/628"/>
+  <owl:SubClassOf subClassExpression="/29" superClassExpression="/825"/>
+  <owl:SubClassOf subClassExpression="/35" superClassExpression="/29"/>
+  <owl:ObjectMinCardinality classExpression="/41" objectPropertyExpression="/269"/>
+  <owl:SubClassOf subClassExpression="/41" superClassExpression="/828"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/717" dataPropertyExpression="/587"/>
+  <owl:SubClassOf subClassExpression="/41" superClassExpression="/830"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/717" dataPropertyExpression="/593"/>
+  <owl:SubClassOf subClassExpression="/41" superClassExpression="/832"/>
+  <owl:ObjectMinCardinality classExpression="/44" objectPropertyExpression="/272"/>
+  <owl:SubClassOf subClassExpression="/44" superClassExpression="/834"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/702" dataPropertyExpression="/596"/>
+  <owl:SubClassOf subClassExpression="/44" superClassExpression="/836"/>
+  <owl:SubClassOf subClassExpression="/47" superClassExpression="/242"/>
+  <owl:ObjectMinCardinality classExpression="/47" objectPropertyExpression="/275"/>
+  <owl:SubClassOf subClassExpression="/47" superClassExpression="/839"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/47" objectPropertyExpression="/278"/>
+  <owl:SubClassOf subClassExpression="/47" superClassExpression="/841"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/47" objectPropertyExpression="/281"/>
+  <owl:SubClassOf subClassExpression="/47" superClassExpression="/843"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/47" objectPropertyExpression="/284"/>
+  <owl:SubClassOf subClassExpression="/47" superClassExpression="/845"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/590"/>
+  <owl:SubClassOf subClassExpression="/50" superClassExpression="/847"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/590"/>
+  <owl:SubClassOf subClassExpression="/50" superClassExpression="/849"/>
+  <owl:SubClassOf subClassExpression="/56" superClassExpression="/8"/>
+  <owl:SubClassOf subClassExpression="/59" superClassExpression="/20"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/155" objectPropertyExpression="/494"/>
+  <owl:SubClassOf subClassExpression="/59" superClassExpression="/853"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/155" objectPropertyExpression="/500"/>
+  <owl:SubClassOf subClassExpression="/59" superClassExpression="/855"/>
+  <owl:ObjectMinCardinality cardinality="1" classExpression="/53" objectPropertyExpression="/416"/>
+  <owl:SubClassOf subClassExpression="/62" superClassExpression="/857"/>
+  <owl:ObjectMinCardinality classExpression="/128" objectPropertyExpression="/464"/>
+  <owl:SubClassOf subClassExpression="/62" superClassExpression="/859"/>
+  <owl:ObjectMinCardinality classExpression="/128" objectPropertyExpression="/503"/>
+  <owl:SubClassOf subClassExpression="/62" superClassExpression="/861"/>
+  <owl:SubClassOf subClassExpression="/65" superClassExpression="/86"/>
+  <owl:ObjectMinCardinality classExpression="/65" objectPropertyExpression="/287"/>
+  <owl:SubClassOf subClassExpression="/65" superClassExpression="/864"/>
+  <owl:ObjectMinCardinality classExpression="/65" objectPropertyExpression="/290"/>
+  <owl:SubClassOf subClassExpression="/65" superClassExpression="/866"/>
+  <owl:ObjectMinCardinality classExpression="/65" objectPropertyExpression="/293"/>
+  <owl:SubClassOf subClassExpression="/65" superClassExpression="/868"/>
+  <owl:SubClassOf subClassExpression="/68" superClassExpression="/65"/>
+  <owl:ObjectMinCardinality classExpression="/68" objectPropertyExpression="/302"/>
+  <owl:SubClassOf subClassExpression="/68" superClassExpression="/871"/>
+  <owl:SubClassOf subClassExpression="/71" superClassExpression="/68"/>
+  <owl:SubClassOf subClassExpression="/71" superClassExpression="/89"/>
+  <owl:ObjectMinCardinality classExpression="/71" objectPropertyExpression="/296"/>
+  <owl:SubClassOf subClassExpression="/71" superClassExpression="/875"/>
+  <owl:SubClassOf subClassExpression="/74" superClassExpression="/68"/>
+  <owl:SubClassOf subClassExpression="/74" superClassExpression="/95"/>
+  <owl:ObjectMinCardinality classExpression="/74" objectPropertyExpression="/299"/>
+  <owl:SubClassOf subClassExpression="/74" superClassExpression="/879"/>
+  <owl:SubClassOf subClassExpression="/77" superClassExpression="/89"/>
+  <owl:ObjectMinCardinality classExpression="/77" objectPropertyExpression="/308"/>
+  <owl:SubClassOf subClassExpression="/77" superClassExpression="/882"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/77" objectPropertyExpression="/308"/>
+  <owl:SubClassOf subClassExpression="/77" superClassExpression="/884"/>
+  <owl:ObjectMinCardinality cardinality="1" classExpression="/83" objectPropertyExpression="/305"/>
+  <owl:SubClassOf subClassExpression="/83" superClassExpression="/886"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/80" objectPropertyExpression="/470"/>
+  <owl:SubClassOf subClassExpression="/83" superClassExpression="/888"/>
+  <owl:DataMinCardinality dataRange="/717" dataPropertyExpression="/642"/>
+  <owl:SubClassOf subClassExpression="/83" superClassExpression="/890"/>
+  <owl:DataMinCardinality dataRange="/717" dataPropertyExpression="/645"/>
+  <owl:SubClassOf subClassExpression="/83" superClassExpression="/892"/>
+  <owl:DataMinCardinality dataRange="/717" dataPropertyExpression="/648"/>
+  <owl:SubClassOf subClassExpression="/83" superClassExpression="/894"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/717" dataPropertyExpression="/642"/>
+  <owl:SubClassOf subClassExpression="/83" superClassExpression="/896"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/717" dataPropertyExpression="/645"/>
+  <owl:SubClassOf subClassExpression="/83" superClassExpression="/898"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/717" dataPropertyExpression="/648"/>
+  <owl:SubClassOf subClassExpression="/83" superClassExpression="/900"/>
+  <owl:ObjectMinCardinality classExpression="/86" objectPropertyExpression="/311"/>
+  <owl:SubClassOf subClassExpression="/86" superClassExpression="/902"/>
+  <owl:SubClassOf subClassExpression="/89" superClassExpression="/92"/>
+  <owl:ObjectMinCardinality cardinality="1" classExpression="/89" objectPropertyExpression="/314"/>
+  <owl:SubClassOf subClassExpression="/89" superClassExpression="/905"/>
+  <owl:SubClassOf subClassExpression="/92" superClassExpression="/98"/>
+  <owl:ObjectExactCardinality classExpression="/92" objectPropertyExpression="/317"/>
+  <owl:SubClassOf subClassExpression="/92" superClassExpression="/908"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/702" dataPropertyExpression="/651"/>
+  <owl:SubClassOf subClassExpression="/92" superClassExpression="/910"/>
+  <owl:SubClassOf subClassExpression="/95" superClassExpression="/98"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/95" objectPropertyExpression="/320"/>
+  <owl:SubClassOf subClassExpression="/95" superClassExpression="/913"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/41" objectPropertyExpression="/512"/>
+  <owl:SubClassOf subClassExpression="/95" superClassExpression="/915"/>
+  <owl:SubClassOf subClassExpression="/98" superClassExpression="/86"/>
+  <owl:ObjectMinCardinality cardinality="1" classExpression="/98" objectPropertyExpression="/323"/>
+  <owl:SubClassOf subClassExpression="/98" superClassExpression="/918"/>
+  <owl:ObjectMinCardinality cardinality="1" classExpression="/98" objectPropertyExpression="/326"/>
+  <owl:SubClassOf subClassExpression="/98" superClassExpression="/920"/>
+  <owl:ObjectMinCardinality classExpression="/98" objectPropertyExpression="/329"/>
+  <owl:SubClassOf subClassExpression="/98" superClassExpression="/922"/>
+  <owl:ObjectMinCardinality classExpression="/98" objectPropertyExpression="/332"/>
+  <owl:SubClassOf subClassExpression="/98" superClassExpression="/924"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/98" objectPropertyExpression="/335"/>
+  <owl:SubClassOf subClassExpression="/98" superClassExpression="/926"/>
+  <owl:SubClassOf subClassExpression="/101" superClassExpression="/173"/>
+  <owl:ObjectMinCardinality cardinality="1" classExpression="/101" objectPropertyExpression="/338"/>
+  <owl:SubClassOf subClassExpression="/101" superClassExpression="/929"/>
+  <owl:ObjectMinCardinality classExpression="/104" objectPropertyExpression="/341"/>
+  <owl:SubClassOf subClassExpression="/104" superClassExpression="/931"/>
+  <owl:ObjectMinCardinality classExpression="/113" objectPropertyExpression="/455"/>
+  <owl:SubClassOf subClassExpression="/107" superClassExpression="/933"/>
+  <owl:ObjectMinCardinality classExpression="/116" objectPropertyExpression="/458"/>
+  <owl:SubClassOf subClassExpression="/107" superClassExpression="/935"/>
+  <owl:ObjectMinCardinality cardinality="1" classExpression="/212" objectPropertyExpression="/533"/>
+  <owl:SubClassOf subClassExpression="/107" superClassExpression="/937"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/164" objectPropertyExpression="/485"/>
+  <owl:SubClassOf subClassExpression="/107" superClassExpression="/939"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/167" objectPropertyExpression="/488"/>
+  <owl:SubClassOf subClassExpression="/107" superClassExpression="/941"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/194" objectPropertyExpression="/518"/>
+  <owl:SubClassOf subClassExpression="/107" superClassExpression="/943"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/113" objectPropertyExpression="/455"/>
+  <owl:SubClassOf subClassExpression="/107" superClassExpression="/945"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/116" objectPropertyExpression="/458"/>
+  <owl:SubClassOf subClassExpression="/107" superClassExpression="/947"/>
+  <owl:ObjectMinCardinality classExpression="/11" objectPropertyExpression="/425"/>
+  <owl:SubClassOf subClassExpression="/110" superClassExpression="/949"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/125" objectPropertyExpression="/467"/>
+  <owl:SubClassOf subClassExpression="/110" superClassExpression="/951"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/11" objectPropertyExpression="/425"/>
+  <owl:SubClassOf subClassExpression="/110" superClassExpression="/953"/>
+  <owl:SubClassOf subClassExpression="/119" superClassExpression="/122"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/197" objectPropertyExpression="/482"/>
+  <owl:SubClassOf subClassExpression="/119" superClassExpression="/956"/>
+  <owl:ObjectMinCardinality classExpression="/104" objectPropertyExpression="/419"/>
+  <owl:SubClassOf subClassExpression="/122" superClassExpression="/958"/>
+  <owl:ObjectMinCardinality classExpression="/197" objectPropertyExpression="/461"/>
+  <owl:SubClassOf subClassExpression="/122" superClassExpression="/960"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/660"/>
+  <owl:SubClassOf subClassExpression="/122" superClassExpression="/962"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/660"/>
+  <owl:SubClassOf subClassExpression="/122" superClassExpression="/964"/>
+  <owl:SubClassOf subClassExpression="/131" superClassExpression="/155"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/233" objectPropertyExpression="/548"/>
+  <owl:SubClassOf subClassExpression="/131" superClassExpression="/967"/>
+  <owl:SubClassOf subClassExpression="/134" superClassExpression="/101"/>
+  <owl:ObjectMinCardinality classExpression="/134" objectPropertyExpression="/350"/>
+  <owl:SubClassOf subClassExpression="/134" superClassExpression="/970"/>
+  <owl:ObjectMinCardinality classExpression="/134" objectPropertyExpression="/353"/>
+  <owl:SubClassOf subClassExpression="/134" superClassExpression="/972"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/134" objectPropertyExpression="/347"/>
+  <owl:SubClassOf subClassExpression="/134" superClassExpression="/974"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/77" objectPropertyExpression="/428"/>
+  <owl:SubClassOf subClassExpression="/134" superClassExpression="/976"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/708" dataPropertyExpression="/611"/>
+  <owl:SubClassOf subClassExpression="/134" superClassExpression="/978"/>
+  <owl:SubClassOf subClassExpression="/137" superClassExpression="/101"/>
+  <owl:ObjectMinCardinality cardinality="1" classExpression="/44" objectPropertyExpression="/473"/>
+  <owl:SubClassOf subClassExpression="/137" superClassExpression="/981"/>
+  <owl:SubClassOf subClassExpression="/140" superClassExpression="/173"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/140" objectPropertyExpression="/344"/>
+  <owl:SubClassOf subClassExpression="/140" superClassExpression="/984"/>
+  <owl:SubClassOf subClassExpression="/143" superClassExpression="/104"/>
+  <owl:ObjectMinCardinality classExpression="/14" objectPropertyExpression="/491"/>
+  <owl:SubClassOf subClassExpression="/146" superClassExpression="/987"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/14" objectPropertyExpression="/491"/>
+  <owl:SubClassOf subClassExpression="/146" superClassExpression="/989"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/578"/>
+  <owl:SubClassOf subClassExpression="/149" superClassExpression="/991"/>
+  <owl:SubClassOf subClassExpression="/152" superClassExpression="/254"/>
+  <owl:ObjectMinCardinality classExpression="/155" objectPropertyExpression="/356"/>
+  <owl:SubClassOf subClassExpression="/155" superClassExpression="/994"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/182" objectPropertyExpression="/557"/>
+  <owl:SubClassOf subClassExpression="/155" superClassExpression="/996"/>
+  <owl:ObjectMinCardinality classExpression="/224" objectPropertyExpression="/413"/>
+  <owl:SubClassOf subClassExpression="/161" superClassExpression="/998"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/161" objectPropertyExpression="/359"/>
+  <owl:SubClassOf subClassExpression="/161" superClassExpression="/1000"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/708" dataPropertyExpression="/625"/>
+  <owl:SubClassOf subClassExpression="/161" superClassExpression="/1002"/>
+  <owl:ObjectMinCardinality cardinality="1" classExpression="/170" objectPropertyExpression="/365"/>
+  <owl:SubClassOf subClassExpression="/170" superClassExpression="/1004"/>
+  <owl:ObjectMinCardinality classExpression="/107" objectPropertyExpression="/446"/>
+  <owl:SubClassOf subClassExpression="/170" superClassExpression="/1006"/>
+  <owl:ObjectMinCardinality classExpression="/173" objectPropertyExpression="/362"/>
+  <owl:SubClassOf subClassExpression="/173" superClassExpression="/1008"/>
+  <owl:ObjectMinCardinality classExpression="/125" objectPropertyExpression="/467"/>
+  <owl:SubClassOf subClassExpression="/173" superClassExpression="/1010"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/125" objectPropertyExpression="/467"/>
+  <owl:SubClassOf subClassExpression="/173" superClassExpression="/1012"/>
+  <owl:DataMinCardinality dataRange="/714" dataPropertyExpression="/605"/>
+  <owl:SubClassOf subClassExpression="/173" superClassExpression="/1014"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/714" dataPropertyExpression="/575"/>
+  <owl:SubClassOf subClassExpression="/173" superClassExpression="/1016"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/714" dataPropertyExpression="/605"/>
+  <owl:SubClassOf subClassExpression="/173" superClassExpression="/1018"/>
+  <owl:SubClassOf subClassExpression="/176" superClassExpression="/173"/>
+  <owl:ObjectMinCardinality classExpression="/176" objectPropertyExpression="/374"/>
+  <owl:SubClassOf subClassExpression="/176" superClassExpression="/1021"/>
+  <owl:ObjectMinCardinality classExpression="/176" objectPropertyExpression="/377"/>
+  <owl:SubClassOf subClassExpression="/176" superClassExpression="/1023"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/176" objectPropertyExpression="/371"/>
+  <owl:SubClassOf subClassExpression="/176" superClassExpression="/1025"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/95" objectPropertyExpression="/449"/>
+  <owl:SubClassOf subClassExpression="/176" superClassExpression="/1027"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/176" objectPropertyExpression="/374"/>
+  <owl:SubClassOf subClassExpression="/176" superClassExpression="/1029"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/176" objectPropertyExpression="/377"/>
+  <owl:SubClassOf subClassExpression="/176" superClassExpression="/1031"/>
+  <owl:SubClassOf subClassExpression="/179" superClassExpression="/188"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/179" objectPropertyExpression="/368"/>
+  <owl:SubClassOf subClassExpression="/179" superClassExpression="/1034"/>
+  <owl:SubClassOf subClassExpression="/185" superClassExpression="/242"/>
+  <owl:ObjectMinCardinality classExpression="/185" objectPropertyExpression="/380"/>
+  <owl:SubClassOf subClassExpression="/185" superClassExpression="/1037"/>
+  <owl:ObjectMinCardinality classExpression="/185" objectPropertyExpression="/383"/>
+  <owl:SubClassOf subClassExpression="/185" superClassExpression="/1039"/>
+  <owl:ObjectMinCardinality classExpression="/155" objectPropertyExpression="/515"/>
+  <owl:SubClassOf subClassExpression="/185" superClassExpression="/1041"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/185" objectPropertyExpression="/386"/>
+  <owl:SubClassOf subClassExpression="/185" superClassExpression="/1043"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/185" objectPropertyExpression="/389"/>
+  <owl:SubClassOf subClassExpression="/185" superClassExpression="/1045"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/155" objectPropertyExpression="/506"/>
+  <owl:SubClassOf subClassExpression="/185" superClassExpression="/1047"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/155" objectPropertyExpression="/515"/>
+  <owl:SubClassOf subClassExpression="/185" superClassExpression="/1049"/>
+  <owl:SubClassOf subClassExpression="/188" superClassExpression="/146"/>
+  <owl:SubClassOf subClassExpression="/191" superClassExpression="/254"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/131" objectPropertyExpression="/509"/>
+  <owl:SubClassOf subClassExpression="/191" superClassExpression="/1053"/>
+  <owl:ObjectMinCardinality classExpression="/227" objectPropertyExpression="/521"/>
+  <owl:SubClassOf subClassExpression="/194" superClassExpression="/1055"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/227" objectPropertyExpression="/521"/>
+  <owl:SubClassOf subClassExpression="/194" superClassExpression="/1057"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/657"/>
+  <owl:SubClassOf subClassExpression="/194" superClassExpression="/1059"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/657"/>
+  <owl:SubClassOf subClassExpression="/194" superClassExpression="/1061"/>
+  <owl:SubClassOf subClassExpression="/197" superClassExpression="/149"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/581"/>
+  <owl:SubClassOf subClassExpression="/197" superClassExpression="/1064"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/693"/>
+  <owl:SubClassOf subClassExpression="/197" superClassExpression="/1066"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/581"/>
+  <owl:SubClassOf subClassExpression="/197" superClassExpression="/1068"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/693"/>
+  <owl:SubClassOf subClassExpression="/197" superClassExpression="/1070"/>
+  <owl:ObjectMinCardinality classExpression="/50" objectPropertyExpression="/434"/>
+  <owl:SubClassOf subClassExpression="/200" superClassExpression="/1072"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/197" objectPropertyExpression="/482"/>
+  <owl:SubClassOf subClassExpression="/200" superClassExpression="/1074"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/50" objectPropertyExpression="/434"/>
+  <owl:SubClassOf subClassExpression="/200" superClassExpression="/1076"/>
+  <owl:SubClassOf subClassExpression="/203" superClassExpression="/182"/>
+  <owl:SubClassOf subClassExpression="/206" superClassExpression="/122"/>
+  <owl:SubClassOf subClassExpression="/206" superClassExpression="/200"/>
+  <owl:ObjectMinCardinality classExpression="/206" objectPropertyExpression="/392"/>
+  <owl:SubClassOf subClassExpression="/206" superClassExpression="/1081"/>
+  <owl:ObjectMinCardinality classExpression="/206" objectPropertyExpression="/395"/>
+  <owl:SubClassOf subClassExpression="/206" superClassExpression="/1083"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/206" objectPropertyExpression="/392"/>
+  <owl:SubClassOf subClassExpression="/206" superClassExpression="/1085"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/206" objectPropertyExpression="/395"/>
+  <owl:SubClassOf subClassExpression="/206" superClassExpression="/1087"/>
+  <owl:DataMinCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/663"/>
+  <owl:SubClassOf subClassExpression="/206" superClassExpression="/1089"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/678"/>
+  <owl:SubClassOf subClassExpression="/212" superClassExpression="/1091"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/666"/>
+  <owl:SubClassOf subClassExpression="/212" superClassExpression="/1093"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/678"/>
+  <owl:SubClassOf subClassExpression="/212" superClassExpression="/1095"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/182" objectPropertyExpression="/440"/>
+  <owl:SubClassOf subClassExpression="/215" superClassExpression="/1097"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/619"/>
+  <owl:SubClassOf subClassExpression="/218" superClassExpression="/1099"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/622"/>
+  <owl:SubClassOf subClassExpression="/218" superClassExpression="/1101"/>
+  <owl:SubClassOf subClassExpression="/221" superClassExpression="/254"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/131" objectPropertyExpression="/545"/>
+  <owl:SubClassOf subClassExpression="/221" superClassExpression="/1104"/>
+  <owl:SubClassOf subClassExpression="/224" superClassExpression="/143"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/569"/>
+  <owl:SubClassOf subClassExpression="/224" superClassExpression="/1107"/>
+  <owl:ObjectMinCardinality classExpression="/230" objectPropertyExpression="/398"/>
+  <owl:SubClassOf subClassExpression="/230" superClassExpression="/1109"/>
+  <owl:ObjectMinCardinality classExpression="/230" objectPropertyExpression="/404"/>
+  <owl:SubClassOf subClassExpression="/230" superClassExpression="/1111"/>
+  <owl:ObjectMinCardinality classExpression="/203" objectPropertyExpression="/497"/>
+  <owl:SubClassOf subClassExpression="/230" superClassExpression="/1113"/>
+  <owl:ObjectMinCardinality classExpression="/203" objectPropertyExpression="/527"/>
+  <owl:SubClassOf subClassExpression="/230" superClassExpression="/1115"/>
+  <owl:ObjectMinCardinality classExpression="/230" objectPropertyExpression="/536"/>
+  <owl:SubClassOf subClassExpression="/230" superClassExpression="/1117"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/230" objectPropertyExpression="/401"/>
+  <owl:SubClassOf subClassExpression="/230" superClassExpression="/1119"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/158" objectPropertyExpression="/479"/>
+  <owl:SubClassOf subClassExpression="/230" superClassExpression="/1121"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/230" objectPropertyExpression="/398"/>
+  <owl:SubClassOf subClassExpression="/230" superClassExpression="/1123"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/203" objectPropertyExpression="/497"/>
+  <owl:SubClassOf subClassExpression="/230" superClassExpression="/1125"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/203" objectPropertyExpression="/527"/>
+  <owl:SubClassOf subClassExpression="/230" superClassExpression="/1127"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/230" objectPropertyExpression="/536"/>
+  <owl:SubClassOf subClassExpression="/230" superClassExpression="/1129"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/614"/>
+  <owl:SubClassOf subClassExpression="/230" superClassExpression="/1131"/>
+  <owl:DataMinCardinality dataRange="/720" dataPropertyExpression="/639"/>
+  <owl:SubClassOf subClassExpression="/230" superClassExpression="/1133"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/681"/>
+  <owl:SubClassOf subClassExpression="/230" superClassExpression="/1135"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/684"/>
+  <owl:SubClassOf subClassExpression="/230" superClassExpression="/1137"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/614"/>
+  <owl:SubClassOf subClassExpression="/230" superClassExpression="/1139"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/720" dataPropertyExpression="/639"/>
+  <owl:SubClassOf subClassExpression="/230" superClassExpression="/1141"/>
+  <owl:SubClassOf subClassExpression="/233" superClassExpression="/230"/>
+  <owl:SubClassOf subClassExpression="/239" superClassExpression="/137"/>
+  <owl:SubClassOf subClassExpression="/239" superClassExpression="/245"/>
+  <owl:SubClassOf subClassExpression="/242" superClassExpression="/140"/>
+  <owl:SubClassOf subClassExpression="/242" superClassExpression="/245"/>
+  <owl:ObjectMinCardinality classExpression="/236" objectPropertyExpression="/551"/>
+  <owl:SubClassOf subClassExpression="/242" superClassExpression="/1148"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/257" objectPropertyExpression="/560"/>
+  <owl:SubClassOf subClassExpression="/242" superClassExpression="/1150"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/236" objectPropertyExpression="/551"/>
+  <owl:SubClassOf subClassExpression="/242" superClassExpression="/1152"/>
+  <owl:ObjectMinCardinality classExpression="/110" objectPropertyExpression="/452"/>
+  <owl:SubClassOf subClassExpression="/245" superClassExpression="/1154"/>
+  <owl:ObjectMinCardinality classExpression="/2" objectPropertyExpression="/554"/>
+  <owl:SubClassOf subClassExpression="/245" superClassExpression="/1156"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/26" objectPropertyExpression="/431"/>
+  <owl:SubClassOf subClassExpression="/245" superClassExpression="/1158"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/110" objectPropertyExpression="/452"/>
+  <owl:SubClassOf subClassExpression="/245" superClassExpression="/1160"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/2" objectPropertyExpression="/554"/>
+  <owl:SubClassOf subClassExpression="/245" superClassExpression="/1162"/>
+  <owl:DataMinCardinality dataRange="/714" dataPropertyExpression="/690"/>
+  <owl:SubClassOf subClassExpression="/245" superClassExpression="/1164"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/714" dataPropertyExpression="/687"/>
+  <owl:SubClassOf subClassExpression="/245" superClassExpression="/1166"/>
+  <owl:DataExactCardinality cardinality="1" dataRange="/705" dataPropertyExpression="/696"/>
+  <owl:SubClassOf subClassExpression="/245" superClassExpression="/1168"/>
+  <owl:DataMaxCardinality cardinality="1" dataRange="/714" dataPropertyExpression="/690"/>
+  <owl:SubClassOf subClassExpression="/245" superClassExpression="/1170"/>
+  <owl:SubClassOf subClassExpression="/251" superClassExpression="/176"/>
+  <owl:SubClassOf subClassExpression="/251" superClassExpression="/245"/>
+  <owl:ObjectMinCardinality classExpression="/251" objectPropertyExpression="/410"/>
+  <owl:SubClassOf subClassExpression="/251" superClassExpression="/1174"/>
+  <owl:SubClassOf subClassExpression="/254" superClassExpression="/245"/>
+  <owl:ObjectMinCardinality classExpression="/125" objectPropertyExpression="/467"/>
+  <owl:SubClassOf subClassExpression="/254" superClassExpression="/1177"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/254" objectPropertyExpression="/407"/>
+  <owl:SubClassOf subClassExpression="/254" superClassExpression="/1179"/>
+  <owl:ObjectExactCardinality cardinality="1" classExpression="/95" objectPropertyExpression="/449"/>
+  <owl:SubClassOf subClassExpression="/254" superClassExpression="/1181"/>
+  <owl:ObjectMaxCardinality cardinality="1" classExpression="/125" objectPropertyExpression="/467"/>
+  <owl:SubClassOf subClassExpression="/254" superClassExpression="/1183"/>
+  <owl:InverseObjectProperties firstProperty="/278" secondProperty="/263"/>
+  <owl:InverseObjectProperties firstProperty="/386" secondProperty="/266"/>
+  <owl:InverseObjectProperties firstProperty="/392" secondProperty="/269"/>
+  <owl:InverseObjectProperties firstProperty="/347" secondProperty="/272"/>
+  <owl:InverseObjectProperties firstProperty="/281" secondProperty="/275"/>
+  <owl:InverseObjectProperties firstProperty="/284" secondProperty="/380"/>
+  <owl:InverseObjectProperties firstProperty="/323" secondProperty="/287"/>
+  <owl:InverseObjectProperties firstProperty="/293" secondProperty="/290"/>
+  <owl:InverseObjectProperties firstProperty="/314" secondProperty="/296"/>
+  <owl:InverseObjectProperties firstProperty="/299" secondProperty="/320"/>
+  <owl:InverseObjectProperties firstProperty="/302" secondProperty="/326"/>
+  <owl:InverseObjectProperties firstProperty="/308" secondProperty="/305"/>
+  <owl:InverseObjectProperties firstProperty="/395" secondProperty="/311"/>
+  <owl:InverseObjectProperties firstProperty="/317" secondProperty="/335"/>
+  <owl:InverseObjectProperties firstProperty="/329" secondProperty="/332"/>
+  <owl:InverseObjectProperties firstProperty="/344" secondProperty="/338"/>
+  <owl:InverseObjectProperties firstProperty="/359" secondProperty="/341"/>
+  <owl:InverseObjectProperties firstProperty="/374" secondProperty="/350"/>
+  <owl:InverseObjectProperties firstProperty="/377" secondProperty="/353"/>
+  <owl:InverseObjectProperties firstProperty="/356" secondProperty="/401"/>
+  <owl:InverseObjectProperties firstProperty="/362" secondProperty="/365"/>
+  <owl:InverseObjectProperties firstProperty="/371" secondProperty="/368"/>
+  <owl:InverseObjectProperties firstProperty="/389" secondProperty="/383"/>
+  <owl:InverseObjectProperties firstProperty="/404" secondProperty="/398"/>
+  <owl:InverseObjectProperties firstProperty="/407" secondProperty="/410"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/278"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/281"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/284"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/320"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/335"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/344"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/347"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/359"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/368"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/371"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/386"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/389"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/401"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/407"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/422"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/428"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/431"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/440"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/449"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/461"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/467"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/470"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/479"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/482"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/485"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/488"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/494"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/500"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/506"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/509"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/512"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/518"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/545"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/548"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/557"/>
+  <owl:FunctionalObjectProperty objectPropertyExpression="/560"/>
+  <owl:ObjectPropertyDomain domain="/20" objectPropertyExpression="/263"/>
+  <owl:ObjectPropertyDomain domain="/20" objectPropertyExpression="/266"/>
+  <owl:ObjectPropertyDomain domain="/41" objectPropertyExpression="/269"/>
+  <owl:ObjectPropertyDomain domain="/44" objectPropertyExpression="/272"/>
+  <owl:ObjectPropertyDomain domain="/47" objectPropertyExpression="/275"/>
+  <owl:ObjectPropertyDomain domain="/47" objectPropertyExpression="/278"/>
+  <owl:ObjectPropertyDomain domain="/47" objectPropertyExpression="/281"/>
+  <owl:ObjectPropertyDomain domain="/47" objectPropertyExpression="/284"/>
+  <owl:ObjectPropertyDomain domain="/65" objectPropertyExpression="/287"/>
+  <owl:ObjectPropertyDomain domain="/65" objectPropertyExpression="/290"/>
+  <owl:ObjectPropertyDomain domain="/65" objectPropertyExpression="/293"/>
+  <owl:ObjectPropertyDomain domain="/71" objectPropertyExpression="/296"/>
+  <owl:ObjectPropertyDomain domain="/74" objectPropertyExpression="/299"/>
+  <owl:ObjectPropertyDomain domain="/68" objectPropertyExpression="/302"/>
+  <owl:ObjectPropertyDomain domain="/83" objectPropertyExpression="/305"/>
+  <owl:ObjectPropertyDomain domain="/77" objectPropertyExpression="/308"/>
+  <owl:ObjectPropertyDomain domain="/86" objectPropertyExpression="/311"/>
+  <owl:ObjectPropertyDomain domain="/89" objectPropertyExpression="/314"/>
+  <owl:ObjectPropertyDomain domain="/92" objectPropertyExpression="/317"/>
+  <owl:ObjectPropertyDomain domain="/95" objectPropertyExpression="/320"/>
+  <owl:ObjectPropertyDomain domain="/98" objectPropertyExpression="/323"/>
+  <owl:ObjectPropertyDomain domain="/98" objectPropertyExpression="/326"/>
+  <owl:ObjectPropertyDomain domain="/98" objectPropertyExpression="/329"/>
+  <owl:ObjectPropertyDomain domain="/98" objectPropertyExpression="/332"/>
+  <owl:ObjectPropertyDomain domain="/98" objectPropertyExpression="/335"/>
+  <owl:ObjectPropertyDomain domain="/101" objectPropertyExpression="/338"/>
+  <owl:ObjectPropertyDomain domain="/104" objectPropertyExpression="/341"/>
+  <owl:ObjectPropertyDomain domain="/140" objectPropertyExpression="/344"/>
+  <owl:ObjectPropertyDomain domain="/134" objectPropertyExpression="/347"/>
+  <owl:ObjectPropertyDomain domain="/134" objectPropertyExpression="/350"/>
+  <owl:ObjectPropertyDomain domain="/134" objectPropertyExpression="/353"/>
+  <owl:ObjectPropertyDomain domain="/155" objectPropertyExpression="/356"/>
+  <owl:ObjectPropertyDomain domain="/161" objectPropertyExpression="/359"/>
+  <owl:ObjectPropertyDomain domain="/173" objectPropertyExpression="/362"/>
+  <owl:ObjectPropertyDomain domain="/170" objectPropertyExpression="/365"/>
+  <owl:ObjectPropertyDomain domain="/179" objectPropertyExpression="/368"/>
+  <owl:ObjectPropertyDomain domain="/176" objectPropertyExpression="/371"/>
+  <owl:ObjectPropertyDomain domain="/176" objectPropertyExpression="/374"/>
+  <owl:ObjectPropertyDomain domain="/176" objectPropertyExpression="/377"/>
+  <owl:ObjectPropertyDomain domain="/185" objectPropertyExpression="/380"/>
+  <owl:ObjectPropertyDomain domain="/185" objectPropertyExpression="/383"/>
+  <owl:ObjectPropertyDomain domain="/185" objectPropertyExpression="/386"/>
+  <owl:ObjectPropertyDomain domain="/185" objectPropertyExpression="/389"/>
+  <owl:ObjectPropertyDomain domain="/206" objectPropertyExpression="/392"/>
+  <owl:ObjectPropertyDomain domain="/206" objectPropertyExpression="/395"/>
+  <owl:ObjectUnionOf classExpressions="/215 /230"/>
+  <owl:ObjectPropertyDomain domain="/1291" objectPropertyExpression="/398"/>
+  <owl:ObjectPropertyDomain domain="/230" objectPropertyExpression="/401"/>
+  <owl:ObjectUnionOf classExpressions="/215 /230"/>
+  <owl:ObjectPropertyDomain domain="/1294" objectPropertyExpression="/404"/>
+  <owl:ObjectPropertyDomain domain="/254" objectPropertyExpression="/407"/>
+  <owl:ObjectPropertyDomain domain="/251" objectPropertyExpression="/410"/>
+  <owl:ObjectPropertyDomain domain="/161" objectPropertyExpression="/413"/>
+  <owl:ObjectPropertyDomain domain="/62" objectPropertyExpression="/416"/>
+  <owl:ObjectPropertyDomain domain="/122" objectPropertyExpression="/419"/>
+  <owl:ObjectPropertyDomain domain="/5" objectPropertyExpression="/422"/>
+  <owl:ObjectPropertyDomain domain="/110" objectPropertyExpression="/425"/>
+  <owl:ObjectPropertyDomain domain="/134" objectPropertyExpression="/428"/>
+  <owl:ObjectPropertyDomain domain="/245" objectPropertyExpression="/431"/>
+  <owl:ObjectPropertyDomain domain="/200" objectPropertyExpression="/434"/>
+  <owl:ObjectPropertyDomain domain="/29" objectPropertyExpression="/437"/>
+  <owl:ObjectPropertyDomain domain="/215" objectPropertyExpression="/440"/>
+  <owl:ObjectPropertyDomain domain="/2" objectPropertyExpression="/443"/>
+  <owl:ObjectPropertyDomain domain="/170" objectPropertyExpression="/446"/>
+  <owl:ObjectPropertyDomain domain="/2" objectPropertyExpression="/449"/>
+  <owl:ObjectPropertyDomain domain="/176" objectPropertyExpression="/449"/>
+  <owl:ObjectPropertyDomain domain="/254" objectPropertyExpression="/449"/>
+  <owl:ObjectPropertyDomain domain="/245" objectPropertyExpression="/452"/>
+  <owl:ObjectPropertyDomain domain="/107" objectPropertyExpression="/455"/>
+  <owl:ObjectPropertyDomain domain="/107" objectPropertyExpression="/458"/>
+  <owl:ObjectPropertyDomain domain="/14" objectPropertyExpression="/461"/>
+  <owl:ObjectPropertyDomain domain="/122" objectPropertyExpression="/461"/>
+  <owl:ObjectPropertyDomain domain="/218" objectPropertyExpression="/461"/>
+  <owl:ObjectPropertyDomain domain="/62" objectPropertyExpression="/464"/>
+  <owl:ObjectPropertyDomain domain="/2" objectPropertyExpression="/467"/>
+  <owl:ObjectPropertyDomain domain="/110" objectPropertyExpression="/467"/>
+  <owl:ObjectPropertyDomain domain="/173" objectPropertyExpression="/467"/>
+  <owl:ObjectPropertyDomain domain="/254" objectPropertyExpression="/467"/>
+  <owl:ObjectPropertyDomain domain="/83" objectPropertyExpression="/470"/>
+  <owl:ObjectPropertyDomain domain="/137" objectPropertyExpression="/473"/>
+  <owl:ObjectPropertyDomain domain="/29" objectPropertyExpression="/476"/>
+  <owl:ObjectPropertyDomain domain="/230" objectPropertyExpression="/479"/>
+  <owl:ObjectPropertyDomain domain="/2" objectPropertyExpression="/482"/>
+  <owl:ObjectPropertyDomain domain="/119" objectPropertyExpression="/482"/>
+  <owl:ObjectPropertyDomain domain="/200" objectPropertyExpression="/482"/>
+  <owl:ObjectPropertyDomain domain="/107" objectPropertyExpression="/485"/>
+  <owl:ObjectPropertyDomain domain="/107" objectPropertyExpression="/488"/>
+  <owl:ObjectPropertyDomain domain="/146" objectPropertyExpression="/491"/>
+  <owl:ObjectPropertyDomain domain="/59" objectPropertyExpression="/494"/>
+  <owl:ObjectPropertyDomain domain="/230" objectPropertyExpression="/497"/>
+  <owl:ObjectPropertyDomain domain="/59" objectPropertyExpression="/500"/>
+  <owl:ObjectPropertyDomain domain="/62" objectPropertyExpression="/503"/>
+  <owl:ObjectPropertyDomain domain="/185" objectPropertyExpression="/506"/>
+  <owl:ObjectPropertyDomain domain="/191" objectPropertyExpression="/509"/>
+  <owl:ObjectPropertyDomain domain="/95" objectPropertyExpression="/512"/>
+  <owl:ObjectPropertyDomain domain="/185" objectPropertyExpression="/515"/>
+  <owl:ObjectPropertyDomain domain="/107" objectPropertyExpression="/518"/>
+  <owl:ObjectPropertyDomain domain="/194" objectPropertyExpression="/521"/>
+  <owl:ObjectPropertyDomain domain="/29" objectPropertyExpression="/524"/>
+  <owl:ObjectPropertyDomain domain="/230" objectPropertyExpression="/527"/>
+  <owl:ObjectPropertyDomain domain="/5" objectPropertyExpression="/530"/>
+  <owl:ObjectPropertyDomain domain="/107" objectPropertyExpression="/533"/>
+  <owl:ObjectPropertyDomain domain="/230" objectPropertyExpression="/536"/>
+  <owl:ObjectPropertyDomain domain="/230" objectPropertyExpression="/539"/>
+  <owl:ObjectPropertyDomain domain="/2" objectPropertyExpression="/542"/>
+  <owl:ObjectPropertyDomain domain="/221" objectPropertyExpression="/545"/>
+  <owl:ObjectPropertyDomain domain="/131" objectPropertyExpression="/548"/>
+  <owl:ObjectPropertyDomain domain="/242" objectPropertyExpression="/551"/>
+  <owl:ObjectPropertyDomain domain="/245" objectPropertyExpression="/554"/>
+  <owl:ObjectPropertyDomain domain="/155" objectPropertyExpression="/557"/>
+  <owl:ObjectPropertyDomain domain="/242" objectPropertyExpression="/560"/>
+  <owl:ObjectPropertyRange range="/47" objectPropertyExpression="/263"/>
+  <owl:ObjectPropertyRange range="/185" objectPropertyExpression="/266"/>
+  <owl:ObjectPropertyRange range="/206" objectPropertyExpression="/269"/>
+  <owl:ObjectPropertyRange range="/134" objectPropertyExpression="/272"/>
+  <owl:ObjectPropertyRange range="/47" objectPropertyExpression="/275"/>
+  <owl:ObjectPropertyRange range="/20" objectPropertyExpression="/278"/>
+  <owl:ObjectPropertyRange range="/47" objectPropertyExpression="/281"/>
+  <owl:ObjectPropertyRange range="/185" objectPropertyExpression="/284"/>
+  <owl:ObjectPropertyRange range="/98" objectPropertyExpression="/287"/>
+  <owl:ObjectPropertyRange range="/65" objectPropertyExpression="/290"/>
+  <owl:ObjectPropertyRange range="/65" objectPropertyExpression="/293"/>
+  <owl:ObjectPropertyRange range="/89" objectPropertyExpression="/296"/>
+  <owl:ObjectPropertyRange range="/95" objectPropertyExpression="/299"/>
+  <owl:ObjectPropertyRange range="/98" objectPropertyExpression="/302"/>
+  <owl:ObjectPropertyRange range="/77" objectPropertyExpression="/305"/>
+  <owl:ObjectPropertyRange range="/83" objectPropertyExpression="/308"/>
+  <owl:ObjectPropertyRange range="/206" objectPropertyExpression="/311"/>
+  <owl:ObjectPropertyRange range="/71" objectPropertyExpression="/314"/>
+  <owl:ObjectPropertyRange range="/98" objectPropertyExpression="/317"/>
+  <owl:ObjectPropertyRange range="/74" objectPropertyExpression="/320"/>
+  <owl:ObjectPropertyRange range="/65" objectPropertyExpression="/323"/>
+  <owl:ObjectPropertyRange range="/68" objectPropertyExpression="/326"/>
+  <owl:ObjectPropertyRange range="/98" objectPropertyExpression="/329"/>
+  <owl:ObjectPropertyRange range="/98" objectPropertyExpression="/332"/>
+  <owl:ObjectPropertyRange range="/92" objectPropertyExpression="/335"/>
+  <owl:ObjectPropertyRange range="/140" objectPropertyExpression="/338"/>
+  <owl:ObjectPropertyRange range="/161" objectPropertyExpression="/341"/>
+  <owl:ObjectPropertyRange range="/101" objectPropertyExpression="/344"/>
+  <owl:ObjectPropertyRange range="/44" objectPropertyExpression="/347"/>
+  <owl:ObjectPropertyRange range="/176" objectPropertyExpression="/350"/>
+  <owl:ObjectPropertyRange range="/176" objectPropertyExpression="/353"/>
+  <owl:ObjectPropertyRange range="/230" objectPropertyExpression="/356"/>
+  <owl:ObjectPropertyRange range="/104" objectPropertyExpression="/359"/>
+  <owl:ObjectPropertyRange range="/170" objectPropertyExpression="/362"/>
+  <owl:ObjectPropertyRange range="/173" objectPropertyExpression="/365"/>
+  <owl:ObjectPropertyRange range="/176" objectPropertyExpression="/368"/>
+  <owl:ObjectPropertyRange range="/179" objectPropertyExpression="/371"/>
+  <owl:ObjectPropertyRange range="/134" objectPropertyExpression="/374"/>
+  <owl:ObjectPropertyRange range="/134" objectPropertyExpression="/377"/>
+  <owl:ObjectPropertyRange range="/47" objectPropertyExpression="/380"/>
+  <owl:ObjectPropertyRange range="/185" objectPropertyExpression="/383"/>
+  <owl:ObjectPropertyRange range="/20" objectPropertyExpression="/386"/>
+  <owl:ObjectPropertyRange range="/185" objectPropertyExpression="/389"/>
+  <owl:ObjectPropertyRange range="/41" objectPropertyExpression="/392"/>
+  <owl:ObjectPropertyRange range="/86" objectPropertyExpression="/395"/>
+  <owl:ObjectPropertyRange range="/230" objectPropertyExpression="/398"/>
+  <owl:ObjectPropertyRange range="/155" objectPropertyExpression="/401"/>
+  <owl:ObjectPropertyRange range="/230" objectPropertyExpression="/404"/>
+  <owl:ObjectPropertyRange range="/251" objectPropertyExpression="/407"/>
+  <owl:ObjectPropertyRange range="/254" objectPropertyExpression="/410"/>
+  <owl:ObjectPropertyRange range="/224" objectPropertyExpression="/413"/>
+  <owl:ObjectPropertyRange range="/53" objectPropertyExpression="/416"/>
+  <owl:ObjectPropertyRange range="/104" objectPropertyExpression="/419"/>
+  <owl:ObjectPropertyRange range="/8" objectPropertyExpression="/422"/>
+  <owl:ObjectPropertyRange range="/11" objectPropertyExpression="/425"/>
+  <owl:ObjectPropertyRange range="/77" objectPropertyExpression="/428"/>
+  <owl:ObjectPropertyRange range="/26" objectPropertyExpression="/431"/>
+  <owl:ObjectPropertyRange range="/50" objectPropertyExpression="/434"/>
+  <owl:ObjectPropertyRange range="/32" objectPropertyExpression="/437"/>
+  <owl:ObjectPropertyRange range="/182" objectPropertyExpression="/440"/>
+  <owl:ObjectPropertyRange range="/62" objectPropertyExpression="/443"/>
+  <owl:ObjectPropertyRange range="/107" objectPropertyExpression="/446"/>
+  <owl:ObjectPropertyRange range="/86" objectPropertyExpression="/449"/>
+  <owl:ObjectPropertyRange range="/95" objectPropertyExpression="/449"/>
+  <owl:ObjectPropertyRange range="/110" objectPropertyExpression="/452"/>
+  <owl:ObjectPropertyRange range="/113" objectPropertyExpression="/455"/>
+  <owl:ObjectPropertyRange range="/116" objectPropertyExpression="/458"/>
+  <owl:ObjectPropertyRange range="/149" objectPropertyExpression="/461"/>
+  <owl:ObjectPropertyRange range="/197" objectPropertyExpression="/461"/>
+  <owl:ObjectPropertyRange range="/128" objectPropertyExpression="/464"/>
+  <owl:ObjectPropertyRange range="/125" objectPropertyExpression="/467"/>
+  <owl:ObjectPropertyRange range="/80" objectPropertyExpression="/470"/>
+  <owl:ObjectPropertyRange range="/44" objectPropertyExpression="/473"/>
+  <owl:ObjectPropertyRange range="/149" objectPropertyExpression="/476"/>
+  <owl:ObjectPropertyRange range="/158" objectPropertyExpression="/479"/>
+  <owl:ObjectPropertyRange range="/197" objectPropertyExpression="/482"/>
+  <owl:ObjectPropertyRange range="/164" objectPropertyExpression="/485"/>
+  <owl:ObjectPropertyRange range="/167" objectPropertyExpression="/488"/>
+  <owl:ObjectPropertyRange range="/14" objectPropertyExpression="/491"/>
+  <owl:ObjectPropertyRange range="/155" objectPropertyExpression="/494"/>
+  <owl:ObjectPropertyRange range="/203" objectPropertyExpression="/497"/>
+  <owl:ObjectPropertyRange range="/155" objectPropertyExpression="/500"/>
+  <owl:ObjectPropertyRange range="/128" objectPropertyExpression="/503"/>
+  <owl:ObjectPropertyRange range="/155" objectPropertyExpression="/506"/>
+  <owl:ObjectPropertyRange range="/131" objectPropertyExpression="/509"/>
+  <owl:ObjectPropertyRange range="/41" objectPropertyExpression="/512"/>
+  <owl:ObjectPropertyRange range="/155" objectPropertyExpression="/515"/>
+  <owl:ObjectPropertyRange range="/194" objectPropertyExpression="/518"/>
+  <owl:ObjectPropertyRange range="/227" objectPropertyExpression="/521"/>
+  <owl:ObjectPropertyRange range="/38" objectPropertyExpression="/524"/>
+  <owl:ObjectPropertyRange range="/203" objectPropertyExpression="/527"/>
+  <owl:ObjectPropertyRange range="/209" objectPropertyExpression="/530"/>
+  <owl:ObjectPropertyRange range="/212" objectPropertyExpression="/533"/>
+  <owl:ObjectPropertyRange range="/230" objectPropertyExpression="/536"/>
+  <owl:ObjectPropertyRange range="/215" objectPropertyExpression="/539"/>
+  <owl:ObjectPropertyRange range="/218" objectPropertyExpression="/542"/>
+  <owl:ObjectPropertyRange range="/131" objectPropertyExpression="/545"/>
+  <owl:ObjectPropertyRange range="/233" objectPropertyExpression="/548"/>
+  <owl:ObjectPropertyRange range="/236" objectPropertyExpression="/551"/>
+  <owl:ObjectPropertyRange range="/2" objectPropertyExpression="/554"/>
+  <owl:ObjectPropertyRange range="/182" objectPropertyExpression="/557"/>
+  <owl:ObjectPropertyRange range="/257" objectPropertyExpression="/560"/>
+  <owl:FunctionalDataProperty dataPropertyExpression="/569"/>
+  <owl:FunctionalDataProperty dataPropertyExpression="/575"/>
+  <owl:FunctionalDataProperty dataPropertyExpression="/578"/>
+  <owl:FunctionalDataProperty dataPropertyExpression="/587"/>
+  <owl:FunctionalDataProperty dataPropertyExpression="/593"/>
+  <owl:FunctionalDataProperty dataPropertyExpression="/596"/>
+  <owl:FunctionalDataProperty dataPropertyExpression="/611"/>
+  <owl:FunctionalDataProperty dataPropertyExpression="/617"/>
+  <owl:FunctionalDataProperty dataPropertyExpression="/619"/>
+  <owl:FunctionalDataProperty dataPropertyExpression="/622"/>
+  <owl:FunctionalDataProperty dataPropertyExpression="/625"/>
+  <owl:FunctionalDataProperty dataPropertyExpression="/633"/>
+  <owl:FunctionalDataProperty dataPropertyExpression="/651"/>
+  <owl:FunctionalDataProperty dataPropertyExpression="/666"/>
+  <owl:FunctionalDataProperty dataPropertyExpression="/675"/>
+  <owl:FunctionalDataProperty dataPropertyExpression="/681"/>
+  <owl:FunctionalDataProperty dataPropertyExpression="/684"/>
+  <owl:FunctionalDataProperty dataPropertyExpression="/687"/>
+  <owl:FunctionalDataProperty dataPropertyExpression="/696"/>
+  <owl:DataPropertyDomain domain="/14" dataPropertyExpression="/563"/>
+  <owl:DataPropertyDomain domain="/14" dataPropertyExpression="/566"/>
+  <owl:DataPropertyDomain domain="/224" dataPropertyExpression="/569"/>
+  <owl:DataPropertyDomain domain="/14" dataPropertyExpression="/572"/>
+  <owl:DataPropertyDomain domain="/2" dataPropertyExpression="/575"/>
+  <owl:DataPropertyDomain domain="/173" dataPropertyExpression="/575"/>
+  <owl:DataPropertyDomain domain="/149" dataPropertyExpression="/578"/>
+  <owl:DataPropertyDomain domain="/197" dataPropertyExpression="/581"/>
+  <owl:DataPropertyDomain domain="/14" dataPropertyExpression="/584"/>
+  <owl:DataPropertyDomain domain="/41" dataPropertyExpression="/587"/>
+  <owl:DataPropertyDomain domain="/50" dataPropertyExpression="/590"/>
+  <owl:DataPropertyDomain domain="/41" dataPropertyExpression="/593"/>
+  <owl:DataPropertyDomain domain="/44" dataPropertyExpression="/596"/>
+  <owl:DataPropertyDomain domain="/14" dataPropertyExpression="/599"/>
+  <owl:DataPropertyDomain domain="/14" dataPropertyExpression="/602"/>
+  <owl:DataPropertyDomain domain="/2" dataPropertyExpression="/605"/>
+  <owl:DataPropertyDomain domain="/173" dataPropertyExpression="/605"/>
+  <owl:DataPropertyDomain domain="/29" dataPropertyExpression="/608"/>
+  <owl:DataPropertyDomain domain="/134" dataPropertyExpression="/611"/>
+  <owl:DataPropertyDomain domain="/230" dataPropertyExpression="/614"/>
+  <owl:DataPropertyDomain domain="/23" dataPropertyExpression="/617"/>
+  <owl:DataPropertyDomain domain="/218" dataPropertyExpression="/622"/>
+  <owl:DataPropertyDomain domain="/161" dataPropertyExpression="/625"/>
+  <owl:DataPropertyDomain domain="/29" dataPropertyExpression="/628"/>
+  <owl:DataPropertyDomain domain="/23" dataPropertyExpression="/631"/>
+  <owl:DataPropertyDomain domain="/29" dataPropertyExpression="/636"/>
+  <owl:DataPropertyDomain domain="/230" dataPropertyExpression="/639"/>
+  <owl:DataPropertyDomain domain="/83" dataPropertyExpression="/642"/>
+  <owl:DataPropertyDomain domain="/83" dataPropertyExpression="/645"/>
+  <owl:DataPropertyDomain domain="/83" dataPropertyExpression="/648"/>
+  <owl:DataPropertyDomain domain="/92" dataPropertyExpression="/651"/>
+  <owl:DataPropertyDomain domain="/14" dataPropertyExpression="/654"/>
+  <owl:DataPropertyDomain domain="/194" dataPropertyExpression="/657"/>
+  <owl:DataPropertyDomain domain="/122" dataPropertyExpression="/660"/>
+  <owl:DataPropertyDomain domain="/206" dataPropertyExpression="/663"/>
+  <owl:DataPropertyDomain domain="/212" dataPropertyExpression="/666"/>
+  <owl:DataPropertyDomain domain="/23" dataPropertyExpression="/669"/>
+  <owl:DataPropertyDomain domain="/23" dataPropertyExpression="/672"/>
+  <owl:DataPropertyDomain domain="/14" dataPropertyExpression="/675"/>
+  <owl:DataPropertyDomain domain="/212" dataPropertyExpression="/678"/>
+  <owl:DataPropertyDomain domain="/230" dataPropertyExpression="/681"/>
+  <owl:DataPropertyDomain domain="/230" dataPropertyExpression="/684"/>
+  <owl:DataPropertyDomain domain="/2" dataPropertyExpression="/687"/>
+  <owl:DataPropertyDomain domain="/245" dataPropertyExpression="/687"/>
+  <owl:DataPropertyDomain domain="/2" dataPropertyExpression="/690"/>
+  <owl:DataPropertyDomain domain="/245" dataPropertyExpression="/690"/>
+  <owl:DataPropertyDomain domain="/197" dataPropertyExpression="/693"/>
+  <owl:DataPropertyDomain domain="/245" dataPropertyExpression="/696"/>
+  <owl:DataPropertyDomain domain="/29" dataPropertyExpression="/699"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/563"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/566"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/569"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/572"/>
+  <owl:DataPropertyRange range="/714" dataPropertyExpression="/575"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/578"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/581"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/584"/>
+  <owl:DataPropertyRange range="/717" dataPropertyExpression="/587"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/590"/>
+  <owl:DataPropertyRange range="/717" dataPropertyExpression="/593"/>
+  <owl:DataPropertyRange range="/702" dataPropertyExpression="/596"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/599"/>
+  <owl:DataPropertyRange range="/711" dataPropertyExpression="/602"/>
+  <owl:DataPropertyRange range="/714" dataPropertyExpression="/605"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/608"/>
+  <owl:DataPropertyRange range="/708" dataPropertyExpression="/611"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/614"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/617"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/619"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/622"/>
+  <owl:DataPropertyRange range="/708" dataPropertyExpression="/625"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/628"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/631"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/633"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/636"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/639"/>
+  <owl:DataPropertyRange range="/717" dataPropertyExpression="/642"/>
+  <owl:DataPropertyRange range="/717" dataPropertyExpression="/645"/>
+  <owl:DataPropertyRange range="/717" dataPropertyExpression="/648"/>
+  <owl:DataPropertyRange range="/702" dataPropertyExpression="/651"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/654"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/657"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/660"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/663"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/666"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/669"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/672"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/675"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/678"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/681"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/684"/>
+  <owl:DataPropertyRange range="/714" dataPropertyExpression="/687"/>
+  <owl:DataPropertyRange range="/714" dataPropertyExpression="/690"/>
+  <owl:DataPropertyRange range="/720" dataPropertyExpression="/693"/>
+  <owl:DataPropertyRange range="/705" dataPropertyExpression="/696"/>
+  <owl:DataPropertyRange range="/714" dataPropertyExpression="/699"/>
+  <owl:TypedLiteral lexicalValue="Negative" datatype="/720"/>
+  <owl:TypedLiteral lexicalValue="Positve" datatype="/720"/>
+  <owl:DataOneOf literals="/1574 /1575"/>
+  <owl:TypedLiteral lexicalValue="onGroundSurface" datatype="/720"/>
+  <owl:TypedLiteral lexicalValue="suspendedOrElevated" datatype="/720"/>
+  <owl:TypedLiteral lexicalValue="underground" datatype="/720"/>
+  <owl:DataOneOf literals="/1577 /1578 /1579"/>
+  <owl:Ontology ontologyURI="/0"/>
+</xmi:XMI>
