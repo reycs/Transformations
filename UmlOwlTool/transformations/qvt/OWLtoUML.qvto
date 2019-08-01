@@ -32,22 +32,7 @@ main() {
 	setDefaultCardinalities();
 }
 
-mapping OWL::EquivalentDataProperties::eqToSup() {
-	var props := self.dataPropertyExpressions->asOrderedSet();
-	if (self.dataPropertyExpressions->asOrderedSet()->size() = 2) {
-		props->at(1).resolveone(UML::Property).subsettedProperty += props->at(2).resolveone(UML::Property);
-		props->at(2).resolveone(UML::Property).subsettedProperty += props->at(1).resolveone(UML::Property);
-	}
-}
-
-mapping OWL::EquivalentObjectProperties::eqToSup() {
-	var props := self.objectPropertyExpressions->asOrderedSet();
-	if (self.objectPropertyExpressions->asOrderedSet()->size() = 2) {
-		props->at(1).resolveone(UML::Property).subsettedProperty += props->at(2).resolveone(UML::Property);
-		props->at(2).resolveone(UML::Property).subsettedProperty += props->at(1).resolveone(UML::Property);
-	}
-}
-
+// Ontology to model
 mapping OWL::Ontology::OWLtoUML() : UML::Model {
 	packagedElement += object UML::Package {
 		// if use OWLTHING
@@ -83,6 +68,16 @@ mapping OWL::Class::ClassToClass() : UML::Class {
 	name := uml.removePrefix(self.entityURI.value);
 }
 
+// Datatype to datatype
+mapping OWL::Declaration::TypeToType() : UML::DataType 
+	when {
+		self.entity.oclIsTypeOf(OWL::Datatype) and not (uml.getCIMDataType(self.entity.oclAsType(OWL::Datatype).entityURI.value).p1 and useCIMDataTypes) 
+		and not (uml.getXSDDataType(self.entity.oclAsType(OWL::Datatype).entityURI.value).p1 and useXSDDataTypes) and not owl.hasEnumDef(self.entity.oclAsType(OWL::Datatype).entityURI.value)
+	} {
+	name := uml.removePrefix(self.entity.entityURI.value);
+}
+
+
 // Enum declarations
 mapping OWL::Declaration::TypeToEnum() : UML::Enumeration 
 	when {
@@ -92,14 +87,6 @@ mapping OWL::Declaration::TypeToEnum() : UML::Enumeration
 	name := uml.removePrefix(self.entity.oclAsType(OWL::Datatype).entityURI.value);
 }
 
-// Datatype to datatype
-mapping OWL::Declaration::TypeToType() : UML::DataType 
-	when {
-		self.entity.oclIsTypeOf(OWL::Datatype) and not (uml.getCIMDataType(self.entity.oclAsType(OWL::Datatype).entityURI.value).p1 and useCIMDataTypes) 
-		and not (uml.getXSDDataType(self.entity.oclAsType(OWL::Datatype).entityURI.value).p1 and useXSDDataTypes) and not owl.hasEnumDef(self.entity.oclAsType(OWL::Datatype).entityURI.value)
-	} {
-	name := uml.removePrefix(self.entity.entityURI.value);
-}
 
 // Enums
 mapping OWL::DataTypeDefinition::DefToEnumValues() 
@@ -148,44 +135,6 @@ mapping OWL::SubDataPropertyOf::SubDataToSubSet()
 	self.subDataPropertyExpression.resolveone(UML::Property).subsettedProperty += self.superDataPropertyExpression.resolveone(UML::Property);
 }
 
-// Cardinalities
-mapping OWL::ObjectMinCardinality::ObjectMinToCard() {
-	self.objectPropertyExpression.resolveone(UML::Property).lower := self.cardinality;	
-}
-
-mapping OWL::ObjectMaxCardinality::ObjectMaxToCard() {
-	self.objectPropertyExpression.resolveone(UML::Property).upper := self.cardinality;
-}
-
-mapping OWL::ObjectExactCardinality::ObjectExactToCard() {
-	self.objectPropertyExpression.resolveone(UML::Property).lower := self.cardinality;
-	self.objectPropertyExpression.resolveone(UML::Property).upper := self.cardinality;
-}
-
-mapping OWL::DataMinCardinality::DataMinToCard() {
-	self.dataPropertyExpression.resolveone(UML::Property).lower := self.cardinality;
-}
-
-mapping OWL::DataMaxCardinality::DataMaxToCard() {
-	self.dataPropertyExpression.resolveone(UML::Property).upper := self.cardinality;
-}
-
-mapping OWL::DataExactCardinality::DataExactToCard() {
-	self.dataPropertyExpression.resolveone(UML::Property).lower := self.cardinality;
-	self.dataPropertyExpression.resolveone(UML::Property).upper := self.cardinality;
-}
-
-// functional object and data TODO determine whether the lower bound should be 0 or 1
-mapping OWL::FunctionalObjectProperty::FuncObjToCard() {
-	self.objectPropertyExpression.resolveone(UML::Property).lower := 1;
-	self.objectPropertyExpression.resolveone(UML::Property).upper := 1;
-}
-
-mapping OWL::FunctionalDataProperty::FuncDataToCard() {
-	self.dataPropertyExpression.resolveone(UML::Property).lower := 1;
-	self.dataPropertyExpression.resolveone(UML::Property).upper := 1;
-}
-
 // Object properties to property and resolve class attributes
 mapping OWL::ObjectProperty::ProToPro() : UML::Property {
 	name := uml.removePrefix(self.entityURI.value);
@@ -219,7 +168,6 @@ mapping OWL::ObjectProperty::ProToPro() : UML::Property {
 			uml.getOWLThing().ownedAttribute += self.resolveone(UML::Property);
 		} else {
 			log("Instantiated helper class for intersection of object property domain");
-			//createIntersectionHelper(self);
 			var classes := OrderedSet{ object UML::Class {} };
 			self.getDomain()->forEach(dom) {
 				if (not dom.domain.oclAsType(OWL::Class).resolveone(UML::Class).oclIsUndefined()) {
@@ -267,15 +215,13 @@ mapping OWL::ObjectProperty::ProToPro() : UML::Property {
 	};
 }
 
-// classexpressions objectUnionOf and objectIntersectionOf @TODO write functions so that nesting of unions and intersection work
-
 // Data properties to class attributes
 mapping OWL::DataProperty::PropToPro() : UML::Property {
 	name := uml.removePrefix(self.entityURI.value);
 	// default type if use XSDTypes
-	if (useXSDDataTypes) {
+	if (useXSDDataTypes)
 		type := uml.getClass("anyType");
-	};
+
 	// if one class as domain
 	if (self.getDomain()->size() = 1) {
 		var domain := self.getDomain()->asOrderedSet()->first().domain;
@@ -345,8 +291,7 @@ mapping OWL::DataProperty::PropToPro() : UML::Property {
 				type := uml.getClass("Literal");
 			}
 		};
-		
-		// @TODO UPDATE ENUMS TO COMPLETE THE DEFINITION
+
 		if (self.getRange()->asOrderedSet()->first().range.oclIsTypeOf(OWL::DataOneOf)) {
 			var en := object UML::Enumeration {};
 			var enName := "";
@@ -357,12 +302,8 @@ mapping OWL::DataProperty::PropToPro() : UML::Property {
 			en.name := self.entityURI.value + enName;
 			type := en;
 		}
-		
-		//log(self.getRange().range.oclAsType(OWL::Datatype).entityURI.value->first());
-	} else if (self.getRange()->size() = 0) {
-		log("No Range keeping default range");
-	} else if (self.getRange()->size() > 0) {
-		log("Multiple Ranges?????");
+	}  else if (self.getRange()->size() > 0) {
+		// handle multiple ranges
 	}
 }
 
@@ -375,8 +316,60 @@ mapping OWL::ObjectProperty::PropToAss() : UML::Association
 		result.ownedEnd += self.getInverse().resolveone(UML::Property);
 }
 
-/* Queries */
+// Cardinalities
+mapping OWL::ObjectMinCardinality::ObjectMinToCard() {
+	self.objectPropertyExpression.resolveone(UML::Property).lower := self.cardinality;	
+}
 
+mapping OWL::ObjectMaxCardinality::ObjectMaxToCard() {
+	self.objectPropertyExpression.resolveone(UML::Property).upper := self.cardinality;
+}
+
+mapping OWL::ObjectExactCardinality::ObjectExactToCard() {
+	self.objectPropertyExpression.resolveone(UML::Property).lower := self.cardinality;
+	self.objectPropertyExpression.resolveone(UML::Property).upper := self.cardinality;
+}
+
+mapping OWL::DataMinCardinality::DataMinToCard() {
+	self.dataPropertyExpression.resolveone(UML::Property).lower := self.cardinality;
+}
+
+mapping OWL::DataMaxCardinality::DataMaxToCard() {
+	self.dataPropertyExpression.resolveone(UML::Property).upper := self.cardinality;
+}
+
+mapping OWL::DataExactCardinality::DataExactToCard() {
+	self.dataPropertyExpression.resolveone(UML::Property).lower := self.cardinality;
+	self.dataPropertyExpression.resolveone(UML::Property).upper := self.cardinality;
+}
+
+// functional object and data 
+mapping OWL::FunctionalObjectProperty::FuncObjToCard() {
+	self.objectPropertyExpression.resolveone(UML::Property).upper := 1;
+}
+
+mapping OWL::FunctionalDataProperty::FuncDataToCard() {
+	self.dataPropertyExpression.resolveone(UML::Property).upper := 1;
+}
+
+// Equivalent properties
+mapping OWL::EquivalentDataProperties::eqToSup() {
+	var props := self.dataPropertyExpressions->asOrderedSet();
+	if (self.dataPropertyExpressions->asOrderedSet()->size() = 2) {
+		props->at(1).resolveone(UML::Property).subsettedProperty += props->at(2).resolveone(UML::Property);
+		props->at(2).resolveone(UML::Property).subsettedProperty += props->at(1).resolveone(UML::Property);
+	}
+}
+
+mapping OWL::EquivalentObjectProperties::eqToSup() {
+	var props := self.objectPropertyExpressions->asOrderedSet();
+	if (self.objectPropertyExpressions->asOrderedSet()->size() = 2) {
+		props->at(1).resolveone(UML::Property).subsettedProperty += props->at(2).resolveone(UML::Property);
+		props->at(2).resolveone(UML::Property).subsettedProperty += props->at(1).resolveone(UML::Property);
+	}
+}
+
+// Queries 
 query UML::getClass(name : String) : UML::Class {
 	return uml.objectsOfType(UML::Class)->asOrderedSet()->select(c | c.name.equalsIgnoreCase(uml.removePrefix(name)))->first();
 }
@@ -487,8 +480,7 @@ query OWL::removeIRI(input : String) : String {
 	return input.replaceFirst("http://[^<>]+#", "");
 }
 
-/* Helpers */
-
+// Helpers 
 helper createIntersectionHelper(classes : OrderedSet(UML::Class)) : UML::Class {
 	var helperClass := object UML::Class{ };
 	var intName := "";

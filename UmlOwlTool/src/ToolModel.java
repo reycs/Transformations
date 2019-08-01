@@ -59,14 +59,10 @@ public class ToolModel {
 				owlURL = this.getClass().getResource("qvt/OWLtoUML.qvto");
 				TransformationExecutor executorOWL = new TransformationExecutor(URI.createURI(owlURL.toString()));
 				publish(1); // STATUS 1: managed to create executor
-				System.out.println("Break here?");
-				
-				System.out.println(view.inputOWL.canRead());
+
 				OwlEcoreXmiWriter writer = new OwlEcoreXmiWriter(view.inputOWL);
-				System.out.println("break here?");
 				writer.write("file:///" + view.outputOWL + "/" + FilenameUtils.removeExtension(view.inputOWL.getName()) + ".xmi");
 				publish(2); // STATUS 2: managed to write to XMI
-				System.out.println("break here?????????????");
 				
 				ExecutionContextImpl contextOWL = new ExecutionContextImpl();
 				contextOWL.setConfigProperty("useCIMDataTypes", view.owlUseCIMCheckbox.isSelected());
@@ -86,13 +82,12 @@ public class ToolModel {
 				
 				if (resultOWL.getSeverity() == Diagnostic.OK) {
 					publish(4); // STATUS 4; managed to execute the transformation
-					System.out.println("ok");
 					List<EObject> outOWLObjects = outputOWL.getContents();
 					Resource outOWLResource = resourceSet.createResource(URI.createURI("file:///" + view.outputOWL + "/" + FilenameUtils.removeExtension(view.inputOWL.getName()) + ".uml"));
 					outOWLResource.getContents().addAll(outOWLObjects);
 					outOWLResource.save(Collections.emptyMap());
 				} else {
-					System.out.println("not ok");
+					System.out.println("Something went wrong with the transformation");
 				}
 				
 				return true;
@@ -170,6 +165,7 @@ public class ToolModel {
 				contextUML.setConfigProperty("useXSDDataTypes", view.umlUseXSDCheckbox.isSelected());
 				contextUML.setConfigProperty("useRDFLiteral", view.umlUseRDFCheckbox.isSelected());
 				contextUML.setConfigProperty("IRIPrefix", view.umlPrefixText.getText());
+				contextUML.setConfigProperty("prefixProperties", view.umlPrefixCheckbox.isSelected());
 				contextUML.setLog(new WriterLog(new OutputStreamWriter(System.out)));
 				publish(3); // STATUS 3: succesfuly set the settings
 				

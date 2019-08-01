@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.formats.FunctionalSyntaxDocumentFormat;
 import org.semanticweb.owlapi.formats.OWLXMLDocumentFormat;
 import org.semanticweb.owlapi.formats.RDFXMLDocumentFormat;
 import org.semanticweb.owlapi.formats.TurtleDocumentFormat;
@@ -117,6 +118,7 @@ import owl.AnnotationPropertyRange;
 import owl.AnonymousIndividual;
 import owl.AsymmetricObjectProperty;
 import owl.Axiom;
+import owl.Class;
 import owl.ClassAssertion;
 import owl.DataAllValuesFrom;
 import owl.DataComplementOf;
@@ -259,10 +261,11 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 		if (ontologyFormat.equals("RDF/XML")) {
 			save(fileName, new RDFXMLDocumentFormat());
 		} else if (ontologyFormat.equals("OWL/XML")) {
-			System.out.println("test");
 			save(fileName, new OWLXMLDocumentFormat());
 		} else if (ontologyFormat.equals("Turtle")) {
 			save(fileName, new TurtleDocumentFormat());
+		} else if (ontologyFormat.equals("Functional")) {
+			save(fileName, new FunctionalSyntaxDocumentFormat());
 		} else {
 			save(fileName, new RDFXMLDocumentFormat());
 		}
@@ -424,6 +427,9 @@ public class OwlEcoreXmiParser extends OwlSwitch<OWLObject> {
 	
 	@Override
 	public OWLSubClassOfAxiom caseSubClassOf(SubClassOf axiom) {
+		if (axiom.getSuperClassExpression().eClass().getName().contentEquals("Class")) {
+			owl.Class theClass = (Class) axiom.getSuperClassExpression();
+		}
 		OWLClassExpression subClass = (OWLClassExpression) this.doSwitch(axiom.getSubClassExpression());
 		OWLClassExpression superClass = (OWLClassExpression) this.doSwitch(axiom.getSuperClassExpression());
 		OWLSubClassOfAxiom newSubClassOfAxiom = getOWLDataFactory().getOWLSubClassOfAxiom(subClass, superClass);

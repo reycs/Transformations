@@ -8,94 +8,77 @@ configuration property IRIPrefix : String;
 configuration property useXSDDataTypes : Boolean;
 configuration property useRDFLiteral : Boolean;
 configuration property useCIMDataTypes : Boolean;
+configuration property prefixProperties : Boolean;
 
 main() {
 	log("[UML to OWL] Starting transformation");
 	uml.rootObjects()[UML::Model]->asOrderedSet()->first()->map UMLtoOWL();
 	uml.objectsOfType(UML::Class)->asOrderedSet()->map ClassToClass();
 	uml.objectsOfType(UML::Class)->asOrderedSet()->map ClassToDatatype();
+	uml.objectsOfType(UML::AssociationClass)->asOrderedSet()->map ACToPC();
 	uml.objectsOfType(UML::Generalization)->asOrderedSet()->map GenToSub();
 	uml.objectsOfType(UML::Association)->asOrderedSet()->map AssocToProps();
 	uml.objectsOfType(UML::Enumeration)->asOrderedSet()->map EnumToDatatype();
 	uml.objectsOfType(UML::Generalization)->asOrderedSet()->map GenToData();
 	uml.objectsOfType(UML::Comment)->asOrderedSet()->map CommentToAnn();
-	uml.objectsOfType(UML::AssociationClass)->asOrderedSet()->map ACToPC();
 	uml.objectsOfType(UML::Property)->asOrderedSet()->map subProps();
 	log("[UML to OWL] Completed transformation");
 }
 
+// Top level mapping 
 mapping UML::Model::UMLtoOWL() : OWL::Ontology {
 	ontologyURI := new URI("");
 }
 
-mapping UML::Comment::CommentToAnn() : OWL::AnnotationAssertion 
+// Class mappings 
+mapping UML::Class::ClassToClass() : OWL::Class 
 	when {
-		not self.owner.resolveone(OWL::Class).entityURI.oclIsUndefined() or 
-		not self.owner.resolveone(OWL::ObjectProperty).entityURI.oclIsUndefined() or 
-		not self.owner.resolveone(OWL::DataProperty).entityURI.oclIsUndefined() or
-		not (self.owner.oclAsType(UML::Association).memberEnd->at(1).resolveone(OWL::ObjectProperty).entityURI.oclIsUndefined() and
-		self.owner.oclAsType(UML::Association).memberEnd->at(2).resolveone(OWL::ObjectProperty).entityURI.oclIsUndefined()) and
-		not self.body.oclIsUndefined()
+		not self.name.oclIsUndefined() and not uml.isDatatype(self.name);
 	} {
-	annotationProperty := object OWL::AnnotationProperty { entityURI := object URI { value := "http://www.w3.org/2000/01/rdf-schema#comment" } }; 
-	annotationValue := object OWL::StringLiteral { quotedString := self.body };
-	if (self.owner.oclIsTypeOf(UML::Class)) {
-		annotationSubject := self.owner.resolveone(OWL::Class).entityURI;
-	} else if (self.owner.oclIsTypeOf(UML::Property)) {
-		if (not self.owner.resolveone(OWL::ObjectProperty).entityURI.oclIsUndefined()) {
-			annotationSubject := self.owner.resolveone(OWL::ObjectProperty).entityURI;
-		} else {
-			annotationSubject := self.owner.resolveone(OWL::DataProperty).entityURI;
-		}
+	entityURI := new URI(self.name);
+	self.attribute->asOrderedSet()->map AttrToDataProp();
+	self.attribute->asOrderedSet()->map AttrToObjProp();
+}
+
+mapping UML::Class::ClassToDatatype() : OWL::Datatype 
+	when {
+		uml.isDatatype(self.name)
+	} {
+		entityURI := new URI(self.name);
+}
+
+// Class attributes 
+mapping UML::Property::AttrToDataProp() : OWL::DataProperty 
+	when {
+		self.type.oclIsTypeOf(UML::Enumeration) or uml.isDatatype(self.type.name);
+	} {
+	var name := uml.getPropertyName(self);
+	if (uml.isDatatype(self.name)) {
+		entityURI := object URI { value := name };
 	} else {
-		log("Body", self.body);
-		annotationSubject := self.owner.oclAsType(UML::Association).memberEnd->at(1).resolveone(OWL::ObjectProperty).entityURI;
-		object OWL::AnnotationAssertion {
-			annotationProperty := object OWL::AnnotationProperty { entityURI := object URI { value := "http://www.w3.org/2000/01/rdf-schema#comment" } }; 
-			annotationValue := object OWL::StringLiteral { quotedString := self.body };
-			annotationSubject := self.owner.oclAsType(UML::Association).memberEnd->at(2).resolveone(OWL::ObjectProperty).entityURI;
-		}
-	}
+		entityURI := new URI(name);
+	};
+	new OWL::DataPropertyDomain(self, self.owner);
+	new OWL::DataPropertyRange(self, new Datatype(new URI(self.type.name)));
+	processCardinality(self, null, self.owner.resolveone(OWL::Class));
 }
 
-mapping UML::AssociationClass::ACToPC() {
-	// object properties for the association ends TODO combine this function with the association mapping??? THIS ONE IS HACKy
-	var p1Name := self.memberEnd->at(1).name;
-	var p2Name := self.memberEnd->at(2).name;
-	if (p1Name.oclIsUndefined()) {
-		p1Name := self.memberEnd->at(1).type.name;
+mapping UML::Property::AttrToObjProp() : OWL::ObjectProperty
+	when {
+		self.type.oclIsTypeOf(UML::Class) and self.association.oclIsUndefined() and not uml.isDatatype(self.type.name);
+	} {
+	var name := uml.getPropertyName(self);
+	if (uml.isDatatype(self.name)) {
+		entityURI := object URI { value := name; };
+	} else {
+		entityURI := new URI(name);
 	};
-	if (p2Name.oclIsUndefined()) {
-		p2Name := self.memberEnd->at(2).type.name;
-	};
-	self.memberEnd->at(1).map AssocToProp(self.memberEnd->at(1).type.name + "_" + p2Name);
-	self.memberEnd->at(2).map AssocToProp(self.memberEnd->at(2).type.name + "_" + p1Name);
-	
-	var p1 := self.memberEnd->at(1).resolveone(OWL::ObjectProperty);
-	var p2 := self.memberEnd->at(2).resolveone(OWL::ObjectProperty);
-	
-	object OWL::InverseObjectProperties { firstProperty := p1; secondProperty := p2 };
-	// process cardinality
-	processCardinality(self.memberEnd->at(1), p1, self.memberEnd->at(1).type.resolveone(OWL::Class));
-	processCardinality(self.memberEnd->at(2), p2, self.memberEnd->at(2).type.resolveone(OWL::Class));
-	
-	// Declare the class and objectproperty of the association class
-	self.oclAsType(UML::Class)->map ClassToClass();
-	var aProp := object OWL::ObjectProperty {entityURI := new URI(self.name.toLowerCase()) }; 
-	
-	// Declare the ranges
-	new OWL::ObjectPropertyRange(p1, self.memberEnd->at(2).type);
-	new OWL::ObjectPropertyRange(p2, self.memberEnd->at(1).type);
-	
-	// Specify domains
-	object OWL::ObjectPropertyDomain { objectPropertyExpression := p1; domain := object OWL::ObjectUnionOf { classExpressions := OrderedSet{self.memberEnd->at(1).type.resolveone(OWL::Class), self.resolveone(OWL::Class)}; } };
-	object OWL::ObjectPropertyDomain { objectPropertyExpression := p2; domain := object OWL::ObjectUnionOf { classExpressions := OrderedSet{self.memberEnd->at(2).type.resolveone(OWL::Class), self.resolveone(OWL::Class)}; } };
-	
-	// Domain and range specification for association class with itself
-	object OWL::ObjectPropertyDomain { objectPropertyExpression := aProp; domain := self.memberEnd->at(1).type.resolveone(OWL::Class) };
-	object OWL::ObjectPropertyRange { objectPropertyExpression := aProp; range := self.resolveone(OWL::Class); }; 
+	new OWL::ObjectPropertyDomain(self.resolveone(OWL::ObjectProperty), self.owner);
+	new OWL::ObjectPropertyRange(self.resolveone(OWL::ObjectProperty), self.type);
+	processCardinality(self, self.resolveone(OWL::ObjectProperty), self.owner.resolveone(OWL::Class));
 }
 
+// Associations / AssociationClass 
 mapping UML::Association::AssocToProps() 
 	when {
 		// yield to prevent associations with unresolvable types from breaking
@@ -131,70 +114,18 @@ mapping UML::Property::AssocToProp(name : String) : OWL::ObjectProperty {
 	entityURI := new URI(name);
 }
 
-mapping UML::Class::ClassToDatatype() : OWL::Datatype 
-	when {
-		uml.getCIMDatatype(self.name).p1 or uml.getXSDDatatype(self.name).p1 or uml.getRDFLiteral(self.name).p1
-	} {
-		entityURI := new URI(self.name);
+mapping UML::AssociationClass::ACToPC() {
+	// Declare the class, association and objectproperty of the association class
+	self.oclAsType(UML::Class)->map ClassToClass();
+	self.oclAsType(UML::Association)->map AssocToProps();
+	var aProp := object OWL::ObjectProperty {entityURI := new URI(self.name.toLowerCase()) }; 
+	
+	// Domain and range specification for association class with itself TODO implement it for association classes that are between different classes (might require a different domain on the association)
+	object OWL::ObjectPropertyDomain { objectPropertyExpression := aProp; domain := self.memberEnd->at(1).type.resolveone(OWL::Class) };
+	object OWL::ObjectPropertyRange { objectPropertyExpression := aProp; range := self.resolveone(OWL::Class); }; 
 }
 
-mapping UML::Class::ClassToClass() : OWL::Class 
-	when {
-		not uml.getCIMDatatype(self.name).p1 and not self.name.oclIsUndefined() and not uml.getXSDDatatype(self.name).p1 and not uml.getRDFLiteral(self.name).p1;
-	} {
-	entityURI := new URI(self.name);
-	self.attribute->asOrderedSet()->map AttrToDataProp();
-	self.attribute->asOrderedSet()->map AttrToObjProp();
-}
-
-mapping UML::Property::AttrToDataProp() : OWL::DataProperty 
-	when {
-		self.type.oclIsTypeOf(UML::Enumeration) or uml.getCIMDatatype(self.type.name).p1 or uml.getXSDDatatype(self.type.name).p1 or uml.getRDFLiteral(self.type.name).p1;
-	} {
-	// hacky fix for property names turning into XSD datatypes
-	if (uml.getCIMDatatype(self.name).p1 or uml.getXSDDatatype(self.name).p1 or uml.getRDFLiteral(self.name).p1) {
-		entityURI := object URI { value := self.name };
-	} else {
-		entityURI := new URI(self.name);
-	};
-	new OWL::DataPropertyDomain(self, self.owner);
-	new OWL::DataPropertyRange(self, new Datatype(new URI(self.type.name)));
-	processCardinality(self, null, self.owner.resolveone(OWL::Class));
-}
-
-mapping UML::Property::AttrToObjProp() : OWL::ObjectProperty
-	when {
-		self.type.oclIsTypeOf(UML::Class) and not uml.getCIMDatatype(self.type.name).p1 and not uml.getXSDDatatype(self.type.name).p1 and not uml.getRDFLiteral(self.type.name).p1 and self.association.oclIsUndefined();
-	} {
-	// hacky fix for property names turning into XSD datatypes
-	if (uml.getCIMDatatype(self.name).p1 or uml.getXSDDatatype(self.name).p1 or uml.getRDFLiteral(self.name).p1) {
-		entityURI := object URI { value := self.name };
-	} else {
-		entityURI := new URI(self.name);
-	};
-	new OWL::ObjectPropertyDomain(self.resolveone(OWL::ObjectProperty), self.owner);
-	new OWL::ObjectPropertyRange(self.resolveone(OWL::ObjectProperty), self.type);
-	processCardinality(self, self.resolveone(OWL::ObjectProperty), self.owner.resolveone(OWL::Class));
-}
-
-mapping UML::Property::subProps() {
-	// subproperty
-	if (self.subsettedProperty->size() > 0 and not self.resolveone(OWL::DataProperty).oclIsUndefined()) {
-		self.subsettedProperty->forEach(subProp) {
-			if (not subProp.resolveone(OWL::DataProperty).oclIsUndefined())
-				object OWL::SubDataPropertyOf{ subDataPropertyExpression := self.resolveone(OWL::DataProperty); superDataPropertyExpression := subProp.resolveone(OWL::DataProperty) };
-		}
-	};
-
-	// subproperty
-	if (self.subsettedProperty->size() > 0 and not self.resolveone(OWL::ObjectProperty).oclIsUndefined()) {
-		self.subsettedProperty->forEach(subProp) {
-			if (not subProp.resolveone(OWL::ObjectProperty).oclIsUndefined())
-				object OWL::SubObjectPropertyOf{ subObjectPropertyExpressions := self.resolveone(OWL::ObjectProperty); superObjectPropertyExpression := subProp.resolveone(OWL::ObjectProperty) };
-		}
-	};
-}
-
+// Generalizations 
 mapping UML::Generalization::GenToSub() : OWL::SubClassOf 
 	when {
 		not uml.getCIMDatatype(self.specific.name).p1 and not uml.getXSDDatatype(self.specific.name).p1 and not self.general.oclIsTypeOf(UML::Enumeration)
@@ -203,21 +134,40 @@ mapping UML::Generalization::GenToSub() : OWL::SubClassOf
 	superClassExpression := self.general.resolveone(OWL::Class);
 }
 
+mapping UML::Property::subProps() {
+	// subproperty beteween DataProperties
+	if (self.subsettedProperty->size() > 0 and not self.resolveone(OWL::DataProperty).oclIsUndefined()) {
+		self.subsettedProperty->forEach(subProp) {
+			if (not subProp.resolveone(OWL::DataProperty).oclIsUndefined())
+				object OWL::SubDataPropertyOf{ subDataPropertyExpression := self.resolveone(OWL::DataProperty); superDataPropertyExpression := subProp.resolveone(OWL::DataProperty) };
+		}
+	};
+
+	// subproperty between ObjectProperties
+	if (self.subsettedProperty->size() > 0 and not self.resolveone(OWL::ObjectProperty).oclIsUndefined()) {
+		self.subsettedProperty->forEach(subProp) {
+			if (not subProp.resolveone(OWL::ObjectProperty).oclIsUndefined())
+				object OWL::SubObjectPropertyOf{ subObjectPropertyExpressions := self.resolveone(OWL::ObjectProperty); superObjectPropertyExpression := subProp.resolveone(OWL::ObjectProperty) };
+		}
+	};
+}
+
 mapping UML::Generalization::GenToData() : OWL::DataTypeDefinition
 	when {
 		self.general.oclIsTypeOf(UML::Enumeration) and self.specific.oclIsTypeOf(UML::Enumeration)
 	} {
-		dataType := self.specific.resolveone(OWL::Datatype);
-		
-		if (self.specific.oclAsType(UML::Enumeration).ownedLiteral->size() > 0) {
-			var oneOf := object OWL::DataOneOf { literals := self.specific.oclAsType(UML::Enumeration).ownedLiteral.late resolve(OWL::StringLiteral) };
-			self.specific.oclAsType(UML::Enumeration).ownedLiteral->map EnumLiteralToLiteral();
-			dataRange := object OWL::DataUnionOf { dataRanges := OrderedSet{ self.general.resolveone(OWL::Datatype), oneOf } };
-		} else {
-			dataRange := object OWL::DataUnionOf { dataRanges := OrderedSet{ self.general.resolveone(OWL::Datatype) } };
-		}
+	dataType := self.specific.resolveone(OWL::Datatype);
+	
+	if (self.specific.oclAsType(UML::Enumeration).ownedLiteral->size() > 0) {
+		var oneOf := object OWL::DataOneOf { literals := self.specific.oclAsType(UML::Enumeration).ownedLiteral.late resolve(OWL::StringLiteral) };
+		self.specific.oclAsType(UML::Enumeration).ownedLiteral->map EnumLiteralToLiteral();
+		dataRange := object OWL::DataUnionOf { dataRanges := OrderedSet{ self.general.resolveone(OWL::Datatype), oneOf } };
+	} else {
+		dataRange := object OWL::DataUnionOf { dataRanges := OrderedSet{ self.general.resolveone(OWL::Datatype) } };
+	}
 }
 
+// Enumeration 
 mapping UML::Enumeration::EnumToDatatype() : OWL::Datatype {
 	entityURI := new URI(self.name);
 	object OWL::Declaration {
@@ -236,20 +186,49 @@ mapping UML::EnumerationLiteral::EnumLiteralToLiteral() : OWL::StringLiteral {
 	quotedString := self.name;
 }
 
-/* HELPERS */
+// Comments 
+mapping UML::Comment::CommentToAnn() : OWL::AnnotationAssertion 
+	when {
+		not self.owner.resolveone(OWL::Class).entityURI.oclIsUndefined() or 
+		not self.owner.resolveone(OWL::ObjectProperty).entityURI.oclIsUndefined() or 
+		not self.owner.resolveone(OWL::DataProperty).entityURI.oclIsUndefined() or
+		not (self.owner.oclAsType(UML::Association).memberEnd->at(1).resolveone(OWL::ObjectProperty).entityURI.oclIsUndefined() and
+		self.owner.oclAsType(UML::Association).memberEnd->at(2).resolveone(OWL::ObjectProperty).entityURI.oclIsUndefined()) and
+		not self.body.oclIsUndefined()
+	} {
+	annotationProperty := object OWL::AnnotationProperty { entityURI := object URI { value := "http://www.w3.org/2000/01/rdf-schema#comment" } }; 
+	annotationValue := object OWL::StringLiteral { quotedString := self.body };
+	if (self.owner.oclIsTypeOf(UML::Class)) {
+		annotationSubject := self.owner.resolveone(OWL::Class).entityURI;
+	} else if (self.owner.oclIsTypeOf(UML::Property)) {
+		if (not self.owner.resolveone(OWL::ObjectProperty).entityURI.oclIsUndefined()) {
+			annotationSubject := self.owner.resolveone(OWL::ObjectProperty).entityURI;
+		} else {
+			annotationSubject := self.owner.resolveone(OWL::DataProperty).entityURI;
+		}
+	} else {
+		annotationSubject := self.owner.oclAsType(UML::Association).memberEnd->at(1).resolveone(OWL::ObjectProperty).entityURI;
+		object OWL::AnnotationAssertion {
+			annotationProperty := object OWL::AnnotationProperty { entityURI := object URI { value := "http://www.w3.org/2000/01/rdf-schema#comment" } }; 
+			annotationValue := object OWL::StringLiteral { quotedString := self.body };
+			annotationSubject := self.owner.oclAsType(UML::Association).memberEnd->at(2).resolveone(OWL::ObjectProperty).entityURI;
+		}
+	}
+}
 
+// HELPERS 
 helper processCardinality(prop : UML::Property, objExpr : OWL::ObjectProperty, domain : OWL::Class) {
 	if (prop.lower.=(prop.upper)) {
 		object OWL::SubClassOf {
 			subClassExpression := domain;
-			if (uml.getCIMDatatype(prop.type.name).p1 or uml.getXSDDatatype(prop.type.name).p1 or uml.getRDFLiteral(prop.type.name).p1 or prop.type.oclIsTypeOf(UML::Enumeration)) {
+			if (uml.isDatatype(prop.type.name) or prop.type.oclIsTypeOf(UML::Enumeration)) {
 				superClassExpression := object OWL::DataExactCardinality { cardinality := prop.lower; dataPropertyExpression := prop.resolveone(OWL::DataProperty); dataRange := prop.type.late resolveone(OWL::Datatype) };
 			} else {
 				superClassExpression := object OWL::ObjectExactCardinality { cardinality := prop.lower; objectPropertyExpression := objExpr; classExpression := prop.type.late resolveone(OWL::Class) };
 			}
 		};
 		if (prop.lower.=(1)) {
-			if (uml.getCIMDatatype(prop.type.name).p1 or uml.getXSDDatatype(prop.type.name).p1 or uml.getRDFLiteral(prop.type.name).p1 or prop.type.oclIsTypeOf(UML::Enumeration)) {
+			if (uml.isDatatype(prop.type.name) or prop.type.oclIsTypeOf(UML::Enumeration)) {
 				object OWL::FunctionalDataProperty { dataPropertyExpression := prop.resolveone(OWL::DataProperty) };
 			} else {
 				object OWL::FunctionalObjectProperty { objectPropertyExpression := objExpr };
@@ -258,7 +237,7 @@ helper processCardinality(prop : UML::Property, objExpr : OWL::ObjectProperty, d
 	} else {
 		object OWL::SubClassOf {
 			subClassExpression := domain;
-			if (uml.getCIMDatatype(prop.type.name).p1 or uml.getXSDDatatype(prop.type.name).p1 or uml.getRDFLiteral(prop.type.name).p1 or prop.type.oclIsTypeOf(UML::Enumeration)) {
+			if (uml.isDatatype(prop.type.name) or prop.type.oclIsTypeOf(UML::Enumeration)) {
 				superClassExpression := object OWL::DataMinCardinality { cardinality := prop.lower; dataPropertyExpression := prop.resolveone(OWL::DataProperty); dataRange := prop.type.late resolveone(OWL::Datatype) };
 			} else {
 				superClassExpression := object OWL::ObjectMinCardinality { cardinality := prop.lower; objectPropertyExpression := objExpr; classExpression := prop.type.late resolveone(OWL::Class) };
@@ -267,7 +246,7 @@ helper processCardinality(prop : UML::Property, objExpr : OWL::ObjectProperty, d
 		if (not prop.upper.=(-1)) {
 			object OWL::SubClassOf {
 				subClassExpression := domain;
-				if (uml.getCIMDatatype(prop.type.name).p1 or uml.getXSDDatatype(prop.type.name).p1 or uml.getRDFLiteral(prop.type.name).p1 or prop.type.oclIsTypeOf(UML::Enumeration)) {
+				if (uml.isDatatype(prop.type.name) or prop.type.oclIsTypeOf(UML::Enumeration)) {
 					superClassExpression := object OWL::DataMaxCardinality { cardinality := prop.upper; dataPropertyExpression := prop.resolveone(OWL::DataProperty); dataRange := prop.type.late resolveone(OWL::Datatype) };
 				} else {
 					superClassExpression := object OWL::ObjectMaxCardinality { cardinality := prop.upper; objectPropertyExpression := objExpr; classExpression := prop.type.late resolveone(OWL::Class) };
@@ -277,8 +256,7 @@ helper processCardinality(prop : UML::Property, objExpr : OWL::ObjectProperty, d
 	}
 }
 
-/* CONSTRUCTORS */
-
+// CONSTRUCTORS 
 constructor OWL::URI::URI(uri:String) {
 	if (uri.equalsIgnoreCase("")) {
 		value := IRIPrefix + uri;
@@ -291,7 +269,6 @@ constructor OWL::URI::URI(uri:String) {
 	} else {
 		value := IRIPrefix + uri;
 	};
-	// fix property names that map to datatypes
 }
 
 constructor OWL::ObjectPropertyDomain::ObjectPropertyDomain(prop:OWL::ObjectProperty, dom:UML::Element) {
@@ -318,8 +295,7 @@ constructor OWL::Datatype::Datatype(uri:OWL::URI) {
 	entityURI := uri;
 }
 
-/* QUERIES */
-
+// QUERIES 
 query UML::getCIMDatatype(type : String) : p1 : Boolean, p2 : String {
 	p1 := false;
 	p2 := null;
@@ -352,7 +328,6 @@ query UML::getCIMDatatype(type : String) : p1 : Boolean, p2 : String {
 query UML::getXSDDatatype(type : String) : p1 : Boolean, p2 : String {
 	p1 := false;
 	p2 := null;
-	// Checking based on name (could also check on package if this is bad for performance)
 	var types := Set { "" };
 	if (useXSDDataTypes) {
 		types := Set { "anySimpleType","anyType","anyURI","base64Binary","decimal","duration","ENTITIES","ENTITY","gDay","gMonth","gMonthDay","gYear","gYearMonth","hexBinary","ID","IDREF","IDREFS","int","language","Name","NCName","negativeInteger","NMTOKEN","NMTOKENS","nonNegativeInteger","nonPositiveInteger","normalizedString","NOTATION","positiveInteger","integer","QName","short","time","token","unsignedByte","unsignedInt","unsignedLong","unsignedShort","float","dateTime","string" };
@@ -370,4 +345,16 @@ query UML::getRDFLiteral(type : String) : p1 : Boolean, p2 : String {
 		p2 := "http://www.w3.org/2000/01/rdf-schema#Literal";
 		p1 := true;
 	}
+}
+
+query UML::getPropertyName(prop : UML::Property) : String {
+	var name := prop.name;
+	if (prefixProperties) {
+		name := prop.owner.oclAsType(UML::Class).name + "_" + prop.name;
+	};
+	return name;
+}
+
+query UML::isDatatype(type : String) : Boolean {
+	return uml.getCIMDatatype(type).p1 or uml.getXSDDatatype(type).p1 or uml.getRDFLiteral(type).p1;
 }

@@ -10,9 +10,9 @@ import owlecore.OwlEcoreXmiWriter;
 public class SingleTransform {
 
 	public static void main(String[] args) {
-		//OwlEcoreXmiParser parser = new OwlEcoreXmiParser("output/roundtripxmi/atomroundtrip.xmi");
-		//parser.parse().save("output/roundtripxmi/atomroundtrip.owl", new RDFXMLDocumentFormat());
-		OwlEcoreXmiWriter writer = new OwlEcoreXmiWriter("output/inspireFixed.owl");
+		OwlEcoreXmiParser parser = new OwlEcoreXmiParser("output/inspireslice.xmi");
+		parser.parse().save("output/inspireslice.owl", new RDFXMLDocumentFormat());
+		//OwlEcoreXmiWriter writer = new OwlEcoreXmiWriter("output/inspireFixed.owl");
 	}
 
 }

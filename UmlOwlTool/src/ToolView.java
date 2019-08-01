@@ -3,7 +3,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Insets;
-import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,7 +34,7 @@ import net.miginfocom.swing.MigLayout;
 public class ToolView extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private static final DateFormat sdf = new SimpleDateFormat("HH:mm");
-	public JCheckBox umlUseXSDCheckbox, umlUseCIMCheckbox, umlUseRDFCheckbox, owlUseXSDCheckbox, owlUseCIMCheckbox, owlUseRDFCheckbox, owlUseThingCheckbox;
+	public JCheckBox umlUseXSDCheckbox, umlUseCIMCheckbox, umlUseRDFCheckbox, umlPrefixCheckbox, owlUseXSDCheckbox, owlUseCIMCheckbox, owlUseRDFCheckbox, owlUseThingCheckbox;
 	public JComboBox<String> owlFormats;
 	public JTextField umlPrefixText, owlPrefixText;
 	public File inputUML, inputOWL;
@@ -168,10 +167,13 @@ public class ToolView extends JFrame implements ActionListener {
 		JLabel umlUseRDF = new JLabel("Use RDF Literal");
 		umlUseRDF.setFont(regularFont.deriveFont(11f));
 		umlUseRDFCheckbox = new JCheckBox();
+		JLabel umlPrefixProp = new JLabel("Prefix attributes");
+		umlPrefixProp.setFont(regularFont.deriveFont(11f));
+		umlPrefixCheckbox = new JCheckBox();
 		JLabel owlFormat = new JLabel("Ouput OWL format");
 		owlFormat.setFont(regularFont.deriveFont(11f));
 		String[] formats = new String[] {"RDF/XML", "OWL/XML",
-                "Turtle"};
+                "Turtle", "Functional"};
 		owlFormats = new JComboBox<>(formats);
 		owlFormats.setFont(regularFont.deriveFont(11f));
 		umlStep2.add(prefix, "split 2, width 125!, height 20!");
@@ -182,6 +184,8 @@ public class ToolView extends JFrame implements ActionListener {
 		umlStep2.add(umlUseCIMCheckbox, "wrap, height 20!");
 		umlStep2.add(umlUseRDF, "split 2, width 125!, height 20!");
 		umlStep2.add(umlUseRDFCheckbox, "wrap, height 20!");
+		umlStep2.add(umlPrefixProp, "split 2, width 125!, height 20!");
+		umlStep2.add(umlPrefixCheckbox, "wrap, height 20!");
 		umlStep2.add(owlFormat, "split 2, width 125!, height 20!");
 		umlStep2.add(owlFormats, "wrap, width 200!, height 20!");
 		umlStep1.setBackground(Color.WHITE);
